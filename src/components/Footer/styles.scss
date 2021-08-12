@@ -1,0 +1,14 @@
+@use 'src/styles/vars' as v;
+
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  &-logo {
+    width: 4em;
+  }
+  &-description {
+    display: flex;
+    color: white;
+  }
+}
