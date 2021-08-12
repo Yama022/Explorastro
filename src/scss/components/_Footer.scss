@@ -1,0 +1,17 @@
+.footer {
+  color: $light-color;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+
+  &-logo {
+    width: 5 * $gutter;
+  }
+
+  &-description {
+    a {
+      margin-right: $gutter;
+    }
+  }
+}

@@ -1,15 +1,11 @@
-// == Import npm
 import React from 'react';
 
-// == Import
-import 'src/scss/index.scss';
+import Footer from 'src/components/Footer';
 
-// == Composant
-const Explorastro = () => (
-  <div className="explorastro">
-    <h1>ExplorAstro</h1>
-  </div>
-);
-
-// == Export
-export default Explorastro;
+export default function Explorastro() {
+  return (
+    <div className="explorastro">
+      <Footer />
+    </div>
+  );
+}
