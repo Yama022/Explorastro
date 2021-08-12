@@ -1,17 +1,28 @@
 .footer {
-  color: $light-color;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
+  position: relative;
+  &__container {
+    background: url("src/assets/images/moon-footer.svg");
+    background-position: 50% 8%;
+    background-size: 600%;
+    font-family: 'Exo', sans-serif;
+    font-weight: 400;
+    color: $light-color;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
 
-  &-logo {
-    width: 5 * $gutter;
-  }
+    // &__background {
 
-  &-description {
-    a {
-      margin-right: $gutter;
+    // }
+    &__logo {
+      width: 8em;
+    }
+
+    &__description {
+      a {
+        margin-right: $gutter;
+      }
     }
   }
 }
