@@ -1,1 +1,0 @@
-const { mainController } = require('../controllers');
