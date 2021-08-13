@@ -5,6 +5,7 @@ import Header from 'src/components/Header';
 import Footer from 'src/components/Footer';
 import Timeline from 'src/components/Timeline';
 import Error from 'src/components/Error';
+import Map from 'src/components/Map';
 
 export default function Explorastro() {
   return (
@@ -16,6 +17,9 @@ export default function Explorastro() {
         </Route>
         <Route exact path="/timeline">
           <Timeline />
+        </Route>
+        <Route exact path="/discover">
+          <Map />
         </Route>
         <Route>
           <Error />
