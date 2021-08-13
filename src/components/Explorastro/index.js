@@ -4,6 +4,7 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import Header from 'src/components/Header';
 import Footer from 'src/components/Footer';
 import Timeline from 'src/components/Timeline';
+import Error from 'src/components/Error';
 
 export default function Explorastro() {
   return (
@@ -17,8 +18,7 @@ export default function Explorastro() {
           <Timeline />
         </Route>
         <Route>
-          {/* Ajouter la 404 ici (redirige temporairement vers la timeline) */}
-          <Redirect to="/timeline" />
+          <Error />
         </Route>
       </Switch>
       <Footer />
