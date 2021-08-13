@@ -18,7 +18,7 @@ CREATE TABLE "user" (
     "username" TEXT NOT NULL UNIQUE,
     "email" TEXT NOT NULL UNIQUE,
     "password" TEXT NOT NULL,
-    "avatar_URL" TEXT,
+    "avatar_url" TEXT,
     "bio" TEXT,
     "city" TEXT,
     "zipcode" TEXT,
@@ -27,7 +27,7 @@ CREATE TABLE "user" (
     "facebook" TEXT,
     "tiktok" TEXT,
     "astrobin" TEXT,
-    "role_id" INT REFERENCES "role"("id") ON DELETE CASCADE,
+    "role_id" INT REFERENCES "role"("id") ON DELETE CASCADE DEFAULT 1,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
     "updated_at" TIMESTAMPTZ
 );
@@ -41,16 +41,23 @@ CREATE TABLE "exploration" (
     "date" TIMESTAMPTZ NOT NULL,
     "max_participants" INT,
     "is_published" BOOLEAN NOT NULL,
-    "image_URL" TEXT,
+    "image_url" TEXT,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
     "updated_at" TIMESTAMPTZ
 );
 
-CREATE TABLE "exploration_comment" (
+CREATE TABLE "comment" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    "exploration_id" INT NOT NULL REFERENCES "exploration"("id"),
     "author_id" INT NOT NULL REFERENCES "user"("id"),
     "content" TEXT NOT NULL,
+    "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
+    "updated_at" TIMESTAMPTZ
+);
+
+CREATE TABLE "exploration_has_comments" (
+    "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    "exploration_id" INT NOT NULL REFERENCES "exploration"("id"),
+    "comment_id" INT NOT NULL REFERENCES "comment"("id"),
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
     "updated_at" TIMESTAMPTZ
 );
