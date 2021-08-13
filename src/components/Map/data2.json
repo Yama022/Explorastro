@@ -1,0 +1,646 @@
+[  {"Nom Ville":"Villetaneuse","name":"VILLETANEUSE","Code Postal":"93430","Code INSEE":"93079","Code R�gion":"11","Latitude":"48.958333","Longitude":"2.341667","Eloignement":"-1"}
+  ,
+  {"Nom Ville":"La Plaine-Saint-Denis","name":"LA PLAINE SAINT DENIS","Code Postal":"93210","Code INSEE":"93900","Code R�gion":"11","Latitude":"48.9","Longitude":"2.366667","Eloignement":"1.34"}
+  ,
+  {"Nom Ville":"Ablon-sur-Seine","name":"ABLON SUR SEINE","Code Postal":"94480","Code INSEE":"94001","Code R�gion":"11","Latitude":"48.716667","Longitude":"2.416667","Eloignement":"2"}
+  ,
+  {"Nom Ville":"Alfortville","name":"ALFORTVILLE","Code Postal":"94140","Code INSEE":"94002","Code R�gion":"11","Latitude":"48.8","Longitude":"2.416667","Eloignement":"0.64"}
+  ,
+  {"Nom Ville":"Arcueil","name":"ARCUEIL","Code Postal":"94110","Code INSEE":"94003","Code R�gion":"11","Latitude":"48.8","Longitude":"2.333333","Eloignement":"1.92"}
+  ,
+  {"Nom Ville":"Boissy-Saint-L�ger","name":"BOISSY SAINT LEGER","Code Postal":"94470","Code INSEE":"94004","Code R�gion":"11","Latitude":"48.75","Longitude":"2.516667","Eloignement":"0.99"}
+  ,
+  {"Nom Ville":"Bonneuil-sur-Marne","name":"BONNEUIL SUR MARNE","Code Postal":"94380","Code INSEE":"94011","Code R�gion":"11","Latitude":"48.766667","Longitude":"2.483333","Eloignement":"0.48"}
+  ,
+  {"Nom Ville":"Bry-sur-Marne","name":"BRY SUR MARNE","Code Postal":"94360","Code INSEE":"94015","Code R�gion":"11","Latitude":"48.833333","Longitude":"2.516667","Eloignement":"1.54"}
+  ,
+  {"Nom Ville":"Cachan","name":"CACHAN","Code Postal":"94230","Code INSEE":"94016","Code R�gion":"11","Latitude":"48.783333","Longitude":"2.333333","Eloignement":"1.92"}
+  ,
+  {"Nom Ville":"Champigny-sur-Marne","name":"CHAMPIGNY SUR MARNE","Code Postal":"94500","Code INSEE":"94017","Code R�gion":"11","Latitude":"48.816667","Longitude":"2.516667","Eloignement":"1.04"}
+  ,
+  {"Nom Ville":"Charenton-le-Pont","name":"CHARENTON LE PONT","Code Postal":"94220","Code INSEE":"94018","Code R�gion":"11","Latitude":"48.816667","Longitude":"2.416667","Eloignement":"1.04"}
+  ,
+  {"Nom Ville":"Chennevi�res-sur-Marne","name":"CHENNEVIERES SUR MARNE","Code Postal":"94430","Code INSEE":"94019","Code R�gion":"11","Latitude":"48.8","Longitude":"2.516667","Eloignement":"0.89"}
+  ,
+  {"Nom Ville":"Chevilly-Larue","name":"CHEVILLY LARUE","Code Postal":"94550","Code INSEE":"94021","Code R�gion":"11","Latitude":"48.766667","Longitude":"2.35","Eloignement":"1.67"}
+  ,
+  {"Nom Ville":"Choisy-le-Roi","name":"CHOISY LE ROI","Code Postal":"94600","Code INSEE":"94022","Code R�gion":"11","Latitude":"48.766667","Longitude":"2.416667","Eloignement":"0.64"}
+  ,
+  {"Nom Ville":"Cr�teil","name":"CRETEIL","Code Postal":"94000","Code INSEE":"94028","Code R�gion":"11","Latitude":"48.783333","Longitude":"2.466667","Eloignement":"0.13"}
+  ,
+  {"Nom Ville":"Fontenay-sous-Bois","name":"FONTENAY SOUS BOIS","Code Postal":"94120","Code INSEE":"94033","Code R�gion":"11","Latitude":"48.85","Longitude":"2.483333","Eloignement":"2.05"}
+  ,
+  {"Nom Ville":"Fresnes","name":"FRESNES","Code Postal":"94260","Code INSEE":"94034","Code R�gion":"11","Latitude":"48.75","Longitude":"2.316667","Eloignement":"2.18"}
+  ,
+  {"Nom Ville":"Gentilly","name":"GENTILLY","Code Postal":"94250","Code INSEE":"94037","Code R�gion":"11","Latitude":"48.816667","Longitude":"2.333333","Eloignement":"1.92"}
+  ,
+  {"Nom Ville":"L'Hay-les-Roses","name":"L HAY LES ROSES","Code Postal":"94240","Code INSEE":"94038","Code R�gion":"11","Latitude":"48.783333","Longitude":"2.333333","Eloignement":"1.92"}
+  ,
+  {"Nom Ville":"Ivry-sur-Seine","name":"IVRY SUR SEINE","Code Postal":"94200","Code INSEE":"94041","Code R�gion":"11","Latitude":"48.816667","Longitude":"2.383333","Eloignement":"1.15"}
+  ,
+  {"Nom Ville":"Joinville-le-Pont","name":"JOINVILLE LE PONT","Code Postal":"94340","Code INSEE":"94042","Code R�gion":"11","Latitude":"48.816667","Longitude":"2.466667","Eloignement":"1.04"}
+  ,
+  {"Nom Ville":"Le Kremlin-Bic�tre","name":"LE KREMLIN BICETRE","Code Postal":"94270","Code INSEE":"94043","Code R�gion":"11","Latitude":"48.816667","Longitude":"2.366667","Eloignement":"1.41"}
+  ,
+  {"Nom Ville":"Limeil-Br�vannes","name":"LIMEIL BREVANNES","Code Postal":"94450","Code INSEE":"94044","Code R�gion":"11","Latitude":"48.733333","Longitude":"2.483333","Eloignement":"1.49"}
+  ,
+  {"Nom Ville":"Maisons-Alfort","name":"MAISONS ALFORT","Code Postal":"94700","Code INSEE":"94046","Code R�gion":"11","Latitude":"48.8","Longitude":"2.433333","Eloignement":"0.53"}
+  ,
+  {"Nom Ville":"Mandres-les-Roses","name":"MANDRES LES ROSES","Code Postal":"94520","Code INSEE":"94047","Code R�gion":"11","Latitude":"48.7","Longitude":"2.55","Eloignement":"2.5"}
+  ,
+  {"Nom Ville":"Marolles-en-Brie","name":"MAROLLES EN BRIE","Code Postal":"94440","Code INSEE":"94048","Code R�gion":"11","Latitude":"48.733333","Longitude":"2.55","Eloignement":"1.49"}
+  ,
+  {"Nom Ville":"Nogent-sur-Marne","name":"NOGENT SUR MARNE","Code Postal":"94130","Code INSEE":"94052","Code R�gion":"11","Latitude":"48.833333","Longitude":"2.483333","Eloignement":"1.54"}
+  ,
+  {"Nom Ville":"Noiseau","name":"NOISEAU","Code Postal":"94880","Code INSEE":"94053","Code R�gion":"11","Latitude":"48.783333","Longitude":"2.55","Eloignement":"1.4"}
+  ,
+  {"Nom Ville":"Orly","name":"ORLY","Code Postal":"94310","Code INSEE":"94054","Code R�gion":"11","Latitude":"48.75","Longitude":"2.4","Eloignement":"0.99"}
+  ,
+  {"Nom Ville":"Ormesson-sur-Marne","name":"ORMESSON SUR MARNE","Code Postal":"94490","Code INSEE":"94055","Code R�gion":"11","Latitude":"48.783333","Longitude":"2.55","Eloignement":"1.4"}
+  ,
+  {"Nom Ville":"P�rigny","name":"PERIGNY","Code Postal":"94520","Code INSEE":"94056","Code R�gion":"11","Latitude":"48.7","Longitude":"2.55","Eloignement":"2.5"}
+  ,
+  {"Nom Ville":"Le Perreux-Sur-Marne","name":"LE PERREUX SUR MARNE","Code Postal":"94170","Code INSEE":"94058","Code R�gion":"11","Latitude":"48.85","Longitude":"2.5","Eloignement":"2.05"}
+  ,
+  {"Nom Ville":"Le Plessis-Tr�vise","name":"LE PLESSIS TREVISE","Code Postal":"94420","Code INSEE":"94059","Code R�gion":"11","Latitude":"48.816667","Longitude":"2.566667","Eloignement":"1.66"}
+  ,
+  {"Nom Ville":"La Queue-en-Brie","name":"LA QUEUE EN BRIE","Code Postal":"94510","Code INSEE":"94060","Code R�gion":"11","Latitude":"48.783333","Longitude":"2.583333","Eloignement":"1.92"}
+  ,
+  {"Nom Ville":"Rungis","name":"RUNGIS","Code Postal":"94150","Code INSEE":"94065","Code R�gion":"11","Latitude":"48.75","Longitude":"2.35","Eloignement":"1.67"}
+  ,
+  {"Nom Ville":"Saint-Mand�","name":"SAINT MANDE","Code Postal":"94160","Code INSEE":"94067","Code R�gion":"11","Latitude":"48.833333","Longitude":"2.416667","Eloignement":"1.54"}
+  ,
+  {"Nom Ville":"Saint-Maur-des-Foss�s","name":"SAINT MAUR DES FOSSES","Code Postal":"94210","Code INSEE":"94068","Code R�gion":"11","Latitude":"48.8","Longitude":"2.5","Eloignement":"0.64"}
+  ,
+  {"Nom Ville":"Saint-Maurice","name":"SAINT MAURICE","Code Postal":"94410","Code INSEE":"94069","Code R�gion":"11","Latitude":"48.816667","Longitude":"2.458333","Eloignement":"-1"}
+  ,
+  {"Nom Ville":"Santeny","name":"SANTENY","Code Postal":"94440","Code INSEE":"94070","Code R�gion":"11","Latitude":"48.716667","Longitude":"2.566667","Eloignement":"2"}
+  ,
+  {"Nom Ville":"Sucy-en-Brie","name":"SUCY EN BRIE","Code Postal":"94880","Code INSEE":"94071","Code R�gion":"11","Latitude":"48.766667","Longitude":"2.533333","Eloignement":"1.15"}
+  ,
+  {"Nom Ville":"Thiais","name":"THIAIS","Code Postal":"94320","Code INSEE":"94073","Code R�gion":"11","Latitude":"48.766667","Longitude":"2.383333","Eloignement":"1.15"}
+  ,
+  {"Nom Ville":"Valenton","name":"VALENTON","Code Postal":"94460","Code INSEE":"94074","Code R�gion":"11","Latitude":"48.75","Longitude":"2.466667","Eloignement":"1"}
+  ,
+  {"Nom Ville":"Villecresnes","name":"VILLECRESNES","Code Postal":"94440","Code INSEE":"94075","Code R�gion":"11","Latitude":"48.716667","Longitude":"2.533333","Eloignement":"2"}
+  ,
+  {"Nom Ville":"Villejuif","name":"VILLEJUIF","Code Postal":"94800","Code INSEE":"94076","Code R�gion":"11","Latitude":"48.8","Longitude":"2.366667","Eloignement":"1.41"}
+  ,
+  {"Nom Ville":"Villeneuve-le-Roi","name":"VILLENEUVE LE ROI","Code Postal":"94290","Code INSEE":"94077","Code R�gion":"11","Latitude":"48.733333","Longitude":"2.416667","Eloignement":"1.49"}
+  ,
+  {"Nom Ville":"Villeneuve-Saint-Georges","name":"VILLENEUVE SAINT GEORGES","Code Postal":"94190","Code INSEE":"94078","Code R�gion":"11","Latitude":"48.733333","Longitude":"2.45","Eloignement":"1.49"}
+  ,
+  {"Nom Ville":"Villiers-sur-Marne","name":"VILLIERS SUR MARNE","Code Postal":"94350","Code INSEE":"94079","Code R�gion":"11","Latitude":"48.833333","Longitude":"2.55","Eloignement":"1.54"}
+  ,
+  {"Nom Ville":"Vincennes","name":"VINCENNES","Code Postal":"94300","Code INSEE":"94080","Code R�gion":"11","Latitude":"48.85","Longitude":"2.433333","Eloignement":"2.05"}
+  ,
+  {"Nom Ville":"Vitry-sur-Seine","name":"VITRY SUR SEINE","Code Postal":"94400","Code INSEE":"94081","Code R�gion":"11","Latitude":"48.783333","Longitude":"2.4","Eloignement":"0.9"}
+  ,
+  {"Nom Ville":"Val Pompadour","name":"VAL POMPADOUR","Code Postal":"94460","Code INSEE":"94902","Code R�gion":"11","Latitude":"48.766667","Longitude":"2.45","Eloignement":"1"}
+  ,
+  {"Nom Ville":"Coeuilly","name":"COEUILLY","Code Postal":"94500","Code INSEE":"94903","Code R�gion":"11","Latitude":"48.816667","Longitude":"2.55","Eloignement":"1.4"}
+  ,
+  {"Nom Ville":"Les Bruy�res","name":"LES BRUYERES","Code Postal":"94370","Code INSEE":"94904","Code R�gion":"11","Latitude":"48.775","Longitude":"2.516667","Eloignement":"-1"}
+  ,
+  {"Nom Ville":"Ableiges","name":"ABLEIGES","Code Postal":"95450","Code INSEE":"95002","Code R�gion":"11","Latitude":"49.083333","Longitude":"1.983333","Eloignement":"1.53"}
+  ,
+  {"Nom Ville":"Aincourt","name":"AINCOURT","Code Postal":"95510","Code INSEE":"95008","Code R�gion":"11","Latitude":"49.066667","Longitude":"1.783333","Eloignement":"1.74"}
+  ,
+  {"Nom Ville":"Ambleville","name":"AMBLEVILLE","Code Postal":"95710","Code INSEE":"95011","Code R�gion":"11","Latitude":"49.15","Longitude":"1.7","Eloignement":"2.14"}
+  ,
+  {"Nom Ville":"Amenucourt","name":"AMENUCOURT","Code Postal":"95510","Code INSEE":"95012","Code R�gion":"11","Latitude":"49.1","Longitude":"1.65","Eloignement":"2.37"}
+  ,
+  {"Nom Ville":"Andilly","name":"ANDILLY","Code Postal":"95580","Code INSEE":"95014","Code R�gion":"11","Latitude":"49","Longitude":"2.3","Eloignement":"1.51"}
+  ,
+  {"Nom Ville":"Argenteuil","name":"ARGENTEUIL","Code Postal":"95100","Code INSEE":"95018","Code R�gion":"11","Latitude":"48.95","Longitude":"2.25","Eloignement":"2.51"}
+  ,
+  {"Nom Ville":"Arnouville-l�s-Gonesse","name":"ARNOUVILLE LES GONESSE","Code Postal":"95400","Code INSEE":"95019","Code R�gion":"11","Latitude":"48.983333","Longitude":"2.416667","Eloignement":"1.84"}
+  ,
+  {"Nom Ville":"Arronville","name":"ARRONVILLE","Code Postal":"95810","Code INSEE":"95023","Code R�gion":"11","Latitude":"49.183333","Longitude":"2.1","Eloignement":"2.15"}
+  ,
+  {"Nom Ville":"Arthies","name":"ARTHIES","Code Postal":"95420","Code INSEE":"95024","Code R�gion":"11","Latitude":"49.1","Longitude":"1.783333","Eloignement":"1.74"}
+  ,
+  {"Nom Ville":"Asni�res-sur-Oise","name":"ASNIERES SUR OISE","Code Postal":"95270","Code INSEE":"95026","Code R�gion":"11","Latitude":"49.133333","Longitude":"2.35","Eloignement":"1.34"}
+  ,
+  {"Nom Ville":"Attainville","name":"ATTAINVILLE","Code Postal":"95570","Code INSEE":"95028","Code R�gion":"11","Latitude":"49.05","Longitude":"2.35","Eloignement":"0.96"}
+  ,
+  {"Nom Ville":"Auvers-sur-Oise","name":"AUVERS SUR OISE","Code Postal":"95760","Code INSEE":"95039","Code R�gion":"11","Latitude":"49.066667","Longitude":"2.166667","Eloignement":"1"}
+  ,
+  {"Nom Ville":"Avernes","name":"AVERNES","Code Postal":"95450","Code INSEE":"95040","Code R�gion":"11","Latitude":"49.083333","Longitude":"1.866667","Eloignement":"1.34"}
+  ,
+  {"Nom Ville":"Baillet-en-France","name":"BAILLET EN FRANCE","Code Postal":"95560","Code INSEE":"95042","Code R�gion":"11","Latitude":"49.066667","Longitude":"2.3","Eloignement":"0.73"}
+  ,
+  {"Nom Ville":"Banthelu","name":"BANTHELU","Code Postal":"95420","Code INSEE":"95046","Code R�gion":"11","Latitude":"49.133333","Longitude":"1.816667","Eloignement":"1.58"}
+  ,
+  {"Nom Ville":"Beauchamp","name":"BEAUCHAMP","Code Postal":"95250","Code INSEE":"95051","Code R�gion":"11","Latitude":"49.016667","Longitude":"2.2","Eloignement":"1.18"}
+  ,
+  {"Nom Ville":"Beaumont-sur-Oise","name":"BEAUMONT SUR OISE","Code Postal":"95260","Code INSEE":"95052","Code R�gion":"11","Latitude":"49.133333","Longitude":"2.283333","Eloignement":"1.15"}
+  ,
+  {"Nom Ville":"Le Bellay-en-Vexin","name":"LE BELLAY EN VEXIN","Code Postal":"95750","Code INSEE":"95054","Code R�gion":"11","Latitude":"49.15","Longitude":"1.883333","Eloignement":"1.49"}
+  ,
+  {"Nom Ville":"Bellefontaine","name":"BELLEFONTAINE","Code Postal":"95270","Code INSEE":"95055","Code R�gion":"11","Latitude":"49.1","Longitude":"2.466667","Eloignement":"1.56"}
+  ,
+  {"Nom Ville":"Belloy-en-France","name":"BELLOY EN FRANCE","Code Postal":"95270","Code INSEE":"95056","Code R�gion":"11","Latitude":"49.083333","Longitude":"2.383333","Eloignement":"1.12"}
+  ,
+  {"Nom Ville":"Bernes-sur-Oise","name":"BERNES SUR OISE","Code Postal":"95340","Code INSEE":"95058","Code R�gion":"11","Latitude":"49.166667","Longitude":"2.3","Eloignement":"1.82"}
+  ,
+  {"Nom Ville":"Berville","name":"BERVILLE","Code Postal":"95810","Code INSEE":"95059","Code R�gion":"11","Latitude":"49.183333","Longitude":"2.066667","Eloignement":"2.15"}
+  ,
+  {"Nom Ville":"Bessancourt","name":"BESSANCOURT","Code Postal":"95550","Code INSEE":"95060","Code R�gion":"11","Latitude":"49.033333","Longitude":"2.216667","Eloignement":"0.84"}
+  ,
+  {"Nom Ville":"B�themont-la-For�t","name":"BETHEMONT LA FORET","Code Postal":"95840","Code INSEE":"95061","Code R�gion":"11","Latitude":"49.05","Longitude":"2.25","Eloignement":"1"}
+  ,
+  {"Nom Ville":"Bezons","name":"BEZONS","Code Postal":"95870","Code INSEE":"95063","Code R�gion":"11","Latitude":"48.933333","Longitude":"2.216667","Eloignement":"2.84"}
+  ,
+  {"Nom Ville":"Boisemont","name":"BOISEMONT","Code Postal":"95000","Code INSEE":"95074","Code R�gion":"11","Latitude":"49.016667","Longitude":"2","Eloignement":"1.45"}
+  ,
+  {"Nom Ville":"Boissy-l'Aillerie","name":"BOISSY L AILLERIE","Code Postal":"95650","Code INSEE":"95078","Code R�gion":"11","Latitude":"49.066667","Longitude":"2.033333","Eloignement":"0.55"}
+  ,
+  {"Nom Ville":"Bonneuil-en-France","name":"BONNEUIL EN FRANCE","Code Postal":"95500","Code INSEE":"95088","Code R�gion":"11","Latitude":"48.966667","Longitude":"2.433333","Eloignement":"2.18"}
+  ,
+  {"Nom Ville":"Bouff�mont","name":"BOUFFEMONT","Code Postal":"95570","Code INSEE":"95091","Code R�gion":"11","Latitude":"49.05","Longitude":"2.3","Eloignement":"1.52"}
+  ,
+  {"Nom Ville":"Bouqueval","name":"BOUQUEVAL","Code Postal":"95720","Code INSEE":"95094","Code R�gion":"11","Latitude":"49.016667","Longitude":"2.433333","Eloignement":"1.53"}
+  ,
+  {"Nom Ville":"Bray-et-L�","name":"BRAY ET LU","Code Postal":"95710","Code INSEE":"95101","Code R�gion":"11","Latitude":"49.133333","Longitude":"1.65","Eloignement":"2.37"}
+  ,
+  {"Nom Ville":"Br�an�on","name":"BREANCON","Code Postal":"95640","Code INSEE":"95102","Code R�gion":"11","Latitude":"49.15","Longitude":"2.016667","Eloignement":"1.49"}
+  ,
+  {"Nom Ville":"Brignancourt","name":"BRIGNANCOURT","Code Postal":"95640","Code INSEE":"95110","Code R�gion":"11","Latitude":"49.133333","Longitude":"1.95","Eloignement":"1.15"}
+  ,
+  {"Nom Ville":"Bruy�res-sur-Oise","name":"BRUYERES SUR OISE","Code Postal":"95820","Code INSEE":"95116","Code R�gion":"11","Latitude":"49.166667","Longitude":"2.316667","Eloignement":"1.82"}
+  ,
+  {"Nom Ville":"Buhy","name":"BUHY","Code Postal":"95770","Code INSEE":"95119","Code R�gion":"11","Latitude":"49.2","Longitude":"1.683333","Eloignement":"2.49"}
+  ,
+  {"Nom Ville":"Butry-sur-Oise","name":"BUTRY SUR OISE","Code Postal":"95430","Code INSEE":"95120","Code R�gion":"11","Latitude":"49.083333","Longitude":"2.2","Eloignement":"0.25"}
+  ,
+  {"Nom Ville":"Cergy","name":"CERGY","Code Postal":"95000","Code INSEE":"95127","Code R�gion":"11","Latitude":"49.033333","Longitude":"2.066667","Eloignement":"0.84"}
+  ,
+  {"Nom Ville":"Champagne-sur-Oise","name":"CHAMPAGNE SUR OISE","Code Postal":"95660","Code INSEE":"95134","Code R�gion":"11","Latitude":"49.133333","Longitude":"2.25","Eloignement":"1.15"}
+  ,
+  {"Nom Ville":"La Chapelle-en-Vexin","name":"LA CHAPELLE EN VEXIN","Code Postal":"95420","Code INSEE":"95139","Code R�gion":"11","Latitude":"49.183333","Longitude":"1.733333","Eloignement":"2.15"}
+  ,
+  {"Nom Ville":"Charmont","name":"CHARMONT","Code Postal":"95420","Code INSEE":"95141","Code R�gion":"11","Latitude":"49.133333","Longitude":"1.783333","Eloignement":"1.74"}
+  ,
+  {"Nom Ville":"Chars","name":"CHARS","Code Postal":"95750","Code INSEE":"95142","Code R�gion":"11","Latitude":"49.166667","Longitude":"1.933333","Eloignement":"1.82"}
+  ,
+  {"Nom Ville":"Ch�tenay-en-France","name":"CHATENAY EN FRANCE","Code Postal":"95190","Code INSEE":"95144","Code R�gion":"11","Latitude":"49.066667","Longitude":"2.45","Eloignement":"1.44"}
+  ,
+  {"Nom Ville":"Chaumontel","name":"CHAUMONTEL","Code Postal":"95270","Code INSEE":"95149","Code R�gion":"11","Latitude":"49.116667","Longitude":"2.433333","Eloignement":"1.36"}
+  ,
+  {"Nom Ville":"Chaussy","name":"CHAUSSY","Code Postal":"95710","Code INSEE":"95150","Code R�gion":"11","Latitude":"49.116667","Longitude":"1.683333","Eloignement":"2.22"}
+  ,
+  {"Nom Ville":"Chauvry","name":"CHAUVRY","Code Postal":"95560","Code INSEE":"95151","Code R�gion":"11","Latitude":"49.05","Longitude":"2.266667","Eloignement":"1.92"}
+  ,
+  {"Nom Ville":"Chennevi�res-l�s-Louvres","name":"CHENNEVIERES LES LOUVRES","Code Postal":"95380","Code INSEE":"95154","Code R�gion":"11","Latitude":"49.05","Longitude":"2.55","Eloignement":"1.92"}
+  ,
+  {"Nom Ville":"Ch�rence","name":"CHERENCE","Code Postal":"95510","Code INSEE":"95157","Code R�gion":"11","Latitude":"49.083333","Longitude":"1.683333","Eloignement":"2.22"}
+  ,
+  {"Nom Ville":"Cl�ry-en-Vexin","name":"CLERY EN VEXIN","Code Postal":"95420","Code INSEE":"95166","Code R�gion":"11","Latitude":"49.133333","Longitude":"1.85","Eloignement":"1.51"}
+  ,
+  {"Nom Ville":"Commeny","name":"COMMENY","Code Postal":"95450","Code INSEE":"95169","Code R�gion":"11","Latitude":"49.116667","Longitude":"1.9","Eloignement":"1.18"}
+  ,
+  {"Nom Ville":"Cond�court","name":"CONDECOURT","Code Postal":"95450","Code INSEE":"95170","Code R�gion":"11","Latitude":"49.033333","Longitude":"1.95","Eloignement":"1.36"}
+  ,
+  {"Nom Ville":"Cormeilles-en-Parisis","name":"CORMEILLES EN PARISIS","Code Postal":"95240","Code INSEE":"95176","Code R�gion":"11","Latitude":"48.983333","Longitude":"2.2","Eloignement":"1.84"}
+  ,
+  {"Nom Ville":"Cormeilles-en-Vexin","name":"CORMEILLES EN VEXIN","Code Postal":"95830","Code INSEE":"95177","Code R�gion":"11","Latitude":"49.116667","Longitude":"2.016667","Eloignement":"1"}
+  ,
+  {"Nom Ville":"Courcelles-sur-Viosne","name":"COURCELLES SUR VIOSNE","Code Postal":"95650","Code INSEE":"95181","Code R�gion":"11","Latitude":"49.083333","Longitude":"2","Eloignement":"0.97"}
+  ,
+  {"Nom Ville":"Courdimanche","name":"COURDIMANCHE","Code Postal":"95800","Code INSEE":"95183","Code R�gion":"11","Latitude":"49.033333","Longitude":"2","Eloignement":"0.84"}
+  ,
+  {"Nom Ville":"Deuil-la-Barre","name":"DEUIL LA BARRE","Code Postal":"95170","Code INSEE":"95197","Code R�gion":"11","Latitude":"48.983333","Longitude":"2.333333","Eloignement":"1.84"}
+  ,
+  {"Nom Ville":"Domont","name":"DOMONT","Code Postal":"95330","Code INSEE":"95199","Code R�gion":"11","Latitude":"49.033333","Longitude":"2.333333","Eloignement":"0.88"}
+  ,
+  {"Nom Ville":"Eaubonne","name":"EAUBONNE","Code Postal":"95600","Code INSEE":"95203","Code R�gion":"11","Latitude":"49","Longitude":"2.283333","Eloignement":"1.51"}
+  ,
+  {"Nom Ville":"�couen","name":"ECOUEN","Code Postal":"95440","Code INSEE":"95205","Code R�gion":"11","Latitude":"49.016667","Longitude":"2.383333","Eloignement":"1.18"}
+  ,
+  {"Nom Ville":"Enghien-les-Bains","name":"ENGHIEN LES BAINS","Code Postal":"95880","Code INSEE":"95210","Code R�gion":"11","Latitude":"48.966667","Longitude":"2.316667","Eloignement":"2.18"}
+  ,
+  {"Nom Ville":"Ennery","name":"ENNERY","Code Postal":"95300","Code INSEE":"95211","Code R�gion":"11","Latitude":"49.066667","Longitude":"2.1","Eloignement":"0.6"}
+  ,
+  {"Nom Ville":"�piais-l�s-Louvres","name":"EPIAIS LES LOUVRES","Code Postal":"95380","Code INSEE":"95212","Code R�gion":"11","Latitude":"49.033333","Longitude":"2.55","Eloignement":"1.92"}
+  ,
+  {"Nom Ville":"�piais-Rhus","name":"EPIAIS RHUS","Code Postal":"95810","Code INSEE":"95213","Code R�gion":"11","Latitude":"49.116667","Longitude":"2.066667","Eloignement":"1.16"}
+  ,
+  {"Nom Ville":"�pinay-Champl�treux","name":"EPINAY CHAMPLATREUX","Code Postal":"95270","Code INSEE":"95214","Code R�gion":"11","Latitude":"49.083333","Longitude":"2.416667","Eloignement":"1.28"}
+  ,
+  {"Nom Ville":"�ragny","name":"ERAGNY","Code Postal":"95610","Code INSEE":"95218","Code R�gion":"11","Latitude":"49.016667","Longitude":"2.1","Eloignement":"1.18"}
+  ,
+  {"Nom Ville":"Ermont","name":"ERMONT","Code Postal":"95120","Code INSEE":"95219","Code R�gion":"11","Latitude":"48.983333","Longitude":"2.266667","Eloignement":"1.84"}
+  ,
+  {"Nom Ville":"�zanville","name":"EZANVILLE","Code Postal":"95460","Code INSEE":"95229","Code R�gion":"11","Latitude":"49.033333","Longitude":"2.366667","Eloignement":"1.04"}
+  ,
+  {"Nom Ville":"Fontenay-en-Parisis","name":"FONTENAY EN PARISIS","Code Postal":"95190","Code INSEE":"95241","Code R�gion":"11","Latitude":"49.05","Longitude":"2.45","Eloignement":"1.44"}
+  ,
+  {"Nom Ville":"Fosses","name":"FOSSES","Code Postal":"95470","Code INSEE":"95250","Code R�gion":"11","Latitude":"49.1","Longitude":"2.483333","Eloignement":"1.8"}
+  ,
+  {"Nom Ville":"Franconville","name":"FRANCONVILLE","Code Postal":"95130","Code INSEE":"95252","Code R�gion":"11","Latitude":"48.983333","Longitude":"2.233333","Eloignement":"1.84"}
+  ,
+  {"Nom Ville":"Fr�mainville","name":"FREMAINVILLE","Code Postal":"95450","Code INSEE":"95253","Code R�gion":"11","Latitude":"49.066667","Longitude":"1.866667","Eloignement":"1.34"}
+  ,
+  {"Nom Ville":"Fr�m�court","name":"FREMECOURT","Code Postal":"95830","Code INSEE":"95254","Code R�gion":"11","Latitude":"49.116667","Longitude":"2","Eloignement":"1"}
+  ,
+  {"Nom Ville":"Fr�pillon","name":"FREPILLON","Code Postal":"95740","Code INSEE":"95256","Code R�gion":"11","Latitude":"49.05","Longitude":"2.216667","Eloignement":"0.51"}
+  ,
+  {"Nom Ville":"La Frette-sur-Seine","name":"LA FRETTE SUR SEINE","Code Postal":"95530","Code INSEE":"95257","Code R�gion":"11","Latitude":"48.966667","Longitude":"2.183333","Eloignement":"2.18"}
+  ,
+  {"Nom Ville":"Frouville","name":"FROUVILLE","Code Postal":"95690","Code INSEE":"95258","Code R�gion":"11","Latitude":"49.15","Longitude":"2.15","Eloignement":"1.49"}
+  ,
+  {"Nom Ville":"Gadancourt","name":"GADANCOURT","Code Postal":"95450","Code INSEE":"95259","Code R�gion":"11","Latitude":"49.1","Longitude":"1.866667","Eloignement":"1.34"}
+  ,
+  {"Nom Ville":"Garges-l�s-Gonesse","name":"GARGES LES GONESSE","Code Postal":"95140","Code INSEE":"95268","Code R�gion":"11","Latitude":"48.966667","Longitude":"2.416667","Eloignement":"2.18"}
+  ,
+  {"Nom Ville":"G�nainville","name":"GENAINVILLE","Code Postal":"95420","Code INSEE":"95270","Code R�gion":"11","Latitude":"49.133333","Longitude":"1.75","Eloignement":"1.9"}
+  ,
+  {"Nom Ville":"G�nicourt","name":"GENICOURT","Code Postal":"95650","Code INSEE":"95271","Code R�gion":"11","Latitude":"49.083333","Longitude":"2.066667","Eloignement":"1.69"}
+  ,
+  {"Nom Ville":"Gonesse","name":"GONESSE","Code Postal":"95500","Code INSEE":"95277","Code R�gion":"11","Latitude":"48.983333","Longitude":"2.45","Eloignement":"1.84"}
+  ,
+  {"Nom Ville":"Goussainville","name":"GOUSSAINVILLE","Code Postal":"95190","Code INSEE":"95280","Code R�gion":"11","Latitude":"49.016667","Longitude":"2.466667","Eloignement":"1.52"}
+  ,
+  {"Nom Ville":"Gouzangrez","name":"GOUZANGREZ","Code Postal":"95450","Code INSEE":"95282","Code R�gion":"11","Latitude":"49.116667","Longitude":"1.916667","Eloignement":"1.1"}
+  ,
+  {"Nom Ville":"Grisy-les-Pl�tres","name":"GRISY LES PLATRES","Code Postal":"95810","Code INSEE":"95287","Code R�gion":"11","Latitude":"49.133333","Longitude":"2.05","Eloignement":"1.15"}
+  ,
+  {"Nom Ville":"Groslay","name":"GROSLAY","Code Postal":"95410","Code INSEE":"95288","Code R�gion":"11","Latitude":"48.983333","Longitude":"2.35","Eloignement":"1.84"}
+  ,
+  {"Nom Ville":"Guiry-en-Vexin","name":"GUIRY EN VEXIN","Code Postal":"95450","Code INSEE":"95295","Code R�gion":"11","Latitude":"49.133333","Longitude":"1.85","Eloignement":"1.7"}
+  ,
+  {"Nom Ville":"Haravilliers","name":"HARAVILLIERS","Code Postal":"95640","Code INSEE":"95298","Code R�gion":"11","Latitude":"49.183333","Longitude":"2.05","Eloignement":"2.15"}
+  ,
+  {"Nom Ville":"Haute-Isle","name":"HAUTE ISLE","Code Postal":"95780","Code INSEE":"95301","Code R�gion":"11","Latitude":"49.083333","Longitude":"1.666667","Eloignement":"2.29"}
+  ,
+  {"Nom Ville":"Le Heaulme","name":"LE HEAULME","Code Postal":"95640","Code INSEE":"95303","Code R�gion":"11","Latitude":"49.166667","Longitude":"2","Eloignement":"1.82"}
+  ,
+  {"Nom Ville":"H�douville","name":"HEDOUVILLE","Code Postal":"95690","Code INSEE":"95304","Code R�gion":"11","Latitude":"49.15","Longitude":"2.166667","Eloignement":"1.49"}
+  ,
+  {"Nom Ville":"Herblay","name":"HERBLAY","Code Postal":"95220","Code INSEE":"95306","Code R�gion":"11","Latitude":"49","Longitude":"2.166667","Eloignement":"1.51"}
+  ,
+  {"Nom Ville":"H�rouville","name":"HEROUVILLE","Code Postal":"95300","Code INSEE":"95308","Code R�gion":"11","Latitude":"49.1","Longitude":"2.133333","Eloignement":"1.3"}
+  ,
+  {"Nom Ville":"Hodent","name":"HODENT","Code Postal":"95420","Code INSEE":"95309","Code R�gion":"11","Latitude":"49.15","Longitude":"1.766667","Eloignement":"1.82"}
+  ,
+  {"Nom Ville":"L'Isle-Adam","name":"L ISLE ADAM","Code Postal":"95290","Code INSEE":"95313","Code R�gion":"11","Latitude":"49.116667","Longitude":"2.233333","Eloignement":"0.82"}
+  ,
+  {"Nom Ville":"Jagny-sous-Bois","name":"JAGNY SOUS BOIS","Code Postal":"95850","Code INSEE":"95316","Code R�gion":"11","Latitude":"49.083333","Longitude":"2.45","Eloignement":"1.44"}
+  ,
+  {"Nom Ville":"Jouy-le-Moutier","name":"JOUY LE MOUTIER","Code Postal":"95280","Code INSEE":"95323","Code R�gion":"11","Latitude":"49.016667","Longitude":"2.033333","Eloignement":"1.18"}
+  ,
+  {"Nom Ville":"Labbeville","name":"LABBEVILLE","Code Postal":"95690","Code INSEE":"95328","Code R�gion":"11","Latitude":"49.133333","Longitude":"2.15","Eloignement":"1.15"}
+  ,
+  {"Nom Ville":"Lassy","name":"LASSY","Code Postal":"95270","Code INSEE":"95331","Code R�gion":"11","Latitude":"49.1","Longitude":"2.45","Eloignement":"1.44"}
+  ,
+  {"Nom Ville":"Livilliers","name":"LIVILLIERS","Code Postal":"95300","Code INSEE":"95341","Code R�gion":"11","Latitude":"49.1","Longitude":"2.1","Eloignement":"0.89"}
+  ,
+  {"Nom Ville":"Longuesse","name":"LONGUESSE","Code Postal":"95450","Code INSEE":"95348","Code R�gion":"11","Latitude":"49.066667","Longitude":"1.933333","Eloignement":"1.02"}
+  ,
+  {"Nom Ville":"Louvres","name":"LOUVRES","Code Postal":"95380","Code INSEE":"95351","Code R�gion":"11","Latitude":"49.033333","Longitude":"2.5","Eloignement":"1.68"}
+  ,
+  {"Nom Ville":"Luzarches","name":"LUZARCHES","Code Postal":"95270","Code INSEE":"95352","Code R�gion":"11","Latitude":"49.116667","Longitude":"2.416667","Eloignement":"1.28"}
+  ,
+  {"Nom Ville":"Maffliers","name":"MAFFLIERS","Code Postal":"95560","Code INSEE":"95353","Code R�gion":"11","Latitude":"49.083333","Longitude":"2.316667","Eloignement":"1.22"}
+  ,
+  {"Nom Ville":"Magny-en-Vexin","name":"MAGNY EN VEXIN","Code Postal":"95420","Code INSEE":"95355","Code R�gion":"11","Latitude":"49.15","Longitude":"1.783333","Eloignement":"1.74"}
+  ,
+  {"Nom Ville":"Mareil-en-France","name":"MAREIL EN FRANCE","Code Postal":"95850","Code INSEE":"95365","Code R�gion":"11","Latitude":"49.066667","Longitude":"2.433333","Eloignement":"1.36"}
+  ,
+  {"Nom Ville":"Margency","name":"MARGENCY","Code Postal":"95580","Code INSEE":"95369","Code R�gion":"11","Latitude":"49","Longitude":"2.3","Eloignement":"1.51"}
+  ,
+  {"Nom Ville":"Marines","name":"MARINES","Code Postal":"95640","Code INSEE":"95370","Code R�gion":"11","Latitude":"49.15","Longitude":"1.983333","Eloignement":"1.49"}
+  ,
+  {"Nom Ville":"Marly-la-Ville","name":"MARLY LA VILLE","Code Postal":"95670","Code INSEE":"95371","Code R�gion":"11","Latitude":"49.083333","Longitude":"2.5","Eloignement":"1.68"}
+  ,
+  {"Nom Ville":"Maud�tour-en-Vexin","name":"MAUDETOUR EN VEXIN","Code Postal":"95420","Code INSEE":"95379","Code R�gion":"11","Latitude":"49.1","Longitude":"1.783333","Eloignement":"1.74"}
+  ,
+  {"Nom Ville":"M�nouville","name":"MENOUVILLE","Code Postal":"95810","Code INSEE":"95387","Code R�gion":"11","Latitude":"49.15","Longitude":"2.1","Eloignement":"1.49"}
+  ,
+  {"Nom Ville":"Menucourt","name":"MENUCOURT","Code Postal":"95180","Code INSEE":"95388","Code R�gion":"11","Latitude":"49.016667","Longitude":"1.983333","Eloignement":"1.18"}
+  ,
+  {"Nom Ville":"M�riel","name":"MERIEL","Code Postal":"95630","Code INSEE":"95392","Code R�gion":"11","Latitude":"49.083333","Longitude":"2.2","Eloignement":"0.25"}
+  ,
+  {"Nom Ville":"M�ry-sur-Oise","name":"MERY SUR OISE","Code Postal":"95540","Code INSEE":"95394","Code R�gion":"11","Latitude":"49.066667","Longitude":"2.2","Eloignement":"0.25"}
+  ,
+  {"Nom Ville":"Le Mesnil-Aubry","name":"LE MESNIL AUBRY","Code Postal":"95720","Code INSEE":"95395","Code R�gion":"11","Latitude":"49.05","Longitude":"2.4","Eloignement":"1.2"}
+  ,
+  {"Nom Ville":"Moisselles","name":"MOISSELLES","Code Postal":"95570","Code INSEE":"95409","Code R�gion":"11","Latitude":"49.05","Longitude":"2.333333","Eloignement":"0.88"}
+  ,
+  {"Nom Ville":"Montgeroult","name":"MONTGEROULT","Code Postal":"95650","Code INSEE":"95422","Code R�gion":"11","Latitude":"49.083333","Longitude":"2","Eloignement":"0.97"}
+  ,
+  {"Nom Ville":"Montigny-l�s-Cormeilles","name":"MONTIGNY LES CORMEILLES","Code Postal":"95370","Code INSEE":"95424","Code R�gion":"11","Latitude":"48.983333","Longitude":"2.183333","Eloignement":"1.84"}
+  ,
+  {"Nom Ville":"Montlignon","name":"MONTLIGNON","Code Postal":"95680","Code INSEE":"95426","Code R�gion":"11","Latitude":"49.016667","Longitude":"2.283333","Eloignement":"1.18"}
+  ,
+  {"Nom Ville":"Montmagny","name":"MONTMAGNY","Code Postal":"95360","Code INSEE":"95427","Code R�gion":"11","Latitude":"48.966667","Longitude":"2.35","Eloignement":"2.18"}
+  ,
+  {"Nom Ville":"Montmorency","name":"MONTMORENCY","Code Postal":"95160","Code INSEE":"95428","Code R�gion":"11","Latitude":"49","Longitude":"2.333333","Eloignement":"1.51"}
+  ,
+  {"Nom Ville":"Montreuil-sur-Epte","name":"MONTREUIL SUR EPTE","Code Postal":"95770","Code INSEE":"95429","Code R�gion":"11","Latitude":"49.183333","Longitude":"1.683333","Eloignement":"2.22"}
+  ,
+  {"Nom Ville":"Montsoult","name":"MONTSOULT","Code Postal":"95560","Code INSEE":"95430","Code R�gion":"11","Latitude":"49.066667","Longitude":"2.316667","Eloignement":"0.86"}
+  ,
+  {"Nom Ville":"Mours","name":"MOURS","Code Postal":"95260","Code INSEE":"95436","Code R�gion":"11","Latitude":"49.133333","Longitude":"2.266667","Eloignement":"1.15"}
+  ,
+  {"Nom Ville":"Moussy","name":"MOUSSY","Code Postal":"95640","Code INSEE":"95438","Code R�gion":"11","Latitude":"49.133333","Longitude":"1.916667","Eloignement":"1.84"}
+  ,
+  {"Nom Ville":"Nerville-la-For�t","name":"NERVILLE LA FORET","Code Postal":"95590","Code INSEE":"95445","Code R�gion":"11","Latitude":"49.083333","Longitude":"2.283333","Eloignement":"1.48"}
+  ,
+  {"Nom Ville":"Nesles-la-Vall�e","name":"NESLES LA VALLEE","Code Postal":"95690","Code INSEE":"95446","Code R�gion":"11","Latitude":"49.133333","Longitude":"2.183333","Eloignement":"1.45"}
+  ,
+  {"Nom Ville":"Neuilly-en-Vexin","name":"NEUILLY EN VEXIN","Code Postal":"95640","Code INSEE":"95447","Code R�gion":"11","Latitude":"49.166667","Longitude":"1.983333","Eloignement":"1.82"}
+  ,
+  {"Nom Ville":"Neuville-sur-Oise","name":"NEUVILLE SUR OISE","Code Postal":"95000","Code INSEE":"95450","Code R�gion":"11","Latitude":"49.016667","Longitude":"2.066667","Eloignement":"1.18"}
+  ,
+  {"Nom Ville":"Nointel","name":"NOINTEL","Code Postal":"95590","Code INSEE":"95452","Code R�gion":"11","Latitude":"49.133333","Longitude":"2.3","Eloignement":"1.15"}
+  ,
+  {"Nom Ville":"Noisy-sur-Oise","name":"NOISY SUR OISE","Code Postal":"95270","Code INSEE":"95456","Code R�gion":"11","Latitude":"49.133333","Longitude":"2.333333","Eloignement":"1.7"}
+  ,
+  {"Nom Ville":"Nucourt","name":"NUCOURT","Code Postal":"95420","Code INSEE":"95459","Code R�gion":"11","Latitude":"49.166667","Longitude":"1.85","Eloignement":"1.82"}
+  ,
+  {"Nom Ville":"Omerville","name":"OMERVILLE","Code Postal":"95420","Code INSEE":"95462","Code R�gion":"11","Latitude":"49.133333","Longitude":"1.716667","Eloignement":"2.06"}
+  ,
+  {"Nom Ville":"Osny","name":"OSNY","Code Postal":"95520","Code INSEE":"95476","Code R�gion":"11","Latitude":"49.066667","Longitude":"2.066667","Eloignement":"0.39"}
+  ,
+  {"Nom Ville":"Parmain","name":"PARMAIN","Code Postal":"95620","Code INSEE":"95480","Code R�gion":"11","Latitude":"49.116667","Longitude":"2.216667","Eloignement":"0.82"}
+  ,
+  {"Nom Ville":"Le Perchay","name":"LE PERCHAY","Code Postal":"95450","Code INSEE":"95483","Code R�gion":"11","Latitude":"49.116667","Longitude":"1.933333","Eloignement":"1.02"}
+  ,
+  {"Nom Ville":"Persan","name":"PERSAN","Code Postal":"95340","Code INSEE":"95487","Code R�gion":"11","Latitude":"49.15","Longitude":"2.266667","Eloignement":"1.49"}
+  ,
+  {"Nom Ville":"Pierrelaye","name":"PIERRELAYE","Code Postal":"95480","Code INSEE":"95488","Code R�gion":"11","Latitude":"49.016667","Longitude":"2.166667","Eloignement":"1.18"}
+  ,
+  {"Nom Ville":"Piscop","name":"PISCOP","Code Postal":"95350","Code INSEE":"95489","Code R�gion":"11","Latitude":"49.016667","Longitude":"2.35","Eloignement":"1.18"}
+  ,
+  {"Nom Ville":"Le Plessis-Bouchard","name":"LE PLESSIS BOUCHARD","Code Postal":"95130","Code INSEE":"95491","Code R�gion":"11","Latitude":"49","Longitude":"2.233333","Eloignement":"1.51"}
+  ,
+  {"Nom Ville":"Le Plessis-Gassot","name":"LE PLESSIS GASSOT","Code Postal":"95720","Code INSEE":"95492","Code R�gion":"11","Latitude":"49.033333","Longitude":"2.416667","Eloignement":"1.28"}
+  ,
+  {"Nom Ville":"Le Plessis-Luzarches","name":"LE PLESSIS LUZARCHES","Code Postal":"95270","Code INSEE":"95493","Code R�gion":"11","Latitude":"49.1","Longitude":"2.45","Eloignement":"1.44"}
+  ,
+  {"Nom Ville":"Pontoise","name":"PONTOISE","Code Postal":"95300","Code INSEE":"95500","Code R�gion":"11","Latitude":"49.05","Longitude":"2.1","Eloignement":"1.21"}
+  ,
+  {"Nom Ville":"Presles","name":"PRESLES","Code Postal":"95590","Code INSEE":"95504","Code R�gion":"11","Latitude":"49.116667","Longitude":"2.3","Eloignement":"0.82"}
+  ,
+  {"Nom Ville":"Puiseux-en-France","name":"PUISEUX EN FRANCE","Code Postal":"95380","Code INSEE":"95509","Code R�gion":"11","Latitude":"49.066667","Longitude":"2.483333","Eloignement":"1.61"}
+  ,
+  {"Nom Ville":"Puiseux-Pontoise","name":"PUISEUX PONTOISE","Code Postal":"95650","Code INSEE":"95510","Code R�gion":"11","Latitude":"49.05","Longitude":"2.016667","Eloignement":"0.92"}
+  ,
+  {"Nom Ville":"La Roche-Guyon","name":"LA ROCHE GUYON","Code Postal":"95780","Code INSEE":"95523","Code R�gion":"11","Latitude":"49.083333","Longitude":"1.633333","Eloignement":"2.45"}
+  ,
+  {"Nom Ville":"Roissy-en-France","name":"ROISSY EN FRANCE","Code Postal":"95700","Code INSEE":"95527","Code R�gion":"11","Latitude":"49","Longitude":"2.516667","Eloignement":"1.76"}
+  ,
+  {"Nom Ville":"Ronquerolles","name":"RONQUEROLLES","Code Postal":"95340","Code INSEE":"95529","Code R�gion":"11","Latitude":"49.166667","Longitude":"2.216667","Eloignement":"1.82"}
+  ,
+  {"Nom Ville":"Sagy","name":"SAGY","Code Postal":"95450","Code INSEE":"95535","Code R�gion":"11","Latitude":"49.05","Longitude":"1.95","Eloignement":"1.1"}
+  ,
+  {"Nom Ville":"Saint-Brice-sous-For�t","name":"SAINT BRICE SOUS FORET","Code Postal":"95350","Code INSEE":"95539","Code R�gion":"11","Latitude":"49","Longitude":"2.366667","Eloignement":"1.51"}
+  ,
+  {"Nom Ville":"Saint-Clair-sur-Epte","name":"SAINT CLAIR SUR EPTE","Code Postal":"95770","Code INSEE":"95541","Code R�gion":"11","Latitude":"49.2","Longitude":"1.683333","Eloignement":"2.49"}
+  ,
+  {"Nom Ville":"Saint-Cyr-en-Arthies","name":"SAINT CYR EN ARTHIES","Code Postal":"95510","Code INSEE":"95543","Code R�gion":"11","Latitude":"49.066667","Longitude":"1.75","Eloignement":"1.9"}
+  ,
+  {"Nom Ville":"Saint-Gervais","name":"SAINT GERVAIS","Code Postal":"95420","Code INSEE":"95554","Code R�gion":"11","Latitude":"49.166667","Longitude":"1.766667","Eloignement":"1.82"}
+  ,
+  {"Nom Ville":"Saint-Gratien","name":"SAINT GRATIEN","Code Postal":"95210","Code INSEE":"95555","Code R�gion":"11","Latitude":"48.966667","Longitude":"2.283333","Eloignement":"2.18"}
+  ,
+  {"Nom Ville":"Saint-Leu-la-For�t","name":"SAINT LEU LA FORET","Code Postal":"95320","Code INSEE":"95563","Code R�gion":"11","Latitude":"49.016667","Longitude":"2.25","Eloignement":"1.18"}
+  ,
+  {"Nom Ville":"Saint-Martin-du-Tertre","name":"SAINT MARTIN DU TERTRE","Code Postal":"95270","Code INSEE":"95566","Code R�gion":"11","Latitude":"49.1","Longitude":"2.35","Eloignement":"1.24"}
+  ,
+  {"Nom Ville":"Saint-Ouen-l'Aum�ne","name":"SAINT OUEN L AUMONE","Code Postal":"95310","Code INSEE":"95572","Code R�gion":"11","Latitude":"49.05","Longitude":"2.116667","Eloignement":"0.51"}
+  ,
+  {"Nom Ville":"Saint-Prix","name":"SAINT PRIX","Code Postal":"95390","Code INSEE":"95574","Code R�gion":"11","Latitude":"49.016667","Longitude":"2.266667","Eloignement":"1.18"}
+  ,
+  {"Nom Ville":"Saint-Witz","name":"SAINT WITZ","Code Postal":"95470","Code INSEE":"95580","Code R�gion":"11","Latitude":"49.083333","Longitude":"2.566667","Eloignement":"2"}
+  ,
+  {"Nom Ville":"Sannois","name":"SANNOIS","Code Postal":"95110","Code INSEE":"95582","Code R�gion":"11","Latitude":"48.966667","Longitude":"2.25","Eloignement":"2.18"}
+  ,
+  {"Nom Ville":"Santeuil","name":"SANTEUIL","Code Postal":"95640","Code INSEE":"95584","Code R�gion":"11","Latitude":"49.133333","Longitude":"1.95","Eloignement":"1.15"}
+  ,
+  {"Nom Ville":"Sarcelles","name":"SARCELLES","Code Postal":"95200","Code INSEE":"95585","Code R�gion":"11","Latitude":"49","Longitude":"2.383333","Eloignement":"1.51"}
+  ,
+  {"Nom Ville":"Seraincourt","name":"SERAINCOURT","Code Postal":"95450","Code INSEE":"95592","Code R�gion":"11","Latitude":"49.033333","Longitude":"1.866667","Eloignement":"1.47"}
+  ,
+  {"Nom Ville":"Seugy","name":"SEUGY","Code Postal":"95270","Code INSEE":"95594","Code R�gion":"11","Latitude":"49.116667","Longitude":"2.4","Eloignement":"1.2"}
+  ,
+  {"Nom Ville":"Soisy-sous-Montmorency","name":"SOISY SOUS MONTMORENCY","Code Postal":"95230","Code INSEE":"95598","Code R�gion":"11","Latitude":"48.983333","Longitude":"2.3","Eloignement":"1.84"}
+  ,
+  {"Nom Ville":"Survilliers","name":"SURVILLIERS","Code Postal":"95470","Code INSEE":"95604","Code R�gion":"11","Latitude":"49.1","Longitude":"2.55","Eloignement":"1.92"}
+  ,
+  {"Nom Ville":"Taverny","name":"TAVERNY","Code Postal":"95150","Code INSEE":"95607","Code R�gion":"11","Latitude":"49.033333","Longitude":"2.216667","Eloignement":"0.84"}
+  ,
+  {"Nom Ville":"Th�m�ricourt","name":"THEMERICOURT","Code Postal":"95450","Code INSEE":"95610","Code R�gion":"11","Latitude":"49.083333","Longitude":"1.9","Eloignement":"1.18"}
+  ,
+  {"Nom Ville":"Theuville","name":"THEUVILLE","Code Postal":"95810","Code INSEE":"95611","Code R�gion":"11","Latitude":"49.15","Longitude":"2.066667","Eloignement":"1.49"}
+  ,
+  {"Nom Ville":"Le Thillay","name":"LE THILLAY","Code Postal":"95500","Code INSEE":"95612","Code R�gion":"11","Latitude":"49","Longitude":"2.466667","Eloignement":"1.52"}
+  ,
+  {"Nom Ville":"Us","name":"US","Code Postal":"95450","Code INSEE":"95625","Code R�gion":"11","Latitude":"49.1","Longitude":"1.966667","Eloignement":"1.21"}
+  ,
+  {"Nom Ville":"Vallangoujard","name":"VALLANGOUJARD","Code Postal":"95810","Code INSEE":"95627","Code R�gion":"11","Latitude":"49.133333","Longitude":"2.116667","Eloignement":"1.26"}
+  ,
+  {"Nom Ville":"Valmondois","name":"VALMONDOIS","Code Postal":"95760","Code INSEE":"95628","Code R�gion":"11","Latitude":"49.1","Longitude":"2.2","Eloignement":"1"}
+  ,
+  {"Nom Ville":"Vaudherland","name":"VAUDHERLAND","Code Postal":"95500","Code INSEE":"95633","Code R�gion":"11","Latitude":"49","Longitude":"2.483333","Eloignement":"1.6"}
+  ,
+  {"Nom Ville":"Vaur�al","name":"VAUREAL","Code Postal":"95490","Code INSEE":"95637","Code R�gion":"11","Latitude":"49.033333","Longitude":"2.033333","Eloignement":"0.84"}
+  ,
+  {"Nom Ville":"V�mars","name":"VEMARS","Code Postal":"95470","Code INSEE":"95641","Code R�gion":"11","Latitude":"49.066667","Longitude":"2.566667","Eloignement":"2"}
+  ,
+  {"Nom Ville":"V�theuil","name":"VETHEUIL","Code Postal":"95780","Code INSEE":"95651","Code R�gion":"11","Latitude":"49.066667","Longitude":"1.7","Eloignement":"2.14"}
+  ,
+  {"Nom Ville":"Viarmes","name":"VIARMES","Code Postal":"95270","Code INSEE":"95652","Code R�gion":"11","Latitude":"49.133333","Longitude":"2.366667","Eloignement":"1.15"}
+  ,
+  {"Nom Ville":"Vienne-en-Arthies","name":"VIENNE EN ARTHIES","Code Postal":"95510","Code INSEE":"95656","Code R�gion":"11","Latitude":"49.066667","Longitude":"1.733333","Eloignement":"1.98"}
+  ,
+  {"Nom Ville":"Vigny","name":"VIGNY","Code Postal":"95450","Code INSEE":"95658","Code R�gion":"11","Latitude":"49.083333","Longitude":"1.933333","Eloignement":"1.02"}
+  ,
+  {"Nom Ville":"Villaines-sous-Bois","name":"VILLAINES SOUS BOIS","Code Postal":"95570","Code INSEE":"95660","Code R�gion":"11","Latitude":"49.083333","Longitude":"2.366667","Eloignement":"1.52"}
+  ,
+  {"Nom Ville":"Villeron","name":"VILLERON","Code Postal":"95380","Code INSEE":"95675","Code R�gion":"11","Latitude":"49.05","Longitude":"2.533333","Eloignement":"1.84"}
+  ,
+  {"Nom Ville":"Villers-en-Arthies","name":"VILLERS EN ARTHIES","Code Postal":"95510","Code INSEE":"95676","Code R�gion":"11","Latitude":"49.1","Longitude":"1.733333","Eloignement":"1.98"}
+  ,
+  {"Nom Ville":"Villiers-Adam","name":"VILLIERS ADAM","Code Postal":"95840","Code INSEE":"95678","Code R�gion":"11","Latitude":"49.066667","Longitude":"2.233333","Eloignement":"1"}
+  ,
+  {"Nom Ville":"Villiers-le-Bel","name":"VILLIERS LE BEL","Code Postal":"95400","Code INSEE":"95680","Code R�gion":"11","Latitude":"49","Longitude":"2.383333","Eloignement":"1.51"}
+  ,
+  {"Nom Ville":"Villiers-le-Sec","name":"VILLIERS LE SEC","Code Postal":"95720","Code INSEE":"95682","Code R�gion":"11","Latitude":"49.066667","Longitude":"2.4","Eloignement":"1.32"}
+  ,
+  {"Nom Ville":"Wy-dit-Joly-Village","name":"WY DIT JOLY VILAGE","Code Postal":"95420","Code INSEE":"95690","Code R�gion":"11","Latitude":"49.1","Longitude":"1.833333","Eloignement":"1.5"}
+  ,
+  {"Nom Ville":"Aspri�res","name":"ASPRIERES","Code Postal":"12700","Code INSEE":"12012","Code R�gion":"0","Latitude":"44.546666","Longitude":"2.145555","Eloignement":""}
+  ,
+  {"Nom Ville":"Baraqueville","name":"BARAQUEVILLE","Code Postal":"12160","Code INSEE":"12056","Code R�gion":"0","Latitude":"44.277777","Longitude":"2.433611","Eloignement":""}
+  ,
+  {"Nom Ville":"Bogny-Sur-Meuse","name":"BOGNY SUR MEUSE","Code Postal":"8120","Code INSEE":"8081","Code R�gion":"0","Latitude":"49.850833","Longitude":"4.767777","Eloignement":""}
+  ,
+  {"Nom Ville":"Bourgoin-Jallieu","name":"BOURGOIN JALLIEU","Code Postal":"38300","Code INSEE":"38053","Code R�gion":"0","Latitude":"45.591666","Longitude":"5.279722","Eloignement":""}
+  ,
+  {"Nom Ville":"Callac","name":"CALLAC","Code Postal":"22160","Code INSEE":"22025","Code R�gion":"0","Latitude":"48.405","Longitude":"-3.426666","Eloignement":""}
+  ,
+  {"Nom Ville":"Campagnac","name":"CAMPAGNAC","Code Postal":"12560","Code INSEE":"12047","Code R�gion":"0","Latitude":"44.418333","Longitude":"3.087777","Eloignement":""}
+  ,
+  {"Nom Ville":"Canet-En-Roussillon","name":"CANET EN ROUSSILLON","Code Postal":"66140","Code INSEE":"66037","Code R�gion":"0","Latitude":"42.706666","Longitude":"3.007777","Eloignement":""}
+  ,
+  {"Nom Ville":"Cavaillon","name":"CAVAILLON","Code Postal":"84300","Code INSEE":"84035","Code R�gion":"0","Latitude":"43.8375","Longitude":"5.038055","Eloignement":""}
+  ,
+  {"Nom Ville":"Ch�teau-Chinon","name":"CHATEAU CHINON","Code Postal":"58120","Code INSEE":"58062","Code R�gion":"0","Latitude":"47.065277","Longitude":"3.933055","Eloignement":""}
+  ,
+  {"Nom Ville":"Ch�teau-Arnoux Saint-Auban","name":"CHATEAU ARNOUX SAINT AUBAN","Code Postal":"4160","Code INSEE":"4049","Code R�gion":"0","Latitude":"44.094166","Longitude":"6.009166","Eloignement":""}
+  ,
+  {"Nom Ville":"Cordes-Sur-Ciel","name":"CORDES SUR CIEL","Code Postal":"81170","Code INSEE":"81069","Code R�gion":"0","Latitude":"44.064444","Longitude":"1.953611","Eloignement":""}
+  ,
+  {"Nom Ville":"Cosne-Cours-sur-Loire","name":"COSNE COURS SUR LOIRE","Code Postal":"58200","Code INSEE":"58086","Code R�gion":"0","Latitude":"47.412222","Longitude":"2.9275","Eloignement":""}
+  ,
+  {"Nom Ville":"Cours-La-Ville","name":"COURS LA VILLE","Code Postal":"69470","Code INSEE":"69066","Code R�gion":"0","Latitude":"46.100277","Longitude":"4.321388","Eloignement":""}
+  ,
+  {"Nom Ville":"Deauville","name":"DEAUVILLE","Code Postal":"14800","Code INSEE":"14220","Code R�gion":"0","Latitude":"49.36","Longitude":"0.075277","Eloignement":""}
+  ,
+  {"Nom Ville":"Digne-Les-Bains","name":"DIGNE LES BAINS","Code Postal":"4000","Code INSEE":"4070","Code R�gion":"0","Latitude":"44.093333","Longitude":"6.236388","Eloignement":""}
+  ,
+  {"Nom Ville":"Dinan","name":"DINAN","Code Postal":"22100","Code INSEE":"22050","Code R�gion":"0","Latitude":"48.456388","Longitude":"-2.236388","Eloignement":""}
+  ,
+  {"Nom Ville":"Font-Romeu-Odeillo-Via","name":"FONT ROMEU ODEILLO VIA","Code Postal":"66120","Code INSEE":"66124","Code R�gion":"0","Latitude":"42.498333","Longitude":"2.034722","Eloignement":""}
+  ,
+  {"Nom Ville":"Fontiers-Cabardes","name":"FONTIERS CABARDES","Code Postal":"11310","Code INSEE":"11150","Code R�gion":"0","Latitude":"43.370555","Longitude":"2.248611","Eloignement":""}
+  ,
+  {"Nom Ville":"Fr�jus","name":"FREJUS","Code Postal":"83600","Code INSEE":"83061","Code R�gion":"0","Latitude":"43.433888","Longitude":"6.736111","Eloignement":""}
+  ,
+  {"Nom Ville":"Gen�ay","name":"GENCAY","Code Postal":"86160","Code INSEE":"86103","Code R�gion":"0","Latitude":"46.373333","Longitude":"0.405833","Eloignement":""}
+  ,
+  {"Nom Ville":"Grenade","name":"GRENADE","Code Postal":"31330","Code INSEE":"31232","Code R�gion":"0","Latitude":"43.772222","Longitude":"1.293611","Eloignement":""}
+  ,
+  {"Nom Ville":"La Grave","name":"LA GRAVE","Code Postal":"5320","Code INSEE":"5063","Code R�gion":"0","Latitude":"45.046944","Longitude":"6.306666","Eloignement":""}
+  ,
+  {"Nom Ville":"Laguepie","name":"LAGUEPIE","Code Postal":"82250","Code INSEE":"82088","Code R�gion":"0","Latitude":"44.145277","Longitude":"1.970555","Eloignement":""}
+  ,
+  {"Nom Ville":"Laragne-Monteglin","name":"LARAGNE MONTEGLIN","Code Postal":"5300","Code INSEE":"5070","Code R�gion":"0","Latitude":"44.315833","Longitude":"5.822222","Eloignement":""}
+  ,
+  {"Nom Ville":"L�vignac","name":"LEVIGNAC","Code Postal":"31530","Code INSEE":"31297","Code R�gion":"0","Latitude":"43.666944","Longitude":"1.195277","Eloignement":""}
+  ,
+  {"Nom Ville":"Mauleon","name":"MAULEON","Code Postal":"79700","Code INSEE":"79079","Code R�gion":"0","Latitude":"46.923611","Longitude":"-0.748333","Eloignement":""}
+  ,
+  {"Nom Ville":"Neuville-De-Poitou","name":"NEUVILLE DE POITOU","Code Postal":"86170","Code INSEE":"86177","Code R�gion":"0","Latitude":"46.686111","Longitude":"0.245833","Eloignement":""}
+  ,
+  {"Nom Ville":"Ouessant","name":"OUESSANT","Code Postal":"29242","Code INSEE":"29155","Code R�gion":"0","Latitude":"48.458055","Longitude":"-5.095555","Eloignement":""}
+  ,
+  {"Nom Ville":"Roanne","name":"ROANNE","Code Postal":"42300","Code INSEE":"42187","Code R�gion":"0","Latitude":"46.036666","Longitude":"4.068888","Eloignement":""}
+  ,
+  {"Nom Ville":"Romorantin-Lanthenay","name":"ROMORANTIN LANTHENAY","Code Postal":"41200","Code INSEE":"41194","Code R�gion":"0","Latitude":"47.358888","Longitude":"1.743611","Eloignement":""}
+  ,
+  {"Nom Ville":"Roy�re-De-Vassivi�re","name":"ROYERE DE VASSIVIERE","Code Postal":"23460","Code INSEE":"23165","Code R�gion":"0","Latitude":"45.841944","Longitude":"1.911944","Eloignement":""}
+  ,
+  {"Nom Ville":"Saint-Affrique","name":"SAINT AFFRIQUE","Code Postal":"12400","Code INSEE":"12208","Code R�gion":"0","Latitude":"43.959166","Longitude":"2.887222","Eloignement":""}
+  ,
+  {"Nom Ville":"Saint-Amand-Montrond","name":"SAINT AMAND MONTROND","Code Postal":"18200","Code INSEE":"18197","Code R�gion":"0","Latitude":"46.723611","Longitude":"2.505555","Eloignement":""}
+  ,
+  {"Nom Ville":"Saint-Fargeau-Ponthierry","name":"SAINT FARGEAU PONTHIERRY","Code Postal":"77310","Code INSEE":"77407","Code R�gion":"0","Latitude":"48.533333","Longitude":"2.545277","Eloignement":""}
+  ,
+  {"Nom Ville":"Saint-Honor�-Les-Bains","name":"SAINT HONORE LES BAINS","Code Postal":"58360","Code INSEE":"58246","Code R�gion":"0","Latitude":"46.906666","Longitude":"3.841111","Eloignement":""}
+  ,
+  {"Nom Ville":"Saint-Laurent-En-Grandvaux","name":"SAINT LAURENT EN GRANDVAUX","Code Postal":"39150","Code INSEE":"39487","Code R�gion":"0","Latitude":"46.576388","Longitude":"5.956666","Eloignement":""}
+  ,
+  {"Nom Ville":"Saint-Denis-En-Margeride","name":"SAINT DENIS EN MARGERIDE","Code Postal":"48700","Code INSEE":"48145","Code R�gion":"0","Latitude":"44.736388","Longitude":"3.4725","Eloignement":""}
+  ,
+  {"Nom Ville":"Semur-en-Auxois","name":"SEMUR EN AUXOIS","Code Postal":"21140","Code INSEE":"21603","Code R�gion":"0","Latitude":"47.491388","Longitude":"4.333611","Eloignement":""}
+  ,
+  {"Nom Ville":"Sens","name":"SENS","Code Postal":"89100","Code INSEE":"89387","Code R�gion":"0","Latitude":"48.198055","Longitude":"3.283888","Eloignement":""}
+  ,
+  {"Nom Ville":"Seyssel","name":"SEYSSEL","Code Postal":"1420","Code INSEE":"1407","Code R�gion":"0","Latitude":"45.959722","Longitude":"5.831944","Eloignement":""}
+  ,
+  {"Nom Ville":"Seyssel","name":"SEYSSEL","Code Postal":"74910","Code INSEE":"74269","Code R�gion":"0","Latitude":"45.959722","Longitude":"5.837222","Eloignement":""}
+  ,
+  {"Nom Ville":"Saint-Gilles-Croix-de-Vie","name":"SAINT GILLES CROIX DE VIE","Code Postal":"85800","Code INSEE":"85222","Code R�gion":"0","Latitude":"46.698333","Longitude":"-1.939444","Eloignement":""}
+  ,
+  {"Nom Ville":"Terrasson-Lavilledieu","name":"TERRASSON LAVILLEDIEU","Code Postal":"24120","Code INSEE":"24547","Code R�gion":"0","Latitude":"45.130833","Longitude":"1.301944","Eloignement":""}
+  ,
+  {"Nom Ville":"Villefort","name":"VILLEFORT","Code Postal":"48800","Code INSEE":"48198","Code R�gion":"0","Latitude":"44.440277","Longitude":"3.932777","Eloignement":""}
+  ,
+  {"Nom Ville":"Villefort","name":"VILLEFORT","Code Postal":"11230","Code INSEE":"11424","Code R�gion":"0","Latitude":"42.954722","Longitude":"2.033056","Eloignement":""}
+  ,
+  {"Nom Ville":"Montreuil","name":"MONTREUIL","Code Postal":"62170","Code INSEE":"62588","Code R�gion":"0","Latitude":"50.464444","Longitude":"1.764166","Eloignement":""}
+  ,
+  {"Nom Ville":"Mas-Blanc-des-Alpilles","name":"MAS BLANC DES ALPILLES","Code Postal":"13103","Code INSEE":"13057","Code R�gion":"0","Latitude":"43.79","Longitude":"4.757777","Eloignement":""}
+  ,
+  {"Nom Ville":"Meyzieu","name":"MEYZIEU","Code Postal":"69330","Code INSEE":"69282","Code R�gion":"0","Latitude":"45.767222","Longitude":"5.003333","Eloignement":""}
+  ,
+  {"Nom Ville":"Rillieux-La-Pape","name":"RILLIEUX LA PAPE","Code Postal":"69140","Code INSEE":"69286","Code R�gion":"0","Latitude":"45.821388","Longitude":"4.898333","Eloignement":""}
+  ,
+  {"Nom Ville":"Le Puy-en-Velay","name":"LE PUY EN VELAY","Code Postal":"43000","Code INSEE":"43157","Code R�gion":"0","Latitude":"45.044166","Longitude":"3.885833","Eloignement":""}
+  ,
+  {"Nom Ville":"Rieutort-de-Randon","name":"RIEUTORT DE RANDON","Code Postal":"48700","Code INSEE":"48127","Code R�gion":"0","Latitude":"44.635277","Longitude":"3.479166","Eloignement":""}
+  ,
+  {"Nom Ville":"Alos","name":"ALOS","Code Postal":"9200","Code INSEE":"9008","Code R�gion":"0","Latitude":"42.908055","Longitude":"1.145","Eloignement":""}
+  ,
+  {"Nom Ville":"Antras","name":"ANTRAS","Code Postal":"9800","Code INSEE":"9011","Code R�gion":"0","Latitude":"42.881666","Longitude":"0.943055","Eloignement":""}
+  ,
+  {"Nom Ville":"Artigues","name":"ARTIGUES","Code Postal":"9460","Code INSEE":"9020","Code R�gion":"0","Latitude":"42.717777","Longitude":"2.069166","Eloignement":""}
+  ,
+  {"Nom Ville":"La Bastide-de-Lordat","name":"LA BASTIDE DE LORDAT","Code Postal":"9700","Code INSEE":"9040","Code R�gion":"0","Latitude":"43.143888","Longitude":"1.7125","Eloignement":""}
+  ,
+  {"Nom Ville":"Bonac-Irazein","name":"BONAC IRAZEIN","Code Postal":"9800","Code INSEE":"9059","Code R�gion":"0","Latitude":"42.876944","Longitude":"0.973888","Eloignement":""}
+  ,
+  {"Nom Ville":"Brassac","name":"BRASSAC","Code Postal":"9000","Code INSEE":"9066","Code R�gion":"0","Latitude":"42.945833","Longitude":"1.537222","Eloignement":""}
+  ,
+  {"Nom Ville":"Les Cabannes","name":"LES CABANNES","Code Postal":"9310","Code INSEE":"9070","Code R�gion":"0","Latitude":"42.785555","Longitude":"1.687222","Eloignement":""}
+  ,
+  {"Nom Ville":"Castex","name":"CASTEX","Code Postal":"9350","Code INSEE":"9084","Code R�gion":"0","Latitude":"43.166111","Longitude":"1.312777","Eloignement":""}
+  ,
+  {"Nom Ville":"Caumont","name":"CAUMONT","Code Postal":"9160","Code INSEE":"9086","Code R�gion":"0","Latitude":"43.030555","Longitude":"1.085555","Eloignement":""}
+  ,
+  {"Nom Ville":"Cazenave-Serres-et-Allens","name":"CAZENAVE SERRES ET ALLENS","Code Postal":"9400","Code INSEE":"9092","Code R�gion":"0","Latitude":"42.840277","Longitude":"1.6725","Eloignement":""}
+  ,
+  {"Nom Ville":"Encourtiech","name":"ENCOURTIECH","Code Postal":"9200","Code INSEE":"9110","Code R�gion":"0","Latitude":"42.959444","Longitude":"1.182222","Eloignement":""}
+  ,
+  {"Nom Ville":"Esplas","name":"ESPLAS","Code Postal":"9700","Code INSEE":"9117","Code R�gion":"0","Latitude":"43.1875","Longitude":"1.498888","Eloignement":""}
+  ,
+  {"Nom Ville":"Esplas-de-Serou","name":"ESPLAS DE SEROU","Code Postal":"9420","Code INSEE":"9118","Code R�gion":"0","Latitude":"42.975","Longitude":"1.376111","Eloignement":""}
+  ,
+  {"Nom Ville":"Fabas","name":"FABAS","Code Postal":"9230","Code INSEE":"9120","Code R�gion":"0","Latitude":"43.108055","Longitude":"1.105833","Eloignement":""}
+  ,
+  {"Nom Ville":"Goulier","name":"GOULIER","Code Postal":"9220","Code INSEE":"9135","Code R�gion":"0","Latitude":"42.755277","Longitude":"1.503611","Eloignement":""}
+  ,
+  {"Nom Ville":"L'Hospitalet-Pr�s-l'Andorre","name":"L HOSPITALET PRES L ANDORRE","Code Postal":"9390","Code INSEE":"9139","Code R�gion":"0","Latitude":"42.590833","Longitude":"1.803055","Eloignement":""}
+  ,
+  {"Nom Ville":"Ilhat","name":"ILHAT","Code Postal":"9300","Code INSEE":"9142","Code R�gion":"0","Latitude":"42.956944","Longitude":"1.784444","Eloignement":""}
+  ,
+  {"Nom Ville":"Lacave","name":"LACAVE","Code Postal":"9160","Code INSEE":"9148","Code R�gion":"0","Latitude":"43.040277","Longitude":"0.997222","Eloignement":""}
+  ,
+  {"Nom Ville":"Lagarde","name":"LAGARDE","Code Postal":"9500","Code INSEE":"9150","Code R�gion":"0","Latitude":"43.049444","Longitude":"1.933888","Eloignement":""}
+  ,
+  {"Nom Ville":"Lasserre","name":"LASSERRE","Code Postal":"9230","Code INSEE":"9158","Code R�gion":"0","Latitude":"43.069166","Longitude":"1.170555","Eloignement":""}
+  ,
+  {"Nom Ville":"Maz�res","name":"MAZERES","Code Postal":"9270","Code INSEE":"9185","Code R�gion":"0","Latitude":"43.251666","Longitude":"1.678055","Eloignement":""}
+  ,
+  {"Nom Ville":"Montaut","name":"MONTAUT","Code Postal":"9700","Code INSEE":"9199","Code R�gion":"0","Latitude":"43.187222","Longitude":"1.643888","Eloignement":""}
+  ,
+  {"Nom Ville":"Montfa","name":"MONTFA","Code Postal":"9350","Code INSEE":"9205","Code R�gion":"0","Latitude":"43.099444","Longitude":"1.283611","Eloignement":""}
+  ,
+  {"Nom Ville":"Montgaillard","name":"MONTGAILLARD","Code Postal":"9330","Code INSEE":"9207","Code R�gion":"0","Latitude":"42.934444","Longitude":"1.634722","Eloignement":""}
+  ,
+  {"Nom Ville":"Pereille","name":"PEREILLE","Code Postal":"9300","Code INSEE":"9227","Code R�gion":"0","Latitude":"42.938611","Longitude":"1.801666","Eloignement":""}
+  ,
+  {"Nom Ville":"Prades","name":"PRADES","Code Postal":"9110","Code INSEE":"9232","Code R�gion":"0","Latitude":"42.786944","Longitude":"1.878333","Eloignement":""}
+  ,
+  {"Nom Ville":"Prat-Bonrepaux","name":"PRAT BONREPAUX","Code Postal":"9160","Code INSEE":"9235","Code R�gion":"0","Latitude":"43.028888","Longitude":"1.018888","Eloignement":""}
+  ,
+  {"Nom Ville":"Sainte-Croix-Volvestre","name":"SAINTE CROIX VOLVESTRE","Code Postal":"9230","Code INSEE":"9257","Code R�gion":"0","Latitude":"43.125833","Longitude":"1.174166","Eloignement":""}
+  ,
+  {"Nom Ville":"Saint-F�lix-de-Rieutord","name":"SAINT FELIX DE RIEUTORD","Code Postal":"9120","Code INSEE":"9258","Code R�gion":"0","Latitude":"43.046388","Longitude":"1.673055","Eloignement":""}
+  ,
+  {"Nom Ville":"Saint-Lary","name":"SAINT LARY","Code Postal":"9800","Code INSEE":"9267","Code R�gion":"0","Latitude":"42.929166","Longitude":"0.894444","Eloignement":""}
+  ,
+  {"Nom Ville":"Saint-Michel","name":"SAINT MICHEL","Code Postal":"9100","Code INSEE":"9271","Code R�gion":"0","Latitude":"43.135","Longitude":"1.5025","Eloignement":""}
+  ,
+  {"Nom Ville":"Lorp-Sentaraille","name":"LORP SENTARAILLE","Code Postal":"9190","Code INSEE":"9289","Code R�gion":"0","Latitude":"43.008888","Longitude":"1.119444","Eloignement":""}
+  ,
+  {"Nom Ville":"Soueix-Rogalle","name":"SOUEIX ROGALLE","Code Postal":"9140","Code INSEE":"9299","Code R�gion":"0","Latitude":"42.893333","Longitude":"1.211388","Eloignement":""}
+  ,
+  {"Nom Ville":"Soulan","name":"SOULAN","Code Postal":"9320","Code INSEE":"9301","Code R�gion":"0","Latitude":"42.913333","Longitude":"1.233055","Eloignement":""}
+  ,
+  {"Nom Ville":"Villeneuve","name":"VILLENEUVE","Code Postal":"9800","Code INSEE":"9335","Code R�gion":"0","Latitude":"42.938333","Longitude":"0.981666","Eloignement":""}
+]
