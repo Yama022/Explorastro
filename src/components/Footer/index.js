@@ -13,8 +13,9 @@ export default function Footer() {
           <a href="#">CONDITIONS D'UTILISATION</a>
           <a href="#">A PROPOS</a>
           <a href="#">AIDE</a>
+          <p className="footer__container__copyright">Copyright 2021 ExplorAstro</p>
         </div>
-        <p className="footer__container__copyright">Copyright 2021 ExplorAstro</p>
+
       </div>
     </footer>
   );
