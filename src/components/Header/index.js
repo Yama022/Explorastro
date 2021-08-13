@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink, Link } from 'react-router-dom';
 
 import logo from 'src/assets/images/logo-explorastro.png';
 
@@ -7,14 +8,42 @@ import { BiCog, BiUserCircle, BiPowerOff } from 'react-icons/bi';
 export default function Header() {
   return (
     <header className="header">
-      <a href="#" className="header__logo">
+      <Link to="/timeline" className="header__logo">
         <img src={logo} alt="logo ExplorAstro" />
-      </a>
+      </Link>
       <nav className="header__nav">
-        <a href="#">Fil d'actualités</a>
-        <a href="#">Organiser</a>
-        <a href="#">Carte</a>
-        <a href="#">Le guide de l'explorateur</a>
+        <NavLink
+          className="header__nav__link"
+          activeClassName="header__nav__link--active"
+          to="/timeline"
+          exact
+        >
+          Fil d'actualités
+        </NavLink>
+        <NavLink
+          className="header__nav__link"
+          activeClassName="header__nav__link--active"
+          to="/exploration/create"
+          exact
+        >
+          Organiser
+        </NavLink>
+        <NavLink
+          className="header__nav__link"
+          activeClassName="header__nav__link--active"
+          to="/discover"
+          exact
+        >
+          Carte
+        </NavLink>
+        <NavLink
+          className="header__nav__link"
+          activeClassName="header__nav__link--active"
+          to="/guide"
+          exact
+        >
+          Le guide de l'explorateur
+        </NavLink>
       </nav>
       <div className="header__user">
         <div className="header__user__container">
