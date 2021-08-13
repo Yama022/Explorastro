@@ -4,4 +4,29 @@ html {
 
 body {
   background-color: $primary-color;
+  
+}
+
+*::selection {
+  background-color: $secondary-color;
+  color: $light-color;
+}
+
+/* width scrollbar*/
+::-webkit-scrollbar {
+  width: 18px;
+}
+
+/* Track scrollbar */
+::-webkit-scrollbar-track {
+  // box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+  border: 4px solid $primary-color;
+}
+
+/* Handle scrollbar */
+::-webkit-scrollbar-thumb {
+  background: $secondary-color;
+  border-radius: 10px;
+  border: 4px solid $primary-color;
 }
