@@ -2,6 +2,7 @@
 
 BEGIN;
 
-DROP TABLE "role", "user", "exploration", "exploration_comment", "exploration_has_users", "user_has_followers";
+DROP TABLE "role", "user", "exploration", "comment", "exploration_has_comments", "exploration_has_users", "user_has_followers";
+DROP EXTENSION postgis;
 
 COMMIT;
