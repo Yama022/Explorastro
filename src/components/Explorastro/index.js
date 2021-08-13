@@ -16,6 +16,10 @@ export default function Explorastro() {
         <Route exact path="/timeline">
           <Timeline />
         </Route>
+        <Route>
+          {/* Ajouter la 404 ici (redirige temporairement vers la timeline) */}
+          <Redirect to="/timeline" />
+        </Route>
       </Switch>
       <Footer />
     </div>
