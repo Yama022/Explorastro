@@ -14,6 +14,7 @@ export default function Header() {
         <a href="#">Fil d'actualités</a>
         <a href="#">Organiser</a>
         <a href="#">Carte</a>
+        <a href="#">Le guide de l'explorateur</a>
       </nav>
       <div className="header__user">
         <div className="header__user__container">
