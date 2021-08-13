@@ -1,83 +1,62 @@
 .login {
   display: flex;
-  &__images {
-    width: 40%;
-    position: relative;
-    &__mascot {
-      position: absolute;
+  align-items: center;
+  height: 100vh;
+
+  &__illustration {
+    width: 50%;
+
+    #parallax {
+      position: relative;
       width: 100%;
-      top: 12%;
-      left: 38%;
-    }
-    &__mascotbg {
-      position: absolute;
-      width: 170%;
-      top: 20%;
+      height: 100vh;
+      background-image: url("src/assets/images/mascot-rocket.svg"),
+        url("src/assets/images/mascot-background.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-position: 50% 50%;
+      background-size: 75%;
     }
   }
-  &__main-content {
-    margin: 2em;
-    width: 100%;
-    &__header {
-      display: flex;
-      align-content: center;
-      justify-content: space-between;
-      width: 60%;
-      margin: auto;
-      &__logo {
-        width: 16em;
-      }
-      &__accueil {
-        align-self: center;
-        display: inline;
-        color: $light-color;
-      }
-    }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+
     &__form {
-      width: 35%;
-      margin: 5em auto 5em auto;
-      &__elem {
-        display: flex;
-        flex-direction: column;
-        & label {
-          font-size: 1.2em;
-          color: $light-color;
-          margin-bottom: 0.8em;
-        }
-        &__input {
-          font-family: inherit;
-          border: none;
-          outline: none;
-          height: 2.5em;
-          width: 100%;
-          padding-left: 1em;
-          margin-bottom: 3em;
-          border-radius: 5px;
+      background-color: $secondary-color;
+      padding: $gutter 2 * $gutter;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-radius: 10px;
+
+      h2 {
+        font-weight: bold;
+        font-size: 2em;
+      }
+
+      form {
+        width: 100%;
+        margin: 3em 0;
+
+        label {
+          color: white;
         }
       }
-      &__remember {
-        color: $light-color;
+
+      .field {
+        margin: 2em 0
       }
-      &__submit {
+
+      &__buttons-container {
         display: flex;
+        flex-direction: row;
         justify-content: space-between;
-        margin-top: 2em;
-        &__button {
-          border: none;
-          border-radius: 5px;
-          outline: none;
-          width: 48%;
-          height: 2.5em;
-          &--signin {
-            background-color: $light-color;
-            color: $secondary-color;
-            border: 2px solid $secondary-color;
-          }
-          &--signup {
-            background-color: $secondary-color;
-            color: $light-color;
-          }
-        }
+        width: 100%;
       }
     }
   }
