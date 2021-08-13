@@ -4,7 +4,10 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon --exec babel-node index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "db:install": "sqitch deploy",
+    "db:reset": "sqitch revert -y"
   },
   "dependencies": {
     "dotenv": "^10.0.0",

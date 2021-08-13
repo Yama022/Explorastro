@@ -2,17 +2,17 @@ const express = require("express");
 const router = express.Router();
 
 router
-  .get("/:id", (req, res) => {
-    res.send("exploration informations");
+  .get("/:id(\\d+)", (req, res) => {
+    res.json({ message: "exploration informations" });
   })
-  .post("/:id/create", (req, res) => {
-    res.send("create an exploration");
+  .post("/create", (req, res) => {
+    res.json({ message: "create an exploration" });
   })
-  .patch("/:id/update", (req, res) => {
-    res.send("update exploration informations");
+  .patch("/:id(\\d+)/update", (req, res) => {
+    res.json({ message: "update exploration informations" });
   })
-  .delete("/:id/delete", (req, res) => {
-    res.send("delete an exploration");
+  .delete("/:id(\\d+)/delete", (req, res) => {
+    res.json({ message: "delete an exploration" });
   });
 
 module.exports = router;
