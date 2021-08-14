@@ -1,10 +1,11 @@
 html {
   font-family: 'Exo', sans-serif;
+  background-color: $primary-color;
 }
 
 body {
-  background-color: $primary-color;
-  
+  min-height: 100vh;
+  position: relative;
 }
 
 *::selection {
