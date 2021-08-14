@@ -10,7 +10,7 @@ import map from 'src/assets/images/France.png';
 export default function CreateEvent() {
   return (
     <div className="container">
-      <h1 className="event-title">Créer un événement</h1>
+      <h1 className="main-title">Créer un événement</h1>
       <div className="createEvent">
 
         <div className="form__create">

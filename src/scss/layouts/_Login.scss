@@ -33,6 +33,10 @@
         align-self: center;
         display: inline;
         color: $light-color;
+        &:hover {
+          color: $light-color;
+          text-shadow: 1px 1px 2px $secondary-color, 0 0 0.5em $secondary-color, 0 0 0.2em rgb(187, 30, 207);
+        }
       }
     }
     &__form {
@@ -58,6 +62,7 @@
         }
       }
       &__remember {
+        margin-left: 0.4em;
         color: $light-color;
       }
       &__submit {
@@ -65,6 +70,7 @@
         justify-content: space-between;
         margin-top: 2em;
         &__button {
+          font-size: 1.1em;
           border: none;
           border-radius: 5px;
           outline: none;

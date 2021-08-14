@@ -16,9 +16,9 @@
   &__logo {
     width: 8em;
     filter:  invert(1) drop-shadow(30px 10px 4px black);
-    margin-bottom: 0.9em;
   }
   &__description {
+    margin-top: 1.5em;
     & a {
       margin-right: 2em;
     }

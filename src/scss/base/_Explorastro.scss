@@ -8,6 +8,10 @@ body {
   position: relative;
 }
 
+#root {
+  padding-bottom: 14em;
+}
+
 *::selection {
   background-color: $secondary-color;
   color: $light-color;

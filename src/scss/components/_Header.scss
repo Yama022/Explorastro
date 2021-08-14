@@ -41,6 +41,7 @@
     }
   }
   &__user {
+    display: none;
     position: relative;
     &__container {
       display: flex;
@@ -97,6 +98,12 @@
     }
     &:hover &__dropdown{
       display: block;
+    }
+  }
+  &__login{
+    & .button {
+      color: $primary-color;
+      background-color: $light-color;
     }
   }
 }

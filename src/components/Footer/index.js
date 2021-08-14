@@ -2,8 +2,6 @@ import React from 'react';
 
 import logo from 'src/assets/images/logo-explorastro.png';
 
-import moon from 'src/assets/images/cropped-moon-footer.svg';
-
 export default function Footer() {
   return (
     <footer className="footer">
