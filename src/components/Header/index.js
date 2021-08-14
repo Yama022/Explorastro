@@ -71,6 +71,11 @@ export default function Header() {
           </li>
         </ul>
       </div>
+      <div className="header__login">
+        <Link className="button" to="/login">
+          Connexion
+        </Link>
+      </div>
     </header>
   );
 }
