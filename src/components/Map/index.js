@@ -22,7 +22,7 @@ export default function Map() {
           <div className="list_events__box">
             <img src={img_event} alt="" />
             <div className="list_events__box__content">
-              <h2>{x.title}</h2>
+              <h2>{x.title} vers {x.name}</h2>
               <p>{x.desc}</p>
               <button>Participer</button>
             </div>
