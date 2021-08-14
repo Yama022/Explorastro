@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Parallax, Background } from 'react-parallax';
 
 import logo from 'src/assets/images/logo-explorastro.png';
 

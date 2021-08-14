@@ -26,7 +26,9 @@ export default function Explorastro() {
           <Login />
         </Route>
         <Route exact path="/exploration/create">
+          <Header />
           <CreateEvent />
+          <Footer />
         </Route>
         <Route>
           <Header />
