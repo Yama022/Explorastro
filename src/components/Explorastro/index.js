@@ -5,6 +5,7 @@ import Header from 'src/components/Header';
 import Footer from 'src/components/Footer';
 import Timeline from 'src/components/Timeline';
 import Error from 'src/components/Error';
+import CreateEvent from 'src/components/CreateEvent';
 import Login from 'src/components/Login';
 
 export default function Explorastro() {
@@ -23,6 +24,9 @@ export default function Explorastro() {
         </Route>
         <Route exact path="/login">
           <Login />
+        </Route>
+        <Route exact path="/exploration/create">
+          <CreateEvent />
         </Route>
         <Route>
           <Header />
