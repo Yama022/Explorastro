@@ -1,0 +1,5 @@
+%syntax-version=1.0.0
+%project=explorastro
+
+initialization 2021-08-13T11:25:35Z Théo BIET <dev.theobiet@gmail.com> # Exploration initialization
+jwt_token 2021-08-13T13:09:01Z Théo BIET <dev.theobiet@gmail.com> # Save JWT Token in Database
