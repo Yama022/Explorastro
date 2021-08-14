@@ -30,7 +30,7 @@
   text-align: left;
   color: $light-color;
   &:last-child {
-    background-color: white;
+    background-color: $light-color;
   }
     &__calendar {
     margin-top: 1em;
@@ -68,9 +68,6 @@
 }
 .is-danger {
   margin-left: 3em;
-}
-*::selection {
-  background-color: $secondary-color;
 }
 
 .form__right {
@@ -150,7 +147,7 @@
   width: 100%;
   background: $tertiary-color;
   cursor: pointer;
-  color: #fff;
+  color: $light-color;
   padding: 10px 0;
   text-transform:uppercase;
   font-size: .8em;

@@ -1,4 +1,5 @@
 .login {
+  height: 100vh;
   display: flex;
   &__images {
     width: 40%;
@@ -12,6 +13,7 @@
     &__mascotbg {
       position: absolute;
       width: 170%;
+      max-width: 170%;
       top: 20%;
     }
   }
@@ -67,11 +69,11 @@
           border-radius: 5px;
           outline: none;
           width: 48%;
-          height: 2.5em;
+          height: 2.7em;
           &--signin {
             background-color: $light-color;
             color: $secondary-color;
-            border: 2px solid $secondary-color;
+            border: 3px solid $secondary-color;
           }
           &--signup {
             background-color: $secondary-color;
