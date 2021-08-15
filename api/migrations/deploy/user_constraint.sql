@@ -16,6 +16,6 @@ ALTER TABLE "user"
 
 
 ALTER TABLE "user"
-    ADD CONSTRAINT "password_len" CHECK (length("password") >= 6);
+    ADD CONSTRAINT "password_len" CHECK (length("password") >= 6 AND  length("password") <= 50);
 
 COMMIT;
