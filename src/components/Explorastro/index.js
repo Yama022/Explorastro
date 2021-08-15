@@ -5,7 +5,7 @@ import Header from 'src/components/Header';
 import Footer from 'src/components/Footer';
 import Timeline from 'src/components/Timeline';
 import Error from 'src/components/Error';
-import Map from 'src/components/Map';
+import Discover from 'src/components/Discover';
 import CreateEvent from 'src/components/CreateEvent';
 import Login from 'src/components/Login';
 
@@ -33,7 +33,7 @@ export default function Explorastro() {
         </Route>
         <Route exact path="/discover">
           <Header />
-          <Map />
+          <Discover />
           <Footer />
         </Route>
         <Route>
