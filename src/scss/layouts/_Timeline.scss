@@ -1,1 +1,89 @@
 
+.timeline {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    
+    &-left {
+        width: 25%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding: $gutter;
+
+        &__widget {
+            width: 80%;
+            padding: .2em;
+            background-color: $light-color;
+            border-radius: 5px;
+            margin: .2em 0;
+        }
+    }
+
+    &-main {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        padding: $gutter;
+
+        &__exploration {
+            width: 80%;
+            padding: 1em;
+            background-color: $light-color;
+            border-radius: 5px;
+            margin: .5em 0;
+        }
+    }
+
+    &-right {
+        width: 25%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        padding: $gutter;
+
+        &__widget {
+            width: 80%;
+            padding: .5em;
+            background-color: $light-color;
+            border-radius: 5px;
+            margin: .2em 0;
+        }
+    }
+}
+
+.timeline-discover {
+    position: relative;
+    cursor: pointer;
+
+    img {
+        width: 100%;
+        filter: brightness(.5);
+        transition: .2s ease-in-out;
+        border-radius: 5px;
+    }
+
+    p {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: $light-color;
+        font-weight: bold;
+        font-size: 1.5em;
+        transition: .1s ease-in-out;
+    }
+
+
+    &:hover {
+        p {
+            transform: translate(-50%, -50%) scale(1.2);
+        }
+
+        img {
+            filter: brightness(1);
+        }
+    }
+
+}

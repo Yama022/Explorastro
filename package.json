@@ -1,5 +1,5 @@
 {
-  "name": "ExplorAstro",
+  "name": "explorastro",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack serve --config config/webpack.dev.js",
     "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js",
@@ -9,7 +9,7 @@
     "clean:all": "rm -rf dist node_modules yarn.lock package-lock.json"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.6",
+    "@babel/core": "^7.15.0",
     "@babel/eslint-parser": "^7.14.7",
     "@babel/plugin-proposal-class-properties": "^7.14.5",
     "@babel/plugin-proposal-object-rest-spread": "^7.14.7",
@@ -49,12 +49,16 @@
   },
   "dependencies": {
     "leaflet": "^1.7.1",
+    "bulma": "^0.9.3",
+    "@babel/node": "^7.14.9",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
+    "react-calendar": "^3.4.0",
     "react-dom": "^17.0.2",
     "react-icons": "^4.2.0",
     "react-leaflet": "^3.2.1",
     "react-leaflet-markercluster": "^3.0.0-rc1",
+    "react-parallax": "^3.3.0",
     "react-router-dom": "^5.2.0"
   }
 }

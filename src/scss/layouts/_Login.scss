@@ -1,0 +1,93 @@
+.login {
+  margin-bottom: -14em;
+  height: 100vh;
+  display: flex;
+  &__images {
+    width: 40%;
+    position: relative;
+    &__mascot {
+      position: absolute;
+      width: 100%;
+      top: 12%;
+      left: 38%;
+    }
+    &__mascotbg {
+      position: absolute;
+      width: 170%;
+      max-width: 170%;
+      top: 20%;
+    }
+  }
+  &__main-content {
+    margin: 2em;
+    width: 100%;
+    &__header {
+      display: flex;
+      align-content: center;
+      justify-content: space-between;
+      width: 60%;
+      margin: auto;
+      &__logo {
+        width: 16em;
+      }
+      &__accueil {
+        align-self: center;
+        display: inline;
+        color: $light-color;
+        &:hover {
+          color: $light-color;
+          text-shadow: 1px 1px 2px $secondary-color, 0 0 0.5em $secondary-color, 0 0 0.2em rgb(187, 30, 207);
+        }
+      }
+    }
+    &__form {
+      width: 35%;
+      margin: 5em auto 5em auto;
+      &__elem {
+        display: flex;
+        flex-direction: column;
+        & label {
+          font-size: 1.2em;
+          color: $light-color;
+          margin-bottom: 0.8em;
+        }
+        &__input {
+          font-family: inherit;
+          border: none;
+          outline: none;
+          height: 2.5em;
+          width: 100%;
+          padding-left: 1em;
+          margin-bottom: 3em;
+          border-radius: 5px;
+        }
+      }
+      &__remember {
+        margin-left: 0.4em;
+        color: $light-color;
+      }
+      &__submit {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 2em;
+        &__button {
+          font-size: 1.1em;
+          border: none;
+          border-radius: 5px;
+          outline: none;
+          width: 48%;
+          height: 2.7em;
+          &--signin {
+            background-color: $light-color;
+            color: $secondary-color;
+            border: 3px solid $secondary-color;
+          }
+          &--signup {
+            background-color: $secondary-color;
+            color: $light-color;
+          }
+        }
+      }
+    }
+  }
+}

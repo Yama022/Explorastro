@@ -1,5 +1,6 @@
+/* eslint-disable react/button-has-type */
 import React from 'react';
-import './style.scss';
+
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 import {
   MapContainer,
@@ -8,7 +9,7 @@ import {
   Popup,
 } from 'react-leaflet';
 import coord from './data2.json';
-import img_event from'./bg.png';
+import imageEvent from './bg.png';
 
 export default function Map() {
   coord.forEach((element) => {
@@ -20,7 +21,7 @@ export default function Map() {
       <div className="list_events">
         {coord.map((x) => (
           <div className="list_events__box">
-            <img src={img_event} alt="" />
+            <img src={imageEvent} alt="" />
             <div className="list_events__box__content">
               <h2>{x.title} vers {x.name}</h2>
               <p>{x.desc}</p>
@@ -30,15 +31,18 @@ export default function Map() {
         ))}
       </div>
       <MapContainer
+      // Centering on the map of france
         center={[46.232192999999995, 2.209666999999996]}
         zoom={6.4}
         maxZoom={18}
         minZoom={6.4}
       >
+        {/* Add layer dark map */}
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
         />
+        {/* Add Markers events astro on the map */}
         <MarkerClusterGroup>
           {coord.map((x) => (
             <div>
