@@ -14,4 +14,7 @@ DROP CONSTRAINT "username_len";
 ALTER TABLE "user"
 DROP CONSTRAINT "email_len";
 
+ALTER TABLE "user"
+DROP CONSTRAINT "password_len";
+
 COMMIT;

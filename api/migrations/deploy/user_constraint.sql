@@ -14,4 +14,8 @@ ALTER TABLE "user"
 ALTER TABLE "user"
     ADD CONSTRAINT "email_len" CHECK (length("email") >= 3 AND  length("email") <= 50);
 
+
+ALTER TABLE "user"
+    ADD CONSTRAINT "password_len" CHECK (length("password") >= 6);
+
 COMMIT;
