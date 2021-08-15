@@ -1,32 +1,31 @@
 .footer {
-  background: url("src/assets/images/moon-footer.svg");
-  background-position: 50% 3%;
-  background-size: 200%;
+  position: absolute;
+  font-size: 0.9em;
+  font-family: 'Exo', sans-serif;
+  font-weight: 400;
+  text-align: center;
+  background: url("src/assets/images/cropped-moon-footer.svg") no-repeat center;
+  background-position: 50% 58%;
+  background-size: 800%;
+  background-color: $primary-color;
   bottom: 0;
   width: 100%;
+  padding: 5em 0 0 0;
+  box-shadow: inset 0 32px 25px -8px $primary-color;
 
-  &__container {
-    font-family: 'Exo', sans-serif;
-    font-weight: 400;
-    padding-bottom: 30px;
-    color: $light-color;
-    text-align: center;
-    padding-bottom: .5em;
-
-    &__logo {
-      width: 8em;
-      margin-top: 14em;
-      filter: drop-shadow(30px 10px 4px black);
+  &__logo {
+    width: 8em;
+    filter:  invert(1) drop-shadow(30px 10px 4px black);
+  }
+  &__description {
+    margin-top: 1.5em;
+    & a {
+      margin-right: 2em;
     }
-
-    &__description {
-      color : $primary-color;
-      margin-top : 1em;
-      
-
-      a {
-        margin-right: $gutter;
-      }
+    & p {
+      margin-top: 0.4em;
+      padding-bottom: 0.3em;
     }
   }
 }
+

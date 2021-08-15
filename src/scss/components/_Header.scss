@@ -30,6 +30,7 @@
       }
       &:hover {
         text-shadow: 1px 1px 2px $secondary-color, 0 0 0.5em $secondary-color, 0 0 0.2em rgb(187, 30, 207);
+        color: inherit;
       }
       &--active {
         text-shadow: 1px 1px 2px $secondary-color, 0 0 0.5em $secondary-color, 0 0 0.2em rgb(187, 30, 207);
@@ -40,6 +41,7 @@
     }
   }
   &__user {
+    display: none;
     position: relative;
     &__container {
       display: flex;
@@ -96,6 +98,12 @@
     }
     &:hover &__dropdown{
       display: block;
+    }
+  }
+  &__login{
+    & .button {
+      color: $primary-color;
+      background-color: $light-color;
     }
   }
 }

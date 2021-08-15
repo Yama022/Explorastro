@@ -1,0 +1,166 @@
+.container {
+  width: 100%;
+}
+
+.event-title {
+  margin-top: .5em;
+  font-size: 2.5em;
+  text-align: center;
+  color: $light-color;
+}
+
+.createEvent{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.form__create {
+  border-radius: 10px;
+  margin: $gutter 0 0 $gutter;
+  padding: $gutter;
+  border: 1px solid $light-color;
+  width: 32%;
+  &__title {
+  font-size: 5em;
+  margin-top: 1em;
+  margin-left: 1em;
+  font-size: 1.2em;
+  text-align: left;
+  color: $light-color;
+  &:last-child {
+    background-color: $light-color;
+  }
+    &__calendar {
+    margin-top: 1em;
+    margin-left: 1em;
+    }
+  }
+  
+  & input {
+    margin: $gutter 0 0 $gutter;
+    width: 300px;
+    &:nth-last-child(3) {
+      width: 50px;
+    }
+    &:nth-last-child(2) {
+      width: 70px;
+      padding: .4em;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    &:last-child {
+      width: 50px;
+      padding: .5em;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      margin: .3em;
+    }
+  }
+  &__button {
+    padding: 1em;
+    margin-left: 5em;
+    
+  }
+}
+.is-danger {
+  margin-left: 3em;
+}
+
+.form__right {
+  border-radius: 10px;
+  width: 47%;
+  max-height: 80vh;
+  margin: $gutter $gutter $gutter $gutter;
+  padding-bottom: 2em;
+  border: 1px solid $light-color;
+}
+
+.form__map {
+  height: 65%;
+  background-color: $light-color;
+  margin: $gutter 0 0 $gutter;
+  padding-bottom: $gutter;
+  border: 1px solid $light-color;
+  width: 95%;
+  &-title {
+    color: black;
+    font-size: 3em;
+    text-align: center;
+  }
+  & img{
+    height:100%;
+    width: 100%;
+  }
+}
+.form__add__img {
+  display: flex;
+  background-color: $light-color;
+  margin: $gutter 0 0 $gutter;
+  padding-bottom: $gutter;
+  border: 1px solid $light-color;
+  width: 95%;
+  max-height: 30%;
+  & img {
+    margin: 1em 1em 1em .5em;
+    width: 450px;
+    height: 100%;
+    background-color: black;
+  }
+  &__import {
+    &-title {
+      width: 100%;
+      margin-top: 1em;
+      margin-right: 2em;
+      color: black;
+      font-size: 1.5em;
+      font-weight: bold;
+      text-align: right;
+      padding: 1em;
+    }
+    & input[type=file] {
+      background-color: pink;
+      margin-left: 1em;
+      border: 1px solid black;
+      border-radius: 5px;
+      font-size: 1em;
+      padding: .5em;
+    }
+  }
+}
+
+
+.button-wrapper {
+  position: relative;
+  width: 150px;
+  text-align: center;
+  margin: 20% auto;
+}
+
+.button-wrapper span.label {
+  position: relative;
+  z-index: 0;
+  display: inline-block;
+  width: 100%;
+  background: $tertiary-color;
+  cursor: pointer;
+  color: $light-color;
+  padding: 10px 0;
+  text-transform:uppercase;
+  font-size: .8em;
+  border-radius: 5px;
+}
+
+#upload {
+    display: inline-block;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 50px;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+}

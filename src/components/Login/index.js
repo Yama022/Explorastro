@@ -1,7 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import logo from 'src/assets/images/logo-explorastro.png';
 import { FaUser } from 'react-icons/fa';
 
 export default function Login() {
@@ -25,7 +23,7 @@ export default function Login() {
     }());
   });
 
-  const [login, setLogin] = React.useState("");
+  const [login, setLogin] = React.useState('');
 
   return (
     <div className="login">
