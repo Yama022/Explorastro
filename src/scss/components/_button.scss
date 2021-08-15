@@ -1,0 +1,14 @@
+.button {
+    color: white;
+}
+
+.purple {
+    background-color: $primary-color;
+    border: $primary-color;
+}
+
+.--outlined {
+    border: 1px solid $primary-color;
+    background-color: $light-color;
+    color: $primary-color;
+}
