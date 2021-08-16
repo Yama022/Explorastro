@@ -5,8 +5,8 @@ import {
 const initialState = {
   email: '',
   password: '',
-  username: '',
-  logged: false,
+  username: 'AstroCharles',
+  logged: true,
   open: false,
 };
 
