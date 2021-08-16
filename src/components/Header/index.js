@@ -1,81 +1,104 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import { PropTypes } from 'prop-types';
 
 import logo from 'src/assets/images/logo-explorastro.png';
 
-import { BiCog, BiUserCircle, BiPowerOff } from 'react-icons/bi';
+import User from 'src/components/Header/User';
 
-export default function Header() {
+export default function Header({
+  isLogged, username, isOpen, handleToggleDropdown,
+}) {
   return (
     <header className="header">
-      <Link to="/timeline" className="header__logo">
+      <Link to={isLogged ? '/timeline' : '/landing'} className="header__logo">
         <img src={logo} alt="logo ExplorAstro" />
       </Link>
       <nav className="header__nav">
-        <NavLink
-          className="header__nav__link"
-          activeClassName="header__nav__link--active"
-          to="/timeline"
-          exact
-        >
-          Fil d'actualités
-        </NavLink>
-        <NavLink
-          className="header__nav__link"
-          activeClassName="header__nav__link--active"
-          to="/exploration/create"
-          exact
-        >
-          Organiser
-        </NavLink>
-        <NavLink
-          className="header__nav__link"
-          activeClassName="header__nav__link--active"
-          to="/discover"
-          exact
-        >
-          Carte
-        </NavLink>
-        <NavLink
-          className="header__nav__link"
-          activeClassName="header__nav__link--active"
-          to="/guide"
-          exact
-        >
-          Le guide de l'explorateur
-        </NavLink>
+        { isLogged
+          ? (
+            <>
+              <NavLink
+                className="header__nav__link"
+                activeClassName="header__nav__link--active"
+                to="/timeline"
+                exact
+              >
+                Fil d'actualités
+              </NavLink>
+              <NavLink
+                className="header__nav__link"
+                activeClassName="header__nav__link--active"
+                to="/exploration/create"
+                exact
+              >
+                Organiser
+              </NavLink>
+              <NavLink
+                className="header__nav__link"
+                activeClassName="header__nav__link--active"
+                to="/discover"
+                exact
+              >
+                Carte
+              </NavLink>
+              <NavLink
+                className="header__nav__link"
+                activeClassName="header__nav__link--active"
+                to="/guide"
+                exact
+              >
+                Le guide de l'explorateur
+              </NavLink>
+            </>
+          )
+          : (
+            <>
+              <NavLink
+                className="header__nav__link"
+                activeClassName="header__nav__link--active"
+                to="/landing"
+                exact
+              >
+                Accueil
+              </NavLink>
+              <NavLink
+                className="header__nav__link"
+                activeClassName="header__nav__link--active"
+                to="/news"
+                exact
+              >
+                Actualités
+              </NavLink>
+              <NavLink
+                className="header__nav__link"
+                activeClassName="header__nav__link--active"
+                to="/aboutus"
+                exact
+              >
+                Le projet
+              </NavLink>
+            </>
+          )}
       </nav>
-      <div className="header__user">
-        <div className="header__user__container">
-          <p className="header__user__container__pseudo">Pseudo</p>
-          <img src="https://st.depositphotos.com/1779253/5140/v/950/depositphotos_51405259-stock-illustration-male-avatar-profile-picture-use.jpg" alt="Avatar de l'utilisateur" className="header__user__container__avatar" />
-        </div>
-        <ul className="header__user__dropdown">
-          <li className="header__user__dropdown__item">
-            <a href="#" className="header__user__dropdown__item__link">
-              <BiUserCircle />
-              <span> Profil </span>
-            </a>
-          </li>
-          <li className="header__user__dropdown__item">
-            <a href="#" className="header__user__dropdown__item__link">
-              <BiCog />
-              <span> Paramètres </span>
-            </a>
-          </li>
-          <li className="header__user__dropdown__item">
-            <a href="#" className="header__user__dropdown__item__link">
-              <BiPowerOff />
-              <span> Déconnexion </span>
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div className="header__login">
-        <Link className="button" to="/login">
-          Connexion
-        </Link>
-      </div>
+      {isLogged
+        ? (
+          <User username={username} isOpen={isOpen} onClickUser={handleToggleDropdown} />
+        )
+        : (
+          <div className="header__login">
+            <Link className="button" to="/login">
+              Connexion
+            </Link>
+          </div>
+        )}
     </header>
   );
 }
+
+Header.propTypes = {
+  isLogged: PropTypes.bool.isRequired,
+  username: PropTypes.string.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  handleToggleDropdown: PropTypes.func.isRequired,
+};

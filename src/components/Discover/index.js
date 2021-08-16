@@ -9,10 +9,10 @@ import imageEvent from './bg.png';
 export default function Discover({
   onFormSubmit,
   data,
-  ville,
+  explorations,
 }) {
+  const tabSorties = explorations.length > 0 ? explorations : data;
 
-  // const tabSorties = explorations.length > 0 ? explorations : data;
   data.forEach((element) => {
     element.desc = 'Venez decouvrir le ciel samedi 14/08/2021 !! ça va être trop bien !!';
     element.title = 'sortie astro entre poto !!';
@@ -20,7 +20,7 @@ export default function Discover({
   return (
     <div className="map">
       <div className="map__list_events">
-        {data.map((element, index) => (
+        {tabSorties.map((element, index) => (
           <div key={index} className="map__list_events__box">
             <img className="map__list_events__box__img" src={imageEvent} alt="" />
             <div className="map__list_events__box__content">
@@ -32,13 +32,15 @@ export default function Discover({
         ))}
       </div>
       <Filter onSubmit={onFormSubmit} />
-      <Map coord={data} />
+
+      <Map coord={tabSorties} />;
+
     </div>
   );
 }
 
 Discover.propTypes = {
   onFormSubmit: PropTypes.func.isRequired,
-  ville: PropTypes.string.isRequired,
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  explorations: PropTypes.arrayOf(PropTypes.object).isRequired,
 };

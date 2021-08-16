@@ -41,7 +41,6 @@
     }
   }
   &__user {
-    display: none;
     position: relative;
     &__container {
       display: flex;
@@ -63,9 +62,15 @@
       right: -5%;
       border-radius: 10px;
       display: none;
+      &--open {
+        display: block;
+      }
       &__item {
         margin: 1em 0;
         &:hover {
+          & a {
+            color: $light-color;
+          }
           text-shadow: 1px 1px 8px $light-color;
         }
         &__link {
@@ -77,8 +82,12 @@
           }
         }
         &:last-child {
+          cursor: pointer;
           color: red;
           &:hover {
+            & a {
+              color: red;
+            }
             text-shadow: 1px 1px 8px red !important;
           }
         }
@@ -95,9 +104,6 @@
         border-style: solid;
         border-width: 0 10px 20px 10px;
       }
-    }
-    &:hover &__dropdown{
-      display: block;
     }
   }
   &__login{
