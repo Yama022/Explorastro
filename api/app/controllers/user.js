@@ -7,15 +7,15 @@ module.exports = {
     try {
       const { id } = req.params;
 
-      const user = await User.findByPk(id);
-
-      console.log(user);
+      const user = await User.findByPk(id, {
+        include: ['followers', 'following', 'organized_explorations', 'explorations', 'role']
+      });
 
       if (!user) {
         return res.status(404).json({ message: errorMessage.USER_NOT_FOUND });
       }
 
-      return res.status(200).send(user);
+      return res.status(200).json(user);
     } catch (error) {
       res.status(400).json({
         message: errorMessage.internal_error,
@@ -42,8 +42,12 @@ module.exports = {
       }
 
       // We need to delete username and password from the request, if the user want to change it, he must to do a separate request
+      delete req.body.id;
       delete req.body.username;
       delete req.body.password;
+      delete req.body.created_at;
+      delete req.body.updated_at;
+
 
       await userToUpdate.update({
         ...req.body,
@@ -54,7 +58,7 @@ module.exports = {
       });
     } catch (error) {
       console.error(error);
-      return res.status(500).send({
+      return res.status(500).json({
         message: errorMessage.INTERNAL_ERROR,
       });
     }
@@ -100,7 +104,7 @@ module.exports = {
       });
     } catch (error) {
       console.error(error);
-      return res.status(500).send({
+      return res.status(500).json({
           message: "Internal server error. Please retry later",
       });
   }
@@ -129,7 +133,7 @@ module.exports = {
       return res.status(200).json({OK: true});
     } catch (error) {
       console.error(error);
-      return res.status(500).send({
+      return res.status(500).json({
         message: errorMessage.INTERNAL_ERROR,
       });
     }
