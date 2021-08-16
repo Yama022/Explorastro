@@ -60,7 +60,7 @@ const seeding = {
         author_id: faker.datatype.number({ min: 1, max: config.MAX_USER }),
         geog: {
           type: "Point",
-          coordinates: [faker.address.latitude(), faker.address.longitude()],
+          coordinates: [faker.address.longitude(), faker.address.latitude()],
         },
         date: faker.date.past(),
         max_participants: faker.datatype.number({ min: 1, max: 10 }),
