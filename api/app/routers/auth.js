@@ -1,21 +1,13 @@
 const express = require("express");
 const router = express.Router();
 
+const validate = require('../validations/validate');
+const { userSchema } = require('../validations/schemas');
+const { authController } = require("../controllers");
+
 router
-  .post("/login", (req, res) => {
-    res.send({
-      message: "Login",
-    });
-  })
-  .post("/signup", (req, res) => {
-    res.send({
-      message: "Signup",
-    });
-  })
-  .post("/token", (req, res) => {
-    res.json({
-      message: "Refresh Token",
-    });
-  });
+  .post("/login", authController.login)
+  .post("/signup", validate('body',userSchema), authController.signup)
+  .post("/token", authController.refreshToken);
 
 module.exports = router;
