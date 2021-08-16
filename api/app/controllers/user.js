@@ -7,9 +7,9 @@ module.exports = {
     try {
       const { id } = req.params;
 
-      const user = await User.findByPk(id);
-
-      console.log(user);
+      const user = await User.findByPk(id, {
+        include: ['followers', 'following', 'organized_explorations', 'explorations', 'role']
+      });
 
       if (!user) {
         return res.status(404).json({ message: errorMessage.USER_NOT_FOUND });
