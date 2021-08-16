@@ -8,7 +8,7 @@ import Timeline from 'src/components/Timeline';
 import Error from 'src/components/Error';
 import Discover from 'src/containers/Discover';
 import CreateEvent from 'src/components/CreateEvent';
-import Login from 'src/components/Login';
+import Login from 'src/containers/Login';
 import Guide from 'src/components/Guide';
 
 export default function Explorastro({ isLogged }) {
