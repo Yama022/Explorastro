@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import api from 'src/middlewares/api';
+// import api from 'src/middlewares/api';
 
 import reducer from 'src/reducers';
 
@@ -8,7 +8,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 // Warning declare here middleware !!!
 const enhancers = composeEnhancers(
-  applyMiddleware(api),
+  applyMiddleware(),
 );
 
 const store = createStore(reducer, enhancers);
