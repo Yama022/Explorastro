@@ -21,7 +21,7 @@ module.exports = {
         },
         {
           name: "Rémi J",
-          github: "",
+          github: "https://github.com/Yama022",
         },
       ],
     });
