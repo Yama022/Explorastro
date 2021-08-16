@@ -15,6 +15,7 @@
     "express": "^4.17.1",
     "faker": "^5.5.3",
     "joi": "^17.4.2",
+    "jsonwebtoken": "^8.5.1",
     "log-beautify": "^1.2.0",
     "pg": "^8.7.1",
     "sequelize": "^6.6.5"

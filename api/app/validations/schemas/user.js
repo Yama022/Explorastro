@@ -66,8 +66,7 @@ const schema = Joi.object({
         .max(50),
     
     role: Joi.string()
-        .valid('unverified', 'user', 'admin')
-        .required(),
+        .valid('unverified', 'user', 'admin'),
     
     created_at: Joi.date(),
     updated_at: Joi.date(),
