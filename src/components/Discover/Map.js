@@ -9,6 +9,7 @@ import {
 } from 'react-leaflet';
 
 export default function Map({ coord }) {
+  // console.log(coord);
   return (
     <MapContainer
     // Centering on the map of france
@@ -24,19 +25,19 @@ export default function Map({ coord }) {
       />
       {/* Add Markers events astro on the map */}
       <MarkerClusterGroup>
-        {coord.map((x) => (
-          <div>
-            <Marker position={[x.Latitude, x.Longitude]}>
-              <Popup>Exploration vers {x.name}</Popup>
+        {coord.map((element, index) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <div key={index}>
+            <Marker position={[element.Latitude, element.Longitude]}>
+              <Popup>Exploration vers {element.name}</Popup>
             </Marker>
           </div>
         ))}
-
       </MarkerClusterGroup>
     </MapContainer>
   );
 }
 
 Map.propTypes = {
-  coord: PropTypes.arrayOf.isRequired,
+  coord: PropTypes.arrayOf(PropTypes.object).isRequired,
 };

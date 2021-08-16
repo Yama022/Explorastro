@@ -1,10 +1,10 @@
-const initialState = {};
+import { combineReducers } from 'redux';
 
-const reducer = (state = initialState, action = {}) => {
-  switch (action.type) {
-    default:
-      return state;
-  }
-};
+import explorationReducer from './exploration';
 
-export default reducer;
+const rootReducer = combineReducers({
+  exploration: explorationReducer,
+
+});
+
+export default rootReducer;
