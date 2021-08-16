@@ -4,3 +4,4 @@
 initialization 2021-08-13T11:25:35Z Théo BIET <dev.theobiet@gmail.com> # Exploration initialization
 jwt_token 2021-08-13T13:09:01Z Théo BIET <dev.theobiet@gmail.com> # Save JWT Token in Database
 user_constraint 2021-08-15T19:09:26Z Théo BIET <dev.theobiet@gmail.com> # Add insertion constraint on user table
+fkey_ondelete 2021-08-16T10:47:48Z Théo BIET <dev.theobiet@gmail.com> # Set NULLABLE value on user id, and ON DELETE SET NULL on table exploration & comment
