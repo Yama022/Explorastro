@@ -14,6 +14,7 @@ const mapDispatchToProps = (dispatch) => ({
     const action = formSubmit(value);
     dispatch(action);
   },
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Discover);
