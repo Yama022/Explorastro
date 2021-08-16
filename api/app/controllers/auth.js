@@ -132,11 +132,11 @@ module.exports = {
     });
 
     if (!token) {
-      res.status(400).json({ message: errorMessage.INVALID_TOKEN });
+      return res.status(400).json({ message: errorMessage.INVALID_TOKEN });
     }
 
     jwt.verifyRefreshToken(refreshToken, (err, user) => {
-      if (err) res.status(400).json({ message: errorMessage.INVALID_TOKEN });
+      if (err) return res.status(400).json({ message: errorMessage.INVALID_TOKEN });
       const accessToken = jwt.generateAccessToken({
         name: user.name,
       });

@@ -1,9 +1,11 @@
 const jwt = require("jsonwebtoken");
+const { errorMessage } = require('../constants');
+const TOKEN_MAX_AGE = "30m";
 
 module.exports = {
     generateAccessToken: (user) => {
         return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {
-            expiresIn: "30m",
+            expiresIn: TOKEN_MAX_AGE,
         });
     },
     generateRefreshToken: (user) => {
@@ -15,7 +17,7 @@ module.exports = {
             process.env.ACCESS_TOKEN_SECRET,
             (err, decoded) => {
                 if (err) {
-                    return callback({ message: "Invalid token" }, null);
+                    return callback({ message: errorMessage.INVALID_TOKEN }, null);
                 }
                 return callback(null, decoded);
             }
@@ -27,7 +29,7 @@ module.exports = {
             process.env.REFRESH_TOKEN_SECRET,
             (err, decoded) => {
                 if (err) {
-                    return callback({ message: "Invalid token" }, null);
+                    return callback({ message: errorMessage.INVALID_TOKEN }, null);
                 }
                 return callback(null, decoded);
             }

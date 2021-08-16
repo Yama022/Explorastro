@@ -8,4 +8,5 @@ module.exports = {
     EMAIL_ALREADY_EXISTS: "Email already exists",
     INVALID_TOKEN: "Invalid token",
     MISSING_TOKEN: "You must provide a token",
+    TOKEN_AUTH_FAILED: "Failed to authenticate token."
 }
