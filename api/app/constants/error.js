@@ -1,5 +1,6 @@
 module.exports = {
     INTERNAL_ERROR: "Internal server error, please retry in a few minutes",
+    CONTENT_NOT_FOUND: "The requested content was not found or was moved",
     USER_NOT_FOUND: "User not found",
     MISSING_CREDENTIALS: "Missing credentials",
     EMAIL_NOT_FOUND: "This email or username does not exist",
