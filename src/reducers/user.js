@@ -1,4 +1,4 @@
-import { TOGGLE_DROPDOWN } from 'src/actions/user';
+import { TOGGLE_DROPDOWN, LOGOUT } from 'src/actions/user';
 
 const initialState = {
   email: 'admin@explorastro.com',
@@ -14,6 +14,15 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         open: !state.open,
+      };
+    }
+    case LOGOUT: {
+      return {
+        // Déconnexion temporaire ci-dessous.
+        // Prendre la dernière ligne quand la connexion fonctionne
+        ...state,
+        logged: false,
+        // ...initialState,  <-- Remettre cette ligne lorsque les connexions fonctionnent
       };
     }
     default:
