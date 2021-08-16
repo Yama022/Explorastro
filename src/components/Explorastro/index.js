@@ -9,6 +9,7 @@ import Error from 'src/components/Error';
 import Discover from 'src/containers/Discover';
 import CreateEvent from 'src/components/CreateEvent';
 import Login from 'src/components/Login';
+import Guide from 'src/components/Guide';
 
 export default function Explorastro({ isLogged }) {
   return (
@@ -36,11 +37,17 @@ export default function Explorastro({ isLogged }) {
               <Discover />
               <Footer />
             </Route>
+            <Route exact path="/guide">
+              <Header />
+              <Guide />
+              <Footer />
+            </Route>
             <Route>
               <Header />
               <Error />
               <Footer />
             </Route>
+
           </Switch>
         )
         : (

@@ -1,0 +1,121 @@
+.guide {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  & p {
+    font-style: italic;
+    font-size: .9em;
+    color: $light-color;
+    margin-bottom: $gutter;
+  }
+  & img {
+    width: 300px;
+    height: 200px;
+  }
+}
+
+.guide__presentation {
+  width: 75%;
+  margin: 2 * $gutter;
+  &__title {
+    max-width: 97%;
+    font-size: 1.5em;
+    color: $light-color;
+  }
+  &__title:after {
+    display:block;
+    content: '';
+    border-bottom: solid 1px $light-color;  
+    transform: scaleX(0);  
+    transition: transform 250ms ease-in-out;
+  }
+  &__title:hover:after { transform: scaleX(1); }
+  &__title.fromRight:after{ transform-origin:100% 50%; }
+  &__title.fromLeft:after{  transform-origin:  0% 50%; }
+  &__sous-title {
+    font-size: 1.2em;
+    color: $light-color;
+    padding: 1em;
+  }
+  
+  &__paragraphe {
+    margin: $gutter;
+    padding: 1rem;
+    width: 75%;
+    box-shadow: 0 3px 10px 0 $light-color,
+      0 5px 15px 0 rgba(0,0,0,0.08);
+    background-color: $secondary-color;
+    border-radius: 0.5rem;
+    border-left: 0 solid $light-color;
+    transition: border-left 300ms ease-in-out, padding-left 300ms ease-in-out;
+  }
+  &__paragraphe:hover {
+    padding-left: 0.5rem;
+    border-left: 0.5rem solid $light-color;
+  }
+  &__paragraphe > :first-child {
+    margin-top: 0;
+  }
+  & em {
+    color: red;
+  }
+}
+
+
+.guide__paraph__one {
+  width: 75%;
+  margin: 2 * $gutter;
+  &__title{
+    max-width: 80%;
+    font-size: 1.5em;
+    color: $light-color;
+    margin-bottom: $gutter;
+  }
+  &__title:after {
+    display:block;
+    content: '';
+    border-bottom: solid 1px $light-color;  
+    transform: scaleX(0);  
+    transition: transform 250ms ease-in-out;
+  }
+  &__title:hover:after { transform: scaleX(1); }
+  &__title.fromRight:after{ transform-origin:100% 50%; }
+  &__title.fromLeft:after{  transform-origin:  0% 50%; }
+  &__paragraphe {
+    padding: 1rem;
+    margin: $gutter;
+    width: 75%;
+    box-shadow: 0 3px 10px 0 $light-color,
+      0 5px 15px 0 rgba(0,0,0,0.08);
+    background-color: $secondary-color;
+    border-radius: 0.5rem;
+    border-left: 0 solid $light-color;
+    transition: border-left 300ms ease-in-out, padding-left 300ms ease-in-out;
+  }
+  &__paragraphe:hover {
+    padding-left: 0.5rem;
+    border-left: 0.5rem solid $light-color;
+  }
+  &__paragraphe > :first-child {
+    margin-top: 0;
+  }
+}
+
+figure {
+  border: thin $light-color solid;
+  display: flex;
+  flex-flow: column;
+  padding: 5px;
+  max-width: 300px;
+  margin: 1.5 * $gutter;
+  margin-left: 2em;
+  background-color: $secondary-color;
+}
+
+figcaption {
+  background-color: $primary-color;
+  color: $light-color;
+  font: italic smaller sans-serif;
+  padding: 3px;
+  text-align: center;
+}
