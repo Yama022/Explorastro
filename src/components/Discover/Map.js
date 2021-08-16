@@ -1,5 +1,6 @@
 import React from 'react';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
+import uuid from 'uuid';
 import PropTypes from 'prop-types';
 import {
   MapContainer,
@@ -9,14 +10,13 @@ import {
 } from 'react-leaflet';
 
 export default function Map({ coord }) {
-  // console.log(coord);
   return (
     <MapContainer
     // Centering on the map of france
       center={[46.232192999999995, 2.209666999999996]}
       zoom={6.4}
       maxZoom={18}
-      minZoom={6.4}
+      minZoom={3}
     >
       {/* Add layer dark map */}
       <TileLayer
@@ -24,9 +24,11 @@ export default function Map({ coord }) {
         url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
       />
       {/* Add Markers events astro on the map */}
-      <MarkerClusterGroup>
+      <MarkerClusterGroup
+        key={uuid.v4()}
+      >
         {coord.map((element, index) => (
-          // eslint-disable-next-line react/no-array-index-key
+        // eslint-disable-next-line react/no-array-index-key
           <div key={index}>
             <Marker position={[element.Latitude, element.Longitude]}>
               <Popup>Exploration vers {element.name}</Popup>
