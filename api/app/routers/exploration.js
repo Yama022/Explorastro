@@ -1,18 +1,11 @@
 const express = require("express");
 const router = express.Router();
+const { explorationController } = require("../controllers");
 
 router
-  .get("/:id(\\d+)", (req, res) => {
-    res.json({ message: "exploration informations" });
-  })
-  .post("/create", (req, res) => {
-    res.json({ message: "create an exploration" });
-  })
-  .patch("/:id(\\d+)/update", (req, res) => {
-    res.json({ message: "update exploration informations" });
-  })
-  .delete("/:id(\\d+)/delete", (req, res) => {
-    res.json({ message: "delete an exploration" });
-  });
+  .get("/:id(\\d+)", explorationController.getInformations)
+  .post("/create", explorationController.create)
+  .patch("/:id(\\d+)/update", explorationController.update)
+  .delete("/:id(\\d+)/delete", explorationController.delete);
 
 module.exports = router;
