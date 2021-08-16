@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 
 // == Import : local
 // Composants
-import Explorastro from 'src/components/Explorastro';
+import Explorastro from 'src/containers/Explorastro';
 import store from 'src/store';
 // == Render
 // 1. Élément React racine (celui qui contient l'ensemble de l'app)
