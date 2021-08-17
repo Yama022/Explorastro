@@ -35,7 +35,7 @@ export default function Discover({
       </div>
       <Filter onSubmit={onFormSubmit} onChange={onChangeInput} fieldZone={zone} />
 
-      <Map coord={tabSorties} fieldZone={zone} />;
+      <Map coord={tabSorties} fieldZone={zone} />
 
     </div>
   );

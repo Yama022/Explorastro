@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Discover from 'src/components/Discover/';
+import Discover from 'src/components/Discover';
 import { formSubmit, changeInput } from 'src/actions/exploration';
 import { filterExploration } from '../selectors/filterExploration';
 

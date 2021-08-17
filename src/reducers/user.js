@@ -1,8 +1,10 @@
-import { TOGGLE_DROPDOWN } from 'src/actions/user';
+import {
+  CHANGE_VALUE, TOGGLE_DROPDOWN, LOGOUT, LOGIN,
+} from 'src/actions/user';
 
 const initialState = {
-  email: 'admin@explorastro.com',
-  password: 'astrocharles',
+  email: '',
+  password: '',
   username: 'AstroCharles',
   logged: true,
   open: false,
@@ -10,10 +12,31 @@ const initialState = {
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
+    case CHANGE_VALUE: {
+      return {
+        ...state,
+        [action.key]: action.value,
+      };
+    }
     case TOGGLE_DROPDOWN: {
       return {
         ...state,
         open: !state.open,
+      };
+    }
+    case LOGOUT: {
+      return {
+        // Déconnexion temporaire ci-dessous.
+        // Prendre la dernière ligne quand la connexion fonctionne
+        ...state,
+        logged: false,
+        // ...initialState,  <-- Remettre cette ligne lorsque les connexions fonctionnent
+      };
+    }
+    case LOGIN: {
+      return {
+        ...state,
+        logged: true,
       };
     }
     default:

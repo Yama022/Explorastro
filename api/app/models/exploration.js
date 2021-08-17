@@ -11,21 +11,20 @@ Exploration.init(
     },
     description: {
       type: DataTypes.TEXT,
-      allowNull: false,
     },
     geog: {
       type: DataTypes.GEOGRAPHY,
     },
     date: {
       type: DataTypes.DATE,
-      allowNull: false,
-      unique: true,
     },
     max_participants: {
       type: DataTypes.INTEGER,
     },
     is_published: {
       type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
     },
     image_url: {
       type: DataTypes.TEXT,

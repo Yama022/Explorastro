@@ -7,7 +7,7 @@ import logo from 'src/assets/images/logo-explorastro.png';
 import User from 'src/components/Header/User';
 
 export default function Header({
-  isLogged, username, isOpen, handleToggleDropdown,
+  isLogged, username, isOpen, handleToggleDropdown, handleLogout,
 }) {
   return (
     <header className="header">
@@ -83,7 +83,12 @@ export default function Header({
       </nav>
       {isLogged
         ? (
-          <User username={username} isOpen={isOpen} onClickUser={handleToggleDropdown} />
+          <User
+            username={username}
+            isOpen={isOpen}
+            onClickUser={handleToggleDropdown}
+            handleLogout={handleLogout}
+          />
         )
         : (
           <div className="header__login">
@@ -101,4 +106,5 @@ Header.propTypes = {
   username: PropTypes.string.isRequired,
   isOpen: PropTypes.bool.isRequired,
   handleToggleDropdown: PropTypes.func.isRequired,
+  handleLogout: PropTypes.func.isRequired,
 };
