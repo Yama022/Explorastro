@@ -5,8 +5,8 @@ import {
 const initialState = {
   firstname: '',
   lastname: '',
-  email: 'admin@explorastro.fr',
-  password: 'exploradmin',
+  email: '',
+  password: '',
   passwordConfirmation: '',
   username: '',
   logged: false,
@@ -34,18 +34,19 @@ const reducer = (state = initialState, action = {}) => {
         signup: !state.signup,
       };
     }
+    case LOGOUT: {
+      localStorage.removeItem('user');
+      return {
+        ...initialState,
+      };
+    }
     case SAVE_USER: {
       return {
         ...state,
-        username: action.payload.username,
-        logged: true,
+        username: action.payload?.username ?? '',
+        logged: !!action.payload?.username,
         email: '',
         password: '',
-      };
-    }
-    case LOGOUT: {
-      return {
-        ...initialState,
       };
     }
     default:
