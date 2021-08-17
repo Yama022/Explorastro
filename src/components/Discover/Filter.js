@@ -9,8 +9,8 @@ export default function Filter({ onSubmit, onChange, fieldZone }) {
     onSubmit(value);
   };
   const handleOnchange = (event) => {
-    event.preventDefault();
-    const { value } = event.target[0];
+    // event.preventDefault();
+    const { value } = event.target;
     const zone = parseInt(value, 10);
     console.log(typeof (zone));
     onChange(zone);
@@ -45,11 +45,11 @@ export default function Filter({ onSubmit, onChange, fieldZone }) {
           </div>
         </label>
       </form>
-      <form onSubmit={handleOnchange}>
+      <form>
         <label className="label map__filter__label" htmlFor="km">Autour de moi sur {fieldZone} km
           <div className="field has-addons">
-            <input type="range" id="km" name="cowbell" min="0" max="100" step="10" />
-            <button type="submit" className="button is-primary">Rercher</button>
+            <input type="range" id="km" name="cowbell" min="0" max="100" step="10" onChange={handleOnchange} />
+
           </div>
         </label>
       </form>
