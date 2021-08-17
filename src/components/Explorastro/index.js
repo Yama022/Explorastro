@@ -13,9 +13,9 @@ import Guide from 'src/components/Guide';
 import Landing from 'src/components/Landing';
 
 export default function Explorastro({ isLogged, checkIsLogged }) {
-  useEffect(() => {
-    checkIsLogged();
-  }, []);
+  // useEffect(() => {
+  //   checkIsLogged();
+  // }, []);
   return (
     <div className="explorastro">
       {isLogged

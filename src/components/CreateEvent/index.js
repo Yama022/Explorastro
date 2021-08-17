@@ -1,11 +1,15 @@
 import React from 'react';
 
+import {
+  MapContainer,
+  TileLayer,
+} from 'react-leaflet';
+
 import Calendar from 'react-calendar';
 
 import 'react-calendar/dist/Calendar.css';
 
-import logo from 'src/assets/images/logo-explorastro.png';
-import map from 'src/assets/images/France.png';
+import logo from 'src/assets/images/placeholder_image.jpg';
 
 export default function CreateEvent() {
   return (
@@ -40,7 +44,23 @@ export default function CreateEvent() {
 
         <div className="form__right">
           <div className="form__map">
-            <img src={map} alt={map} />
+            <MapContainer
+          // Centering on the map of france
+              center={[46.232192999999995, 2.209666999999996]}
+              zoom={6.4}
+              maxZoom={18}
+              minZoom={3}
+            >
+
+              {/* Add layer dark map */}
+              <TileLayer
+                attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
+                name="tiles"
+              />
+              {/* Add Markers events astro on the map */}
+
+            </MapContainer>
           </div>
 
           <div className="form__add__img">
