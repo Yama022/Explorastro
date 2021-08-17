@@ -30,6 +30,11 @@
       flex-direction: column;
       align-items: center;
       border-radius: 10px;
+      &__elem {
+        &--hidden {
+          display: none;
+        }
+      }
 
       img {
         position: relative;

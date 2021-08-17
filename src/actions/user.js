@@ -1,17 +1,28 @@
 export const TOGGLE_DROPDOWN = 'TOGGLE_DROPDOWN';
-export const LOGOUT = 'LOGOUT';
+export const TOGGLE_SIGNUP = 'TOGGLE_SIGNUP';
 export const CHANGE_VALUE = 'CHANGE_VALUE';
-export const SAVE_USER = 'SAVE_USER';
+export const SIGNUP = 'SIGNUP';
 export const LOGIN = 'LOGIN';
+export const LOGOUT = 'LOGOUT';
+export const SAVE_USER = 'SAVE_USER';
+export const CHECK_TOKEN = 'CHECK_TOKEN';
 
 export const toggleDropdown = () => ({
   type: TOGGLE_DROPDOWN,
+});
+
+export const toggleSignup = () => ({
+  type: TOGGLE_SIGNUP,
 });
 
 export const changeValue = (value, key) => ({
   type: CHANGE_VALUE,
   value,
   key,
+});
+
+export const signup = () => ({
+  type: SIGNUP,
 });
 
 export const login = () => ({

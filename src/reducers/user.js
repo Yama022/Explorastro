@@ -1,13 +1,17 @@
 import {
-  CHANGE_VALUE, TOGGLE_DROPDOWN, LOGOUT, SAVE_USER,
+  CHANGE_VALUE, TOGGLE_DROPDOWN, TOGGLE_SIGNUP, LOGOUT, SAVE_USER,
 } from 'src/actions/user';
 
 const initialState = {
+  firstname: '',
+  lastname: '',
   email: 'admin@explorastro.fr',
   password: 'exploradmin',
+  passwordConfirmation: '',
   username: '',
   logged: false,
   open: false,
+  signup: false,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -22,6 +26,12 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         open: !state.open,
+      };
+    }
+    case TOGGLE_SIGNUP: {
+      return {
+        ...state,
+        signup: !state.signup,
       };
     }
     case SAVE_USER: {

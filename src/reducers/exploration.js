@@ -1,4 +1,4 @@
-import { FORM, SAVE_SORTIE, CHANGE_INPUT } from 'src/actions/exploration';
+import { FORM, SAVE_EXPLORATION, CHANGE_INPUT } from 'src/actions/exploration';
 import data from 'src/data/data.json';
 
 export const initialState = {
@@ -15,7 +15,7 @@ const reducer = (state = initialState, action = {}) => {
         ville: action.payload,
       };
     }
-    case SAVE_SORTIE: {
+    case SAVE_EXPLORATION: {
       console.log('ici', action.payload);
       return {
         ...state,
