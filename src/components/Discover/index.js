@@ -10,6 +10,8 @@ export default function Discover({
   onFormSubmit,
   data,
   explorations,
+  onChangeInput,
+  zone,
 }) {
   const tabSorties = explorations.length > 0 ? explorations : data;
 
@@ -31,9 +33,9 @@ export default function Discover({
           </div>
         ))}
       </div>
-      <Filter onSubmit={onFormSubmit} />
+      <Filter onSubmit={onFormSubmit} onChange={onChangeInput} fieldZone={zone} />
 
-      <Map coord={tabSorties} />
+      <Map coord={tabSorties} fieldZone={zone} />
 
     </div>
   );
@@ -43,4 +45,6 @@ Discover.propTypes = {
   onFormSubmit: PropTypes.func.isRequired,
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
   explorations: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onChangeInput: PropTypes.func.isRequired,
+  zone: PropTypes.number.isRequired,
 };

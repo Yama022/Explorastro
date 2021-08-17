@@ -1,11 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function Filter({ onSubmit }) {
+export default function Filter({ onSubmit, onChange, fieldZone }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const { value } = event.target[0];
+    console.log(value);
     onSubmit(value);
+  };
+  const handleOnchange = (event) => {
+    event.preventDefault();
+    const { value } = event.target[0];
+    const zone = parseInt(value, 10);
+    console.log(typeof (zone));
+    onChange(zone);
   };
   return (
     <div className="map__filter">
@@ -37,8 +45,8 @@ export default function Filter({ onSubmit }) {
           </div>
         </label>
       </form>
-      <form>
-        <label className="label map__filter__label" htmlFor="km">Autour de moi
+      <form onSubmit={handleOnchange}>
+        <label className="label map__filter__label" htmlFor="km">Autour de moi sur {fieldZone} km
           <div className="field has-addons">
             <input type="range" id="km" name="cowbell" min="0" max="100" step="10" />
             <button type="submit" className="button is-primary">Rercher</button>
@@ -51,4 +59,6 @@ export default function Filter({ onSubmit }) {
 
 Filter.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+  fieldZone: PropTypes.number.isRequired,
 };
