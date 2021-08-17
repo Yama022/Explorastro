@@ -9,7 +9,7 @@
     "db:install": "sqitch deploy",
     "db:seed": "node ./migrations/seeding",
     "db:reset": "sqitch revert -y; sqitch deploy",
-    "db:deploy": "sqitch deploy"
+    "db:deploy": "sqitch deploy; node ./migrations/initialization"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
