@@ -54,9 +54,10 @@
       }
     }
     &__dropdown {
-      width: 170%;
+      width: 12em;
       background-color: $secondary-color;
       position: absolute;
+      z-index: 1420;
       padding: 1.2em 2em;
       top: 155%;
       right: -5%;

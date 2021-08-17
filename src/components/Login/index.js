@@ -1,5 +1,9 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
+
+import { FaUser, FaKey } from 'react-icons/fa';
+
 import planet1 from 'src/assets/images/login/1.png';
 import planet2 from 'src/assets/images/login/2.png';
 import planet3 from 'src/assets/images/login/3.png';
@@ -11,9 +15,21 @@ import planet8 from 'src/assets/images/login/8.png';
 import planet9 from 'src/assets/images/login/9.png';
 import logo from 'src/assets/images/logo-explorastro.png';
 
-import { FaUser } from 'react-icons/fa';
+export default function Login({
+  email,
+  password,
+  changeField,
+  handleLogin,
+}) {
+  const handleChange = (event) => {
+    changeField(event.target.value, event.target.name);
+  };
 
-export default function Login() {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    handleLogin();
+  };
+
   useEffect(() => {
     function parallax(e) {
       document.querySelectorAll('.object').forEach((move) => {
@@ -27,8 +43,6 @@ export default function Login() {
 
     document.addEventListener('mousemove', parallax);
   });
-
-  const [login, setLogin] = React.useState('');
 
   return (
     <div className="login">
@@ -44,11 +58,11 @@ export default function Login() {
       <div className="login__container">
         <div className="login__container__form">
           <img src={logo} alt="" />
-          <form action="">
+          <form onSubmit={handleSubmit}>
             <div className="field">
               <label className="label">Username</label>
               <div className="control has-icons-left has-icons-right">
-                <input className="input is-success" type="text" placeholder="ex: AstroCharles" value={login} name="login" onChange={(e) => setLogin(e.target.value)} />
+                <input className="input is-success" type="text" placeholder="ex: AstroCharles" value={email} name="email" onChange={handleChange} />
                 <span className="icon is-small is-left">
                   <FaUser />
                 </span>
@@ -57,9 +71,9 @@ export default function Login() {
             <div className="field">
               <label className="label">Mot de Passe</label>
               <div className="control has-icons-left has-icons-right">
-                <input className="input is-success" type="password" placeholder="ex: MyStr0ngP455sWoRD" value={login} name="login" onChange={(e) => setLogin(e.target.value)} />
+                <input className="input is-success" type="password" placeholder="ex: MyStr0ngP455sWoRD" value={password} name="password" onChange={handleChange} />
                 <span className="icon is-small is-left">
-                  <FaUser />
+                  <FaKey />
                 </span>
               </div>
             </div>
@@ -74,3 +88,10 @@ export default function Login() {
     </div>
   );
 }
+
+Login.propTypes = {
+  email: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  changeField: PropTypes.func.isRequired,
+  handleLogin: PropTypes.func.isRequired,
+};

@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom';
 
 import { BiCog, BiUserCircle, BiPowerOff } from 'react-icons/bi';
 
-export default function User({ username, isOpen, onClickUser }) {
+export default function User({
+  username, isOpen, onClickUser, handleLogout,
+}) {
   return (
     <div className="header__user">
       <div className="header__user__container" onClick={onClickUser}>
@@ -13,13 +15,13 @@ export default function User({ username, isOpen, onClickUser }) {
       </div>
       <ul className={isOpen ? 'header__user__dropdown header__user__dropdown--open' : 'header__user__dropdown'}>
         <li className="header__user__dropdown__item">
-          <Link to="/profile" className="header__user__dropdown__item__link">
+          <Link to="/profile" className="header__user__dropdown__item__link" onClick={onClickUser}>
             <BiUserCircle />
             <span> Profil </span>
           </Link>
         </li>
         <li className="header__user__dropdown__item">
-          <Link to="/settings" className="header__user__dropdown__item__link">
+          <Link to="/settings" className="header__user__dropdown__item__link" onClick={onClickUser}>
             <BiCog />
             <span> Paramètres </span>
           </Link>
@@ -28,7 +30,8 @@ export default function User({ username, isOpen, onClickUser }) {
           <div
             className="header__user__dropdown__item__link"
             onClick={() => {
-              console.log('Logging off');
+              handleLogout();
+              onClickUser();
             }}
           >
             <BiPowerOff />
@@ -44,4 +47,5 @@ User.propTypes = {
   username: PropTypes.string.isRequired,
   isOpen: PropTypes.bool.isRequired,
   onClickUser: PropTypes.func.isRequired,
+  handleLogout: PropTypes.func.isRequired,
 };

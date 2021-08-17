@@ -33,7 +33,7 @@ export default function Discover({
       </div>
       <Filter onSubmit={onFormSubmit} />
 
-      <Map coord={tabSorties} />;
+      <Map coord={tabSorties} />
 
     </div>
   );
