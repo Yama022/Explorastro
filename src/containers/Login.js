@@ -1,15 +1,24 @@
 import { connect } from 'react-redux';
 import Login from 'src/components/Login';
-import { changeValue, login, logout } from 'src/actions/user';
+import {
+  changeValue, login, logout, toggleSignup, signup,
+} from 'src/actions/user';
 
 const mapStateToProps = (state) => ({
+  firstname: state.user.firstname,
+  lastname: state.user.lastname,
+  username: state.user.username,
   email: state.user.email,
   password: state.user.password,
+  passwordConfirmation: state.user.passwordConfirmation,
   isLogged: state.user.logged,
-  username: state.user.username,
+  signup: state.user.signup,
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  handleToggleSignup: () => {
+    dispatch(toggleSignup());
+  },
   changeField: (value, key) => {
     dispatch(changeValue(value, key));
   },
@@ -18,6 +27,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   handleLogout: () => {
     dispatch(logout());
+  },
+  handleSignup: () => {
+    dispatch(signup());
   },
 });
 
