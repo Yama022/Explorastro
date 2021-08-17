@@ -7,7 +7,9 @@
     "start": "node index.js",
     "dev": "nodemon index.js",
     "db:install": "sqitch deploy",
-    "db:reset": "sqitch revert -y; sqitch deploy; node ./migrations/seeding"
+    "db:seed": "node ./migrations/seeding",
+    "db:reset": "sqitch revert -y; sqitch deploy",
+    "db:deploy": "sqitch deploy"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
