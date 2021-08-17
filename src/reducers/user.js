@@ -1,12 +1,12 @@
 import {
-  CHANGE_VALUE, TOGGLE_DROPDOWN, LOGOUT, LOGIN,
+  CHANGE_VALUE, TOGGLE_DROPDOWN, LOGOUT, SAVE_USER,
 } from 'src/actions/user';
 
 const initialState = {
-  email: '',
-  password: '',
-  username: 'AstroCharles',
-  logged: true,
+  email: 'admin@explorastro.fr',
+  password: 'exploradmin',
+  username: '',
+  logged: false,
   open: false,
 };
 
@@ -24,19 +24,18 @@ const reducer = (state = initialState, action = {}) => {
         open: !state.open,
       };
     }
-    case LOGOUT: {
+    case SAVE_USER: {
       return {
-        // Déconnexion temporaire ci-dessous.
-        // Prendre la dernière ligne quand la connexion fonctionne
         ...state,
-        logged: false,
-        // ...initialState,  <-- Remettre cette ligne lorsque les connexions fonctionnent
+        username: action.payload.username,
+        logged: true,
+        email: '',
+        password: '',
       };
     }
-    case LOGIN: {
+    case LOGOUT: {
       return {
-        ...state,
-        logged: true,
+        ...initialState,
       };
     }
     default:
