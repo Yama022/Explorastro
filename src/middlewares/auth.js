@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {
-  LOGIN, SIGNUP, saveUser, CHECK_TOKEN,
+  LOGIN, SIGNUP, saveUser, CHECK_TOKEN, CHECK_USER_LOGGED,
 } from 'src/actions/user';
 
 const auth = (store) => (next) => (action) => {
@@ -16,8 +16,7 @@ const auth = (store) => (next) => (action) => {
           password: state.user.password,
         },
       }).then((response) => {
-        console.log(response.data);
-        localStorage.setItem('token', response.data.accessToken);
+        localStorage.setItem('user', JSON.stringify(response.data));
         const actionSaveUser = saveUser(response.data);
         store.dispatch(actionSaveUser);
       })
@@ -69,6 +68,12 @@ const auth = (store) => (next) => (action) => {
           })
           .catch((error) => console.log(error));
       }
+      break;
+    }
+    case CHECK_USER_LOGGED: {
+      const user = JSON.parse(localStorage.getItem('user'));
+      const userData = saveUser(user);
+      store.dispatch(userData);
       break;
     }
     default:

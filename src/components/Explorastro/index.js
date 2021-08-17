@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -10,8 +10,12 @@ import Discover from 'src/containers/Discover';
 import CreateEvent from 'src/components/CreateEvent';
 import Login from 'src/containers/Login';
 import Guide from 'src/components/Guide';
+import Landing from 'src/components/Landing';
 
-export default function Explorastro({ isLogged }) {
+export default function Explorastro({ isLogged, checkIsLogged }) {
+  useEffect(() => {
+    checkIsLogged();
+  }, []);
   return (
     <div className="explorastro">
       {isLogged
@@ -60,6 +64,7 @@ export default function Explorastro({ isLogged }) {
             </Route>
             <Route exact path="/landing">
               <Header />
+              <Landing />
               <Footer />
             </Route>
             <Route exact path="/login">
@@ -78,4 +83,5 @@ export default function Explorastro({ isLogged }) {
 
 Explorastro.propTypes = {
   isLogged: PropTypes.bool.isRequired,
+  checkIsLogged: PropTypes.func.isRequired,
 };

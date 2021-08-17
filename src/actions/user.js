@@ -6,6 +6,7 @@ export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
 export const SAVE_USER = 'SAVE_USER';
 export const CHECK_TOKEN = 'CHECK_TOKEN';
+export const CHECK_USER_LOGGED = 'CHECK_USER_LOGGED';
 
 export const toggleDropdown = () => ({
   type: TOGGLE_DROPDOWN,
@@ -36,4 +37,8 @@ export const logout = () => ({
 export const saveUser = (payload) => ({
   type: SAVE_USER,
   payload,
+});
+
+export const checkUserLogged = () => ({
+  type: CHECK_USER_LOGGED,
 });
