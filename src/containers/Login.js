@@ -11,7 +11,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   changeField: (value, key) => {
-    console.log(value);
     dispatch(changeValue(value, key));
   },
   handleLogin: () => {

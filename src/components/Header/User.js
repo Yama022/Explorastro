@@ -27,16 +27,17 @@ export default function User({
           </Link>
         </li>
         <li className="header__user__dropdown__item">
-          <div
+          <Link
+            to="/"
             className="header__user__dropdown__item__link"
             onClick={() => {
-              handleLogout();
               onClickUser();
+              handleLogout();
             }}
           >
             <BiPowerOff />
             <span> Déconnexion </span>
-          </div>
+          </Link>
         </li>
       </ul>
     </div>

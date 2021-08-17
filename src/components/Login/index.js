@@ -77,12 +77,12 @@ export default function Login({
                 </span>
               </div>
             </div>
+            <div className="login__container__form__buttons-container">
+              <button type="submit" className="button purple">Se Connecter</button>
+              <div className="button --outlined">S'inscrire</div>
+            </div>
           </form>
 
-          <div className="login__container__form__buttons-container">
-            <div className="button purple">Se Connecter</div>
-            <div className="button --outlined">S'inscrire</div>
-          </div>
         </div>
       </div>
     </div>
