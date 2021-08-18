@@ -22,7 +22,7 @@ module.exports = {
     try {
       const { name } = req.body;
 
-      if (!name || name.length < 1) {
+      if (!name) {
         return res.status(400).json({
           message: errorMessage.MISSING_EXPLORATION_NAME,
         });
@@ -73,15 +73,9 @@ module.exports = {
       const lgt = req.body.location?.lgt;
       const lat = req.body.location?.lat;
 
-      if (explorationToUpdate.author_id !== req.user.id) {
-        return res.status(403).json({
-          message: errorMessage.UNAUTHORIZED,
-        });
-      }
+      const exploration = await Exploration.findByPk(id);
 
-      const explorationToUpdate = await Exploration.findByPk(id);
-
-      if (!explorationToUpdate) {
+      if (!exploration) {
         return res.status(404).json({
           message: errorMessage.EXPLORATION_NOT_FOUND,
         });
@@ -93,9 +87,8 @@ module.exports = {
       delete req.body.created_at;
       delete req.body.updated_at;
 
-      await explorationToUpdate.update({
+      await exploration.update({
         ...req.body,
-        author_id: req.user.id,
         geog: {
           type: "Point",
           coordinates: [lgt, lat],
@@ -103,7 +96,7 @@ module.exports = {
       });
 
       res.status(200).json({
-        explorationToUpdate,
+        exploration,
       });
     } catch (error) {
       console.error(error);
@@ -117,21 +110,15 @@ module.exports = {
     try {
       const { id } = req.params;
 
-      if (explorationToDelete.author_id !== req.user.id) {
-        return res.status(403).json({
-          message: errorMessage.UNAUTHORIZED,
-        });
-      }
+      const exploration = await Exploration.findByPk(id);
 
-      const explorationToDelete = await Exploration.findByPk(id);
-
-      if (!explorationToDelete) {
+      if (!exploration) {
         return res.status(404).json({
           message: errorMessage.EXPLORATION_NOT_FOUND,
         });
       }
 
-      await explorationToDelete.destroy();
+      await exploration.destroy();
 
       res.status(200).json({ OK: true });
     } catch (error) {
