@@ -5,6 +5,7 @@ import {
   MapContainer,
   TileLayer,
 } from 'react-leaflet';
+import * as dayjs from 'dayjs';
 import logo from 'src/assets/images/placeholder_image.jpg';
 
 export default function CreateEvent({ onChangeInput, onFormSubmit }) {
@@ -34,9 +35,14 @@ export default function CreateEvent({ onChangeInput, onFormSubmit }) {
             <h4 className="form__create__title">Lieu</h4>
             <input className="input is-link is-small" name="locationEvent" type="text" onChange={handleOnchange} />
             <h4 className="form__create__title">Date de l'événement</h4>
-            <div className="form__create__title__calendar">
-              <input type="date" />
-            </div>
+            <input
+              className="input is-link is-small"
+              type="datetime-local"
+              name="dateEvent"
+              value={dayjs().format('YYYY-MM-DDTHH:mm:ss')}
+              min={dayjs().format('YYYY-MM-DDTHH:mm:ss')}
+              onChange={handleOnchange}
+            />
             <h4 className="form__create__title">Nombre de personne(s) maximum
               <input name="maxRateEvent" type="number" onChange={handleOnchange} />
             </h4>
