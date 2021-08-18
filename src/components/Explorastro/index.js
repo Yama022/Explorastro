@@ -7,15 +7,15 @@ import Footer from 'src/components/Footer';
 import Timeline from 'src/components/Timeline';
 import Error from 'src/components/Error';
 import Discover from 'src/containers/Discover';
-import CreateEvent from 'src/components/CreateEvent';
+import CreateEvent from 'src/containers/CreateEvent';
 import Login from 'src/containers/Login';
 import Guide from 'src/components/Guide';
 import Landing from 'src/components/Landing';
 
 export default function Explorastro({ isLogged, checkIsLogged }) {
-  // useEffect(() => {
-  //   checkIsLogged();
-  // }, []);
+  useEffect(() => {
+    checkIsLogged();
+  }, []);
   return (
     <div className="explorastro">
       {isLogged
