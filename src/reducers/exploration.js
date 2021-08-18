@@ -1,5 +1,5 @@
 import {
-  FORM, SAVE_EXPLORATION, CHANGE_INPUT, CHANGE_INPUT_CREATE_EVENT,
+  FORM, SAVE_EXPLORATION, CHANGE_INPUT, CHANGE_INPUT_CREATE_EVENT, COORD,
 } from 'src/actions/exploration';
 import data from 'src/data/data.json';
 
@@ -9,9 +9,13 @@ export const initialState = {
   zone: 10,
   titleEvent: '',
   descEvent: '',
-  locationEvent: '',
+  street: '',
+  city: '',
+  postalCode: 0,
   dateEvent: '',
   maxRateEvent: 0,
+  lon: 0,
+  lat: 0,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -34,10 +38,18 @@ const reducer = (state = initialState, action = {}) => {
         zone: action.payload,
       };
     }
+    case COORD: {
+      return {
+        ...state,
+        lat: action.lat,
+        lon: action.lon,
+      };
+    }
     case CHANGE_INPUT_CREATE_EVENT: {
       return {
         ...state,
         [action.key]: action.value,
+
       };
     }
     default:

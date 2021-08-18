@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import CreateEvent from 'src/components/CreateEvent';
-import { changeInputCreateEvent, submitFormCreateEvent } from 'src/actions/exploration';
+import { changeInputCreateEvent, submitFormCreateEvent, getCoord } from 'src/actions/exploration';
 
 const mapStateToProps = () => ({
 
@@ -13,6 +13,10 @@ const mapDispatchToProps = (dispatch) => ({
   },
   onFormSubmit: () => {
     const action = submitFormCreateEvent();
+    dispatch(action);
+  },
+  getCoordLocation: () => {
+    const action = getCoord();
     dispatch(action);
   },
 

@@ -1,13 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import axios from'axios';
-
-import {
-  MapContainer,
-  TileLayer,
-} from 'react-leaflet';
+import { MapContainer, TileLayer } from 'react-leaflet';
 import * as dayjs from 'dayjs';
+import PropTypes from 'prop-types';
 import logo from 'src/assets/images/placeholder_image.jpg';
+import LeafletControlGeocoder from './controlGeocoder';
 
 export default function CreateEvent({ onChangeInput, onFormSubmit }) {
   const handleSubmit = (event) => {
@@ -33,8 +29,15 @@ export default function CreateEvent({ onChangeInput, onFormSubmit }) {
             <h4 className="form__create__title">Descirption</h4>
             <input className="input is-link is-small" name="descEvent" type="text" onChange={handleOnchange} />
 
-            <h4 className="form__create__title">Lieu</h4>
-            <input className="input is-link is-small" name="locationEvent" type="text" onChange={handleOnchange} />
+            <h4 className="form__create__title">Rue</h4>
+            <input className="input is-link is-small" name="street" type="text" onChange={handleOnchange} />
+
+            <h4 className="form__create__title">Ville</h4>
+            <input className="input is-link is-small" name="city" type="text" onChange={handleOnchange} />
+
+            <h4 className="form__create__title">Code postal</h4>
+            <input className="input is-link is-small" name="postalCode" type="number" onChange={handleOnchange} />
+
             <h4 className="form__create__title">Date de l'événement</h4>
             <input
               className="input is-link is-small"
@@ -71,7 +74,7 @@ export default function CreateEvent({ onChangeInput, onFormSubmit }) {
                 name="tiles"
               />
               {/* Add Markers events astro on the map */}
-
+              <LeafletControlGeocoder />
             </MapContainer>
           </div>
 
@@ -99,4 +102,5 @@ export default function CreateEvent({ onChangeInput, onFormSubmit }) {
 CreateEvent.propTypes = {
   onChangeInput: PropTypes.func.isRequired,
   onFormSubmit: PropTypes.func.isRequired,
+  getCoordLocation: PropTypes.func.isRequired,
 };
