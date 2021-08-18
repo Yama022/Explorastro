@@ -1,12 +1,14 @@
 /* eslint-disable max-len */
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import { FcDownRight, FcAdvance } from 'react-icons/fc';
 import { MdReportProblem } from 'react-icons/md';
+import { ImSad } from 'react-icons/im';
+import { TiArrowRight } from 'react-icons/ti';
 
 export default function Guide() {
   return (
+    // Div qui englobe l'ensemble des paragaphe
     <div className="guide">
       <div className="guide__presentation">
         <h1 className="guide__presentation__title"><FcAdvance /> Tu souhaites découvrir ce milieu fabuleux qu'est l'astronomie ?!</h1>
@@ -24,40 +26,228 @@ export default function Guide() {
             la pupille va se dilater et son diamètre quadrupler pour laisser passer davantage de lumière.<br />
             L’astronomie demande de la patience mais aussi de l’entraînement.
             Au fil de vos observations, votre vision nocturne se fera meilleure.<br /><br />
-            <MdReportProblem /><em>Eviter d'allumer des lumières style flash, préférez la lumière rouge !</em>
+            <MdReportProblem /><em> Eviter d'allumer des lumières style flash, préférez la lumière rouge, sinon gare à l'éblouïssement !</em> <MdReportProblem />
           </p>
         </div>
       </div>
-      <div className="guide__paraph__one">
-        <h2 className="guide__paraph__one__title"><FcAdvance /> On peut utiliser différents matériels pour du visuel !</h2>
-        <div className="guide__paraph__one__paragraphe">
+      {/* Création du 1er paragaphe pour expliquer ce qu'il est possible de voir suivant l'instrument utilisé */}
+      <div className="guide__paragraphe__one">
+        <h2 className="guide__paragraphe__one__title"><FcAdvance /> On peut utiliser différents matériels pour du visuel !</h2>
+        <div className="guide__paragraphe__one__paragraphe">
           <p>On peut par exemple utiliser des jumelles, un outil assez simple d'utilisation, rapide à mettre en place et peu chère !
-            Rien qu'avec des jumelles on peu déjà observer plusieurs objets du ciel (Mais quoi qu'est-ce qu'on peut voir aux jumelles me demanderez-vous ?
+            Le coût d'une paire de jumelle est d'environ une 50ène d'€. <br />
+            Rien qu'avec des jumelles on peut déjà observer plusieurs objets du ciel (Mais quoi qu'est-ce qu'on peut voir aux jumelles me demanderez-vous ?
             Tu te calmes ! je vais te donner quelques exmples ! Eh oué, je fais les choses bien moi)
           </p>
           <p>Aux jumelles on peut, par exemple, observer ceci : </p>
+
+          <figure>
+            <a href="http://fr.wikipedia.org/wiki/Galaxie_d%27Andromède" target="_blank" rel="noreferrer">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Andromeda_Galaxy_%28with_h-alpha%29.jpg/280px-Andromeda_Galaxy_%28with_h-alpha%29.jpg" alt="M31 Andromède" />
+            </a>
+            <figcaption className="exemple"> Galaxie d'Andromède ! </figcaption>
+          </figure>
+
+          <figure>
+            <a href="https://www.astrobin.com/e6l8jj/" target="_blank" rel="noopener noreferrer">
+              <img src="https://cdn.astrobin.com/thumbs/3BEFT17glT6__1824x0_kWXURFLk.jpg" alt="M42 Orion" />
+            </a>
+            <figcaption className="exemple">Grande Nébuleuse d'Orion ! </figcaption>
+          </figure>
+
+          <figure>
+            <a href="https://fr.wikipedia.org/wiki/Nuages_de_Magellan" target="_blank" rel="noreferrer">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Magellanic_Clouds_%E2%80%95_Irregular_Dwarf_Galaxies.jpg/330px-Magellanic_Clouds_%E2%80%95_Irregular_Dwarf_Galaxies.jpg" alt="Magellan" />
+            </a>
+            <figcaption className="exemple">Nuages de Magellan (si dans l'hémisphère SUD) ! </figcaption>
+          </figure>
         </div>
+      </div>
 
-        <figure>
-          <Link to="http://fr.wikipedia.org/wiki/Galaxie_d%27Andromède" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Andromeda_Galaxy_%28with_h-alpha%29.jpg/280px-Andromeda_Galaxy_%28with_h-alpha%29.jpg" alt="M31 Andromède" />
-          </Link>
-          <figcaption className="exemple"> Galaxie d'Andromède ! </figcaption>
-        </figure>
+      {/* Création du 1er paragaphe pour expliquer ce qu'il est possible de voir suivant l'instrument utilisé */}
+      <div className="guide__paragraphe__two">
+        <h2 className="guide__paragraphe__two__title"><FcAdvance /> On peut aussi utiliser une lunette ou un téléscope pour du visuel !</h2>
+        <div className="guide__paragraphe__two__paragraphe">
+          <p>Comme mentionné dans le titre, on peut aussi utiliser une lunette ou un téléscope pour faire du visuel, même si cela commence déjà à coûter un peu plus chère.
+            Le coût d'une lunette ou d'un téléscope va dépendre de votre budget et de ce que vous souhaiterez voir, car il n'existe pas (bien malheureusement) d'instrument
+            qui fasse le meilleur des deux... <ImSad />
+          </p>
+          <p> <TiArrowRight /> <em>En tout 1er achat pour une lunette on peut partir sur ce type de lunette :</em> </p>
 
-        <figure>
-          <Link to="https://fr.wikipedia.org/wiki/N%C3%A9buleuse_d%27Orion" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Orion_Nebula_-_Hubble_2006_mosaic_18000.jpg/280px-Orion_Nebula_-_Hubble_2006_mosaic_18000.jpg" alt="M42 Orion" />
-          </Link>
-          <figcaption className="exemple">Grande Nébuleuse d'Orion ! </figcaption>
-        </figure>
+          {/* Création d'une div qui englobe les <figure> pour pouvoir flex en wrap dessus */}
+          <div className="guide__paragraphe__two__paragraphe__figure">
+            <figure className="guide__paragraphe__two__paragraphe__elements">
+              <a href="https://www.pierro-astro.com/materiel-astronomique/lunettes-astronomiques/lunettes-achromatiques-1/lunette-70-700-sur-monture-az2-sky-watcher_detail" target="_blank" rel="noreferrer">
+                <img src="https://www.maison-astronomie.com/12466-home_default/lunette-70700-sky-watcher-sur-monture-azimutale-az2.jpg" alt="LUNETTE 70/700 SKY-WATCHER" />
+              </a>
+              <figcaption className="exemple"> LUNETTE 70/700 SKY-WATCHER - 119€ </figcaption>
+            </figure>
+            <figure className="guide__paragraphe__two__paragraphe__elements">
+              <a href="https://www.pierro-astro.com/materiel-astronomique/debutants/t%C3%A9lescope-dobson-mini-bresser-130mm_detail" target="_blank" rel="noreferrer">
+                <img src="https://www.maison-astronomie.com/8696-large_default/telescope-dobson-bresser-messier-5-130650.jpg" alt="DOBSON BRESSER MESSIER 5" />
+              </a>
+              <figcaption className="exemple"> DOBSON BRESSER MESSIER 5" 130/650 - 215€ </figcaption>
+            </figure>
+            <figure className="guide__paragraphe__two__paragraphe__elements">
+              <a href="https://www.maison-astronomie.com/fr/initiation-enfants/5756-telescope-dobson-102640-omegon.html" target="_blank" rel="noreferrer">
+                <img src="https://www.maison-astronomie.com/15614-large_default/telescope-dobson-102640-omegon.jpg" alt="DOBSON 102/640 OMEGON" />
+              </a>
+              <figcaption className="exemple"> DOBSON 102/640 OMEGON - 249€ </figcaption>
+            </figure>
+            <figure className="guide__paragraphe__two__paragraphe__elements">
+              <a href="https://www.maison-astronomie.com/fr/initiation-adultes/5645-dobson-flextube-heritage-150750-sky-watcher-3664055000513.html" target="_blank" rel="noreferrer">
+                <img src="https://www.maison-astronomie.com/15110-large_default/dobson-flextube-heritage-150750-sky-watcher.jpg" alt="DOBSON FLEXTUBE HERITAGE 150/750 SKY-WATCHER" />
+              </a>
+              <figcaption className="exemple"> DOBSON 150/750 SKY-WATCHER - 260€ </figcaption>
+            </figure>
+            <figure className="guide__paragraphe__two__paragraphe__elements">
+              <a href="https://www.pierro-astro.com/materiel-astronomique/marques/skywatcher/telescopes-newton/t%C3%A9lescope-newton-130-650-sur-monture-%C3%A9quatoriale-starquest-sky-watcher_detail" target="_blank" rel="noreferrer">
+                <img src="https://www.promo-optique.com/105868-large_default/telescope-130650-sur-monture-starquest-skywatcher.jpg" alt="Newton 130/650 StarQuest" />
+              </a>
+              <figcaption className="exemple"> NEWTON 130/650 StARQUEST - 250€ </figcaption>
+            </figure>
+            <figure className="guide__paragraphe__two__paragraphe__elements">
+              <a href="https://www.promo-optique.com/fr/telescope-debutant/52751-telescope-newton-perl-bellatrix-150-750-eq3-2-motorisable" target="_blank" rel="noreferrer">
+                <img src="https://www.promo-optique.com/9957-large_default/telescope-newton-perl-bellatrix-150-750-eq3-2-motorisable.jpg" alt="Newton 150/750 EQ3-2" />
+              </a>
+              <figcaption className="exemple"> NEWTON 150/750 EQ3 - 429€ </figcaption>
+            </figure>
+          </div>
 
-        <figure>
-          <Link to="https://fr.wikipedia.org/wiki/Nuages_de_Magellan" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Magellanic_Clouds_%E2%80%95_Irregular_Dwarf_Galaxies.jpg/330px-Magellanic_Clouds_%E2%80%95_Irregular_Dwarf_Galaxies.jpg" alt="Magellan" />
-          </Link>
-          <figcaption className="exemple">Nuages de Magellan (si dans l'hémisphère SUD) ! </figcaption>
-        </figure>
+          <p> <TiArrowRight /> <em>Divers accessoires peuvent être utile lors de vos sorties tels que :</em> </p>
+          <div className="guide__paragraphe__two__paragraphe__figure">
+            <figure className="guide__paragraphe__two__paragraphe__elements">
+              <a href="https://www.maison-astronomie.com/fr/oculaires/5585-2005-oculaire-vixen-npl-coulant-3175mm.html#/8-focale-4_mm" target="_blank" rel="noreferrer">
+                <img src="https://www.maison-astronomie.com/14959-large_default/oculaire-vixen-npl-coulant-3175mm.jpg" alt="OCULAIRE VIXEN NPL COULANT 31,75MM" />
+              </a>
+              <figcaption className="exemple"> OCULAIRE VIXEN NPL COULANT 31,75MM - 42€ </figcaption>
+            </figure>
+            <figure className="guide__paragraphe__two__paragraphe__elements">
+              <a href="https://www.maison-astronomie.com/fr/oculaires/4478-1566-oculaires-explore-scientific-ler-52-argon.html#/7-focale-3_mm" target="_blank" rel="noreferrer">
+                <img src="https://www.maison-astronomie.com/8496-large_default/oculaires-explore-scientific-ler-52-argon.jpg" alt="EXPLORE SCIENTIFIC LER 52° ARGON" />
+              </a>
+              <figcaption className="exemple"> OCULAIRES EXPLORE SCIENTIFIC LER 52° ARGON - 75€ </figcaption>
+            </figure>
+            <figure className="guide__paragraphe__two__paragraphe__elements">
+              <a href="https://www.maison-astronomie.com/fr/oculaires/2850-566-oculaires-takahashi-le.html#/9-focale-5_mm" target="_blank" rel="noreferrer">
+                <img src="https://www.maison-astronomie.com/5342-large_default/oculaires-takahashi-le.jpg" alt="OCULAIRES TAKAHASHI LE" />
+              </a>
+              <figcaption className="exemple"> OCULAIRES TAKAHASHI LE - 234€ </figcaption>
+            </figure>
+            <figure className="guide__paragraphe__two__paragraphe__elements">
+              <a href="https://www.maison-astronomie.com/fr/oculaires/2141-6-oculaires-baader-hyperion.html#/9-focale-5_mm" target="_blank" rel="noreferrer">
+                <img src="https://www.maison-astronomie.com/4994-large_default/oculaires-baader-hyperion.jpg" alt="OCULAIRES BAADER HYPERION" />
+              </a>
+              <figcaption className="exemple"> OCULAIRES BAADER HYPERION - 145€ </figcaption>
+            </figure>
+            <figure className="guide__paragraphe__two__paragraphe__elements">
+              <a href="https://www.maison-astronomie.com/fr/barlow/4914-barlow-2x-kepler-o-3175mm.html" target="_blank" rel="noreferrer">
+                <img src="https://www.maison-astronomie.com/10762-large_default/barlow-2x-kepler-o-3175mm.jpg" alt="BARLOW 2X KEPLER Ø 31,75MM" />
+              </a>
+              <figcaption className="exemple"> BARLOW 2X KEPLER Ø 31,75MM - 38€ </figcaption>
+            </figure>
+            <figure className="guide__paragraphe__two__paragraphe__elements">
+              <a href="https://www.maison-astronomie.com/fr/barlow/810-barlow-3175-mm-2x-x-cel-lx-celestron-0050234935296.html" target="_blank" rel="noreferrer">
+                <img src="https://www.maison-astronomie.com/9705-large_default/barlow-3175-mm-2x-x-cel-lx-celestron.jpg" alt="BARLOW 31,75 MM 2X X-CEL LX CELESTRON" />
+              </a>
+              <figcaption className="exemple"> BARLOW 31,75 MM 2X X-CEL LX CELESTRON - 99€ </figcaption>
+            </figure>
+            <figure className="guide__paragraphe__two__paragraphe__elements">
+              <a href="https://www.maison-astronomie.com/fr/barlow/69-lentille-de-barlow-x2-tele-vue-o-3175-mm.html" target="_blank" rel="noreferrer">
+                <img src="https://www.maison-astronomie.com/6860-large_default/lentille-de-barlow-x2-tele-vue-o-3175-mm.jpg" alt="LENTILLE DE BARLOW X2 TELE VUE - Ø 31,75 MM" />
+              </a>
+              <figcaption className="exemple"> LENTILLE DE BARLOW X2 TELE VUE - Ø 31,75 MM - 130€ </figcaption>
+            </figure>
+            <figure className="guide__paragraphe__two__paragraphe__elements">
+              <a href="https://www.maison-astronomie.com/fr/renvois-coudes/731-renvoi-coude-en-3175-3664055002388.html" target="_blank" rel="noreferrer">
+                <img src="https://www.maison-astronomie.com/12110-large_default/renvoi-coude-en-3175.jpg" alt="RENVOI COUDÉ EN 31.75" />
+              </a>
+              <figcaption className="exemple"> RENVOI COUDÉ EN 31.75 - 40€ </figcaption>
+            </figure>
+            <figure className="guide__paragraphe__two__paragraphe__elements">
+              <a href="https://www.maison-astronomie.com/fr/renvois-coudes/4507-renvoi-coude-a-miroir-tele-vue-o-3175-mm.html" target="_blank" rel="noreferrer">
+                <img src="https://www.maison-astronomie.com/6860-large_default/lentille-de-barlow-x2-tele-vue-o-3175-mm.jpg" alt="RENVOI COUDÉ À MIROIR TELE VUE Ø 31,75 MM" />
+              </a>
+              <figcaption className="exemple"> RENVOI COUDÉ À MIROIR TELE VUE Ø 31,75 MM - 160€ </figcaption>
+            </figure>
+            <figure className="guide__paragraphe__two__paragraphe__elements">
+              <a href="https://www.maison-astronomie.com/fr/accessoiresoptiques/911-correcteurreducteur-sc-fd-63-celestron-0050234941754.html" target="_blank" rel="noreferrer">
+                <img src="https://www.maison-astronomie.com/14076-large_default/correcteurreducteur-sc-fd-63-celestron.jpg" alt="CORRECTEUR/RÉDUCTEUR SC F/D 6,3 CELESTRON" />
+              </a>
+              <figcaption className="exemple"> CORR/RÉDUCTEUR SC F/D 6,3 CELESTRON - 149€ </figcaption>
+            </figure>
+            <figure className="guide__paragraphe__two__paragraphe__elements">
+              <a href="https://www.maison-astronomie.com/fr/accessoiresoptiques/4317-correcteur-de-coma-newton-mpcc-mark-iii-baader.html" target="_blank" rel="noreferrer">
+                <img src="https://www.maison-astronomie.com/8068-large_default/correcteur-de-coma-newton-mpcc-mark-iii-baader.jpg" alt="CORRECTEUR DE COMA NEWTON MPCC MARK III BAADER" />
+              </a>
+              <figcaption className="exemple"> CORRECTEUR DE COMA NEWTON MPCC MARK III BAADER - 160€ </figcaption>
+            </figure>
+          </div>
+
+          <p> <TiArrowRight /> <em>Si on souhaite partir sur du matériel plus moyen/haut de gamme, on peut partir sur ça :</em> </p>
+          <div className="guide__paragraphe__two__paragraphe__figure">
+            <figure className="guide__paragraphe__two__paragraphe__elements">
+              <a href="https://www.maison-astronomie.com/fr/telescopes-newton/2571-telescope-2001000-neq5-perl-bellatrix.html" target="_blank" rel="noreferrer">
+                <img src="https://www.maison-astronomie.com/3933-large_default/telescope-2001000-neq5-perl-bellatrix.jpg" alt="TÉLESCOPE 200/1000 NEQ5 PERL BELLATRIX" />
+              </a>
+              <figcaption className="exemple"> TÉLESCOPE 200/1000 NEQ5 PERL BELLATRIX - 695€ </figcaption>
+            </figure>
+            <figure className="guide__paragraphe__two__paragraphe__elements">
+              <a href="https://www.maison-astronomie.com/fr/telescopes-newton/5219-telescope-sky-watcher-2001000-dual-speed-sur-neq5-pro-go-to-bd-3664055000254.html" target="_blank" rel="noreferrer">
+                <img src="https://www.maison-astronomie.com/12522-large_default/telescope-sky-watcher-2001000-dual-speed-sur-neq5-pro-go-to-bd.jpg" alt="TÉLESCOPE 200/1000 NEQ5 PRO GO-TO" />
+              </a>
+              <figcaption className="exemple"> TÉLESCOPE SKY-WATCHER 200/1000 DUAL SPEED SUR NEQ5 PRO GO-TO BD - 1134€ </figcaption>
+            </figure>
+            <figure className="guide__paragraphe__two__paragraphe__elements">
+              <a href="https://www.maison-astronomie.com/fr/telescopes-newton/5618-telescope-sky-watcher-2001000-dual-speed-sur-eq6-r-pro-go-to-bd.html" target="_blank" rel="noreferrer">
+                <img src="https://www.maison-astronomie.com/15050-large_default/telescope-sky-watcher-2001000-dual-speed-sur-eq6-r-pro-go-to-bd.jpg" alt="TÉLESCOPE 200/1000 EQ6R PRO GO-TO" />
+              </a>
+              <figcaption className="exemple"> TÉLESCOPE SKY-WATCHER 200/1000 DUAL SPEED SUR EQ6-R PRO GO-TO BD - 1933€ </figcaption>
+            </figure>
+            <figure className="guide__paragraphe__two__paragraphe__elements">
+              <a href="https://www.maison-astronomie.com/fr/lunettes-apoed/582-lunette-astronomique-sky-watcher-80ed-tube-optique-3664055000988.html" target="_blank" rel="noreferrer">
+                <img src="https://www.maison-astronomie.com/12403-large_default/lunette-astronomique-sky-watcher-80ed-tube-optique.jpg" alt="LUNETTE SKY-WATCHER 80ED" />
+              </a>
+              <figcaption className="exemple"> LUNETTE ASTRONOMIQUE SKY-WATCHER 80ED (TUBE OPTIQUE) - 497€ </figcaption>
+            </figure>
+            <figure className="guide__paragraphe__two__paragraphe__elements">
+              <a href="https://www.maison-astronomie.com/fr/lunettes-apoed/1010-lunette-sky-watcher-esprit-80ed-3664055001046.html" target="_blank" rel="noreferrer">
+                <img src="https://www.maison-astronomie.com/12393-large_default/lunette-sky-watcher-esprit-80ed.jpg" alt="LUNETTE SKY-WATCHER ESPRIT 80ED" />
+              </a>
+              <figcaption className="exemple"> LUNETTE SKY-WATCHER ESPRIT 80ED - 1490€ </figcaption>
+            </figure>
+            <figure className="guide__paragraphe__two__paragraphe__elements">
+              <a href="https://www.maison-astronomie.com/fr/lunettes-apoed/2527-lunette-sky-watcher-esprit-100ed-3664055001053.html" target="_blank" rel="noreferrer">
+                <img src="https://www.maison-astronomie.com/12392-large_default/lunette-sky-watcher-esprit-100ed.jpg" alt="LUNETTE SKY-WATCHER ESPRIT 100ED" />
+              </a>
+              <figcaption className="exemple"> LUNETTE SKY-WATCHER ESPRIT 100ED - 2244€ </figcaption>
+            </figure>
+            <figure className="guide__paragraphe__two__paragraphe__elements">
+              <a href="https://www.maison-astronomie.com/fr/telescopes-compacts/930-630-tube-optique-seul-sc-800-fastar-celestron-8.html#/341-version_opt_monture_moteurs-platine_standard_vixen_sky_watcher" target="_blank" rel="noreferrer">
+                <img src="https://www.maison-astronomie.com/9917-large_default/tube-optique-seul-sc-800-fastar-celestron-8.jpg" alt="TUBE OPTIQUE SEUL SC 800 FASTAR CELESTRON 8" />
+              </a>
+              <figcaption className="exemple"> TUBE OPTIQUE SEUL SC 800 FASTAR CELESTRON 8 - 1199€ </figcaption>
+            </figure>
+            <figure className="guide__paragraphe__two__paragraphe__elements">
+              <a href="https://www.maison-astronomie.com/fr/telescopes-compacts/931-629-tube-optique-seul-sc-925-fastar-celestron-925.html#/342-version_opt_monture_moteurs-platine_large_losmandy_cge" target="_blank" rel="noreferrer">
+                <img src="https://www.maison-astronomie.com/9922-large_default/tube-optique-seul-sc-925-fastar-celestron-925.jpg" alt="TUBE OPTIQUE SEUL SC 925 FASTAR CELESTRON 9.25" />
+              </a>
+              <figcaption className="exemple"> TUBE OPTIQUE SEUL SC 925 FASTAR CELESTRON 9.25 - 1764€ </figcaption>
+            </figure>
+            <figure className="guide__paragraphe__two__paragraphe__elements">
+              <a href="https://www.maison-astronomie.com/fr/telescopes-compacts/1290-tube-optique-seul-sc-925-edgehd-celestron-0050234104098.html" target="_blank" rel="noreferrer">
+                <img src="https://www.maison-astronomie.com/9866-large_default/tube-optique-seul-sc-925-edgehd-celestron.jpg" alt="TUBE OPTIQUE SEUL SC 925 EDGEHD CELESTRON" />
+              </a>
+              <figcaption className="exemple"> TUBE OPTIQUE SEUL SC 925 EDGEHD CELESTRON - 3115€ </figcaption>
+            </figure>
+            <figure className="guide__paragraphe__two__paragraphe__elements">
+              <a href="https://www.maison-astronomie.com/fr/telescopes-compacts/1291-tube-optique-seul-sc-1100-edgehd-celestron-0050234105095.html" target="_blank" rel="noreferrer">
+                <img src="https://www.maison-astronomie.com/9871-large_default/tube-optique-seul-sc-1100-edgehd-celestron.jpg" alt="TUBE OPTIQUE SEUL SC 1100 EDGEHD CELESTRON" />
+              </a>
+              <figcaption className="exemple"> TUBE OPTIQUE SEUL SC 1100 EDGEHD CELESTRON - 4365€ </figcaption>
+            </figure>
+          </div>
+        </div>
       </div>
 
     </div>
