@@ -8,6 +8,7 @@ const initialState = {
   email: '',
   password: '',
   passwordConfirmation: '',
+  newPassword: '',
   username: '',
   usernameChange: '',
   logged: false,

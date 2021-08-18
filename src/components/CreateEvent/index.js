@@ -1,42 +1,47 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import {
   MapContainer,
   TileLayer,
 } from 'react-leaflet';
-
-import Calendar from 'react-calendar';
-
-import 'react-calendar/dist/Calendar.css';
-
 import logo from 'src/assets/images/placeholder_image.jpg';
 
-export default function CreateEvent() {
+export default function CreateEvent({ onChangeInput, onFormSubmit }) {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    onFormSubmit();
+  };
+
+  const handleOnchange = (event) => {
+    onChangeInput(event.target.value, event.target.name);
+  };
+
   return (
     <div className="container">
       <h1 className="main-title">Créer un événement</h1>
       <div className="createEvent">
 
         <div className="form__create">
-          <form>
+          <form onSubmit={handleSubmit}>
             <h4 className="form__create__title">Nom de l'événement</h4>
 
-            <input className="input is-link is-small" type="text" />
+            <input className="input is-link is-small" name="titleEvent" type="text" onChange={handleOnchange} />
 
             <h4 className="form__create__title">Descirption</h4>
-            <input className="input is-link is-small" type="text" />
+            <input className="input is-link is-small" name="descEvent" type="text" onChange={handleOnchange} />
 
             <h4 className="form__create__title">Lieu</h4>
-            <input className="input is-link is-small" type="text" />
+            <input className="input is-link is-small" name="locationEvent" type="text" onChange={handleOnchange} />
             <h4 className="form__create__title">Date de l'événement</h4>
             <div className="form__create__title__calendar">
               <input type="date" />
             </div>
             <h4 className="form__create__title">Nombre de personne(s) maximum
-              <input type="number" />
+              <input name="maxRateEvent" type="number" onChange={handleOnchange} />
             </h4>
             <div className="form__create__button">
-              <button className="button is-link is-small" type="button">Créer</button>
+              <button className="button is-link is-small" type="submit">Créer</button>
               <button className="button is-danger is-small" type="button">Annuler</button>
             </div>
           </form>
@@ -46,7 +51,7 @@ export default function CreateEvent() {
           <div className="form__map">
             <MapContainer
           // Centering on the map of france
-              center={[46.232192999999995, 2.209666999999996]}
+              center={[44.332192999999995, 1.309666999999996]}
               zoom={6.4}
               maxZoom={18}
               minZoom={3}
@@ -83,3 +88,8 @@ export default function CreateEvent() {
     </div>
   );
 }
+
+CreateEvent.propTypes = {
+  onChangeInput: PropTypes.func.isRequired,
+  onFormSubmit: PropTypes.func.isRequired,
+};

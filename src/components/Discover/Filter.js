@@ -5,7 +5,6 @@ export default function Filter({ onSubmit, onChange, fieldZone }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const { value } = event.target[0];
-    console.log(value);
     onSubmit(value);
   };
   const handleOnchange = (event) => {
@@ -25,7 +24,7 @@ export default function Filter({ onSubmit, onChange, fieldZone }) {
             <div className="control width">
               <input className="input" type="text" id="ville" placeholder="Rechercher" />
             </div>
-            <button type="submit" className="button is-primary">Rercher</button>
+            <button type="submit" className="button is-primary">Rerchercher</button>
           </div>
         </label>
       </form>
@@ -41,7 +40,7 @@ export default function Filter({ onSubmit, onChange, fieldZone }) {
                 <option value="3">HAut garonne</option>
               </select>
             </div>
-            <button type="submit" className="button is-primary">Rercher</button>
+            <button type="submit" className="button is-primary">Rerchercher</button>
           </div>
         </label>
       </form>
