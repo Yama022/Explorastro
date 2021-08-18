@@ -82,7 +82,7 @@ module.exports = {
 
       if (explorationToUpdate.author_id !== req.user.id) {
         return res.status(403).json({
-          message: errorMessage.NOT_AUTHORIZED,
+          message: errorMessage.UNAUTHORIZED,
         });
       }
 
@@ -125,7 +125,7 @@ module.exports = {
 
       if (explorationToDelete.author_id !== req.user.id) {
         return res.status(403).json({
-          message: errorMessage.NOT_AUTHORIZED,
+          message: errorMessage.UNAUTHORIZED,
         });
       }
 
