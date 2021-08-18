@@ -17,8 +17,8 @@ const options = {
       title: 'ExplorAstro-API',
       version: '0.7-alpha',
     },
-    host: 'https://explorastro-api.herokuapp.com',
-    basePath: '/api/v1/',
+    host: 'explorastro-api.herokuapp.com',
+    basePath: '/',
     produces: [
       "application/json"
     ],
@@ -33,7 +33,7 @@ const options = {
     }
   },
   basedir: __dirname,
-  files: ['./app/controllers/**/*.js']
+  files: ['./app/routers/*.js', './app/controllers/*.js']
 };
 
 expressSwagger(options);
