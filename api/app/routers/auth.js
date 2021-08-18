@@ -30,7 +30,7 @@ router
    */
   .post("/signup", validate("body", userSchema), authController.signup)
   /**
-   * Connect to the API and get the user's information from the database
+   * Refresh the user's token
    * @route POST /api/v1/token
    * @group Authentification - Operations about authentification
    * @param {string} token.query.required - The user's refresh token

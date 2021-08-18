@@ -70,6 +70,7 @@ module.exports = {
       delete req.body.id;
       delete req.body.username;
       delete req.body.password;
+      delete req.body.role_id;
       delete req.body.created_at;
       delete req.body.updated_at;
 
