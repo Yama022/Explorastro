@@ -73,7 +73,6 @@ const auth = (store) => (next) => (action) => {
       break;
     }
     case CHECK_USER_LOGGED: {
-      console.log('test');
       const user = JSON.parse(localStorage.getItem('user'));
       api.defaults.headers.common.authorization = `BEARER ${user?.accessToken}`;
       const userData = saveUser(user);

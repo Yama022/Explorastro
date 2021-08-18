@@ -13,8 +13,8 @@ import Guide from 'src/components/Guide';
 import Landing from 'src/components/Landing';
 import Photo from 'src/components/Guide/Photo';
 import Visuel from 'src/components/Guide/Visuel';
-
 import { FcCollapse } from 'react-icons/fc';
+import Settings from 'src/containers/Settings';
 
 export default function Explorastro({ isLogged, checkIsLogged }) {
   useEffect(() => {
@@ -38,6 +38,9 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
               <Header />
               <Redirect to="/timeline" />
               <Footer />
+            </Route>
+            <Route exact path="/login">
+              <Redirect to="/timeline" />
             </Route>
             <Route exact path="/timeline">
               <Header />
@@ -71,13 +74,16 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
             </Route>
             <Route exact path="/login">
               <Redirect to="/timeline" />
+            <Route exact path="/settings">
+              <Header />
+              <Settings />
+              <Footer />
             </Route>
             <Route>
               <Header />
               <Error />
               <Footer />
             </Route>
-
           </Switch>
         )
         : (
@@ -92,6 +98,9 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
             </Route>
             <Route exact path="/login">
               <Login />
+            </Route>
+            <Route exact path="/settings">
+              <Redirect to="/login" />
             </Route>
             <Route>
               <Header />
