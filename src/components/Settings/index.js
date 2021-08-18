@@ -5,7 +5,13 @@ import PropTypes from 'prop-types';
 import { FaUser, FaKey } from 'react-icons/fa';
 
 export default function Settings({
-  usernameChange, changeField, handleUsernameChange, password, newPassword, handlePasswordChange,
+  usernameChange,
+  changeField,
+  handleUsernameChange,
+  password,
+  newPassword,
+  handlePasswordChange,
+  handleDeleteAccount,
 }) {
   const handleChange = (event) => {
     changeField(event.target.value, event.target.name);
@@ -26,8 +32,8 @@ export default function Settings({
   };
 
   const handleDelete = () => {
-    if (window.confirm('Êtes-vous sûr de vouloir supprimer votre compte?')) {
-      console.log('Compte supprimé');
+    if (window.confirm('Êtes-vous sûr de vouloir supprimer votre compte? Cette action est irréversible.')) {
+      handleDeleteAccount();
     }
   };
 
@@ -82,7 +88,7 @@ export default function Settings({
 
       <div className="settings__elems">
         <h2>Supprimer le compte</h2>
-        <button type="button" className="button is-danger is-small centered" onClick={handleDelete}>Supprimer le compte</button>
+        <button type="button" className="button is-danger is-small settings__elems__delete-button" onClick={handleDelete}>Supprimer le compte</button>
       </div>
 
     </div>
@@ -96,4 +102,5 @@ Settings.propTypes = {
   password: PropTypes.string.isRequired,
   newPassword: PropTypes.string.isRequired,
   handlePasswordChange: PropTypes.func.isRequired,
+  handleDeleteAccount: PropTypes.func.isRequired,
 };
