@@ -1,14 +1,16 @@
+/* eslint-disable no-restricted-globals */
 import { useEffect } from 'react';
 import { useMap } from 'react-leaflet';
 import 'leaflet-control-geocoder/dist/Control.Geocoder.css';
 import 'leaflet-control-geocoder/dist/Control.Geocoder';
 import L from 'leaflet';
+import PropTypes from 'prop-types';
 
-export default function LeafletControlGeocoder() {
+export default function ControlGeocoder({ coordLocation }) {
   const map = useMap();
 
   useEffect(() => {
-    let geocoder = L.Control.Geocoder.nominatim();
+    let geocoder = L.Control.Geocoder.arcgis();
     if (typeof URLSearchParams !== 'undefined' && location.search) {
       // parse /?geocoder=nominatim from URL
       const params = new URLSearchParams(location.search);
@@ -20,15 +22,19 @@ export default function LeafletControlGeocoder() {
         console.warn('Unsupported geocoder', geocoderString);
       }
     }
-
     L.Control.geocoder({
       query: '',
-      placeholder: 'Search here...',
+      placeholder: 'adresse... ',
       defaultMarkGeocode: false,
       geocoder,
+      collapsed: false,
+      position: 'topleft',
     })
       .on('markgeocode', (e) => {
         const latlng = e.geocode.center;
+        console.log(latlng);
+        console.log(e.geocode.bbox);
+        coordLocation(latlng);
         L.marker(latlng)
           .addTo(map)
           .bindPopup(e.geocode.name)
@@ -40,3 +46,8 @@ export default function LeafletControlGeocoder() {
 
   return null;
 }
+
+ControlGeocoder.propTypes = {
+  coordLocation: PropTypes.func.isRequired,
+
+};

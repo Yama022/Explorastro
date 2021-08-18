@@ -4383,6 +4383,13 @@ leaflet-control-geocoder@^2.3.0:
   optionalDependencies:
     open-location-code "^1.0.0"
 
+leaflet-geosearch@^3.5.0:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/leaflet-geosearch/-/leaflet-geosearch-3.5.0.tgz#c02ee66135f37d46ed0600890f27b81925d459aa"
+  integrity sha512-Oj1xRIobj+pOxnHDAaQtOIw6efRNiLQcg3QUnbXtMIGUJ4pXDSUUJ9Z8EEd3CHQv8NULrn1cfsbH+Afer3uzjA==
+  optionalDependencies:
+    leaflet "^1.6.0"
+
 leaflet.markercluster@^1.4.1, leaflet.markercluster@^1.5.0:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/leaflet.markercluster/-/leaflet.markercluster-1.5.0.tgz#54db42485da32fc3d92c7ae22d0d7982879e0b67"

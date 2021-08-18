@@ -3,9 +3,9 @@ import { MapContainer, TileLayer } from 'react-leaflet';
 import * as dayjs from 'dayjs';
 import PropTypes from 'prop-types';
 import logo from 'src/assets/images/placeholder_image.jpg';
-import LeafletControlGeocoder from './controlGeocoder';
+import ControlGeocoder from './controlGeocoder';
 
-export default function CreateEvent({ onChangeInput, onFormSubmit }) {
+export default function CreateEvent({ onChangeInput, onFormSubmit, getCoordLocation }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     onFormSubmit();
@@ -20,49 +20,30 @@ export default function CreateEvent({ onChangeInput, onFormSubmit }) {
       <h1 className="main-title">Créer un événement</h1>
       <div className="createEvent">
 
-        <div className="form__create">
-          <form onSubmit={handleSubmit}>
-            <h4 className="form__create__title">Nom de l'événement</h4>
+        <form className="form__create" onSubmit={handleSubmit}>
+          <h4 className="form__create__title">Nom de l'événement</h4>
 
-            <input className="input is-link is-small" name="titleEvent" type="text" onChange={handleOnchange} />
+          <input className="input is-link is-small" name="titleEvent" type="text" onChange={handleOnchange} />
 
-            <h4 className="form__create__title">Descirption</h4>
-            <input className="input is-link is-small" name="descEvent" type="text" onChange={handleOnchange} />
+          <h4 className="form__create__title">Descirption</h4>
+          <textarea name="descEvent" id="txtArea" rows="10" cols="70" onChange={handleOnchange} />
 
-            <h4 className="form__create__title">Rue</h4>
-            <input className="input is-link is-small" name="street" type="text" onChange={handleOnchange} />
+          <h4 className="form__create__title">Date de l'événement</h4>
+          <input
+            className="input is-link is-small"
+            type="datetime-local"
+            name="dateEvent"
+            value={dayjs().format('YYYY-MM-DDTHH:mm:ss')}
+            min={dayjs().format('YYYY-MM-DDTHH:mm:ss')}
+            onChange={handleOnchange}
+          />
 
-            <h4 className="form__create__title">Ville</h4>
-            <input className="input is-link is-small" name="city" type="text" onChange={handleOnchange} />
-
-            <h4 className="form__create__title">Code postal</h4>
-            <input className="input is-link is-small" name="postalCode" type="number" onChange={handleOnchange} />
-
-            <h4 className="form__create__title">Date de l'événement</h4>
-            <input
-              className="input is-link is-small"
-              type="datetime-local"
-              name="dateEvent"
-              value={dayjs().format('YYYY-MM-DDTHH:mm:ss')}
-              min={dayjs().format('YYYY-MM-DDTHH:mm:ss')}
-              onChange={handleOnchange}
-            />
-            <h4 className="form__create__title">Nombre de personne(s) maximum
-              <input name="maxRateEvent" type="number" onChange={handleOnchange} />
-            </h4>
-            <div className="form__create__button">
-              <button className="button is-link is-small" type="submit">Créer</button>
-              <button className="button is-danger is-small" type="button">Annuler</button>
-            </div>
-          </form>
-        </div>
-
-        <div className="form__right">
+          {/* <div className="form__right"> */}
           <div className="form__map">
             <MapContainer
           // Centering on the map of france
               center={[44.332192999999995, 1.309666999999996]}
-              zoom={6.4}
+              zoom={6}
               maxZoom={18}
               minZoom={3}
             >
@@ -74,11 +55,18 @@ export default function CreateEvent({ onChangeInput, onFormSubmit }) {
                 name="tiles"
               />
               {/* Add Markers events astro on the map */}
-              <LeafletControlGeocoder />
+              <ControlGeocoder coordLocation={getCoordLocation} />
             </MapContainer>
           </div>
-
-          <div className="form__add__img">
+          <h4 className="form__create__title">Nombre de personne(s) maximum
+            <input className="maxRateEvent" name="maxRateEvent" type="number" onChange={handleOnchange} />
+          </h4>
+          <div className="form__create__button">
+            <button className="button is-link " type="submit">Créer</button>
+            <button className="button is-danger" type="button">Annuler</button>
+          </div>
+        </form>
+        {/* <div className="form__add__img">
             <div className="form__add__img__img">
               <img src={logo} alt={logo} />
             </div>
@@ -92,8 +80,8 @@ export default function CreateEvent({ onChangeInput, onFormSubmit }) {
               </div>
             </div>
 
-          </div>
-        </div>
+          </div> */}
+        {/* </div> */}
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import {
-  FORM, SAVE_EXPLORATION, CHANGE_INPUT, CHANGE_INPUT_CREATE_EVENT, COORD,
+  FORM, SAVE_EXPLORATION, CHANGE_INPUT, CHANGE_INPUT_CREATE_EVENT, GET_COORD,
 } from 'src/actions/exploration';
 import data from 'src/data/data.json';
 
@@ -14,8 +14,7 @@ export const initialState = {
   postalCode: 0,
   dateEvent: '',
   maxRateEvent: 0,
-  lon: 0,
-  lat: 0,
+  coord: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -38,11 +37,10 @@ const reducer = (state = initialState, action = {}) => {
         zone: action.payload,
       };
     }
-    case COORD: {
+    case GET_COORD: {
       return {
         ...state,
-        lat: action.lat,
-        lon: action.lon,
+        coord: action.value,
       };
     }
     case CHANGE_INPUT_CREATE_EVENT: {

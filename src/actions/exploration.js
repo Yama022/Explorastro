@@ -29,12 +29,7 @@ export const submitFormCreateEvent = (value, key) => ({
   key,
 });
 
-export const getCoord = () => ({
+export const getCoord = (value) => ({
   type: GET_COORD,
-});
-
-export const coord = (lat, lon) => ({
-  type: COORD,
-  lat,
-  lon,
+  value,
 });

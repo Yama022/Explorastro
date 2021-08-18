@@ -15,8 +15,9 @@ const mapDispatchToProps = (dispatch) => ({
     const action = submitFormCreateEvent();
     dispatch(action);
   },
-  getCoordLocation: () => {
-    const action = getCoord();
+  getCoordLocation: (value) => {
+    const action = getCoord(value);
+    console.log(value);
     dispatch(action);
   },
 
