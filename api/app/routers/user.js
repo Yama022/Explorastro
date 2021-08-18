@@ -44,8 +44,8 @@ router
    * Update user's password by his id
    * @route PATCH /api/v1/user/1/update/password
    * @group User - Operations about users
-   * @param {string} old_password.query.required - Old password
-   * @param {string} new_password.query.required - The new password you want to set
+   * @param {string} old_password.body.required - Old password
+   * @param {string} new_password.body.required - The new password you want to set
    * @returns {Object} 200 - An object containing a success message
    * @returns {Error.model}  default - An object containing the error message
    * @security JWT
@@ -60,8 +60,8 @@ router
    * Update user's password by his id
    * @route PATCH /api/v1/user/1/update/username
    * @group User - Operations about users
-   * @param {string} username.query.required - The new username you want to set
-   * @param {string} password.query.required - The password
+   * @param {string} username.body.required - The new username you want to set
+   * @param {string} password.body.required - The password
    * @returns {Object} 200 - An object containing a success message
    * @returns {Error.model}  default - An object containing the error message
    * @security JWT
@@ -76,7 +76,7 @@ router
    * Delete a user by his id
    * @route DELETE /api/v1/user/1/delete
    * @group User - Operations about users
-   * @param {string} password.query.required - The password
+   * @param {string} password.body.required - The password
    * @returns {Object} 200 - An object containing a success message
    * @returns {Error.model}  default - An object containing the error message
    * @security JWT
