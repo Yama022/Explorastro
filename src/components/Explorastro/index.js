@@ -74,6 +74,7 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
             </Route>
             <Route exact path="/login">
               <Redirect to="/timeline" />
+            </Route>
             <Route exact path="/settings">
               <Header />
               <Settings />
