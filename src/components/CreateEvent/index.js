@@ -6,7 +6,6 @@ import {
   TileLayer,
 } from 'react-leaflet';
 import * as dayjs from 'dayjs';
-import logo from 'src/assets/images/placeholder_image.jpg';
 
 export default function CreateEvent({ onChangeInput, onFormSubmit }) {
   const handleSubmit = (event) => {
@@ -18,6 +17,11 @@ export default function CreateEvent({ onChangeInput, onFormSubmit }) {
     onChangeInput(event.target.value, event.target.name);
   };
 
+  const onImageChange = () => {
+    console.log('Je change image');
+    // onChangeImage(event);
+  };
+
   return (
     <div className="container">
       <h1 className="main-title">Créer un événement</h1>
@@ -27,13 +31,13 @@ export default function CreateEvent({ onChangeInput, onFormSubmit }) {
           <form onSubmit={handleSubmit}>
             <h4 className="form__create__title">Nom de l'événement</h4>
 
-            <input className="input is-link is-small" name="titleEvent" type="text" onChange={handleOnchange} />
+            <input className="input is-link is-small" name="titleEvent" type="text" onChange={handleOnchange} placeholder="exemple : Rencontre nuit des étoiles" />
 
-            <h4 className="form__create__title">Descirption</h4>
-            <input className="input is-link is-small" name="descEvent" type="text" onChange={handleOnchange} />
+            <h4 className="form__create__title">Description</h4>
+            <input className="input is-link is-small" name="descEvent" type="text" onChange={handleOnchange} placeholder="exemple : Rencontre nuit des étoiles" />
 
             <h4 className="form__create__title">Lieu</h4>
-            <input className="input is-link is-small" name="locationEvent" type="text" onChange={handleOnchange} />
+            <input className="input is-link is-small" name="locationEvent" type="text" onChange={handleOnchange} placeholder="exemple : 4 rue du Chemin, 60620 Betz" />
             <h4 className="form__create__title">Date de l'événement</h4>
             <input
               className="input is-link is-small"
@@ -44,7 +48,7 @@ export default function CreateEvent({ onChangeInput, onFormSubmit }) {
               onChange={handleOnchange}
             />
             <h4 className="form__create__title">Nombre de personne(s) maximum
-              <input name="maxRateEvent" type="number" onChange={handleOnchange} />
+              <input name="maxRateEvent" type="number" onChange={handleOnchange} placeholder="0" />
             </h4>
             <div className="form__create__button">
               <button className="button is-link is-small" type="submit">Créer</button>
@@ -75,16 +79,19 @@ export default function CreateEvent({ onChangeInput, onFormSubmit }) {
           </div>
 
           <div className="form__add__img">
-            <div className="form__add__img__img">
-              <img src={logo} alt={logo} />
-            </div>
+
             <div className="form__add__img__import">
-              <h1 className="form__add__img__import-title">Ajouter une image</h1>
               <div className="button-wrapper">
-                <span className="label">
-                  Ajouter une image
-                </span>
-                <input type="file" name="upload" id="upload" className="upload-box" placeholder="Ajouter une image" />
+                {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+                <input
+                  accept="image/*"
+                  onChange={onImageChange}
+                  id="contained-button-file"
+                  multiple
+                  name="image"
+                  type="file"
+                  className="upload-box"
+                />
               </div>
             </div>
 
@@ -98,4 +105,5 @@ export default function CreateEvent({ onChangeInput, onFormSubmit }) {
 CreateEvent.propTypes = {
   onChangeInput: PropTypes.func.isRequired,
   onFormSubmit: PropTypes.func.isRequired,
+  // onImageChange: PropTypes.func.isRequired,
 };

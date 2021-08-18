@@ -18,7 +18,7 @@
   width: 75%;
   margin: 2 * $gutter;
   &__title {
-    max-width: 65%;
+    max-width: 52%;
     font-size: 1.5em;
     color: $light-color;
   }
@@ -66,14 +66,14 @@
   }
 }
 .guide__paragraphe__one__title {
-  max-width: 54% !important;
+  max-width: 43% !important;
 }
 
 .guide__paragraphe__one, .guide__paragraphe__two {
   width: 75%;
   margin: 2 * $gutter;
   &__title{
-    width: 67%;
+    width: 60%;
     font-size: 1.5em;
     color: $light-color;
     margin-bottom: $gutter;
