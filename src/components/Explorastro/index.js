@@ -20,13 +20,14 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
   useEffect(() => {
     window.addEventListener('scroll', (e) => {
       const button = document.querySelector('.button__return__top');
-      if (window.scrollY>650) {
-        button.style.display= "block"
+      if (window.scrollY > 650) {
+        button.style.display = 'block';
       }
       else {
-        button.style.display= "none"
-      }})
-      checkIsLogged();
+        button.style.display = 'none';
+      }
+    });
+    checkIsLogged();
   }, []);
 
   return (
@@ -110,18 +111,19 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
             </Route>
           </Switch>
         )}
-        <div className="button__return__top">
-      <button onClick={() => {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth',
-        });
-      }}>
-      <FcCollapse className="button__return__top__button" />
-      </button>
+      <div className="button__return__top">
+        <button onClick={() => {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+          });
+        }}
+        >
+          <FcCollapse className="button__return__top__button" />
+        </button>
       </div>
     </div>
-    
+
   );
 }
 
@@ -129,4 +131,3 @@ Explorastro.propTypes = {
   isLogged: PropTypes.bool.isRequired,
   checkIsLogged: PropTypes.func.isRequired,
 };
-
