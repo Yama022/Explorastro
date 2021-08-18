@@ -32,7 +32,14 @@ module.exports = {
         where: {
           [Op.and]: [
             { author_id: req.user.id },
-            { date: { [Op.lte]: Date.now() } },
+            {
+              date: {
+                [Op.or]: {
+                  [Op.gt]: new Date(),
+                  [Op.eq]: null,
+                },
+              },
+            },
           ],
         },
       });
