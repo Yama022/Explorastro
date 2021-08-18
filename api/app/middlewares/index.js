@@ -1,3 +1,4 @@
 module.exports = {
-    tokenMiddleware: require('./token')
+    tokenMiddleware: require('./token'),
+    identityMiddleware: require('./identity'),
 }
