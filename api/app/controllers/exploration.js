@@ -2,6 +2,52 @@ const { Exploration } = require("../models");
 const { errorMessage } = require("../constants");
 const { Op } = require("sequelize");
 
+/**
+ * @typedef {CRS} CRS
+ * @property {string} type
+ * @property {Object<string>} properties
+ */
+
+/**
+ * @typedef {Location} Location
+ * @property {integer} lgt - Longitude
+ * @property {integer} lat - Latitude
+ */
+
+/**
+ * @typedef {GeoCoords} GeoCoords
+ * @property {CRS.model} crs
+ * @property {string} type
+ * @property {Array.<integer, integer>} coordinates
+ */
+
+/**
+ * @typedef {Comment} Comment
+ * @property {integer} id - ID
+ * @property {string} content - Content of the comment
+ * @property {string} author_id - ID of the author 
+ * @property {string} createdAt - Date of creation
+ * @property {string} updatedAt - Date of last update
+ */
+
+/**
+ * @typedef {Exploration} Exploration
+ * @property {integer} id - ID
+ * @property {string} name - Name
+ * @property {string} description - Description
+ * @property {GeoCoords.model} geog - Geographical coordinates
+ * @property {string} date - Date
+ * @property {integer} max_participants - Maximum number of participants
+ * @property {boolean} is_published - Publish status (true - published, false - not published)
+ * @property {string} image_url - Image URL
+ * @property {integer} author_id - Author ID
+ * @property {User.model} author - Author informations
+ * @property {Array.<User>}participants - Participants
+ * @property {Array.<Comment>} comments - Comments
+ * @property {string} createdAt - Exploration's creation date
+ * @property {string} updatedAt - Exploration's last update date
+ */
+
 module.exports = {
   getInformations: async (req, res) => {
     const { id } = req.params;
