@@ -8,7 +8,13 @@ module.exports = {
       const { id } = req.params;
 
       const user = await User.findByPk(id, {
-        include: ['followers', 'following', 'organized_explorations', 'explorations', 'role']
+        include: [
+          "followers",
+          "following",
+          "organized_explorations",
+          "explorations",
+          "role",
+        ],
       });
 
       if (!user) {
@@ -35,7 +41,7 @@ module.exports = {
       }
 
       // We need to verify that the user is who they say they are
-      if(userToUpdate.id !== req.user.id) {
+      if (userToUpdate.id !== req.user.id) {
         return res.status(403).json({
           message: errorMessage.UNAUTHORIZED,
         });
@@ -48,18 +54,63 @@ module.exports = {
       delete req.body.created_at;
       delete req.body.updated_at;
 
-
       await userToUpdate.update({
         ...req.body,
       });
 
       return res.status(200).json({
-        user: userToUpdate
+        user: userToUpdate,
       });
     } catch (error) {
       console.error(error);
       return res.status(500).json({
         message: errorMessage.INTERNAL_ERROR,
+      });
+    }
+  },
+
+  updatePassword: async (req, res) => {
+    try {
+      const { password, username } = req.body;
+
+      if (!old_password || !new_password) {
+        return res.status(400).json({
+          message: errorMessage.MISSING_CREDENTIALS,
+        });
+      }
+
+      const userUpdatePassword = await User.findByPk(req.user.id);
+
+      if (!userUpdatePassword) {
+        return res.status(404).json({
+          message: errorMessage.USER_NOT_FOUND,
+        });
+      }
+
+      const isMatch = await bcrypt.compare(
+        old_password,
+        userUpdatePassword.password
+      );
+
+      if (!isMatch) {
+        return res.status(401).json({
+          message: errorMessage.PASSWORD_NOT_MATCH,
+        });
+      }
+
+      const newPasswordHash = bcrypt.hashSync(new_password, 8);
+
+      userUpdatePassword.password = newPasswordHash;
+
+      await userUpdatePassword.save();
+
+      return res.json({
+        message: "Password updated. Please login again",
+      });
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({
+        message: "Internal server error. Please retry later",
       });
     }
   },
@@ -74,12 +125,18 @@ module.exports = {
         });
       }
 
+      if (new_password.length < 8) {
+        return res.status(400).json({
+          message: errorMessage.PASSWORD_TOO_SHORT,
+        });
+      }
+
       const userUpdatePassword = await User.findByPk(req.user.id);
 
       if (!userUpdatePassword) {
-          return res.status(404).json({
-              message: errorMessage.USER_NOT_FOUND,
-          });
+        return res.status(404).json({
+          message: errorMessage.USER_NOT_FOUND,
+        });
       }
 
       const isMatch = await bcrypt.compare(
@@ -88,9 +145,9 @@ module.exports = {
       );
 
       if (!isMatch) {
-          return res.status(401).json({
-              message: errorMessage.PASSWORD_NOT_MATCH,
-          });
+        return res.status(401).json({
+          message: errorMessage.PASSWORD_NOT_MATCH,
+        });
       }
 
       const newPasswordHash = bcrypt.hashSync(new_password, 8);
@@ -100,14 +157,14 @@ module.exports = {
       await userUpdatePassword.save();
 
       return res.json({
-          message: "Password updated. Please login again",
+        message: errorMessage.PASSWORD_UPDATED,
       });
     } catch (error) {
       console.error(error);
       return res.status(500).json({
-          message: "Internal server error. Please retry later",
+        message: errorMessage.INTERNAL_ERROR,
       });
-  }
+    }
   },
 
   delete: async (req, res) => {
@@ -122,7 +179,7 @@ module.exports = {
       }
 
       // We need to verify that the user is who they say they are
-      if(userToDelete.id !== req.user.id) {
+      if (userToDelete.id !== req.user.id) {
         return res.status(403).json({
           message: errorMessage.UNAUTHORIZED,
         });
@@ -130,7 +187,7 @@ module.exports = {
 
       await userToDelete.destroy();
 
-      return res.status(200).json({OK: true});
+      return res.status(200).json({ OK: true });
     } catch (error) {
       console.error(error);
       return res.status(500).json({
