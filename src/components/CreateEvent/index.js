@@ -30,7 +30,7 @@ export default function CreateEvent() {
             <input className="input is-link is-small" type="text" />
             <h4 className="form__create__title">Date de l'événement</h4>
             <div className="form__create__title__calendar">
-              <Calendar />
+              <input type="date" />
             </div>
             <h4 className="form__create__title">Nombre de personne(s) maximum
               <input type="number" />

@@ -11,12 +11,12 @@ import CreateEvent from 'src/components/CreateEvent';
 import Login from 'src/containers/Login';
 import Guide from 'src/components/Guide';
 import Landing from 'src/components/Landing';
-import Settings from 'src/components/Settings';
+import Settings from 'src/containers/Settings';
 
 export default function Explorastro({ isLogged, checkIsLogged }) {
-  // useEffect(() => {
-  //   checkIsLogged();
-  // }, []);
+  useEffect(() => {
+    checkIsLogged();
+  }, []);
   return (
     <div className="explorastro">
       {isLogged
