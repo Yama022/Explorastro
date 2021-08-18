@@ -72,17 +72,18 @@ module.exports = {
       const { id } = req.params;
       const lgt = req.body.location?.lgt;
       const lat = req.body.location?.lat;
+
+      if (explorationToUpdate.author_id !== req.user.id) {
+        return res.status(403).json({
+          message: errorMessage.UNAUTHORIZED,
+        });
+      }
+
       const explorationToUpdate = await Exploration.findByPk(id);
 
       if (!explorationToUpdate) {
         return res.status(404).json({
           message: errorMessage.EXPLORATION_NOT_FOUND,
-        });
-      }
-
-      if (explorationToUpdate.author_id !== req.user.id) {
-        return res.status(403).json({
-          message: errorMessage.UNAUTHORIZED,
         });
       }
 
@@ -115,17 +116,18 @@ module.exports = {
   delete: async (req, res) => {
     try {
       const { id } = req.params;
+
+      if (explorationToDelete.author_id !== req.user.id) {
+        return res.status(403).json({
+          message: errorMessage.UNAUTHORIZED,
+        });
+      }
+
       const explorationToDelete = await Exploration.findByPk(id);
 
       if (!explorationToDelete) {
         return res.status(404).json({
           message: errorMessage.EXPLORATION_NOT_FOUND,
-        });
-      }
-
-      if (explorationToDelete.author_id !== req.user.id) {
-        return res.status(403).json({
-          message: errorMessage.UNAUTHORIZED,
         });
       }
 

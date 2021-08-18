@@ -32,18 +32,19 @@ module.exports = {
   update: async (req, res) => {
     try {
       const { id } = req.params;
-      const userToUpdate = await User.findByPk(id);
-
-      if (!userToUpdate) {
-        return res.status(404).json({
-          message: errorMessage.USER_NOT_FOUND,
-        });
-      }
 
       // We need to verify that the user is who they say they are
       if (userToUpdate.id !== req.user.id) {
         return res.status(403).json({
           message: errorMessage.UNAUTHORIZED,
+        });
+      }
+
+      const userToUpdate = await User.findByPk(id);
+
+      if (!userToUpdate) {
+        return res.status(404).json({
+          message: errorMessage.USER_NOT_FOUND,
         });
       }
 
@@ -69,28 +70,32 @@ module.exports = {
     }
   },
 
-  updatePassword: async (req, res) => {
+  updateUsername: async (req, res) => {
     try {
       const { password, username } = req.body;
 
-      if (!old_password || !new_password) {
+      if (!password || !username) {
         return res.status(400).json({
           message: errorMessage.MISSING_CREDENTIALS,
         });
       }
 
-      const userUpdatePassword = await User.findByPk(req.user.id);
+      const userToUpdate = await User.findByPk(req.user.id);
 
-      if (!userUpdatePassword) {
+      if (!userToUpdate) {
         return res.status(404).json({
           message: errorMessage.USER_NOT_FOUND,
         });
       }
 
-      const isMatch = await bcrypt.compare(
-        old_password,
-        userUpdatePassword.password
-      );
+
+      if (userToUpdate.id !== req.user.id) {
+        return res.status(403).json({
+          message: errorMessage.UNAUTHORIZED,
+        });
+      }
+
+      const isMatch = await bcrypt.compare("exploradmin", userToUpdate.password);
 
       if (!isMatch) {
         return res.status(401).json({
@@ -98,19 +103,17 @@ module.exports = {
         });
       }
 
-      const newPasswordHash = bcrypt.hashSync(new_password, 8);
+      userToUpdate.username = username;
 
-      userUpdatePassword.password = newPasswordHash;
-
-      await userUpdatePassword.save();
+      await userToUpdate.save();
 
       return res.json({
-        message: "Password updated. Please login again",
+        user: userToUpdate,
       });
     } catch (error) {
       console.error(error);
       return res.status(500).json({
-        message: "Internal server error. Please retry later",
+        message: errorMessage.INTERNAL_ERROR,
       });
     }
   },
@@ -136,6 +139,13 @@ module.exports = {
       if (!userUpdatePassword) {
         return res.status(404).json({
           message: errorMessage.USER_NOT_FOUND,
+        });
+      }
+
+
+      if (userUpdatePassword.id !== req.user.id) {
+        return res.status(403).json({
+          message: errorMessage.UNAUTHORIZED,
         });
       }
 

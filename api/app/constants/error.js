@@ -15,5 +15,6 @@ module.exports = {
     MISSING_EXPLORATION_NAME: "Please provide an exploration name",
     EXPLORATION_LIMIT_REACHED: "You have reached the maximum number of explorations allowed",
     PASSWORD_TOO_SHORT: "The password must be at least 8 characters long",
-    PASSWORD_UPDATED: "Password updated. Please login again"
+    PASSWORD_UPDATED: "Password updated. Please login again",
+    USERNAME_UPDATED: "Username updated."
 }
