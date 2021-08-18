@@ -2,6 +2,7 @@ import axios from 'axios';
 import {
   LOGIN, SIGNUP, saveUser, CHECK_TOKEN, CHECK_USER_LOGGED,
 } from 'src/actions/user';
+import api from './utils/api';
 
 const auth = (store) => (next) => (action) => {
   switch (action.type) {
@@ -17,6 +18,7 @@ const auth = (store) => (next) => (action) => {
         },
       }).then((response) => {
         localStorage.setItem('user', JSON.stringify(response.data));
+        api.defaults.headers.common.authorization = `Bearer ${response.data.accessToken}`;
         const actionSaveUser = saveUser(response.data);
         store.dispatch(actionSaveUser);
       })
@@ -46,32 +48,34 @@ const auth = (store) => (next) => (action) => {
     }
     case CHECK_TOKEN: {
       // on récupère le token stocké dans le localStorage
-      const token = localStorage.getItem('token');
+      const { accessToken } = localStorage.getItem('user');
 
       // s'il existe on fait notre requête API pour vérifier sa validité
-      if (token) {
-        axios.get('/token', {
-          // on oublie pas d'embarquer le token avec la requête
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        })
-          .then((response) => {
-            // ici le token est bon, donc on peut le stocker dans l'insance
-            axios.defaults.headers.common.authorization = `Bearer ${token}`;
+      if (accessToken) {
+        // axios.get('/token', {
+        //   // on oublie pas d'embarquer le token avec la requête
+        //   headers: {
+        //     authorization: `Bearer ${accessToken}`,
+        //   },
+        // })
+        //   .then((response) => {
+        //     // ici le token est bon, donc on peut le stocker dans l'insance
+        //     axios.defaults.headers.common.authorization = `Bearer ${accessToken}`;
 
-            // en cas de réponse on sauvegarde le user dans le state
-            // avec la même action que pour le login
-            const payload = { ...response.data };
-            const actionSaveUser = saveUser(payload);
-            store.dispatch(actionSaveUser);
-          })
-          .catch((error) => console.log(error));
+        //     // en cas de réponse on sauvegarde le user dans le state
+        //     // avec la même action que pour le login
+        //     const payload = { ...response.data };
+        //     const actionSaveUser = saveUser(payload);
+        //     store.dispatch(actionSaveUser);
+        //   })
+        //   .catch((error) => console.log(error));
       }
       break;
     }
     case CHECK_USER_LOGGED: {
+      console.log('test');
       const user = JSON.parse(localStorage.getItem('user'));
+      api.defaults.headers.common.authorization = `BEARER ${user.accessToken}`;
       const userData = saveUser(user);
       store.dispatch(userData);
       break;

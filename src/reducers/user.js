@@ -8,8 +8,8 @@ const initialState = {
   email: '',
   password: '',
   passwordConfirmation: '',
-  username: 'AstroCharles',
-  logged: true,
+  username: '',
+  logged: false,
   open: false,
   signup: false,
 };
