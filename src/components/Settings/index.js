@@ -32,7 +32,7 @@ export default function Settings({
   };
 
   const handleDelete = () => {
-    if (window.confirm('Êtes-vous sûr de vouloir supprimer votre compte?')) {
+    if (window.confirm('Êtes-vous sûr de vouloir supprimer votre compte? Cette action est irréversible.')) {
       handleDeleteAccount();
     }
   };
@@ -88,7 +88,7 @@ export default function Settings({
 
       <div className="settings__elems">
         <h2>Supprimer le compte</h2>
-        <button type="button" className="button is-danger is-small centered" onClick={handleDelete}>Supprimer le compte</button>
+        <button type="button" className="button is-danger is-small settings__elems__delete-button" onClick={handleDelete}>Supprimer le compte</button>
       </div>
 
     </div>
