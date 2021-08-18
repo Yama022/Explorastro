@@ -1,7 +1,9 @@
 import { connect } from 'react-redux';
 import Settings from 'src/components/Settings';
 
-import { changeValue, changeUsername, changePassword } from 'src/actions/user';
+import {
+  changeValue, changeUsername, changePassword, deleteAccount,
+} from 'src/actions/user';
 
 const mapStateToProps = (state) => ({
   usernameChange: state.user.usernameChange,
@@ -18,6 +20,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   handlePasswordChange: () => {
     dispatch(changePassword());
+  },
+  handleDeleteAccount: () => {
+    dispatch(deleteAccount());
   },
 });
 
