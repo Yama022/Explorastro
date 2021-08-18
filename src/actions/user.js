@@ -9,6 +9,7 @@ export const CHECK_TOKEN = 'CHECK_TOKEN';
 export const CHECK_USER_LOGGED = 'CHECK_USER_LOGGED';
 export const CHANGE_USERNAME = 'CHANGE_USERNAME';
 export const CHANGE_PASSWORD = 'CHANGE_PASSWORD';
+export const DELETE_ACCOUNT = 'DELETE_ACCOUNT';
 
 export const toggleDropdown = () => ({
   type: TOGGLE_DROPDOWN,
@@ -51,4 +52,8 @@ export const changeUsername = () => ({
 
 export const changePassword = () => ({
   type: CHANGE_PASSWORD,
+});
+
+export const deleteAccount = () => ({
+  type: DELETE_ACCOUNT,
 });
