@@ -1,6 +1,6 @@
 const { User } = require("../models");
-const { errorMessage } = require("../constants");
 const bcrypt = require("bcrypt");
+const { errorMessage } = require("../constants");
 
 module.exports = {
   getInformations: async (req, res) => {
@@ -23,6 +23,7 @@ module.exports = {
 
       return res.status(200).json(user);
     } catch (error) {
+      console.error(error);
       res.status(400).json({
         message: errorMessage.internal_error,
       });
@@ -33,16 +34,9 @@ module.exports = {
     try {
       const { id } = req.params;
 
-      // We need to verify that the user is who they say they are
-      if (userToUpdate.id !== req.user.id) {
-        return res.status(403).json({
-          message: errorMessage.UNAUTHORIZED,
-        });
-      }
+      const user = await User.findByPk(id);
 
-      const userToUpdate = await User.findByPk(id);
-
-      if (!userToUpdate) {
+      if (!user) {
         return res.status(404).json({
           message: errorMessage.USER_NOT_FOUND,
         });
@@ -55,12 +49,12 @@ module.exports = {
       delete req.body.created_at;
       delete req.body.updated_at;
 
-      await userToUpdate.update({
+      await user.update({
         ...req.body,
       });
 
       return res.status(200).json({
-        user: userToUpdate,
+        user,
       });
     } catch (error) {
       console.error(error);
@@ -80,22 +74,15 @@ module.exports = {
         });
       }
 
-      const userToUpdate = await User.findByPk(req.user.id);
+      const user = await User.findByPk(req.user.id);
 
-      if (!userToUpdate) {
+      if (!user) {
         return res.status(404).json({
           message: errorMessage.USER_NOT_FOUND,
         });
       }
 
-
-      if (userToUpdate.id !== req.user.id) {
-        return res.status(403).json({
-          message: errorMessage.UNAUTHORIZED,
-        });
-      }
-
-      const isMatch = await bcrypt.compare("exploradmin", userToUpdate.password);
+      const isMatch = await bcrypt.compare(password, user.password);
 
       if (!isMatch) {
         return res.status(401).json({
@@ -103,12 +90,12 @@ module.exports = {
         });
       }
 
-      userToUpdate.username = username;
-
-      await userToUpdate.save();
+      await user.update({
+        username,
+      });
 
       return res.json({
-        user: userToUpdate,
+        user,
       });
     } catch (error) {
       console.error(error);
@@ -134,16 +121,15 @@ module.exports = {
         });
       }
 
-      const userUpdatePassword = await User.findByPk(req.user.id);
+      const user = await User.findByPk(req.user.id);
 
-      if (!userUpdatePassword) {
+      if (!user) {
         return res.status(404).json({
           message: errorMessage.USER_NOT_FOUND,
         });
       }
 
-
-      if (userUpdatePassword.id !== req.user.id) {
+      if (user.id !== req.user.id) {
         return res.status(403).json({
           message: errorMessage.UNAUTHORIZED,
         });
@@ -151,7 +137,7 @@ module.exports = {
 
       const isMatch = await bcrypt.compare(
         old_password,
-        userUpdatePassword.password
+        user.password
       );
 
       if (!isMatch) {
@@ -160,11 +146,9 @@ module.exports = {
         });
       }
 
-      const newPasswordHash = bcrypt.hashSync(new_password, 8);
-
-      userUpdatePassword.password = newPasswordHash;
-
-      await userUpdatePassword.save();
+      await user.update({
+        password: bcrypt.hashSync(new_password, 8)
+      });
 
       return res.json({
         message: errorMessage.PASSWORD_UPDATED,
@@ -180,22 +164,34 @@ module.exports = {
   delete: async (req, res) => {
     try {
       const { id } = req.params;
-      const userToDelete = await User.findByPk(id);
+      const password = req.body.password;
 
-      if (!userToDelete) {
+      if (!password) {
+        return res.status(400).json({
+          message: errorMessage.MISSING_CREDENTIALS,
+        });
+      }
+
+      const user = await User.findByPk(id);
+
+      if (!user) {
         return res.status(404).json({
           message: errorMessage.USER_NOT_FOUND,
         });
       }
 
-      // We need to verify that the user is who they say they are
-      if (userToDelete.id !== req.user.id) {
-        return res.status(403).json({
-          message: errorMessage.UNAUTHORIZED,
+      const isMatch = await bcrypt.compare(
+        old_password,
+        user.password
+      );
+
+      if (!isMatch) {
+        return res.status(401).json({
+          message: errorMessage.PASSWORD_NOT_MATCH,
         });
       }
 
-      await userToDelete.destroy();
+      await user.destroy();
 
       return res.status(200).json({ OK: true });
     } catch (error) {
