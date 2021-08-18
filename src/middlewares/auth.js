@@ -10,7 +10,7 @@ const auth = (store) => (next) => (action) => {
       const state = store.getState();
       axios({
         method: 'POST',
-        baseURL: 'http://localhost:3000/',
+        baseURL: 'https://explorastro-api.herokuapp.com/',
         url: 'api/v1/login',
         data: {
           login: state.user.email,
@@ -29,7 +29,7 @@ const auth = (store) => (next) => (action) => {
       const state = store.getState();
       axios({
         method: 'POST',
-        baseURL: 'http://localhost:3000/',
+        baseURL: 'https://explorastro-api.herokuapp.com/',
         url: 'api/v1/signup',
         data: {
           firstname: state.user.firstname,
@@ -75,7 +75,7 @@ const auth = (store) => (next) => (action) => {
     case CHECK_USER_LOGGED: {
       console.log('test');
       const user = JSON.parse(localStorage.getItem('user'));
-      api.defaults.headers.common.authorization = `BEARER ${user.accessToken}`;
+      api.defaults.headers.common.authorization = `BEARER ${user?.accessToken}`;
       const userData = saveUser(user);
       store.dispatch(userData);
       break;

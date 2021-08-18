@@ -11,11 +11,24 @@ import CreateEvent from 'src/containers/CreateEvent';
 import Login from 'src/containers/Login';
 import Guide from 'src/components/Guide';
 import Landing from 'src/components/Landing';
+import Photo from 'src/components/Guide/Photo';
+import Visuel from 'src/components/Guide/Visuel';
+
+import { FcCollapse } from 'react-icons/fc';
 
 export default function Explorastro({ isLogged, checkIsLogged }) {
   useEffect(() => {
-    checkIsLogged();
+    window.addEventListener('scroll', (e) => {
+      const button = document.querySelector('.button__return__top');
+      if (window.scrollY>650) {
+        button.style.display= "block"
+      }
+      else {
+        button.style.display= "none"
+      }})
+      checkIsLogged();
   }, []);
+
   return (
     <div className="explorastro">
       {isLogged
@@ -44,6 +57,16 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
             <Route exact path="/guide">
               <Header />
               <Guide />
+              <Footer />
+            </Route>
+            <Route exact path="/guide/photo">
+              <Header />
+              <Photo />
+              <Footer />
+            </Route>
+            <Route exact path="/guide/visuel">
+              <Header />
+              <Visuel />
               <Footer />
             </Route>
             <Route exact path="/login">
@@ -77,7 +100,18 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
             </Route>
           </Switch>
         )}
+        <div className="button__return__top">
+      <button onClick={() => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth',
+        });
+      }}>
+      <FcCollapse className="button__return__top__button" />
+      </button>
+      </div>
     </div>
+    
   );
 }
 
@@ -85,3 +119,4 @@ Explorastro.propTypes = {
   isLogged: PropTypes.bool.isRequired,
   checkIsLogged: PropTypes.func.isRequired,
 };
+
