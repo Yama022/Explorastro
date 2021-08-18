@@ -11,6 +11,7 @@ import CreateEvent from 'src/containers/CreateEvent';
 import Login from 'src/containers/Login';
 import Guide from 'src/components/Guide';
 import Landing from 'src/components/Landing';
+import Settings from 'src/containers/Settings';
 
 export default function Explorastro({ isLogged, checkIsLogged }) {
   useEffect(() => {
@@ -25,6 +26,9 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
               <Header />
               <Redirect to="/timeline" />
               <Footer />
+            </Route>
+            <Route exact path="/login">
+              <Redirect to="/timeline" />
             </Route>
             <Route exact path="/timeline">
               <Header />
@@ -46,8 +50,10 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
               <Guide />
               <Footer />
             </Route>
-            <Route exact path="/login">
-              <Redirect to="/timeline" />
+            <Route exact path="/settings">
+              <Header />
+              <Settings />
+              <Footer />
             </Route>
             <Route>
               <Header />
@@ -69,6 +75,9 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
             </Route>
             <Route exact path="/login">
               <Login />
+            </Route>
+            <Route exact path="/settings">
+              <Redirect to="/login" />
             </Route>
             <Route>
               <Header />
