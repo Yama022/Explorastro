@@ -54,7 +54,7 @@ export default function Settings({
               </span>
             </div>
           </div>
-          <button type="button" className="button --outlined purple settings__elems__form__submit" onClick={handleUsernameForm}>Changer le pseudo</button>
+          <button type="button" className="button --secondary settings__elems__form__submit" onClick={handleUsernameForm}>Changer le pseudo</button>
 
         </form>
       </div>
@@ -82,7 +82,7 @@ export default function Settings({
             </div>
           </div>
 
-          <button type="submit" className="button --outlined purple settings__elems__form__submit">Changer le mot de passe</button>
+          <button type="submit" className="button --secondary settings__elems__form__submit">Changer le mot de passe</button>
 
         </form>
       </div>
