@@ -70,7 +70,6 @@
     "react-parallax": "^3.3.0",
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
-    "react-use-form-state": "^0.13.2",
     "redux": "^4.1.1",
     "uuidv4": "^6.2.11"
   }
