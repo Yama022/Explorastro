@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import EventCreated from './EventCreated';
 
 export default function CreateEvent({
-  getEvent, onChangeInput, onFormSubmit, getCoordLocation, eventsCreated,
+  getEvent, eventsCreated,
 }) {
   useEffect(() => {
     getEvent();
@@ -23,7 +23,7 @@ export default function CreateEvent({
 
         { eventsCreated.map((element) => (
 
-          <EventCreated key={element.id} name={element.name} />
+          <EventCreated key={element.id} {...element} />
         ))}
 
       </div>
@@ -32,9 +32,6 @@ export default function CreateEvent({
 }
 
 CreateEvent.propTypes = {
-  onChangeInput: PropTypes.func.isRequired,
-  onFormSubmit: PropTypes.func.isRequired,
-  getCoordLocation: PropTypes.func.isRequired,
   getEvent: PropTypes.func.isRequired,
   eventsCreated: PropTypes.arrayOf(PropTypes.object).isRequired,
 };

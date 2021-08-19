@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import FormEvent from 'src/components/CreateEvent/FormEvent';
 import {
-  changeInputCreateEvent, submitFormCreateEvent, getCoord, getEventCreated,
+  changeInputCreateEvent, submitFormCreateEvent, getCoord, getEventCreated, OnclickPublished,
 } from 'src/actions/exploration';
 
 import { findEvent } from 'src/selectors/exploration';
@@ -29,6 +29,11 @@ const mapDispatchToProps = (dispatch) => ({
 
   getEvent: () => {
     const action = getEventCreated();
+    dispatch(action);
+  },
+
+  OnClick: () => {
+    const action = OnclickPublished();
     dispatch(action);
   },
 

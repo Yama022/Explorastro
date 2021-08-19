@@ -1,5 +1,11 @@
 import {
-  FORM, SAVE_EXPLORATION, CHANGE_INPUT, CHANGE_INPUT_CREATE_EVENT, GET_COORD, SAVE_EVENT_CREATED,
+  FORM,
+  SAVE_EXPLORATION,
+  CHANGE_INPUT,
+  CHANGE_INPUT_CREATE_EVENT,
+  GET_COORD,
+  SAVE_EVENT_CREATED,
+  ON_CLICK_PUBLISHED,
 } from 'src/actions/exploration';
 import data from 'src/data/data.json';
 
@@ -7,8 +13,6 @@ export const initialState = {
   ville: '',
   sortie: data,
   zone: 10,
-  titleEvent: '',
-  descEvent: '',
   street: '',
   city: '',
   postalCode: 0,
@@ -16,6 +20,7 @@ export const initialState = {
   maxRateEvent: 0,
   coord: '',
   eventCreated: [],
+  published: false,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -56,6 +61,13 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         eventCreated: events,
+
+      };
+    }
+    case ON_CLICK_PUBLISHED: {
+      return {
+        ...state,
+        published: !state.published,
 
       };
     }

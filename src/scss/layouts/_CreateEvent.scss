@@ -18,7 +18,7 @@
   align-items: center;
   background-color: rgba(41, 30, 197, 0.453);
   width: 70%;
-  margin:$gutter auto;
+  margin: $gutter auto;
   border-radius: 10px;
   padding: 40px 0;
 }
@@ -37,6 +37,26 @@
 
     margin: $gutter 0;
 
+  }
+
+  input[type="checkbox"].checkbox {
+    display: none;
+  }
+
+  input[type="checkbox"].checkbox+label::before {
+    content: '';
+    border: 1px solid #00B7E8;
+    padding: 0 0.6rem;
+    margin-right: 0.3rem;
+  }
+
+  input[type="checkbox"].checkbox:checked+label::before {
+    background-color: #00B7E8;
+  }
+
+  .published {
+    font-size: 1.2em;
+    color: white;
   }
 
   &__button {
@@ -98,6 +118,7 @@
   display: flex;
   max-width: 100%;
   height: 20%;
+
   &__title {
     font-size: 5em;
     margin-top: 1em;
@@ -105,8 +126,10 @@
     text-align: left;
     color: $light-color;
   }
+
   &__import {
     margin: 1em 0;
+
     & input[type=file] {
       background-color: $tertiary-color;
       border: 1px solid black;
@@ -169,11 +192,12 @@ textarea {
   flex-direction: column;
   border-radius: 10px;
   margin: 1.5em;
-  background-color: rgba(41,30,197,0.4);
+  background-color: rgba(41, 30, 197, 0.4);
   width: 20%;
   height: 400px;
   position: relative;
-  box-shadow: 1px 5px 16px 0px rgba(65,8,255,0.98);
+  box-shadow: 1px 5px 16px 0px rgba(65, 8, 255, 0.98);
+
   &__h2 {
     margin: auto;
     margin-bottom: 30%;
@@ -185,30 +209,37 @@ textarea {
     color: $light-color;
     font-weight: bold;
   }
+
   & img {
     border-radius: 10px 10px 0 0;
     width: 100%;
     height: 50%;
     color: white;
   }
+
   &__button {
     width: 100%;
     display: flex;
     justify-content: space-around;
     margin-bottom: 1em;
+
     &--delete {
       background-color: #d45f5f;
-      &:hover{
+
+      &:hover {
         background-color: #d08585;
       }
     }
+
     &--modifier {
       background-color: #7485d8;
-      &:hover{
-      background-color: #a0a8cc;
+
+      &:hover {
+        background-color: #a0a8cc;
       }
     }
   }
+
   & button {
     bottom: 5%;
     right: 40%;
@@ -218,7 +249,7 @@ textarea {
     border-radius: 5px;
     font-style: italic;
     font-weight: bold;
-    
+
   }
 
 }
