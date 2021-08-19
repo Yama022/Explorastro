@@ -7,7 +7,7 @@ router
 
   /**
    * Get informations about an exploration by his id
-   * @route GET /api/v1/exploration/1
+   * @route GET /api/v1/exploration
    * @group Exploration - Operations about explorations
    * @returns {Array.<Exploration>} 200 - An object containing the exploration's information
    * @returns {Error.model}  default - An object containing the error message
