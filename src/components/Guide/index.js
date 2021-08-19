@@ -1,8 +1,7 @@
+/* eslint-disable react/button-has-type */
 /* eslint-disable max-len */
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Visuel from 'src/components/Guide/Visuel';
-import Photo from 'src/components/Guide/Photo';
 
 import { FcDownRight, FcAdvance, FcCollapse } from 'react-icons/fc';
 import { MdReportProblem } from 'react-icons/md';
@@ -13,16 +12,16 @@ export default function Guide() {
   useEffect(() => {
     window.addEventListener('scroll', (e) => {
       const button = document.querySelector('.button__return__top');
-      if (window.scrollY>650) {
-        button.style.display= "block"
+      if (window.scrollY > 650) {
+        button.style.display = 'block';
       }
       else {
-        button.style.display= "none"
+        button.style.display = 'none';
       }
-    })
+    });
   }, []);
   return (
-    
+
     // Div qui englobe l'ensemble des paragaphe
     <div className="guide">
       <div className="guide__presentation">
@@ -49,7 +48,7 @@ export default function Guide() {
       <div className="guide__paragraphe__one">
         <h2 className="guide__paragraphe__one__title"><FcAdvance /> On peut utiliser différents matériels pour du visuel !</h2>
         <div className="guide__paragraphe__one__paragraphe">
-        
+
           <p>On peut par exemple utiliser des jumelles, un outil assez simple d'utilisation, rapide à mettre en place et peu chère !
             Le coût d'une paire de jumelle est d'environ une 50ène d'€. <br />
             Rien qu'avec des jumelles on peut déjà observer plusieurs objets du ciel (Mais quoi qu'est-ce qu'on peut voir aux jumelles me demanderez-vous ?
@@ -93,17 +92,16 @@ export default function Guide() {
       </div>
 
       <div className="button__return__top">
-      <button onClick={() => {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth',
-        });
-      }}>
-      <FcCollapse className="button__return__top__button" />
-      </button>
+        <button onClick={() => {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+          });
+        }}
+        >
+          <FcCollapse className="button__return__top__button" />
+        </button>
       </div>
-      
-      
 
     </div>
   );
