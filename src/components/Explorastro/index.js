@@ -18,7 +18,7 @@ import Settings from 'src/containers/Settings';
 
 export default function Explorastro({ isLogged, checkIsLogged }) {
   useEffect(() => {
-    window.addEventListener('scroll', (e) => {
+    window.addEventListener('scroll', () => {
       const button = document.querySelector('.button__return__top');
       if (window.scrollY > 650) {
         button.style.display = 'block';
@@ -36,9 +36,10 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
         ? (
           <Switch>
             <Route exact path="/">
-              <Header />
               <Redirect to="/timeline" />
-              <Footer />
+            </Route>
+            <Route exact path="/landing">
+              <Redirect to="/timeline" />
             </Route>
             <Route exact path="/login">
               <Redirect to="/timeline" />
@@ -112,12 +113,14 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
           </Switch>
         )}
       <div className="button__return__top">
-        <button onClick={() => {
-          window.scrollTo({
-            top: 0,
-            behavior: 'smooth',
-          });
-        }}
+        <button
+          type="button"
+          onClick={() => {
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth',
+            });
+          }}
         >
           <FcCollapse className="button__return__top__button" />
         </button>
