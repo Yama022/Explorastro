@@ -6,12 +6,15 @@ import {
   GET_COORD,
   SAVE_EVENT_CREATED,
   ON_CLICK_PUBLISHED,
+  EVENTS_CREATED,
 } from 'src/actions/exploration';
 import data from 'src/data/data.json';
 
 export const initialState = {
   ville: '',
   sortie: data,
+  titleEvent: '',
+  descEvent: '',
   zone: 10,
   street: '',
   city: '',
@@ -68,6 +71,16 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         published: !state.published,
+
+      };
+    }
+    case EVENTS_CREATED: {
+      return {
+        ...state,
+        titleEvent: action.value.name,
+        descEvent: action.value.description,
+        dateEvent: action.value.date,
+        maxRateEvent: action.value.max_participants,
 
       };
     }

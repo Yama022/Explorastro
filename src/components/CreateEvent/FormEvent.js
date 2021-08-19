@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { MapContainer, TileLayer } from 'react-leaflet';
 import * as dayjs from 'dayjs';
 import PropTypes from 'prop-types';
@@ -12,8 +12,16 @@ export default function FormEvent({
   getCoordLocation,
   eventCreated,
   OnClick,
+  getEventsCreated,
+  titleEvent,
+  dateEvent,
+  maxRateEvent,
+  descEvent,
 
 }) {
+  useEffect(() => {
+    getEventsCreated(eventCreated);
+  }, []);
   const handleSubmit = (event) => {
     event.preventDefault();
     onFormSubmit();
@@ -43,7 +51,7 @@ export default function FormEvent({
             className="input is-link is-small"
             name="titleEvent"
             type="text"
-            value={eventCreated.name}
+            value={titleEvent}
             onChange={handleOnchange}
             placeholder="Ex : Soirée nuit des étoiles"
           />
@@ -56,7 +64,7 @@ export default function FormEvent({
             cols="70"
             onChange={handleOnchange}
             placeholder="Ex : J'organise une soirée pour la nuit des étoiles dans un endroit bien connu vers chez moi..."
-            value={eventCreated.description}
+            value={descEvent}
           />
 
           <h4 className="form__create__title">Date de l'événement</h4>
@@ -64,7 +72,7 @@ export default function FormEvent({
             className="input is-link is-small"
             type="datetime-local"
             name="dateEvent"
-            value={dayjs(eventCreated.date).format('YYYY-MM-DDTHH:mm:ss')}
+            value={dayjs(dateEvent).format('YYYY-MM-DDTHH:mm:ss')}
             min={dayjs().format('YYYY-MM-DDTHH:mm:ss')}
             onChange={handleOnchange}
           />
@@ -92,7 +100,7 @@ export default function FormEvent({
 
           <h4 className="form__create__title">Nombre de personne(s) maximum
             <input
-              value={eventCreated.maxParticipants}
+              value={maxRateEvent}
               className="maxRateEvent"
               name="maxRateEvent"
               type="number"
@@ -142,4 +150,9 @@ FormEvent.propTypes = {
   // onImageChange: PropTypes.func.isRequired,
   eventCreated: PropTypes.object.isRequired,
   OnClick: PropTypes.func.isRequired,
+  getEventsCreated: PropTypes.func.isRequired,
+  titleEvent: PropTypes.string.isRequired,
+  dateEvent: PropTypes.string.isRequired,
+  maxRateEvent: PropTypes.number.isRequired,
+  descEvent: PropTypes.string.isRequired,
 };

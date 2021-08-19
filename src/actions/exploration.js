@@ -8,6 +8,7 @@ export const GET_COORD = 'GET_COORD';
 export const GET_EVENT_CREATED = 'GET_EVENT_CREATED';
 export const SAVE_EVENT_CREATED = 'SAVE_EVENT_CREATED';
 export const ON_CLICK_PUBLISHED = 'ON_CLICK_PUBLISHED';
+export const EVENTS_CREATED = 'EVENTS_CREATED';
 
 // Action creators
 export const formSubmit = (payload) => ({
@@ -49,5 +50,11 @@ export const saveEventcreated = (value) => ({
 
 export const OnclickPublished = () => ({
   type: ON_CLICK_PUBLISHED,
+
+});
+
+export const eventsCreated = (value) => ({
+  type: EVENTS_CREATED,
+  value,
 
 });
