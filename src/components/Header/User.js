@@ -14,6 +14,7 @@ export default function User({
         <img src="https://st.depositphotos.com/1779253/5140/v/950/depositphotos_51405259-stock-illustration-male-avatar-profile-picture-use.jpg" alt="Avatar de l'utilisateur" className="header__user__container__avatar" />
       </div>
       <ul className={isOpen ? 'header__user__dropdown header__user__dropdown--open' : 'header__user__dropdown'}>
+        <li className="header__user__dropdown__username">{username}</li>
         <li className="header__user__dropdown__item">
           <Link to="/profile" className="header__user__dropdown__item__link" onClick={onClickUser}>
             <BiUserCircle />
