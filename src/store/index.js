@@ -2,7 +2,6 @@ import { createStore, applyMiddleware, compose } from 'redux';
 // import api from 'src/middlewares/api';
 
 import reducer from 'src/reducers';
-
 import auth from 'src/middlewares/auth';
 import event from 'src/middlewares/event';
 import settings from 'src/middlewares/settings';
