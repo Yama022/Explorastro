@@ -206,7 +206,7 @@ module.exports = {
       }
 
       const isMatch = await bcrypt.compare(
-        old_password,
+        password,
         user.password
       );
 

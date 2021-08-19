@@ -49,6 +49,22 @@ const { Op } = require("sequelize");
  */
 
 module.exports = {
+
+  getAll: async (req, res) => {
+    try {
+      const explorations = await Exploration.findByPk(id, {
+        where: {},
+        include: { all: true },
+      });
+  
+      res.status(200).json(explorations);
+    } catch (err) {
+      res.status(500).json({
+        error: errorMessage.INTERNAL_SERVER_ERROR,
+      });
+    }
+  },
+
   getInformations: async (req, res) => {
     const { id } = req.params;
     const exploration = await Exploration.findByPk(id, {
