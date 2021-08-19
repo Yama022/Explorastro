@@ -28,10 +28,17 @@ export default function CreateEvent({ onChangeInput, onFormSubmit, getCoordLocat
         <form className="form__create" onSubmit={handleSubmit}>
           <h4 className="form__create__title">Nom de l'événement</h4>
 
-          <input className="input is-link is-small" name="titleEvent" type="text" onChange={handleOnchange} />
+          <input className="input is-link is-small" name="titleEvent" type="text" onChange={handleOnchange} placeholder="Ex : Soirée nuit des étoiles" />
 
           <h4 className="form__create__title">Descirption</h4>
-          <textarea name="descEvent" id="txtArea" rows="10" cols="70" onChange={handleOnchange} />
+          <textarea
+            name="descEvent"
+            id="txtArea"
+            rows="10"
+            cols="70"
+            onChange={handleOnchange}
+            placeholder="Ex : J'organise une soirée pour la nuit des étoiles dans un endroit bien connu vers chez moi..."
+          />
 
           <h4 className="form__create__title">Date de l'événement</h4>
           <input
@@ -65,24 +72,17 @@ export default function CreateEvent({ onChangeInput, onFormSubmit, getCoordLocat
           </div>
 
           <h4 className="form__create__title">Nombre de personne(s) maximum
-            <input className="maxRateEvent" name="maxRateEvent" type="number" onChange={handleOnchange} />
+            <input className="maxRateEvent" name="maxRateEvent" type="number" onChange={handleOnchange} placeholder="0" />
           </h4>
-          <div className="form__create__button">
-            <button className="button is-link " type="submit">Créer</button>
-            <button className="button is-danger" type="button">Annuler</button>
-          </div>
-        </form>
-        {/* <div className="form__add__img">
-            <div className="form__add__img__img">
-              <img src={logo} alt={logo} />
-            </div>
+          <div className="form__add__img">
 
             <div className="form__add__img__import">
+              <h4 className="form__add__img__title">Souhaitez-vous ajouter une image ? </h4>
               <div className="button-wrapper">
-                eslint-disable-next-line jsx-a11y/label-has-associated-control
+
                 <input
                   accept="image/*"
-                  onChange={onImageChange}
+                // onChange={onImageChange}
                   id="contained-button-file"
                   multiple
                   name="image"
@@ -92,7 +92,12 @@ export default function CreateEvent({ onChangeInput, onFormSubmit, getCoordLocat
               </div>
             </div>
 
-          </div>  */}
+          </div>
+          <div className="form__create__button">
+            <button className="button is-link " type="submit">Créer</button>
+            <button className="button is-danger" type="button">Annuler</button>
+          </div>
+        </form>
       </div>
     </div>
 
@@ -103,5 +108,5 @@ CreateEvent.propTypes = {
   onChangeInput: PropTypes.func.isRequired,
   onFormSubmit: PropTypes.func.isRequired,
   getCoordLocation: PropTypes.func.isRequired,
-   // onImageChange: PropTypes.func.isRequired,
+  // onImageChange: PropTypes.func.isRequired,
 };
