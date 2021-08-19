@@ -12,7 +12,7 @@ const event = (store) => (next) => (action) => {
       const newEvent = {
         name: state.exploration.titleEvent,
         description: state.exploration.descEvent,
-        author_id: username,
+        username: username,
         date: state.exploration.dateEvent,
         max_participants: state.exploration.maxRateEvent,
 
