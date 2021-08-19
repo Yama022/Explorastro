@@ -52,13 +52,17 @@ module.exports = {
 
   getAll: async (req, res) => {
     try {
-      const explorations = await Exploration.findByPk(id, {
-        where: {},
-        include: { all: true },
+      const explorations = await Exploration.findAll({
+        where: {
+          is_published: true
+        },
+        include: ['author'],
+        order: [['date', 'ASC']]
       });
   
       res.status(200).json(explorations);
-    } catch (err) {
+    } catch (error) {
+      console.error(error);
       res.status(500).json({
         error: errorMessage.INTERNAL_SERVER_ERROR,
       });
