@@ -18,7 +18,7 @@
   width: 75%;
   margin: 2 * $gutter;
   &__title {
-    max-width: 97%;
+    max-width: 52%;
     font-size: 1.5em;
     color: $light-color;
   }
@@ -42,12 +42,17 @@
     margin: $gutter;
     padding: 1rem;
     width: 75%;
-    box-shadow: 0 3px 10px 0 $light-color,
+    box-shadow: 0 1px 7px 0 $light-color,
       0 5px 15px 0 rgba(0,0,0,0.08);
     background-color: $secondary-color;
     border-radius: 0.5rem;
     border-left: 0 solid $light-color;
     transition: border-left 300ms ease-in-out, padding-left 300ms ease-in-out;
+    & em {
+      border-bottom: 1px solid $light-color;
+      margin: auto;
+      font-size: 1.2em;
+    }
   }
   &__paragraphe:hover {
     padding-left: 0.5rem;
@@ -60,13 +65,15 @@
     color: red;
   }
 }
+.guide__paragraphe__one__title {
+  max-width: 43% !important;
+}
 
-
-.guide__paraph__one {
+.guide__paragraphe__one, .guide__paragraphe__two {
   width: 75%;
   margin: 2 * $gutter;
   &__title{
-    max-width: 80%;
+    width: 60%;
     font-size: 1.5em;
     color: $light-color;
     margin-bottom: $gutter;
@@ -85,12 +92,32 @@
     padding: 1rem;
     margin: $gutter;
     width: 75%;
-    box-shadow: 0 3px 10px 0 $light-color,
+    box-shadow: 0 1px 7px 0 $light-color,
       0 5px 15px 0 rgba(0,0,0,0.08);
     background-color: $secondary-color;
     border-radius: 0.5rem;
     border-left: 0 solid $light-color;
     transition: border-left 300ms ease-in-out, padding-left 300ms ease-in-out;
+    &__elements {
+      width: 150px;
+      height: 100%;
+      & img {
+        width: 120px;
+        height: 140px;
+        margin-left: .5em;
+      }
+      & figcaption {
+        margin-top: auto;
+        padding: auto;
+      }
+    }
+    & em {
+      font-size: 1.2em;
+      margin-left: .5em;
+      font-style: italic;
+      border-bottom: 1px solid $light-color;
+
+    }
   }
   &__paragraphe:hover {
     padding-left: 0.5rem;
@@ -101,14 +128,19 @@
   }
 }
 
+.guide__paragraphe__two__paragraphe__figure {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
 figure {
   border: thin $light-color solid;
   display: flex;
   flex-flow: column;
   padding: 5px;
   max-width: 300px;
-  margin: 1.5 * $gutter;
-  margin-left: 2em;
+  margin:  $gutter;
   background-color: $secondary-color;
 }
 

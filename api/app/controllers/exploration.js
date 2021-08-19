@@ -2,6 +2,52 @@ const { Exploration } = require("../models");
 const { errorMessage } = require("../constants");
 const { Op } = require("sequelize");
 
+/**
+ * @typedef {CRS} CRS
+ * @property {string} type
+ * @property {Object<string>} properties
+ */
+
+/**
+ * @typedef {Location} Location
+ * @property {integer} lgt - Longitude
+ * @property {integer} lat - Latitude
+ */
+
+/**
+ * @typedef {GeoCoords} GeoCoords
+ * @property {CRS.model} crs
+ * @property {string} type
+ * @property {Array.<integer, integer>} coordinates
+ */
+
+/**
+ * @typedef {Comment} Comment
+ * @property {integer} id - ID
+ * @property {string} content - Content of the comment
+ * @property {string} author_id - ID of the author 
+ * @property {string} createdAt - Date of creation
+ * @property {string} updatedAt - Date of last update
+ */
+
+/**
+ * @typedef {Exploration} Exploration
+ * @property {integer} id - ID
+ * @property {string} name - Name
+ * @property {string} description - Description
+ * @property {GeoCoords.model} geog - Geographical coordinates
+ * @property {string} date - Date
+ * @property {integer} max_participants - Maximum number of participants
+ * @property {boolean} is_published - Publish status (true - published, false - not published)
+ * @property {string} image_url - Image URL
+ * @property {integer} author_id - Author ID
+ * @property {User.model} author - Author informations
+ * @property {Array.<User>}participants - Participants
+ * @property {Array.<Comment>} comments - Comments
+ * @property {string} createdAt - Exploration's creation date
+ * @property {string} updatedAt - Exploration's last update date
+ */
+
 module.exports = {
   getInformations: async (req, res) => {
     const { id } = req.params;
@@ -22,7 +68,7 @@ module.exports = {
     try {
       const { name } = req.body;
 
-      if (!name || name.length < 1) {
+      if (!name) {
         return res.status(400).json({
           message: errorMessage.MISSING_EXPLORATION_NAME,
         });
@@ -32,7 +78,14 @@ module.exports = {
         where: {
           [Op.and]: [
             { author_id: req.user.id },
-            { date: { [Op.lte]: Date.now() } },
+            {
+              date: {
+                [Op.or]: {
+                  [Op.gt]: new Date(),
+                  [Op.eq]: null,
+                },
+              },
+            },
           ],
         },
       });
@@ -65,17 +118,12 @@ module.exports = {
       const { id } = req.params;
       const lgt = req.body.location?.lgt;
       const lat = req.body.location?.lat;
-      const explorationToUpdate = await Exploration.findByPk(id);
 
-      if (!explorationToUpdate) {
+      const exploration = await Exploration.findByPk(id);
+
+      if (!exploration) {
         return res.status(404).json({
           message: errorMessage.EXPLORATION_NOT_FOUND,
-        });
-      }
-
-      if (explorationToUpdate.author_id !== req.user.id) {
-        return res.status(403).json({
-          message: errorMessage.NOT_AUTHORIZED,
         });
       }
 
@@ -85,9 +133,8 @@ module.exports = {
       delete req.body.created_at;
       delete req.body.updated_at;
 
-      await explorationToUpdate.update({
+      await exploration.update({
         ...req.body,
-        author_id: req.user.id,
         geog: {
           type: "Point",
           coordinates: [lgt, lat],
@@ -95,7 +142,7 @@ module.exports = {
       });
 
       res.status(200).json({
-        explorationToUpdate,
+        exploration,
       });
     } catch (error) {
       console.error(error);
@@ -108,21 +155,16 @@ module.exports = {
   delete: async (req, res) => {
     try {
       const { id } = req.params;
-      const explorationToDelete = await Exploration.findByPk(id);
 
-      if (!explorationToDelete) {
+      const exploration = await Exploration.findByPk(id);
+
+      if (!exploration) {
         return res.status(404).json({
           message: errorMessage.EXPLORATION_NOT_FOUND,
         });
       }
 
-      if (explorationToDelete.author_id !== req.user.id) {
-        return res.status(403).json({
-          message: errorMessage.NOT_AUTHORIZED,
-        });
-      }
-
-      await explorationToDelete.destroy();
+      await exploration.destroy();
 
       res.status(200).json({ OK: true });
     } catch (error) {

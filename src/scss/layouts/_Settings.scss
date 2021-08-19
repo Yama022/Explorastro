@@ -1,0 +1,31 @@
+.settings {
+  width: 70vh;
+  margin: auto;
+  &__elems {
+    padding-top: 4em;
+    & h2 {
+      font-size: 1.6em;
+      color: $light-color;
+      margin-bottom: 1.5em;
+    }
+    &__form {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 2em;
+      & label {
+        font-size: 0.9em;
+        color: $light-color;
+      }
+    }
+    & input {
+      border-color: $secondary-color !important;
+    }
+    & button {
+      color: $primary-color;
+    }
+    &__delete-button {
+      display: block;
+      margin: 5em auto;
+    }
+  }
+}

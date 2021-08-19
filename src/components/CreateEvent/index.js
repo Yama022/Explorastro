@@ -2,7 +2,7 @@ import React from 'react';
 import { MapContainer, TileLayer } from 'react-leaflet';
 import * as dayjs from 'dayjs';
 import PropTypes from 'prop-types';
-import logo from 'src/assets/images/placeholder_image.jpg';
+// import logo from 'src/assets/images/placeholder_image.jpg';
 import ControlGeocoder from './controlGeocoder';
 
 export default function CreateEvent({ onChangeInput, onFormSubmit, getCoordLocation }) {
@@ -14,6 +14,11 @@ export default function CreateEvent({ onChangeInput, onFormSubmit, getCoordLocat
   const handleOnchange = (event) => {
     onChangeInput(event.target.value, event.target.name);
   };
+
+  // const onImageChange = () => {
+  //   console.log('Je change image');
+  //   onChangeImage(event);
+  // };
 
   return (
     <div className="container">
@@ -58,6 +63,7 @@ export default function CreateEvent({ onChangeInput, onFormSubmit, getCoordLocat
               <ControlGeocoder coordLocation={getCoordLocation} />
             </MapContainer>
           </div>
+
           <h4 className="form__create__title">Nombre de personne(s) maximum
             <input className="maxRateEvent" name="maxRateEvent" type="number" onChange={handleOnchange} />
           </h4>
@@ -70,20 +76,26 @@ export default function CreateEvent({ onChangeInput, onFormSubmit, getCoordLocat
             <div className="form__add__img__img">
               <img src={logo} alt={logo} />
             </div>
+
             <div className="form__add__img__import">
-              <h1 className="form__add__img__import-title">Ajouter une image</h1>
               <div className="button-wrapper">
-                <span className="label">
-                  Ajouter une image
-                </span>
-                <input type="file" name="upload" id="upload" className="upload-box" placeholder="Ajouter une image" />
+                eslint-disable-next-line jsx-a11y/label-has-associated-control
+                <input
+                  accept="image/*"
+                  onChange={onImageChange}
+                  id="contained-button-file"
+                  multiple
+                  name="image"
+                  type="file"
+                  className="upload-box"
+                />
               </div>
             </div>
 
-          </div> */}
-        {/* </div> */}
+          </div>  */}
       </div>
     </div>
+
   );
 }
 
@@ -91,4 +103,5 @@ CreateEvent.propTypes = {
   onChangeInput: PropTypes.func.isRequired,
   onFormSubmit: PropTypes.func.isRequired,
   getCoordLocation: PropTypes.func.isRequired,
+   // onImageChange: PropTypes.func.isRequired,
 };
