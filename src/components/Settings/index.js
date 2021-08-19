@@ -10,6 +10,7 @@ export default function Settings({
   handleUsernameChange,
   password,
   newPassword,
+  passwordConfirmation,
   handlePasswordChange,
   handleDeleteAccount,
 }) {
@@ -87,8 +88,23 @@ export default function Settings({
       </div>
 
       <div className="settings__elems">
-        <h2>Supprimer le compte</h2>
-        <button type="button" className="button is-danger is-small settings__elems__delete-button" onClick={handleDelete}>Supprimer le compte</button>
+        <form className="settings__elems__form" onSubmit={handleDelete}>
+
+          <h2>Supprimer le compte</h2>
+
+          <div className="field">
+            <label className="label">Mot de passe</label>
+            <div className="control has-icons-left has-icons-right">
+              <input className="input is-success" type="password" placeholder="ex: MyStr0ngP455sWoRD" value={passwordConfirmation} name="passwordConfirmation" onChange={handleChange} />
+              <span className="icon is-small is-left">
+                <FaKey />
+              </span>
+            </div>
+
+          </div>
+
+          <button type="submit" className="button --outlined is-danger settings__elems__form__submit">Supprimer le compte</button>
+        </form>
       </div>
 
     </div>
@@ -101,6 +117,7 @@ Settings.propTypes = {
   handleUsernameChange: PropTypes.func.isRequired,
   password: PropTypes.string.isRequired,
   newPassword: PropTypes.string.isRequired,
+  passwordConfirmation: PropTypes.string.isRequired,
   handlePasswordChange: PropTypes.func.isRequired,
   handleDeleteAccount: PropTypes.func.isRequired,
 };
