@@ -29,6 +29,20 @@ const event = (store) => (next) => (action) => {
       sendPostEvent();
       break;
     }
+    // case GET_EVENTS: {
+    //   const state = store.getState();
+    //   const sendPostEvent = async () => {
+    //     try {
+    //       const resp = await api.get('​/api​/v1​/exploration​/1​/update');
+    //       console.log(resp);
+    //     }
+    //     catch (err) {
+    //       console.error(err);
+    //     }
+    //   };
+    //   sendPostEvent();
+    //   break;
+    // }
 
     default:
       next(action);

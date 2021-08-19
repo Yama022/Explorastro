@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 // import logo from 'src/assets/images/placeholder_image.jpg';
 import ControlGeocoder from './controlGeocoder';
 
-export default function CreateEvent({ onChangeInput, onFormSubmit, getCoordLocation }) {
+export default function createEvent({ onChangeInput, onFormSubmit, getCoordLocation }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     onFormSubmit();
@@ -99,7 +99,7 @@ export default function CreateEvent({ onChangeInput, onFormSubmit, getCoordLocat
   );
 }
 
-CreateEvent.propTypes = {
+createEvent.propTypes = {
   onChangeInput: PropTypes.func.isRequired,
   onFormSubmit: PropTypes.func.isRequired,
   getCoordLocation: PropTypes.func.isRequired,
