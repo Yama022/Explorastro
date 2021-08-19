@@ -52,6 +52,7 @@
     "axios": "^0.21.1",
     "bulma": "^0.9.3",
     "dayjs": "^1.10.6",
+    "final-form": "^4.20.2",
     "leaflet": "^1.7.1",
     "leaflet.markercluster": "^1.5.0",
     "prop-types": "^15.7.2",
@@ -64,6 +65,7 @@
     "react-parallax": "^3.3.0",
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
+    "react-use-form-state": "^0.13.2",
     "redux": "^4.1.1",
     "uuidv4": "^6.2.11"
   }
