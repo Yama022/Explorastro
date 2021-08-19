@@ -2,6 +2,8 @@ import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 
+import { GiHamburgerMenu } from 'react-icons/gi';
+
 import logo from 'src/assets/images/logo-explorastro.png';
 
 import User from 'src/components/Header/User';
@@ -11,6 +13,9 @@ export default function Header({
 }) {
   return (
     <header className="header">
+      <div className="header__burger">
+        <GiHamburgerMenu className="header__burger__img" />
+      </div>
       <Link to={isLogged ? '/timeline' : '/landing'} className="header__logo">
         <img src={logo} alt="logo ExplorAstro" />
       </Link>

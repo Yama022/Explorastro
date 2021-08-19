@@ -15,7 +15,7 @@ export default function LoginForm({
   return (
     <form onSubmit={handleSubmitLogin} className={signup ? 'login__container__form__elem--hidden' : 'login__container__form__elem'}>
       <div className="field">
-        <label className="label">Email</label>
+        <label className="label">Email ou nom d'utilisateur</label>
         <div className="control has-icons-left has-icons-right">
           <input className="input is-success" placeholder="ex: astroCharles@explorastro.com" value={email} name="email" onChange={handleChange} />
           <span className="icon is-small is-left">
