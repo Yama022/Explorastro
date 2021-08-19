@@ -1,6 +1,6 @@
 .settings {
-  width: 70vh;
-  max-width: 80%;
+  width: 38%;
+  min-width: 350px;
   margin: auto;
   &__elems {
     padding-top: 4em;
@@ -20,9 +20,6 @@
     }
     & input {
       border-color: $secondary-color !important;
-    }
-    & button {
-      color: $primary-color;
     }
   }
 }

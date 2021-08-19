@@ -1,6 +1,6 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable max-len */
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { FcDownRight, FcAdvance, FcCollapse } from 'react-icons/fc';
@@ -9,19 +9,7 @@ import { MdReportProblem } from 'react-icons/md';
 // import { TiArrowRight } from 'react-icons/ti';
 
 export default function Guide() {
-  useEffect(() => {
-    window.addEventListener('scroll', (e) => {
-      const button = document.querySelector('.button__return__top');
-      if (window.scrollY > 650) {
-        button.style.display = 'block';
-      }
-      else {
-        button.style.display = 'none';
-      }
-    });
-  }, []);
   return (
-
     // Div qui englobe l'ensemble des paragaphe
     <div className="guide">
       <div className="guide__presentation">

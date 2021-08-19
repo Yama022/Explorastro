@@ -35,13 +35,13 @@
         padding-top: 9px;
       }
       &:hover {
-        text-shadow: 1px 1px 2px $secondary-color, 0 0 0.5em $secondary-color, 0 0 0.2em rgb(187, 30, 207);
+        text-shadow: 0 0 0.2em $tertiary-color;
         color: inherit;
       }
       &--active {
-        text-shadow: 1px 1px 2px $secondary-color, 0 0 0.5em $secondary-color, 0 0 0.2em rgb(187, 30, 207);
+        text-shadow: 0 0 0.2em $tertiary-color;
         &:after {
-          border-bottom: 1px solid rgba(86, 0, 107, 0.637); 
+          border-bottom: 1px solid $secondary-color; 
         }
       }
     }
