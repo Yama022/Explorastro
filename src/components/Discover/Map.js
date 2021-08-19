@@ -29,7 +29,6 @@ export default function Map({ coord, fieldZone }) {
         let circle;
 
         map.eachLayer((layer) => {
-          console.log(layer);
           if (layer.options.name !== 'tiles' && layer.name !== 'MarkerClusterGroup') {
             map.removeLayer(layer);
           }

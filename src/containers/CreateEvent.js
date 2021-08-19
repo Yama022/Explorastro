@@ -1,9 +1,11 @@
 import { connect } from 'react-redux';
 import CreateEvent from 'src/components/CreateEvent';
-import { changeInputCreateEvent, submitFormCreateEvent, getCoord } from 'src/actions/exploration';
+import {
+  changeInputCreateEvent, submitFormCreateEvent, getCoord, getEventCreated,
+} from 'src/actions/exploration';
 
-const mapStateToProps = () => ({
-
+const mapStateToProps = (state) => ({
+  eventsCreated: state.exploration.eventCreated,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -18,6 +20,11 @@ const mapDispatchToProps = (dispatch) => ({
   getCoordLocation: (value) => {
     const action = getCoord(value);
     console.log(value);
+    dispatch(action);
+  },
+
+  getEvent: () => {
+    const action = getEventCreated();
     dispatch(action);
   },
 

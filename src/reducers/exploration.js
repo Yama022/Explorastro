@@ -1,5 +1,5 @@
 import {
-  FORM, SAVE_EXPLORATION, CHANGE_INPUT, CHANGE_INPUT_CREATE_EVENT, GET_COORD,
+  FORM, SAVE_EXPLORATION, CHANGE_INPUT, CHANGE_INPUT_CREATE_EVENT, GET_COORD, SAVE_EVENT_CREATED,
 } from 'src/actions/exploration';
 import data from 'src/data/data.json';
 
@@ -15,6 +15,7 @@ export const initialState = {
   dateEvent: '',
   maxRateEvent: 0,
   coord: '',
+  eventCreated: [],
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -47,6 +48,14 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         [action.key]: action.value,
+
+      };
+    }
+    case SAVE_EVENT_CREATED: {
+      const events = action.value.organized_explorations.map((element) => (element));
+      return {
+        ...state,
+        eventCreated: events,
 
       };
     }
