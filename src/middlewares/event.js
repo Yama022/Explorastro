@@ -35,6 +35,7 @@ const event = (store) => (next) => (action) => {
         try {
           const resp = await api.get(`/api/v1/user/${id}`);
           const result = resp.data;
+          console.log(result);
           store.dispatch(saveEventcreated(result));
         }
         catch (err) {

@@ -4,8 +4,8 @@ import {
   changeInputCreateEvent, submitFormCreateEvent, getCoord, getEventCreated,
 } from 'src/actions/exploration';
 
-const mapStateToProps = () => ({
-
+const mapStateToProps = (state) => ({
+  eventsCreated: state.exploration.eventCreated,
 });
 
 const mapDispatchToProps = (dispatch) => ({

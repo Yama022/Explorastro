@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 import React, { useEffect } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -15,10 +16,11 @@ import Photo from 'src/components/Guide/Photo';
 import Visuel from 'src/components/Guide/Visuel';
 import { FcCollapse } from 'react-icons/fc';
 import Settings from 'src/containers/Settings';
+import FormEvent from 'src/containers/FormEvent';
 
 export default function Explorastro({ isLogged, checkIsLogged }) {
   useEffect(() => {
-    window.addEventListener('scroll', (e) => {
+    window.addEventListener('scroll', () => {
       const button = document.querySelector('.button__return__top');
       if (window.scrollY > 650) {
         button.style.display = 'block';
@@ -56,6 +58,11 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
             <Route exact path="/discover">
               <Header />
               <Discover />
+              <Footer />
+            </Route>
+            <Route exact path="/formEvent/:slug" component={FormEvent}>
+              <Header />
+              <FormEvent />
               <Footer />
             </Route>
             <Route exact path="/guide">

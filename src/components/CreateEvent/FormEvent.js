@@ -5,14 +5,25 @@ import PropTypes from 'prop-types';
 // import logo from 'src/assets/images/placeholder_image.jpg';
 import ControlGeocoder from './controlGeocoder';
 
-export default function FormEvent({ changeInput, formSubmit, getCoord }) {
+export default function FormEvent({
+  onChangeInput,
+  onFormSubmit,
+  getCoordLocation,
+  eventsCreated,
+}) {
+  const events = eventsCreated.map((element) => (
+
+    element
+  ));
+  console.log(events);
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    formSubmit();
+    onFormSubmit();
   };
 
   const handleOnchange = (event) => {
-    changeInput(event.target.value, event.target.name);
+    onChangeInput(event.target.value, event.target.name);
   };
 
   // const onImageChange = () => {
@@ -28,7 +39,14 @@ export default function FormEvent({ changeInput, formSubmit, getCoord }) {
         <form className="form__create" onSubmit={handleSubmit}>
           <h4 className="form__create__title">Nom de l'événement</h4>
 
-          <input className="input is-link is-small" name="titleEvent" type="text" onChange={handleOnchange} placeholder="Ex : Soirée nuit des étoiles" />
+          <input
+            className="input is-link is-small"
+            name="titleEvent"
+            type="text"
+            // value={name}
+            onChange={handleOnchange}
+            placeholder="Ex : Soirée nuit des étoiles"
+          />
 
           <h4 className="form__create__title">Descirption</h4>
           <textarea
@@ -38,6 +56,7 @@ export default function FormEvent({ changeInput, formSubmit, getCoord }) {
             cols="70"
             onChange={handleOnchange}
             placeholder="Ex : J'organise une soirée pour la nuit des étoiles dans un endroit bien connu vers chez moi..."
+            // value={description}
           />
 
           <h4 className="form__create__title">Date de l'événement</h4>
@@ -45,7 +64,7 @@ export default function FormEvent({ changeInput, formSubmit, getCoord }) {
             className="input is-link is-small"
             type="datetime-local"
             name="dateEvent"
-            value={dayjs().format('YYYY-MM-DDTHH:mm:ss')}
+            // value={date !== 'undefined' ? date : dayjs().format('YYYY-MM-DDTHH:mm:ss')}
             min={dayjs().format('YYYY-MM-DDTHH:mm:ss')}
             onChange={handleOnchange}
           />
@@ -67,12 +86,19 @@ export default function FormEvent({ changeInput, formSubmit, getCoord }) {
                 name="tiles"
               />
               {/* Add Markers events astro on the map */}
-              <ControlGeocoder coordLocation={getCoord} />
+              <ControlGeocoder coordLocation={getCoordLocation} />
             </MapContainer>
           </div>
 
           <h4 className="form__create__title">Nombre de personne(s) maximum
-            <input className="maxRateEvent" name="maxRateEvent" type="number" onChange={handleOnchange} placeholder="0" />
+            <input
+              // value={maxParticipants}
+              className="maxRateEvent"
+              name="maxRateEvent"
+              type="number"
+              onChange={handleOnchange}
+              placeholder="0"
+            />
           </h4>
           <div className="form__add__img">
 
@@ -81,8 +107,9 @@ export default function FormEvent({ changeInput, formSubmit, getCoord }) {
               <div className="button-wrapper">
 
                 <input
+                  // value={imageUrl}
                   accept="image/*"
-                // onChange={onImageChange}
+                  // onChange={onImageChange}
                   id="contained-button-file"
                   multiple
                   name="image"
@@ -105,8 +132,9 @@ export default function FormEvent({ changeInput, formSubmit, getCoord }) {
 }
 
 FormEvent.propTypes = {
-  changeInput: PropTypes.func.isRequired,
-  formSubmit: PropTypes.func.isRequired,
-  getCoord: PropTypes.func.isRequired,
+  onChangeInput: PropTypes.func.isRequired,
+  onFormSubmit: PropTypes.func.isRequired,
+  getCoordLocation: PropTypes.func.isRequired,
   // onImageChange: PropTypes.func.isRequired,
+  eventsCreated: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
