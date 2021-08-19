@@ -15,7 +15,8 @@
     }
   }
   &__nav {
-    width: 50%;
+    width: 55%;
+    min-width: 630px;
     display: flex;
     justify-content: space-around;
     &__link {
