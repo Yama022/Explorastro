@@ -103,5 +103,5 @@ CreateEvent.propTypes = {
   onChangeInput: PropTypes.func.isRequired,
   onFormSubmit: PropTypes.func.isRequired,
   getCoordLocation: PropTypes.func.isRequired,
-   // onImageChange: PropTypes.func.isRequired,
+  // onImageChange: PropTypes.func.isRequired,
 };
