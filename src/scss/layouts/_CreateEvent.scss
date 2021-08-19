@@ -7,80 +7,85 @@
   font-size: 2.5em;
   text-align: center;
   color: $light-color;
+
 }
 
-.createEvent{
+.createEvent {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(41, 30, 197, 0.453);
+  width: 70%;
+  margin:0 auto;
+  border-radius: 10px;
+  padding: 40px 0;
 }
 
 .form__create {
-  border-radius: 10px;
-  margin: $gutter 0 0 $gutter;
-  padding: $gutter;
-  border: 1px solid $light-color;
-  width: 32%;
+
   &__title {
-  font-size: 5em;
-  margin-top: 1em;
-  margin-left: 1em;
-  font-size: 1.2em;
-  text-align: left;
-  color: $light-color;
-  &:last-child {
-    background-color: $light-color;
-  }
-    &__calendar {
+    font-size: 5em;
     margin-top: 1em;
-    margin-left: 1em;
-    }
+    font-size: 1.2em;
+    text-align: left;
+    color: $light-color;
   }
-  
+
   & input {
-    margin: $gutter 0 0 $gutter;
-    width: 300px;
-   
-    &:nth-last-child(2) {
-      width: 70px;
-      padding: .4em;
-      border: none;
-      border-radius: 5px;
-      font-weight: bold;
-    }
-    &:last-child {
-      width: 50px;
-      padding: .5em;
-      border: none;
-      border-radius: 5px;
-      font-weight: bold;
-      margin: .3em;
-    }
+
+    margin: $gutter 0;
+
   }
+
   &__button {
     padding: 1em;
-    margin-left: 5em;
-    
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .is-danger {
+      margin-left: 15px;
+      width: 150px !important;
+
+    }
+
+    .is-link {
+
+      width: 150px !important;
+    }
+
+  }
+
+  .maxRateEvent {
+    width: 50px;
+    margin-left: 50px;
   }
 }
-.is-danger {
-  margin-left: 3em;
-}
+
+
 
 .form__right {
+  overflow: hidden;
   border-radius: 10px;
   width: 47%;
   height: 100%;
-  margin: $gutter $gutter $gutter $gutter;
+  margin: $gutter;
   border: 1px solid $light-color;
 }
 
 .form__map {
-  height: 500px;
+  height: 374px;
+  margin: 15px 0;
   background-color: $light-color;
   border: 1px solid $light-color;
+
+
   width: 100%;
   overflow: hidden;
+
   &-title {
     color: black;
     font-size: 3em;
@@ -92,16 +97,19 @@
 .form__add__img {
   display: flex;
   background-color: $secondary-color;
-  border: 1px solid $light-color;
   max-width: 100%;
   height: 20%;
+
   & img {
     margin: 1em 1em 0 .5em;
     width: 200px;
     height: 100px;
     background-color: black;
   }
+
   &__import {
+    margin: 1em 0;
+    margin-left: 20%;
     &-title {
       width: 100%;
       margin-right: 2em;
@@ -111,8 +119,9 @@
       text-align: right;
       padding: 1em;
     }
+
     & input[type=file] {
-      background-color: pink;
+      background-color: $tertiary-color;
       margin-left: 1em;
       border: 1px solid black;
       border-radius: 5px;
@@ -128,6 +137,7 @@
   width: 150px;
   text-align: center;
   margin: auto;
+  background-color: $secondary-color;
 }
 
 .button-wrapper span.label {
@@ -139,19 +149,24 @@
   cursor: pointer;
   color: $light-color;
   padding: 10px 0;
-  text-transform:uppercase;
+  text-transform: uppercase;
   font-size: .8em;
   border-radius: 5px;
 }
 
 #upload {
-    display: inline-block;
-    position: absolute;
-    z-index: 1;
-    width: 100%;
-    height: 50px;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    cursor: pointer;
+  display: inline-block;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 50px;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+textarea {
+  resize: none;
+  margin: 1.5em 0;
 }

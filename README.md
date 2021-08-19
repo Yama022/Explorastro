@@ -23,7 +23,7 @@
 
 1 - Clone this repository.  
 2 - Install frontend dependencies: `yarn`.  
-3 - Install backend dependencies: `cd api && yarn`.
+3 - Install backend dependencies: `cd api && yarn`.  
 4 - Deploy the database: `cd api && yarn db:install`. **(You must have a PostgreSQL "explorastro" database running on localhost:5432)**  
 5 - Copy the sqitch config file: `cp ./api/templates/sqitch.conf.example ./api/sqitch.conf`, and edit them if needed.  
 6 - Create your own enviroment variables: `cp ./api/templates/.env.example ./api/.env` and edit them.  

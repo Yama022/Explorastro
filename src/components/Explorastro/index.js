@@ -11,12 +11,25 @@ import CreateEvent from 'src/containers/CreateEvent';
 import Login from 'src/containers/Login';
 import Guide from 'src/components/Guide';
 import Landing from 'src/components/Landing';
+import Photo from 'src/components/Guide/Photo';
+import Visuel from 'src/components/Guide/Visuel';
+import { FcCollapse } from 'react-icons/fc';
 import Settings from 'src/containers/Settings';
 
 export default function Explorastro({ isLogged, checkIsLogged }) {
   useEffect(() => {
+    window.addEventListener('scroll', (e) => {
+      const button = document.querySelector('.button__return__top');
+      if (window.scrollY > 650) {
+        button.style.display = 'block';
+      }
+      else {
+        button.style.display = 'none';
+      }
+    });
     checkIsLogged();
   }, []);
+
   return (
     <div className="explorastro">
       {isLogged
@@ -50,6 +63,19 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
               <Guide />
               <Footer />
             </Route>
+            <Route exact path="/guide/photo">
+              <Header />
+              <Photo />
+              <Footer />
+            </Route>
+            <Route exact path="/guide/visuel">
+              <Header />
+              <Visuel />
+              <Footer />
+            </Route>
+            <Route exact path="/login">
+              <Redirect to="/timeline" />
+            </Route>
             <Route exact path="/settings">
               <Header />
               <Settings />
@@ -60,7 +86,6 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
               <Error />
               <Footer />
             </Route>
-
           </Switch>
         )
         : (
@@ -86,7 +111,19 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
             </Route>
           </Switch>
         )}
+      <div className="button__return__top">
+        <button onClick={() => {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+          });
+        }}
+        >
+          <FcCollapse className="button__return__top__button" />
+        </button>
+      </div>
     </div>
+
   );
 }
 
