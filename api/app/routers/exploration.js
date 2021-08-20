@@ -69,6 +69,16 @@ router
     "/:id(\\d+)/delete",
     identityMiddleware.explorationPermissions,
     explorationController.delete
+  )
+
+  .put(
+    "/:id(\\d+)/participants/add/:userId(\\d+)",
+    explorationController.addParticipant
+  )
+
+  .delete(
+    "/:id(\\d+)/participants/remove/:userId(\\d+)",
+    explorationController.removeParticipant
   );
 
 module.exports = router;

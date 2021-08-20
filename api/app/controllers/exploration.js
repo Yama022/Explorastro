@@ -194,4 +194,10 @@ module.exports = {
       });
     }
   },
+
+  addParticipant: async (req, res) => {
+  },
+
+  removeParticipant: async (req, res) => {
+  }
 };
