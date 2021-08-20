@@ -1,4 +1,3 @@
-export const TOGGLE_DROPDOWN = 'TOGGLE_DROPDOWN';
 export const TOGGLE_SIGNUP = 'TOGGLE_SIGNUP';
 export const CHANGE_VALUE = 'CHANGE_VALUE';
 export const SIGNUP = 'SIGNUP';
@@ -10,10 +9,6 @@ export const CHECK_USER_LOGGED = 'CHECK_USER_LOGGED';
 export const CHANGE_USERNAME = 'CHANGE_USERNAME';
 export const CHANGE_PASSWORD = 'CHANGE_PASSWORD';
 export const DELETE_ACCOUNT = 'DELETE_ACCOUNT';
-
-export const toggleDropdown = () => ({
-  type: TOGGLE_DROPDOWN,
-});
 
 export const toggleSignup = () => ({
   type: TOGGLE_SIGNUP,

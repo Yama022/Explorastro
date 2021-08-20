@@ -1,13 +1,20 @@
-// Small devices
+// Mobiles
 @mixin mob {
   @media (max-width: #{$mobile-breakpoint}) { 
     @content;
   }
 }
 
-// Medium devices
+// Tablets
 @mixin tab {
   @media (min-width: #{$mobile-breakpoint}) and (max-width: #{$tablet-breakpoint}){
+    @content;
+  }
+}
+
+// Mobiles & tablets
+@mixin mobTab {
+  @media (max-width: #{$tablet-breakpoint}){
     @content;
   }
 }

@@ -1,14 +1,19 @@
 import { connect } from 'react-redux';
 import Header from 'src/components/Header';
-import { toggleDropdown, logout } from '../actions/user';
+import { toggleBurger, toggleDropdown } from 'src/actions/header';
+import { logout } from 'src/actions/user';
 
 const mapStateToProps = (state) => ({
   isLogged: state.user.logged,
   username: state.user.username,
-  isOpen: state.user.open,
+  dropdownIsOpen: state.header.dropdownOpen,
+  burgerIsOpen: state.header.burgerOpen,
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  handleToggleBurger: () => {
+    dispatch(toggleBurger());
+  },
   handleToggleDropdown: () => {
     dispatch(toggleDropdown());
   },
