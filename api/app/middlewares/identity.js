@@ -5,7 +5,6 @@ module.exports = {
   userPermissions: (req, res, next) => {
     const id = +req.params.id;
     if (id != req.user.id) {
-      console.log("Pas bon");
       return res.status(403).json({
         message: errorMessage.UNAUTHORIZED,
       });
@@ -13,7 +12,8 @@ module.exports = {
     next();
   },
   explorationPermissions: (req, res, next) => {
-    const { author_id } = Exploration.findByPk(req.params.id);
+const id = +req.params.id
+    const { author_id } = Exploration.findByPk(id);
     if (author_id !== req.user.id) {
       return res.status(403).json({
         message: errorMessage.UNAUTHORIZED,
