@@ -1,6 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const { explorationController, participationController } = require("../controllers");
+const {
+  explorationController,
+  participationController,
+} = require("../controllers");
 const { identityMiddleware } = require("../middlewares");
 
 router
@@ -69,6 +72,11 @@ router
     "/:id(\\d+)/delete",
     identityMiddleware.explorationPermissions,
     explorationController.delete
+  )
+
+  .get(
+    "/:id(\\d+)/participants",
+    participationController.getParticipants
   )
 
   .put(

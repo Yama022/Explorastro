@@ -2,6 +2,27 @@ const { User, Exploration } = require("../models");
 const { errorMessage } = require("../constants");
 
 module.exports = {
+  getParticipants: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const exploration = await Exploration.findByPk(id, {
+        include: ["participants"],
+      });
+
+      if (!exploration) {
+        res.status(404).send(errorMessage.EXPLORATION_NOT_FOUND);
+        return;
+      }
+
+      res.json(exploration.participants);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({
+        message: errorMessage.INTERNAL_ERROR,
+      });
+    }
+  },
+
   addParticipant: async (req, res) => {
     try {
       const { id, userId } = req.params;
@@ -72,8 +93,8 @@ module.exports = {
       const exploration = await Exploration.findByPk(id, {
         include: ["participants"],
       });
-        
-        console.log(exploration);
+
+      console.log(exploration);
 
       if (!user) {
         return res.status(404).json({
