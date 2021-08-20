@@ -38,6 +38,10 @@ const options = {
 
 expressSwagger(options);
 
+app.get('/', (req, res) => {
+  res.redirect(`/api-docs`);
+});
+
 app.use("/api/v1", router);
 
 app.listen(port, (_) => {
