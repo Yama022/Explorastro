@@ -88,7 +88,7 @@ router
   )
 
   .post(
-    "/:id(\\d+)/follow/:followingId(\\d+)",
+    "/:id(\\d+)/follow/:toFollowId(\\d+)",
     identityMiddleware.userPermissions,
     followController.follow
   )
