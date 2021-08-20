@@ -21,4 +21,9 @@ module.exports = {
     FOLLOW_IS_SUCCESS: "You are now following this user",
     UNFOLLOW_IS_SUCCESS: "You are no longer following this user",
     USER_NOT_FOLLOWING: "You are not following this user",
+    EXPLORATION_PARTICIPANTS_LIMIT_REACHED: "You have reached the maximum number of users allowed in an exploration",
+    USER_ALREADY_PARTICIPATE: "You are already participating in this exploration",
+    USER_NOT_PARTICIPATE: "You are not participating in this exploration",
+    SUBSCRIBE_SUCCESS: "You have successfully subscribed to this exploration",
+    UNSUBCRIBE_SUCCESS: "You have successfully unsubscribed from this exploration",
 }

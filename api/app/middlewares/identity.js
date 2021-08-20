@@ -2,8 +2,7 @@ const { Exploration } = require("../models");
 const { errorMessage } = require("../constants");
 
 module.exports = {
-  userPermissions: (req, res, next) => {
-    const id = +req.params.id;
+  userPermissions: (req, res, next, id=+req.params.id) => {
     if (id != req.user.id) {
       return res.status(403).json({
         message: errorMessage.UNAUTHORIZED,

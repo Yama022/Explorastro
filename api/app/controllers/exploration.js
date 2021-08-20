@@ -1,4 +1,4 @@
-const { Exploration } = require("../models");
+const { Exploration, User } = require("../models");
 const { errorMessage } = require("../constants");
 const { Op } = require("sequelize");
 
@@ -193,5 +193,5 @@ module.exports = {
         message: errorMessage.INTERNAL_ERROR,
       });
     }
-  },
+  }
 };
