@@ -17,6 +17,7 @@ const mapStateToProps = (state, ownProps) => ({
   dateEvent: state.exploration.dateEvent,
   maxRateEvent: state.exploration.maxRateEvent,
   descEvent: state.exploration.descEvent,
+  published: state.exploration.published,
 
 });
 

@@ -131,11 +131,11 @@
     margin: 1em 0;
 
     & input[type=file] {
-      background-color: $tertiary-color;
+      background-color: #201ecf66;
       border: 1px solid black;
       border-radius: 5px;
       font-size: 1em;
-      padding: .5em;
+      padding: 0.8em;
     }
   }
 }
