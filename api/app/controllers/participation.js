@@ -29,7 +29,7 @@ module.exports = {
         });
       }
 
-      if (exploration.participants.length === exploration.max_participants) {
+      if (exploration.participants.length >= exploration.max_participants) {
         return res.status(400).json({
           message: errorMessage.EXPLORATION_PARTICIPANTS_LIMIT_REACHED,
         });
@@ -58,5 +58,55 @@ module.exports = {
     }
   },
 
-  removeParticipant: async (req, res) => {},
+  removeParticipant: async (req, res) => {
+    try {
+      const { id, userId } = req.params;
+
+      if (userId != req.user.id) {
+        return res.status(403).json({
+          message: errorMessage.UNAUTHORIZED,
+        });
+      }
+
+      const user = await User.findByPk(userId);
+      const exploration = await Exploration.findByPk(id, {
+        include: ["participants"],
+      });
+        
+        console.log(exploration);
+
+      if (!user) {
+        return res.status(404).json({
+          message: errorMessage.USER_NOT_FOUND,
+        });
+      }
+
+      if (!exploration) {
+        return res.status(404).json({
+          message: errorMessage.EXPLORATION_NOT_FOUND,
+        });
+      }
+
+      const userParticipate = exploration.participants.some(
+        (participant) => participant.id === user.id
+      );
+
+      if (!userParticipate) {
+        return res.status(400).json({
+          message: errorMessage.USER_NOT_PARTICIPATE,
+        });
+      }
+
+      await exploration.removeParticipant(user);
+
+      res.status(200).json({
+        message: errorMessage.UNSUBCRIBE_SUCCESS,
+      });
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({
+        message: errorMessage.INTERNAL_ERROR,
+      });
+    }
+  },
 };
