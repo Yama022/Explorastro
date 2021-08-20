@@ -61,11 +61,7 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
               <Discover />
               <Footer />
             </Route>
-            <Route exact path="/formEvent/:slug" component={FormEvent}>
-              <Header />
-              <FormEvent />
-              <Footer />
-            </Route>
+            <Route path="/formEvent/:id" component={FormEvent} />
             <Route exact path="/guide">
               <Header />
               <Guide />

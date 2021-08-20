@@ -1,5 +1,8 @@
 /* eslint-disable import/prefer-default-export */
 export function findEvent(events, searchedId) {
-  const event = events.find((testedEvent) => testedEvent.id === searchedId);
+  const idSearch = parseInt(searchedId, 10);
+  const event = events.find((element) => (
+    element.id === idSearch));
+
   return event;
 }

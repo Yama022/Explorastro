@@ -7,6 +7,8 @@ export const SUBMIT_FORM_CREATE_EVENT = 'SUBMIT_FORM_CREATE_EVENT';
 export const GET_COORD = 'GET_COORD';
 export const GET_EVENT_CREATED = 'GET_EVENT_CREATED';
 export const SAVE_EVENT_CREATED = 'SAVE_EVENT_CREATED';
+export const ON_CLICK_PUBLISHED = 'ON_CLICK_PUBLISHED';
+export const EVENTS_CREATED = 'EVENTS_CREATED';
 
 // Action creators
 export const formSubmit = (payload) => ({
@@ -25,10 +27,9 @@ export const changeInputCreateEvent = (value, key) => ({
   key,
 });
 
-export const submitFormCreateEvent = (value, key) => ({
+export const submitFormCreateEvent = (value) => ({
   type: SUBMIT_FORM_CREATE_EVENT,
   value,
-  key,
 });
 
 export const getCoord = (value) => ({
@@ -42,6 +43,17 @@ export const getEventCreated = () => ({
 });
 export const saveEventcreated = (value) => ({
   type: SAVE_EVENT_CREATED,
+  value,
+
+});
+
+export const OnclickPublished = () => ({
+  type: ON_CLICK_PUBLISHED,
+
+});
+
+export const eventsCreated = (value) => ({
+  type: EVENTS_CREATED,
   value,
 
 });

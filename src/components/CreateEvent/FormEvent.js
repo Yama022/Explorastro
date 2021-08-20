@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import React, { useEffect } from 'react';
 import { MapContainer, TileLayer } from 'react-leaflet';
 import * as dayjs from 'dayjs';
 import PropTypes from 'prop-types';
@@ -9,23 +10,31 @@ export default function FormEvent({
   onChangeInput,
   onFormSubmit,
   getCoordLocation,
-  eventsCreated,
-}) {
-  const events = eventsCreated.map((element) => (
+  eventCreated,
+  OnClick,
+  getEventsCreated,
+  titleEvent,
+  dateEvent,
+  maxRateEvent,
+  descEvent,
 
-    element
-  ));
-  console.log(events);
+}) {
+  useEffect(() => {
+    getEventsCreated(eventCreated);
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onFormSubmit();
+    onFormSubmit(eventCreated.id);
   };
 
   const handleOnchange = (event) => {
     onChangeInput(event.target.value, event.target.name);
   };
 
+  const handleOnClick = () => {
+    OnClick();
+  };
   // const onImageChange = () => {
   //   console.log('Je change image');
   //   onChangeImage(event);
@@ -43,7 +52,7 @@ export default function FormEvent({
             className="input is-link is-small"
             name="titleEvent"
             type="text"
-            // value={name}
+            value={titleEvent}
             onChange={handleOnchange}
             placeholder="Ex : Soirée nuit des étoiles"
           />
@@ -56,7 +65,7 @@ export default function FormEvent({
             cols="70"
             onChange={handleOnchange}
             placeholder="Ex : J'organise une soirée pour la nuit des étoiles dans un endroit bien connu vers chez moi..."
-            // value={description}
+            value={descEvent}
           />
 
           <h4 className="form__create__title">Date de l'événement</h4>
@@ -64,7 +73,7 @@ export default function FormEvent({
             className="input is-link is-small"
             type="datetime-local"
             name="dateEvent"
-            // value={date !== 'undefined' ? date : dayjs().format('YYYY-MM-DDTHH:mm:ss')}
+            value={dayjs(dateEvent).format('YYYY-MM-DDTHH:mm:ss')}
             min={dayjs().format('YYYY-MM-DDTHH:mm:ss')}
             onChange={handleOnchange}
           />
@@ -92,7 +101,7 @@ export default function FormEvent({
 
           <h4 className="form__create__title">Nombre de personne(s) maximum
             <input
-              // value={maxParticipants}
+              value={maxRateEvent}
               className="maxRateEvent"
               name="maxRateEvent"
               type="number"
@@ -100,6 +109,10 @@ export default function FormEvent({
               placeholder="0"
             />
           </h4>
+
+          <input type="checkbox" name="published" className="checkbox" id="checkbox" onClick={handleOnClick} />
+          <label className="published" htmlFor="checkbox" />
+
           <div className="form__add__img">
 
             <div className="form__add__img__import">
@@ -107,7 +120,7 @@ export default function FormEvent({
               <div className="button-wrapper">
 
                 <input
-                  // value={imageUrl}
+                  value={eventCreated.imageUrl}
                   accept="image/*"
                   // onChange={onImageChange}
                   id="contained-button-file"
@@ -136,5 +149,11 @@ FormEvent.propTypes = {
   onFormSubmit: PropTypes.func.isRequired,
   getCoordLocation: PropTypes.func.isRequired,
   // onImageChange: PropTypes.func.isRequired,
-  eventsCreated: PropTypes.arrayOf(PropTypes.object).isRequired,
+  eventCreated: PropTypes.object.isRequired,
+  OnClick: PropTypes.func.isRequired,
+  getEventsCreated: PropTypes.func.isRequired,
+  titleEvent: PropTypes.string.isRequired,
+  dateEvent: PropTypes.string.isRequired,
+  maxRateEvent: PropTypes.number.isRequired,
+  descEvent: PropTypes.string.isRequired,
 };
