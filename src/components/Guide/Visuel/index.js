@@ -1,23 +1,26 @@
 /* eslint-disable max-len */
 import React, { useEffect } from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-// import { FcPrevious } from 'react-icons/fc';
 import { ImSad } from 'react-icons/im';
 import { TiArrowRight } from 'react-icons/ti';
+import FirstPart from './FirstPart';
+
+import data from './data';
+
+// import { FcPrevious } from 'react-icons/fc';
 
 export default function Visuel() {
+  const { photo } = data[0];
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   return (
     <div>
-      <a href="/guide">
-        {/*   <Link to="/guide">
-          Avant
-        </Link> */}
-        Page précèdente
-      </a>
+      <Link to="/guide">
+        Avant
+      </Link>
 
       <div className="guide__paragraphe__two__paragraphe">
         <p>Comme mentionné dans le titre, on peut aussi utiliser une lunette ou un téléscope pour faire du visuel, même si cela commence déjà à coûter un peu plus chère.
@@ -28,42 +31,9 @@ export default function Visuel() {
 
         {/* Création d'une div qui englobe les <figure> pour pouvoir flex en wrap dessus */}
         <div className="guide__paragraphe__two__paragraphe__figure">
-          <figure className="guide__paragraphe__two__paragraphe__elements">
-            <a href="https://www.pierro-astro.com/materiel-astronomique/lunettes-astronomiques/lunettes-achromatiques-1/lunette-70-700-sur-monture-az2-sky-watcher_detail" target="_blank" rel="noreferrer">
-              <img src="https://www.maison-astronomie.com/12466-home_default/lunette-70700-sky-watcher-sur-monture-azimutale-az2.jpg" alt="LUNETTE 70/700 SKY-WATCHER" />
-            </a>
-            <figcaption className="exemple"> LUNETTE 70/700 SKY-WATCHER - 119€ </figcaption>
-          </figure>
-          <figure className="guide__paragraphe__two__paragraphe__elements">
-            <a href="https://www.pierro-astro.com/materiel-astronomique/debutants/t%C3%A9lescope-dobson-mini-bresser-130mm_detail" target="_blank" rel="noreferrer">
-              <img src="https://www.maison-astronomie.com/8696-large_default/telescope-dobson-bresser-messier-5-130650.jpg" alt="DOBSON BRESSER MESSIER 5" />
-            </a>
-            <figcaption className="exemple"> DOBSON BRESSER MESSIER 5" 130/650 - 215€ </figcaption>
-          </figure>
-          <figure className="guide__paragraphe__two__paragraphe__elements">
-            <a href="https://www.maison-astronomie.com/fr/initiation-enfants/5756-telescope-dobson-102640-omegon.html" target="_blank" rel="noreferrer">
-              <img src="https://www.maison-astronomie.com/15614-large_default/telescope-dobson-102640-omegon.jpg" alt="DOBSON 102/640 OMEGON" />
-            </a>
-            <figcaption className="exemple"> DOBSON 102/640 OMEGON - 249€ </figcaption>
-          </figure>
-          <figure className="guide__paragraphe__two__paragraphe__elements">
-            <a href="https://www.maison-astronomie.com/fr/initiation-adultes/5645-dobson-flextube-heritage-150750-sky-watcher-3664055000513.html" target="_blank" rel="noreferrer">
-              <img src="https://www.maison-astronomie.com/15110-large_default/dobson-flextube-heritage-150750-sky-watcher.jpg" alt="DOBSON FLEXTUBE HERITAGE 150/750 SKY-WATCHER" />
-            </a>
-            <figcaption className="exemple"> DOBSON 150/750 SKY-WATCHER - 260€ </figcaption>
-          </figure>
-          <figure className="guide__paragraphe__two__paragraphe__elements">
-            <a href="https://www.pierro-astro.com/materiel-astronomique/marques/skywatcher/telescopes-newton/t%C3%A9lescope-newton-130-650-sur-monture-%C3%A9quatoriale-starquest-sky-watcher_detail" target="_blank" rel="noreferrer">
-              <img src="https://www.promo-optique.com/105868-large_default/telescope-130650-sur-monture-starquest-skywatcher.jpg" alt="Newton 130/650 StarQuest" />
-            </a>
-            <figcaption className="exemple"> NEWTON 130/650 StARQUEST - 250€ </figcaption>
-          </figure>
-          <figure className="guide__paragraphe__two__paragraphe__elements">
-            <a href="https://www.promo-optique.com/fr/telescope-debutant/52751-telescope-newton-perl-bellatrix-150-750-eq3-2-motorisable" target="_blank" rel="noreferrer">
-              <img src="https://www.promo-optique.com/9957-large_default/telescope-newton-perl-bellatrix-150-750-eq3-2-motorisable.jpg" alt="Newton 150/750 EQ3-2" />
-            </a>
-            <figcaption className="exemple"> NEWTON 150/750 EQ3 - 429€ </figcaption>
-          </figure>
+          {photo.map((element) => (
+            <FirstPart key={element.id} {...element} />
+          ))}
         </div>
 
         <p> <TiArrowRight /> <em>Divers accessoires peuvent être utile lors de vos sorties tels que :</em> </p>

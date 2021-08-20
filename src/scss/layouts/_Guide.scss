@@ -46,17 +46,11 @@
       0 5px 15px 0 rgba(0,0,0,0.08);
     background-color: $secondary-color;
     border-radius: 0.5rem;
-    border-left: 0 solid $light-color;
-    transition: border-left 300ms ease-in-out, padding-left 300ms ease-in-out;
     & em {
       border-bottom: 1px solid $light-color;
       margin: auto;
       font-size: 1.2em;
     }
-  }
-  &__paragraphe:hover {
-    padding-left: 0.5rem;
-    border-left: 0.5rem solid $light-color;
   }
   &__paragraphe > :first-child {
     margin-top: 0;
@@ -96,8 +90,6 @@
       0 5px 15px 0 rgba(0,0,0,0.08);
     background-color: $secondary-color;
     border-radius: 0.5rem;
-    border-left: 0 solid $light-color;
-    transition: border-left 300ms ease-in-out, padding-left 300ms ease-in-out;
     &__elements {
       width: 150px;
       height: 100%;
@@ -119,10 +111,6 @@
 
     }
   }
-  &__paragraphe:hover {
-    padding-left: 0.5rem;
-    border-left: 0.5rem solid $light-color;
-  }
   &__paragraphe > :first-child {
     margin-top: 0;
   }
@@ -131,6 +119,7 @@
 .guide__paragraphe__two__paragraphe__figure {
     display: flex;
     flex-wrap: wrap;
+    padding-bottom: 3em !important;
 }
 
 
