@@ -9,7 +9,7 @@ import ControlGeocoder from './controlGeocoder';
 
 export default function FormEvent({
   onChangeInput,
-  onFormSubmit,
+  onFormSubmitUpdateEvent,
   getCoordLocation,
   eventCreated,
   OnClick,
@@ -27,7 +27,7 @@ export default function FormEvent({
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onFormSubmit(eventCreated.id);
+    onFormSubmitUpdateEvent(eventCreated.id);
   };
 
   const handleOnchange = (event) => {
@@ -77,7 +77,7 @@ export default function FormEvent({
               className="input is-link is-small"
               type="datetime-local"
               name="dateEvent"
-              value={dayjs(dateEvent).format('YYYY-MM-DDTHH:mm:ss')}
+              value={dayjs().format('YYYY-MM-DDTHH:mm:ss')}
               min={dayjs().format('YYYY-MM-DDTHH:mm:ss')}
               onChange={handleOnchange}
             />
@@ -151,7 +151,7 @@ export default function FormEvent({
 
 FormEvent.propTypes = {
   onChangeInput: PropTypes.func.isRequired,
-  onFormSubmit: PropTypes.func.isRequired,
+  onFormSubmitUpdateEvent: PropTypes.func.isRequired,
   getCoordLocation: PropTypes.func.isRequired,
   // onImageChange: PropTypes.func.isRequired,
   eventCreated: PropTypes.object.isRequired,

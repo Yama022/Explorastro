@@ -3,12 +3,13 @@ export const FORM = 'FORM';
 export const SAVE_EXPLORATION = 'SAVE_EXPLORATION';
 export const CHANGE_INPUT = 'CHANGE_INPUT';
 export const CHANGE_INPUT_CREATE_EVENT = 'CHANGE_INPUT_CREATE_EVENT';
-export const SUBMIT_FORM_CREATE_EVENT = 'SUBMIT_FORM_CREATE_EVENT';
+export const SUBMIT_FORM_UPDATE_EVENT = 'SUBMIT_FORM_UPDATE_EVENT';
 export const GET_COORD = 'GET_COORD';
 export const GET_EVENT_CREATED = 'GET_EVENT_CREATED';
 export const SAVE_EVENT_CREATED = 'SAVE_EVENT_CREATED';
 export const ON_CLICK_PUBLISHED = 'ON_CLICK_PUBLISHED';
 export const EVENTS_CREATED = 'EVENTS_CREATED';
+export const SUBMIT_FROM_CREATE_EVENT = 'SUBMIT_FROM_CREATE_EVENT';
 
 // Action creators
 export const formSubmit = (payload) => ({
@@ -27,8 +28,8 @@ export const changeInputCreateEvent = (value, key) => ({
   key,
 });
 
-export const submitFormCreateEvent = (value) => ({
-  type: SUBMIT_FORM_CREATE_EVENT,
+export const submitFormUpdateEvent = (value) => ({
+  type: SUBMIT_FORM_UPDATE_EVENT,
   value,
 });
 
@@ -55,5 +56,10 @@ export const OnclickPublished = () => ({
 export const eventsCreated = (value) => ({
   type: EVENTS_CREATED,
   value,
+
+});
+
+export const submitFormCreateEvent = () => ({
+  type: SUBMIT_FROM_CREATE_EVENT,
 
 });
