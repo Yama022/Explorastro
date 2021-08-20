@@ -1,0 +1,27 @@
+.profile {
+  &__header {
+    display: flex;
+    &__avatar {
+      width: 40%;
+      position: relative;
+      // &__background {
+      //   position: absolute;
+      //   width: 80%;
+      //   height: 80%;
+      //   top: 0;
+      //   left: 0;
+      //   background-color: $secondary-color;
+      // }
+      & img {
+        // position: absolute;
+        width: 80%;
+        height: 80%;
+        top: 2em;
+        left: 2em;
+      }
+    }
+    &__details {
+      width: 60%;
+    }
+  }
+}

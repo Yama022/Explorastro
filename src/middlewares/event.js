@@ -20,7 +20,6 @@ const event = (store) => (next) => (action) => {
         max_participants: state.exploration.maxRateEvent,
         location: position,
         is_published: state.exploration.published,
-
       };
       const sendPostEvent = async () => {
         try {
