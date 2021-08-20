@@ -38,14 +38,14 @@ Token.belongsTo(User, {
 // User Followers
 User.belongsToMany(User, {
   through: "user_has_followers",
-  as: "followers",
+  as: "following",
   foreignKey: "follower_id",
   otherKey: "user_id",
 });
 
 User.belongsToMany(User, {
   through: "user_has_followers",
-  as: "following",
+  as: "followers",
   foreignKey: "user_id",
   otherKey: "follower_id",
 });
