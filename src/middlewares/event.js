@@ -1,9 +1,11 @@
-import { SUBMIT_FORM_CREATE_EVENT, GET_EVENT_CREATED, saveEventcreated } from 'src/actions/exploration';
+import {
+  SUBMIT_FORM_UPDATE_EVENT, GET_EVENT_CREATED, saveEventcreated, SUBMIT_FROM_CREATE_EVENT,
+} from 'src/actions/exploration';
 import api from './utils/api';
 
 const event = (store) => (next) => (action) => {
   switch (action.type) {
-    case SUBMIT_FORM_CREATE_EVENT: {
+    case SUBMIT_FORM_UPDATE_EVENT: {
       const { username } = localStorage.getItem('user');
       const state = store.getState();
       const position = state.exploration.coord;
@@ -47,6 +49,24 @@ const event = (store) => (next) => (action) => {
         }
       };
       getEvent();
+      break;
+    }
+    case SUBMIT_FROM_CREATE_EVENT: {
+      const state = store.getState();
+      const newEvent = {
+        name: state.exploration.titleEvent,
+
+      };
+      const sendPostEvent = async () => {
+        try {
+          const resp = await api.post('/api/v1/exploration/create', newEvent);
+          console.log(resp);
+        }
+        catch (err) {
+          console.error(err);
+        }
+      };
+      sendPostEvent();
       break;
     }
 
