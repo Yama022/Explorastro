@@ -22,9 +22,10 @@ export default function FormEvent({
   useEffect(() => {
     getEventsCreated(eventCreated);
   }, []);
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    onFormSubmit();
+    onFormSubmit(eventCreated.id);
   };
 
   const handleOnchange = (event) => {

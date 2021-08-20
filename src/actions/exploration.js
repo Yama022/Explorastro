@@ -27,10 +27,9 @@ export const changeInputCreateEvent = (value, key) => ({
   key,
 });
 
-export const submitFormCreateEvent = (value, key) => ({
+export const submitFormCreateEvent = (value) => ({
   type: SUBMIT_FORM_CREATE_EVENT,
   value,
-  key,
 });
 
 export const getCoord = (value) => ({

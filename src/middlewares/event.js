@@ -7,18 +7,22 @@ const event = (store) => (next) => (action) => {
       const { username } = localStorage.getItem('user');
       const state = store.getState();
       const position = state.exploration.coord;
-      console.log(position.lat);
+      const id = action.value;
+      console.log(id);
+      console.log(position);
       const newEvent = {
         name: state.exploration.titleEvent,
         description: state.exploration.descEvent,
         username: username,
         date: state.exploration.dateEvent,
         max_participants: state.exploration.maxRateEvent,
+        location: position,
+        is_published: state.exploration.published,
 
       };
       const sendPostEvent = async () => {
         try {
-          const resp = await api.post('/api/v1/exploration/create', newEvent);
+          const resp = await api.patch(`/api/v1/exploration/${id}/update`, newEvent);
           console.log(resp);
         }
         catch (err) {
