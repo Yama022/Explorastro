@@ -47,11 +47,14 @@ const settings = (store) => (next) => (action) => {
     }
     case DELETE_ACCOUNT: {
       const sendData = async () => {
+        const state = store.getState();
         const user = JSON.parse(localStorage.getItem('user'));
         const userId = user.id;
         try {
           const response = await api.delete(`api/v1/user/${userId}/delete`, {
-            authorization: user.accessToken,
+            data: {
+              password: state.user.passwordConfirmation,
+            },
           });
           console.log(response);
         }

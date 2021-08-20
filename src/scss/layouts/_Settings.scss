@@ -1,5 +1,6 @@
 .settings {
-  width: 70vh;
+  width: 38%;
+  min-width: 350px;
   margin: auto;
   &__elems {
     padding-top: 4em;
@@ -19,13 +20,6 @@
     }
     & input {
       border-color: $secondary-color !important;
-    }
-    & button {
-      color: $primary-color;
-    }
-    &__delete-button {
-      display: block;
-      margin: 5em auto;
     }
   }
 }

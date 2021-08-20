@@ -8,6 +8,11 @@
   justify-content: space-between;
   align-items: center;
   color: $light-color;
+  &__burger {
+    display: none;
+    margin-left: 0.2em;
+    font-size: 2em;
+  }
   &__logo {
     img {
       padding-bottom: 1.2em;
@@ -15,7 +20,8 @@
     }
   }
   &__nav {
-    width: 50%;
+    width: 52%;
+    min-width: 630px;
     display: flex;
     justify-content: space-around;
     &__link {
@@ -29,13 +35,13 @@
         padding-top: 9px;
       }
       &:hover {
-        text-shadow: 1px 1px 2px $secondary-color, 0 0 0.5em $secondary-color, 0 0 0.2em rgb(187, 30, 207);
+        text-shadow: 0 0 0.2em $tertiary-color;
         color: inherit;
       }
       &--active {
-        text-shadow: 1px 1px 2px $secondary-color, 0 0 0.5em $secondary-color, 0 0 0.2em rgb(187, 30, 207);
+        text-shadow: 0 0 0.2em $tertiary-color;
         &:after {
-          border-bottom: 1px solid rgba(86, 0, 107, 0.637); 
+          border-bottom: 1px solid $secondary-color; 
         }
       }
     }
@@ -63,6 +69,9 @@
       right: -5%;
       border-radius: 10px;
       display: none;
+      &__username {
+        display: none;
+      }
       &--open {
         display: block;
       }
@@ -111,6 +120,37 @@
     & .button {
       color: $primary-color;
       background-color: $light-color;
+    }
+  }
+  @include tab {
+    &__user {
+      &__container {
+        &__pseudo {
+          display: none;
+        }
+      }
+      &__dropdown {
+        &__username {
+          width: 100%;
+          font-weight: bold;
+          display: inline-block;
+          text-align: center;
+        }
+      }
+    }
+    &__burger {
+      display: block;
+    }
+    &__nav {
+      display: none;
+    }
+  }
+  @include mob {
+    &__burger {
+      display: block;
+    }
+    &__nav {
+      display: none;
     }
   }
 }

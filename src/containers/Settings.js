@@ -9,6 +9,7 @@ const mapStateToProps = (state) => ({
   usernameChange: state.user.usernameChange,
   password: state.user.password,
   newPassword: state.user.newPassword,
+  passwordConfirmation: state.user.passwordConfirmation,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -38,9 +38,10 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
         ? (
           <Switch>
             <Route exact path="/">
-              <Header />
               <Redirect to="/timeline" />
-              <Footer />
+            </Route>
+            <Route exact path="/landing">
+              <Redirect to="/timeline" />
             </Route>
             <Route exact path="/login">
               <Redirect to="/timeline" />
@@ -115,12 +116,14 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
           </Switch>
         )}
       <div className="button__return__top">
-        <button onClick={() => {
-          window.scrollTo({
-            top: 0,
-            behavior: 'smooth',
-          });
-        }}
+        <button
+          type="button"
+          onClick={() => {
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth',
+            });
+          }}
         >
           <FcCollapse className="button__return__top__button" />
         </button>
