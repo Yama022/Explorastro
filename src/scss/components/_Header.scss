@@ -24,6 +24,9 @@
     min-width: 630px;
     display: flex;
     justify-content: space-around;
+    &__burger {
+      display: none;
+    }
     &__link {
       text-transform: uppercase;
       font-size: 1.2em;
@@ -122,7 +125,41 @@
       background-color: $light-color;
     }
   }
-  @include tab {
+  @include mobTab {
+    &__burger {
+      display: block;
+    }
+    &__nav {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      padding: 1.6em;
+      top: 0;
+      left: 0;
+      width: 40%;
+      min-width: 220px;
+      height: 100%;
+      background-color: $secondary-color;
+      transition: .2s ease-in-out;
+      &__burger {
+        &__img {
+          font-size: 2.5em;
+          margin: 0.5em 0 0 0.2em;
+        }
+        &--active {
+          display: block;
+        }
+      }
+      &--open {
+        display: block;
+      }
+      &__link {
+        display: block;
+        margin-top: 1.5em;
+      }
+    }
+  }
+  @include mob {
     &__user {
       &__container {
         &__pseudo {
@@ -137,20 +174,6 @@
           text-align: center;
         }
       }
-    }
-    &__burger {
-      display: block;
-    }
-    &__nav {
-      display: none;
-    }
-  }
-  @include mob {
-    &__burger {
-      display: block;
-    }
-    &__nav {
-      display: none;
     }
   }
 }

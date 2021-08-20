@@ -1,5 +1,5 @@
 import {
-  CHANGE_VALUE, TOGGLE_DROPDOWN, TOGGLE_SIGNUP, LOGOUT, SAVE_USER,
+  CHANGE_VALUE, TOGGLE_SIGNUP, LOGOUT, SAVE_USER,
 } from 'src/actions/user';
 
 const initialState = {
@@ -12,7 +12,6 @@ const initialState = {
   username: '',
   usernameChange: '',
   logged: false,
-  open: false,
   signup: false,
 };
 
@@ -22,12 +21,6 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         [action.key]: action.value,
-      };
-    }
-    case TOGGLE_DROPDOWN: {
-      return {
-        ...state,
-        open: !state.open,
       };
     }
     case TOGGLE_SIGNUP: {

@@ -9,23 +9,36 @@ import logo from 'src/assets/images/logo-explorastro.png';
 import User from 'src/components/Header/User';
 
 export default function Header({
-  isLogged, username, isOpen, handleToggleDropdown, handleLogout,
+  isLogged,
+  username,
+  burgerIsOpen,
+  dropdownIsOpen,
+  handleToggleDropdown,
+  handleLogout,
+  handleToggleBurger,
 }) {
+  const handleNavBurgerToggle = () => {
+    if (burgerIsOpen) handleToggleBurger();
+  };
   return (
     <header className="header">
-      <div className="header__burger">
+      <div className="header__burger" onClick={handleToggleBurger}>
         <GiHamburgerMenu className="header__burger__img" />
       </div>
       <Link to={isLogged ? '/timeline' : '/landing'} className="header__logo">
         <img src={logo} alt="logo ExplorAstro" />
       </Link>
-      <nav className="header__nav">
+      <nav className={burgerIsOpen ? 'header__nav header__nav--open' : 'header__nav'}>
+        <div className={burgerIsOpen ? ' header__nav__burger header__nav__burger--active' : 'header__nav__burger'} onClick={handleToggleBurger}>
+          <GiHamburgerMenu className="header__nav__burger__img" />
+        </div>
         { isLogged
           ? (
             <>
               <NavLink
                 className="header__nav__link"
                 activeClassName="header__nav__link--active"
+                onClick={handleNavBurgerToggle}
                 to="/timeline"
                 exact
               >
@@ -34,6 +47,7 @@ export default function Header({
               <NavLink
                 className="header__nav__link"
                 activeClassName="header__nav__link--active"
+                onClick={handleNavBurgerToggle}
                 to="/exploration/create"
                 exact
               >
@@ -42,6 +56,7 @@ export default function Header({
               <NavLink
                 className="header__nav__link"
                 activeClassName="header__nav__link--active"
+                onClick={handleNavBurgerToggle}
                 to="/discover"
                 exact
               >
@@ -50,6 +65,7 @@ export default function Header({
               <NavLink
                 className="header__nav__link"
                 activeClassName="header__nav__link--active"
+                onClick={handleNavBurgerToggle}
                 to="/guide"
                 exact
               >
@@ -62,6 +78,7 @@ export default function Header({
               <NavLink
                 className="header__nav__link"
                 activeClassName="header__nav__link--active"
+                onClick={handleNavBurgerToggle}
                 to="/landing"
                 exact
               >
@@ -70,6 +87,7 @@ export default function Header({
               <NavLink
                 className="header__nav__link"
                 activeClassName="header__nav__link--active"
+                onClick={handleNavBurgerToggle}
                 to="/news"
                 exact
               >
@@ -78,6 +96,7 @@ export default function Header({
               <NavLink
                 className="header__nav__link"
                 activeClassName="header__nav__link--active"
+                onClick={handleNavBurgerToggle}
                 to="/aboutus"
                 exact
               >
@@ -90,7 +109,7 @@ export default function Header({
         ? (
           <User
             username={username}
-            isOpen={isOpen}
+            isOpen={dropdownIsOpen}
             onClickUser={handleToggleDropdown}
             handleLogout={handleLogout}
           />
@@ -109,7 +128,9 @@ export default function Header({
 Header.propTypes = {
   isLogged: PropTypes.bool.isRequired,
   username: PropTypes.string.isRequired,
-  isOpen: PropTypes.bool.isRequired,
+  burgerIsOpen: PropTypes.bool.isRequired,
+  dropdownIsOpen: PropTypes.bool.isRequired,
   handleToggleDropdown: PropTypes.func.isRequired,
+  handleToggleBurger: PropTypes.func.isRequired,
   handleLogout: PropTypes.func.isRequired,
 };
