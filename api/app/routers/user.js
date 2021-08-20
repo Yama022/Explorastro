@@ -94,7 +94,7 @@ router
   )
 
   .delete(
-    "/:id(\\d+)/unfollow/:followingId(\\d+)",
+    "/:id(\\d+)/unfollow/:toUnfollowId(\\d+)",
     identityMiddleware.userPermissions,
     followController.unfollow
   );

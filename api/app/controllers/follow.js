@@ -29,7 +29,7 @@ module.exports = {
         });
       }
 
-      await user.addFollower(userToFollow);
+      await user.addFollowing(userToFollow);
 
       return res.status(200).send({
         message: errorMessage.FOLLOW_IS_SUCCESS,
@@ -42,5 +42,41 @@ module.exports = {
     }
   },
 
-  unfollow: (req, res) => {},
+  unfollow: async (req, res) => {
+    try {
+      const { id, toUnfollowId } = req.params;
+
+      const userToUnfollow = await User.findByPk(toUnfollowId);
+      const user = await User.findByPk(id, {
+        include: ["following"],
+      });
+
+      if (!user || !userToUnfollow) {
+        return res.status(400).send({
+          message: errorMessage.USER_NOT_FOUND,
+        });
+      }
+
+      const isFollowing = user.following.some(
+        (following) => following.id === userToUnfollow.id
+      );
+
+      if (!isFollowing) {
+        return res.status(400).send({
+          message: errorMessage.USER_NOT_FOLLOWING,
+        });
+      }
+
+      await user.removeFollowing(userToUnfollow);
+
+      return res.status(200).send({
+        message: errorMessage.UNFOLLOW_IS_SUCCESS,
+      });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({
+        error: errorMessage.INTERNAL_ERROR,
+      });
+    }
+  },
 };

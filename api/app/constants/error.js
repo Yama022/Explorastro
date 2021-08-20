@@ -19,4 +19,6 @@ module.exports = {
     USERNAME_UPDATED: "Username updated.",
     ALREADY_FOLLOWING_USER: "You are already following this user",
     FOLLOW_IS_SUCCESS: "You are now following this user",
+    UNFOLLOW_IS_SUCCESS: "You are no longer following this user",
+    USER_NOT_FOLLOWING: "You are not following this user",
 }
