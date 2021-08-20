@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { userController } = require("../controllers");
+const { userController, followController } = require("../controllers");
 const { identityMiddleware } = require("../middlewares");
 
 router
@@ -85,6 +85,34 @@ router
     "/:id(\\d+)/delete",
     identityMiddleware.userPermissions,
     userController.delete
+  )
+
+  /**
+   * Follow a user by his id
+   * @route POST /api/v1/user/:id/follow/:toFollowId
+   * @group User - Operations about users
+   * @returns {Object} 200 - An object containing a success message
+   * @returns {Error.model}  default - An object containing the error message
+   * @security JWT
+   */
+  .post(
+    "/:id(\\d+)/follow/:toFollowId(\\d+)",
+    identityMiddleware.userPermissions,
+    followController.follow
+  )
+
+  /**
+   * Unfollow a user by his id
+   * @route DELETE /api/v1/user/:id/unfollow/:toUnfollowId
+   * @group User - Operations about users
+   * @returns {Object} 200 - An object containing a success message
+   * @returns {Error.model}  default - An object containing the error message
+   * @security JWT
+   */
+  .delete(
+    "/:id(\\d+)/unfollow/:toUnfollowId(\\d+)",
+    identityMiddleware.userPermissions,
+    followController.unfollow
   );
 
 module.exports = router;
