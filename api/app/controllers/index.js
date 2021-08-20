@@ -5,4 +5,5 @@ module.exports = {
   userController: require("./user"),
   followController: require("./follow"),
   participationController: require("./participation"),
+  commentController: require('./comment')
 };

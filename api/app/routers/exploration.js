@@ -3,6 +3,7 @@ const router = express.Router();
 const {
   explorationController,
   participationController,
+  commentController
 } = require("../controllers");
 const { identityMiddleware } = require("../middlewares");
 
@@ -86,7 +87,7 @@ router
    * @returns {Error.model}  default - An object containing the error message
    * @security JWT
    */
-  .get("/:id(\\d+)/participants", participationController.getParticipants)
+  .get("/:id(\\d+)/participants", participationController.getAll)
 
   /**
    * Subscribe a user to an exploration by his id
@@ -100,7 +101,7 @@ router
    */
   .put(
     "/:id(\\d+)/participants/add/:userId(\\d+)",
-    participationController.addParticipant
+    participationController.add
   )
 
   /**
@@ -115,7 +116,21 @@ router
    */
   .delete(
     "/:id(\\d+)/participants/remove/:userId(\\d+)",
-    participationController.removeParticipant
+    participationController.remove
+  )
+
+  .get("/:id(\\d+)/comments", commentController.getAll)
+
+  .post("/:id(\\d+)/comments/add/", commentController.add)
+
+  .patch(
+    "/:id(\\d+)/comments/:commentId(\\d+)/edit",
+    commentController.edit
+  )
+
+  .delete(
+    "/:id(\\d+)/comments/:commentId(\\d+)/delete",
+    commentController.delete
   );
 
 module.exports = router;
