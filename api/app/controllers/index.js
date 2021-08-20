@@ -4,4 +4,5 @@ module.exports = {
   explorationController: require("./exploration"),
   userController: require("./user"),
   followController: require("./follow"),
+  participationController: require("./participation"),
 };
