@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { userController } = require("../controllers");
+const { userController, followController } = require("../controllers");
 const { identityMiddleware } = require("../middlewares");
 
 router
@@ -85,6 +85,18 @@ router
     "/:id(\\d+)/delete",
     identityMiddleware.userPermissions,
     userController.delete
+  )
+
+  .post(
+    "/:id(\\d+)/follow/:followingId(\\d+)",
+    identityMiddleware.userPermissions,
+    followController.follow
+  )
+
+  .delete(
+    "/:id(\\d+)/unfollow/:followingId(\\d+)",
+    identityMiddleware.userPermissions,
+    followController.unfollow
   );
 
 module.exports = router;

@@ -3,4 +3,5 @@ module.exports = {
   authController: require("./auth"),
   explorationController: require("./exploration"),
   userController: require("./user"),
+  followController: require("./follow"),
 };
