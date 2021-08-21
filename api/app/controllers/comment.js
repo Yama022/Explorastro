@@ -1,13 +1,30 @@
+const { errorMessage } = require("../constants");
+const { Comment, Exploration } = require("../models");
+
 module.exports = {
-    getAll: async (req, res) => {
-    },
+  getAll: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const exploration = await Exploration.findByPk(id, {
+        include: ["comments"],
+      });
 
-    add: async (req, res) => {
-    },
+      if (!exploration) {
+        return res.status(404).json({
+          message: errorMessage.EXPLORATION_NOT_FOUND,
+        });
+      }
 
-    edit: async (req, res) => {
-    },
+      res.status(200).json(exploration.comments);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: errorMessage.INTERNAL_ERROR });
+    }
+  },
 
-    delete: async (req, res) => {
-    },
-}
+  add: async (req, res) => {},
+
+  edit: async (req, res) => {},
+
+  delete: async (req, res) => {},
+};
