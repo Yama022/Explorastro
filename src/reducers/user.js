@@ -38,6 +38,8 @@ const reducer = (state = initialState, action = {}) => {
     case SAVE_USER: {
       return {
         ...state,
+        firstname: action.payload?.firstname ?? '',
+        lastname: action.payload?.lastname ?? '',
         username: action.payload?.username ?? '',
         logged: !!action.payload?.username,
         email: '',
