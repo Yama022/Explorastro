@@ -120,22 +120,60 @@ router
     participationController.remove
   )
 
+  /**
+   * Get comments of an exploration by his id
+   * @route GET /api/v1/exploration/1/comments
+   * @group Exploration - Operations about explorations
+   * @param {integer} id.param.required - The id of the exploration.
+   * @returns {Object} 200 - An object containing a success message
+   * @returns {Error.model}  default - An object containing the error message
+   * @security JWT
+   */
   .get("/:id(\\d+)/comments", commentController.getAll)
 
+  /**
+   * Comment an exploration by his id
+   * @route POST /api/v1/exploration/1/comments/add
+   * @group Exploration - Operations about explorations
+   * @param {integer} id.param.required - The id of the exploration.
+   * @returns {Object} 200 - An object containing a success message
+   * @returns {Error.model}  default - An object containing the error message
+   * @security JWT
+   */
   .post(
     "/:id(\\d+)/comments/add",
     validate("body", commentSchema),
     commentController.add
   )
 
+  /**
+   * Edit a comment of an exploration by his id
+   * @route PATCH /api/v1/exploration/1/comments/edit/:commentId
+   * @group Exploration - Operations about explorations
+   * @param {integer} id.param.required - The id of the exploration.
+   * @param {integer} commentId.param.required - The id of the comment.
+   * @returns {Object} 200 - An object containing a success message
+   * @returns {Error.model}  default - An object containing the error message
+   * @security JWT
+   */
   .patch(
-    "/:id(\\d+)/comments/:commentId(\\d+)/edit",
+    "/:id(\\d+)/comments/edit/:commentId(\\d+)",
     validate("body", commentSchema),
     commentController.edit
   )
 
+  /**
+   * Delete a comment of an exploration by his id
+   * @route DELETE /api/v1/exploration/1/comments/delete/:commentId
+   * @group Exploration - Operations about explorations
+   * @param {integer} id.param.required - The id of the exploration.
+   * @param {integer} commentId.param.required - The id of the comment.
+   * @returns {Object} 200 - An object containing a success message
+   * @returns {Error.model}  default - An object containing the error message
+   * @security JWT
+   */
   .delete(
-    "/:id(\\d+)/comments/:commentId(\\d+)/delete",
+    "/:id(\\d+)/comments/delete/:commentId(\\d+)",
     commentController.delete
   );
 
