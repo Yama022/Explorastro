@@ -87,7 +87,7 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
               render={(prop) => (
                 <>
                   <Header />
-                  <Profile id={prop.match.params.id} />
+                  <Profile profileId={Number(prop.match.params.id)} />
                   <Footer />
                 </>
               )}

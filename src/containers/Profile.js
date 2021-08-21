@@ -7,6 +7,7 @@ const mapStateToProps = (state) => ({
   firstName: state.profile.firstname,
   lastName: state.profile.lastname,
   menuValue: state.profile.profileMenuValue,
+  loggedUserId: state.profile.loggedUserId,
 });
 
 const mapDispatchToProps = (dispatch) => ({

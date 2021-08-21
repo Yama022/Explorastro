@@ -1,16 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import avatar from 'src/assets/images/mascot-rocket.svg';
 import { AiOutlineUserAdd, AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { GrAchievement, GrTrophy } from 'react-icons/gr';
 import { FaMedal } from 'react-icons/fa';
-import { BiMedal } from 'react-icons/bi';
+import { BiMedal, BiCog } from 'react-icons/bi';
 
 import Follows from './Follows';
 
 export default function Profile({
-  firstName, lastName, menuValue, changeMenuValue,
+  firstName, lastName, menuValue, changeMenuValue, profileId, loggedUserId,
 }) {
   const handleToggleNav = (event) => {
     changeMenuValue(event.target.dataset.toggle);
@@ -35,12 +36,21 @@ export default function Profile({
                 <AiFillStar /><AiFillStar /><AiFillStar /><AiFillStar /><AiOutlineStar />
               </div>
             </div>
-            <button type="button" className="button --secondary">
-              <span className="icon is-small">
-                <AiOutlineUserAdd />
-              </span>
-              <span>Suivre</span>
-            </button>
+            <div className="profile__header__description__top__right">
+              {(profileId === loggedUserId)
+                ? (
+                  <Link to="/settings">
+                    <BiCog className="profile__header__description__top__right__cog" />
+                  </Link>
+                ) : (
+                  <button type="button" className="button --secondary">
+                    <span className="icon is-small">
+                      <AiOutlineUserAdd />
+                    </span>
+                    <span>Suivre</span>
+                  </button>
+                )}
+            </div>
           </div>
           <div className="profile__header__description__bio">
             <div className="profile__header__description__bio__explo">
@@ -87,6 +97,8 @@ export default function Profile({
 }
 
 Profile.propTypes = {
+  loggedUserId: PropTypes.number.isRequired,
+  profileId: PropTypes.number.isRequired,
   firstName: PropTypes.string.isRequired,
   lastName: PropTypes.string.isRequired,
   menuValue: PropTypes.number.isRequired,

@@ -38,6 +38,12 @@
             color: $tertiary-color
           }
         }
+        &__right {
+          &__cog {
+            font-size: 2.2em;
+            color: $tertiary-color;
+          }
+        }
       }
       &__bio {
         &__explo {
