@@ -82,11 +82,16 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
             <Route exact path="/login">
               <Redirect to="/timeline" />
             </Route>
-            <Route exact path="/profile">
-              <Header />
-              <Profile />
-              <Footer />
-            </Route>
+            <Route
+              path="/profile/:id"
+              render={(prop) => (
+                <>
+                  <Header />
+                  <Profile id={prop.match.params.id} />
+                  <Footer />
+                </>
+              )}
+            />
             <Route exact path="/settings">
               <Header />
               <Settings />
