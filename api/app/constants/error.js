@@ -26,4 +26,8 @@ module.exports = {
     USER_NOT_PARTICIPATE: "You are not participating in this exploration",
     SUBSCRIBE_SUCCESS: "You have successfully subscribed to this exploration",
     UNSUBCRIBE_SUCCESS: "You have successfully unsubscribed from this exploration",
+    COMMENT_ADDED: "Comment added successfully",
+    COMMENT_EDITED: "Comment edited successfully",
+    COMMENT_DELETED: "Comment deleted successfully",
+    COMMENT_NOT_FOUND: "Comment not found",
 }
