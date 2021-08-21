@@ -4,9 +4,12 @@ const router = express.Router();
 const {
   explorationController,
   participationController,
-  commentController
+  commentController,
 } = require("../controllers");
 const { identityMiddleware } = require("../middlewares");
+
+const validate = require("../validations/validate");
+const { commentSchema } = require("../validations/schemas");
 
 router
 
@@ -100,10 +103,7 @@ router
    * @returns {Error.model}  default - An object containing the error message
    * @security JWT
    */
-  .put(
-    "/:id(\\d+)/participants/add/:userId(\\d+)",
-    participationController.add
-  )
+  .put("/:id(\\d+)/participants/add/:userId(\\d+)", participationController.add)
 
   /**
    * Unsuscribe a user from an exploration by his id
@@ -122,10 +122,15 @@ router
 
   .get("/:id(\\d+)/comments", commentController.getAll)
 
-  .post("/:id(\\d+)/comments/add/", commentController.add)
+  .post(
+    "/:id(\\d+)/comments/add",
+    validate("body", commentSchema),
+    commentController.add
+  )
 
   .patch(
     "/:id(\\d+)/comments/:commentId(\\d+)/edit",
+    validate("body", commentSchema),
     commentController.edit
   )
 

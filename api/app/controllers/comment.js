@@ -27,7 +27,6 @@ module.exports = {
       const { id } = req.params;
       const { content } = req.body;
       const exploration = await Exploration.findByPk(id);
-      I;
 
       if (!exploration) {
         return res.status(404).json({
@@ -41,6 +40,10 @@ module.exports = {
       });
 
       await exploration.addComment(comment);
+
+      res.status(200).json({
+        message: errorMessage.COMMENT_ADDED,
+      });
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: errorMessage.INTERNAL_ERROR });
