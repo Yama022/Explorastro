@@ -58,7 +58,7 @@ module.exports = {
       const exploration = await Exploration.findByPk(id);
       const comment = await Comment.findByPk(commentId);
 
-      if (comment.author_id !== req.user.id) {
+      if (comment?.author_id !== req.user.id) {
         return res.status(403).json({
           message: errorMessage.UNAUTHORIZED,
         });
@@ -87,5 +87,40 @@ module.exports = {
     }
   },
 
-  delete: async (req, res) => {},
+  delete: async (req, res) => {
+    try {
+      const { id, commentId } = req.params;
+
+      const exploration = await Exploration.findByPk(id);
+      const comment = await Comment.findByPk(commentId);
+
+      if (comment?.author_id !== req.user.id) {
+        return res.status(403).json({
+          message: errorMessage.UNAUTHORIZED,
+        });
+      }
+
+      if (!exploration) {
+        return res.status(404).json({
+          message: errorMessage.EXPLORATION_NOT_FOUND,
+        });
+      }
+
+      if (!comment) {
+        return res.status(404).json({
+          message: errorMessage.COMMENT_NOT_FOUND,
+        });
+      }
+
+      await exploration.removeComment(comment);
+      await comment.destroy();
+
+      res.status(200).json({
+        message: errorMessage.COMMENT_DELETED,
+      });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: errorMessage.INTERNAL_ERROR });
+    }
+  },
 };
