@@ -107,7 +107,7 @@ router
 
   /**
    * Unsuscribe a user from an exploration by his id
-   * @route DELETE /api/v1/exploration/1/participants/remove/:userId
+   * @route DELETE /api/v1/exploration/1/participants/delete/:userId
    * @group Exploration - Operations about explorations
    * @param {integer} id.param.required - The id of the exploration.
    * @param {integer} userId.param.required - The id of the user.
@@ -116,8 +116,8 @@ router
    * @security JWT
    */
   .delete(
-    "/:id(\\d+)/participants/remove/:userId(\\d+)",
-    participationController.remove
+    "/:id(\\d+)/participants/delete/:userId(\\d+)",
+    participationController.delete
   )
 
   /**

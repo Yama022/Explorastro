@@ -79,7 +79,7 @@ module.exports = {
     }
   },
 
-  remove: async (req, res) => {
+  delete: async (req, res) => {
     try {
       const { id, userId } = req.params;
 
