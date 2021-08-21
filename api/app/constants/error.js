@@ -27,4 +27,6 @@ module.exports = {
     SUBSCRIBE_SUCCESS: "You have successfully subscribed to this exploration",
     UNSUBCRIBE_SUCCESS: "You have successfully unsubscribed from this exploration",
     COMMENT_ADDED: "Comment added successfully",
+    COMMENT_EDITED: "Comment edited successfully",
+    COMMENT_NOT_FOUND: "Comment not found",
 }
