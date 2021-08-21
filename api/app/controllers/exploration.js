@@ -1,6 +1,7 @@
-const { Exploration } = require("../models");
+const { Exploration, User } = require("../models");
 const { errorMessage } = require("../constants");
 const { Op } = require("sequelize");
+const { owp } = require('../utils');
 
 /**
  * @typedef {CRS} CRS
@@ -25,7 +26,7 @@ const { Op } = require("sequelize");
  * @typedef {Comment} Comment
  * @property {integer} id - ID
  * @property {string} content - Content of the comment
- * @property {string} author_id - ID of the author 
+ * @property {string} author_id - ID of the author
  * @property {string} createdAt - Date of creation
  * @property {string} updatedAt - Date of last update
  */
@@ -49,17 +50,16 @@ const { Op } = require("sequelize");
  */
 
 module.exports = {
-
   getAll: async (req, res) => {
     try {
       const explorations = await Exploration.findAll({
         where: {
-          is_published: true
+          is_published: true,
         },
-        include: ['author'],
-        order: [['date', 'ASC']]
+        include: ["author"],
+        order: [["date", "ASC"]],
       });
-  
+
       res.status(200).json(explorations);
     } catch (error) {
       console.error(error);
@@ -76,12 +76,24 @@ module.exports = {
     });
 
     if (!exploration) {
-      res.status(404).json({
+      return res.status(404).json({
         message: errorMessage.EXPLORATION_NOT_FOUND,
       });
     }
 
-    res.json(exploration);
+    // Save exploration data in object for attach weather data if needed
+    const explorationData = exploration.toJSON();
+
+    // Add weather informations
+    const lgt = exploration?.geog.coordinates[0];
+    const lat = exploration?.geog.coordinates[1];
+
+    if (lgt && lat) {
+      const weather = await owp.getWeather(lgt, lat);
+      explorationData.weather = weather;
+    }
+    
+    res.json(explorationData);
   },
 
   create: async (req, res) => {
