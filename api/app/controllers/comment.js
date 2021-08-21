@@ -22,7 +22,30 @@ module.exports = {
     }
   },
 
-  add: async (req, res) => {},
+  add: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { content } = req.body;
+      const exploration = await Exploration.findByPk(id);
+      I;
+
+      if (!exploration) {
+        return res.status(404).json({
+          message: errorMessage.EXPLORATION_NOT_FOUND,
+        });
+      }
+
+      const comment = await Comment.create({
+        content,
+        author_id: req.user.id,
+      });
+
+      await exploration.addComment(comment);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: errorMessage.INTERNAL_ERROR });
+    }
+  },
 
   edit: async (req, res) => {},
 
