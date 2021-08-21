@@ -4,7 +4,7 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
   define: {
     underscored: true,
   },
-  // logging: false,
+  logging: false,
   pool: {
     max: 5,
     min: 0,

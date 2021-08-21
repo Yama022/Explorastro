@@ -10,9 +10,10 @@ module.exports = {
     }
     next();
   },
-  explorationPermissions: (req, res, next) => {
+  explorationPermissions: async (req, res, next) => {
     const id = +req.params.id;
-    const { author_id } = Exploration.findByPk(id);
+    const { author_id } = await Exploration.findByPk(id);
+    console.log(author_id);
     if (author_id !== req.user.id) {
       return res.status(403).json({
         message: errorMessage.UNAUTHORIZED,
