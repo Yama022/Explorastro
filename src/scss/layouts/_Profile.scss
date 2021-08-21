@@ -1,6 +1,10 @@
 .profile {
+  width: 80%;
+  margin: auto;
+  color: $light-color;
   &__header {
     display: flex;
+    margin-top: 6em;
     &__avatar {
       width: 40%;
       position: relative;
@@ -20,8 +24,21 @@
         left: 2em;
       }
     }
-    &__details {
+    &__description {
       width: 60%;
+      &__top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        &__left {
+          &__name {
+            font-size: 2em;
+          }
+          &__stars {
+            color: $tertiary-color
+          }
+        }
+      }
     }
   }
 }

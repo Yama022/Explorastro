@@ -14,7 +14,7 @@ import Guide from 'src/components/Guide';
 import Landing from 'src/components/Landing';
 import Photo from 'src/components/Guide/Photo';
 import Visuel from 'src/components/Guide/Visuel';
-import Profile from 'src/components/Profile';
+import Profile from 'src/containers/Profile';
 import Settings from 'src/containers/Settings';
 import FormEvent from 'src/containers/FormEvent';
 
