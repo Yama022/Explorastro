@@ -18,6 +18,7 @@ const event = (store) => (next) => (action) => {
       const state = store.getState();
       const position = state.exploration.coord;
       const id = action.value;
+      console.log(position);
 
       const newEvent = {
         name: state.exploration.titleEvent,

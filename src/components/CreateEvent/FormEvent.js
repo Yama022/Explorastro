@@ -20,7 +20,7 @@ export default function FormEvent({
   maxRateEvent,
   descEvent,
   published,
-  geog,
+  coord,
 
 }) {
   useEffect(() => {
@@ -88,7 +88,7 @@ export default function FormEvent({
             <div className="form__map">
               <MapContainer
           // Centering on the map of france
-                center={[44.332192999999995, 1.309666999999996]}
+                center={[44.840291, 2.109375]}
                 zoom={6}
                 maxZoom={18}
                 minZoom={3}
@@ -101,7 +101,7 @@ export default function FormEvent({
                   name="tiles"
                 />
                 {/* Add Markers events astro on the map */}
-                <ControlGeocoder coordLocation={getCoordLocation} />
+                <ControlGeocoder coordLocation={getCoordLocation} coord={coord.coordinates} />
               </MapContainer>
             </div>
 
@@ -126,7 +126,7 @@ export default function FormEvent({
                 <div className="button-wrapper">
 
                   <input
-                    value={eventCreated.imageUrl}
+                    // value={eventCreated.imageUrl}
                     accept="image/*"
                   // onChange={onImageChange}
                     id="contained-button-file"
@@ -164,7 +164,10 @@ FormEvent.propTypes = {
   maxRateEvent: PropTypes.number,
   descEvent: PropTypes.string,
   published: PropTypes.bool,
-  geog: PropTypes.object.isRequired,
+  coord: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.object,
+  ]).isRequired,
 };
 
 FormEvent.defaultProps = {

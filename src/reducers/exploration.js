@@ -26,6 +26,7 @@ export const initialState = {
   eventCreated: [],
   published: false,
   eventCreatedLast: [],
+  geog: [],
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -83,7 +84,7 @@ const reducer = (state = initialState, action = {}) => {
         descEvent: action.value.description,
         dateEvent: action.value.date,
         maxRateEvent: action.value.max_participants,
-
+        geog: action.value.geog,
       };
     }
     case SAVE_EVENT_CREATED_LAST: {
