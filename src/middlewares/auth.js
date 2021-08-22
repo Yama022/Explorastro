@@ -66,7 +66,7 @@ const auth = (store) => (next) => (action) => {
         //     // avec la même action que pour le login
         //     const payload = { ...response.data };
         //     const actionSaveUser = saveUser(payload);
-        //     store.dispatch(actionSaveUser);
+        //     store.dispatch(actionSaveUser);aniser une sortie
         //   })
         //   .catch((error) => console.log(error));
       }

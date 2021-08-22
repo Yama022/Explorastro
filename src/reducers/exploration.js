@@ -7,7 +7,7 @@ import {
   SAVE_EVENT_CREATED,
   ON_CLICK_PUBLISHED,
   EVENTS_CREATED,
-  SAVE_EVENT_CREATED_LAST,
+  SAVE_EVENT_CREATED_LAST, REMOVE_LAST_EVENT_ID,
 } from 'src/actions/exploration';
 import data from 'src/data/data.json';
 
@@ -22,10 +22,11 @@ export const initialState = {
   postalCode: 0,
   dateEvent: '',
   maxRateEvent: 0,
-  coord: '',
+  coord: [],
   eventCreated: [],
   published: false,
   eventCreatedLast: [],
+  geog: [],
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -83,13 +84,20 @@ const reducer = (state = initialState, action = {}) => {
         descEvent: action.value.description,
         dateEvent: action.value.date,
         maxRateEvent: action.value.max_participants,
-
+        geog: action.value.geog,
       };
     }
     case SAVE_EVENT_CREATED_LAST: {
       return {
         ...state,
         eventCreatedLast: action.value,
+
+      };
+    }
+    case REMOVE_LAST_EVENT_ID: {
+      return {
+        ...state,
+        eventCreatedLast: initialState.eventCreatedLast,
 
       };
     }

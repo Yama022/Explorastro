@@ -13,6 +13,7 @@ export const SUBMIT_FROM_CREATE_EVENT = 'SUBMIT_FROM_CREATE_EVENT';
 export const REMOVE_EVENT = 'REMOVE_EVENT';
 export const GET_EVENT_CREATED_LAST = 'GET_EVENT_CREATED_LAST';
 export const SAVE_EVENT_CREATED_LAST = 'SAVE_EVENT_CREATED_LAST';
+export const REMOVE_LAST_EVENT_ID = 'REMOVE_LAST_EVENT_ID';
 
 // Action creators
 export const formSubmit = (payload) => ({
@@ -83,4 +84,8 @@ export const saveEventcreatedlast = (value) => ({
   type: SAVE_EVENT_CREATED_LAST,
   value,
 
+});
+
+export const removeLastEventID = () => ({
+  type: REMOVE_LAST_EVENT_ID,
 });
