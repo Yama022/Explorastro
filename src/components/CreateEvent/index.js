@@ -26,10 +26,12 @@ export default function CreateEvent({
     redirectForm = <Redirect to={`/formEvent/${eventCreatedLastID}`} />;
     removEventCreatedLastID();
   }
+
   return (
     <>
       {redirectForm}
       <div className="container">
+
 
         <h1 className="main-title">Organiser une sortie</h1>
         <div className="createEvent">
