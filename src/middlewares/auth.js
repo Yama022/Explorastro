@@ -10,7 +10,7 @@ const auth = (store) => (next) => (action) => {
       const state = store.getState();
       axios({
         method: 'POST',
-        baseURL: 'https://explorastro-api.herokuapp.com/',
+        baseURL: 'http://localhost:3000',
         url: 'api/v1/login',
         data: {
           login: state.user.email,
@@ -29,7 +29,7 @@ const auth = (store) => (next) => (action) => {
       const state = store.getState();
       axios({
         method: 'POST',
-        baseURL: 'https://explorastro-api.herokuapp.com/',
+        baseURL: 'http://localhost:3000',
         url: 'api/v1/signup',
         data: {
           firstname: state.user.firstname,

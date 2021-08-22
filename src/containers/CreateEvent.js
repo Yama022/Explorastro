@@ -2,12 +2,16 @@ import { connect } from 'react-redux';
 import CreateEvent from 'src/components/CreateEvent';
 import {
   getEventCreated, changeInputCreateEvent,
-  submitFormCreateEvent,
+  submitFormCreateEvent, removeEvent,
 } from 'src/actions/exploration';
 
-const mapStateToProps = (state) => ({
-  eventsCreated: state.exploration.eventCreated,
-});
+const mapStateToProps = (state) => {
+  console.log(typeof (state.exploration.eventCreatedLast));
+  return ({
+    eventsCreated: state.exploration.eventCreated,
+    eventsCreatedLast: state.exploration.eventCreatedLast,
+  });
+};
 
 const mapDispatchToProps = (dispatch) => ({
 
@@ -21,6 +25,10 @@ const mapDispatchToProps = (dispatch) => ({
   },
   onFormSubmitCreate: (value) => {
     const action = submitFormCreateEvent(value);
+    dispatch(action);
+  },
+  onClickRemove: (value) => {
+    const action = removeEvent(value);
     dispatch(action);
   },
 

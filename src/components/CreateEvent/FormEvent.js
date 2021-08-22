@@ -69,7 +69,7 @@ export default function FormEvent({
               cols="70"
               onChange={handleOnchange}
               placeholder="Ex : J'organise une soirée pour la nuit des étoiles dans un endroit bien connu vers chez moi..."
-              value={descEvent}
+              value={descEvent !== null ? descEvent : ''}
             />
 
             <h4 className="form__create__title">Date de l'événement</h4>
@@ -105,7 +105,7 @@ export default function FormEvent({
 
             <h4 className="form__create__title">Nombre de personne(s) maximum
               <input
-                value={maxRateEvent}
+                value={maxRateEvent !== null ? maxRateEvent : 0}
                 className="maxRateEvent"
                 name="maxRateEvent"
                 type="number"
@@ -114,7 +114,7 @@ export default function FormEvent({
               />
             </h4>
 
-            <input type="checkbox" name="published" className="checkbox" id="checkbox" onClick={handleOnClick} />
+            <input type="checkbox" name="published" className="checkbox" id="checkbox" onClick={handleOnClick} value={published !== null ? published : false} />
             <label className="published" htmlFor="checkbox">{published ? 'Publié' : 'Non publié' } </label>
 
             <div className="form__add__img">
@@ -158,8 +158,15 @@ FormEvent.propTypes = {
   OnClick: PropTypes.func.isRequired,
   getEventsCreated: PropTypes.func.isRequired,
   titleEvent: PropTypes.string.isRequired,
-  dateEvent: PropTypes.string.isRequired,
-  maxRateEvent: PropTypes.number.isRequired,
-  descEvent: PropTypes.string.isRequired,
-  published: PropTypes.bool.isRequired,
+  dateEvent: PropTypes.string,
+  maxRateEvent: PropTypes.number,
+  descEvent: PropTypes.string,
+  published: PropTypes.bool,
+};
+
+FormEvent.defaultProps = {
+  descEvent: '',
+  dateEvent: '',
+  maxRateEvent: 0,
+  published: false,
 };

@@ -7,6 +7,7 @@ import {
   SAVE_EVENT_CREATED,
   ON_CLICK_PUBLISHED,
   EVENTS_CREATED,
+  SAVE_EVENT_CREATED_LAST,
 } from 'src/actions/exploration';
 import data from 'src/data/data.json';
 
@@ -24,6 +25,7 @@ export const initialState = {
   coord: '',
   eventCreated: [],
   published: false,
+  eventCreatedLast: [],
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -81,6 +83,13 @@ const reducer = (state = initialState, action = {}) => {
         descEvent: action.value.description,
         dateEvent: action.value.date,
         maxRateEvent: action.value.max_participants,
+
+      };
+    }
+    case SAVE_EVENT_CREATED_LAST: {
+      return {
+        ...state,
+        eventCreatedLast: action.value,
 
       };
     }
