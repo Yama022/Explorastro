@@ -1,16 +1,22 @@
 /* eslint-disable max-len */
 import React from 'react';
+import BackButton from 'src/components/BackButton';
+
 
 import { FcDownRight, FcAdvance } from 'react-icons/fc';
 import { MdReportProblem } from 'react-icons/md';
 
-import data from './Visuel/data';
+// import data from './Visuel/data';
+
 
 export default function Photo() {
-  // const { photo } = data[0];
+
   return (
     <div className="photo">
+    <BackButton />
       <div className="toto">
+
+
         <h1 className="toto__title"><FcAdvance /> Tu souhaites découvrir ce milieu fabuleux qu'est l'astronomie ?!</h1>
         <h3 className="toto__sous-title"> <FcDownRight /> Oui ? Alors t'es au bon endroit !</h3>
         <div className="toto__paragraphe">
