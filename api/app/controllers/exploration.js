@@ -11,7 +11,7 @@ const { owp } = require('../utils');
 
 /**
  * @typedef {Location} Location
- * @property {integer} lgt - Longitude
+ * @property {integer} lng - Longitude
  * @property {integer} lat - Latitude
  */
 
@@ -148,7 +148,7 @@ module.exports = {
   update: async (req, res) => {
     try {
       const { id } = req.params;
-      const lgt = req.body.location?.lgt;
+      const lgt = req.body.location?.lng;
       const lat = req.body.location?.lat;
 
       const exploration = await Exploration.findByPk(id);
