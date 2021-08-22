@@ -10,6 +10,9 @@ export const SAVE_EVENT_CREATED = 'SAVE_EVENT_CREATED';
 export const ON_CLICK_PUBLISHED = 'ON_CLICK_PUBLISHED';
 export const EVENTS_CREATED = 'EVENTS_CREATED';
 export const SUBMIT_FROM_CREATE_EVENT = 'SUBMIT_FROM_CREATE_EVENT';
+export const REMOVE_EVENT = 'REMOVE_EVENT';
+export const GET_EVENT_CREATED_LAST = 'GET_EVENT_CREATED_LAST';
+export const SAVE_EVENT_CREATED_LAST = 'SAVE_EVENT_CREATED_LAST';
 
 // Action creators
 export const formSubmit = (payload) => ({
@@ -61,5 +64,23 @@ export const eventsCreated = (value) => ({
 
 export const submitFormCreateEvent = () => ({
   type: SUBMIT_FROM_CREATE_EVENT,
+
+});
+
+export const removeEvent = (value) => ({
+  type: REMOVE_EVENT,
+  value,
+
+});
+
+export const getEventCreatedlast = (value) => ({
+  type: GET_EVENT_CREATED_LAST,
+  value,
+
+});
+
+export const saveEventcreatedlast = (value) => ({
+  type: SAVE_EVENT_CREATED_LAST,
+  value,
 
 });

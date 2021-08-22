@@ -6,3 +6,10 @@ export function findEvent(events, searchedId) {
 
   return event;
 }
+
+export function findEventByName(events, searchedName) {
+  const event = events.find((element) => (
+    element.name === searchedName));
+
+  return event;
+}
