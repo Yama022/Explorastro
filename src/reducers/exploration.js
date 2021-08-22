@@ -7,7 +7,7 @@ import {
   SAVE_EVENT_CREATED,
   ON_CLICK_PUBLISHED,
   EVENTS_CREATED,
-  SAVE_EVENT_CREATED_LAST,
+  SAVE_EVENT_CREATED_LAST, REMOVE_LAST_EVENT_ID,
 } from 'src/actions/exploration';
 import data from 'src/data/data.json';
 
@@ -90,6 +90,13 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         eventCreatedLast: action.value,
+
+      };
+    }
+    case REMOVE_LAST_EVENT_ID: {
+      return {
+        ...state,
+        eventCreatedLast: initialState.eventCreatedLast,
 
       };
     }

@@ -5,6 +5,7 @@ import * as dayjs from 'dayjs';
 import PropTypes from 'prop-types';
 import Header from 'src/containers/Header';
 import Footer from 'src/components/Footer';
+import { Link } from 'react-router-dom';
 import ControlGeocoder from './controlGeocoder';
 
 export default function FormEvent({
@@ -139,7 +140,7 @@ export default function FormEvent({
             </div>
             <div className="form__create__button">
               <button className="button is-link " type="submit">Créer</button>
-              <button className="button is-danger" type="button">Annuler</button>
+              <button className="button is-danger" type="button"><Link className="btn_link" to="/exploration/create">Annuler </Link></button>
             </div>
           </form>
         </div>
