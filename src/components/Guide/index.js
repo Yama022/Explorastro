@@ -81,7 +81,7 @@ export default function Guide() {
 
       </div>
 
-      <div className="button__return__top">
+      {/* <div className="button__return__top">
         <button onClick={() => {
           window.scrollTo({
             top: 0,
@@ -91,7 +91,7 @@ export default function Guide() {
         >
           <FcCollapse className="button__return__top__button" />
         </button>
-      </div>
+      </div> */}
 
     </div>
   );
