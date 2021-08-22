@@ -81,18 +81,6 @@ export default function Guide() {
 
       </div>
 
-      {/* <div className="button__return__top">
-        <button onClick={() => {
-          window.scrollTo({
-            top: 0,
-            behavior: 'smooth',
-          });
-        }}
-        >
-          <FcCollapse className="button__return__top__button" />
-        </button>
-      </div> */}
-
     </div>
   );
 }
