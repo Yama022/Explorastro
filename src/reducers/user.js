@@ -3,6 +3,7 @@ import {
 } from 'src/actions/user';
 
 const initialState = {
+  loggedUserId: 0,
   firstname: '',
   lastname: '',
   email: '',
@@ -38,6 +39,7 @@ const reducer = (state = initialState, action = {}) => {
     case SAVE_USER: {
       return {
         ...state,
+        loggedUserId: action.payload?.id,
         username: action.payload?.username ?? '',
         logged: !!action.payload?.username,
         email: '',

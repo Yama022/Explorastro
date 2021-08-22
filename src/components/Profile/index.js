@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
@@ -11,11 +11,14 @@ import { BiMedal, BiCog } from 'react-icons/bi';
 import Follows from './Follows';
 
 export default function Profile({
-  firstName, lastName, menuValue, changeMenuValue, profileId, loggedUserId,
+  firstName, lastName, menuValue, changeMenuValue, profileId, loggedUserId, getInfo,
 }) {
   const handleToggleNav = (event) => {
     changeMenuValue(event.target.dataset.toggle);
   };
+  useEffect(() => {
+    getInfo(profileId);
+  }, [profileId]);
   return (
     <div className="profile">
 
@@ -74,7 +77,7 @@ export default function Profile({
       </div>
 
       <ul className="profile__nav">
-        <li className={(menuValue === 1) ? 'profile__nav__elem profile__nav__elem--active' : 'profile__nav__elem'} data-toggle="1" onClick={handleToggleNav}>Main</li>
+        <li className={(menuValue === 1) ? 'profile__nav__elem profile__nav__elem--active' : 'profile__nav__elem'} data-toggle="1" onClick={handleToggleNav}>Informations</li>
         <li className={(menuValue === 2) ? 'profile__nav__elem profile__nav__elem--active' : 'profile__nav__elem'} data-toggle="2" onClick={handleToggleNav}>Followers</li>
         <li className={(menuValue === 3) ? 'profile__nav__elem profile__nav__elem--active' : 'profile__nav__elem'} data-toggle="3" onClick={handleToggleNav}>Followed</li>
       </ul>
@@ -97,6 +100,7 @@ export default function Profile({
 }
 
 Profile.propTypes = {
+  getInfo: PropTypes.func.isRequired,
   loggedUserId: PropTypes.number.isRequired,
   profileId: PropTypes.number.isRequired,
   firstName: PropTypes.string.isRequired,

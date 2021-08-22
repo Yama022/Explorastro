@@ -1,5 +1,4 @@
-import { SAVE_USER } from 'src/actions/user';
-import { CHANGE_PROFILE_MENU } from 'src/actions/profile';
+import { CHANGE_PROFILE_MENU, SAVE_USER_INFO } from 'src/actions/profile';
 
 const initialState = {
   loggedUserId: 0,
@@ -17,13 +16,12 @@ const profile = (state = initialState, action = {}) => {
         profileMenuValue: Number(action.payload),
       };
     }
-    case SAVE_USER: {
+    case SAVE_USER_INFO: {
       return {
         ...state,
-        loggedUserId: action.payload?.id ?? '',
-        username: action.payload?.username ?? '',
-        firstname: action.payload?.firstname ?? '',
-        lastname: action.payload?.lastname ?? '',
+        username: action.payload.username,
+        firstname: action.payload.firstname,
+        lastname: action.payload.lastname,
       };
     }
     default:
