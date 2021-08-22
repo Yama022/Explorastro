@@ -11,7 +11,6 @@ export default function Filter({ onSubmit, onChange, fieldZone }) {
     // event.preventDefault();
     const { value } = event.target;
     const zone = parseInt(value, 10);
-    console.log(typeof (zone));
     onChange(zone);
   };
   return (

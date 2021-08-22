@@ -32,7 +32,6 @@ const mapDispatchToProps = (dispatch) => ({
   },
   getCoordLocation: (value) => {
     const action = getCoord(value);
-    console.log(value);
     dispatch(action);
   },
 
