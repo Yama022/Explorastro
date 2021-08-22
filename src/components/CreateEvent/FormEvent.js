@@ -20,6 +20,7 @@ export default function FormEvent({
   maxRateEvent,
   descEvent,
   published,
+  geog,
 
 }) {
   useEffect(() => {
@@ -78,8 +79,8 @@ export default function FormEvent({
               className="input is-link is-small"
               type="datetime-local"
               name="dateEvent"
-              value={dayjs().format('YYYY-MM-DDTHH:mm:ss')}
-              min={dayjs().format('YYYY-MM-DDTHH:mm:ss')}
+              value={dayjs(dateEvent).format('YYYY-MM-DDTHH:mm:ss')}
+              // min={dayjs().format('YYYY-MM-DDTHH:mm:ss')}
               onChange={handleOnchange}
             />
 
@@ -139,8 +140,8 @@ export default function FormEvent({
 
             </div>
             <div className="form__create__button">
-              <button className="button is-link " type="submit">Créer</button>
-              <button className="button is-danger" type="button"><Link className="btn_link" to="/exploration/create">Annuler </Link></button>
+              <button className="button_style btn btn-pulse" type="submit">Créer</button>
+              <Link className="button_style btn btn-pulse" to="/exploration/create">Annuler </Link>
             </div>
           </form>
         </div>
@@ -163,6 +164,7 @@ FormEvent.propTypes = {
   maxRateEvent: PropTypes.number,
   descEvent: PropTypes.string,
   published: PropTypes.bool,
+  geog: PropTypes.object.isRequired,
 };
 
 FormEvent.defaultProps = {

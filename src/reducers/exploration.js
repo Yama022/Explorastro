@@ -22,7 +22,7 @@ export const initialState = {
   postalCode: 0,
   dateEvent: '',
   maxRateEvent: 0,
-  coord: '',
+  coord: [],
   eventCreated: [],
   published: false,
   eventCreatedLast: [],

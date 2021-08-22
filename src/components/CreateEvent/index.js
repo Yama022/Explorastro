@@ -8,6 +8,7 @@ export default function CreateEvent({
   onFormSubmitCreate, onClickRemove, eventCreatedLastID, removEventCreatedLastID,
 }) {
   let redirectForm;
+  console.log(eventsCreated);
 
   useEffect(() => {
     getEvent();
