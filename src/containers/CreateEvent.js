@@ -2,16 +2,13 @@ import { connect } from 'react-redux';
 import CreateEvent from 'src/components/CreateEvent';
 import {
   getEventCreated, changeInputCreateEvent,
-  submitFormCreateEvent, removeEvent,
+  submitFormCreateEvent, removeEvent, removeLastEventID,
 } from 'src/actions/exploration';
 
-const mapStateToProps = (state) => {
-  console.log(typeof (state.exploration.eventCreatedLast));
-  return ({
-    eventsCreated: state.exploration.eventCreated,
-    eventsCreatedLast: state.exploration.eventCreatedLast,
-  });
-};
+const mapStateToProps = (state) => ({
+  eventsCreated: state.exploration.eventCreated,
+  eventCreatedLastID: state.exploration.eventCreatedLast.id,
+});
 
 const mapDispatchToProps = (dispatch) => ({
 
@@ -29,6 +26,10 @@ const mapDispatchToProps = (dispatch) => ({
   },
   onClickRemove: (value) => {
     const action = removeEvent(value);
+    dispatch(action);
+  },
+  removEventCreatedLastID: () => {
+    const action = removeLastEventID();
     dispatch(action);
   },
 

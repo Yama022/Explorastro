@@ -64,25 +64,12 @@
     color: white;
   }
 
-  // &__button {
-  //   padding: 1em;
-  //   margin: 0 auto;
-  //   display: flex;
-  //   align-items: center;
-  //   justify-content: center;
+  &__button {
 
-  //   .is-danger {
-  //     margin-left: 15px;
-  //     width: 150px !important;
+    display: flex;
+    justify-content: center;
 
-  //   }
-
-  //   .is-link {
-
-  //     width: 150px !important;
-  //   }
-
-  // }
+  }
 
   .maxRateEvent {
     width: 50px;
@@ -191,6 +178,7 @@ textarea {
   color: $light-color;
 
 }
+
 .eventCreated {
   display: flex;
   flex-wrap: wrap;
@@ -218,9 +206,9 @@ textarea {
     text-overflow: ellipsis;
     width: 150px;
     overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  max-width: 180px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 180px;
   }
 
   & img {
@@ -236,32 +224,6 @@ textarea {
     justify-content: space-around;
     margin-bottom: 1em;
 
-  //   &--delete {
-  //     background-color: #d45f5f;
-
-  //     &:hover {
-  //       background-color: #d08585;
-  //     }
-  //   }
-
-  //   &--modifier {
-  //     background-color: #7485d8;
-
-  //     &:hover {
-  //       background-color: #a0a8cc;
-  //     }
-  //   }
-  // }
-
-  // & button {
-  //   bottom: 5%;
-  //   right: 40%;
-  //   width: 85px;
-  //   height: 40px;
-  //   border: none;
-  //   border-radius: 5px;
-  //   font-weight: bold;
-
   }
 
 }
@@ -270,7 +232,3 @@ textarea {
   display: flex;
   flex-wrap: wrap;
 }
-
-
-
-

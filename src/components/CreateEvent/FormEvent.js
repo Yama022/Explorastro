@@ -5,6 +5,7 @@ import * as dayjs from 'dayjs';
 import PropTypes from 'prop-types';
 import Header from 'src/containers/Header';
 import Footer from 'src/components/Footer';
+import { Link } from 'react-router-dom';
 import ControlGeocoder from './controlGeocoder';
 
 export default function FormEvent({
@@ -19,6 +20,7 @@ export default function FormEvent({
   maxRateEvent,
   descEvent,
   published,
+  coord,
 
 }) {
   useEffect(() => {
@@ -77,8 +79,8 @@ export default function FormEvent({
               className="input is-link is-small"
               type="datetime-local"
               name="dateEvent"
-              value={dayjs().format('YYYY-MM-DDTHH:mm:ss')}
-              min={dayjs().format('YYYY-MM-DDTHH:mm:ss')}
+              value={dayjs(dateEvent).format('YYYY-MM-DDTHH:mm:ss')}
+              // min={dayjs().format('YYYY-MM-DDTHH:mm:ss')}
               onChange={handleOnchange}
             />
 
@@ -86,7 +88,7 @@ export default function FormEvent({
             <div className="form__map">
               <MapContainer
           // Centering on the map of france
-                center={[44.332192999999995, 1.309666999999996]}
+                center={[44.840291, 2.109375]}
                 zoom={6}
                 maxZoom={18}
                 minZoom={3}
@@ -99,7 +101,7 @@ export default function FormEvent({
                   name="tiles"
                 />
                 {/* Add Markers events astro on the map */}
-                <ControlGeocoder coordLocation={getCoordLocation} />
+                <ControlGeocoder coordLocation={getCoordLocation} coord={coord.coordinates} />
               </MapContainer>
             </div>
 
@@ -124,7 +126,7 @@ export default function FormEvent({
                 <div className="button-wrapper">
 
                   <input
-                    value={eventCreated.imageUrl}
+                    // value={eventCreated.imageUrl}
                     accept="image/*"
                   // onChange={onImageChange}
                     id="contained-button-file"
@@ -138,8 +140,8 @@ export default function FormEvent({
 
             </div>
             <div className="form__create__button">
-              <button className="button is-link " type="submit">Créer</button>
-              <button className="button is-danger" type="button">Annuler</button>
+              <button className="button_style btn btn-pulse" type="submit">Créer</button>
+              <Link className="button_style btn btn-pulse" to="/exploration/create">Annuler </Link>
             </div>
           </form>
         </div>
@@ -162,6 +164,10 @@ FormEvent.propTypes = {
   maxRateEvent: PropTypes.number,
   descEvent: PropTypes.string,
   published: PropTypes.bool,
+  coord: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.object,
+  ]).isRequired,
 };
 
 FormEvent.defaultProps = {

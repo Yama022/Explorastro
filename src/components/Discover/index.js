@@ -9,11 +9,11 @@ import imageEvent from './bg.png';
 export default function Discover({
   onFormSubmit,
   data,
-  explorations,
+  explorationsFilter,
   onChangeInput,
   zone,
 }) {
-  const tabSorties = explorations.length > 0 ? explorations : data;
+  const tabSorties = explorationsFilter.length > 0 ? explorationsFilter : data;
 
   data.forEach((element) => {
     element.desc = 'Venez decouvrir le ciel samedi 14/08/2021 !! ça va être trop bien !!';
@@ -44,7 +44,7 @@ export default function Discover({
 Discover.propTypes = {
   onFormSubmit: PropTypes.func.isRequired,
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
-  explorations: PropTypes.arrayOf(PropTypes.object).isRequired,
+  explorationsFilter: PropTypes.arrayOf(PropTypes.object).isRequired,
   onChangeInput: PropTypes.func.isRequired,
   zone: PropTypes.number.isRequired,
 };
