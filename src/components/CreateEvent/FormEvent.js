@@ -23,6 +23,7 @@ export default function FormEvent({
   coord,
 
 }) {
+  console.log(titleEvent);
   useEffect(() => {
     getEventsCreated(eventCreated);
   }, []);
@@ -42,10 +43,29 @@ export default function FormEvent({
   // const onImageChange = () => {
   //   console.log('Je change image');
   //   onChangeImage(event);
-  // };
+  // };}
+
+  const coordtest = () => {
+    let controlGeocoder;
+    if (coord) {
+      controlGeocoder = (
+        <ControlGeocoder
+          coordLocation={getCoordLocation}
+          coord={coord.coordinates}
+        />
+      );
+    }
+    else {
+      controlGeocoder = (
+        <ControlGeocoder coordLocation={getCoordLocation} />
+      );
+    }
+    return controlGeocoder;
+  };
 
   return (
     <>
+
       <Header />
       <div className="container">
         <h1 className="main-title">Créer un événement</h1>
@@ -101,7 +121,7 @@ export default function FormEvent({
                   name="tiles"
                 />
                 {/* Add Markers events astro on the map */}
-                <ControlGeocoder coordLocation={getCoordLocation} coord={coord.coordinates} />
+                {coordtest()}
               </MapContainer>
             </div>
 
@@ -167,7 +187,7 @@ FormEvent.propTypes = {
   coord: PropTypes.oneOfType([
     PropTypes.array,
     PropTypes.object,
-  ]).isRequired,
+  ]),
 };
 
 FormEvent.defaultProps = {
@@ -175,4 +195,5 @@ FormEvent.defaultProps = {
   dateEvent: '',
   maxRateEvent: 0,
   published: false,
+  coord: [],
 };

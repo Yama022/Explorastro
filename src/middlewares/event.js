@@ -67,7 +67,7 @@ const event = (store) => (next) => (action) => {
           const result = resp.data;
           const titleEvent = action.value;
           const lastEvent = findEventByName(result.organized_explorations, titleEvent);
-
+          console.log(lastEvent);
           store.dispatch(saveEventcreatedlast(lastEvent));
         }
         catch (err) {

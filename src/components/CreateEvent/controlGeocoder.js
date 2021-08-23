@@ -7,17 +7,11 @@ import L from 'leaflet';
 import PropTypes from 'prop-types';
 
 export default function ControlGeocoder({ coordLocation, coord }) {
+  console.log(coord);
   // console.log(geog.coordinates);
   const map = useMap();
   let reverseTabCoord;
   const objCoord = {};
-
-  useEffect(() => {
-    reverseTabCoord = coord.reverse();
-
-    [objCoord.lat, objCoord.lng] = [reverseTabCoord[0], reverseTabCoord[1]];
-    console.log(objCoord);
-  }, [coord]);
 
   useEffect(() => {
     let geocoder = L.Control.Geocoder.arcgis();
@@ -32,11 +26,19 @@ export default function ControlGeocoder({ coordLocation, coord }) {
         console.warn('Unsupported geocoder', geocoderString);
       }
     }
-    L.marker(objCoord)
-      .addTo(map);
-    const latLon = L.latLng(reverseTabCoord);
-    const bounds = latLon.toBounds(500); // 500 = metres
-    map.panTo(latLon).fitBounds(bounds);
+
+    if (coord.length) {
+      reverseTabCoord = coord.reverse();
+
+      [objCoord.lat, objCoord.lng] = [reverseTabCoord[0], reverseTabCoord[1]];
+      console.log(objCoord);
+
+      L.marker(objCoord)
+        .addTo(map);
+      const latLon = L.latLng(reverseTabCoord);
+      const bounds = latLon.toBounds(500);
+      map.panTo(latLon).fitBounds(bounds);
+    }
 
     L.Control.geocoder({
       query: '',
@@ -70,6 +72,6 @@ ControlGeocoder.propTypes = {
 };
 
 ControlGeocoder.defaultProps = {
-  coord: [],
 
+  coord: [],
 };

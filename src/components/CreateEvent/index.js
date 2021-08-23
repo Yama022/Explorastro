@@ -8,10 +8,16 @@ export default function CreateEvent({
   onFormSubmitCreate, onClickRemove, eventCreatedLastID, removEventCreatedLastID,
 }) {
   let redirectForm;
-
   useEffect(() => {
     getEvent();
   }, [eventsCreated]);
+
+  useEffect(() => {
+    if (eventCreatedLastID) {
+      redirectForm = <Redirect to={`/formEvent/${eventCreatedLastID}`} />;
+      removEventCreatedLastID();
+    }
+  }, [removEventCreatedLastID]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -22,10 +28,6 @@ export default function CreateEvent({
     onChangeInput(event.target.value, event.target.name);
   };
 
-  if (eventCreatedLastID) {
-    redirectForm = <Redirect to={`/formEvent/${eventCreatedLastID}`} />;
-    removEventCreatedLastID();
-  }
   return (
     <>
       {redirectForm}
