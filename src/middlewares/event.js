@@ -18,7 +18,6 @@ const event = (store) => (next) => (action) => {
       const state = store.getState();
       const position = state.exploration.coord;
       const id = action.value;
-      console.log(position);
 
       const newEvent = {
         name: state.exploration.titleEvent,
@@ -67,7 +66,6 @@ const event = (store) => (next) => (action) => {
           const result = resp.data;
           const titleEvent = action.value;
           const lastEvent = findEventByName(result.organized_explorations, titleEvent);
-          console.log(lastEvent);
           store.dispatch(saveEventcreatedlast(lastEvent));
         }
         catch (err) {
@@ -79,7 +77,6 @@ const event = (store) => (next) => (action) => {
     }
     case SUBMIT_FROM_CREATE_EVENT: {
       const state = store.getState();
-      console.log(state.exploration.titleEvent);
       const newEvent = {
         name: state.exploration.titleEvent,
 
@@ -99,7 +96,6 @@ const event = (store) => (next) => (action) => {
     }
     case REMOVE_EVENT: {
       const id = action.value;
-      console.log(id);
       const deleteEvent = async () => {
         try {
           const resp = await api.delete(`/api/v1/exploration/${id}/delete`);

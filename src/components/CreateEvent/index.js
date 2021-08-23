@@ -23,14 +23,14 @@ export default function CreateEvent({
 
   if (eventCreatedLastID) {
     redirectForm = <Redirect to={`/formEvent/${eventCreatedLastID}`} />;
-    removEventCreatedLastID();
   }
-
+  useEffect(() => {
+    removEventCreatedLastID();
+  }, [eventCreatedLastID]);
   return (
     <>
       {redirectForm}
       <div className="container">
-
 
         <h1 className="main-title">Organiser une sortie</h1>
         <div className="createEvent">
