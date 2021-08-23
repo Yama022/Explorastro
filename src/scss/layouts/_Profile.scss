@@ -147,9 +147,17 @@
       border-radius: 50%;
     }
     &__username {
-      display: inline-block;
+      margin-top: 0.4em;
       width: 100%;
+      display: inline-block;
       text-align: center;
+    }
+    &:hover {
+      color: $light-color;
+      text-shadow: 0 0 0.2em $tertiary-color;
+      .follows__user__avatar {
+        box-shadow: 0 0 0.4em $tertiary-color;
+      }
     }
   }
   &__button {
