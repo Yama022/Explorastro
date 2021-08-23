@@ -2,6 +2,7 @@
 /* eslint-disable react/button-has-type */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import * as dayjs from 'dayjs';
 import Map from './Map';
 import Filter from './Filter';
 import imageEvent from './bg.png';
@@ -13,7 +14,9 @@ export default function Discover({
   onChangeInput,
   zone,
   getEvents,
+  address,
 }) {
+  console.log(address);
   useEffect(() => {
     getEvents();
   }, [getEvents]);
@@ -32,15 +35,19 @@ export default function Discover({
             <img className="map__list_events__box__img" src={imageEvent} alt="" />
             <div className="map__list_events__box__content">
               <h2 className="map__list_events__box__content__h2">{element.name}</h2>
-              <p>{element.description}</p>
-              <button className="map__list_events__box__content__btn">Participer</button>
+              <ul>
+                <li className="description">{element.description}</li>
+                <li className="dateEvent">Date de la sortie :<span>{element.date ? dayjs(element.date).format('DD/MM/YYYY  mm:ss') : ''}</span></li>
+                <li className="nbrPlace">Nombre de place : <span>{element.max_participants}</span></li>
+              </ul>
+              <div className="button_style btn btn-pulse">Participer</div>
             </div>
           </div>
         ))}
       </div>
       <Filter onSubmit={onFormSubmit} onChange={onChangeInput} fieldZone={zone} />
 
-      <Map coord={tabSorties} fieldZone={zone} />
+      <Map coord={tabSorties} fieldZone={zone} address={address} />
 
     </div>
   );
@@ -53,4 +60,5 @@ Discover.propTypes = {
   onChangeInput: PropTypes.func.isRequired,
   zone: PropTypes.number.isRequired,
   getEvents: PropTypes.func.isRequired,
+  address: PropTypes.array.isRequired,
 };

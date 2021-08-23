@@ -11,10 +11,12 @@ import {
   REMOVE_LAST_EVENT_ID,
   CLICK_MODAL,
   SAVE_ALL_EVENTS,
+  SAVE_ADDRESS,
 } from 'src/actions/exploration';
 
 export const initialState = {
-  ville: '',
+  addressInput: '',
+  address: [],
   events: [],
   titleEvent: '',
   descEvent: '',
@@ -38,7 +40,7 @@ const reducer = (state = initialState, action = {}) => {
     case FORM: {
       return {
         ...state,
-        ville: action.payload,
+        addressInput: action.payload,
       };
     }
     case SAVE_EXPLORATION: {
@@ -96,6 +98,7 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         eventCreatedLast: action.value,
+        published: initialState.published,
 
       };
     }
@@ -117,6 +120,13 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         events: action.value,
+
+      };
+    }
+    case SAVE_ADDRESS: {
+      return {
+        ...state,
+        address: [...state.address, action.value],
 
       };
     }

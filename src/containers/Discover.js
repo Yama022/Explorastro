@@ -5,8 +5,8 @@ import { filterExploration } from '../selectors/filterExploration';
 
 const mapStateToProps = (state) => ({
   events: state.exploration.events,
-  ville: state.exploration.ville,
-  explorationsFilter: filterExploration(state.exploration.events, state.exploration.ville),
+  address: state.exploration.address,
+  explorationsFilter: filterExploration(state.exploration.events, state.exploration.addressInput),
   zone: state.exploration.zone,
 });
 

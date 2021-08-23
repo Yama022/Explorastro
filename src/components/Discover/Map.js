@@ -9,7 +9,7 @@ import {
 import L from 'leaflet';
 import home from './home.png';
 
-export default function Map({ coord, fieldZone }) {
+export default function Map({ coord, fieldZone, address }) {
   // eslint-disable-next-line new-cap
   const newicon = new L.icon({
     iconUrl: home,
@@ -48,14 +48,14 @@ export default function Map({ coord, fieldZone }) {
         name="MarkerClusterGroup"
         key={uuid.v4()}
       >
-        {coord.map((element, index) => {
+        {coord.map((element) => {
         // eslint-disable-next-line react/no-array-index-key
 
           const reverseTabCoord = element.geog.coordinates.reverse();
           console.log(reverseTabCoord);
 
           return (
-            <div key={index}>
+            <div key={element.id}>
               <Marker names="marker" position={reverseTabCoord} id="foo">
                 <Popup name="popup">Exploration vers {element.name}</Popup>
               </Marker>
@@ -99,4 +99,5 @@ export default function Map({ coord, fieldZone }) {
 Map.propTypes = {
   coord: PropTypes.arrayOf(PropTypes.object).isRequired,
   fieldZone: PropTypes.number.isRequired,
+  address: PropTypes.array.isRequired,
 };
