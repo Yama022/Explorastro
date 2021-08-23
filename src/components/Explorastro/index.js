@@ -14,9 +14,11 @@ import Guide from 'src/components/Guide';
 import Landing from 'src/components/Landing';
 import Photo from 'src/components/Guide/Photo';
 import Visuel from 'src/components/Guide/Visuel';
-import { FcCollapse } from 'react-icons/fc';
+import Profile from 'src/containers/Profile';
 import Settings from 'src/containers/Settings';
 import FormEvent from 'src/containers/FormEvent';
+
+import { FcCollapse } from 'react-icons/fc';
 
 export default function Explorastro({ isLogged, checkIsLogged }) {
   useEffect(() => {
@@ -80,6 +82,16 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
             <Route exact path="/login">
               <Redirect to="/timeline" />
             </Route>
+            <Route
+              path="/profile/:id"
+              render={(prop) => (
+                <>
+                  <Header />
+                  <Profile profileId={Number(prop.match.params.id)} />
+                  <Footer />
+                </>
+              )}
+            />
             <Route exact path="/settings">
               <Header />
               <Settings />
@@ -129,7 +141,6 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
         </button>
       </div>
     </div>
-
   );
 }
 

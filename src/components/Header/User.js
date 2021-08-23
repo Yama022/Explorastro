@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { BiCog, BiUserCircle, BiPowerOff } from 'react-icons/bi';
 
 export default function User({
-  username, isOpen, onClickUser, handleLogout,
+  username, isOpen, onClickUser, handleLogout, loggedUserId,
 }) {
   return (
     <div className="header__user">
@@ -16,7 +16,7 @@ export default function User({
       <ul className={isOpen ? 'header__user__dropdown header__user__dropdown--open' : 'header__user__dropdown'}>
         <li className="header__user__dropdown__username">{username}</li>
         <li className="header__user__dropdown__item">
-          <Link to="/profile" className="header__user__dropdown__item__link" onClick={onClickUser}>
+          <Link to={`/profile/${loggedUserId}`} className="header__user__dropdown__item__link" onClick={onClickUser}>
             <BiUserCircle />
             <span> Profil </span>
           </Link>
@@ -47,6 +47,7 @@ export default function User({
 
 User.propTypes = {
   username: PropTypes.string.isRequired,
+  loggedUserId: PropTypes.number.isRequired,
   isOpen: PropTypes.bool.isRequired,
   onClickUser: PropTypes.func.isRequired,
   handleLogout: PropTypes.func.isRequired,
