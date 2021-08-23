@@ -2,7 +2,7 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
-export default function FirstPart({ img, link, name }) {
+export default function ThirdPart({ img, link, name }) {
   return (
     <figure className="figGuide">
       <a href={link} target="_blank" rel="noreferrer">
@@ -13,7 +13,7 @@ export default function FirstPart({ img, link, name }) {
   );
 }
 
-FirstPart.propTypes = {
+ThirdPart.propTypes = {
   img: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
