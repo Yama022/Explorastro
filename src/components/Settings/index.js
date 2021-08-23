@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 
 import { FaUser, FaKey } from 'react-icons/fa';
 
+import BackButton from 'src/components/BackButton';
+
 export default function Settings({
   usernameChange,
   changeField,
@@ -41,6 +43,7 @@ export default function Settings({
   return (
     <div className="settings">
       <h1 className="main-title">Paramètres</h1>
+      <BackButton />
       <div className="settings__elems">
         <h2>Changer le pseudo</h2>
         <form className="settings__elems__form" onSubmit={handleUsernameForm}>

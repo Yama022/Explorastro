@@ -18,7 +18,7 @@ import Profile from 'src/containers/Profile';
 import Settings from 'src/containers/Settings';
 import FormEvent from 'src/containers/FormEvent';
 
-import { FcCollapse } from 'react-icons/fc';
+import { IoIosArrowUp } from 'react-icons/io';
 
 export default function Explorastro({ isLogged, checkIsLogged }) {
   useEffect(() => {
@@ -127,19 +127,18 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
             </Route>
           </Switch>
         )}
-      <div className="button__return__top">
-        <button
-          type="button"
-          onClick={() => {
-            window.scrollTo({
-              top: 0,
-              behavior: 'smooth',
-            });
-          }}
-        >
-          <FcCollapse className="button__return__top__button" />
-        </button>
-      </div>
+      <button
+        type="button"
+        className="button__return__top button --secondary"
+        onClick={() => {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+          });
+        }}
+      >
+        <IoIosArrowUp />
+      </button>
     </div>
   );
 }
