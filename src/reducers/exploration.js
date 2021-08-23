@@ -30,6 +30,7 @@ export const initialState = {
   eventCreatedLast: [],
   geog: [],
   modal: false,
+  imageUrl: '',
 };
 
 const reducer = (state = initialState, action = {}) => {

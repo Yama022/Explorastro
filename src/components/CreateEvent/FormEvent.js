@@ -25,6 +25,7 @@ export default function FormEvent({
   coord,
   OnClickModal,
   modal,
+  imageUrl,
 
 }) {
   useEffect(() => {
@@ -38,6 +39,7 @@ export default function FormEvent({
   };
 
   const handleOnchange = (event) => {
+    console.log(event.target.value);
     onChangeInput(event.target.value, event.target.name);
   };
 
@@ -48,10 +50,6 @@ export default function FormEvent({
   const handleOnClick = () => {
     OnClick();
   };
-  // const onImageChange = () => {
-  //   console.log('Je change image');
-  //   onChangeImage(event);
-  // };}
 
   const coordtest = () => {
     let controlGeocoder;
@@ -73,6 +71,7 @@ export default function FormEvent({
 
   return (
     <>
+      {/* Modal */}
       <div className={modal ? 'modal is-active' : 'modal'}>
         <div className="modal-background" />
         <div className="modal-card">
@@ -89,6 +88,8 @@ export default function FormEvent({
           </footer>
         </div>
       </div>
+      {/* fin Modal */}
+
       <Header />
       <div className="container">
         <h1 className="main-title">Créer un événement</h1>
@@ -169,12 +170,12 @@ export default function FormEvent({
                 <div className="button-wrapper">
 
                   <input
-                    // value={eventCreated.imageUrl}
-                    accept="image/*"
-                  // onChange={onImageChange}
+                    value={imageUrl !== 'undefined' ? imageUrl : 'src/assets/images/nigthSky.jpg'}
+                    // accept="image/*"
+                    onChange={handleOnchange}
                     id="contained-button-file"
                     multiple
-                    name="image"
+                    name="imageUrl"
                     type="file"
                     className="upload-box"
                   />
@@ -198,7 +199,6 @@ FormEvent.propTypes = {
   onChangeInput: PropTypes.func.isRequired,
   onFormSubmitUpdateEvent: PropTypes.func.isRequired,
   getCoordLocation: PropTypes.func.isRequired,
-  // onImageChange: PropTypes.func.isRequired,
   eventCreated: PropTypes.object.isRequired,
   OnClick: PropTypes.func.isRequired,
   getEventsCreated: PropTypes.func.isRequired,
@@ -216,6 +216,7 @@ FormEvent.propTypes = {
   ]),
   OnClickModal: PropTypes.func.isRequired,
   modal: PropTypes.bool.isRequired,
+  imageUrl: PropTypes.string.isRequired,
 };
 
 FormEvent.defaultProps = {

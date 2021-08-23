@@ -21,6 +21,7 @@ const mapStateToProps = (state, ownProps) => ({
   published: state.exploration.published,
   coord: state.exploration.geog,
   modal: state.exploration.modal,
+  imageUrl: state.exploration.imageUrl,
 
 });
 
