@@ -23,6 +23,7 @@ export default function FormEvent({
   coord,
 
 }) {
+  console.log(titleEvent);
   useEffect(() => {
     getEventsCreated(eventCreated);
   }, []);
@@ -64,7 +65,6 @@ export default function FormEvent({
 
   return (
     <>
-
       <Header />
 
       <div className="container">
