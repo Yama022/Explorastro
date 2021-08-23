@@ -10,6 +10,7 @@ import { BiMedal, BiCog } from 'react-icons/bi';
 import { TiTick } from 'react-icons/ti';
 
 import Follows from './Follows';
+import Explorations from './Explorations';
 
 export default function Profile({
   firstName,
@@ -22,6 +23,7 @@ export default function Profile({
   getInfo,
   followers,
   following,
+  explorations,
   handleFollow,
   handleUnfollow,
   userFollowed,
@@ -29,7 +31,6 @@ export default function Profile({
   const handleToggleNav = (event) => {
     changeMenuValue(event.target.dataset.toggle);
   };
-
   useEffect(() => {
     getInfo(profileId);
   }, [profileId]);
@@ -64,7 +65,7 @@ export default function Profile({
                   <>
                     <button
                       type="button"
-                      className={userFollowed ? 'follows__button button --secondary' : 'follows__button--active button --secondary'}
+                      className={userFollowed ? 'profile__follows__button button --secondary' : 'profile__follows__button--active button --secondary'}
                       onClick={() => {
                         handleFollow(profileId);
                       }}
@@ -77,7 +78,7 @@ export default function Profile({
 
                     <button
                       type="button"
-                      className={userFollowed ? 'follows__button--active button --outlined' : 'follows__button button --outlined'}
+                      className={userFollowed ? 'profile__follows__button--active button --outlined' : 'profile__follows__button button --outlined'}
                       onClick={() => {
                         handleUnfollow(profileId);
                       }}
@@ -122,7 +123,7 @@ export default function Profile({
         {
           (() => {
             switch (menuValue) {
-              case 1: return <h2 className="profile__content__title">Dernières explorations</h2>;
+              case 1: return <> <h2 className="profile__content__title">Dernières explorations</h2> <Explorations explorations={explorations} /> </>;
               case 2: return <> <h2 className="profile__content__title">Les personnes qui le suivent</h2> <Follows users={followers} /> </>;
               case 3: return <> <h2 className="profile__content__title">Les personnes qu'il suit</h2> <Follows users={following} /> </>;
               default: return <h2 className="profile__content__title">Une erreur est survenue</h2>;
@@ -146,6 +147,7 @@ Profile.propTypes = {
   changeMenuValue: PropTypes.func.isRequired,
   followers: PropTypes.array.isRequired,
   following: PropTypes.array.isRequired,
+  explorations: PropTypes.array.isRequired,
   handleFollow: PropTypes.func.isRequired,
   handleUnfollow: PropTypes.func.isRequired,
   userFollowed: PropTypes.bool.isRequired,

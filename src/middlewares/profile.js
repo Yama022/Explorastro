@@ -10,6 +10,7 @@ const profile = (store) => (next) => (action) => {
       const getInfo = async () => {
         try {
           const response = await api.get(`/api/v1/user/${action.payload}`);
+          console.log(response.data);
           const actionSaveUserInfo = saveUserInfo(response.data);
           store.dispatch(actionSaveUserInfo);
         }

@@ -14,6 +14,7 @@ const mapStateToProps = (state) => ({
   followers: state.profile.followers,
   following: state.profile.following,
   userFollowed: state.profile.userFollowed,
+  explorations: state.profile.explorations,
 });
 
 const mapDispatchToProps = (dispatch) => ({

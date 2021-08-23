@@ -6,12 +6,12 @@ import mascot from 'src/assets/images/mascot-rocket.svg';
 
 export default function Follows({ users }) {
   return (
-    <div className="follows">
+    <div className="profile__follows">
       {users.length > 0
         ? users.map((user) => (
-          <Link to={`/profile/${user.id}`} className="follows__user" key={user.id}>
-            <img src={mascot} className="follows__user__avatar" alt={`Avatar de ${user.username}`} />
-            <span className="follows__user__username">{user.username}</span>
+          <Link to={`/profile/${user.id}`} className="profile__follows__user" key={user.id}>
+            <img src={mascot} className="profile__follows__user__avatar" alt={`Avatar de ${user.username}`} />
+            <span className="profile__follows__user__username">{user.username}</span>
           </Link>
         ))
         : <h2>Aucun utilisateur trouvé</h2>}

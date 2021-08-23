@@ -9,6 +9,7 @@ const initialState = {
   profileMenuValue: 1,
   followers: [],
   following: [],
+  explorations: [],
   userFollowed: false,
 };
 
@@ -34,6 +35,7 @@ const profile = (state = initialState, action = {}) => {
         lastname: action.payload.lastname,
         followers: action.payload.followers,
         following: action.payload.following,
+        explorations: action.payload.organized_explorations,
         userFollowed: action.payload.followers.some((follow) => follow.id === state.loggedUserId),
       };
     }
