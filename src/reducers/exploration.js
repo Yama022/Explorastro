@@ -7,7 +7,9 @@ import {
   SAVE_EVENT_CREATED,
   ON_CLICK_PUBLISHED,
   EVENTS_CREATED,
-  SAVE_EVENT_CREATED_LAST, REMOVE_LAST_EVENT_ID,
+  SAVE_EVENT_CREATED_LAST,
+  REMOVE_LAST_EVENT_ID,
+  CLICK_MODAL,
 } from 'src/actions/exploration';
 import data from 'src/data/data.json';
 
@@ -27,6 +29,7 @@ export const initialState = {
   published: false,
   eventCreatedLast: [],
   geog: [],
+  modal: false,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -98,6 +101,13 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         eventCreatedLast: initialState.eventCreatedLast,
+
+      };
+    }
+    case CLICK_MODAL: {
+      return {
+        ...state,
+        modal: !state.modal,
 
       };
     }

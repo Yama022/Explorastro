@@ -1,0 +1,52 @@
+.modal {
+
+  z-index: 99999;
+}
+
+.modal-card {
+
+  height: 30%;
+  color: white;
+  font-family: 'Roboto';
+  border-radius: 10px;
+
+
+  &-title {
+
+    color: white;
+  }
+
+  &-body,
+  &-foot,
+  &-head {
+
+    background-color: $color-box
+  }
+
+  &-foot {
+    border-top: none;
+  }
+
+  &-body {
+    display: flex;
+    align-items: center;
+    font-size: 1.4em;
+
+    &-mascotte {
+
+      width: 20%;
+    }
+  }
+
+}
+
+.modal-background {
+  background-color: $primary-color-rgba;
+
+}
+
+.button {
+
+  background-color: $color-btn-modal;
+  margin: 0 auto;
+}

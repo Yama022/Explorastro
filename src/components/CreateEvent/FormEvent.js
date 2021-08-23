@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect } from 'react';
 import { MapContainer, TileLayer } from 'react-leaflet';
@@ -6,6 +7,7 @@ import PropTypes from 'prop-types';
 import Header from 'src/containers/Header';
 import Footer from 'src/components/Footer';
 import { Link } from 'react-router-dom';
+import mascotRocket from 'src/assets/images/mascot-rocket.svg';
 import ControlGeocoder from './controlGeocoder';
 
 export default function FormEvent({
@@ -21,6 +23,8 @@ export default function FormEvent({
   descEvent,
   published,
   coord,
+  OnClickModal,
+  modal,
 
 }) {
   useEffect(() => {
@@ -30,10 +34,15 @@ export default function FormEvent({
   const handleSubmit = (event) => {
     event.preventDefault();
     onFormSubmitUpdateEvent(eventCreated.id);
+    OnClickModal();
   };
 
   const handleOnchange = (event) => {
     onChangeInput(event.target.value, event.target.name);
+  };
+
+  const handleOnClickModal = () => {
+    OnClickModal();
   };
 
   const handleOnClick = () => {
@@ -64,9 +73,23 @@ export default function FormEvent({
 
   return (
     <>
-
+      <div className={modal ? 'modal is-active' : 'modal'}>
+        <div className="modal-background" />
+        <div className="modal-card">
+          <header className="modal-card-head">
+            <p className="modal-card-title">Exploration : {titleEvent}</p>
+            <button className="delete" aria-label="close" onClick={handleOnClickModal} />
+          </header>
+          <section className="modal-card-body">
+            <img className="modal-card-body-mascotte" src={mascotRocket} alt="Belle mascotte" />
+            <p>"Vos modifications ont bien été pris en compte"</p>
+          </section>
+          <footer className="modal-card-foot">
+            <button className="button" onClick={handleOnClickModal}>Cancel</button>
+          </footer>
+        </div>
+      </div>
       <Header />
-
       <div className="container">
         <h1 className="main-title">Créer un événement</h1>
         <div className="createEvent">
@@ -191,6 +214,8 @@ FormEvent.propTypes = {
     PropTypes.array,
     PropTypes.object,
   ]),
+  OnClickModal: PropTypes.func.isRequired,
+  modal: PropTypes.bool.isRequired,
 };
 
 FormEvent.defaultProps = {
