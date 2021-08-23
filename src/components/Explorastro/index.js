@@ -127,7 +127,7 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
             </Route>
           </Switch>
         )}
-      <div
+      <button
         type="button"
         className="button__return__top button --secondary"
         onClick={() => {
@@ -138,7 +138,7 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
         }}
       >
         <IoIosArrowUp />
-      </div>
+      </button>
     </div>
   );
 }

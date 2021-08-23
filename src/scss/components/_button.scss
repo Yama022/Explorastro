@@ -1,9 +1,14 @@
+// input[type="button"]:active {
+//   outline: none;
+//   box-shadow: none;
+// }
+
 .button {
-  color: $light-color;
-  outline: none;
-  &:focus {
+  &:focus, &:active {
     outline: none;
+    box-shadow: none !important;
   }
+  color: $light-color;
 }
 
 .purple {
@@ -15,7 +20,7 @@
   border: 1px solid $primary-color;
   background-color: $light-color;
   color: $primary-color;
-  &:hover {
+  &:hover, &:active, &:focus {
     color: $light-color;
     background-color: $secondary-color;
     border: 1px solid $light-color;
@@ -26,7 +31,7 @@
   background-color: $secondary-color;
   border: 1px solid $secondary-color;
   transition: .2s ease-in-out;
-  &:hover {
+  &:hover, &:active, &:focus {
     color: $secondary-color;
     background-color: $light-color;
     border: 1px solid $secondary-color;
