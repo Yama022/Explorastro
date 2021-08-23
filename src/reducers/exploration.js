@@ -10,12 +10,12 @@ import {
   SAVE_EVENT_CREATED_LAST,
   REMOVE_LAST_EVENT_ID,
   CLICK_MODAL,
+  SAVE_ALL_EVENTS,
 } from 'src/actions/exploration';
-import data from 'src/data/data.json';
 
 export const initialState = {
   ville: '',
-  sortie: data,
+  events: [],
   titleEvent: '',
   descEvent: '',
   zone: 10,
@@ -110,6 +110,13 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         modal: !state.modal,
+
+      };
+    }
+    case SAVE_ALL_EVENTS: {
+      return {
+        ...state,
+        events: action.value,
 
       };
     }

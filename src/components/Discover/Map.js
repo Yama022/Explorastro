@@ -48,14 +48,20 @@ export default function Map({ coord, fieldZone }) {
         name="MarkerClusterGroup"
         key={uuid.v4()}
       >
-        {coord.map((element, index) => (
+        {coord.map((element, index) => {
         // eslint-disable-next-line react/no-array-index-key
-          <div key={index}>
-            <Marker names="marker" position={[element.Latitude, element.Longitude]} id="foo">
-              <Popup name="popup">Exploration vers {element.name}</Popup>
-            </Marker>
-          </div>
-        ))}
+
+          const reverseTabCoord = element.geog.coordinates.reverse();
+          console.log(reverseTabCoord);
+
+          return (
+            <div key={index}>
+              <Marker names="marker" position={reverseTabCoord} id="foo">
+                <Popup name="popup">Exploration vers {element.name}</Popup>
+              </Marker>
+            </div>
+          );
+        })}
 
         <Marker position={position} icon={newicon}>
           <Popup>
