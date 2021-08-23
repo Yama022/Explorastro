@@ -26,6 +26,7 @@ export default function FormEvent({
   OnClickModal,
   modal,
   imageUrl,
+  saveAddress,
 
 }) {
   console.log(titleEvent);
@@ -59,12 +60,16 @@ export default function FormEvent({
         <ControlGeocoder
           coordLocation={getCoordLocation}
           coord={coord.coordinates}
+          saveAddress={saveAddress}
         />
       );
     }
     else {
       controlGeocoder = (
-        <ControlGeocoder coordLocation={getCoordLocation} />
+        <ControlGeocoder
+          coordLocation={getCoordLocation}
+          saveAddress={saveAddress}
+        />
       );
     }
     return controlGeocoder;
@@ -218,6 +223,7 @@ FormEvent.propTypes = {
   OnClickModal: PropTypes.func.isRequired,
   modal: PropTypes.bool.isRequired,
   imageUrl: PropTypes.string.isRequired,
+  saveAddress: PropTypes.func.isRequired,
 };
 
 FormEvent.defaultProps = {

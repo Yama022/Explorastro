@@ -7,6 +7,8 @@ import {
   getEventCreatedlast,
   GET_EVENT_CREATED_LAST,
   saveEventcreatedlast,
+  GET_ALL_EVENTS,
+  saveAllEvents,
 } from 'src/actions/exploration';
 import { findEventByName } from '../selectors/exploration';
 import api from './utils/api';
@@ -107,6 +109,22 @@ const event = (store) => (next) => (action) => {
         }
       };
       deleteEvent();
+      break;
+    }
+    case GET_ALL_EVENTS: {
+      const getAllEvents = async () => {
+        try {
+          console.log('toto');
+          const resp = await api.get('/api/v1/exploration');
+          const result = resp.data;
+          console.log(resp);
+          store.dispatch(saveAllEvents(result));
+        }
+        catch (err) {
+          console.error(err);
+        }
+      };
+      getAllEvents();
       break;
     }
 
