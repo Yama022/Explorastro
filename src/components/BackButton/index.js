@@ -2,20 +2,19 @@ import React from 'react';
 
 import { useHistory } from 'react-router-dom';
 
-
-import { FcLeft } from 'react-icons/fc';
+import { FaLongArrowAltLeft } from 'react-icons/fa';
 
 export default function BackButton() {
-  let history = useHistory();
-    const goToPreviousPath = () => {
-        history.goBack()
-    }
-    return (
-      <button type="button" className="button --secondary" onClick={goToPreviousPath}>
+  const history = useHistory();
+  const goToPreviousPath = () => {
+    history.goBack();
+  };
+  return (
+    <button type="button" className="button --secondary" onClick={goToPreviousPath}>
       <span className="icon is-small">
-      <FcLeft />
+        <FaLongArrowAltLeft />
       </span>
       <span> Retour </span>
     </button>
-    );
+  );
 }

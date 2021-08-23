@@ -28,6 +28,7 @@ export default function FormEvent({
   imageUrl,
 
 }) {
+  console.log(titleEvent);
   useEffect(() => {
     getEventsCreated(eventCreated);
   }, []);

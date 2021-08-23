@@ -11,6 +11,7 @@ import User from 'src/components/Header/User';
 export default function Header({
   isLogged,
   username,
+  loggedUserId,
   burgerIsOpen,
   dropdownIsOpen,
   handleToggleDropdown,
@@ -109,6 +110,7 @@ export default function Header({
         ? (
           <User
             username={username}
+            loggedUserId={loggedUserId}
             isOpen={dropdownIsOpen}
             onClickUser={handleToggleDropdown}
             handleLogout={handleLogout}
@@ -128,6 +130,7 @@ export default function Header({
 Header.propTypes = {
   isLogged: PropTypes.bool.isRequired,
   username: PropTypes.string.isRequired,
+  loggedUserId: PropTypes.number.isRequired,
   burgerIsOpen: PropTypes.bool.isRequired,
   dropdownIsOpen: PropTypes.bool.isRequired,
   handleToggleDropdown: PropTypes.func.isRequired,
