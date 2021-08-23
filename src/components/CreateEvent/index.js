@@ -31,6 +31,7 @@ export default function CreateEvent({
       {redirectForm}
       <div className="container">
 
+
         <h1 className="main-title">Organiser une sortie</h1>
         <div className="createEvent">
           <form className="form__create" onSubmit={handleSubmit}>
