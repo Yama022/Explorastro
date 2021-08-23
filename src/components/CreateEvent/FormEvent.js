@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect } from 'react';
 import { MapContainer, TileLayer } from 'react-leaflet';
@@ -6,6 +7,7 @@ import PropTypes from 'prop-types';
 import Header from 'src/containers/Header';
 import Footer from 'src/components/Footer';
 import { Link } from 'react-router-dom';
+import mascotRocket from 'src/assets/images/mascot-rocket.svg';
 import ControlGeocoder from './controlGeocoder';
 
 export default function FormEvent({
@@ -21,6 +23,9 @@ export default function FormEvent({
   descEvent,
   published,
   coord,
+  OnClickModal,
+  modal,
+  imageUrl,
 
 }) {
   console.log(titleEvent);
@@ -31,19 +36,21 @@ export default function FormEvent({
   const handleSubmit = (event) => {
     event.preventDefault();
     onFormSubmitUpdateEvent(eventCreated.id);
+    OnClickModal();
   };
 
   const handleOnchange = (event) => {
+    console.log(event.target.value);
     onChangeInput(event.target.value, event.target.name);
+  };
+
+  const handleOnClickModal = () => {
+    OnClickModal();
   };
 
   const handleOnClick = () => {
     OnClick();
   };
-  // const onImageChange = () => {
-  //   console.log('Je change image');
-  //   onChangeImage(event);
-  // };}
 
   const coordtest = () => {
     let controlGeocoder;
@@ -65,8 +72,26 @@ export default function FormEvent({
 
   return (
     <>
-      <Header />
+      {/* Modal */}
+      <div className={modal ? 'modal is-active' : 'modal'}>
+        <div className="modal-background" />
+        <div className="modal-card">
+          <header className="modal-card-head">
+            <p className="modal-card-title">Exploration : {titleEvent}</p>
+            <button className="delete" aria-label="close" onClick={handleOnClickModal} />
+          </header>
+          <section className="modal-card-body">
+            <img className="modal-card-body-mascotte" src={mascotRocket} alt="Belle mascotte" />
+            <p>"Vos modifications ont bien été pris en compte"</p>
+          </section>
+          <footer className="modal-card-foot">
+            <button className="button" onClick={handleOnClickModal}>Cancel</button>
+          </footer>
+        </div>
+      </div>
+      {/* fin Modal */}
 
+      <Header />
       <div className="container">
         <h1 className="main-title">Créer un événement</h1>
         <div className="createEvent">
@@ -146,12 +171,12 @@ export default function FormEvent({
                 <div className="button-wrapper">
 
                   <input
-                    // value={eventCreated.imageUrl}
-                    accept="image/*"
-                  // onChange={onImageChange}
+                    value={imageUrl !== 'undefined' ? imageUrl : 'src/assets/images/nigthSky.jpg'}
+                    // accept="image/*"
+                    onChange={handleOnchange}
                     id="contained-button-file"
                     multiple
-                    name="image"
+                    name="imageUrl"
                     type="file"
                     className="upload-box"
                   />
@@ -175,7 +200,6 @@ FormEvent.propTypes = {
   onChangeInput: PropTypes.func.isRequired,
   onFormSubmitUpdateEvent: PropTypes.func.isRequired,
   getCoordLocation: PropTypes.func.isRequired,
-  // onImageChange: PropTypes.func.isRequired,
   eventCreated: PropTypes.object.isRequired,
   OnClick: PropTypes.func.isRequired,
   getEventsCreated: PropTypes.func.isRequired,
@@ -191,6 +215,9 @@ FormEvent.propTypes = {
     PropTypes.array,
     PropTypes.object,
   ]),
+  OnClickModal: PropTypes.func.isRequired,
+  modal: PropTypes.bool.isRequired,
+  imageUrl: PropTypes.string.isRequired,
 };
 
 FormEvent.defaultProps = {

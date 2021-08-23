@@ -13,6 +13,7 @@ export default function ControlGeocoder({ coordLocation, coord }) {
 
   useEffect(() => {
     let geocoder = L.Control.Geocoder.arcgis();
+
     if (typeof URLSearchParams !== 'undefined' && location.search) {
       // parse /?geocoder=nominatim from URL
       const params = new URLSearchParams(location.search);
@@ -29,13 +30,14 @@ export default function ControlGeocoder({ coordLocation, coord }) {
       reverseTabCoord = coord.reverse();
 
       [objCoord.lat, objCoord.lng] = [reverseTabCoord[0], reverseTabCoord[1]];
-      console.log(objCoord);
 
-      L.marker(objCoord)
-        .addTo(map);
       const latLon = L.latLng(reverseTabCoord);
       const bounds = latLon.toBounds(500);
       map.panTo(latLon).fitBounds(bounds);
+      L.marker(objCoord)
+        .addTo(map)
+        .bindPopup('e.geocode.name')
+        .openPopup();
     }
 
     L.Control.geocoder({
