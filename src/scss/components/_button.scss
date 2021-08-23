@@ -1,5 +1,9 @@
 .button {
   color: $light-color;
+  outline: none;
+  &:focus {
+    outline: none;
+  }
 }
 
 .purple {
