@@ -1,13 +1,18 @@
 import { connect } from 'react-redux';
 import Profile from 'src/components/Profile';
 
-import { changeProfileMenu, getUserInfo } from 'src/actions/profile';
+import {
+  changeProfileMenu, getUserInfo, follow, unfollow,
+} from 'src/actions/profile';
 
 const mapStateToProps = (state) => ({
+  username: state.profile.username,
   firstName: state.profile.firstname,
   lastName: state.profile.lastname,
   menuValue: state.profile.profileMenuValue,
   loggedUserId: state.user.loggedUserId,
+  followers: state.profile.followers,
+  following: state.profile.following,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -16,6 +21,12 @@ const mapDispatchToProps = (dispatch) => ({
   },
   getInfo: (value) => {
     dispatch(getUserInfo(value));
+  },
+  handleFollow: (value) => {
+    dispatch(follow(value));
+  },
+  handleUnfollow: (value) => {
+    dispatch(unfollow(value));
   },
 });
 

@@ -141,7 +141,6 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
         </button>
       </div>
     </div>
-
   );
 }
 

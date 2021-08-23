@@ -33,7 +33,7 @@ export default function LoginForm({
         </div>
       </div>
       <div className="login__container__form__buttons-container">
-        <div className="button --outlined" onClick={handleToggleSignup}>Inscription</div>
+        <button type="button" className="button --outlined" onClick={handleToggleSignup}>Inscription</button>
         <button type="submit" className="button purple">Se Connecter</button>
       </div>
     </form>

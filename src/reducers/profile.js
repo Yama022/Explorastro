@@ -1,11 +1,12 @@
 import { CHANGE_PROFILE_MENU, SAVE_USER_INFO } from 'src/actions/profile';
 
 const initialState = {
-  loggedUserId: 0,
   username: '',
   firstname: '',
   lastname: '',
   profileMenuValue: 1,
+  followers: [],
+  following: [],
 };
 
 const profile = (state = initialState, action = {}) => {
@@ -22,6 +23,8 @@ const profile = (state = initialState, action = {}) => {
         username: action.payload.username,
         firstname: action.payload.firstname,
         lastname: action.payload.lastname,
+        followers: action.payload.followers,
+        following: action.payload.following,
       };
     }
     default:

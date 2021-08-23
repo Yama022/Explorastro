@@ -4,6 +4,7 @@ import {
 
 const initialState = {
   loggedUserId: 0,
+  loggedUserFollowing: [],
   firstname: '',
   lastname: '',
   email: '',

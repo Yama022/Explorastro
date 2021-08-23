@@ -7,23 +7,38 @@ import { AiOutlineUserAdd, AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { GrAchievement, GrTrophy } from 'react-icons/gr';
 import { FaMedal } from 'react-icons/fa';
 import { BiMedal, BiCog } from 'react-icons/bi';
+import { TiTick } from 'react-icons/ti';
 
 import Follows from './Follows';
 
 export default function Profile({
-  firstName, lastName, menuValue, changeMenuValue, profileId, loggedUserId, getInfo,
+  firstName,
+  lastName,
+  username,
+  menuValue,
+  changeMenuValue,
+  profileId,
+  loggedUserId,
+  getInfo,
+  followers,
+  following,
+  handleFollow,
+  handleUnfollow,
 }) {
   const handleToggleNav = (event) => {
     changeMenuValue(event.target.dataset.toggle);
   };
+
   useEffect(() => {
     getInfo(profileId);
   }, [profileId]);
+
+  const followsUser = () => followers.some((follow) => follow.id === loggedUserId);
+
   return (
     <div className="profile">
 
       <h1 className="main-title">Profil</h1>
-
       <div className="profile__header">
 
         <div className="profile__header__avatar">
@@ -34,7 +49,8 @@ export default function Profile({
         <div className="profile__header__description">
           <div className="profile__header__description__top">
             <div className="profile__header__description__top__left">
-              <h2 className="profile__header__description__top__left__name">{firstName} {lastName}</h2>
+              <h3 className="profile__header__description__top__left__name">{firstName} {lastName}</h3>
+              <h2 className="profile__header__description__top__left__username">{username}</h2>
               <div className="profile__header__description__top__left__stars">
                 <AiFillStar /><AiFillStar /><AiFillStar /><AiFillStar /><AiOutlineStar />
               </div>
@@ -46,12 +62,33 @@ export default function Profile({
                     <BiCog className="profile__header__description__top__right__cog" />
                   </Link>
                 ) : (
-                  <button type="button" className="button --secondary">
-                    <span className="icon is-small">
-                      <AiOutlineUserAdd />
-                    </span>
-                    <span>Suivre</span>
-                  </button>
+                  <>
+                    <button
+                      type="button"
+                      className={followsUser() ? 'follows__button button --secondary' : 'follows__button--active button --secondary'}
+                      onClick={() => {
+                        handleFollow(profileId);
+                      }}
+                    >
+                      <span className="icon is-small">
+                        <AiOutlineUserAdd />
+                      </span>
+                      <span>Suivre</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      className={followsUser() ? 'follows__button--active button --outlined' : 'follows__button button --outlined'}
+                      onClick={() => {
+                        handleUnfollow(profileId);
+                      }}
+                    >
+                      <span className="icon is-small">
+                        <TiTick />
+                      </span>
+                      <span>Suivi(e)</span>
+                    </button>
+                  </>
                 )}
             </div>
           </div>
@@ -78,8 +115,8 @@ export default function Profile({
 
       <ul className="profile__nav">
         <li className={(menuValue === 1) ? 'profile__nav__elem profile__nav__elem--active' : 'profile__nav__elem'} data-toggle="1" onClick={handleToggleNav}>Informations</li>
-        <li className={(menuValue === 2) ? 'profile__nav__elem profile__nav__elem--active' : 'profile__nav__elem'} data-toggle="2" onClick={handleToggleNav}>Followers</li>
-        <li className={(menuValue === 3) ? 'profile__nav__elem profile__nav__elem--active' : 'profile__nav__elem'} data-toggle="3" onClick={handleToggleNav}>Followed</li>
+        <li className={(menuValue === 2) ? 'profile__nav__elem profile__nav__elem--active' : 'profile__nav__elem'} data-toggle="2" onClick={handleToggleNav}>Suivi par</li>
+        <li className={(menuValue === 3) ? 'profile__nav__elem profile__nav__elem--active' : 'profile__nav__elem'} data-toggle="3" onClick={handleToggleNav}>Suit</li>
       </ul>
 
       <div className="profile__content">
@@ -87,8 +124,8 @@ export default function Profile({
           (() => {
             switch (menuValue) {
               case 1: return <h2 className="profile__content__title">Dernières explorations</h2>;
-              case 2: return <> <h2 className="profile__content__title">Les personnes qui le suivent</h2> <Follows /></>;
-              case 3: return <h2 className="profile__content__title">Les personnes qu'il suit</h2>;
+              case 2: return <> <h2 className="profile__content__title">Les personnes qui le suivent</h2> <Follows users={followers} /> </>;
+              case 3: return <> <h2 className="profile__content__title">Les personnes qu'il suit</h2> <Follows users={following} /> </>;
               default: return <h2 className="profile__content__title">Une erreur est survenue</h2>;
             }
           })()
@@ -103,8 +140,13 @@ Profile.propTypes = {
   getInfo: PropTypes.func.isRequired,
   loggedUserId: PropTypes.number.isRequired,
   profileId: PropTypes.number.isRequired,
+  username: PropTypes.string.isRequired,
   firstName: PropTypes.string.isRequired,
   lastName: PropTypes.string.isRequired,
   menuValue: PropTypes.number.isRequired,
   changeMenuValue: PropTypes.func.isRequired,
+  followers: PropTypes.array.isRequired,
+  following: PropTypes.array.isRequired,
+  handleFollow: PropTypes.func.isRequired,
+  handleUnfollow: PropTypes.func.isRequired,
 };
