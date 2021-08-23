@@ -7,8 +7,6 @@ import L from 'leaflet';
 import PropTypes from 'prop-types';
 
 export default function ControlGeocoder({ coordLocation, coord }) {
-  console.log(coord);
-  // console.log(geog.coordinates);
   const map = useMap();
   let reverseTabCoord;
   const objCoord = {};
