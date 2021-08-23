@@ -13,6 +13,7 @@ const mapStateToProps = (state) => ({
   loggedUserId: state.user.loggedUserId,
   followers: state.profile.followers,
   following: state.profile.following,
+  userFollowed: state.profile.userFollowed,
 });
 
 const mapDispatchToProps = (dispatch) => ({

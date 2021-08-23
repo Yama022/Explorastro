@@ -3,6 +3,7 @@ export const GET_USER_INFO = 'GET_USER_INFO';
 export const SAVE_USER_INFO = 'SAVE_PROFILE_INFO';
 export const FOLLOW = 'FOLLOW';
 export const UNFOLLOW = 'UNFOLLOW';
+export const TOGGLE_FOLLOW = 'TOGGLE_FOLLOW';
 
 export const changeProfileMenu = (payload) => ({
   type: CHANGE_PROFILE_MENU,
@@ -27,4 +28,8 @@ export const follow = (payload) => ({
 export const unfollow = (payload) => ({
   type: UNFOLLOW,
   payload,
+});
+
+export const toggleFollow = () => ({
+  type: TOGGLE_FOLLOW,
 });

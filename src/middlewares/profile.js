@@ -1,5 +1,5 @@
 import {
-  GET_USER_INFO, saveUserInfo, FOLLOW, UNFOLLOW,
+  GET_USER_INFO, saveUserInfo, FOLLOW, UNFOLLOW, toggleFollow,
 } from 'src/actions/profile';
 
 import api from './utils/api';
@@ -24,8 +24,8 @@ const profile = (store) => (next) => (action) => {
       const state = store.getState();
       const handleFollow = async () => {
         try {
-          const response = await api.post(`/api/v1/user/${state.user.loggedUserId}/follow/${action.payload}`);
-          console.log(response);
+          await api.post(`/api/v1/user/${state.user.loggedUserId}/follow/${action.payload}`);
+          store.dispatch(toggleFollow());
         }
         catch (error) {
           console.error(error.response);
@@ -38,8 +38,8 @@ const profile = (store) => (next) => (action) => {
       const state = store.getState();
       const handleUnfollow = async () => {
         try {
-          const response = await api.delete(`/api/v1/user/${state.user.loggedUserId}/unfollow/${action.payload}`);
-          console.log(response);
+          await api.delete(`/api/v1/user/${state.user.loggedUserId}/unfollow/${action.payload}`);
+          store.dispatch(toggleFollow());
         }
         catch (error) {
           console.error(error.response);

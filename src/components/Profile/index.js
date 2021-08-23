@@ -24,6 +24,7 @@ export default function Profile({
   following,
   handleFollow,
   handleUnfollow,
+  userFollowed,
 }) {
   const handleToggleNav = (event) => {
     changeMenuValue(event.target.dataset.toggle);
@@ -32,8 +33,6 @@ export default function Profile({
   useEffect(() => {
     getInfo(profileId);
   }, [profileId]);
-
-  const followsUser = () => followers.some((follow) => follow.id === loggedUserId);
 
   return (
     <div className="profile">
@@ -65,7 +64,7 @@ export default function Profile({
                   <>
                     <button
                       type="button"
-                      className={followsUser() ? 'follows__button button --secondary' : 'follows__button--active button --secondary'}
+                      className={userFollowed ? 'follows__button button --secondary' : 'follows__button--active button --secondary'}
                       onClick={() => {
                         handleFollow(profileId);
                       }}
@@ -78,7 +77,7 @@ export default function Profile({
 
                     <button
                       type="button"
-                      className={followsUser() ? 'follows__button--active button --outlined' : 'follows__button button --outlined'}
+                      className={userFollowed ? 'follows__button--active button --outlined' : 'follows__button button --outlined'}
                       onClick={() => {
                         handleUnfollow(profileId);
                       }}
@@ -149,4 +148,5 @@ Profile.propTypes = {
   following: PropTypes.array.isRequired,
   handleFollow: PropTypes.func.isRequired,
   handleUnfollow: PropTypes.func.isRequired,
+  userFollowed: PropTypes.bool.isRequired,
 };
