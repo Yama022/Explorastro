@@ -23,7 +23,6 @@ export default function FormEvent({
   coord,
 
 }) {
-  console.log(titleEvent);
   useEffect(() => {
     getEventsCreated(eventCreated);
   }, []);
@@ -100,7 +99,7 @@ export default function FormEvent({
               className="input is-link is-small"
               type="datetime-local"
               name="dateEvent"
-              value={dayjs(dateEvent).format('YYYY-MM-DDTHH:mm:ss')}
+              value={dateEvent ? dayjs(dateEvent).format('YYYY-MM-DDTHH:mm:ss') : dayjs().format('YYYY-MM-DDTHH:mm:ss')}
               // min={dayjs().format('YYYY-MM-DDTHH:mm:ss')}
               onChange={handleOnchange}
             />
@@ -128,7 +127,7 @@ export default function FormEvent({
 
             <h4 className="form__create__title">Nombre de personne(s) maximum
               <input
-                value={maxRateEvent !== null ? maxRateEvent : 0}
+                value={maxRateEvent !== null ? maxRateEvent.toString() : 0}
                 className="maxRateEvent"
                 name="maxRateEvent"
                 type="number"
@@ -182,7 +181,10 @@ FormEvent.propTypes = {
   getEventsCreated: PropTypes.func.isRequired,
   titleEvent: PropTypes.string.isRequired,
   dateEvent: PropTypes.string,
-  maxRateEvent: PropTypes.number,
+  maxRateEvent: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]),
   descEvent: PropTypes.string,
   published: PropTypes.bool,
   coord: PropTypes.oneOfType([

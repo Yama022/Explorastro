@@ -78,7 +78,6 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
     case EVENTS_CREATED: {
-      console.log(action.value.geog);
       return {
         ...state,
         titleEvent: action.value.name,
