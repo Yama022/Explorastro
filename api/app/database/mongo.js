@@ -1,4 +1,4 @@
-const { log } = require("../utils");
+const log = require("log-beautify");
 const { MongoClient } = require("mongodb");
 
 module.exports = {

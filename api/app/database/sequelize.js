@@ -1,4 +1,4 @@
-const { log } = require("../utils");
+const log = require("log-beautify");
 const { Sequelize } = require("sequelize");
 
 try {
@@ -25,5 +25,6 @@ try {
 
   module.exports = sequelize;
 } catch (error) {
-  log.error("Sequelize Connection Error \n" + error);
+  console.error(error);
+  log.error("Sequelize Connection Error", error);
 }
