@@ -1,3 +1,5 @@
+@use "sass:math";
+
 .Exploration {
   display: flex;
   padding: $gutter;
@@ -79,7 +81,7 @@
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding: $gutter / 2;
+          padding: math.div($gutter, 2);
 
           .button {
             border-radius: 50%;

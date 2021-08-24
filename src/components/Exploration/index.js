@@ -1,13 +1,13 @@
-import React from "react";
-import { AiFillStar, AiOutlineStar } from "react-icons/ai";
-import { FiSend } from "react-icons/fi";
-import { MapContainer, TileLayer } from "react-leaflet";
+import React from 'react';
+import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
+import { FiSend } from 'react-icons/fi';
+import { MapContainer, TileLayer } from 'react-leaflet';
 
 export default function Exploration() {
   return (
     <div className="Exploration">
       <section className="Exploration__main">
-        <div className="Exploration__main__informations">
+        <div className="Exploration__main__informations animate__animated animate__fadeIn">
           <div className="Exploration__main__informations__general">
             <div className="Exploration__main__informations__general__left">
               <div>
