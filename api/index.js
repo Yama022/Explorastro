@@ -18,7 +18,6 @@ app.get('/', (req, res) => {
 });
 
 // The expressSwagger function returns the auto-generated swagger documentation on /api-docs
-console.log(swaggerOptions);
 expressSwagger(swaggerOptions);
 
 // Images uploaded to the server will be served on /uploads

@@ -184,13 +184,19 @@ module.exports = {
   },
 
   updateAvatar: (req, res) => {
-    upload(req, req, async (err, file) => {
+    
+    return res.json({
+      message: 'NOT IMPLEMENTED',
+    });
+    
+    upload(req, res, async (err) => {
       if (err) {
         return res.status(400).json({
           message: err.message,
         });
       }
       
+      const file = req.file;
       const user = await User.findByPk(req.user.id);
 
       if (!user) {
@@ -199,10 +205,10 @@ module.exports = {
         });
       }
 
-      s3.saveFile(file, `${user.id}/avatar.jpg`);
+      s3.saveFile(file);
 
       user.update({
-        avatar_url: req.file.filename,
+        avatar_url: file.filename,
       });
 
       return res.json(user);
