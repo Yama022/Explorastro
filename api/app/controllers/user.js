@@ -79,9 +79,7 @@ module.exports = {
         ...req.body,
       });
 
-      return res.status(200).json({
-        user,
-      });
+      return res.status(200).json(user);
     } catch (error) {
       console.error(error);
       return res.status(500).json({
@@ -120,9 +118,7 @@ module.exports = {
         username,
       });
 
-      return res.json({
-        user,
-      });
+      return res.json(user);
     } catch (error) {
       console.error(error);
       return res.status(500).json({
@@ -207,9 +203,7 @@ module.exports = {
         avatar_url: req.file.filename,
       });
 
-      return res.json({
-        user,
-      });
+      return res.json(user);
     });
   },
 
