@@ -5,43 +5,23 @@ const cors = require("cors");
 const port = process.env.PORT || 3003;
 const router = require("./app/routers");
 const expressSwagger = require('express-swagger-generator')(app);
+const { swaggerOptions } = require('./app/constants');
 
 app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-const options = {
-  swaggerDefinition: {
-    info: {
-      description: 'Official documentation of the ExplorAstro API for my love Front-End Developers',
-      title: 'ExplorAstro-API',
-      version: '0.7-alpha',
-    },
-    host: 'explorastro-api.herokuapp.com',
-    basePath: '/',
-    produces: [
-      "application/json"
-    ],
-    schemes: ['http', 'https'],
-    securityDefinitions: {
-      JWT: {
-        type: 'apiKey',
-        in: 'header',
-        name: 'Authorization',
-        description: "",
-      }
-    }
-  },
-  basedir: __dirname,
-  files: ['./app/routers/*.js', './app/controllers/*.js']
-};
-
-expressSwagger(options);
-
+// To avoid the "CANNOT GET /" message, we automatically redirect to the documentation
 app.get('/', (req, res) => {
   res.redirect(`/api-docs`);
 });
+
+// The expressSwagger function returns the auto-generated swagger documentation on /api-docs
+expressSwagger(swaggerOptions);
+
+// Images uploaded to the server will be served on /uploads
+app.use('/uploads', express.static('./uploads'));
 
 app.use("/api/v1", router);
 

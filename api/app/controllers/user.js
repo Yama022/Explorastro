@@ -1,6 +1,7 @@
 const { User } = require("../models");
 const bcrypt = require("bcrypt");
 const { errorMessage } = require("../constants");
+const {upload} = require("../utils");
 
 /**
  * @typedef {User} User
@@ -187,7 +188,15 @@ module.exports = {
   },
 
   updateAvatar: async (req, res) => {
-    
+    upload(req, req, (err, file) => {
+      if (err) {
+        return res.status(400).json({
+          message: err.message,
+        });
+      }
+      
+      console.log(req.file)
+    });
   },
 
   delete: async (req, res) => {
