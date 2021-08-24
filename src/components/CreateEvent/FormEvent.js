@@ -29,7 +29,6 @@ export default function FormEvent({
   saveAddress,
 
 }) {
-  console.log(titleEvent);
   useEffect(() => {
     getEventsCreated(eventCreated);
   }, []);
@@ -41,7 +40,6 @@ export default function FormEvent({
   };
 
   const handleOnchange = (event) => {
-    console.log(event.target.value);
     onChangeInput(event.target.value, event.target.name);
   };
 

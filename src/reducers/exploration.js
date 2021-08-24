@@ -1,5 +1,5 @@
 import {
-  FORM,
+  FORM_SUBMIT_SEARCH_ADDRESS,
   SAVE_EXPLORATION,
   CHANGE_INPUT,
   CHANGE_INPUT_CREATE_EVENT,
@@ -21,9 +21,6 @@ export const initialState = {
   titleEvent: '',
   descEvent: '',
   zone: 10,
-  street: '',
-  city: '',
-  postalCode: 0,
   dateEvent: '',
   maxRateEvent: 0,
   coord: [],
@@ -37,7 +34,7 @@ export const initialState = {
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case FORM: {
+    case FORM_SUBMIT_SEARCH_ADDRESS: {
       return {
         ...state,
         addressInput: action.payload,
@@ -69,10 +66,9 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
     case SAVE_EVENT_CREATED: {
-      const events = action.value.organized_explorations.map((element) => (element));
       return {
         ...state,
-        eventCreated: events,
+        eventCreated: action.value.organized_explorations,
 
       };
     }

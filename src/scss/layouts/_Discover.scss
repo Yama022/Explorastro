@@ -60,19 +60,16 @@
           text-overflow: ellipsis;
           display: -webkit-box;
           line-height: 16px;
-          /* fallback */
           max-height: 32px;
-          /* fallback */
           -webkit-line-clamp: 2;
-          /* number of lines to show */
           -webkit-box-orient: vertical;
         }
+
         span {
           font-weight: none;
         }
 
         .btn {
-          width: 40%;
           color: white;
           margin: 1em 0;
           position: relative;
@@ -88,14 +85,8 @@
           margin-top: math.div($gutter, 2);
         }
       }
-
-      // End list_events__box__content
     }
-
-    //End list_events
   }
-
-  // End balise list_events
 
   &__filter {
     background-color: $light-color;
@@ -137,5 +128,3 @@
   }
 
 }
-
-//End balise map

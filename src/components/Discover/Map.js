@@ -1,72 +1,83 @@
 import React, { useEffect, useState } from 'react';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import uuid from 'uuid';
 import PropTypes from 'prop-types';
+import uuid from 'uuid';
 import {
   MapContainer, TileLayer, Marker, Popup, useMap,
 } from 'react-leaflet';
 import L from 'leaflet';
 import home from './home.png';
 
-export default function Map({ coord, fieldZone, address }) {
+export default function Map({ eventsList, fieldZone }) {
   // eslint-disable-next-line new-cap
   const newicon = new L.icon({
     iconUrl: home,
     iconSize: [30, 30],
   });
   function LocationMarker() {
-    const [position, setPosition] = useState(null);
+    const reverseCoord = eventsList.map((element) => {
+      const reverseTabCoord = element.geog.coordinates.reverse();
+      const obj = {
+        id: element.id,
+        name: element.name,
+        coord: reverseTabCoord,
+      };
+      return (obj);
+    });
+    console.log(reverseCoord);
+    const [positionGeoloc, setPosition] = useState(null);
     const map = useMap();
 
     useEffect(() => {
+      let isCancelled = false;
+
       // Localisation de l'utilisateur
       map.locate().on('locationfound', (e) => {
-        setPosition(e.latlng);
-        // Définit la vue de la carte (centre géographique et zoom)
-        // map.flyTo(e.latlng, map.getZoom());
-        // Précision de la localisation en mètres
-        let circle;
+        if (!isCancelled) {
+          setPosition(e.latlng);
+          // Définit la vue de la carte (centre géographique et zoom)
+          // map.flyTo(e.latlng, map.getZoom());
+          // Précision de la localisation en mètres
 
-        map.eachLayer((layer) => {
-          if (layer.options.name !== 'tiles' && layer.name !== 'MarkerClusterGroup') {
-            map.removeLayer(layer);
-          }
-        });
+          let circle;
 
-        const radius = fieldZone * 1000;
-        circle = L.circle(e.latlng, radius);
+          map.eachLayer((layer) => {
+            if (layer.options.name !== 'tiles' && layer.name !== 'MarkerClusterGroup') {
+              map.removeLayer(layer);
+            }
+          });
 
-        // rendu géométrique
-        circle = L.circle(e.latlng, radius);
-        circle.addTo(map);
+          const radius = fieldZone * 1000;
+          circle = L.circle(e.latlng, radius);
+
+          // rendu géométrique
+          circle = L.circle(e.latlng, radius);
+          circle.addTo(map);
+        }
       });
+
+      return () => {
+        isCancelled = true;
+      };
     }, [fieldZone]);
 
-    return position === null ? null : (
+    return positionGeoloc && (
       <MarkerClusterGroup
         name="MarkerClusterGroup"
         key={uuid.v4()}
       >
-        {coord.map((element) => {
-        // eslint-disable-next-line react/no-array-index-key
+        {reverseCoord.map((element) => (
+          <div key={element.id}>
+            <Marker names="marker" position={element.coord} id="foo">
+              <Popup name="popup">Exploration vers {element.name}</Popup>
+            </Marker>
+          </div>
+        ))}
 
-          const reverseTabCoord = element.geog.coordinates.reverse();
-          console.log(reverseTabCoord);
-
-          return (
-            <div key={element.id}>
-              <Marker names="marker" position={reverseTabCoord} id="foo">
-                <Popup name="popup">Exploration vers {element.name}</Popup>
-              </Marker>
-            </div>
-          );
-        })}
-
-        <Marker position={position} icon={newicon}>
+        <Marker position={positionGeoloc} icon={newicon}>
           <Popup>
-            tu es la :)
-          </Popup>tiles
+            tu es la
+          </Popup>
         </Marker>
       </MarkerClusterGroup>
     );
@@ -97,7 +108,6 @@ export default function Map({ coord, fieldZone, address }) {
 }
 
 Map.propTypes = {
-  coord: PropTypes.arrayOf(PropTypes.object).isRequired,
+  eventsList: PropTypes.arrayOf(PropTypes.object).isRequired,
   fieldZone: PropTypes.number.isRequired,
-  address: PropTypes.array.isRequired,
 };
