@@ -1,26 +1,27 @@
 const express = require("express");
 const router = express.Router();
 
-const { mainController } = require("../controllers");
 const { tokenMiddleware } = require("../middlewares");
 
 const authRouter = require("./auth");
 const userRouter = require("./user");
 const explorationRouter = require("./exploration");
 const errorRouter = require("./error");
+const mainRouter = require("./main");
 
-/**
- * Return API Informations
- * @route GET /api/v1/
- * @group Informations - Operations about API
- * @returns {API-Infos.model} 200 - An object containing API informations
- */
-router.get("/", mainController.informationsAPI);
+// Main routes
+router.use(mainRouter);
 
+// Router for authentication
 router.use(authRouter);
 
-router.use("/user", tokenMiddleware.authenticateToken, userRouter);
+// Router for user
+router.use("/user",
+  tokenMiddleware.authenticateToken,
+  userRouter
+);
 
+// Router for exploration
 router.use(
   "/exploration",
   tokenMiddleware.authenticateToken,
