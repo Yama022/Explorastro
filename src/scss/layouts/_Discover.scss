@@ -1,3 +1,5 @@
+@use "sass:math";
+
 .leaflet-container {
   width: 100%;
   height: 100vh;
@@ -85,7 +87,7 @@
         }
 
         li {
-          margin-top: $gutter/2;
+          margin-top: math.div($gutter, 2);
         }
       }
 

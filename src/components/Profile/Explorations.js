@@ -13,7 +13,7 @@ export default function Explorations({ explorations }) {
           <div className="profile__explorations__item" key={exploration.id}>
             <img src={nightSky} className="explorations__item__thumbnail" alt={`Aperçu de l'exploration ${exploration.username}`} />
             <span className="profile__explorations__item__name">{exploration.name}</span>
-            <Link type="button" className="profile__explorations__item__button button --secondary" to={`/exploration/${exploration.id}`}>Informations</Link>
+            <Link type="button" className="profile__explorations__item__button button --secondary" to="/exploration">Informations</Link>
           </div>
         ))
         : <h2>Aucune exploration trouvée</h2>}
