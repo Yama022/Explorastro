@@ -37,6 +37,7 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
 
   return (
     <div className="explorastro">
+
       {isLogged
         ? (
           <Switch>
