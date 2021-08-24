@@ -88,7 +88,7 @@ export default function FormEvent({
             <p>"Vos modifications ont bien été pris en compte"</p>
           </section>
           <footer className="modal-card-foot">
-            <Link className="button--modal" to="/exploration/create">Fermer </Link>
+            <Link className="button--modal" to="/exploration/create" onClick={handleOnClickModal}>Fermer </Link>
           </footer>
         </div>
       </div>
@@ -164,7 +164,7 @@ export default function FormEvent({
               />
             </h4>
 
-            <input type="checkbox" name="published" className="checkbox" id="checkbox" onClick={handleOnClick} value={published !== null ? published : false} />
+            <input type="checkbox" name="published" className="checkbox" id="checkbox" onClick={handleOnClick} value={published} />
             <label className="published" htmlFor="checkbox">{published ? 'Publié' : 'Non publié' } </label>
 
             <div className="form__add__img">
