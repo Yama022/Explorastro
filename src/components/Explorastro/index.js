@@ -14,11 +14,14 @@ import Guide from 'src/components/Guide';
 import Landing from 'src/components/Landing';
 import Photo from 'src/components/Guide/Photo';
 import Visuel from 'src/components/Guide/Visuel';
+import Profile from 'src/containers/Profile';
 import Settings from 'src/containers/Settings';
 import FormEvent from 'src/containers/FormEvent';
 import Exploration from 'src/components/Exploration';
 
 import { FcCollapse } from 'react-icons/fc';
+
+import { IoIosArrowUp } from 'react-icons/io';
 
 export default function Explorastro({ isLogged, checkIsLogged }) {
   useEffect(() => {
@@ -87,6 +90,16 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
             <Route exact path="/login">
               <Redirect to="/timeline" />
             </Route>
+            <Route
+              path="/profile/:id"
+              render={(prop) => (
+                <>
+                  <Header />
+                  <Profile profileId={Number(prop.match.params.id)} />
+                  <Footer />
+                </>
+              )}
+            />
             <Route exact path="/settings">
               <Header />
               <Settings />
@@ -122,21 +135,19 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
             </Route>
           </Switch>
         )}
-      <div className="button__return__top">
-        <button
-          type="button"
-          onClick={() => {
-            window.scrollTo({
-              top: 0,
-              behavior: 'smooth',
-            });
-          }}
-        >
-          <FcCollapse className="button__return__top__button" />
-        </button>
-      </div>
+      <button
+        type="button"
+        className="button__return__top button --secondary"
+        onClick={() => {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+          });
+        }}
+      >
+        <IoIosArrowUp />
+      </button>
     </div>
-
   );
 }
 

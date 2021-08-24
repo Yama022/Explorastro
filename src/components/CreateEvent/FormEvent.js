@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect } from 'react';
 import { MapContainer, TileLayer } from 'react-leaflet';
@@ -6,6 +7,7 @@ import PropTypes from 'prop-types';
 import Header from 'src/containers/Header';
 import Footer from 'src/components/Footer';
 import { Link } from 'react-router-dom';
+import mascotRocket from 'src/assets/images/mascot-rocket.svg';
 import ControlGeocoder from './controlGeocoder';
 
 export default function FormEvent({
@@ -21,8 +23,13 @@ export default function FormEvent({
   descEvent,
   published,
   coord,
+  OnClickModal,
+  modal,
+  imageUrl,
+  saveAddress,
 
 }) {
+  console.log(titleEvent);
   useEffect(() => {
     getEventsCreated(eventCreated);
   }, []);
@@ -30,22 +37,65 @@ export default function FormEvent({
   const handleSubmit = (event) => {
     event.preventDefault();
     onFormSubmitUpdateEvent(eventCreated.id);
+    OnClickModal();
   };
 
   const handleOnchange = (event) => {
+    console.log(event.target.value);
     onChangeInput(event.target.value, event.target.name);
+  };
+
+  const handleOnClickModal = () => {
+    OnClickModal();
   };
 
   const handleOnClick = () => {
     OnClick();
   };
-  // const onImageChange = () => {
-  //   console.log('Je change image');
-  //   onChangeImage(event);
-  // };
+
+  const coordtest = () => {
+    let controlGeocoder;
+    if (coord) {
+      controlGeocoder = (
+        <ControlGeocoder
+          coordLocation={getCoordLocation}
+          coord={coord.coordinates}
+          saveAddress={saveAddress}
+        />
+      );
+    }
+    else {
+      controlGeocoder = (
+        <ControlGeocoder
+          coordLocation={getCoordLocation}
+          saveAddress={saveAddress}
+        />
+      );
+    }
+    return controlGeocoder;
+  };
 
   return (
     <>
+      {/* Modal */}
+      <div className={modal ? 'modal is-active' : 'modal'}>
+        <div className="modal-background" />
+        <div className="modal-card">
+          <header className="modal-card-head">
+            <p className="modal-card-title">Exploration : {titleEvent}</p>
+            <button className="delete" aria-label="close" onClick={handleOnClickModal} />
+          </header>
+          <section className="modal-card-body">
+            <img className="modal-card-body-mascotte" src={mascotRocket} alt="Belle mascotte" />
+            <p>"Vos modifications ont bien été pris en compte"</p>
+          </section>
+          <footer className="modal-card-foot">
+            <button className="button" onClick={handleOnClickModal}>Cancel</button>
+          </footer>
+        </div>
+      </div>
+      {/* fin Modal */}
+
       <Header />
       <div className="container">
         <h1 className="main-title">Créer un événement</h1>
@@ -79,7 +129,7 @@ export default function FormEvent({
               className="input is-link is-small"
               type="datetime-local"
               name="dateEvent"
-              value={dayjs(dateEvent).format('YYYY-MM-DDTHH:mm:ss')}
+              value={dateEvent ? dayjs(dateEvent).format('YYYY-MM-DDTHH:mm:ss') : dayjs().format('YYYY-MM-DDTHH:mm:ss')}
               // min={dayjs().format('YYYY-MM-DDTHH:mm:ss')}
               onChange={handleOnchange}
             />
@@ -101,13 +151,13 @@ export default function FormEvent({
                   name="tiles"
                 />
                 {/* Add Markers events astro on the map */}
-                <ControlGeocoder coordLocation={getCoordLocation} coord={coord.coordinates} />
+                {coordtest()}
               </MapContainer>
             </div>
 
             <h4 className="form__create__title">Nombre de personne(s) maximum
               <input
-                value={maxRateEvent !== null ? maxRateEvent : 0}
+                value={maxRateEvent !== null ? maxRateEvent.toString() : 0}
                 className="maxRateEvent"
                 name="maxRateEvent"
                 type="number"
@@ -126,12 +176,12 @@ export default function FormEvent({
                 <div className="button-wrapper">
 
                   <input
-                    // value={eventCreated.imageUrl}
-                    accept="image/*"
-                  // onChange={onImageChange}
+                    value={imageUrl !== 'undefined' ? imageUrl : 'src/assets/images/nigthSky.jpg'}
+                    // accept="image/*"
+                    onChange={handleOnchange}
                     id="contained-button-file"
                     multiple
-                    name="image"
+                    name="imageUrl"
                     type="file"
                     className="upload-box"
                   />
@@ -155,19 +205,25 @@ FormEvent.propTypes = {
   onChangeInput: PropTypes.func.isRequired,
   onFormSubmitUpdateEvent: PropTypes.func.isRequired,
   getCoordLocation: PropTypes.func.isRequired,
-  // onImageChange: PropTypes.func.isRequired,
   eventCreated: PropTypes.object.isRequired,
   OnClick: PropTypes.func.isRequired,
   getEventsCreated: PropTypes.func.isRequired,
   titleEvent: PropTypes.string.isRequired,
   dateEvent: PropTypes.string,
-  maxRateEvent: PropTypes.number,
+  maxRateEvent: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]),
   descEvent: PropTypes.string,
   published: PropTypes.bool,
   coord: PropTypes.oneOfType([
     PropTypes.array,
     PropTypes.object,
-  ]).isRequired,
+  ]),
+  OnClickModal: PropTypes.func.isRequired,
+  modal: PropTypes.bool.isRequired,
+  imageUrl: PropTypes.string.isRequired,
+  saveAddress: PropTypes.func.isRequired,
 };
 
 FormEvent.defaultProps = {
@@ -175,4 +231,5 @@ FormEvent.defaultProps = {
   dateEvent: '',
   maxRateEvent: 0,
   published: false,
+  coord: [],
 };

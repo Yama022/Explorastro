@@ -72,25 +72,13 @@ export default function Guide() {
       {/* Création du 1er paragaphe pour expliquer ce qu'il est possible de voir suivant l'instrument utilisé */}
       <div className="guide__section">
         <Link to="/guide/visuel">
-          <h2 className="guide__section__title"><FcAdvance /> On peut aussi utiliser une lunette ou un téléscope pour du visuel !</h2>
+          <h2 className="guide__section__title"><FcAdvance /> On peut aussi utiliser une lunette ou un téléscope pour du visuel ! Clique sur moi pour voir ça !</h2>
         </Link>
 
         <Link to="/guide/photo">
-          <h2 className="guide__section__title"><FcAdvance /> Tu voudrais savoir comment on fait de la photo astro ? :D</h2>
+          <h2 className="guide__section__title"><FcAdvance /> Tu voudrais savoir comment on fait de la photo astro ? Clique sur moi pour voir ça !</h2>
         </Link>
 
-      </div>
-
-      <div className="button__return__top">
-        <button onClick={() => {
-          window.scrollTo({
-            top: 0,
-            behavior: 'smooth',
-          });
-        }}
-        >
-          <FcCollapse className="button__return__top__button" />
-        </button>
       </div>
 
     </div>

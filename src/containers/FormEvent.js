@@ -6,6 +6,8 @@ import {
   getCoord, getEventCreated,
   OnclickPublished,
   eventsCreated,
+  clickModal,
+  saveAddress,
 } from 'src/actions/exploration';
 
 import { findEvent } from 'src/selectors/exploration';
@@ -19,6 +21,8 @@ const mapStateToProps = (state, ownProps) => ({
   descEvent: state.exploration.descEvent,
   published: state.exploration.published,
   coord: state.exploration.geog,
+  modal: state.exploration.modal,
+  imageUrl: state.exploration.imageUrl,
 
 });
 
@@ -48,6 +52,15 @@ const mapDispatchToProps = (dispatch) => ({
 
   getEventsCreated: (value) => {
     const action = eventsCreated(value);
+    dispatch(action);
+  },
+
+  OnClickModal: () => {
+    const action = clickModal();
+    dispatch(action);
+  },
+  saveAddress: (value) => {
+    const action = saveAddress(value);
     dispatch(action);
   },
 

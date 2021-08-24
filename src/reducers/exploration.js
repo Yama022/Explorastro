@@ -7,13 +7,17 @@ import {
   SAVE_EVENT_CREATED,
   ON_CLICK_PUBLISHED,
   EVENTS_CREATED,
-  SAVE_EVENT_CREATED_LAST, REMOVE_LAST_EVENT_ID,
+  SAVE_EVENT_CREATED_LAST,
+  REMOVE_LAST_EVENT_ID,
+  CLICK_MODAL,
+  SAVE_ALL_EVENTS,
+  SAVE_ADDRESS,
 } from 'src/actions/exploration';
-import data from 'src/data/data.json';
 
 export const initialState = {
-  ville: '',
-  sortie: data,
+  addressInput: '',
+  address: [],
+  events: [],
   titleEvent: '',
   descEvent: '',
   zone: 10,
@@ -27,6 +31,8 @@ export const initialState = {
   published: false,
   eventCreatedLast: [],
   geog: [],
+  modal: false,
+  imageUrl: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -34,7 +40,7 @@ const reducer = (state = initialState, action = {}) => {
     case FORM: {
       return {
         ...state,
-        ville: action.payload,
+        addressInput: action.payload,
       };
     }
     case SAVE_EXPLORATION: {
@@ -78,6 +84,7 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
     case EVENTS_CREATED: {
+      console.log(action.value.geog);
       return {
         ...state,
         titleEvent: action.value.name,
@@ -91,6 +98,7 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         eventCreatedLast: action.value,
+        published: initialState.published,
 
       };
     }
@@ -98,6 +106,27 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         eventCreatedLast: initialState.eventCreatedLast,
+
+      };
+    }
+    case CLICK_MODAL: {
+      return {
+        ...state,
+        modal: !state.modal,
+
+      };
+    }
+    case SAVE_ALL_EVENTS: {
+      return {
+        ...state,
+        events: action.value,
+
+      };
+    }
+    case SAVE_ADDRESS: {
+      return {
+        ...state,
+        address: [...state.address, action.value],
 
       };
     }

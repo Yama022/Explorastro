@@ -1,10 +1,9 @@
 /* eslint-disable max-len */
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import BackButton from 'src/components/BackButton';
 
 import { ImSad } from 'react-icons/im';
 import { TiArrowRight } from 'react-icons/ti';
-import { FcLeft } from 'react-icons/fc';
 import FirstPart from './FirstPart';
 import SecondPart from './SecondPart';
 import ThirdPart from './ThirdPart';
@@ -20,10 +19,10 @@ export default function Visuel() {
     window.scrollTo(0, 0);
   }, []);
   return (
+    
     <div className="guide">
-      <Link to="/guide">
-        <FcLeft />Avant
-      </Link>
+
+    <BackButton />
 
       <div className="guide__section">
         <div className="guide__section__paragraphe">
