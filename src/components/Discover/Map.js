@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 import PropTypes from 'prop-types';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import uuid from 'uuid';
 import {
   MapContainer, TileLayer, Marker, Popup, useMap,
@@ -15,16 +16,6 @@ export default function Map({ eventsList, fieldZone }) {
     iconSize: [30, 30],
   });
   function LocationMarker() {
-    const reverseCoord = eventsList.map((element) => {
-      const reverseTabCoord = element.geog.coordinates.reverse();
-      const obj = {
-        id: element.id,
-        name: element.name,
-        coord: reverseTabCoord,
-      };
-      return (obj);
-    });
-    console.log(reverseCoord);
     const [positionGeoloc, setPosition] = useState(null);
     const map = useMap();
 
@@ -66,13 +57,18 @@ export default function Map({ eventsList, fieldZone }) {
         name="MarkerClusterGroup"
         key={uuid.v4()}
       >
-        {reverseCoord.map((element) => (
-          <div key={element.id}>
-            <Marker names="marker" position={element.coord} id="foo">
-              <Popup name="popup">Exploration vers {element.name}</Popup>
-            </Marker>
-          </div>
-        ))}
+        {eventsList.map((element) => {
+          const lat = element.geog.coordinates[1];
+          const long = element.geog.coordinates[0];
+          const coord = [lat, long];
+          return (
+            <div key={element.id}>
+              <Marker names="marker" position={coord} id="foo">
+                <Popup name="popup">Exploration vers {element.name}</Popup>
+              </Marker>
+            </div>
+          );
+        })}
 
         <Marker position={positionGeoloc} icon={newicon}>
           <Popup>
