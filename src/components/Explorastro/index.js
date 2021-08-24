@@ -17,6 +17,9 @@ import Visuel from 'src/components/Guide/Visuel';
 import Profile from 'src/containers/Profile';
 import Settings from 'src/containers/Settings';
 import FormEvent from 'src/containers/FormEvent';
+import Exploration from 'src/components/Exploration';
+
+import { FcCollapse } from 'react-icons/fc';
 
 import { IoIosArrowUp } from 'react-icons/io';
 
@@ -51,6 +54,11 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
             <Route exact path="/timeline">
               <Header />
               <Timeline />
+              <Footer />
+            </Route>
+            <Route exact path="/exploration">
+              <Header />
+              <Exploration />
               <Footer />
             </Route>
             <Route exact path="/exploration/create">
