@@ -46,7 +46,7 @@ export default function Exploration() {
                 cumque fugiat dolores! Quisquam omnis repellat unde animi nulla
                 voluptas ipsum consequuntur dicta.
               </p>
-              <button type="button" className="button purple">
+              <button type="button" className="button --secondary">
                 Participer
               </button>
             </div>
@@ -64,7 +64,7 @@ export default function Exploration() {
               </span>
               <span>DavDav (Théo BIET)</span>
               <span>
-                <button type="button" className="button purple">
+                <button type="button" className="button --secondary">
                   i
                 </button>
               </span>
@@ -78,7 +78,7 @@ export default function Exploration() {
               </span>
               <span>DavDav (Théo BIET)</span>
               <span>
-                <button type="button" className="button purple">
+                <button type="button" className="button --secondary">
                   i
                 </button>
               </span>
@@ -92,7 +92,7 @@ export default function Exploration() {
               </span>
               <span>DavDav (Théo BIET)</span>
               <span>
-                <button type="button" className="button purple">
+                <button type="button" className="button --secondary">
                   i
                 </button>
               </span>
@@ -106,7 +106,7 @@ export default function Exploration() {
               </span>
               <span>DavDav (Théo BIET)</span>
               <span>
-                <button type="button" className="button purple">
+                <button type="button" className="button --secondary">
                   i
                 </button>
               </span>
@@ -120,7 +120,7 @@ export default function Exploration() {
               </span>
               <span>DavDav (Théo BIET)</span>
               <span>
-                <button type="button" className="button purple">
+                <button type="button" className="button --secondary">
                   i
                 </button>
               </span>
@@ -134,7 +134,7 @@ export default function Exploration() {
               </span>
               <span>DavDav (Théo BIET)</span>
               <span>
-                <button type="button" className="button purple">
+                <button type="button" className="button --secondary">
                   i
                 </button>
               </span>
@@ -148,7 +148,7 @@ export default function Exploration() {
               </span>
               <span>DavDav (Théo BIET)</span>
               <span>
-                <button type="button" className="button purple">
+                <button type="button" className="button --secondary">
                   i
                 </button>
               </span>
@@ -162,7 +162,7 @@ export default function Exploration() {
               </span>
               <span>DavDav (Théo BIET)</span>
               <span>
-                <button type="button" className="button purple">
+                <button type="button" className="button --secondary">
                   i
                 </button>
               </span>
@@ -176,7 +176,7 @@ export default function Exploration() {
               </span>
               <span>DavDav (Théo BIET)</span>
               <span>
-                <button type="button" className="button purple">
+                <button type="button" className="button --secondary">
                   i
                 </button>
               </span>
@@ -190,7 +190,7 @@ export default function Exploration() {
               </span>
               <span>DavDav (Théo BIET)</span>
               <span>
-                <button type="button" className="button purple">
+                <button type="button" className="button --secondary">
                   i
                 </button>
               </span>
@@ -204,7 +204,7 @@ export default function Exploration() {
               </span>
               <span>DavDav (Théo BIET)</span>
               <span>
-                <button type="button" className="button purple">
+                <button type="button" className="button --secondary">
                   i
                 </button>
               </span>
@@ -380,7 +380,7 @@ export default function Exploration() {
               <div className="Exploration__overview__left__comments__form__button">
                 <button
                   type="submit"
-                  className="Exploration__overview__left__comments__form__button__button button purple"
+                  className="Exploration__overview__left__comments__form__button__button button --secondary"
                 >
                   <FiSend />
                 </button>
@@ -395,6 +395,7 @@ export default function Exploration() {
             zoom={6}
             maxZoom={18}
             minZoom={3}
+            className="Exploration__overview__map__elem"
           >
             {/* Add layer dark map */}
             <TileLayer

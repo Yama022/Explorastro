@@ -1,15 +1,13 @@
-html,body{
-  margin:0;
-}
 .portfolio-loader{
-        background-color:#2c3e50;
+        background-color:$primary-color;
         height:100%;
         width:100%;
         margin-bottom:200px;
         position: fixed;
+        z-index: 9999;
     }
     .sun{
-        background:radial-gradient(#ff0,#f90);
+        background: $light-color;
         height:50px;
         width:50px;
         border-radius:50%;
@@ -29,13 +27,13 @@ html,body{
         left:20px;
         height:13px;
         width:13px;
-        background-color:#ff8;
+        background-color: $light-color;
     }
     .planet2{
         left:23px;
         height:20px;
         width:20px;
-        background:linear-gradient(#00ff00,#09f,#09f);
+        background: $light-color;
         -webkit-animation: rotation 1s infinite linear;
         animation: rotation 1s infinite linear;
     }
@@ -43,12 +41,12 @@ html,body{
         left:49px;
         height:17px;
         width:17px;
-        background:radial-gradient(#ff9900,#ff4400);
+        background: $light-color;
     }
     .orbit{
         background:transparent;
         border-radius:50%;
-        border:1px solid #fff;
+        border:1px solid $light-color;
         position:absolute;
         left:0;
         right:0;

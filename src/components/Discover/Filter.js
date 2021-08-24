@@ -15,7 +15,7 @@ export default function Filter({ onSubmit, onChange, fieldZone }) {
   };
   return (
     <div className="map__filter">
-      <h2 className="map__filter__h2">Décourir</h2>
+      <h2 className="map__filter__h2">Découvrir</h2>
       <form onSubmit={handleSubmit}>
         <label className="label map__filter__label" htmlFor="ville">
           Par ville
@@ -36,7 +36,7 @@ export default function Filter({ onSubmit, onChange, fieldZone }) {
                 <option value="DEFAULT" disabled>Choose a salutation ...</option>
                 <option value="1">Lot</option>
                 <option value="2">Tar</option>
-                <option value="3">HAut garonne</option>
+                <option value="3">Haut garonne</option>
               </select>
             </div>
             <button type="submit" className="button is-primary">Rerchercher</button>

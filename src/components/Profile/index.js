@@ -38,7 +38,6 @@ export default function Profile({
   return (
     <div className="profile">
 
-      <h1 className="main-title">Profil</h1>
       <div className="profile__header">
 
         <div className="profile__header__avatar">
