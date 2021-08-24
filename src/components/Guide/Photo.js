@@ -14,12 +14,12 @@ export default function Photo() {
   return (
     <div className="photo">
     <BackButton />
-      <div className="toto">
+      <div className="photo__content">
 
 
-        <h1 className="toto__title"><FcAdvance /> Tu souhaites découvrir ce milieu fabuleux qu'est l'astronomie ?!</h1>
-        <h3 className="toto__sous-title"> <FcDownRight /> Oui ? Alors t'es au bon endroit !</h3>
-        <div className="toto__paragraphe">
+        <h1 className="photo__content__title"><FcAdvance /> Tu souhaites découvrir ce milieu fabuleux qu'est l'astronomie ?!</h1>
+        <h3 className="photo__content__sous-title"> <FcDownRight /> Oui ? Alors t'es au bon endroit !</h3>
+        <div className="photo__content__paragraphe">
           <p>Laisse moi t'expliquer un peu comment tout ce bazard, qu'est l'astronomie amateur, fonctionne ! (faut bien commencer quelque part non ?!)</p><br />
           <p>Dans le milieu de l'astronomie 'visuel' (Oui, j'ai bien dis visuel, ce détail a son importance !)</p>
           <p>Nous pouvons observer le ciel qui nous entoure à l'oeil nu (comme le faisaient nos ancêtres par exemple !)
