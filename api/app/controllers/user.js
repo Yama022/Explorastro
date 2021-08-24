@@ -1,7 +1,7 @@
 const { User } = require("../models");
 const bcrypt = require("bcrypt");
 const { errorMessage } = require("../constants");
-const {upload} = require("../utils");
+const { upload, s3 } = require("../utils");
 
 /**
  * @typedef {User} User
@@ -198,6 +198,8 @@ module.exports = {
           message: errorMessage.USER_NOT_FOUND,
         });
       }
+
+      s3.saveFile(file, `${user.id}/avatar.jpg`);
 
       user.update({
         avatar_url: req.file.filename,

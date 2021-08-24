@@ -21,5 +21,5 @@ module.exports = {
         }
       },
       basedir: __dirname,
-      files: ['./app/routers/*.js', './app/controllers/*.js'] 
+      files: ['../routers/*.js', '../controllers/*.js'] 
 }
