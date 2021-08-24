@@ -1,11 +1,12 @@
+@use 'sass:math';
+
 .profile {
   width: 80%;
-  margin: auto;
+  margin: 2*$gutter auto 0 auto;
   color: $light-color;
 
   &__header {
     display: flex;
-    margin-top: 6em;
 
     &__avatar {
       width: 40%;
@@ -197,6 +198,7 @@
       margin: 0.4em;
       padding: 1em 0.5em;
       border: 2px solid $secondary-color;
+      border-radius: 10px;
       width: 15em;
       display: flex;
       flex-direction: column;

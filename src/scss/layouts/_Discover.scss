@@ -1,3 +1,5 @@
+@use "sass:math";
+
 .leaflet-container {
   width: 100%;
   height: 100vh;
@@ -11,13 +13,11 @@
   position: relative;
   box-shadow: 1px 5px 16px 0 rgb(65 8 255 / 98%);
 
-
   &__list_events {
     color: white;
     width: 30%;
     overflow: auto;
     height: 100vh;
-
 
     &__box {
       padding: 1em;
@@ -25,6 +25,7 @@
       display: flex;
       flex-wrap: wrap;
       align-items: center;
+      border: 1px solid $secondary-color;
       border-radius: 5px;
       overflow: hidden;
       border-bottom: 1px solid rgb(65 8 255 / 98%);
@@ -81,14 +82,14 @@
         }
 
         li {
-          margin-top: $gutter;
+          margin-top: math.div($gutter, 2);
         }
       }
     }
   }
 
   &__filter {
-    background-color: white;
+    background-color: $light-color;
     width: 20%;
     position: absolute;
     right: 0;
@@ -122,10 +123,6 @@
 
     .is-normal-test {
       font-size: 0.8em;
-    }
-
-    button {
-      background-color: #3b28e2 !important;
     }
 
   }

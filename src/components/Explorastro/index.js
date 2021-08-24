@@ -19,8 +19,6 @@ import Settings from 'src/containers/Settings';
 import FormEvent from 'src/containers/FormEvent';
 import Exploration from 'src/components/Exploration';
 
-import { FcCollapse } from 'react-icons/fc';
-
 import { IoIosArrowUp } from 'react-icons/io';
 
 export default function Explorastro({ isLogged, checkIsLogged }) {
@@ -39,6 +37,7 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
 
   return (
     <div className="explorastro">
+
       {isLogged
         ? (
           <Switch>
@@ -137,7 +136,7 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
         )}
       <button
         type="button"
-        className="button__return__top button --secondary"
+        className="button__return__top button --secondary animate__animated animate__fadeInRight animate__faster"
         onClick={() => {
           window.scrollTo({
             top: 0,
