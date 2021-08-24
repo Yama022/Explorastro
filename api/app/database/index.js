@@ -1,4 +1,4 @@
 module.exports = {
     sequelize: require('./sequelize'),
-    mongoose: require('./mongoose')
+    mongo: require('./mongo')
 }
