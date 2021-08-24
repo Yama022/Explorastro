@@ -1,12 +1,12 @@
+/* eslint-disable jsx-a11y/anchor-has-content */
 /* eslint-disable react/button-has-type */
 /* eslint-disable max-len */
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { FcDownRight, FcAdvance, FcCollapse } from 'react-icons/fc';
+import { FcDownRight, FcAdvance } from 'react-icons/fc';
 import { MdReportProblem } from 'react-icons/md';
-// import { ImSad } from 'react-icons/im';
-// import { TiArrowRight } from 'react-icons/ti';
+import mascot from 'src/assets/images/mascot-rocket.svg';
 
 export default function Guide() {
   return (
@@ -16,6 +16,9 @@ export default function Guide() {
       <div className="guide__presentation">
         <h2 className="guide__presentation__title"><FcAdvance /> Tu souhaites découvrir ce milieu fabuleux qu'est l'astronomie ?!</h2>
         <h3 className="guide__presentation__sous-title"> <FcDownRight /> Oui ? Alors t'es au bon endroit !</h3>
+        <div className="guide__avatar">
+          <img src={mascot} alt="mascot" className="guide__presentation__avatar__avatar" />
+        </div>
         <div className="guide__presentation__paragraphe">
           <p>Laisse moi t'expliquer un peu comment tout ce bazard, qu'est l'astronomie amateur, fonctionne ! (faut bien commencer quelque part non ?!)</p><br />
           <p>Dans le milieu de l'astronomie 'visuel' (Oui, j'ai bien dis visuel, ce détail a son importance !)</p>
@@ -43,6 +46,7 @@ export default function Guide() {
             Rien qu'avec des jumelles on peut déjà observer plusieurs objets du ciel (Mais quoi qu'est-ce qu'on peut voir aux jumelles me demanderez-vous ?
             Tu te calmes ! je vais te donner quelques exmples ! Eh oué, je fais les choses bien moi)
           </p>
+
           <p>Aux jumelles on peut, par exemple, observer ceci : </p>
           <div className="guide__section__paragraphe__images">
             <figure className="figGuide figGuide--main">
