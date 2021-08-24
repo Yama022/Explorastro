@@ -26,7 +26,6 @@
       flex-wrap: wrap;
       align-items: center;
       border-radius: 5px;
-      // margin: 10px;
       overflow: hidden;
       border-bottom: 1px solid rgb(65 8 255 / 98%);
 
@@ -60,19 +59,16 @@
           text-overflow: ellipsis;
           display: -webkit-box;
           line-height: 16px;
-          /* fallback */
           max-height: 32px;
-          /* fallback */
           -webkit-line-clamp: 2;
-          /* number of lines to show */
           -webkit-box-orient: vertical;
         }
+
         span {
           font-weight: none;
         }
 
         .btn {
-          width: 40%;
           color: white;
           margin: 1em 0;
           position: relative;
@@ -85,17 +81,11 @@
         }
 
         li {
-          margin-top: $gutter/2;
+          margin-top: $gutter;
         }
       }
-
-      // End list_events__box__content
     }
-
-    //End list_events
   }
-
-  // End balise list_events
 
   &__filter {
     background-color: white;
@@ -141,5 +131,3 @@
   }
 
 }
-
-//End balise map

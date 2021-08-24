@@ -1,5 +1,4 @@
 // Action types
-export const FORM = 'FORM';
 export const SAVE_EXPLORATION = 'SAVE_EXPLORATION';
 export const CHANGE_INPUT = 'CHANGE_INPUT';
 export const CHANGE_INPUT_CREATE_EVENT = 'CHANGE_INPUT_CREATE_EVENT';
@@ -18,10 +17,11 @@ export const CLICK_MODAL = 'CLICK_MODAL';
 export const GET_ALL_EVENTS = 'GET_ALL_EVENTS';
 export const SAVE_ALL_EVENTS = 'SAVE_ALL_EVENTS';
 export const SAVE_ADDRESS = 'SAVE_ADDRESS';
+export const FORM_SUBMIT_SEARCH_ADDRESS = 'FORM_SUBMIT_SEARCH_ADDRESS';
 
 // Action creators
-export const formSubmit = (payload) => ({
-  type: FORM,
+export const formSubmitSearchAddress = (payload) => ({
+  type: FORM_SUBMIT_SEARCH_ADDRESS,
   payload,
 });
 

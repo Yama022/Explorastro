@@ -16,21 +16,16 @@ export default function Discover({
   getEvents,
   address,
 }) {
-  console.log(address);
   useEffect(() => {
     getEvents();
   }, [getEvents]);
 
-  const tabSorties = explorationsFilter.length > 0 ? explorationsFilter : events;
+  const eventsList = explorationsFilter.length > 0 ? explorationsFilter : events;
 
-  // events.forEach((element) => {
-  //   element.name = 'Venez decouvrir le ciel samedi 14/08/2021 !! ça va être trop bien !!';
-  //   element.title = 'sortie astro entre poto !!';
-  // });
   return (
     <div className="map">
       <div className="map__list_events">
-        {tabSorties.map((element, index) => (
+        {eventsList.map((element, index) => (
           <div key={index} className="map__list_events__box">
             <img className="map__list_events__box__img" src={imageEvent} alt="" />
             <div className="map__list_events__box__content">
@@ -47,7 +42,7 @@ export default function Discover({
       </div>
       <Filter onSubmit={onFormSubmit} onChange={onChangeInput} fieldZone={zone} />
 
-      <Map coord={tabSorties} fieldZone={zone} address={address} />
+      <Map eventsList={eventsList} fieldZone={zone} address={address} />
 
     </div>
   );

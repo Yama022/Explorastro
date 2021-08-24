@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Discover from 'src/components/Discover';
-import { getAllEvents, formSubmit, changeInput } from 'src/actions/exploration';
+import { getAllEvents, formSubmitSearchAddress, changeInput } from 'src/actions/exploration';
 import { filterExploration } from '../selectors/filterExploration';
 
 const mapStateToProps = (state) => ({
@@ -12,7 +12,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onFormSubmit: (value) => {
-    const action = formSubmit(value);
+    const action = formSubmitSearchAddress(value);
     dispatch(action);
   },
 
@@ -21,7 +21,6 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(action);
   },
   getEvents: () => {
-    console.log('ici');
     const action = getAllEvents();
     dispatch(action);
   },
