@@ -1,84 +1,88 @@
-const { userEvent } = require("../services");
+const { eventFormat } = require("../services");
 const { mongo } = require("../database");
-const { eventTypes } = require("../constants");
-
-const getEventData = () => {
-  return {
-    type: action,
-    date: new Date(),
-  };
-};
+const { EVENT } = require("../constants");
 
 module.exports = {
   saveUserAction: async (action, user, data) => {
     const db = await mongo.connect();
 
+    const getEventData = () => {
+      const label = action.label;
+      return {
+        action: EVENT.ACTION[label].label,
+        type: EVENT.ACTION[label].type,
+        date: new Date(),
+      };
+    };
+
     switch (action) {
-      case eventTypes.user.FOLLOW:
+      case EVENT.ACTION.FOLLOW:
         await db.insertOne({
           ...getEventData(),
-          concernedUsers: [user.id],
-          follower: userEvent.format(user),
-          followed: userEvent.format(data),
-          message: {
-            fr: `${user.username} a commencé à suivre ${data.username}`,
-            en: `${user.username} started following ${data.username}`,
+          concern: {
+            user: [user.id, data.user.id],
           },
+          uselessFor: [user.id],
+          follower: eventFormat.user(user),
+          followed: eventFormat.user(data.user),
+          message: { ...EVENT.MESSAGES.FOLLOW },
         });
         break;
-      case eventTypes.user.UNFOLLOW:
+      case EVENT.ACTION.UNFOLLOW:
         await db.insertOne({
           ...getEventData(),
-          concernedUsers: [user.id],
-          follower: userEvent.format(user),
-          unfollowed: userEvent.format(data),
-          message: {
-            fr: `${user.username} a arrêté à suivre ${data.username}`,
-            en: `${user.username} stopped following ${data.username}`,
+          concern: {
+            user: [user.id, data.user.id],
           },
+          isUselessForTimeline: true,
+          follower: eventFormat.user(user),
+          unfollowed: eventFormat.user(data.user),
+          message: { ...EVENT.MESSAGES.UNFOLLOW },
         });
         break;
-      case eventTypes.user.COMMENT:
+      case EVENT.ACTION.COMMENT:
         await db.insertOne({
           ...getEventData(),
-          concernedUsers: [user.id],
-          author: userEvent.format(user),
-          exploration: userEvent.format(data),
-          comment: data.comment,
-          message: {
-            fr: `${user.username} a commenté ${data.name}`,
-            en: `${user.username} commented ${data.username}`,
+          concern: {
+            user: [user.id],
+            exploration: [data.exploration.id],
           },
+          uselessFor: [user.id],
+          author: eventFormat.user(user),
+          exploration: eventFormat.exploration(data.exploration),
+          comment: eventFormat.comment(data.comment),
+          message: { ...EVENT.MESSAGES.COMMENT },
         });
         break;
-      case eventTypes.user.EDIT_COMMENT:
+      case EVENT.ACTION.EDIT_COMMENT:
         await db.insertOne({
           ...getEventData(),
-          concernedUsers: [user.id],
-          author: userEvent.format(user),
-          exploration: userEvent.format(data),
-          comment: data.comment,
-          message: {
-            fr: `${user.username} a modifié son commentaire sur ${data.name}`,
-            en: `${user.username} modified his comment on ${data.username}`,
+          concern: {
+            user: [user.id],
+            exploration: [data.exploration.id],
           },
+          isUselessForTimeline: true,
+          author: eventFormat.user(user),
+          exploration: eventFormat.exploration(data.exploration),
+          comment: eventFormat.comment(data.comment),
+          message: { ...EVENT.MESSAGES.EDIT_COMMENT },
         });
         break;
-      case eventTypes.user.DELETE_COMMENT:
+      case EVENT.ACTION.DELETE_COMMENT:
         await db.insertOne({
           ...getEventData(),
-          concernedUsers: [user.id, data.id],
-          author: userEvent.format(user),
-          exploration: userEvent.format(data),
-          message: {
-            fr: `${user.username} a supprimé son commentaire sur ${data.name}`,
-            en: `${user.username} modified his comment on ${data.username}`,
+          concern: {
+            user: [user.id],
+            exploration: [data.exploration.id],
           },
+          isUselessForTimeline: true,
+          author: eventFormat.user(user),
+          exploration: eventFormat.exploration(data.exploration),
+          message: { ...EVENT.MESSAGES.DELETE_COMMENT },
         });
         break;
       default:
         break;
     }
-    db.close();
   },
 };

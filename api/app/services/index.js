@@ -1,3 +1,3 @@
 module.exports = {
-    userEvent: require('./userEvent'),
+    eventFormat: require('./eventFormat'),
 }
