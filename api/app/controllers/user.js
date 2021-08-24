@@ -187,15 +187,29 @@ module.exports = {
     }
   },
 
-  updateAvatar: async (req, res) => {
-    upload(req, req, (err, file) => {
+  updateAvatar: (req, res) => {
+    upload(req, req, async (err, file) => {
       if (err) {
         return res.status(400).json({
           message: err.message,
         });
       }
       
-      console.log(req.file)
+      const user = await User.findByPk(req.user.id);
+
+      if (!user) {
+        return res.status(404).json({
+          message: errorMessage.USER_NOT_FOUND,
+        });
+      }
+
+      user.update({
+        avatar_url: req.file.filename,
+      });
+
+      return res.json({
+        user,
+      });
     });
   },
 
