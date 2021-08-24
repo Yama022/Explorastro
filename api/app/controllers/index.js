@@ -5,5 +5,6 @@ module.exports = {
   userController: require("./user"),
   followController: require("./follow"),
   participationController: require("./participation"),
-  commentController: require('./comment')
+  commentController: require('./comment'),
+  timelineController: require('./timeline'),
 };

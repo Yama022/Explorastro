@@ -1,5 +1,6 @@
-const { errorMessage } = require("../constants");
+const { errorMessage, EVENT } = require("../constants");
 const { Comment, Exploration } = require("../models");
+const {event} = require("../utils");
 
 module.exports = {
   getAll: async (req, res) => {
@@ -26,6 +27,7 @@ module.exports = {
     try {
       const { id } = req.params;
       const { content } = req.body;
+      const user = req.user;
       const exploration = await Exploration.findByPk(id);
 
       if (!exploration) {
@@ -36,10 +38,16 @@ module.exports = {
 
       const comment = await Comment.create({
         content,
-        author_id: req.user.id,
+        author_id: user.id,
       });
 
       await exploration.addComment(comment);
+
+      // Save event
+      await event.saveUserAction(EVENT.ACTION.COMMENT, user, {
+        exploration: exploration.toJSON(),
+        comment: comment.toJSON(),
+      });
 
       res.status(200).json({
         message: errorMessage.COMMENT_ADDED,
@@ -54,11 +62,12 @@ module.exports = {
     try {
       const { id, commentId } = req.params;
       const { content } = req.body;
+      const user = req.user;
 
       const exploration = await Exploration.findByPk(id);
       const comment = await Comment.findByPk(commentId);
 
-      if (comment?.author_id !== req.user.id) {
+      if (comment?.author_id !== user.id) {
         return res.status(403).json({
           message: errorMessage.UNAUTHORIZED,
         });
@@ -78,6 +87,12 @@ module.exports = {
 
       await comment.update({ content });
 
+      // Save event
+      await event.saveUserAction(EVENT.ACTION.EDIT_COMMENT, user, {
+        exploration: exploration.toJSON(),
+        comment: comment.toJSON(),
+      });
+
       res.status(200).json({
         message: errorMessage.COMMENT_EDITED,
       });
@@ -90,11 +105,12 @@ module.exports = {
   delete: async (req, res) => {
     try {
       const { id, commentId } = req.params;
+      const user = req.user;
 
       const exploration = await Exploration.findByPk(id);
       const comment = await Comment.findByPk(commentId);
 
-      if (comment?.author_id !== req.user.id) {
+      if (comment?.author_id !== user.id) {
         return res.status(403).json({
           message: errorMessage.UNAUTHORIZED,
         });
@@ -114,6 +130,11 @@ module.exports = {
 
       await exploration.removeComment(comment);
       await comment.destroy();
+
+      // Save event
+      await event.saveUserAction(EVENT.ACTION.DELETE_COMMENT, user, {
+        exploration: exploration.toJSON(),
+      });
 
       res.status(200).json({
         message: errorMessage.COMMENT_DELETED,
