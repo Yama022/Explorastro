@@ -186,6 +186,10 @@ module.exports = {
     }
   },
 
+  updateAvatar: async (req, res) => {
+    
+  },
+
   delete: async (req, res) => {
     try {
       const { id } = req.params;

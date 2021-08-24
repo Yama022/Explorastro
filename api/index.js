@@ -9,6 +9,7 @@ const expressSwagger = require('express-swagger-generator')(app);
 app.use(cors());
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 const options = {
   swaggerDefinition: {

@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const { userController, followController } = require("../controllers");
 const { identityMiddleware } = require("../middlewares");
+const multer = require("multer");
+const upload = multer({ dest: "uploads/" });
 
 router
   /**
@@ -74,6 +76,15 @@ router
     "/:id(\\d+)/update/username",
     identityMiddleware.userPermissions,
     userController.updateUsername
+  )
+
+  .put(
+    "/:id(\\d+)/update/avatar",
+    identityMiddleware.userPermissions,
+    // Multer middleware, @see https://expressjs.com/en/resources/middleware/multer.html
+    // It attaches a unique "avatar" file to the request
+    upload.single("avatar"),
+    userController.updateAvatar
   )
 
   /**
