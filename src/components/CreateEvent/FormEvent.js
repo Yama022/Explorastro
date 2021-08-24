@@ -90,7 +90,7 @@ export default function FormEvent({
             <p>"Vos modifications ont bien été pris en compte"</p>
           </section>
           <footer className="modal-card-foot">
-            <Link className="button" to="/exploration/create">Fermer </Link>
+            <Link className="button--modal" to="/exploration/create">Fermer </Link>
           </footer>
         </div>
       </div>
