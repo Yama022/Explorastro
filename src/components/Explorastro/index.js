@@ -18,6 +18,7 @@ import Profile from 'src/containers/Profile';
 import Settings from 'src/containers/Settings';
 import FormEvent from 'src/containers/FormEvent';
 import Exploration from 'src/components/Exploration';
+import Particles from 'src/components/Particles';
 
 import { IoIosArrowUp } from 'react-icons/io';
 
@@ -37,7 +38,7 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
 
   return (
     <div className="explorastro">
-
+      <Particles />
       {isLogged
         ? (
           <Switch>
