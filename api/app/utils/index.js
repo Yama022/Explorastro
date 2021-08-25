@@ -3,4 +3,5 @@ module.exports = {
     owp: require('./weather'),
     event: require('./event'),
     date: require('./date'),
+    timeline: require('./timeline'),
 }
