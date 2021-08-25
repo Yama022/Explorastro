@@ -49,16 +49,17 @@ export default function FormEvent({
 
   const handleOnClick = () => {
     OnClick();
+    console.log(published);
   };
 
-  const coordtest = () => {
+  const coordTest = () => {
     let controlGeocoder;
     if (coord) {
       controlGeocoder = (
         <ControlGeocoder
           coordLocation={getCoordLocation}
           coord={coord.coordinates}
-          saveAddress={saveAddress}
+          // saveAddress={saveAddress}
         />
       );
     }
@@ -66,7 +67,7 @@ export default function FormEvent({
       controlGeocoder = (
         <ControlGeocoder
           coordLocation={getCoordLocation}
-          saveAddress={saveAddress}
+          // saveAddress={saveAddress}
         />
       );
     }
@@ -88,7 +89,7 @@ export default function FormEvent({
             <p>"Vos modifications ont bien été pris en compte"</p>
           </section>
           <footer className="modal-card-foot">
-            <Link className="button--modal" to="/exploration/create">Fermer </Link>
+            <Link className="button--modal" to="/exploration/create" onClick={handleOnClickModal}>Fermer </Link>
           </footer>
         </div>
       </div>
@@ -132,7 +133,6 @@ export default function FormEvent({
               onChange={handleOnchange}
             />
 
-            {/* <div className="form__right"> */}
             <div className="form__map">
               <MapContainer
           // Centering on the map of france
@@ -149,7 +149,7 @@ export default function FormEvent({
                   name="tiles"
                 />
                 {/* Add Markers events astro on the map */}
-                {coordtest()}
+                {coordTest()}
               </MapContainer>
             </div>
 
@@ -164,7 +164,7 @@ export default function FormEvent({
               />
             </h4>
 
-            <input type="checkbox" name="published" className="checkbox" id="checkbox" onClick={handleOnClick} value={published !== null ? published : false} />
+            <input type="checkbox" name="published" className="checkbox" id="checkbox" onClick={handleOnClick} value={published} />
             <label className="published" htmlFor="checkbox">{published ? 'Publié' : 'Non publié' } </label>
 
             <div className="form__add__img">
@@ -213,7 +213,7 @@ FormEvent.propTypes = {
     PropTypes.string,
   ]),
   descEvent: PropTypes.string,
-  published: PropTypes.bool,
+  published: PropTypes.bool.isRequired,
   coord: PropTypes.oneOfType([
     PropTypes.array,
     PropTypes.object,
@@ -228,6 +228,5 @@ FormEvent.defaultProps = {
   descEvent: '',
   dateEvent: '',
   maxRateEvent: 0,
-  published: false,
   coord: [],
 };
