@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 import { FcDownRight, FcAdvance } from 'react-icons/fc';
 import { MdReportProblem } from 'react-icons/md';
-import mascot from 'src/assets/images/mascot-rocket.svg';
+import mascot from 'src/assets/images/mascot-superhero.svg';
 
 export default function Guide() {
   return (

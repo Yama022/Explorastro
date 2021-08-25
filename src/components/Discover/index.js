@@ -1,11 +1,10 @@
 /* eslint-disable react/no-array-index-key */
-/* eslint-disable react/button-has-type */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import * as dayjs from 'dayjs';
+import imageEvent from 'src/assets/images/default-explo.jpg';
 import Map from './Map';
 import Filter from './Filter';
-import imageEvent from './bg.png';
 
 export default function Discover({
   onFormSubmit,
@@ -23,26 +22,28 @@ export default function Discover({
   const eventsList = explorationsFilter.length > 0 ? explorationsFilter : events;
 
   return (
-    <div className="map">
-      <div className="map__list_events">
+    <div className="discover">
+      <div className="discover__list-events">
         {eventsList.map((element, index) => (
-          <div key={index} className="map__list_events__box">
-            <img className="map__list_events__box__img" src={imageEvent} alt="" />
-            <div className="map__list_events__box__content">
-              <h2 className="map__list_events__box__content__h2">{element.name}</h2>
-              <ul>
-                <li className="description">{element.description}</li>
-                <li className="dateEvent">Date de la sortie :<span>{element.date ? dayjs(element.date).format('DD/MM/YYYY  mm:ss') : ''}</span></li>
-                <li className="nbrPlace">Nombre de place : <span>{element.max_participants}</span></li>
-              </ul>
-              <div className="button_style btn btn-pulse">Participer</div>
+          <div key={index} className="discover__list-events__box">
+            <img className="discover__list-events__box__img" src={imageEvent} alt="" />
+            <div className="discover__list-events__box__content">
+              <h2 className="discover__list-events__box__content__h2">{element.name}</h2>
+              <div className="discover__list-events__box__content__info">
+                <div><span>{element.date ? dayjs(element.date).format('DD/MM/YYYY  mm:ss') : ''}</span></div>
+                <div><span>{element.max_participants}</span> invités maximum</div>
+              </div>
+              <div className="discover__list-events__box__content__description">{element.description}</div>
+              <div className="button --secondary">Participer</div>
             </div>
           </div>
         ))}
       </div>
-      <Filter onSubmit={onFormSubmit} onChange={onChangeInput} fieldZone={zone} />
+      <div className="discover__map">
+        <Filter onSubmit={onFormSubmit} onChange={onChangeInput} fieldZone={zone} />
 
-      <Map eventsList={eventsList} fieldZone={zone} address={address} />
+        <Map eventsList={eventsList} fieldZone={zone} address={address} />
+      </div>
 
     </div>
   );

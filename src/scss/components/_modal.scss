@@ -6,21 +6,14 @@
 .modal-card {
 
   height: 30%;
-  color: white;
+  color: $light-color;
   font-family: 'Roboto';
   border-radius: 10px;
 
 
   &-title {
 
-    color: white;
-  }
-
-  &-body,
-  &-foot,
-  &-head {
-
-    background-color: $color-box
+    color: $light-color;
   }
 
   &-foot {
@@ -41,13 +34,12 @@
 }
 
 .modal-background {
-  background-color: $primary-color-rgba;
+  background-color: $primary-color;
 
 }
 
 .button--modal {
 
-  background-color: $color-btn-modal;
   margin: 0 auto;
   padding : 1em;
 }

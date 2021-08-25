@@ -7,17 +7,19 @@
   margin-top: 2px;
 }
 
-.map {
-
+.discover {
+  margin-top: 1.4em;
   display: flex;
-  position: relative;
-  box-shadow: 1px 5px 16px 0 rgb(65 8 255 / 98%);
+  justify-content: space-evenly;
 
-  &__list_events {
+  &__list-events {
     color: white;
-    width: 30%;
+    width: 20%;
     overflow: auto;
     height: 100vh;
+    border: 1px solid $secondary-color;
+    box-shadow: 0px 0px 9px -1px $secondary-color;
+    border-radius: 10px;
 
     &__box {
       padding: 1em;
@@ -25,37 +27,36 @@
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      border: 1px solid $secondary-color;
-      border-radius: 5px;
+      border-bottom: 1px solid $secondary-color;
       overflow: hidden;
-      border-bottom: 1px solid rgb(65 8 255 / 98%);
 
       &__img {
-        min-height: 0;
-        min-width: 0;
-        max-width: 200px;
-        margin-right: 1em;
+        width: 90%;
+        margin: 0 auto 0.2em auto;
       }
 
       &__content {
         display: flex;
         flex-direction: column;
         text-align: left;
-        width: 50%;
+        width: 100%;
 
         &__h2 {
-          font-size: 1.4em;
-          text-justify: auto;
+          text-align: center;
+          font-size: 1.5em;
           padding-bottom: 0.4em;
         }
 
-        .dateEvent,
-        .nbrPlace {
-          font-weight: bold;
+        &__info {
+          color: $tertiary-color;
+          width: 100%;
+          font-size: 0.8em;
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 1.6em;
         }
 
-        .description {
-
+        &__description {
           overflow: hidden;
           text-overflow: ellipsis;
           display: -webkit-box;
@@ -63,68 +64,100 @@
           max-height: 32px;
           -webkit-line-clamp: 2;
           -webkit-box-orient: vertical;
+          margin-bottom: 1.2em;
         }
 
-        span {
-          font-weight: none;
+        & .button {
+          width: 80%;
+          margin: auto;
         }
 
-        .btn {
-          color: white;
-          margin: 1em 0;
-          position: relative;
-          left: 0;
-          padding: 1em;
-          border: none;
-          overflow: hidden;
-          font-size: 0.8em;
-          line-height: $gutter;
-        }
-
-        li {
-          margin-top: math.div($gutter, 2);
-        }
       }
     }
   }
 
-  &__filter {
-    background-color: $light-color;
-    width: 20%;
-    position: absolute;
-    right: 0;
-    z-index: 999;
-    padding: 2em;
-    margin: 2em;
+  &__map {
+    position: relative;
+    width: 65%;
+    border: 1px solid $secondary-color;
+    box-shadow: 0px 0px 9px -1px $secondary-color;
+    border-radius: 10px;
+    overflow: hidden;
 
-    &__h2 {
-      font-size: 2em;
-      padding-bottom: 1em;
+    &__filter {
+      width: 24%;
+      top: 3em;
+      right: 3em;
+      position: absolute;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      padding: 1.4em;
+      border-radius: 10px;
+      color: $light-color;
+      background-color: $primary-color;
+
+      &__title {
+        font-size: 1.2em;
+      }
+
+      &__label {
+        font-weight: normal;
+        margin-top: 1.5em;
+        font-size: 0.8em;
+        color: $light-color;
+
+        &__input {
+          width: 100%;
+          height: 2em;
+          select {
+            width: 100%;
+            &:after {
+              color: $secondary-color;
+            }
+          }
+        }
+
+        & .field {
+          input[type=range] {
+            -webkit-appearance: none;
+            margin: 1.4em 0;
+            width: 100%;
+          }
+
+          input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 2px;
+            background: $tertiary-color;
+            cursor: pointer;
+          }
+
+          input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            border: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: $tertiary-color;
+            border: 2px solid $primary-color;
+            margin-top: -7px;
+            cursor: pointer;
+          }
+
+          input[type=range]:focus {
+            outline: none;
+          }
+
+          input[type=range]:focus::-webkit-slider-runnable-track {
+            background: $tertiary-color;
+          }
+        }
+      }
     }
 
-    &__label {
-      font-size: 1.3em;
-      padding-bottom: 1em;
-    }
-
-    input,
-    button,
-    select {
-      margin: 1em 0;
-    }
-
-    input {
-      width: 100%;
-    }
-
-    .select {
-      height: 4.5em;
-    }
-
-    .is-normal-test {
-      font-size: 0.8em;
+    &__elem {
+      margin: 0;
     }
 
   }
-
 }

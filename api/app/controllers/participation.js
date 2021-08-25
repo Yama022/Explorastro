@@ -1,5 +1,6 @@
 const { User, Exploration } = require("../models");
-const { errorMessage } = require("../constants");
+const { errorMessage, EVENT } = require("../constants");
+const { event } = require("../utils");
 
 module.exports = {
   getAll: async (req, res) => {
@@ -71,6 +72,11 @@ module.exports = {
       res.status(200).json({
         message: errorMessage.SUBSCRIBE_SUCCESS,
       });
+
+      return await event.saveUserAction(EVENT.ACTION.PARTICIPATION_ADD, user, {
+        exploration,
+      });
+
     } catch (error) {
       console.error(error);
       return res.status(500).json({
@@ -93,8 +99,6 @@ module.exports = {
       const exploration = await Exploration.findByPk(id, {
         include: ["participants"],
       });
-
-      console.log(exploration);
 
       if (!user) {
         return res.status(404).json({
@@ -122,6 +126,10 @@ module.exports = {
 
       res.status(200).json({
         message: errorMessage.UNSUBCRIBE_SUCCESS,
+      });
+
+      return await event.saveUserAction(EVENT.ACTION.PARTICIPATION_REMOVED, user, {
+        exploration,
       });
     } catch (error) {
       console.error(error);
