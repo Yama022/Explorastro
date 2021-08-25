@@ -17,6 +17,7 @@
         <img src="https://img.shields.io/badge/Express-F8F8FF?style=for-the-badge&logo=express&logoColor=61DAFB" />
         <img src="https://img.shields.io/badge/PostgresQL-4169E1?style=for-the-badge&logo=Postgresql&logoColor=white" />
         <img src="https://img.shields.io/badge/Sequelize-52B0E7?style=for-the-badge&logo=sequelize&logoColor=white" />
+        <img src="https://img.shields.io/badge/Redis-52B0E7?style=for-the-badge&logo=redis&logoColor=white" />
 </div>
 
 ## 📦 Installation
