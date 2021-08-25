@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { Link } from 'react-router-dom';
 
@@ -6,12 +7,12 @@ import defaultAvatar from 'src/assets/images/luffy.png';
 import satoru from 'src/assets/images/Satoru.jpg';
 import follow from 'src/assets/images/follow.png';
 
-export default function Follow() {
+export default function HasFollow({ loggedUserId, onClickUser }) {
   return (
     <div className="follow">
       <div className="follow__title">
         <img src={defaultAvatar} alt="avatar" />
-        <h3> <Link to="/profile">John Doe</Link> à commencé à suivre <Link to="/profile">Baptiste</Link></h3>
+        <h3> <Link to={`/profile/${loggedUserId}`} onClick={onClickUser}>John Doe</Link> à commencé à vous suivre</h3>
       </div>
 
       <div className="follow__content">
@@ -31,3 +32,8 @@ export default function Follow() {
     </div>
   );
 }
+
+HasFollow.propTypes = {
+  loggedUserId: PropTypes.number.isRequired,
+  onClickUser: PropTypes.func.isRequired,
+};

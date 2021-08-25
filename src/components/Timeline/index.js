@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Discover from './Discover';
 import Follow from './Follow';
+import HasFollow from './HasFollow';
+import Comment from './Comment';
 
 export default function Timeline() {
   return (
@@ -14,6 +16,8 @@ export default function Timeline() {
       <main className="timeline-main">
         <div className="timeline-main__exploration">
           <Follow />
+          <HasFollow />
+          <Comment />
         </div>
       </main>
       <aside className="timeline-right">
