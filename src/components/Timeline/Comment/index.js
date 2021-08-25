@@ -1,7 +1,6 @@
 import React from 'react';
 
 import defaultAvatar from 'src/assets/images/luffy.png';
-import defaultExplo from 'src/assets/images/default-explo.jpg';
 
 export default function Comment() {
   return (
@@ -21,10 +20,6 @@ export default function Comment() {
           Dolorem sint recusandae corrupti harum repellendus, vitae
           molestias temporibus sed.
         </p>
-      </div>
-
-      <div className="comment__image">
-        <img src={defaultExplo} alt="Add_image" />
       </div>
 
       <div className="comment__date">

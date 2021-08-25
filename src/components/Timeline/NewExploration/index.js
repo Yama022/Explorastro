@@ -16,7 +16,7 @@ export default function NewExplo() {
         </div>
       </div>
 
-      <div className="explo__image">
+      <div className="explo__image--large">
         <img src={defaultExplo} alt="Add_image" />
       </div>
 

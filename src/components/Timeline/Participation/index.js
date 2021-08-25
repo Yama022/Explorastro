@@ -17,7 +17,7 @@ export default function JoinExplo() {
         </div>
       </div>
 
-      <div className="explo__image--large">
+      <div className="explo__image">
         <img src={defaultExplo} alt="Add_image" />
       </div>
 
