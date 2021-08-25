@@ -7,13 +7,13 @@ import {
   MapContainer, TileLayer, Marker, Popup, useMap,
 } from 'react-leaflet';
 import L from 'leaflet';
-import home from './home.png';
+import home from 'src/assets/images/home.png';
 
 export default function Map({ eventsList, fieldZone }) {
   // eslint-disable-next-line new-cap
   const newicon = new L.icon({
     iconUrl: home,
-    iconSize: [30, 30],
+    iconSize: [30, 20],
   });
   function LocationMarker() {
     const [positionGeoloc, setPosition] = useState(null);
@@ -63,7 +63,7 @@ export default function Map({ eventsList, fieldZone }) {
           const coord = [lat, long];
           return (
             <div key={element.id}>
-              <Marker names="marker" position={coord} id="foo">
+              <Marker names="marker" position={coord}>
                 <Popup name="popup">Exploration vers {element.name}</Popup>
               </Marker>
             </div>
@@ -82,6 +82,7 @@ export default function Map({ eventsList, fieldZone }) {
   return (
     <MapContainer
     // Centering on the map of france
+      className="discover__map__elem"
       center={[46.232192999999995, 2.209666999999996]}
       zoom={6.4}
       maxZoom={18}
