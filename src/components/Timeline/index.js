@@ -16,6 +16,8 @@ export default function Timeline({ loggedUserId }) {
       <aside className="timeline-left">
         <Link to="/discover" className="timeline-left__widget">
           <Discover />
+          <Discover />
+          <Discover />
         </Link>
       </aside>
       <main className="timeline-main">
@@ -31,7 +33,8 @@ export default function Timeline({ loggedUserId }) {
       </main>
       <aside className="timeline-right">
         <div className="timeline-left__widget">
-          Widget
+          <Discover />
+          <Discover />
         </div>
       </aside>
     </div>
