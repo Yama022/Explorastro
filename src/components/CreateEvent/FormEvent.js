@@ -52,7 +52,7 @@ export default function FormEvent({
     console.log(published);
   };
 
-  const coordtest = () => {
+  const coordTest = () => {
     let controlGeocoder;
     if (coord) {
       controlGeocoder = (
@@ -149,7 +149,7 @@ export default function FormEvent({
                   name="tiles"
                 />
                 {/* Add Markers events astro on the map */}
-                {coordtest()}
+                {coordTest()}
               </MapContainer>
             </div>
 
@@ -213,7 +213,7 @@ FormEvent.propTypes = {
     PropTypes.string,
   ]),
   descEvent: PropTypes.string,
-  published: PropTypes.bool,
+  published: PropTypes.bool.isRequired,
   coord: PropTypes.oneOfType([
     PropTypes.array,
     PropTypes.object,
@@ -228,6 +228,5 @@ FormEvent.defaultProps = {
   descEvent: '',
   dateEvent: '',
   maxRateEvent: 0,
-  published: false,
   coord: [],
 };

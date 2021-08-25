@@ -18,7 +18,7 @@ const mapStateToProps = (state, ownProps) => ({
   dateEvent: state.exploration.dateEvent,
   maxRateEvent: state.exploration.maxRateEvent,
   descEvent: state.exploration.descEvent,
-  published: state.exploration.is_published,
+  published: state.exploration.published,
   coord: state.exploration.geog,
   modal: state.exploration.modal,
   imageUrl: state.exploration.imageUrl,
