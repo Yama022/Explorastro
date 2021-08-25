@@ -210,5 +210,6 @@ module.exports = {
       default:
         break;
     }
+    db.close();
   },
 };

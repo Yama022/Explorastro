@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import Header from 'src/containers/Header';
 import Footer from 'src/components/Footer';
-import Timeline from 'src/components/Timeline';
+import Timeline from 'src/containers/Timeline';
 import Error from 'src/components/Error';
 import Discover from 'src/containers/Discover';
 import CreateEvent from 'src/containers/CreateEvent';
