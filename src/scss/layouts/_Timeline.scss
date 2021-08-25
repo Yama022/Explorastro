@@ -1,51 +1,46 @@
+@use "sass:math";
 
 .timeline {
     display: flex;
+    justify-content: center;
     width: 100%;
-    
+    color: white;
     &-left {
-        width: 25%;
+        width: 20%;
         display: flex;
         align-items: center;
         flex-direction: column;
-        padding: $gutter;
+        padding: $gutter 0;
 
         &__widget {
             width: 80%;
             padding: .2em;
-            background-color: $light-color;
             border-radius: 5px;
             margin: .2em 0;
         }
     }
-
     &-main {
-        width: 50%;
+        width: 70%;
         display: flex;
-        justify-content: center;
-        align-items: flex-start;
+        flex-direction: column;
+        align-items: center;
         padding: $gutter;
-
         &__exploration {
             width: 80%;
             padding: 1em;
-            background-color: $light-color;
             border-radius: 5px;
             margin: .5em 0;
         }
     }
-
     &-right {
-        width: 25%;
+        width: 20%;
         display: flex;
         justify-content: center;
         align-items: flex-start;
-        padding: $gutter;
-
+        padding: $gutter 0;
         &__widget {
             width: 80%;
             padding: .5em;
-            background-color: $light-color;
             border-radius: 5px;
             margin: .2em 0;
         }
@@ -85,4 +80,54 @@
         }
     }
 
+}
+
+.follow {
+  & img {
+    width: 20%;
+    border-radius: 50%;
+  }
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: 1px solid $secondary-color;
+  box-shadow: 0px 0px 9px -1px $secondary-color;
+  &__title {
+    margin: math.div($gutter, 2);
+    display: flex;
+    padding: math.div($gutter, 2);
+    & img {
+      width: 40px;
+      border-radius: 50%;
+    }
+    & h3 {
+      margin: auto;
+      margin-left: math.div($gutter, 2);
+    }
+  }
+  &__content {
+    padding: math.div($gutter, 2);
+    max-width: 75%;
+    display: flex;
+    justify-content: space-around;
+    background-color: $primary-color !important;
+    & > img {
+      background-size: cover;
+      border-radius: 50%;
+      width: 125px;
+      color: white;
+      &:nth-child(even) {
+        width: auto;
+        height: 50px;
+        margin: auto;
+      }
+    }
+  }
+  &__date {
+    font-size: .8em;
+    padding: math.div($gutter, 2);
+    display: flex;
+    justify-content: flex-end;
+  }
+  
 }

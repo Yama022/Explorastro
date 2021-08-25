@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Discover from './Discover';
+import Follow from './Follow';
 
 export default function Timeline() {
   return (
@@ -11,7 +12,9 @@ export default function Timeline() {
         </Link>
       </aside>
       <main className="timeline-main">
-        <div className="timeline-main__exploration"><h1>Exploration</h1></div>
+        <div className="timeline-main__exploration">
+          <Follow />
+        </div>
       </main>
       <aside className="timeline-right">
         <div className="timeline-left__widget">
