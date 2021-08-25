@@ -83,9 +83,8 @@
 
 }
 
-.follow, .comment {
+.follow, .comment, .update {
   margin-bottom: $gutter;
-  
   & img {
     width: 20%;
     border-radius: 50%;
@@ -117,16 +116,16 @@
       & > img {
         background-size: cover;
         border-radius: 50%;
-        width: 15%;
+        width: 20%;
         color: white;
-        &:nth-child(even) {
-          width: auto;
-          height: 50px;
-          margin: auto;
-        }
     }
     & p {
       margin-left: $gutter;
+    }
+    &-buttonUpdate{
+      color: $light-color;
+      font-size: 5em;
+
     }
   }
   &__image {
@@ -135,7 +134,7 @@
     justify-content: center;
     & > img {
       width: 60%;
-      border-radius: 0;
+      border-radius: 15px;
     }
   }
   &__date {
@@ -145,4 +144,109 @@
     justify-content: flex-end;
   }
   
+  
 }
+
+// COMPONENT NewExploration
+.explo {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $secondary-color;
+  box-shadow: 0px 0px 9px -1px $secondary-color;
+  &__title {
+    margin: math.div($gutter, 2) 0 0 math.div($gutter, 2);
+    display: flex;
+    padding: math.div($gutter, 2) 0 0 math.div($gutter, 2);
+    & img {
+      width: 5%;
+      border-radius: 50%;
+    }
+    & h3 {
+      margin: auto;
+      margin-left: math.div($gutter, 2);
+    }
+  }
+  &__organized {
+    margin: math.div($gutter, 2) 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    & img {
+      align-self: center;
+      width: 10%;
+      border-radius: 50%;
+    }
+    &--title {
+      text-align: center;
+      margin: math.div($gutter, 2) 0;
+    }
+    &__subtitle {
+      margin: math.div($gutter, 2) 0;
+      font-size: 1.5em;
+      font-weight: 900;
+    }
+  }
+  &__image {
+    padding: $gutter;
+    display: flex;
+    justify-content: center;
+    & > img {
+      width: 50%;
+      border-radius: 10px;
+    }
+    &--large {
+      padding: $gutter;
+      display: flex;
+      justify-content: center;
+      & > img {
+        width: 75%;
+        border-radius: 10px;
+      }
+    }
+  }
+  &__date {
+    font-size: .8em;
+    padding: math.div($gutter, 2);
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+
+// COMPONENT UpdateAvatar
+/* 
+.update {
+  margin-bottom: $gutter;
+  border: 1px solid $secondary-color;
+  box-shadow: 0px 0px 9px -1px $secondary-color;
+  &__title {
+    margin: math.div($gutter, 2);
+    display: flex;
+    padding: math.div($gutter, 2);
+    & img {
+      width: 10%;
+      border-radius: 50%;
+    }
+    & h3 {
+      margin: auto;
+      margin-left: math.div($gutter, 2);
+    }
+  }
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+    & > img {
+      background-size: cover;
+      border-radius: 50%;
+      width: 30%;
+    }
+  }
+  &__date {
+    font-size: .8em;
+    padding: math.div($gutter, 2);
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+ */

@@ -4,6 +4,9 @@ import Discover from './Discover';
 import Follow from './Follow';
 import HasFollow from './HasFollow';
 import Comment from './Comment';
+import NewExploration from './NewExploration';
+import UpdateAvatar from './UpdateAvatar';
+import Participation from './Participation';
 
 export default function Timeline() {
   return (
@@ -15,9 +18,12 @@ export default function Timeline() {
       </aside>
       <main className="timeline-main">
         <div className="timeline-main__exploration">
+          <Participation />
+          <UpdateAvatar />
           <Follow />
           <HasFollow />
           <Comment />
+          <NewExploration />
         </div>
       </main>
       <aside className="timeline-right">

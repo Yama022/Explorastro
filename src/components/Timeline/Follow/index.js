@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 
 import defaultAvatar from 'src/assets/images/luffy.png';
 import satoru from 'src/assets/images/Satoru.jpg';
-import follow from 'src/assets/images/follow.png';
+
+import { RiUserFollowLine } from 'react-icons/ri';
 
 export default function Follow() {
   return (
@@ -18,7 +19,9 @@ export default function Follow() {
         {/* <Link to="/profile" className="follow__content__image"> */}
         <img src={defaultAvatar} alt="avatar" />
         {/* </Link> */}
-        <img src={follow} alt="follow" />
+        <span className="follow__content-buttonUpdate">
+          <RiUserFollowLine />
+        </span>
         {/* <Link to="/profile" className="follow__content__image"> */}
         <img src={satoru} alt="avatar" />
         {/* </Link> */}
