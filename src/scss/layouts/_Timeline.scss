@@ -1,7 +1,6 @@
 @use "sass:math";
 
 .timeline {
-    font-style: italic;
     display: flex;
     justify-content: center;
     width: 100%;
@@ -85,19 +84,18 @@
 
 .follow, .comment, .update, .desc {
   margin-bottom: $gutter;
-  & img {
-    width: 20%;
-    border-radius: 50%;
-  }
+  padding: $gutter;
   display: flex;
   flex-direction: column;
   width: 100%;
   border: 1px solid $secondary-color;
   box-shadow: 0px 0px 9px -1px $secondary-color;
+  & img {
+    width: 20%;
+    border-radius: 50%;
+  }
   &__title {
-    margin: math.div($gutter, 2);
     display: flex;
-    padding: math.div($gutter, 2);
     & img {
       width: 5%;
       border-radius: 50%;
@@ -109,7 +107,7 @@
   }
   &__content {
     padding: math.div($gutter, 2);
-    width: 65%;
+    width: 90%;
     display: flex;
     justify-content: space-between;
     background-color: $primary-color !important;
@@ -139,7 +137,6 @@
   }
   &__date {
     font-size: .8em;
-    padding: math.div($gutter, 2);
     display: flex;
     justify-content: flex-end;
   }
@@ -149,14 +146,14 @@
 
 // COMPONENT NewExploration
 .explo {
+  margin-bottom: $gutter;
+  padding: math.div($gutter, 2);
   display: flex;
   flex-direction: column;
   border: 1px solid $secondary-color;
   box-shadow: 0px 0px 9px -1px $secondary-color;
   &__title {
-    margin: math.div($gutter, 2) 0 0 math.div($gutter, 2);
     display: flex;
-    padding: math.div($gutter, 2) 0 0 math.div($gutter, 2);
     & img {
       width: 5%;
       border-radius: 50%;
