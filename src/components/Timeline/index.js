@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Discover from './Discover';
 import Follow from './Follow';
@@ -9,7 +10,7 @@ import UpdateAvatar from './UpdateAvatar';
 import Participation from './Participation';
 import Description from './Description';
 
-export default function Timeline() {
+export default function Timeline({ loggedUserId }) {
   return (
     <div className="timeline">
       <aside className="timeline-left">
@@ -23,7 +24,7 @@ export default function Timeline() {
           <Participation />
           <UpdateAvatar />
           <Follow />
-          <HasFollow />
+          <HasFollow loggedUserId={loggedUserId} />
           <Comment />
           <NewExploration />
         </div>
@@ -36,3 +37,7 @@ export default function Timeline() {
     </div>
   );
 }
+
+Timeline.propTypes = {
+  loggedUserId: PropTypes.number.isRequired,
+};

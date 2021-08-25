@@ -9,12 +9,12 @@ import satoru from 'src/assets/images/Satoru.jpg';
 import { RiUserFollowLine } from 'react-icons/ri';
 
 // Must be changed by TERNAIRE on FOLLOW COMPONENT - RIP HasFollow !!
-export default function HasFollow({ loggedUserId, onClickUser }) {
+export default function HasFollow({ loggedUserId }) {
   return (
     <div className="follow">
       <div className="follow__title">
         <img src={defaultAvatar} alt="avatar" />
-        <h3> <Link to={`/profile/${loggedUserId}`} onClick={onClickUser}>Toto l'asticot</Link> à commencé à vous suivre</h3>
+        <h3> <Link to={`/profile/${loggedUserId}`}>Toto l'asticot</Link> à commencé à vous suivre</h3>
       </div>
 
       <div className="follow__content">
@@ -39,5 +39,4 @@ export default function HasFollow({ loggedUserId, onClickUser }) {
 
 HasFollow.propTypes = {
   loggedUserId: PropTypes.number.isRequired,
-  onClickUser: PropTypes.func.isRequired,
 };
