@@ -123,7 +123,7 @@ const reducer = (state = initialState, action = {}) => {
     case SAVE_ADDRESS: {
       return {
         ...state,
-        address: [...state.address, action.value],
+        events: [...state.address, action.value],
 
       };
     }
