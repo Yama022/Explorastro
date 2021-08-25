@@ -1,12 +1,22 @@
 const { errorMessage } = require("../constants");
-const dayjs = require("dayjs");
-require("dayjs/locale/fr");
+const { timeline } = require('../utils');
+const { User } = require('../models');
 
 module.exports = {
   get: async (req, res) => {
     try {
-      const timelineContent = [];
-      return res.json(timelineContent);
+      const user = await User.findByPk(req.user.id, {
+        include: ['following']
+      });
+
+      if (!user) {
+        return res.status(401).json({
+          message: errorMessage.USER_NOT_FOUND
+        });
+      }
+
+      const timelineContent = await timeline.generate(user);
+      res.status(200).json(timelineContent);
     } catch (error) {
       console.error(error);
       res.status(500).send({

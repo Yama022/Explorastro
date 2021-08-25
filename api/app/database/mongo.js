@@ -14,7 +14,9 @@ module.exports = {
     await client.connect()
       .then(() => log.success("Connected to MongoDB"))
       .catch((err) => log.success(err));
-
+    
+    db.close = client.close;
+    
     return db;
   },
 };
