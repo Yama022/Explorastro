@@ -7,7 +7,9 @@ import { Link } from 'react-router-dom';
 
 import img from 'src/assets/images/nightSky.jpg';
 
-export default function EventCreated({ name, id, onClick }) {
+export default function EventCreated({
+  name, id, onClick,
+}) {
   const handleOnClick = () => {
     onClick(id);
   };
@@ -27,5 +29,4 @@ EventCreated.propTypes = {
   name: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
   onClick: PropTypes.func.isRequired,
-
 };

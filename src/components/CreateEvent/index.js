@@ -10,7 +10,7 @@ export default function CreateEvent({
   let redirectForm;
   useEffect(() => {
     getEvent();
-  });
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -26,7 +26,7 @@ export default function CreateEvent({
   }
   useEffect(() => {
     removEventCreatedLastID();
-  });
+  }, [eventCreatedLastID]);
   return (
     <>
       {redirectForm}

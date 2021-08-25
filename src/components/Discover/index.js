@@ -18,7 +18,7 @@ export default function Discover({
 }) {
   useEffect(() => {
     getEvents();
-  }, [getEvents]);
+  }, []);
 
   const eventsList = explorationsFilter.length > 0 ? explorationsFilter : events;
 
