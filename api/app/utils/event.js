@@ -1,17 +1,25 @@
 const { eventFormat } = require("../services");
 const { mongo } = require("../database");
 const { EVENT } = require("../constants");
+const date = require("./date");
 
 module.exports = {
   saveUserAction: async (action, user, data) => {
     const db = await mongo.connect();
-
+    console.log("New request for", action);
     const getEventData = () => {
       const label = action.label;
+      const createdDate = date.getDate();
       return {
         action: EVENT.ACTION[label].label,
         type: EVENT.ACTION[label].type,
-        date: new Date(),
+        date: {
+          createdAt: createdDate,
+          locales: {
+            fr: date.format(createdDate, "fr"),
+            en: date.format(createdDate, "en"),
+          },
+        },
       };
     };
 
@@ -79,6 +87,32 @@ module.exports = {
           author: eventFormat.user(user),
           exploration: eventFormat.exploration(data.exploration),
           message: { ...EVENT.MESSAGES.DELETE_COMMENT },
+        });
+        break;
+      case EVENT.ACTION.PARTICIPATION_ADD:
+        await db.insertOne({
+          ...getEventData(),
+          concern: {
+            user: [user.id],
+            exploration: [data.exploration.id],
+          },
+          uselessFor: [user.id],
+          user: eventFormat.user(user),
+          exploration: eventFormat.exploration(data.exploration),
+          message: { ...EVENT.MESSAGES.PARTICIPATION_ADD },
+        });
+        break;
+      case EVENT.ACTION.PARTICIPATION_REMOVED:
+        await db.insertOne({
+          ...getEventData(),
+          concern: {
+            user: [user.id],
+            exploration: [data.exploration.id],
+          },
+          uselessFor: [user.id],
+          user: eventFormat.user(user),
+          exploration: eventFormat.exploration(data.exploration),
+          message: { ...EVENT.MESSAGES.PARTICIPATION_REMOVED },
         });
         break;
       default:

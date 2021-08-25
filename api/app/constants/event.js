@@ -24,6 +24,14 @@ module.exports = {
       label: "DELETE_COMMENT",
       type: "COMMENT",
     },
+    PARTICIPATION_ADD: {
+      label: "PARTICIPATION_ADD",
+      type: "PARTICIPATION",
+    },
+    PARTICIPATION_REMOVED: {
+      label: "PARTICIPATION_REMOVED",
+      type: "PARTICIPATION",
+    },
   },
 
   MESSAGES: {
@@ -46,6 +54,14 @@ module.exports = {
     DELETE_COMMENT: {
       fr: `a supprimé son commentaire sur`,
       en: `modified his comment on`,
+    },
+    PARTICIPATION_ADD: {
+      fr: `participe à`,
+      en: `participes to`,
+    },
+    PARTICIPATION_REMOVED: {
+      fr: `ne participe plus à`,
+      en: `no longer participate to`,
     },
   },
 };
