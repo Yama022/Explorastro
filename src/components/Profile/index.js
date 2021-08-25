@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import avatar from 'src/assets/images/mascot-rocket.svg';
+import avatar from 'src/assets/images/mascot-skating.svg';
 import { AiOutlineUserAdd, AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { GrAchievement, GrTrophy } from 'react-icons/gr';
 import { FaMedal } from 'react-icons/fa';

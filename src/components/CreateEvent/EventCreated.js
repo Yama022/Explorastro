@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { ImPencil, ImCross } from 'react-icons/im';
 import { Link } from 'react-router-dom';
 
-import img from 'src/assets/images/nightSky.jpg';
+import img from 'src/assets/images/default-explo.jpg';
 
 export default function EventCreated({ name, id, onClick }) {
   const handleOnClick = () => {

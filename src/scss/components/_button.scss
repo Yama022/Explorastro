@@ -18,9 +18,9 @@
 }
 
 .--outlined, .--outlined:focus {
+  color: $primary-color;
   border: 1px solid $primary-color;
   background-color: $light-color;
-  color: $primary-color;
   &:hover, &:active {
     color: $light-color;
     background-color: $primary-color;
@@ -29,6 +29,7 @@
 }
 
 .--secondary, .--secondary:focus {
+  color: $light-color;
   background-color: $secondary-color;
   border: 1px solid $secondary-color;
   transition: .2s ease-in-out;
