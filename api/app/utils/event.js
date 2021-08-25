@@ -30,7 +30,7 @@ module.exports = {
           concern: {
             user: [user.id, data.user.id],
           },
-          uselessFor: [user.id],
+          uselessInTimelineFor: [user.id],
           follower: eventFormat.user(user),
           followed: eventFormat.user(data.user),
           message: { ...EVENT.MESSAGES.FOLLOW },
@@ -55,7 +55,7 @@ module.exports = {
             user: [user.id],
             exploration: [data.exploration.id],
           },
-          uselessFor: [user.id],
+          uselessInTimelineFor: [user.id],
           author: eventFormat.user(user),
           exploration: eventFormat.exploration(data.exploration),
           comment: eventFormat.comment(data.comment),
@@ -96,7 +96,7 @@ module.exports = {
             user: [user.id],
             exploration: [data.exploration.id],
           },
-          uselessFor: [user.id],
+          uselessInTimelineFor: [user.id],
           user: eventFormat.user(user),
           exploration: eventFormat.exploration(data.exploration),
           message: { ...EVENT.MESSAGES.PARTICIPATION_ADD },
@@ -109,11 +109,72 @@ module.exports = {
             user: [user.id],
             exploration: [data.exploration.id],
           },
-          uselessFor: [user.id],
+          uselessInTimelineFor: [user.id],
+          isUselessForTimeline: true,
           user: eventFormat.user(user),
           exploration: eventFormat.exploration(data.exploration),
           message: { ...EVENT.MESSAGES.PARTICIPATION_REMOVED },
         });
+        break;
+      case EVENT.ACTION.CREATE_EXPLORATION:
+        await db.insertOne({
+          ...getEventData(),
+          concern: {
+            user: [user.id],
+            exploration: [data.exploration.id],
+          },
+          uselessInTimelineFor: [user.id],
+          isUselessForTimeline: true,
+          user: eventFormat.user(user),
+          exploration: eventFormat.exploration(data.exploration),
+          message: { ...EVENT.MESSAGES.CREATE_EXPLORATION },
+        });
+        break;
+      case EVENT.ACTION.EDIT_EXPLORATION:
+        await db.insertOne({
+          ...getEventData(),
+          concern: {
+            user: [user.id],
+            exploration: [data.exploration.id],
+          },
+          isUselessForTimeline: true,
+          user: eventFormat.user(user),
+          exploration: eventFormat.exploration(data.exploration),
+          message: { ...EVENT.MESSAGES.EDIT_EXPLORATION },
+        });
+        break;
+      case EVENT.ACTION.PUBLISH_EXPLORATION:
+        await db.insertOne({
+          ...getEventData(),
+          concern: {
+            user: [user.id],
+            exploration: [data.exploration.id],
+          },
+          user: eventFormat.user(user),
+          exploration: eventFormat.exploration(data.exploration),
+          message: { ...EVENT.MESSAGES.PUBLISH_EXPLORATION },
+        });
+        break;
+      case EVENT.ACTION.DELETE_EXPLORATION:
+        await db.insertOne({
+          ...getEventData(),
+          concern: {
+            user: [user.id],
+            exploration: [data.exploration.id],
+          },
+          isUselessForTimeline: true,
+          user: eventFormat.user(user),
+          exploration: eventFormat.exploration(data.exploration),
+          message: { ...EVENT.MESSAGES.DELETE_EXPLORATION },
+        });
+        break;
+      case EVENT.ACTION.SIGN_UP:
+        break;
+      case EVENT.ACTION.UPDATE_AVATAR:
+        break;
+      case EVENT.ACTION.UPDATE_BIO:
+        break;
+      case EVENT.ACTION.UPDATE_USER:
         break;
       default:
         break;

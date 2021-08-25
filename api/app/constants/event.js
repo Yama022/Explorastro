@@ -32,9 +32,41 @@ module.exports = {
       label: "PARTICIPATION_REMOVED",
       type: "PARTICIPATION",
     },
+    CREATE_EXPLORATION: {
+      label: "CREATE_EXPLORATION",
+      type: "EXPLORATION",
+    },
+    EDIT_EXPLORATION: {
+      label: "EDIT_EXPLORATION",
+      type: "EXPLORATION",
+    },
+    DELETE_EXPLORATION: {
+      label: "DELETE_EXPLORATION",
+      type: "EXPLORATION",
+    },
+    PUBLISH_EXPLORATION: {
+      label: "PUBLISH_EXPLORATION",
+      type: "EXPLORATION",
+    },
+    UPDATE_AVATAR: {
+      label: "UPDATE_AVATAR",
+      type: "AVATAR",
+    },
+    UPDATE_BIO: {
+      label: "UPDATE_BIO",
+      type: "BIO",
+    },
+    UPDATE_USER: {
+      label: "UPDATE_USER",
+      type: "UPDATE",
+    },
   },
 
   MESSAGES: {
+    SIGN_UP: {
+      fr: "s'est inscrit",
+      en: "has signed up",
+    },
     FOLLOW: {
       fr: `a commencé à suivre`,
       en: `started following`,
@@ -62,6 +94,34 @@ module.exports = {
     PARTICIPATION_REMOVED: {
       fr: `ne participe plus à`,
       en: `no longer participate to`,
+    },
+    CREATE_EXPLORATION: {
+      fr: `a créé`,
+      en: `created`,
+    },
+    EDIT_EXPLORATION: {
+      fr: 'a mis à jour',
+      en: 'updated',
+    },
+    PUBLISH_EXPLORATION: {
+      fr: 'organise',
+      en: 'organizes',
+    },
+    DELETE_EXPLORATION: {
+      fr: `a supprimé`,
+      en: `deleted`,
+    },
+    UPDATE_AVATAR: {
+      fr: `a modifié son avatar`,
+      en: `modified his avatar`,
+    },
+    UPDATE_BIO: {
+      fr: `a modifié sa bio`,
+      en: `modified his bio`,
+    },
+    UPDATE_USER: {
+      fr: `a modifié son profil`,
+      en: `modified his profile`,
     },
   },
 };
