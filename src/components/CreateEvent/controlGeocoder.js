@@ -6,7 +6,7 @@ import 'leaflet-control-geocoder/dist/Control.Geocoder';
 import L from 'leaflet';
 import PropTypes from 'prop-types';
 
-export default function ControlGeocoder({ coordLocation, coord }) {
+export default function ControlGeocoder({ coordLocation, coord, saveAddress }) {
   const map = useMap();
   let reverseTabCoord;
   const objCoord = {};
@@ -51,7 +51,7 @@ export default function ControlGeocoder({ coordLocation, coord }) {
       .on('markgeocode', (e) => {
         const latlng = e.geocode.center;
         coordLocation(latlng);
-        // saveAddress(e.geocode.name);
+        saveAddress(e.geocode.name);
         L.marker(latlng)
           .addTo(map)
           .bindPopup(e.geocode.name)
@@ -67,7 +67,7 @@ export default function ControlGeocoder({ coordLocation, coord }) {
 ControlGeocoder.propTypes = {
   coordLocation: PropTypes.func.isRequired,
   coord: PropTypes.array,
-  // saveAddress: PropTypes.func.isRequired,
+  saveAddress: PropTypes.func.isRequired,
 
 };
 

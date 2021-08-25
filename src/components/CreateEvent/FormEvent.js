@@ -59,7 +59,7 @@ export default function FormEvent({
         <ControlGeocoder
           coordLocation={getCoordLocation}
           coord={coord.coordinates}
-          // saveAddress={saveAddress}
+          saveAddress={saveAddress}
         />
       );
     }
@@ -67,7 +67,7 @@ export default function FormEvent({
       controlGeocoder = (
         <ControlGeocoder
           coordLocation={getCoordLocation}
-          // saveAddress={saveAddress}
+          saveAddress={saveAddress}
         />
       );
     }
