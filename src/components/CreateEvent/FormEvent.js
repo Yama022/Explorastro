@@ -49,6 +49,7 @@ export default function FormEvent({
 
   const handleOnClick = () => {
     OnClick();
+    console.log(published);
   };
 
   const coordtest = () => {
@@ -58,7 +59,7 @@ export default function FormEvent({
         <ControlGeocoder
           coordLocation={getCoordLocation}
           coord={coord.coordinates}
-          saveAddress={saveAddress}
+          // saveAddress={saveAddress}
         />
       );
     }
@@ -66,7 +67,7 @@ export default function FormEvent({
       controlGeocoder = (
         <ControlGeocoder
           coordLocation={getCoordLocation}
-          saveAddress={saveAddress}
+          // saveAddress={saveAddress}
         />
       );
     }
@@ -132,7 +133,6 @@ export default function FormEvent({
               onChange={handleOnchange}
             />
 
-            {/* <div className="form__right"> */}
             <div className="form__map">
               <MapContainer
           // Centering on the map of france

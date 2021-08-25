@@ -25,7 +25,7 @@ export const initialState = {
   maxRateEvent: 0,
   coord: [],
   eventCreated: [],
-  published: false,
+  published: '',
   eventCreatedLast: [],
   geog: [],
   modal: false,
