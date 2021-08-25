@@ -18,6 +18,7 @@ import Profile from 'src/containers/Profile';
 import Settings from 'src/containers/Settings';
 import FormEvent from 'src/containers/FormEvent';
 import Exploration from 'src/components/Exploration';
+import Avatar from 'src/components/Avatar';
 import Particles from 'src/components/Particles';
 
 import { IoIosArrowUp } from 'react-icons/io';
@@ -86,6 +87,9 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
               <Header />
               <Visuel />
               <Footer />
+            </Route>
+            <Route exact path="/avatar">
+              <Avatar />
             </Route>
             <Route exact path="/login">
               <Redirect to="/timeline" />
