@@ -1,66 +1,79 @@
 import React, { useEffect, useState } from 'react';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
+import PropTypes from 'prop-types';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import uuid from 'uuid';
-import PropTypes from 'prop-types';
 import {
   MapContainer, TileLayer, Marker, Popup, useMap,
 } from 'react-leaflet';
 import L from 'leaflet';
-import home from './home.png';
+import home from 'src/assets/images/home.png';
 
-export default function Map({ coord, fieldZone }) {
+export default function Map({ eventsList, fieldZone }) {
   // eslint-disable-next-line new-cap
   const newicon = new L.icon({
     iconUrl: home,
-    iconSize: [30, 30],
+    iconSize: [30, 20],
   });
   function LocationMarker() {
-    const [position, setPosition] = useState(null);
+    const [positionGeoloc, setPosition] = useState(null);
     const map = useMap();
 
     useEffect(() => {
+      let isCancelled = false;
+
       // Localisation de l'utilisateur
       map.locate().on('locationfound', (e) => {
-        setPosition(e.latlng);
-        // Définit la vue de la carte (centre géographique et zoom)
-        // map.flyTo(e.latlng, map.getZoom());
-        // Précision de la localisation en mètres
-        let circle;
+        if (!isCancelled) {
+          setPosition(e.latlng);
+          // Définit la vue de la carte (centre géographique et zoom)
+          // map.flyTo(e.latlng, map.getZoom());
+          // Précision de la localisation en mètres
 
-        map.eachLayer((layer) => {
-          if (layer.options.name !== 'tiles' && layer.name !== 'MarkerClusterGroup') {
-            map.removeLayer(layer);
-          }
-        });
+          let circle;
 
-        const radius = fieldZone * 1000;
-        circle = L.circle(e.latlng, radius);
+          map.eachLayer((layer) => {
+            if (layer.options.name !== 'tiles' && layer.name !== 'MarkerClusterGroup') {
+              map.removeLayer(layer);
+            }
+          });
 
-        // rendu géométrique
-        circle = L.circle(e.latlng, radius);
-        circle.addTo(map);
+          const radius = fieldZone * 1000;
+          circle = L.circle(e.latlng, radius);
+
+          // rendu géométrique
+          circle = L.circle(e.latlng, radius);
+          circle.addTo(map);
+        }
       });
+
+      return () => {
+        isCancelled = true;
+      };
     }, [fieldZone]);
 
-    return position === null ? null : (
+    return positionGeoloc && (
       <MarkerClusterGroup
         name="MarkerClusterGroup"
         key={uuid.v4()}
       >
-        {coord.map((element, index) => (
-        // eslint-disable-next-line react/no-array-index-key
-          <div key={index}>
-            <Marker names="marker" position={[element.Latitude, element.Longitude]} id="foo">
-              <Popup name="popup">Exploration vers {element.name}</Popup>
-            </Marker>
-          </div>
-        ))}
+        {eventsList.map((element) => {
+          const lat = element.geog.coordinates[1];
+          const long = element.geog.coordinates[0];
+          const coord = [lat, long];
+          return (
+            <div key={element.id}>
+              <Marker names="marker" position={coord}>
+                <Popup name="popup">Exploration vers {element.name}</Popup>
+              </Marker>
+            </div>
+          );
+        })}
 
-        <Marker position={position} icon={newicon}>
+        <Marker position={positionGeoloc} icon={newicon}>
           <Popup>
-            tu es la :)
-          </Popup>tiles
+            tu es la
+          </Popup>
         </Marker>
       </MarkerClusterGroup>
     );
@@ -69,6 +82,7 @@ export default function Map({ coord, fieldZone }) {
   return (
     <MapContainer
     // Centering on the map of france
+      className="discover__map__elem"
       center={[46.232192999999995, 2.209666999999996]}
       zoom={6.4}
       maxZoom={18}
@@ -91,6 +105,6 @@ export default function Map({ coord, fieldZone }) {
 }
 
 Map.propTypes = {
-  coord: PropTypes.arrayOf(PropTypes.object).isRequired,
+  eventsList: PropTypes.arrayOf(PropTypes.object).isRequired,
   fieldZone: PropTypes.number.isRequired,
 };

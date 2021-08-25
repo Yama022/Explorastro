@@ -1,7 +1,8 @@
-const { Exploration, User } = require("../models");
-const { errorMessage } = require("../constants");
+const { Exploration } = require("../models");
+const { errorMessage, EVENT } = require("../constants");
 const { Op } = require("sequelize");
-const { owp } = require('../utils');
+const { owp } = require("../utils");
+const { event } = require("../utils");
 
 /**
  * @typedef {CRS} CRS
@@ -92,13 +93,14 @@ module.exports = {
       const weather = await owp.getWeather(lgt, lat);
       explorationData.weather = weather;
     }
-    
+
     res.json(explorationData);
   },
 
   create: async (req, res) => {
     try {
       const { name } = req.body;
+      const user = req.user;
 
       if (!name) {
         return res.status(400).json({
@@ -137,6 +139,10 @@ module.exports = {
       await exploration.save();
 
       res.json(exploration);
+
+      return await event.saveUserAction(EVENT.ACTION.CREATE_EXPLORATION, user, {
+        exploration,
+      });
     } catch (error) {
       console.error(error);
       res.status(500).json({
@@ -150,6 +156,7 @@ module.exports = {
       const { id } = req.params;
       const lgt = req.body.location?.lng;
       const lat = req.body.location?.lat;
+      const user = req.user;
 
       const exploration = await Exploration.findByPk(id);
 
@@ -165,6 +172,9 @@ module.exports = {
       delete req.body.created_at;
       delete req.body.updated_at;
 
+      const isWantToPublish = req.body.is_published;
+      const isPublished = exploration.is_published;
+
       await exploration.update({
         ...req.body,
         geog: {
@@ -174,6 +184,17 @@ module.exports = {
       });
 
       res.status(200).json({
+        exploration,
+      });
+
+      // If the exploration is to be published, we need to create a new event
+      if (isWantToPublish && !isPublished) {
+        await event.saveUserAction(EVENT.ACTION.PUBLISH_EXPLORATION, user, {
+          exploration,
+        });
+      }
+
+      return await event.saveUserAction(EVENT.ACTION.EDIT_EXPLORATION, user, {
         exploration,
       });
     } catch (error) {
@@ -187,6 +208,7 @@ module.exports = {
   delete: async (req, res) => {
     try {
       const { id } = req.params;
+      const user = req.user;
 
       const exploration = await Exploration.findByPk(id);
 
@@ -199,6 +221,10 @@ module.exports = {
       await exploration.destroy();
 
       res.status(200).json({ OK: true });
+
+      return await event.saveUserAction(EVENT.ACTION.DELETE_EXPLORATION, user, {
+        exploration,
+      });
     } catch (error) {
       console.error(error);
       res.status(500).json({

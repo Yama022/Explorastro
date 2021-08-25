@@ -1,5 +1,5 @@
 import {
-  FORM,
+  FORM_SUBMIT_SEARCH_ADDRESS,
   SAVE_EXPLORATION,
   CHANGE_INPUT,
   CHANGE_INPUT_CREATE_EVENT,
@@ -8,32 +8,36 @@ import {
   ON_CLICK_PUBLISHED,
   EVENTS_CREATED,
   SAVE_EVENT_CREATED_LAST,
+  REMOVE_LAST_EVENT_ID,
+  CLICK_MODAL,
+  SAVE_ALL_EVENTS,
+  SAVE_ADDRESS,
 } from 'src/actions/exploration';
-import data from 'src/data/data.json';
 
 export const initialState = {
-  ville: '',
-  sortie: data,
+  addressInput: '',
+  address: [],
+  events: [],
   titleEvent: '',
   descEvent: '',
   zone: 10,
-  street: '',
-  city: '',
-  postalCode: 0,
   dateEvent: '',
   maxRateEvent: 0,
-  coord: '',
+  coord: [],
   eventCreated: [],
-  published: false,
+  published: '',
   eventCreatedLast: [],
+  geog: [],
+  modal: false,
+  imageUrl: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case FORM: {
+    case FORM_SUBMIT_SEARCH_ADDRESS: {
       return {
         ...state,
-        ville: action.payload,
+        addressInput: action.payload,
       };
     }
     case SAVE_EXPLORATION: {
@@ -62,10 +66,9 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
     case SAVE_EVENT_CREATED: {
-      const events = action.value.organized_explorations.map((element) => (element));
       return {
         ...state,
-        eventCreated: events,
+        eventCreated: action.value.organized_explorations,
 
       };
     }
@@ -77,19 +80,50 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
     case EVENTS_CREATED: {
+      console.log(action.value.geog);
       return {
         ...state,
         titleEvent: action.value.name,
         descEvent: action.value.description,
         dateEvent: action.value.date,
         maxRateEvent: action.value.max_participants,
-
+        geog: action.value.geog,
+        published: action.value.is_published,
       };
     }
     case SAVE_EVENT_CREATED_LAST: {
       return {
         ...state,
         eventCreatedLast: action.value,
+        published: initialState.published,
+
+      };
+    }
+    case REMOVE_LAST_EVENT_ID: {
+      return {
+        ...state,
+        eventCreatedLast: initialState.eventCreatedLast,
+
+      };
+    }
+    case CLICK_MODAL: {
+      return {
+        ...state,
+        modal: !state.modal,
+
+      };
+    }
+    case SAVE_ALL_EVENTS: {
+      return {
+        ...state,
+        events: action.value,
+
+      };
+    }
+    case SAVE_ADDRESS: {
+      return {
+        ...state,
+        events: [...state.address, action.value],
 
       };
     }

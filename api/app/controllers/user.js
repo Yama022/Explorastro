@@ -2,6 +2,8 @@ const { User } = require("../models");
 const bcrypt = require("bcrypt");
 const { errorMessage } = require("../constants");
 const { upload, s3 } = require("../utils");
+const { errorMessage, EVENT } = require("../constants");
+const { event } = require("../utils");
 
 /**
  * @typedef {User} User
@@ -71,15 +73,26 @@ module.exports = {
       delete req.body.id;
       delete req.body.username;
       delete req.body.password;
+      delete req.body.avatar_url;
       delete req.body.role_id;
       delete req.body.created_at;
       delete req.body.updated_at;
+
+      const isUpdateHisBio = req.body.bio !== user.bio && !!req.body.bio;
 
       await user.update({
         ...req.body,
       });
 
-      return res.status(200).json(user);
+      res.status(200).json({
+        user,
+      });
+
+      if (isUpdateHisBio) {
+        await event.saveUserAction(EVENT.ACTION.UPDATE_BIO, user, {})
+      }
+
+      return await event.saveUserAction(EVENT.ACTION.UPDATE_USER, user, {});
     } catch (error) {
       console.error(error);
       return res.status(500).json({
@@ -118,7 +131,12 @@ module.exports = {
         username,
       });
 
-      return res.json(user);
+      res.json({
+        user,
+      });
+
+      return await event.saveUserAction(EVENT.ACTION.UPDATE_USERNAME, user, {});
+
     } catch (error) {
       console.error(error);
       return res.status(500).json({
@@ -172,9 +190,12 @@ module.exports = {
         password: bcrypt.hashSync(new_password, 8)
       });
 
-      return res.json({
+      res.json({
         message: errorMessage.PASSWORD_UPDATED,
       });
+
+      return await event.saveUserAction(EVENT.ACTION.UPDATE_PASSWORD, user, {});
+
     } catch (error) {
       console.error(error);
       return res.status(500).json({
@@ -183,12 +204,7 @@ module.exports = {
     }
   },
 
-  updateAvatar: (req, res) => {
-    
-    return res.json({
-      message: 'NOT IMPLEMENTED',
-    });
-    
+  updateAvatar: (req, res) => {    
     upload(req, res, async (err) => {
       if (err) {
         return res.status(400).json({

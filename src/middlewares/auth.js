@@ -1,6 +1,5 @@
-import axios from 'axios';
 import {
-  LOGIN, SIGNUP, saveUser, CHECK_TOKEN, CHECK_USER_LOGGED,
+  LOGIN, SIGNUP, saveUser, CHECK_TOKEN, CHECK_USER_LOGGED, toggleSignup,
 } from 'src/actions/user';
 import api from './utils/api';
 
@@ -8,42 +7,45 @@ const auth = (store) => (next) => (action) => {
   switch (action.type) {
     case LOGIN: {
       const state = store.getState();
-      axios({
-        method: 'POST',
-        baseURL: 'https://explorastro-api.herokuapp.com/',
-        url: 'api/v1/login',
-        data: {
-          login: state.user.email,
-          password: state.user.password,
-        },
-      }).then((response) => {
-        localStorage.setItem('user', JSON.stringify(response.data));
-        api.defaults.headers.common.authorization = `Bearer ${response.data.accessToken}`;
-        const actionSaveUser = saveUser(response.data);
-        store.dispatch(actionSaveUser);
-      })
-        .catch((error) => console.error(error.response));
+      const data = {
+        login: state.user.email,
+        password: state.user.password,
+      };
+      const login = async () => {
+        try {
+          const response = await api.post('api/v1/login', data);
+          localStorage.setItem('user', JSON.stringify(response.data));
+          api.defaults.headers.common.authorization = `Bearer ${response.data.accessToken}`;
+          const actionSaveUser = saveUser(response.data);
+          store.dispatch(actionSaveUser);
+        }
+        catch (error) {
+          console.error(error.response);
+        }
+      };
+      login();
       break;
     }
     case SIGNUP: {
       const state = store.getState();
-      axios({
-        method: 'POST',
-        baseURL: 'https://explorastro-api.herokuapp.com/',
-        url: 'api/v1/signup',
-        data: {
-          firstname: state.user.firstname,
-          lastname: state.user.lastname,
-          username: state.user.username,
-          email: state.user.email,
-          password: state.user.password,
-          password_confirmation: state.user.passwordConfirmation,
-        },
-      }).then((response) => {
-        const actionSaveUser = saveUser(response.data.user);
-        store.dispatch(actionSaveUser);
-      })
-        .catch((error) => console.error(error.response));
+      const data = {
+        firstname: state.user.firstname,
+        lastname: state.user.lastname,
+        username: state.user.username,
+        email: state.user.email,
+        password: state.user.password,
+        password_confirmation: state.user.passwordConfirmation,
+      };
+      const signup = async () => {
+        try {
+          await api.post('api/v1/signup', data);
+          store.dispatch(toggleSignup);
+        }
+        catch (error) {
+          console.error(error.response);
+        }
+      };
+      signup();
       break;
     }
     case CHECK_TOKEN: {
@@ -66,7 +68,7 @@ const auth = (store) => (next) => (action) => {
         //     // avec la même action que pour le login
         //     const payload = { ...response.data };
         //     const actionSaveUser = saveUser(payload);
-        //     store.dispatch(actionSaveUser);
+        //     store.dispatch(actionSaveUser);aniser une sortie
         //   })
         //   .catch((error) => console.log(error));
       }

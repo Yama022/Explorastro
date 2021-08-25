@@ -17,7 +17,7 @@ export default function LoginForm({
       <div className="field">
         <label className="label">Email ou nom d'utilisateur</label>
         <div className="control has-icons-left has-icons-right">
-          <input className="input is-success" placeholder="ex: astroCharles@explorastro.com" value={email} name="email" onChange={handleChange} />
+          <input className="input" placeholder="ex: astroCharles@explorastro.com" value={email} name="email" onChange={handleChange} />
           <span className="icon is-small is-left">
             <FaAt />
           </span>
@@ -26,14 +26,14 @@ export default function LoginForm({
       <div className="field">
         <label className="label">Mot de Passe</label>
         <div className="control has-icons-left has-icons-right">
-          <input className="input is-success" type="password" placeholder="ex: MyStr0ngP455sWoRD" value={password} name="password" onChange={handleChange} />
+          <input className="input" type="password" placeholder="ex: MyStr0ngP455sWoRD" value={password} name="password" onChange={handleChange} />
           <span className="icon is-small is-left">
             <FaKey />
           </span>
         </div>
       </div>
       <div className="login__container__form__buttons-container">
-        <div className="button --outlined" onClick={handleToggleSignup}>Inscription</div>
+        <button type="button" className="button --outlined" onClick={handleToggleSignup}>Inscription</button>
         <button type="submit" className="button purple">Se Connecter</button>
       </div>
     </form>

@@ -39,16 +39,12 @@ body {
 .button__return__top {
   display: none;
   position: fixed;
+  z-index: 999;
+  padding: 0;
+  height: 60px;
+  width: 60px;
+  border-radius: 10px;
   right: 10%;
-  top: 85%;
-  &__button {
-    position: relative;
-    left: 0;
-    width: 50px;
-    height: 50px;
-  }
-  & button {
-    background-color: $secondary-color;
-    border: none;
-  }
+  bottom: 15%;
+  font-size: 3em;
 }

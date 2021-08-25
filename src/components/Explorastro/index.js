@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import Header from 'src/containers/Header';
 import Footer from 'src/components/Footer';
-import Timeline from 'src/components/Timeline';
+import Timeline from 'src/containers/Timeline';
 import Error from 'src/components/Error';
 import Discover from 'src/containers/Discover';
 import CreateEvent from 'src/containers/CreateEvent';
@@ -14,9 +14,14 @@ import Guide from 'src/components/Guide';
 import Landing from 'src/components/Landing';
 import Photo from 'src/components/Guide/Photo';
 import Visuel from 'src/components/Guide/Visuel';
-import { FcCollapse } from 'react-icons/fc';
+import Profile from 'src/containers/Profile';
 import Settings from 'src/containers/Settings';
 import FormEvent from 'src/containers/FormEvent';
+import Exploration from 'src/components/Exploration';
+import Avatar from 'src/components/Avatar';
+import Particles from 'src/components/Particles';
+
+import { IoIosArrowUp } from 'react-icons/io';
 
 export default function Explorastro({ isLogged, checkIsLogged }) {
   useEffect(() => {
@@ -34,6 +39,7 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
 
   return (
     <div className="explorastro">
+      <Particles />
       {isLogged
         ? (
           <Switch>
@@ -49,6 +55,11 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
             <Route exact path="/timeline">
               <Header />
               <Timeline />
+              <Footer />
+            </Route>
+            <Route exact path="/exploration">
+              <Header />
+              <Exploration />
               <Footer />
             </Route>
             <Route exact path="/exploration/create">
@@ -77,9 +88,22 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
               <Visuel />
               <Footer />
             </Route>
+            <Route exact path="/avatar">
+              <Avatar />
+            </Route>
             <Route exact path="/login">
               <Redirect to="/timeline" />
             </Route>
+            <Route
+              path="/profile/:id"
+              render={(prop) => (
+                <>
+                  <Header />
+                  <Profile profileId={Number(prop.match.params.id)} />
+                  <Footer />
+                </>
+              )}
+            />
             <Route exact path="/settings">
               <Header />
               <Settings />
@@ -115,21 +139,19 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
             </Route>
           </Switch>
         )}
-      <div className="button__return__top">
-        <button
-          type="button"
-          onClick={() => {
-            window.scrollTo({
-              top: 0,
-              behavior: 'smooth',
-            });
-          }}
-        >
-          <FcCollapse className="button__return__top__button" />
-        </button>
-      </div>
+      <button
+        type="button"
+        className="button__return__top button --secondary animate__animated animate__fadeInRight animate__faster"
+        onClick={() => {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+          });
+        }}
+      >
+        <IoIosArrowUp />
+      </button>
     </div>
-
   );
 }
 

@@ -1,5 +1,6 @@
-const { errorMessage } = require("../constants");
+const { errorMessage, EVENT } = require("../constants");
 const { User } = require("../models");
+const { event } = require("../utils");
 
 module.exports = {
   follow: async (req, res) => {
@@ -31,8 +32,12 @@ module.exports = {
 
       await user.addFollowing(userToFollow);
 
-      return res.status(200).send({
+      res.status(200).send({
         message: errorMessage.FOLLOW_IS_SUCCESS,
+      });
+
+      return await event.saveUserAction(EVENT.ACTION.FOLLOW, user, {
+        user: userToFollow,
       });
     } catch (error) {
       console.error(error);
@@ -69,8 +74,12 @@ module.exports = {
 
       await user.removeFollowing(userToUnfollow);
 
-      return res.status(200).send({
+      res.status(200).send({
         message: errorMessage.UNFOLLOW_IS_SUCCESS,
+      });
+
+      return await event.saveUserAction(EVENT.ACTION.UNFOLLOW, user, {
+        user: userToUnfollow,
       });
     } catch (error) {
       console.error(error);

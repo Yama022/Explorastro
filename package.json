@@ -44,7 +44,7 @@
     "style-loader": "^3.0.0",
     "terser-webpack-plugin": "^5.1.4",
     "webpack": "^5.42.1",
-    "webpack-cli": "^4.7.2",
+    "webpack-cli": "^4.8.0",
     "webpack-dev-server": "^3.11.2",
     "webpack-merge": "^5.8.0"
   },
@@ -63,10 +63,13 @@
     "react-icons": "^4.2.0",
     "react-leaflet": "^3.2.1",
     "react-leaflet-markercluster": "^3.0.0-rc1",
+    "react-nice-avatar": "^1.2.2",
     "react-parallax": "^3.3.0",
+    "react-particles-js": "^3.5.3",
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
     "redux": "^4.1.1",
+    "tsparticles": "^1.34.0",
     "uuidv4": "^6.2.11"
   }
 }

@@ -15,6 +15,7 @@
     "aws-sdk": "^2.974.0",
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
+    "dayjs": "^1.10.6",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-swagger-generator": "^1.1.17",
@@ -24,6 +25,7 @@
     "log-beautify": "^1.2.0",
     "multer": "^1.4.3",
     "multer-s3": "^2.9.0",
+    "mongodb": "^4.1.0",
     "pg": "^8.7.1",
     "sequelize": "^6.6.5"
   },

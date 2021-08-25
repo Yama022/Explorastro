@@ -6,11 +6,14 @@ import 'leaflet-control-geocoder/dist/Control.Geocoder';
 import L from 'leaflet';
 import PropTypes from 'prop-types';
 
-export default function ControlGeocoder({ coordLocation }) {
+export default function ControlGeocoder({ coordLocation, coord, saveAddress }) {
   const map = useMap();
+  let reverseTabCoord;
+  const objCoord = {};
 
   useEffect(() => {
     let geocoder = L.Control.Geocoder.arcgis();
+
     if (typeof URLSearchParams !== 'undefined' && location.search) {
       // parse /?geocoder=nominatim from URL
       const params = new URLSearchParams(location.search);
@@ -22,6 +25,21 @@ export default function ControlGeocoder({ coordLocation }) {
         console.warn('Unsupported geocoder', geocoderString);
       }
     }
+
+    if (coord.length) {
+      reverseTabCoord = coord.reverse();
+
+      [objCoord.lat, objCoord.lng] = [reverseTabCoord[0], reverseTabCoord[1]];
+
+      const latLon = L.latLng(reverseTabCoord);
+      const bounds = latLon.toBounds(500);
+      map.panTo(latLon).fitBounds(bounds);
+      L.marker(objCoord)
+        .addTo(map)
+        .bindPopup('e.geocode.name')
+        .openPopup();
+    }
+
     L.Control.geocoder({
       query: '',
       placeholder: 'adresse... ',
@@ -32,9 +50,8 @@ export default function ControlGeocoder({ coordLocation }) {
     })
       .on('markgeocode', (e) => {
         const latlng = e.geocode.center;
-        console.log(latlng);
-        console.log(e.geocode.bbox);
         coordLocation(latlng);
+        saveAddress(e.geocode.name);
         L.marker(latlng)
           .addTo(map)
           .bindPopup(e.geocode.name)
@@ -49,5 +66,12 @@ export default function ControlGeocoder({ coordLocation }) {
 
 ControlGeocoder.propTypes = {
   coordLocation: PropTypes.func.isRequired,
+  coord: PropTypes.array,
+  saveAddress: PropTypes.func.isRequired,
 
+};
+
+ControlGeocoder.defaultProps = {
+
+  coord: [],
 };

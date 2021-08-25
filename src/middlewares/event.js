@@ -7,6 +7,8 @@ import {
   getEventCreatedlast,
   GET_EVENT_CREATED_LAST,
   saveEventcreatedlast,
+  GET_ALL_EVENTS,
+  saveAllEvents,
 } from 'src/actions/exploration';
 import { findEventByName } from '../selectors/exploration';
 import api from './utils/api';
@@ -18,7 +20,7 @@ const event = (store) => (next) => (action) => {
       const state = store.getState();
       const position = state.exploration.coord;
       const id = action.value;
-      console.log(position);
+
       const newEvent = {
         name: state.exploration.titleEvent,
         description: state.exploration.descEvent,
@@ -27,6 +29,7 @@ const event = (store) => (next) => (action) => {
         max_participants: state.exploration.maxRateEvent,
         location: position,
         is_published: state.exploration.published,
+        image_url: state.exploration.imageUrl,
 
       };
       const sendPostEvent = async () => {
@@ -66,7 +69,6 @@ const event = (store) => (next) => (action) => {
           const result = resp.data;
           const titleEvent = action.value;
           const lastEvent = findEventByName(result.organized_explorations, titleEvent);
-
           store.dispatch(saveEventcreatedlast(lastEvent));
         }
         catch (err) {
@@ -78,7 +80,6 @@ const event = (store) => (next) => (action) => {
     }
     case SUBMIT_FROM_CREATE_EVENT: {
       const state = store.getState();
-      console.log(state.exploration.titleEvent);
       const newEvent = {
         name: state.exploration.titleEvent,
 
@@ -98,7 +99,6 @@ const event = (store) => (next) => (action) => {
     }
     case REMOVE_EVENT: {
       const id = action.value;
-      console.log(id);
       const deleteEvent = async () => {
         try {
           const resp = await api.delete(`/api/v1/exploration/${id}/delete`);
@@ -109,6 +109,22 @@ const event = (store) => (next) => (action) => {
         }
       };
       deleteEvent();
+      break;
+    }
+    case GET_ALL_EVENTS: {
+      const getAllEvents = async () => {
+        try {
+          console.log('toto');
+          const resp = await api.get('/api/v1/exploration');
+          const result = resp.data;
+          console.log(resp);
+          store.dispatch(saveAllEvents(result));
+        }
+        catch (err) {
+          console.error(err);
+        }
+      };
+      getAllEvents();
       break;
     }
 

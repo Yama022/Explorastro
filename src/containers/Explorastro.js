@@ -4,6 +4,7 @@ import Explorastro from 'src/components/Explorastro';
 import { checkUserLogged } from 'src/actions/user';
 
 const mapStateToProps = (state) => ({
+  loading: state.user.loading,
   isLogged: state.user.logged,
 });
 

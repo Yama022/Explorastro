@@ -1,41 +1,49 @@
 /* eslint-disable react/no-array-index-key */
-/* eslint-disable react/button-has-type */
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import * as dayjs from 'dayjs';
+import imageEvent from 'src/assets/images/default-explo.jpg';
 import Map from './Map';
 import Filter from './Filter';
-import imageEvent from './bg.png';
 
 export default function Discover({
   onFormSubmit,
-  data,
-  explorations,
+  events,
+  explorationsFilter,
   onChangeInput,
   zone,
+  getEvents,
+  address,
 }) {
-  const tabSorties = explorations.length > 0 ? explorations : data;
+  useEffect(() => {
+    getEvents();
+  }, [getEvents]);
 
-  data.forEach((element) => {
-    element.desc = 'Venez decouvrir le ciel samedi 14/08/2021 !! ça va être trop bien !!';
-    element.title = 'sortie astro entre poto !!';
-  });
+  const eventsList = explorationsFilter.length > 0 ? explorationsFilter : events;
+
   return (
-    <div className="map">
-      <div className="map__list_events">
-        {tabSorties.map((element, index) => (
-          <div key={index} className="map__list_events__box">
-            <img className="map__list_events__box__img" src={imageEvent} alt="" />
-            <div className="map__list_events__box__content">
-              <h2 className="map__list_events__box__content__h2">{element.title} vers {element.name}</h2>
-              <p>{element.desc}</p>
-              <button className="map__list_events__box__content__btn">Participer</button>
+    <div className="discover">
+      <div className="discover__list-events">
+        {eventsList.map((element, index) => (
+          <div key={index} className="discover__list-events__box">
+            <img className="discover__list-events__box__img" src={imageEvent} alt="" />
+            <div className="discover__list-events__box__content">
+              <h2 className="discover__list-events__box__content__h2">{element.name}</h2>
+              <div className="discover__list-events__box__content__info">
+                <div><span>{element.date ? dayjs(element.date).format('DD/MM/YYYY  mm:ss') : ''}</span></div>
+                <div><span>{element.max_participants}</span> invités maximum</div>
+              </div>
+              <div className="discover__list-events__box__content__description">{element.description}</div>
+              <div className="button --secondary">Participer</div>
             </div>
           </div>
         ))}
       </div>
-      <Filter onSubmit={onFormSubmit} onChange={onChangeInput} fieldZone={zone} />
+      <div className="discover__map">
+        <Filter onSubmit={onFormSubmit} onChange={onChangeInput} fieldZone={zone} />
 
-      <Map coord={tabSorties} fieldZone={zone} />
+        <Map eventsList={eventsList} fieldZone={zone} address={address} />
+      </div>
 
     </div>
   );
@@ -43,8 +51,10 @@ export default function Discover({
 
 Discover.propTypes = {
   onFormSubmit: PropTypes.func.isRequired,
-  data: PropTypes.arrayOf(PropTypes.object).isRequired,
-  explorations: PropTypes.arrayOf(PropTypes.object).isRequired,
+  events: PropTypes.arrayOf(PropTypes.object).isRequired,
+  explorationsFilter: PropTypes.arrayOf(PropTypes.object).isRequired,
   onChangeInput: PropTypes.func.isRequired,
   zone: PropTypes.number.isRequired,
+  getEvents: PropTypes.func.isRequired,
+  address: PropTypes.array.isRequired,
 };
