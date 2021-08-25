@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import mascot from 'src/assets/images/mascot-rocket.svg';
+import mascot from 'src/assets/images/mascot-skating.svg';
 
 export default function Follows({ users }) {
   return (

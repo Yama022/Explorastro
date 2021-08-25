@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { FaSearchLocation } from 'react-icons/fa';
+
 export default function Filter({ onSubmit, onChange, fieldZone }) {
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -25,9 +27,6 @@ export default function Filter({ onSubmit, onChange, fieldZone }) {
             </div>
           </div>
         </label>
-        <button type="submit" className="button purple">Rechercher</button>
-      </form>
-      <form onSubmit={(event) => event.preventDefault()}>
         <label className="label discover__map__filter__label" htmlFor="ville">
           Par département
           <div className="field">
@@ -42,15 +41,15 @@ export default function Filter({ onSubmit, onChange, fieldZone }) {
             </div>
           </div>
         </label>
-        <button type="submit" className="button purple">Rechercher</button>
-      </form>
-      <form onSubmit={(event) => event.preventDefault()}>
         <label className="label discover__map__filter__label" htmlFor="km">Autour de moi sur {fieldZone} km
           <div className="field has-addons">
-            <input type="range" id="km" name="cowbell" min="0" max="100" step="10" onChange={handleOnchange} />
+            <input type="range" id="km" name="distance" min="10" max="400" step="10" onChange={handleOnchange} />
           </div>
         </label>
-        <button type="submit" className="button purple">Rechercher</button>
+        <button type="submit" className="button --secondary">
+          <span className="icon"><FaSearchLocation /></span>
+          <span>Rechercher</span>
+        </button>
       </form>
     </div>
   );

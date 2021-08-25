@@ -2,7 +2,7 @@
 
 .profile {
   width: 80%;
-  margin: 2*$gutter auto 0 auto;
+  margin: 2.5*$gutter auto 0 auto;
   color: $light-color;
 
   &__header {
@@ -46,6 +46,9 @@
           &__cog {
             font-size: 2.2em;
             color: $tertiary-color;
+            &:hover {
+              color: $light-color;
+            }
           }
         }
       }
