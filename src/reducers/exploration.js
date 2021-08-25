@@ -25,7 +25,7 @@ export const initialState = {
   maxRateEvent: 0,
   coord: [],
   eventCreated: [],
-  published: false,
+  published: '',
   eventCreatedLast: [],
   geog: [],
   modal: false,
@@ -88,6 +88,7 @@ const reducer = (state = initialState, action = {}) => {
         dateEvent: action.value.date,
         maxRateEvent: action.value.max_participants,
         geog: action.value.geog,
+        published: action.value.is_published,
       };
     }
     case SAVE_EVENT_CREATED_LAST: {
@@ -122,7 +123,7 @@ const reducer = (state = initialState, action = {}) => {
     case SAVE_ADDRESS: {
       return {
         ...state,
-        address: [...state.address, action.value],
+        events: [...state.address, action.value],
 
       };
     }

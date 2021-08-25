@@ -1,6 +1,6 @@
 const { errorMessage, EVENT } = require("../constants");
 const { Comment, Exploration } = require("../models");
-const {event} = require("../utils");
+const { event } = require("../utils");
 
 module.exports = {
   getAll: async (req, res) => {
@@ -43,14 +43,13 @@ module.exports = {
 
       await exploration.addComment(comment);
 
-      // Save event
-      await event.saveUserAction(EVENT.ACTION.COMMENT, user, {
-        exploration: exploration.toJSON(),
-        comment: comment.toJSON(),
-      });
-
       res.status(200).json({
         message: errorMessage.COMMENT_ADDED,
+      });
+
+      return await event.saveUserAction(EVENT.ACTION.COMMENT, user, {
+        exploration: exploration.toJSON(),
+        comment: comment.toJSON(),
       });
     } catch (error) {
       console.error(error);
@@ -87,14 +86,13 @@ module.exports = {
 
       await comment.update({ content });
 
-      // Save event
+      res.status(200).json({
+        message: errorMessage.COMMENT_EDITED,
+      });
+
       await event.saveUserAction(EVENT.ACTION.EDIT_COMMENT, user, {
         exploration: exploration.toJSON(),
         comment: comment.toJSON(),
-      });
-
-      res.status(200).json({
-        message: errorMessage.COMMENT_EDITED,
       });
     } catch (error) {
       console.error(error);
@@ -131,13 +129,12 @@ module.exports = {
       await exploration.removeComment(comment);
       await comment.destroy();
 
-      // Save event
-      await event.saveUserAction(EVENT.ACTION.DELETE_COMMENT, user, {
-        exploration: exploration.toJSON(),
-      });
-
       res.status(200).json({
         message: errorMessage.COMMENT_DELETED,
+      });
+
+      await event.saveUserAction(EVENT.ACTION.DELETE_COMMENT, user, {
+        exploration: exploration.toJSON(),
       });
     } catch (error) {
       console.error(error);

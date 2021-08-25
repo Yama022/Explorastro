@@ -23,8 +23,8 @@ const mapStateToProps = (state, ownProps) => ({
   coord: state.exploration.geog,
   modal: state.exploration.modal,
   imageUrl: state.exploration.imageUrl,
-
-});
+}
+);
 
 const mapDispatchToProps = (dispatch) => ({
   onChangeInput: (value, key) => {

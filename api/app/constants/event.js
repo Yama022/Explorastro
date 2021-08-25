@@ -24,9 +24,57 @@ module.exports = {
       label: "DELETE_COMMENT",
       type: "COMMENT",
     },
+    PARTICIPATION_ADD: {
+      label: "PARTICIPATION_ADD",
+      type: "PARTICIPATION",
+    },
+    PARTICIPATION_REMOVED: {
+      label: "PARTICIPATION_REMOVED",
+      type: "PARTICIPATION",
+    },
+    CREATE_EXPLORATION: {
+      label: "CREATE_EXPLORATION",
+      type: "EXPLORATION",
+    },
+    EDIT_EXPLORATION: {
+      label: "EDIT_EXPLORATION",
+      type: "EXPLORATION",
+    },
+    DELETE_EXPLORATION: {
+      label: "DELETE_EXPLORATION",
+      type: "EXPLORATION",
+    },
+    PUBLISH_EXPLORATION: {
+      label: "PUBLISH_EXPLORATION",
+      type: "EXPLORATION",
+    },
+    UPDATE_AVATAR: {
+      label: "UPDATE_AVATAR",
+      type: "AVATAR",
+    },
+    UPDATE_BIO: {
+      label: "UPDATE_BIO",
+      type: "BIO",
+    },
+    UPDATE_USERNAME: {
+      label: "UPDATE_USERNAME",
+      type: "UPDATE",
+    },
+    UPDATE_PASSWORD: {
+      label: "UPDATE_PASSWORD",
+      type: "UPDATE",
+    },
+    UPDATE_USER: {
+      label: "UPDATE_USER",
+      type: "UPDATE",
+    },
   },
 
   MESSAGES: {
+    SIGN_UP: {
+      fr: "s'est inscrit",
+      en: "has signed up",
+    },
     FOLLOW: {
       fr: `a commencé à suivre`,
       en: `started following`,
@@ -46,6 +94,50 @@ module.exports = {
     DELETE_COMMENT: {
       fr: `a supprimé son commentaire sur`,
       en: `modified his comment on`,
+    },
+    PARTICIPATION_ADD: {
+      fr: `participe à`,
+      en: `participes to`,
+    },
+    PARTICIPATION_REMOVED: {
+      fr: `ne participe plus à`,
+      en: `no longer participate to`,
+    },
+    CREATE_EXPLORATION: {
+      fr: `a créé`,
+      en: `created`,
+    },
+    EDIT_EXPLORATION: {
+      fr: 'a mis à jour',
+      en: 'updated',
+    },
+    PUBLISH_EXPLORATION: {
+      fr: 'organise',
+      en: 'organizes',
+    },
+    DELETE_EXPLORATION: {
+      fr: `a supprimé`,
+      en: `deleted`,
+    },
+    UPDATE_AVATAR: {
+      fr: `a modifié son avatar`,
+      en: `modified his avatar`,
+    },
+    UPDATE_BIO: {
+      fr: `a modifié sa bio`,
+      en: `modified his bio`,
+    },
+    UPDATE_USERNAME: {
+      fr: `a modifié son pseudo`,
+      en: `modified his username`,
+    },
+    UPDATE_PASSWORD: {
+      fr: `a modifié son mot de passe`,
+      en: `modified his password`,
+    },
+    UPDATE_USER: {
+      fr: `a modifié son profil`,
+      en: `modified his profile`,
     },
   },
 };
