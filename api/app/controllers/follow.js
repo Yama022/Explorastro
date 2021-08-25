@@ -30,13 +30,14 @@ module.exports = {
         });
       }
 
-      await event.saveUserAction(EVENT.ACTION.FOLLOW, user, {
-        user: userToFollow,
-      });
       await user.addFollowing(userToFollow);
 
-      return res.status(200).send({
+      res.status(200).send({
         message: errorMessage.FOLLOW_IS_SUCCESS,
+      });
+
+      return await event.saveUserAction(EVENT.ACTION.FOLLOW, user, {
+        user: userToFollow,
       });
     } catch (error) {
       console.error(error);
@@ -71,13 +72,14 @@ module.exports = {
         });
       }
 
-      await event.saveUserAction(EVENT.ACTION.UNFOLLOW, user, {
-        user: userToUnfollow,
-      });
       await user.removeFollowing(userToUnfollow);
 
-      return res.status(200).send({
+      res.status(200).send({
         message: errorMessage.UNFOLLOW_IS_SUCCESS,
+      });
+
+      return await event.saveUserAction(EVENT.ACTION.UNFOLLOW, user, {
+        user: userToUnfollow,
       });
     } catch (error) {
       console.error(error);
