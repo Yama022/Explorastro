@@ -7,6 +7,7 @@ import Comment from './Comment';
 import NewExploration from './NewExploration';
 import UpdateAvatar from './UpdateAvatar';
 import Participation from './Participation';
+import Description from './Description';
 
 export default function Timeline() {
   return (
@@ -18,6 +19,7 @@ export default function Timeline() {
       </aside>
       <main className="timeline-main">
         <div className="timeline-main__exploration">
+          <Description />
           <Participation />
           <UpdateAvatar />
           <Follow />

@@ -1,18 +1,15 @@
 import React from 'react';
 
 import defaultAvatar from 'src/assets/images/luffy.png';
-import defaultExplo from 'src/assets/images/default-explo.jpg';
 
-export default function Comment() {
+export default function Description() {
   return (
-    <div className="comment">
-
-      <div className="comment__title">
+    <div className="desc">
+      <div className="desc__title">
         <img src={defaultAvatar} alt="avatar" />
-        <h3>Théo a commenté "La Nuit des Etoiles"</h3>
+        <h3> Toto l'asticot a mit à jour sa bio</h3>
       </div>
-
-      <div className="comment__content">
+      <div className="desc__content">
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor
           enim assumenda dolorum suscipit voluptatibus, consectetur minima
@@ -23,11 +20,7 @@ export default function Comment() {
         </p>
       </div>
 
-      <div className="comment__image">
-        <img src={defaultExplo} alt="Add_image" />
-      </div>
-
-      <div className="comment__date">
+      <div className="desc__date">
         <p>Le Mardi 29 Août à 13h48</p>
       </div>
     </div>

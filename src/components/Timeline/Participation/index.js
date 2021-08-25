@@ -26,4 +26,4 @@ export default function JoinExplo() {
       </div>
     </div>
   );
-};
+}
