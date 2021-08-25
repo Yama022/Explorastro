@@ -14,42 +14,43 @@ export default function Filter({ onSubmit, onChange, fieldZone }) {
     onChange(zone);
   };
   return (
-    <div className="map__filter">
-      <h2 className="map__filter__h2">Découvrir</h2>
+    <div className="discover__map__filter">
+      <h2 className="discover__map__filter__title">Découvrir</h2>
       <form onSubmit={handleSubmit}>
-        <label className="label map__filter__label" htmlFor="ville">
+        <label className="label discover__map__filter__label" htmlFor="ville">
           Par ville
-          <div className="field has-addons">
-            <div className="control width">
-              <input className="input" type="text" id="ville" placeholder="Rechercher" />
+          <div className="field">
+            <div className="control">
+              <input className="input discover__map__filter__label__input" type="text" id="ville" placeholder="Rechercher" />
             </div>
-            <button type="submit" className="button is-primary">Rerchercher</button>
           </div>
         </label>
+        <button type="submit" className="button purple">Rechercher</button>
       </form>
-      <form>
-        <label className="label map__filter__label" htmlFor="ville">
-          Par région / département
-          <div className="field has-addons">
-            <div className="select is-normal-test select is-fullwidth">
+      <form onSubmit={(event) => event.preventDefault()}>
+        <label className="label discover__map__filter__label" htmlFor="ville">
+          Par département
+          <div className="field">
+            <div className="select discover__map__filter__label__input">
               <select defaultValue="DEFAULT">
-                <option value="DEFAULT" disabled>Choose a salutation ...</option>
-                <option value="1">Lot</option>
-                <option value="2">Tar</option>
-                <option value="3">Haut garonne</option>
+                <option value="DEFAULT" disabled>Choisir un département</option>
+                <option value="1">Haut garonne</option>
+                <option value="2">Ille-et-Vilaine</option>
+                <option value="3">Lot</option>
+                <option value="4">Tar</option>
               </select>
             </div>
-            <button type="submit" className="button is-primary">Rerchercher</button>
           </div>
         </label>
+        <button type="submit" className="button purple">Rechercher</button>
       </form>
-      <form>
-        <label className="label map__filter__label" htmlFor="km">Autour de moi sur {fieldZone} km
+      <form onSubmit={(event) => event.preventDefault()}>
+        <label className="label discover__map__filter__label" htmlFor="km">Autour de moi sur {fieldZone} km
           <div className="field has-addons">
             <input type="range" id="km" name="cowbell" min="0" max="100" step="10" onChange={handleOnchange} />
-
           </div>
         </label>
+        <button type="submit" className="button purple">Rechercher</button>
       </form>
     </div>
   );
