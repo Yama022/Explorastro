@@ -1,8 +1,8 @@
-const { User, Token } = require("../models");
 const bcrypt = require("bcrypt");
+const { User, Token } = require("../models");
 const { Op } = require("sequelize");
-const { errorMessage } = require("../constants");
-const { jwt } = require("../utils");
+const { errorMessage, EVENT } = require("../constants");
+const { jwt, event } = require("../utils");
 
 module.exports = {
   login: async (req, res) => {
@@ -109,7 +109,10 @@ module.exports = {
 
       await user.save();
 
-      return res.status(200).json({ user });
+      res.status(200).json({ user });
+
+      return await event.saveUserAction(EVENT.ACTION.SIGN_UP, user, {});
+
     } catch (error) {
       console.error(error);
       return res.status(500).send({

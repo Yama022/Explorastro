@@ -56,6 +56,14 @@ module.exports = {
       label: "UPDATE_BIO",
       type: "BIO",
     },
+    UPDATE_USERNAME: {
+      label: "UPDATE_USERNAME",
+      type: "UPDATE",
+    },
+    UPDATE_PASSWORD: {
+      label: "UPDATE_PASSWORD",
+      type: "UPDATE",
+    },
     UPDATE_USER: {
       label: "UPDATE_USER",
       type: "UPDATE",
@@ -118,6 +126,14 @@ module.exports = {
     UPDATE_BIO: {
       fr: `a modifié sa bio`,
       en: `modified his bio`,
+    },
+    UPDATE_USERNAME: {
+      fr: `a modifié son pseudo`,
+      en: `modified his username`,
+    },
+    UPDATE_PASSWORD: {
+      fr: `a modifié son mot de passe`,
+      en: `modified his password`,
     },
     UPDATE_USER: {
       fr: `a modifié son profil`,

@@ -30,7 +30,6 @@ module.exports = {
           concern: {
             user: [user.id, data.user.id],
           },
-          uselessInTimelineFor: [user.id],
           follower: eventFormat.user(user),
           followed: eventFormat.user(data.user),
           message: { ...EVENT.MESSAGES.FOLLOW },
@@ -55,7 +54,6 @@ module.exports = {
             user: [user.id],
             exploration: [data.exploration.id],
           },
-          uselessInTimelineFor: [user.id],
           author: eventFormat.user(user),
           exploration: eventFormat.exploration(data.exploration),
           comment: eventFormat.comment(data.comment),
@@ -96,7 +94,6 @@ module.exports = {
             user: [user.id],
             exploration: [data.exploration.id],
           },
-          uselessInTimelineFor: [user.id],
           user: eventFormat.user(user),
           exploration: eventFormat.exploration(data.exploration),
           message: { ...EVENT.MESSAGES.PARTICIPATION_ADD },
@@ -109,7 +106,6 @@ module.exports = {
             user: [user.id],
             exploration: [data.exploration.id],
           },
-          uselessInTimelineFor: [user.id],
           isUselessForTimeline: true,
           user: eventFormat.user(user),
           exploration: eventFormat.exploration(data.exploration),
@@ -123,7 +119,6 @@ module.exports = {
             user: [user.id],
             exploration: [data.exploration.id],
           },
-          uselessInTimelineFor: [user.id],
           isUselessForTimeline: true,
           user: eventFormat.user(user),
           exploration: eventFormat.exploration(data.exploration),
@@ -169,12 +164,48 @@ module.exports = {
         });
         break;
       case EVENT.ACTION.SIGN_UP:
+        await db.insertOne({
+          ...getEventData(),
+          concern: {
+            user: [user.id],
+          },
+          isUselessForTimeline: true,
+          user: eventFormat.user(user),
+          message: { ...EVENT.MESSAGES.SIGN_UP },
+        });
         break;
       case EVENT.ACTION.UPDATE_AVATAR:
+        await db.insertOne({
+          ...getEventData(),
+          concern: {
+            user: [user.id],
+          },
+          user: eventFormat.user(user),
+          lastAvatarURL: user.data.lastAvatarURL,
+          message: { ...EVENT.MESSAGES.UPDATE_AVATAR },
+        });
         break;
       case EVENT.ACTION.UPDATE_BIO:
+        await db.insertOne({
+          ...getEventData(),
+          concern: {
+            user: [user.id],
+          },
+          user: eventFormat.user(user),
+          content: user.bio,
+          message: { ...EVENT.MESSAGES.UPDATE_BIO },
+        });
         break;
       case EVENT.ACTION.UPDATE_USER:
+        await db.insertOne({
+          ...getEventData(),
+          concern: {
+            user: [user.id],
+          },
+          isUselessForTimeline: true,
+          user: eventFormat.user(user),
+          message: { ...EVENT.MESSAGES.UPDATE_USER },
+        });
         break;
       default:
         break;
