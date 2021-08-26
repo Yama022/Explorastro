@@ -7,7 +7,7 @@ const date = require('./date');
 module.exports = {
   saveUserAction: async (action, user, data) => {
     const db = await mongo.connect();
-    console.log('New request for', action);
+    // console.log('New request for', action);
     const getEventData = () => {
       const { label } = action;
       const createdDate = date.getDate();

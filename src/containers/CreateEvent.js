@@ -5,16 +5,15 @@ import {
   submitFormCreateEvent, removeEvent, removeLastEventID,
 } from 'src/actions/exploration';
 
-const mapStateToProps = (state) => {
-  console.log(state.exploration.eventCreatedLast);
-  return ({
-    eventsCreated: state.exploration.eventCreated,
-    eventCreatedLastID: state.exploration.eventCreatedLast.id,
-    events: state.exploration.events,
-    titleEvent: state.exploration.titleEvent,
-    eventCreatedLast: state.exploration.eventCreatedLast,
-  });
-};
+const mapStateToProps = (state) => ({
+  // console.log(state.exploration.eventCreatedLast);
+
+  eventsCreated: state.exploration.eventCreated,
+  eventCreatedLastID: state.exploration.eventCreatedLast.id,
+  events: state.exploration.events,
+  titleEvent: state.exploration.titleEvent,
+  eventCreatedLast: state.exploration.eventCreatedLast,
+});
 
 const mapDispatchToProps = (dispatch) => ({
 

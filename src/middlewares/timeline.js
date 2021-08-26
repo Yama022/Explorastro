@@ -20,7 +20,6 @@ const timeline = (store) => (next) => (action) => {
       break;
     }
     default:
-      console.log('Je passe dans le default');
       next(action);
   }
 };
