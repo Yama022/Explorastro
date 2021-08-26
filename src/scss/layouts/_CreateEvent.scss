@@ -1,234 +1,175 @@
 .container {
   width: 100%;
-}
-
-.event-title {
-  margin-top: .5em;
-  font-size: 2.5em;
-  text-align: center;
-  color: $light-color;
-
-}
-
-.createEvent {
+  color: white;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  flex-direction: column;
   align-items: center;
-  background-color: rgba(41, 30, 197, 0.453);
-  box-shadow: 1px 5px 16px 0 rgba(65, 8, 255, .98);
-  width: 70%;
-  margin: $gutter*3 auto;
-  border-radius: 10px;
-  padding: 40px 0;
-}
-
-.form__create {
-  display: flex;
-  flex-direction: column;
-
-  &__title {
-    font-size: 5em;
-    margin-top: 1em;
-    font-size: 1.2em;
-    text-align: left;
-    color: $light-color;
 
 
-  }
-
-  & input {
-
+  .main-title__createEvent {
+    font-size: 2em;
     margin: $gutter 0;
-
   }
 
-  input[type="checkbox"].checkbox {
-    display: none;
-  }
-
-  input[type="checkbox"].checkbox+label::before {
-    content: '';
-    border: 1px solid #00B7E8;
-    padding: 0 0.6rem;
-    margin-right: 0.3rem;
-  }
-
-  input[type="checkbox"].checkbox:checked+label::before {
-    background-color: #00B7E8;
-  }
-
-  .published {
-    font-size: 1.2em;
-    color: white;
-  }
-
-  &__button {
+  .createEvent {
 
     display: flex;
-    justify-content: center;
-
-  }
-
-  .maxRateEvent {
-    width: 50px;
-    margin-left: 50px;
-  }
-}
-
-
-
-.form__right {
-  overflow: hidden;
-  border-radius: 10px;
-  width: 47%;
-  height: 100%;
-  margin: $gutter;
-  border: 1px solid $light-color;
-}
-
-.form__map {
-  height: 374px;
-  margin: 15px 0;
-  background-color: $light-color;
-  border: 1px solid $light-color;
-
-
-  width: 100%;
-  overflow: hidden;
-
-  &-title {
-    color: black;
-    font-size: 3em;
     text-align: center;
-  }
-}
+    flex-wrap: wrap;
 
 
-.form__add__img {
-  display: flex;
-  max-width: 100%;
-  height: 20%;
+    &__form {
+      margin: $gutter;
+      border: 1px solid $secondary-color;
+      box-shadow: 0px 0px 9px -1px $secondary-color;
+      border-radius: 10px;
+      width: 15em;
+      background-color: $primary-color;
 
-  &__title {
-    font-size: 5em;
-    margin-top: 1em;
-    font-size: 1.2em;
-    text-align: left;
-    color: $light-color;
-  }
+      &__title {
+        font-size: 1.4em;
+        background-color: $secondary-color;
+        width: 100%;
 
-  &__import {
-    margin: 1em 0;
+        h2 {
+          padding: $gutter;
+        }
+      }
 
-    & input[type=file] {
-      background-color: #201ecf66;
-      border: 1px solid black;
-      border-radius: 5px;
-      font-size: 1em;
-      padding: 0.8em;
+      &__name {
+        display: flex;
+        flex-direction: column;
+        padding: $gutter;
+        margin-top: $gutter*4;
+
+        input {
+          padding: 1em;
+        }
+      }
+
+      .button {
+        background-color: $secondary-color;
+        border: none;
+        margin-bottom: $gutter;
+
+        &:hover {
+          background-color: $light-color;
+          color: black
+        }
+      }
+    }
+
+
+    &__event-list {
+      margin: $gutter;
+      border: 1px solid $secondary-color;
+      box-shadow: 0px 0px 9px -1px $secondary-color;
+      border-radius: 10px;
+      width: 15em;
+      background-color: $primary-color;
+
+      img {
+
+        width: 100%;
+      }
+
+      h2 {
+
+        padding: $gutter;
+      }
+
+      &__button {
+
+        .button {
+          border: none;
+          margin: $gutter;
+          background-color: $secondary-color;
+
+          &:hover {
+            background-color: $light-color;
+            color: black
+          }
+        }
+
+        .isDelete {
+          background-color: #f14668;
+        }
+      }
+
+      &__content {
+        display: flex;
+        padding: $gutter;
+        justify-content: space-between;
+      }
+
+      .published {
+        text-align: left;
+        padding-left: $gutter;
+      }
     }
   }
 }
 
 
-// .button-wrapper {
-//   position: relative;
-//   width: 150px;
-//   text-align: center;
-//   margin: auto;
-// }
-
-// .button-wrapper span.label {
-//   position: relative;
-//   z-index: 0;
-//   display: inline-block;
-//   width: 100%;
-//   background: $tertiary-color;
-//   cursor: pointer;
-//   color: $light-color;
-//   padding: 10px 0;
-//   text-transform: uppercase;
-//   font-size: .8em;
-//   border-radius: 5px;
-// }
-
-#upload {
-  display: inline-block;
-  position: absolute;
-  z-index: 1;
-  width: 100%;
-  height: 50px;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  cursor: pointer;
-}
-
-textarea {
-  resize: none;
-  margin: 1.5em 0;
-}
-
-
-.eventCreatedTitle {
-  font-size: 2em;
-  text-align: center;
-  color: $light-color;
-
-}
-
-.eventCreated {
-  display: flex;
-  flex-wrap: wrap;
-
-
-}
-
-.event__list {
-  display: flex;
-  flex-direction: column;
+.createEventForm {
+  color: white;
+  font-size: 1.4em;
+  width: 50%;
+  margin: 0 auto;
+  background-color: $secondary-color;
+  padding: $gutter;
   border-radius: 10px;
-  margin: 1.5em;
-  background-color: rgba(41, 30, 197, 0.4);
-  width: 27%;
-  height: 400px;
-  position: relative;
-  box-shadow: 1px 5px 16px 0px rgba(65, 8, 255, 0.98);
 
-  &__h2 {
-    color: #f8f8ff;
-    font-size: 1.5em;
-    font-weight: 700;
-    margin: auto auto 11%;
-    text-align: center;
-    text-overflow: ellipsis;
-    width: 150px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    max-width: 180px;
+  &__form {
+
+    textarea {
+      resize: none;
+      width: 100%;
+    }
+
+    h4 {
+      margin: $gutter 0;
+    }
+
+    &__map {
+      height: 374px;
+      margin: 15px 0;
+      background-color: $light-color;
+      border: 1px solid $light-color;
+      width: 100%;
+      overflow: hidden;
+
+    }
+
+    .maxRateEvent {
+      padding: 0.4em;
+      margin-left: 1em;
+      width: 12%;
+    }
+
+    .checkbox {
+      padding: $gutter;
+      margin: 0 $gutter;
+    }
+
+    &form-add-img {
+      margin: 0 auto;
+    }
+
+    &button {
+      margin: 0 auto;
+
+    }
+
+    .button {
+      border: none;
+      margin: $gutter;
+      background-color: $primary-color;
+
+      &:hover {
+        background-color: $light-color;
+        color: black
+      }
+    }
   }
-
-  & img {
-    border-radius: 10px 10px 0 0;
-    width: 100%;
-    height: 50%;
-    color: white;
-  }
-
-  &__button {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 1em;
-
-  }
-
-}
-
-.toto {
-  display: flex;
-  flex-wrap: wrap;
 }

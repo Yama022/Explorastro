@@ -12,6 +12,7 @@ import {
   CLICK_MODAL,
   SAVE_ALL_EVENTS,
   SAVE_ADDRESS,
+  UPDATE_EVENTS,
 } from 'src/actions/exploration';
 
 export const initialState = {
@@ -25,7 +26,7 @@ export const initialState = {
   maxRateEvent: 0,
   coord: [],
   eventCreated: [],
-  published: '',
+  published: false,
   eventCreatedLast: [],
   geog: [],
   modal: false,
@@ -80,7 +81,6 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
     case EVENTS_CREATED: {
-      console.log(action.value.geog);
       return {
         ...state,
         titleEvent: action.value.name,
@@ -92,10 +92,12 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
     case SAVE_EVENT_CREATED_LAST: {
+      console.log(action.value);
       return {
         ...state,
+        eventCreated: [...state.eventCreated, action.value],
         eventCreatedLast: action.value,
-        published: initialState.published,
+        // published: initialState.published,
 
       };
     }
@@ -123,7 +125,15 @@ const reducer = (state = initialState, action = {}) => {
     case SAVE_ADDRESS: {
       return {
         ...state,
-        events: [...state.address, action.value],
+        address: [...state.address, action.value],
+
+      };
+    }
+    case UPDATE_EVENTS: {
+      console.log(action.value);
+      return {
+        ...state,
+        eventCreated: [...action.value],
 
       };
     }

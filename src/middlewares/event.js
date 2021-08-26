@@ -9,6 +9,7 @@ import {
   saveEventcreatedlast,
   GET_ALL_EVENTS,
   saveAllEvents,
+  updateEvents,
 } from 'src/actions/exploration';
 import { findEventByName } from '../selectors/exploration';
 import api from './utils/api';
@@ -69,6 +70,7 @@ const event = (store) => (next) => (action) => {
           const result = resp.data;
           const titleEvent = action.value;
           const lastEvent = findEventByName(result.organized_explorations, titleEvent);
+          console.log(lastEvent);
           store.dispatch(saveEventcreatedlast(lastEvent));
         }
         catch (err) {
@@ -85,9 +87,9 @@ const event = (store) => (next) => (action) => {
 
       };
       const sendEventName = async () => {
+        console.log(state.exploration.titleEvent);
         try {
-          const resp = await api.post('/api/v1/exploration/create', newEvent);
-          console.log(resp);
+          await api.post('/api/v1/exploration/create', newEvent);
           store.dispatch(getEventCreatedlast(state.exploration.titleEvent));
         }
         catch (err) {
@@ -99,10 +101,13 @@ const event = (store) => (next) => (action) => {
     }
     case REMOVE_EVENT: {
       const id = action.value;
+      const state = store.getState();
+      const eventRemove = state.exploration.eventCreated.filter((element) => (
+        element.id !== id));
       const deleteEvent = async () => {
         try {
-          const resp = await api.delete(`/api/v1/exploration/${id}/delete`);
-          console.log(resp);
+          await api.delete(`/api/v1/exploration/${id}/delete`);
+          store.dispatch(updateEvents(eventRemove));
         }
         catch (err) {
           console.error(err);
@@ -114,10 +119,8 @@ const event = (store) => (next) => (action) => {
     case GET_ALL_EVENTS: {
       const getAllEvents = async () => {
         try {
-          console.log('toto');
           const resp = await api.get('/api/v1/exploration');
           const result = resp.data;
-          console.log(resp);
           store.dispatch(saveAllEvents(result));
         }
         catch (err) {

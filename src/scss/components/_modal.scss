@@ -1,6 +1,6 @@
 .modal {
 
-  z-index: 99999;
+  z-index: 9999;
 }
 
 .modal-card {
@@ -20,10 +20,21 @@
     border-top: none;
   }
 
+  &-head {
+    border-bottom: none;
+  }
+
+  &-head,
+  &-foot {
+
+    background-color: $primary-color;
+  }
+
   &-body {
     display: flex;
     align-items: center;
     font-size: 1.4em;
+    background-color: $secondary-color;
 
     &-mascotte {
 
@@ -33,13 +44,9 @@
 
 }
 
-.modal-background {
-  background-color: $primary-color;
-
-}
 
 .button--modal {
 
   margin: 0 auto;
-  padding : 1em;
+  padding: 1em;
 }
