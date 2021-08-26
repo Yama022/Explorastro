@@ -4,6 +4,7 @@ import Timeline from 'src/components/Timeline';
 import { getUserTimeline } from 'src/actions/timeline';
 
 const mapStateToProps = (state) => ({
+  loading: state.user.loading,
   loggedUserId: state.user.loggedUserId,
   timelineContent: state.timeline.timelineContent,
 });

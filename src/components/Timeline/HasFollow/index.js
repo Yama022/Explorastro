@@ -9,12 +9,16 @@ import satoru from 'src/assets/images/Satoru.jpg';
 import { RiUserFollowLine } from 'react-icons/ri';
 
 // Must be changed by TERNAIRE on FOLLOW COMPONENT - RIP HasFollow !!
-export default function HasFollow({ loggedUserId }) {
+export default function HasFollow({ props }) {
+  const {
+    date: { locales },
+    followed,
+  } = props;
   return (
     <div className="follow">
       <div className="follow__title">
         <img src={defaultAvatar} alt="avatar" />
-        <h3> <Link to={`/profile/${loggedUserId}`}>Toto l'asticot</Link> à commencé à vous suivre</h3>
+        <h3> <Link to={`/profile/${followed.id}`}>{followed.username}</Link> à commencé à vous suivre</h3>
       </div>
 
       <div className="follow__content">
@@ -31,12 +35,14 @@ export default function HasFollow({ loggedUserId }) {
       </div>
 
       <div className="follow__date">
-        <p>Le Mardi 29 Août à 13h48</p>
+        <p>{locales.fr}</p>
       </div>
     </div>
   );
 }
 
 HasFollow.propTypes = {
-  loggedUserId: PropTypes.number.isRequired,
+  props: PropTypes.object.isRequired,
+  date: PropTypes.object.isRequired,
+  followed: PropTypes.object.isRequired,
 };

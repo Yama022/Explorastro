@@ -10,7 +10,6 @@ import satoru from 'src/assets/images/Satoru.jpg';
 import { RiUserFollowLine } from 'react-icons/ri';
 
 export default function Follow({ props }) {
-  console.log(props);
   const {
     date: { locales },
     follower,

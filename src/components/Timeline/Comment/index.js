@@ -1,8 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import defaultAvatar from 'src/assets/images/luffy.png';
 
-export default function Comment() {
+export default function Comment({ props }) {
+  console.log('Je suis dans le composant Comment de Timeline', props);
   return (
     <div className="comment">
 
@@ -28,3 +30,7 @@ export default function Comment() {
     </div>
   );
 }
+
+Comment.propTypes = {
+  props: PropTypes.object.isRequired,
+};

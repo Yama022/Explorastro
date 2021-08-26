@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Discover from './Discover';
 import Follow from './Follow';
-// import HasFollow from './HasFollow';
 import Comment from './Comment';
 import NewExploration from './NewExploration';
 import UpdateAvatar from './UpdateAvatar';
