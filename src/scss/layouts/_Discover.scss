@@ -13,6 +13,7 @@
   justify-content: space-evenly;
 
   &__list-events {
+    background-color: $primary-color;
     color: white;
     width: 20%;
     overflow: auto;
