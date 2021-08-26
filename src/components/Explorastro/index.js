@@ -17,7 +17,7 @@ import Visuel from 'src/components/Guide/Visuel';
 import Profile from 'src/containers/Profile';
 import Settings from 'src/containers/Settings';
 import FormEvent from 'src/containers/FormEvent';
-import Exploration from 'src/components/Exploration';
+import Exploration from 'src/containers/Exploration';
 import Avatar from 'src/components/Avatar';
 import Particles from 'src/components/Particles';
 
