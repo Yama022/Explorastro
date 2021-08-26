@@ -10,10 +10,10 @@ export default function () {
       {
         particles: {
           number: {
-            value: 150,
+            value: 100,
             density: {
               enable: true,
-              value_area: 1200,
+              value_area: 800,
             },
           },
           line_linked: {
@@ -22,10 +22,10 @@ export default function () {
           },
           move: {
             direction: 'right',
-            speed: 0.05,
+            speed: 0.04,
           },
           size: {
-            value: 1.5,
+            value: 1.4,
           },
           opacity: {
             anim: {
