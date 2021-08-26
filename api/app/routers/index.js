@@ -1,13 +1,14 @@
-const express = require("express");
+const express = require('express');
+
 const router = express.Router();
 
-const { tokenMiddleware } = require("../middlewares");
+const { tokenMiddleware } = require('../middlewares');
 
-const authRouter = require("./auth");
-const userRouter = require("./user");
-const explorationRouter = require("./exploration");
-const errorRouter = require("./error");
-const mainRouter = require("./main");
+const authRouter = require('./auth');
+const userRouter = require('./user');
+const explorationRouter = require('./exploration');
+const errorRouter = require('./error');
+const mainRouter = require('./main');
 
 // Main routes
 router.use(mainRouter);
@@ -16,16 +17,15 @@ router.use(mainRouter);
 router.use(authRouter);
 
 // Router for user
-router.use("/user",
+router.use('/user',
   tokenMiddleware.authenticateToken,
-  userRouter
-);
+  userRouter);
 
 // Router for exploration
 router.use(
-  "/exploration",
+  '/exploration',
   tokenMiddleware.authenticateToken,
-  explorationRouter
+  explorationRouter,
 );
 
 router.use(errorRouter);

@@ -1,6 +1,7 @@
-const express = require("express");
+const express = require('express');
+
 const router = express.Router();
-const { ERROR } = require("../constants");
+const { ERROR } = require('../constants');
 
 /**
  * @typedef {Error} Error

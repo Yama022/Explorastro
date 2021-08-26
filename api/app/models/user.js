@@ -1,12 +1,11 @@
-const { sequelize } = require("../database");
-const { DataTypes, Model } = require("sequelize");
+const { DataTypes, Model } = require('sequelize');
+const { sequelize } = require('../database');
 
 class User extends Model {}
 
 // Never return the user's password hash
-User.prototype.toJSON = function () {
-  const values = Object.assign({}, this.get());
-
+User.prototype.toJSON = () => {
+  const values = { ...this.get() };
   delete values.password;
   return values;
 };
@@ -37,7 +36,7 @@ User.init(
     },
     avatar_url: {
       type: DataTypes.TEXT,
-      name: "avatar_URL",
+      name: 'avatar_URL',
       allowNull: true,
     },
     bio: {
@@ -67,8 +66,8 @@ User.init(
   },
   {
     sequelize,
-    tableName: "user",
-  }
+    tableName: 'user',
+  },
 );
 
 module.exports = User;

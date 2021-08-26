@@ -1,7 +1,8 @@
-const express = require("express");
+const express = require('express');
+
 const router = express.Router();
-const { userController, followController } = require("../controllers");
-const { userMiddleware } = require("../middlewares");
+const { userController, followController } = require('../controllers');
+const { userMiddleware } = require('../middlewares');
 
 router
   /**
@@ -14,9 +15,9 @@ router
    * @security JWT
    */
   .get(
-    "/:id(\\d+)",
+    '/:id(\\d+)',
     userMiddleware.checkIfExists,
-    userController.getInformations
+    userController.getInformations,
   )
 
   /**
@@ -41,10 +42,10 @@ router
    * @security JWT
    */
   .patch(
-    "/:id(\\d+)/update",
+    '/:id(\\d+)/update',
     userMiddleware.checkPermissions,
     userMiddleware.checkIfExists,
-    userController.update
+    userController.update,
   )
 
   /**
@@ -59,10 +60,10 @@ router
    * @security JWT
    */
   .patch(
-    "/:id(\\d+)/update/password",
+    '/:id(\\d+)/update/password',
     userMiddleware.checkPermissions,
     userMiddleware.checkIfExists,
-    userController.updatePassword
+    userController.updatePassword,
   )
 
   /**
@@ -77,17 +78,17 @@ router
    * @security JWT
    */
   .patch(
-    "/:id(\\d+)/update/username",
+    '/:id(\\d+)/update/username',
     userMiddleware.checkPermissions,
     userMiddleware.checkIfExists,
-    userController.updateUsername
+    userController.updateUsername,
   )
 
   .put(
-    "/:id(\\d+)/update/avatar",
+    '/:id(\\d+)/update/avatar',
     userMiddleware.checkPermissions,
     userMiddleware.checkIfExists,
-    userController.updateAvatar
+    userController.updateAvatar,
   )
 
   /**
@@ -101,10 +102,10 @@ router
    * @security JWT
    */
   .delete(
-    "/:id(\\d+)/delete",
+    '/:id(\\d+)/delete',
     userMiddleware.checkPermissions,
     userMiddleware.checkIfExists,
-    userController.delete
+    userController.delete,
   )
 
   /**
@@ -117,10 +118,10 @@ router
    * @security JWT
    */
   .post(
-    "/:id(\\d+)/follow/:toFollowId(\\d+)",
+    '/:id(\\d+)/follow/:toFollowId(\\d+)',
     userMiddleware.checkPermissions,
     userMiddleware.checkIfExists,
-    followController.follow
+    followController.follow,
   )
 
   /**
@@ -133,10 +134,10 @@ router
    * @security JWT
    */
   .delete(
-    "/:id(\\d+)/unfollow/:toUnfollowId(\\d+)",
+    '/:id(\\d+)/unfollow/:toUnfollowId(\\d+)',
     userMiddleware.checkPermissions,
     userMiddleware.checkIfExists,
-    followController.unfollow
+    followController.unfollow,
   );
 
 module.exports = router;

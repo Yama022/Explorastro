@@ -1,1 +1,1 @@
-module.exports = [{ name: "unverified" }, { name: "user" }, { name: "admin" }];
+module.exports = [{ name: 'unverified' }, { name: 'user' }, { name: 'admin' }];

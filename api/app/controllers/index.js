@@ -1,10 +1,19 @@
+const mainController = require('./main');
+const authController = require('./auth');
+const explorationController = require('./exploration');
+const userController = require('./user');
+const followController = require('./follow');
+const participationController = require('./participation');
+const commentController = require('./comment');
+const timelineController = require('./timeline');
+
 module.exports = {
-  mainController: require("./main"),
-  authController: require("./auth"),
-  explorationController: require("./exploration"),
-  userController: require("./user"),
-  followController: require("./follow"),
-  participationController: require("./participation"),
-  commentController: require('./comment'),
-  timelineController: require('./timeline'),
+  mainController,
+  authController,
+  explorationController,
+  userController,
+  followController,
+  participationController,
+  commentController,
+  timelineController,
 };
