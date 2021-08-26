@@ -9,6 +9,8 @@ import { FaMedal } from 'react-icons/fa';
 import { BiMedal, BiCog } from 'react-icons/bi';
 import { TiTick } from 'react-icons/ti';
 
+import Loader from 'src/components/Loader';
+
 import Follows from './Follows';
 import Explorations from './Explorations';
 
@@ -35,6 +37,9 @@ export default function Profile({
     getInfo(profileId);
   }, [profileId]);
 
+  if (!loggedUserId || !explorations) {
+    return (<Loader />);
+  }
   return (
     <div className="profile">
 
