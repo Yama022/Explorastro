@@ -9,7 +9,8 @@ import satoru from 'src/assets/images/Satoru.jpg';
 
 import { RiUserFollowLine } from 'react-icons/ri';
 
-export default function Follow({ props, loggedUserId }) {
+export default function Follow({ props }) {
+  console.log(props);
   const {
     date: { locales },
     follower,
@@ -21,7 +22,7 @@ export default function Follow({ props, loggedUserId }) {
       <div className="follow__title">
         {/* Avatar url TO ADD ! */}
         <img src={props.avatar_url} alt="avatar" />
-        <h3> <Link to={`/profile/${loggedUserId}`}>{follower.username}</Link> {message.fr} <Link to="/profile">{followed.username}</Link></h3>
+        <h3> <Link to={`/profile/${follower.id}`}>{follower.username}</Link> {message.fr} <Link to={`/profile/${followed.id}`}>{followed.username}</Link></h3>
       </div>
 
       <div className="follow__content">
@@ -45,10 +46,9 @@ export default function Follow({ props, loggedUserId }) {
 }
 
 Follow.propTypes = {
-  props: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-  follower: PropTypes.objectOf(PropTypes.string).isRequired,
-  followed: PropTypes.objectOf(PropTypes.string).isRequired,
-  message: PropTypes.objectOf(PropTypes.string).isRequired,
-  loggedUserId: PropTypes.number.isRequired,
+  props: PropTypes.object.isRequired,
+  date: PropTypes.object.isRequired,
+  follower: PropTypes.object.isRequired,
+  followed: PropTypes.object.isRequired,
+  message: PropTypes.object.isRequired,
 };
