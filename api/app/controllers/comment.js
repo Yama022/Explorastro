@@ -1,17 +1,19 @@
-const { ERROR, EVENT } = require("../constants");
-const { Comment, Exploration } = require("../models");
-const { event } = require("../utils");
+/* eslint-disable no-console */
+const { ERROR, EVENT } = require('../constants');
+const { Comment, Exploration } = require('../models');
+const { event } = require('../utils');
 
 module.exports = {
   getAll: async (req, res) => {
     try {
       const { id } = req.params;
       const exploration = await Exploration.findByPk(id, {
-        include: ["comments"],
+        include: ['comments'],
       });
 
       res.status(200).json(exploration.comments);
-    } catch (error) {
+    }
+    catch (error) {
       console.error(error);
       res.status(500).json({ message: ERROR.INTERNAL_ERROR });
     }
@@ -21,7 +23,7 @@ module.exports = {
     try {
       const { id } = req.params;
       const { content } = req.body;
-      const user = req.user;
+      const { user } = req;
       const exploration = await Exploration.findByPk(id);
 
       const comment = await Comment.create({
@@ -35,21 +37,23 @@ module.exports = {
         message: ERROR.COMMENT_ADDED,
       });
 
-      return await event.saveUserAction(EVENT.ACTION.COMMENT, user, {
+      await event.saveUserAction(EVENT.ACTION.COMMENT, user, {
         exploration: exploration.toJSON(),
         comment: comment.toJSON(),
       });
-    } catch (error) {
+    }
+    catch (error) {
       console.error(error);
       res.status(500).json({ message: ERROR.INTERNAL_ERROR });
     }
   },
 
+  // eslint-disable-next-line consistent-return
   edit: async (req, res) => {
     try {
       const { id, commentId } = req.params;
       const { content } = req.body;
-      const user = req.user;
+      const { user } = req;
       const exploration = await Exploration.findByPk(id);
       const comment = await Comment.findByPk(commentId);
 
@@ -69,16 +73,18 @@ module.exports = {
         exploration: exploration.toJSON(),
         comment: comment.toJSON(),
       });
-    } catch (error) {
+    }
+    catch (error) {
       console.error(error);
       res.status(500).json({ message: ERROR.INTERNAL_ERROR });
     }
   },
 
+  // eslint-disable-next-line consistent-return
   delete: async (req, res) => {
     try {
       const { id, commentId } = req.params;
-      const user = req.user;
+      const { user } = req;
       const exploration = await Exploration.findByPk(id);
       const comment = await Comment.findByPk(commentId);
 
@@ -104,7 +110,8 @@ module.exports = {
       await event.saveUserAction(EVENT.ACTION.DELETE_COMMENT, user, {
         exploration: exploration.toJSON(),
       });
-    } catch (error) {
+    }
+    catch (error) {
       console.error(error);
       res.status(500).json({ message: ERROR.INTERNAL_ERROR });
     }

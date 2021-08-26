@@ -1,4 +1,7 @@
+const userSchema = require('./user');
+const commentSchema = require('./comment');
+
 module.exports = {
-    userSchema: require('./user'),
-    commentSchema: require('./comment'),
-}
+  userSchema,
+  commentSchema,
+};

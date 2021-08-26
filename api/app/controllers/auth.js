@@ -1,8 +1,9 @@
-const bcrypt = require("bcrypt");
-const { User, Token } = require("../models");
-const { Op } = require("sequelize");
-const { ERROR, EVENT } = require("../constants");
-const { jwt, event } = require("../utils");
+/* eslint-disable no-console */
+const bcrypt = require('bcrypt');
+const { Op } = require('sequelize');
+const { User, Token } = require('../models');
+const { ERROR, EVENT } = require('../constants');
+const { jwt, event } = require('../utils');
 
 module.exports = {
   login: async (req, res) => {
@@ -59,7 +60,8 @@ module.exports = {
         accessToken,
         refreshToken,
       });
-    } catch (error) {
+    }
+    catch (error) {
       console.error(error);
       return res.status(500).send({
         message: ERROR.INTERNAL_ERROR,
@@ -69,7 +71,9 @@ module.exports = {
 
   signup: async (req, res) => {
     try {
-      const { firstname, lastname, username, password, email } = req.body;
+      const {
+        firstname, lastname, username, password, email,
+      } = req.body;
 
       const usernameIsTaken = await User.findOne({
         where: {
@@ -112,8 +116,8 @@ module.exports = {
       res.status(200).json({ user });
 
       return await event.saveUserAction(EVENT.ACTION.SIGN_UP, user, {});
-
-    } catch (error) {
+    }
+    catch (error) {
       console.error(error);
       return res.status(500).send({
         message: ERROR.INTERNAL_ERROR,
@@ -138,12 +142,12 @@ module.exports = {
       return res.status(400).json({ message: ERROR.INVALID_TOKEN });
     }
 
-    jwt.verifyRefreshToken(refreshToken, (err, user) => {
+    return jwt.verifyRefreshToken(refreshToken, (err, user) => {
       if (err) return res.status(400).json({ message: ERROR.INVALID_TOKEN });
       const accessToken = jwt.generateAccessToken({
         name: user.name,
       });
-      res.json({
+      return res.json({
         accessToken,
       });
     });

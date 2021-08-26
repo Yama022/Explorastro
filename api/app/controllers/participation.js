@@ -1,17 +1,19 @@
-const { User, Exploration } = require("../models");
-const { ERROR, EVENT } = require("../constants");
-const { event } = require("../utils");
+/* eslint-disable no-console */
+const { User, Exploration } = require('../models');
+const { ERROR, EVENT } = require('../constants');
+const { event } = require('../utils');
 
 module.exports = {
   getAll: async (req, res) => {
     try {
       const { id } = req.params;
       const exploration = await Exploration.findByPk(id, {
-        include: ["participants"],
+        include: ['participants'],
       });
 
       res.json(exploration.participants);
-    } catch (error) {
+    }
+    catch (error) {
       console.error(error);
       res.status(500).json({
         message: ERROR.INTERNAL_ERROR,
@@ -23,7 +25,7 @@ module.exports = {
     try {
       const { id, userId } = req.params;
 
-      if (userId != req.user.id) {
+      if (+userId !== req.user.id) {
         return res.status(403).json({
           message: ERROR.UNAUTHORIZED,
         });
@@ -31,7 +33,7 @@ module.exports = {
 
       const user = await User.findByPk(userId);
       const exploration = await Exploration.findByPk(id, {
-        include: ["participants"],
+        include: ['participants'],
       });
 
       if (exploration.participants.length >= exploration.max_participants) {
@@ -41,7 +43,7 @@ module.exports = {
       }
 
       const userAlreadyParticipate = exploration.participants.some(
-        (participant) => participant.id === user.id
+        (participant) => participant.id === user.id,
       );
 
       if (userAlreadyParticipate) {
@@ -59,8 +61,8 @@ module.exports = {
       return await event.saveUserAction(EVENT.ACTION.PARTICIPATION_ADD, user, {
         exploration,
       });
-
-    } catch (error) {
+    }
+    catch (error) {
       console.error(error);
       return res.status(500).json({
         message: ERROR.INTERNAL_ERROR,
@@ -72,7 +74,7 @@ module.exports = {
     try {
       const { id, userId } = req.params;
 
-      if (userId != req.user.id) {
+      if (userId !== req.user.id) {
         return res.status(403).json({
           message: ERROR.UNAUTHORIZED,
         });
@@ -80,11 +82,11 @@ module.exports = {
 
       const user = await User.findByPk(userId);
       const exploration = await Exploration.findByPk(id, {
-        include: ["participants"],
+        include: ['participants'],
       });
 
       const userParticipate = exploration.participants.some(
-        (participant) => participant.id === user.id
+        (participant) => participant.id === user.id,
       );
 
       if (!userParticipate) {
@@ -102,7 +104,8 @@ module.exports = {
       return await event.saveUserAction(EVENT.ACTION.PARTICIPATION_REMOVED, user, {
         exploration,
       });
-    } catch (error) {
+    }
+    catch (error) {
       console.error(error);
       return res.status(500).json({
         message: ERROR.INTERNAL_ERROR,

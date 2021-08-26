@@ -1,8 +1,15 @@
+const jwt = require('./token');
+const owp = require('./weather');
+const upload = require('./multer');
+const event = require('./event');
+const date = require('./date');
+const timeline = require('./timeline');
+
 module.exports = {
-    jwt: require('./token'),
-    owp: require('./weather'),
-    upload: require('./multer'),
-    event: require('./event'),
-    date: require('./date'),
-    timeline: require('./timeline'),
-}
+  jwt,
+  owp,
+  upload,
+  event,
+  date,
+  timeline,
+};
