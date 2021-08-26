@@ -1,4 +1,6 @@
 module.exports = {
     tokenMiddleware: require('./token'),
-    identityMiddleware: require('./identity'),
+    userMiddleware: require('./user'),
+    explorationMiddleware: require('./exploration'),
+    commentMiddleware: require('./comment'),
 }

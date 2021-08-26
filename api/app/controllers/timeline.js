@@ -1,4 +1,4 @@
-const { errorMessage } = require("../constants");
+const { ERROR } = require("../constants");
 const { timeline } = require('../utils');
 const { User } = require('../models');
 
@@ -11,7 +11,7 @@ module.exports = {
 
       if (!user) {
         return res.status(401).json({
-          message: errorMessage.USER_NOT_FOUND
+          message: ERROR.USER_NOT_FOUND
         });
       }
 
@@ -20,7 +20,7 @@ module.exports = {
     } catch (error) {
       console.error(error);
       res.status(500).send({
-        message: errorMessage.INTERNAL_ERROR,
+        message: ERROR.INTERNAL_ERROR,
       });
     }
   },

@@ -6,7 +6,7 @@ try {
     define: {
       underscored: true,
     },
-    logging: false,
+    // logging: false,
     pool: {
       max: 5,
       min: 0,
