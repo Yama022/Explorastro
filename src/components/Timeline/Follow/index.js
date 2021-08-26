@@ -7,12 +7,12 @@ import satoru from 'src/assets/images/Satoru.jpg';
 
 import { RiUserFollowLine } from 'react-icons/ri';
 
-export default function Follow() {
+export default function Follow(props) {
   return (
     <div className="follow">
       <div className="follow__title">
-        <img src={defaultAvatar} alt="avatar" />
-        <h3> <Link to="/profile">John Doe</Link> à commencé à suivre <Link to="/profile">Baptiste</Link></h3>
+        <img src={props.avatar_url} alt="avatar" />
+        <h3> <Link to="/profile">{props.username}</Link> à commencé à suivre <Link to="/profile">Baptiste</Link></h3>
       </div>
 
       <div className="follow__content">

@@ -1,16 +1,17 @@
 import React from 'react';
 
-import defaultAvatar from 'src/assets/images/luffy.png';
+import PropTypes from 'prop-types';
+
 import defaultExplo from 'src/assets/images/default-explo.jpg';
 
-export default function NewExplo() {
+export default function NewExplo({ props }) {
+  const { user } = props;
   return (
     <div className="explo">
-
       <div className="explo__organized">
-        <img src={defaultAvatar} alt="avatar" />
+        <img src={user.avatar_url} alt="avatar" />
         <div className="explo__organized--title">
-          <h3>Théo BIET (el narcisista) organise</h3>
+          <h3>{user.username} (el narcisista) organise</h3>
           <h3 className="explo__organized__subtitle">"La Nuit des Etoiles"</h3>
           <p>Mardi 32 février 2021 à 20h45</p>
         </div>
@@ -26,3 +27,8 @@ export default function NewExplo() {
     </div>
   );
 }
+
+NewExplo.propTypes = {
+  props: PropTypes.string.isRequired,
+  user: PropTypes.string.isRequired,
+};
