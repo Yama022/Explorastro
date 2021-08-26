@@ -102,10 +102,6 @@
         justify-content: space-between;
       }
 
-      .published {
-        text-align: left;
-        padding-left: $gutter;
-      }
     }
   }
 }
@@ -152,13 +148,20 @@
       margin: 0 $gutter;
     }
 
-    &form-add-img {
-      margin: 0 auto;
+    &__checkbox {
+      text-align: left;
+      width: $gutter;
+      padding-left: $gutter;
     }
 
-    &button {
-      margin: 0 auto;
+    &__add-img {
+      background-color: $secondary-color;
+      height: $gutter;
+    }
 
+    &__validate {
+      display: flex;
+      justify-content: center;
     }
 
     .button {
@@ -171,5 +174,6 @@
         color: black
       }
     }
+
   }
 }

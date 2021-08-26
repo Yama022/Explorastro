@@ -164,28 +164,21 @@ export default function FormEvent({
             />
           </h4>
 
-          <input type="checkbox" name="published" className="checkbox" onClick={handleOnClick} value={published} />
+          <input type="checkbox" name="published" className="createEventForm__form__checkbox" onClick={handleOnClick} value={published} />
           <label className="published" htmlFor="checkbox">{published ? 'Publié' : 'Non publié' } </label>
 
-          <div className="form__add__img">
-
-            <div className="createEventForm__form-add-img">
-              <h4>Ajouter une image ? </h4>
-              <div className="button-wrapper">
-
-                <input
-                  value={imageUrl !== 'undefined' ? imageUrl : 'src/assets/images/nigthSky.jpg'}
+          <div className="createEventForm__form__add-img">
+            <h4>Ajouter une image ? </h4>
+            <input
+              value={imageUrl !== 'undefined' ? imageUrl : 'src/assets/images/nigthSky.jpg'}
                     // accept="image/*"
-                  onChange={handleOnchange}
-                  id="contained-button-file"
-                  multiple
-                  name="imageUrl"
-                  type="file"
-                  className="upload-box"
-                />
-              </div>
-            </div>
-
+              onChange={handleOnchange}
+              id="contained-button-file"
+              multiple
+              name="imageUrl"
+              type="file"
+              className="upload-box"
+            />
           </div>
           <div className="createEventForm__form__validate">
             <button className="button" type="submit">Modifier</button>
