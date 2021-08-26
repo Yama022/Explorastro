@@ -1,9 +1,12 @@
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
 import defaultAvatar from 'src/assets/images/luffy.png';
 import defaultExplo from 'src/assets/images/default-explo.jpg';
 
-export default function JoinExplo() {
+export default function JoinExplo({ props }) {
+  console.log('Je rentre dedans', props);
   return (
     <div className="explo">
       <div className="explo__title">
@@ -27,3 +30,7 @@ export default function JoinExplo() {
     </div>
   );
 }
+
+JoinExplo.propTypes = {
+  props: PropTypes.object.isRequired,
+};

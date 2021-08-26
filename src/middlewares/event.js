@@ -36,7 +36,7 @@ const event = (store) => (next) => (action) => {
       const sendPostEvent = async () => {
         try {
           const resp = await api.patch(`/api/v1/exploration/${id}/update`, newEvent);
-          console.log(resp);
+          console.log('resp middleware sendPostEvent', resp);
         }
         catch (err) {
           console.error(err);
