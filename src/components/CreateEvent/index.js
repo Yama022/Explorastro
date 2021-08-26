@@ -30,21 +30,18 @@ export default function CreateEvent({
   return (
     <>
       {redirectForm}
-      <div className="container">
-
-        <h1 className="main-title">Organiser une sortie</h1>
+      <h1 className="main-title__createEvent">J'organise</h1>
+      <section className="container">
         <div className="createEvent">
-          <form className="form__create" onSubmit={handleSubmit}>
-            <h2 className="eventCreatedTitle">Créer une sortie</h2>
-            <h4 className="form__create__title">Nom de l'événement à créer</h4>
-            <input className="input is-link is-small" name="titleEvent" type="text" placeholder="Ex : Soirée nuit des étoiles" onChange={handleOnchange} />
-            <button className="button is-link" type="submit">Créer</button>
+          <form className="createEvent__form" onSubmit={handleSubmit}>
+            <div className="createEvent__form__title">
+              <h2>Créer une sortie</h2>
+            </div>
+            <label htmlFor="titleEvent" className="createEvent__form__name">Nom de la sortie :
+              <input name="titleEvent" type="text" placeholder="Ex : Soirée nuit des étoiles" onChange={handleOnchange} />
+            </label>
+            <button className="button" type="submit">Créer</button>
           </form>
-
-        </div>
-
-        <h2 className="eventCreatedTitle">Modifier mes événements</h2>
-        <div className="eventCreated">
 
           { eventsCreated.map((element) => (
 
@@ -52,7 +49,7 @@ export default function CreateEvent({
           ))}
 
         </div>
-      </div>
+      </section>
     </>
   );
 }

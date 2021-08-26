@@ -87,6 +87,7 @@ const event = (store) => (next) => (action) => {
 
       };
       const sendEventName = async () => {
+        console.log(state.exploration.titleEvent);
         try {
           await api.post('/api/v1/exploration/create', newEvent);
           store.dispatch(getEventCreatedlast(state.exploration.titleEvent));

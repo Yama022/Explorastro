@@ -96,104 +96,104 @@ export default function FormEvent({
       {/* fin Modal */}
 
       <Header />
-      <div className="container">
-        <h1 className="main-title">Créer un événement</h1>
-        <div className="createEvent">
 
-          <form className="form__create" onSubmit={handleSubmit}>
-            <h4 className="form__create__title">Nom de l'événement</h4>
+      <h1 className="main-title">Créer un événement</h1>
+      <div className="createEventForm">
 
-            <input
-              className="input is-link is-small"
-              name="titleEvent"
-              type="text"
-              value={titleEvent}
-              onChange={handleOnchange}
-              placeholder="Ex : Soirée nuit des étoiles"
-            />
+        <form className="createEventForm__form" onSubmit={handleSubmit}>
+          <h4>Nom de l'événement</h4>
 
-            <h4 className="form__create__title">Descirption</h4>
-            <textarea
-              name="descEvent"
-              id="txtArea"
-              rows="10"
-              cols="70"
-              onChange={handleOnchange}
-              placeholder="Ex : J'organise une soirée pour la nuit des étoiles dans un endroit bien connu vers chez moi..."
-              value={descEvent !== null ? descEvent : ''}
-            />
+          <input
+            className="input is-link is-small"
+            name="titleEvent"
+            type="text"
+            value={titleEvent}
+            onChange={handleOnchange}
+            placeholder="Ex : Soirée nuit des étoiles"
+          />
 
-            <h4 className="form__create__title">Date de l'événement</h4>
-            <input
-              className="input is-link is-small"
-              type="datetime-local"
-              name="dateEvent"
-              value={dateEvent ? dayjs(dateEvent).format('YYYY-MM-DDTHH:mm:ss') : dayjs().format('YYYY-MM-DDTHH:mm:ss')}
+          <h4>Descirption</h4>
+          <textarea
+            name="descEvent"
+            id="txtArea"
+            rows="10"
+            cols="70"
+            onChange={handleOnchange}
+            placeholder="Ex : J'organise une soirée pour la nuit des étoiles dans un endroit bien connu vers chez moi..."
+            value={descEvent !== null ? descEvent : ''}
+          />
+
+          <h4>Date de l'événement</h4>
+          <input
+            className="input is-link is-small"
+            type="datetime-local"
+            name="dateEvent"
+            value={dateEvent ? dayjs(dateEvent).format('YYYY-MM-DDTHH:mm:ss') : dayjs().format('YYYY-MM-DDTHH:mm:ss')}
               // min={dayjs().format('YYYY-MM-DDTHH:mm:ss')}
-              onChange={handleOnchange}
-            />
+            onChange={handleOnchange}
+          />
 
-            <div className="form__map">
-              <MapContainer
+          <div className="createEventForm__form__map">
+            <MapContainer
           // Centering on the map of france
-                center={[44.840291, 2.109375]}
-                zoom={6}
-                maxZoom={18}
-                minZoom={3}
-              >
+              center={[44.840291, 2.109375]}
+              zoom={6}
+              maxZoom={18}
+              minZoom={3}
+            >
 
-                {/* Add layer dark map */}
-                <TileLayer
-                  attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                  url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
-                  name="tiles"
-                />
-                {/* Add Markers events astro on the map */}
-                {coordTest()}
-              </MapContainer>
-            </div>
-
-            <h4 className="form__create__title">Nombre de personne(s) maximum
-              <input
-                value={maxRateEvent !== null ? maxRateEvent.toString() : 0}
-                className="maxRateEvent"
-                name="maxRateEvent"
-                type="number"
-                onChange={handleOnchange}
-                placeholder="0"
+              {/* Add layer dark map */}
+              <TileLayer
+                attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
+                name="tiles"
               />
-            </h4>
+              {/* Add Markers events astro on the map */}
+              {coordTest()}
+            </MapContainer>
+          </div>
 
-            <input type="checkbox" name="published" className="checkbox" id="checkbox" onClick={handleOnClick} value={published} />
-            <label className="published" htmlFor="checkbox">{published ? 'Publié' : 'Non publié' } </label>
+          <h4>Nombre de personne(s) maximum
+            <input
+              value={maxRateEvent !== null ? maxRateEvent.toString() : 0}
+              className="maxRateEvent"
+              name="maxRateEvent"
+              type="number"
+              onChange={handleOnchange}
+              placeholder="0"
+            />
+          </h4>
 
-            <div className="form__add__img">
+          <input type="checkbox" name="published" className="checkbox" onClick={handleOnClick} value={published} />
+          <label className="published" htmlFor="checkbox">{published ? 'Publié' : 'Non publié' } </label>
 
-              <div className="form__add__img__import">
-                <h4 className="form__add__img__title">Souhaitez-vous ajouter une image ? </h4>
-                <div className="button-wrapper">
+          <div className="form__add__img">
 
-                  <input
-                    value={imageUrl !== 'undefined' ? imageUrl : 'src/assets/images/nigthSky.jpg'}
+            <div className="createEventForm__form-add-img">
+              <h4>Ajouter une image ? </h4>
+              <div className="button-wrapper">
+
+                <input
+                  value={imageUrl !== 'undefined' ? imageUrl : 'src/assets/images/nigthSky.jpg'}
                     // accept="image/*"
-                    onChange={handleOnchange}
-                    id="contained-button-file"
-                    multiple
-                    name="imageUrl"
-                    type="file"
-                    className="upload-box"
-                  />
-                </div>
+                  onChange={handleOnchange}
+                  id="contained-button-file"
+                  multiple
+                  name="imageUrl"
+                  type="file"
+                  className="upload-box"
+                />
               </div>
+            </div>
 
-            </div>
-            <div className="form__create__button">
-              <button className="button_style btn btn-pulse" type="submit">Modifier</button>
-              <Link className="button_style btn btn-pulse" to="/exploration/create">Annuler </Link>
-            </div>
-          </form>
-        </div>
+          </div>
+          <div className="createEventForm__form__validate">
+            <button className="button" type="submit">Modifier</button>
+            <Link className="button" to="/exploration/create">Annuler </Link>
+          </div>
+        </form>
       </div>
+
       <Footer />
     </>
   );
