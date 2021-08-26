@@ -63,6 +63,7 @@
     "react-icons": "^4.2.0",
     "react-leaflet": "^3.2.1",
     "react-leaflet-markercluster": "^3.0.0-rc1",
+    "react-nice-avatar": "^1.2.2",
     "react-parallax": "^3.3.0",
     "react-particles-js": "^3.5.3",
     "react-redux": "^7.2.4",

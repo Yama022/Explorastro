@@ -1,5 +1,5 @@
 const { jwt } = require("../utils");
-const { errorMessage } = require('../constants');
+const { ERROR } = require('../constants');
 
 module.exports = {
     authenticateToken: (req, res, next) => {
@@ -8,14 +8,14 @@ module.exports = {
 
         if (token === "undefined" || !token) {
             return res.status(401).send({
-                message: errorMessage.MISSING_TOKEN
+                message: ERROR.MISSING_TOKEN
             });
         }
 
         jwt.verifyAccessToken(token, (err, user) => {
             if (err) {
                 return res.status(401).send({
-                    message: errorMessage.TOKEN_AUTH_FAILED,
+                    message: ERROR.TOKEN_AUTH_FAILED,
                 });
             }
             req.user = user;

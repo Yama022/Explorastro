@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { userController, followController } = require("../controllers");
-const { identityMiddleware } = require("../middlewares");
+const { userMiddleware } = require("../middlewares");
 
 router
   /**
@@ -13,7 +13,11 @@ router
    * @returns {Error.model}  default - An object containing the error message
    * @security JWT
    */
-  .get("/:id(\\d+)", userController.getInformations)
+  .get(
+    "/:id(\\d+)",
+    userMiddleware.checkIfExists,
+    userController.getInformations
+  )
 
   /**
    * Update informations about a user by his id
@@ -38,7 +42,8 @@ router
    */
   .patch(
     "/:id(\\d+)/update",
-    identityMiddleware.userPermissions,
+    userMiddleware.checkPermissions,
+    userMiddleware.checkIfExists,
     userController.update
   )
 
@@ -55,7 +60,8 @@ router
    */
   .patch(
     "/:id(\\d+)/update/password",
-    identityMiddleware.userPermissions,
+    userMiddleware.checkPermissions,
+    userMiddleware.checkIfExists,
     userController.updatePassword
   )
 
@@ -72,8 +78,16 @@ router
    */
   .patch(
     "/:id(\\d+)/update/username",
-    identityMiddleware.userPermissions,
+    userMiddleware.checkPermissions,
+    userMiddleware.checkIfExists,
     userController.updateUsername
+  )
+
+  .put(
+    "/:id(\\d+)/update/avatar",
+    userMiddleware.checkPermissions,
+    userMiddleware.checkIfExists,
+    userController.updateAvatar
   )
 
   /**
@@ -88,7 +102,8 @@ router
    */
   .delete(
     "/:id(\\d+)/delete",
-    identityMiddleware.userPermissions,
+    userMiddleware.checkPermissions,
+    userMiddleware.checkIfExists,
     userController.delete
   )
 
@@ -103,7 +118,8 @@ router
    */
   .post(
     "/:id(\\d+)/follow/:toFollowId(\\d+)",
-    identityMiddleware.userPermissions,
+    userMiddleware.checkPermissions,
+    userMiddleware.checkIfExists,
     followController.follow
   )
 
@@ -118,7 +134,8 @@ router
    */
   .delete(
     "/:id(\\d+)/unfollow/:toUnfollowId(\\d+)",
-    identityMiddleware.userPermissions,
+    userMiddleware.checkPermissions,
+    userMiddleware.checkIfExists,
     followController.unfollow
   );
 

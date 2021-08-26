@@ -3,7 +3,7 @@ import React from 'react';
 import defaultAvatar from 'src/assets/images/luffy.png';
 import satoru from 'src/assets/images/Satoru.jpg';
 
-import { BiRightArrow } from 'react-icons/bi';
+import { BsArrowRightShort } from 'react-icons/bs';
 
 export default function Update() {
   return (
@@ -17,7 +17,7 @@ export default function Update() {
       <div className="update__content">
         <img src={defaultAvatar} alt="avatar" />
         <span className="update__content-buttonUpdate">
-          <BiRightArrow />
+          <BsArrowRightShort />
         </span>
         <img src={satoru} alt="avatar" />
       </div>

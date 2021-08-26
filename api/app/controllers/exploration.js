@@ -1,8 +1,8 @@
 const { Exploration } = require("../models");
-const { errorMessage, EVENT } = require("../constants");
+const { ERROR, EVENT } = require("../constants");
 const { Op } = require("sequelize");
 const { owp } = require("../utils");
-const { event } = require("../utils");
+const { event, upload } = require("../utils");
 
 /**
  * @typedef {CRS} CRS
@@ -53,6 +53,7 @@ const { event } = require("../utils");
 module.exports = {
   getAll: async (req, res) => {
     try {
+      console.log("Ouais");
       const explorations = await Exploration.findAll({
         where: {
           is_published: true,
@@ -65,7 +66,7 @@ module.exports = {
     } catch (error) {
       console.error(error);
       res.status(500).json({
-        error: errorMessage.INTERNAL_SERVER_ERROR,
+        error: ERROR.INTERNAL_SERVER_ERROR,
       });
     }
   },
@@ -76,18 +77,12 @@ module.exports = {
       include: { all: true },
     });
 
-    if (!exploration) {
-      return res.status(404).json({
-        message: errorMessage.EXPLORATION_NOT_FOUND,
-      });
-    }
-
     // Save exploration data in object for attach weather data if needed
     const explorationData = exploration.toJSON();
 
     // Add weather informations
-    const lgt = exploration?.geog.coordinates[0];
-    const lat = exploration?.geog.coordinates[1];
+    const lgt = exploration?.geog?.coordinates[0];
+    const lat = exploration?.geog?.coordinates[1];
 
     if (lgt && lat) {
       const weather = await owp.getWeather(lgt, lat);
@@ -104,7 +99,7 @@ module.exports = {
 
       if (!name) {
         return res.status(400).json({
-          message: errorMessage.MISSING_EXPLORATION_NAME,
+          message: ERROR.MISSING_EXPLORATION_NAME,
         });
       }
 
@@ -126,7 +121,7 @@ module.exports = {
 
       if (numberOfExplorations >= 10) {
         return res.status(400).json({
-          message: errorMessage.EXPLORATION_LIMIT_REACHED,
+          message: ERROR.EXPLORATION_LIMIT_REACHED,
         });
       }
 
@@ -146,7 +141,7 @@ module.exports = {
     } catch (error) {
       console.error(error);
       res.status(500).json({
-        message: errorMessage.INTERNAL_ERROR,
+        message: ERROR.INTERNAL_ERROR,
       });
     }
   },
@@ -157,18 +152,12 @@ module.exports = {
       const lgt = req.body.location?.lng;
       const lat = req.body.location?.lat;
       const user = req.user;
-
-      const exploration = await Exploration.findByPk(id);
-
-      if (!exploration) {
-        return res.status(404).json({
-          message: errorMessage.EXPLORATION_NOT_FOUND,
-        });
-      }
+      const exploration = req.exploration;
 
       // We need to remove the information from the body that could corrupt the database record
       delete req.body.id;
       delete req.body.author_id;
+      delete req.body.image_url;
       delete req.body.created_at;
       delete req.body.updated_at;
 
@@ -200,9 +189,27 @@ module.exports = {
     } catch (error) {
       console.error(error);
       res.status(500).json({
-        message: errorMessage.INTERNAL_ERROR,
+        message: ERROR.INTERNAL_ERROR,
       });
     }
+  },
+
+  updateIllustration: (req, res) => {
+    upload(req, res, async (err) => {
+      if (err) {
+        return res.status(400).json({
+          message: err.message,
+        });
+      }
+
+      const file = req.file;
+
+      await req.exploration.update({
+        image_url: file.location,
+      });
+
+      return res.json(req.exploration);
+    });
   },
 
   delete: async (req, res) => {
@@ -210,13 +217,7 @@ module.exports = {
       const { id } = req.params;
       const user = req.user;
 
-      const exploration = await Exploration.findByPk(id);
-
-      if (!exploration) {
-        return res.status(404).json({
-          message: errorMessage.EXPLORATION_NOT_FOUND,
-        });
-      }
+      const exploration = req.exploration;
 
       await exploration.destroy();
 
@@ -228,7 +229,7 @@ module.exports = {
     } catch (error) {
       console.error(error);
       res.status(500).json({
-        message: errorMessage.INTERNAL_ERROR,
+        message: ERROR.INTERNAL_ERROR,
       });
     }
   },

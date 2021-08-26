@@ -1,7 +1,7 @@
 const bcrypt = require("bcrypt");
 const { User, Token } = require("../models");
 const { Op } = require("sequelize");
-const { errorMessage, EVENT } = require("../constants");
+const { ERROR, EVENT } = require("../constants");
 const { jwt, event } = require("../utils");
 
 module.exports = {
@@ -11,7 +11,7 @@ module.exports = {
 
       if (!login || !password) {
         return res.status(400).json({
-          message: errorMessage.MISSING_CREDENTIALS,
+          message: ERROR.MISSING_CREDENTIALS,
         });
       }
 
@@ -30,7 +30,7 @@ module.exports = {
 
       if (!user) {
         return res.status(404).json({
-          message: errorMessage.EMAIL_NOT_FOUND,
+          message: ERROR.EMAIL_NOT_FOUND,
         });
       }
 
@@ -38,7 +38,7 @@ module.exports = {
 
       if (!isMatch) {
         return res.status(400).json({
-          message: errorMessage.PASSWORD_NOT_MATCH,
+          message: ERROR.PASSWORD_NOT_MATCH,
           login,
         });
       }
@@ -62,7 +62,7 @@ module.exports = {
     } catch (error) {
       console.error(error);
       return res.status(500).send({
-        message: errorMessage.INTERNAL_ERROR,
+        message: ERROR.INTERNAL_ERROR,
       });
     }
   },
@@ -81,7 +81,7 @@ module.exports = {
 
       if (usernameIsTaken) {
         return res.status(400).json({
-          message: errorMessage.USER_ALREADY_EXISTS,
+          message: ERROR.USER_ALREADY_EXISTS,
         });
       }
 
@@ -95,7 +95,7 @@ module.exports = {
 
       if (emailIsTaken) {
         return res.status(400).json({
-          message: errorMessage.EMAIL_ALREADY_EXISTS,
+          message: ERROR.EMAIL_ALREADY_EXISTS,
         });
       }
 
@@ -116,7 +116,7 @@ module.exports = {
     } catch (error) {
       console.error(error);
       return res.status(500).send({
-        message: errorMessage.INTERNAL_ERROR,
+        message: ERROR.INTERNAL_ERROR,
       });
     }
   },
@@ -125,7 +125,7 @@ module.exports = {
     const refreshToken = req.body.token;
 
     if (!refreshToken) {
-      return res.status(400).json({ message: errorMessage.MISSING_TOKEN });
+      return res.status(400).json({ message: ERROR.MISSING_TOKEN });
     }
 
     const token = Token.findOne({
@@ -135,11 +135,11 @@ module.exports = {
     });
 
     if (!token) {
-      return res.status(400).json({ message: errorMessage.INVALID_TOKEN });
+      return res.status(400).json({ message: ERROR.INVALID_TOKEN });
     }
 
     jwt.verifyRefreshToken(refreshToken, (err, user) => {
-      if (err) return res.status(400).json({ message: errorMessage.INVALID_TOKEN });
+      if (err) return res.status(400).json({ message: ERROR.INVALID_TOKEN });
       const accessToken = jwt.generateAccessToken({
         name: user.name,
       });
