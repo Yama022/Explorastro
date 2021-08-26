@@ -126,11 +126,11 @@
 
   &:hover {
     box-shadow: $secondary-color 0px 20px 30px -10px;
-    transform: translateY(-10px) scale(1.02);
+    transform: translateY(-5px) scale(1.01);
 
     img {
       filter: brightness(1);
-      transform: scale(1.02);
+      transform: scale(1.01);
     }
   }
 
@@ -209,11 +209,11 @@
 
   &:hover {
     box-shadow: $secondary-color 0px 20px 30px -10px;
-    transform: translateY(-10px) scale(1.02);
+    transform: translateY(-5px) scale(1.01);
 
     img {
       filter: brightness(1);
-      transform: scale(1.02);
+      transform: scale(1.01);
     }
   }
 
