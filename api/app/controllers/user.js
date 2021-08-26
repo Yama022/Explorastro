@@ -1,8 +1,7 @@
 const { User } = require("../models");
 const bcrypt = require("bcrypt");
-const { errorMessage } = require("../constants");
-const { upload, s3 } = require("../utils");
-const { errorMessage, EVENT } = require("../constants");
+const { upload } = require("../utils");
+const { ERROR, EVENT } = require("../constants");
 const { event } = require("../utils");
 
 /**
@@ -44,30 +43,18 @@ module.exports = {
         ],
       });
 
-      if (!user) {
-        return res.status(404).json({ message: errorMessage.USER_NOT_FOUND });
-      }
-
       return res.status(200).json(user);
     } catch (error) {
       console.error(error);
       res.status(400).json({
-        message: errorMessage.internal_error,
+        message: ERROR.internal_error,
       });
     }
   },
 
   update: async (req, res) => {
     try {
-      const { id } = req.params;
-
-      const user = await User.findByPk(id);
-
-      if (!user) {
-        return res.status(404).json({
-          message: errorMessage.USER_NOT_FOUND,
-        });
-      }
+      const user = req.user;
 
       // We need to delete username and password from the request, if the user want to change it, he must to do a separate request
       delete req.body.id;
@@ -96,7 +83,7 @@ module.exports = {
     } catch (error) {
       console.error(error);
       return res.status(500).json({
-        message: errorMessage.INTERNAL_ERROR,
+        message: ERROR.INTERNAL_ERROR,
       });
     }
   },
@@ -107,23 +94,16 @@ module.exports = {
 
       if (!password || !username) {
         return res.status(400).json({
-          message: errorMessage.MISSING_CREDENTIALS,
+          message: ERROR.MISSING_CREDENTIALS,
         });
       }
 
       const user = await User.findByPk(req.user.id);
-
-      if (!user) {
-        return res.status(404).json({
-          message: errorMessage.USER_NOT_FOUND,
-        });
-      }
-
       const isMatch = await bcrypt.compare(password, user.password);
 
       if (!isMatch) {
         return res.status(401).json({
-          message: errorMessage.PASSWORD_NOT_MATCH,
+          message: ERROR.PASSWORD_NOT_MATCH,
         });
       }
 
@@ -140,7 +120,7 @@ module.exports = {
     } catch (error) {
       console.error(error);
       return res.status(500).json({
-        message: errorMessage.INTERNAL_ERROR,
+        message: ERROR.INTERNAL_ERROR,
       });
     }
   },
@@ -148,41 +128,27 @@ module.exports = {
   updatePassword: async (req, res) => {
     try {
       const { old_password, new_password } = req.body;
-
-      if (!old_password || !new_password) {
-        return res.status(400).json({
-          message: errorMessage.MISSING_CREDENTIALS,
-        });
-      }
-
-      if (new_password.length < 8) {
-        return res.status(400).json({
-          message: errorMessage.PASSWORD_TOO_SHORT,
-        });
-      }
-
       const user = await User.findByPk(req.user.id);
-
-      if (!user) {
-        return res.status(404).json({
-          message: errorMessage.USER_NOT_FOUND,
-        });
-      }
-
-      if (user.id !== req.user.id) {
-        return res.status(403).json({
-          message: errorMessage.UNAUTHORIZED,
-        });
-      }
-
       const isMatch = await bcrypt.compare(
         old_password,
         user.password
       );
 
+      if (!old_password || !new_password) {
+        return res.status(400).json({
+          message: ERROR.MISSING_CREDENTIALS,
+        });
+      }
+
+      if (new_password.length < 8) {
+        return res.status(400).json({
+          message: ERROR.PASSWORD_TOO_SHORT,
+        });
+      }
+
       if (!isMatch) {
         return res.status(401).json({
-          message: errorMessage.PASSWORD_NOT_MATCH,
+          message: ERROR.PASSWORD_NOT_MATCH,
         });
       }
 
@@ -191,7 +157,7 @@ module.exports = {
       });
 
       res.json({
-        message: errorMessage.PASSWORD_UPDATED,
+        message: ERROR.PASSWORD_UPDATED,
       });
 
       return await event.saveUserAction(EVENT.ACTION.UPDATE_PASSWORD, user, {});
@@ -199,7 +165,7 @@ module.exports = {
     } catch (error) {
       console.error(error);
       return res.status(500).json({
-        message: errorMessage.INTERNAL_ERROR,
+        message: ERROR.INTERNAL_ERROR,
       });
     }
   },
@@ -215,16 +181,8 @@ module.exports = {
       const file = req.file;
       const user = await User.findByPk(req.user.id);
 
-      if (!user) {
-        return res.status(404).json({
-          message: errorMessage.USER_NOT_FOUND,
-        });
-      }
-
-      s3.saveFile(file);
-
       user.update({
-        avatar_url: file.filename,
+        avatar_url: file.location,
       });
 
       return res.json(user);
@@ -235,18 +193,11 @@ module.exports = {
     try {
       const { id } = req.params;
       const password = req.body.password;
+      const user = await User.findByPk(id);
 
       if (!password) {
         return res.status(400).json({
-          message: errorMessage.MISSING_CREDENTIALS,
-        });
-      }
-
-      const user = await User.findByPk(id);
-
-      if (!user) {
-        return res.status(404).json({
-          message: errorMessage.USER_NOT_FOUND,
+          message: ERROR.MISSING_CREDENTIALS,
         });
       }
 
@@ -257,7 +208,7 @@ module.exports = {
 
       if (!isMatch) {
         return res.status(401).json({
-          message: errorMessage.PASSWORD_NOT_MATCH,
+          message: ERROR.PASSWORD_NOT_MATCH,
         });
       }
 
@@ -267,7 +218,7 @@ module.exports = {
     } catch (error) {
       console.error(error);
       return res.status(500).json({
-        message: errorMessage.INTERNAL_ERROR,
+        message: ERROR.INTERNAL_ERROR,
       });
     }
   },

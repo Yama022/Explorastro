@@ -6,7 +6,12 @@ const {
   participationController,
   commentController,
 } = require("../controllers");
-const { identityMiddleware } = require("../middlewares");
+
+const {
+  explorationMiddleware,
+  userMiddleware,
+  commentMiddleware,
+} = require("../middlewares");
 
 const validate = require("../validations/validate");
 const { commentSchema } = require("../validations/schemas");
@@ -32,7 +37,11 @@ router
    * @returns {Error.model}  default - An object containing the error message
    * @security JWT
    */
-  .get("/:id(\\d+)", explorationController.getInformations)
+  .get(
+    "/:id(\\d+)",
+    explorationMiddleware.checkIfExists,
+    explorationController.getInformations
+  )
 
   /**
    * Create an exploration by the user
@@ -63,8 +72,16 @@ router
    */
   .patch(
     "/:id(\\d+)/update",
-    identityMiddleware.explorationPermissions,
+    explorationMiddleware.checkIfExists,
+    explorationMiddleware.checkPermissions,
     explorationController.update
+  )
+
+  .put(
+    "/:id(\\d+)/update/illustration",
+    explorationMiddleware.checkIfExists,
+    explorationMiddleware.checkPermissions,
+    explorationController.updateIllustration
   )
 
   /**
@@ -78,7 +95,8 @@ router
    */
   .delete(
     "/:id(\\d+)/delete",
-    identityMiddleware.explorationPermissions,
+    explorationMiddleware.checkIfExists,
+    explorationMiddleware.checkPermissions,
     explorationController.delete
   )
 
@@ -103,7 +121,12 @@ router
    * @returns {Error.model}  default - An object containing the error message
    * @security JWT
    */
-  .put("/:id(\\d+)/participants/add/:userId(\\d+)", participationController.add)
+  .put(
+    "/:id(\\d+)/participants/add/:userId(\\d+)",
+    explorationMiddleware.checkIfExists,
+    userMiddleware.checkIfExists,
+    participationController.add
+  )
 
   /**
    * Unsuscribe a user from an exploration by his id
@@ -117,6 +140,8 @@ router
    */
   .delete(
     "/:id(\\d+)/participants/delete/:userId(\\d+)",
+    explorationMiddleware.checkIfExists,
+    userMiddleware.checkIfExists,
     participationController.delete
   )
 
@@ -129,7 +154,11 @@ router
    * @returns {Error.model}  default - An object containing the error message
    * @security JWT
    */
-  .get("/:id(\\d+)/comments", commentController.getAll)
+  .get(
+    "/:id(\\d+)/comments",
+    explorationMiddleware.checkIfExists,
+    commentController.getAll
+  )
 
   /**
    * Comment an exploration by his id
@@ -143,6 +172,7 @@ router
   .post(
     "/:id(\\d+)/comments/add",
     validate("body", commentSchema),
+    explorationMiddleware.checkIfExists,
     commentController.add
   )
 
@@ -159,6 +189,9 @@ router
   .patch(
     "/:id(\\d+)/comments/edit/:commentId(\\d+)",
     validate("body", commentSchema),
+    explorationMiddleware.checkIfExists,
+    commentMiddleware.checkIfExists,
+    commentMiddleware.checkPermissions,
     commentController.edit
   )
 
@@ -174,6 +207,9 @@ router
    */
   .delete(
     "/:id(\\d+)/comments/delete/:commentId(\\d+)",
+    explorationMiddleware.checkIfExists,
+    commentMiddleware.checkIfExists,
+    commentMiddleware.checkPermissions,
     commentController.delete
   );
 

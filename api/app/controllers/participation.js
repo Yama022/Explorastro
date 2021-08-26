@@ -1,5 +1,5 @@
 const { User, Exploration } = require("../models");
-const { errorMessage, EVENT } = require("../constants");
+const { ERROR, EVENT } = require("../constants");
 const { event } = require("../utils");
 
 module.exports = {
@@ -10,16 +10,11 @@ module.exports = {
         include: ["participants"],
       });
 
-      if (!exploration) {
-        res.status(404).send(errorMessage.EXPLORATION_NOT_FOUND);
-        return;
-      }
-
       res.json(exploration.participants);
     } catch (error) {
       console.error(error);
       res.status(500).json({
-        message: errorMessage.INTERNAL_ERROR,
+        message: ERROR.INTERNAL_ERROR,
       });
     }
   },
@@ -30,7 +25,7 @@ module.exports = {
 
       if (userId != req.user.id) {
         return res.status(403).json({
-          message: errorMessage.UNAUTHORIZED,
+          message: ERROR.UNAUTHORIZED,
         });
       }
 
@@ -39,21 +34,9 @@ module.exports = {
         include: ["participants"],
       });
 
-      if (!user) {
-        return res.status(404).json({
-          message: errorMessage.USER_NOT_FOUND,
-        });
-      }
-
-      if (!exploration) {
-        return res.status(404).json({
-          message: errorMessage.EXPLORATION_NOT_FOUND,
-        });
-      }
-
       if (exploration.participants.length >= exploration.max_participants) {
         return res.status(400).json({
-          message: errorMessage.EXPLORATION_PARTICIPANTS_LIMIT_REACHED,
+          message: ERROR.EXPLORATION_PARTICIPANTS_LIMIT_REACHED,
         });
       }
 
@@ -63,14 +46,14 @@ module.exports = {
 
       if (userAlreadyParticipate) {
         return res.status(400).json({
-          message: errorMessage.USER_ALREADY_PARTICIPATE,
+          message: ERROR.USER_ALREADY_PARTICIPATE,
         });
       }
 
       await exploration.addParticipant(user);
 
       res.status(200).json({
-        message: errorMessage.SUBSCRIBE_SUCCESS,
+        message: ERROR.SUBSCRIBE_SUCCESS,
       });
 
       return await event.saveUserAction(EVENT.ACTION.PARTICIPATION_ADD, user, {
@@ -80,7 +63,7 @@ module.exports = {
     } catch (error) {
       console.error(error);
       return res.status(500).json({
-        message: errorMessage.INTERNAL_ERROR,
+        message: ERROR.INTERNAL_ERROR,
       });
     }
   },
@@ -91,7 +74,7 @@ module.exports = {
 
       if (userId != req.user.id) {
         return res.status(403).json({
-          message: errorMessage.UNAUTHORIZED,
+          message: ERROR.UNAUTHORIZED,
         });
       }
 
@@ -100,32 +83,20 @@ module.exports = {
         include: ["participants"],
       });
 
-      if (!user) {
-        return res.status(404).json({
-          message: errorMessage.USER_NOT_FOUND,
-        });
-      }
-
-      if (!exploration) {
-        return res.status(404).json({
-          message: errorMessage.EXPLORATION_NOT_FOUND,
-        });
-      }
-
       const userParticipate = exploration.participants.some(
         (participant) => participant.id === user.id
       );
 
       if (!userParticipate) {
         return res.status(400).json({
-          message: errorMessage.USER_NOT_PARTICIPATE,
+          message: ERROR.USER_NOT_PARTICIPATE,
         });
       }
 
       await exploration.removeParticipant(user);
 
       res.status(200).json({
-        message: errorMessage.UNSUBCRIBE_SUCCESS,
+        message: ERROR.UNSUBCRIBE_SUCCESS,
       });
 
       return await event.saveUserAction(EVENT.ACTION.PARTICIPATION_REMOVED, user, {
@@ -134,7 +105,7 @@ module.exports = {
     } catch (error) {
       console.error(error);
       return res.status(500).json({
-        message: errorMessage.INTERNAL_ERROR,
+        message: ERROR.INTERNAL_ERROR,
       });
     }
   },

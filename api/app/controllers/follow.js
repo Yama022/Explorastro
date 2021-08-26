@@ -1,4 +1,4 @@
-const { errorMessage, EVENT } = require("../constants");
+const { ERROR, EVENT } = require("../constants");
 const { User } = require("../models");
 const { event } = require("../utils");
 
@@ -14,7 +14,7 @@ module.exports = {
 
       if (!user || !userToFollow) {
         return res.status(400).send({
-          message: errorMessage.USER_NOT_FOUND,
+          message: ERROR.USER_NOT_FOUND,
         });
       }
 
@@ -26,14 +26,14 @@ module.exports = {
 
       if (isAlreadyFollowing) {
         return res.status(400).send({
-          message: errorMessage.ALREADY_FOLLOWING_USER,
+          message: ERROR.ALREADY_FOLLOWING_USER,
         });
       }
 
       await user.addFollowing(userToFollow);
 
       res.status(200).send({
-        message: errorMessage.FOLLOW_IS_SUCCESS,
+        message: ERROR.FOLLOW_IS_SUCCESS,
       });
 
       return await event.saveUserAction(EVENT.ACTION.FOLLOW, user, {
@@ -42,7 +42,7 @@ module.exports = {
     } catch (error) {
       console.error(error);
       res.status(500).json({
-        error: errorMessage.INTERNAL_ERROR,
+        error: ERROR.INTERNAL_ERROR,
       });
     }
   },
@@ -58,7 +58,7 @@ module.exports = {
 
       if (!user || !userToUnfollow) {
         return res.status(400).send({
-          message: errorMessage.USER_NOT_FOUND,
+          message: ERROR.USER_NOT_FOUND,
         });
       }
 
@@ -68,14 +68,14 @@ module.exports = {
 
       if (!isFollowing) {
         return res.status(400).send({
-          message: errorMessage.USER_NOT_FOLLOWING,
+          message: ERROR.USER_NOT_FOLLOWING,
         });
       }
 
       await user.removeFollowing(userToUnfollow);
 
       res.status(200).send({
-        message: errorMessage.UNFOLLOW_IS_SUCCESS,
+        message: ERROR.UNFOLLOW_IS_SUCCESS,
       });
 
       return await event.saveUserAction(EVENT.ACTION.UNFOLLOW, user, {
@@ -84,7 +84,7 @@ module.exports = {
     } catch (error) {
       console.error(error);
       res.status(500).json({
-        error: errorMessage.INTERNAL_ERROR,
+        error: ERROR.INTERNAL_ERROR,
       });
     }
   },

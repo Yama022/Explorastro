@@ -1,4 +1,4 @@
-const { errorMessage, EVENT } = require("../constants");
+const { ERROR, EVENT } = require("../constants");
 const { Comment, Exploration } = require("../models");
 const { event } = require("../utils");
 
@@ -10,16 +10,10 @@ module.exports = {
         include: ["comments"],
       });
 
-      if (!exploration) {
-        return res.status(404).json({
-          message: errorMessage.EXPLORATION_NOT_FOUND,
-        });
-      }
-
       res.status(200).json(exploration.comments);
     } catch (error) {
       console.error(error);
-      res.status(500).json({ message: errorMessage.INTERNAL_ERROR });
+      res.status(500).json({ message: ERROR.INTERNAL_ERROR });
     }
   },
 
@@ -30,12 +24,6 @@ module.exports = {
       const user = req.user;
       const exploration = await Exploration.findByPk(id);
 
-      if (!exploration) {
-        return res.status(404).json({
-          message: errorMessage.EXPLORATION_NOT_FOUND,
-        });
-      }
-
       const comment = await Comment.create({
         content,
         author_id: user.id,
@@ -44,7 +32,7 @@ module.exports = {
       await exploration.addComment(comment);
 
       res.status(200).json({
-        message: errorMessage.COMMENT_ADDED,
+        message: ERROR.COMMENT_ADDED,
       });
 
       return await event.saveUserAction(EVENT.ACTION.COMMENT, user, {
@@ -53,7 +41,7 @@ module.exports = {
       });
     } catch (error) {
       console.error(error);
-      res.status(500).json({ message: errorMessage.INTERNAL_ERROR });
+      res.status(500).json({ message: ERROR.INTERNAL_ERROR });
     }
   },
 
@@ -62,32 +50,19 @@ module.exports = {
       const { id, commentId } = req.params;
       const { content } = req.body;
       const user = req.user;
-
       const exploration = await Exploration.findByPk(id);
       const comment = await Comment.findByPk(commentId);
 
       if (comment?.author_id !== user.id) {
         return res.status(403).json({
-          message: errorMessage.UNAUTHORIZED,
-        });
-      }
-
-      if (!exploration) {
-        return res.status(404).json({
-          message: errorMessage.EXPLORATION_NOT_FOUND,
-        });
-      }
-
-      if (!comment) {
-        return res.status(404).json({
-          message: errorMessage.COMMENT_NOT_FOUND,
+          message: ERROR.UNAUTHORIZED,
         });
       }
 
       await comment.update({ content });
 
       res.status(200).json({
-        message: errorMessage.COMMENT_EDITED,
+        message: ERROR.COMMENT_EDITED,
       });
 
       await event.saveUserAction(EVENT.ACTION.EDIT_COMMENT, user, {
@@ -96,7 +71,7 @@ module.exports = {
       });
     } catch (error) {
       console.error(error);
-      res.status(500).json({ message: errorMessage.INTERNAL_ERROR });
+      res.status(500).json({ message: ERROR.INTERNAL_ERROR });
     }
   },
 
@@ -104,25 +79,18 @@ module.exports = {
     try {
       const { id, commentId } = req.params;
       const user = req.user;
-
       const exploration = await Exploration.findByPk(id);
       const comment = await Comment.findByPk(commentId);
 
       if (comment?.author_id !== user.id) {
         return res.status(403).json({
-          message: errorMessage.UNAUTHORIZED,
-        });
-      }
-
-      if (!exploration) {
-        return res.status(404).json({
-          message: errorMessage.EXPLORATION_NOT_FOUND,
+          message: ERROR.UNAUTHORIZED,
         });
       }
 
       if (!comment) {
         return res.status(404).json({
-          message: errorMessage.COMMENT_NOT_FOUND,
+          message: ERROR.COMMENT_NOT_FOUND,
         });
       }
 
@@ -130,7 +98,7 @@ module.exports = {
       await comment.destroy();
 
       res.status(200).json({
-        message: errorMessage.COMMENT_DELETED,
+        message: ERROR.COMMENT_DELETED,
       });
 
       await event.saveUserAction(EVENT.ACTION.DELETE_COMMENT, user, {
@@ -138,7 +106,7 @@ module.exports = {
       });
     } catch (error) {
       console.error(error);
-      res.status(500).json({ message: errorMessage.INTERNAL_ERROR });
+      res.status(500).json({ message: ERROR.INTERNAL_ERROR });
     }
   },
 };
