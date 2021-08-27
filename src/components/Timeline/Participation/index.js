@@ -6,7 +6,7 @@ import defaultAvatar from 'src/assets/images/luffy.png';
 import defaultExplo from 'src/assets/images/default-explo.jpg';
 
 export default function JoinExplo({ props }) {
-  console.log('Je rentre dedans', props);
+  console.log('Je rentre dans le composant Participation de Timeline', props);
   return (
     <div className="explo">
       <div className="explo__title">

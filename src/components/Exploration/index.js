@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
-import { MapContainer, TileLayer } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import PropTypes from 'prop-types';
+import Loader from 'src/components/Loader';
 import Weather from './Weather';
 import Information from './Information';
 import Partcipants from './Participant';
@@ -11,12 +12,17 @@ export default function Exploration({ getExploration, id, exploration }) {
   useEffect(() => {
     getExploration(id);
   }, []);
+  if (!exploration.id) {
+    return (<Loader />);
+  }
+  const { geog: { coordinates } } = exploration;
+  coordinates.reverse();
 
   return (
     <div className="Exploration">
       <section className="Exploration__main">
         <Information information={exploration} />
-        {/* <Partcipants /> */}
+        <Partcipants participants={exploration} />
       </section>
       <section className="Exploration__overview">
         <div className="Exploration__overview__left">
@@ -39,6 +45,7 @@ export default function Exploration({ getExploration, id, exploration }) {
               name="tiles"
             />
             {/* Add Markers events astro on the map */}
+            <Marker names="marker" position={coordinates} />
           </MapContainer>
         </div>
       </section>

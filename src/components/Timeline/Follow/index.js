@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Loader from 'src/components/Loader';
 import PropTypes from 'prop-types';
 
 import { Link } from 'react-router-dom';
@@ -16,6 +16,9 @@ export default function Follow({ props }) {
     followed,
     message,
   } = props;
+  if (!props._id) {
+    return <Loader />;
+  }
   return (
     <div className="follow">
       <div className="follow__title">
