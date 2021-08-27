@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useMap } from 'react-leaflet';
 import 'leaflet-control-geocoder/dist/Control.Geocoder.css';
 import 'leaflet-control-geocoder/dist/Control.Geocoder';
+
 import L from 'leaflet';
 import PropTypes from 'prop-types';
 
@@ -34,10 +35,14 @@ export default function ControlGeocoder({ coordLocation, coord }) {
       const latLon = L.latLng(reverseTabCoord);
       const bounds = latLon.toBounds(500);
       map.panTo(latLon).fitBounds(bounds);
-      L.marker(objCoord)
-        .addTo(map)
-        .bindPopup('e.geocode.name')
-        .openPopup();
+      console.log(latLon);
+      geocoder.reverse(latLon, 1, (resp) => {
+        console.log(resp[0].name);
+        return (L.marker(objCoord)
+          .addTo(map)
+          .bindPopup(resp[0].name)
+          .openPopup());
+      });
     }
 
     L.Control.geocoder({
@@ -51,6 +56,9 @@ export default function ControlGeocoder({ coordLocation, coord }) {
       .on('markgeocode', (e) => {
         const latlng = e.geocode.center;
         coordLocation(latlng);
+        console.log(latlng);
+        // reverse(location: L.LatLngLiteral, scale: number, cb: GeocodingCallback, context?: any)
+
         // saveAddress(e.geocode.name);
         L.marker(latlng)
           .addTo(map)
@@ -67,7 +75,7 @@ export default function ControlGeocoder({ coordLocation, coord }) {
 ControlGeocoder.propTypes = {
   coordLocation: PropTypes.func.isRequired,
   coord: PropTypes.array,
-  // saveAddress: PropTypes.func.isRequired,
+  saveAddress: PropTypes.func.isRequired,
 
 };
 

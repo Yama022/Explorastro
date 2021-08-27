@@ -6,9 +6,10 @@ import * as dayjs from 'dayjs';
 import PropTypes from 'prop-types';
 import Header from 'src/containers/Header';
 import Footer from 'src/components/Footer';
+import Loader from 'src/components/Loader';
 import { Link } from 'react-router-dom';
-import mascotRocket from 'src/assets/images/mascot-rocket.svg';
 import ControlGeocoder from './controlGeocoder';
+import Modal from './Modal';
 
 export default function FormEvent({
   onChangeInput,
@@ -27,11 +28,20 @@ export default function FormEvent({
   modal,
   imageUrl,
   saveAddress,
+  getEvent,
 
 }) {
   useEffect(() => {
-    getEventsCreated(eventCreated);
+    getEvent();
   }, []);
+
+  useEffect(() => {
+    getEventsCreated(eventCreated);
+  }, [eventCreated]);
+
+  if (!eventCreated) {
+    return (<Loader />);
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -41,10 +51,6 @@ export default function FormEvent({
 
   const handleOnchange = (event) => {
     onChangeInput(event.target.value, event.target.name);
-  };
-
-  const handleOnClickModal = () => {
-    OnClickModal();
   };
 
   const handleOnClick = () => {
@@ -58,7 +64,7 @@ export default function FormEvent({
         <ControlGeocoder
           coordLocation={getCoordLocation}
           coord={coord.coordinates}
-          // saveAddress={saveAddress}
+          saveAddress={saveAddress}
         />
       );
     }
@@ -66,7 +72,7 @@ export default function FormEvent({
       controlGeocoder = (
         <ControlGeocoder
           coordLocation={getCoordLocation}
-          // saveAddress={saveAddress}
+          saveAddress={saveAddress}
         />
       );
     }
@@ -75,24 +81,14 @@ export default function FormEvent({
 
   return (
     <>
-      {/* Modal */}
-      <div className={modal ? 'modal is-active' : 'modal'}>
-        <div className="modal-background" />
-        <div className="modal-card">
-          <header className="modal-card-head">
-            <p className="modal-card-title">Exploration : {titleEvent}</p>
-            <button className="delete" aria-label="close" onClick={handleOnClickModal} />
-          </header>
-          <section className="modal-card-body">
-            <img className="modal-card-body-mascotte" src={mascotRocket} alt="Belle mascotte" />
-            <p>"Vos modifications ont bien été pris en compte"</p>
-          </section>
-          <footer className="modal-card-foot">
-            <Link className="button--modal" to="/exploration/create" onClick={handleOnClickModal}>Fermer </Link>
-          </footer>
-        </div>
-      </div>
-      {/* fin Modal */}
+      {modal
+      && (
+      <Modal
+        OnClickModal={OnClickModal}
+        modal={modal}
+        titleEvent={titleEvent}
+      />
+      )}
 
       <Header />
 
@@ -195,17 +191,18 @@ FormEvent.propTypes = {
   onChangeInput: PropTypes.func.isRequired,
   onFormSubmitUpdateEvent: PropTypes.func.isRequired,
   getCoordLocation: PropTypes.func.isRequired,
-  eventCreated: PropTypes.object.isRequired,
+  eventCreated: PropTypes.object,
   OnClick: PropTypes.func.isRequired,
   getEventsCreated: PropTypes.func.isRequired,
-  titleEvent: PropTypes.string.isRequired,
+  getEvent: PropTypes.func.isRequired,
+  titleEvent: PropTypes.string,
   dateEvent: PropTypes.string,
   maxRateEvent: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
   ]),
   descEvent: PropTypes.string,
-  published: PropTypes.bool.isRequired,
+  published: PropTypes.bool,
   coord: PropTypes.oneOfType([
     PropTypes.array,
     PropTypes.object,
@@ -221,4 +218,7 @@ FormEvent.defaultProps = {
   dateEvent: '',
   maxRateEvent: 0,
   coord: [],
+  eventCreated: {},
+  titleEvent: '',
+  published: false,
 };

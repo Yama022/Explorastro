@@ -7,26 +7,25 @@ import {
   OnclickPublished,
   eventsCreated,
   clickModal,
+  saveAddress,
 } from 'src/actions/exploration';
 
 import { findEvent } from 'src/selectors/exploration';
 
-const mapStateToProps = (state, ownProps) => {
-  console.log('Je suis dans FormEvent Containers', state.exploration.eventCreated);
-  return ({
+const mapStateToProps = (state, ownProps) => ({
 
-    eventCreated: findEvent(state.exploration.eventCreated, ownProps.match.params.id),
-    titleEvent: state.exploration.titleEvent,
-    dateEvent: state.exploration.dateEvent,
-    maxRateEvent: state.exploration.maxRateEvent,
-    descEvent: state.exploration.descEvent,
-    published: state.exploration.published,
-    coord: state.exploration.geog,
-    modal: state.exploration.modal,
-    imageUrl: state.exploration.imageUrl,
-  }
-  );
-};
+  eventCreated: findEvent(state.exploration.eventCreated, ownProps.match.params.id),
+  titleEvent: state.exploration.titleEvent,
+  dateEvent: state.exploration.dateEvent,
+  maxRateEvent: state.exploration.maxRateEvent,
+  descEvent: state.exploration.descEvent,
+  published: state.exploration.published,
+  coord: state.exploration.geog,
+  modal: state.exploration.modal,
+  imageUrl: state.exploration.imageUrl,
+  eventCreatedLast: state.exploration.eventCreated,
+}
+);
 
 const mapDispatchToProps = (dispatch) => ({
   onChangeInput: (value, key) => {
@@ -59,6 +58,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   OnClickModal: () => {
     const action = clickModal();
+    dispatch(action);
+  },
+  saveAddress: (value) => {
+    const action = saveAddress(value);
     dispatch(action);
   },
 

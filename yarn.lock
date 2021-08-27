@@ -1099,6 +1099,18 @@
   resolved "https://registry.yarnpkg.com/@react-leaflet/core/-/core-1.1.0.tgz#389b2b373f1da4caeb3c4cf6f33d84561c58d504"
   integrity sha512-zFxMHgfjCi7khRVB7o7H8NoJl36NaezvfcaeEurVXx22lAGHFlTHiSuLOGA4tOiHj+Ep+Lo3uwUGJ3YM9BGkHg==
 
+"@terraformer/arcgis@^2.0.7":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@terraformer/arcgis/-/arcgis-2.1.0.tgz#23d5822bd71e3d940da3e62d391b42628d35d2ef"
+  integrity sha512-eKTvNXze2Fo7vAEjvJFIGn5QdU0OP4aD9DuT/uTBLRM1QS+ju7KtPITbVW+xgCviHLnOVeFQ1UsIs9kjkakD4g==
+  dependencies:
+    "@terraformer/common" "^2.0.7"
+
+"@terraformer/common@^2.0.7":
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/@terraformer/common/-/common-2.0.7.tgz#bec626f331b9f0cc3aefb16f9f88e2d3684107ff"
+  integrity sha512-8bl+/JT0Rw6FYe2H3FfJS8uQwgzGl+UHs+8JX0TQLHgA4sMDEwObbMwo0iP3FVONwPXrPHEpC5YH7Grve0cl9A==
+
 "@trysound/sax@0.1.1":
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/@trysound/sax/-/sax-0.1.1.tgz#3348564048e7a2d7398c935d466c0414ebb6a669"
@@ -3057,6 +3069,22 @@ esrecurse@^4.3.0:
   dependencies:
     estraverse "^5.2.0"
 
+esri-leaflet-geocoder@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/esri-leaflet-geocoder/-/esri-leaflet-geocoder-3.1.1.tgz#21a209c0d49d6c8cecbf5e676c9b13699a2e479f"
+  integrity sha512-G0fGOxRQn5YZurd+8b5LQu1pRJvHJVIlOnXfA/B7UCw+enRFOn3VB/KT1XctIC7BsO/vXEPGy7XH3qEd9dZfaA==
+  dependencies:
+    esri-leaflet "^3.0.2"
+    leaflet "^1.0.0"
+
+esri-leaflet@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/esri-leaflet/-/esri-leaflet-3.0.2.tgz#368ff662aeb8de21d70d59b362a821b0dcabf6b5"
+  integrity sha512-Dr5Ie52yH+gojfnGXdzHGkrgn9U3kp9QKB7xqXZX/mPIE9gKyqC5Er8jRifJx+DTgeM67F+P7F09ZJsIvWbheQ==
+  dependencies:
+    "@terraformer/arcgis" "^2.0.7"
+    tiny-binary-search "^1.0.3"
+
 estraverse@^4.1.1:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/estraverse/-/estraverse-4.3.0.tgz#398ad3f3c5a24948be7725e83d11a7de28cdbd1d"
@@ -4362,7 +4390,7 @@ leaflet.markercluster@^1.4.1, leaflet.markercluster@^1.5.0:
   resolved "https://registry.yarnpkg.com/leaflet.markercluster/-/leaflet.markercluster-1.5.0.tgz#54db42485da32fc3d92c7ae22d0d7982879e0b67"
   integrity sha512-Fvf/cq4o806mJL50n+fZW9+QALDDLPvt7vuAjlD2vfnxx3srMDs2vWINJze4nKYJYRY45OC6tM/669C3pLwMCA==
 
-leaflet@^1.6.0, leaflet@^1.7.1:
+leaflet@^1.0.0, leaflet@^1.6.0, leaflet@^1.7.1:
   version "1.7.1"
   resolved "https://registry.yarnpkg.com/leaflet/-/leaflet-1.7.1.tgz#10d684916edfe1bf41d688a3b97127c0322a2a19"
   integrity sha512-/xwPEBidtg69Q3HlqPdU3DnrXQOvQU/CCHA1tcDQVzOwm91YMYaILjNp7L4Eaw5Z4sOYdbBz6koWyibppd8Zqw==
@@ -7259,6 +7287,11 @@ timsort@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/timsort/-/timsort-0.3.0.tgz#405411a8e7e6339fe64db9a234de11dc31e02bd4"
   integrity sha1-QFQRqOfmM5/mTbmiNN4R3DHgK9Q=
+
+tiny-binary-search@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/tiny-binary-search/-/tiny-binary-search-1.0.3.tgz#9d52e3d16dd1171eb74486caf704ba08c0c62186"
+  integrity sha512-STSHX/L5nI9WTLv6wrzJbAPbO7OIISX83KFBh2GVbX1Uz/vgZOU/ANn/8iV6t35yMTpoPzzO+3OQid3mifE0CA==
 
 tiny-invariant@^1.0.2, tiny-invariant@^1.0.6:
   version "1.1.0"
