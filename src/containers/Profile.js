@@ -3,6 +3,7 @@ import Profile from 'src/components/Profile';
 
 import {
   changeProfileMenu, getUserInfo, follow, unfollow, toggleBioEdit,
+  changeInputValue,
 } from 'src/actions/profile';
 
 const mapStateToProps = (state) => ({
@@ -16,9 +17,13 @@ const mapStateToProps = (state) => ({
   userFollowed: state.profile.userFollowed,
   explorations: state.profile.explorations,
   bioEditIsOpen: state.profile.bioEditOpen,
+  biography: state.profile.biography,
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  changeField: (value, key) => {
+    dispatch(changeInputValue(value, key));
+  },
   changeMenuValue: (value) => {
     dispatch(changeProfileMenu(value));
   },

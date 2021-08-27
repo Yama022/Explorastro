@@ -30,16 +30,24 @@ export default function Profile({
   userFollowed,
   handleToggleBioEdit,
   bioEditIsOpen,
+  biography,
+  changeField,
 }) {
   const handleToggleNav = (event) => {
     changeMenuValue(event.target.dataset.toggle);
   };
+
+  const handleChange = (event) => {
+    console.log(event.target.value, event.target.name);
+    changeField(event.target.value, event.target.name);
+  };
+
   useEffect(() => {
     getInfo(profileId);
   }, [profileId]);
 
   if (!loggedUserId || !explorations || !profileId) {
-    return (<Loader />);
+    return <Loader />;
   }
   return (
     <div className="profile">
@@ -114,7 +122,7 @@ export default function Profile({
             {bioEditIsOpen
               ? (
                 <form className="profile__header__description__bio__form" onSubmit={() => {}}>
-                  <textarea value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut tortor a magna dapibusblanditac elementum massa.Morbi eget cursus massa. Integer elementum tincidunt magna viverra pharetra. Nam ac diam lobortis ex euismod ornare. Maecenas at ipsum velit. Proin bibendum eget mauris in imperdiet. Praesent interdum egestasnec dignissim. Nullam at sodales turpis. Suspendisse eleifend scelerisque iaculis." />
+                  <textarea name="biography" onChange={handleChange} value={biography} />
                 </form>
               )
               : (
@@ -175,4 +183,6 @@ Profile.propTypes = {
   userFollowed: PropTypes.bool.isRequired,
   handleToggleBioEdit: PropTypes.func.isRequired,
   bioEditIsOpen: PropTypes.bool.isRequired,
+  biography: PropTypes.string.isRequired,
+  changeField: PropTypes.func.isRequired,
 };

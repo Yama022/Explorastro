@@ -1,18 +1,18 @@
-import { SAVE_USER } from 'src/actions/user';
 import {
-  CHANGE_PROFILE_MENU, SAVE_USER_INFO, TOGGLE_FOLLOW, TOGGLE_BIO_EDIT,
+  CHANGE_PROFILE_MENU, SAVE_USER_INFO, TOGGLE_FOLLOW, TOGGLE_BIO_EDIT, CHANGE_INPUT_VALUE,
 } from 'src/actions/profile';
 
 const initialState = {
   loggedUserId: 0,
+  avatar_url: '',
   username: '',
   firstname: '',
   lastname: '',
+  biography: '',
   profileMenuValue: 1,
   followers: [],
   following: [],
   explorations: [],
-  avatar_url: '',
   userFollowed: false,
   bioEditOpen: false,
 };
@@ -54,6 +54,12 @@ const profile = (state = initialState, action = {}) => {
       return {
         ...state,
         bioEditOpen: !state.bioEditOpen,
+      };
+    }
+    case CHANGE_INPUT_VALUE: {
+      return {
+        ...state,
+        [action.key]: action.value,
       };
     }
     default:

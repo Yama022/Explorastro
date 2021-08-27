@@ -5,6 +5,7 @@ export const FOLLOW = 'FOLLOW';
 export const UNFOLLOW = 'UNFOLLOW';
 export const TOGGLE_FOLLOW = 'TOGGLE_FOLLOW';
 export const TOGGLE_BIO_EDIT = 'TOGGLE_BIO_EDIT';
+export const CHANGE_INPUT_VALUE = 'CHANGE_INPUT_VALUE';
 
 export const changeProfileMenu = (payload) => ({
   type: CHANGE_PROFILE_MENU,
@@ -37,4 +38,8 @@ export const toggleFollow = () => ({
 
 export const toggleBioEdit = () => ({
   type: TOGGLE_BIO_EDIT,
+});
+
+export const changeInputValue = () => ({
+  type: CHANGE_INPUT_VALUE,
 });
