@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Loader from 'src/components/Loader';
 import PropTypes from 'prop-types';
 
 import { Link } from 'react-router-dom';
@@ -11,16 +11,21 @@ import { RiUserFollowLine } from 'react-icons/ri';
 
 export default function Follow({ props }) {
   const {
+    _id: idFollow,
     date: { locales },
     follower,
     followed,
     message,
+    avatar_url: avatarUrl,
   } = props;
+  if (!idFollow) {
+    return <Loader />;
+  }
   return (
     <div className="follow">
       <div className="follow__title">
         {/* Avatar url TO ADD ! */}
-        <img src={props.avatar_url} alt="avatar" />
+        <img src={avatarUrl} alt="avatar" />
         <h3> <Link to={`/profile/${follower.id}`}>{follower.username}</Link> {message.fr} <Link to={`/profile/${followed.id}`}>{followed.username}</Link></h3>
       </div>
 
@@ -50,4 +55,6 @@ Follow.propTypes = {
   follower: PropTypes.object.isRequired,
   followed: PropTypes.object.isRequired,
   message: PropTypes.object.isRequired,
+  _id: PropTypes.number.isRequired,
+  avatar_url: PropTypes.string.isRequired,
 };

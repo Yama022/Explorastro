@@ -7,6 +7,10 @@ const Information = ({ information }) => {
   if (!information.author) {
     return (<Loader />);
   }
+  const {
+    image_url: image,
+    name,
+  } = information;
 
   return (
 
@@ -14,7 +18,7 @@ const Information = ({ information }) => {
       <div className="Exploration__main__informations__general">
         <div className="Exploration__main__informations__general__left">
           <div>
-            <h2>{information.name}</h2>
+            <h2>{name}</h2>
             <p>{`créé par ${information.author.username}`}</p>
             <div className="Exploration__main__informations__general__left__title__stars">
               <AiFillStar />
@@ -25,8 +29,8 @@ const Information = ({ information }) => {
             </div>
           </div>
           <img
-            src="https://img.20mn.fr/r4hnPca8RRWkXhjG7q86mA/768x492_galaxie.jpg"
-            alt=""
+            src={image}
+            alt={name}
             className="Exploration__main__informations__general__illustration"
           />
         </div>
@@ -48,5 +52,6 @@ export default Information;
 
 Information.propTypes = {
   information: PropTypes.object.isRequired,
-
+  image_url: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
 };

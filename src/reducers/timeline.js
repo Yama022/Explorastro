@@ -14,7 +14,7 @@ const reducer = (state = initialState, action = {}) => {
     case SAVE_TIMELINE: {
       return {
         ...state,
-        timelineContent: [state.timelineContent, ...action.payload],
+        timelineContent: [...state.timelineContent, ...action.payload],
       };
     }
     default:
