@@ -4,7 +4,7 @@ const { sequelize } = require('../database');
 class User extends Model {}
 
 // Never return the user's password hash
-User.prototype.toJSON = () => {
+User.prototype.toJSON = function () {
   const values = Object.assign({}, this.get());
   delete values.password;
   return values;
