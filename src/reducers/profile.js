@@ -1,5 +1,7 @@
 import { SAVE_USER } from 'src/actions/user';
-import { CHANGE_PROFILE_MENU, SAVE_USER_INFO, TOGGLE_FOLLOW } from 'src/actions/profile';
+import {
+  CHANGE_PROFILE_MENU, SAVE_USER_INFO, TOGGLE_FOLLOW, TOGGLE_BIO_EDIT,
+} from 'src/actions/profile';
 
 const initialState = {
   loggedUserId: 0,
@@ -10,7 +12,9 @@ const initialState = {
   followers: [],
   following: [],
   explorations: [],
+  avatar_url: '',
   userFollowed: false,
+  bioEditOpen: false,
 };
 
 const profile = (state = initialState, action = {}) => {
@@ -36,6 +40,7 @@ const profile = (state = initialState, action = {}) => {
         followers: action.payload.followers,
         following: action.payload.following,
         explorations: action.payload.organized_explorations,
+        avatar_url: action.payload.avatar_url,
         userFollowed: action.payload.followers.some((follow) => follow.id === state.loggedUserId),
       };
     }
@@ -43,6 +48,12 @@ const profile = (state = initialState, action = {}) => {
       return {
         ...state,
         userFollowed: !state.userFollowed,
+      };
+    }
+    case TOGGLE_BIO_EDIT: {
+      return {
+        ...state,
+        bioEditOpen: !state.bioEditOpen,
       };
     }
     default:

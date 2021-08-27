@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import Profile from 'src/components/Profile';
 
 import {
-  changeProfileMenu, getUserInfo, follow, unfollow,
+  changeProfileMenu, getUserInfo, follow, unfollow, toggleBioEdit,
 } from 'src/actions/profile';
 
 const mapStateToProps = (state) => ({
@@ -15,6 +15,7 @@ const mapStateToProps = (state) => ({
   following: state.profile.following,
   userFollowed: state.profile.userFollowed,
   explorations: state.profile.explorations,
+  bioEditIsOpen: state.profile.bioEditOpen,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -29,6 +30,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   handleUnfollow: (value) => {
     dispatch(unfollow(value));
+  },
+  handleToggleBioEdit: () => {
+    dispatch(toggleBioEdit());
   },
 });
 

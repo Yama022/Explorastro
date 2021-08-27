@@ -58,7 +58,9 @@
       cursor: pointer;
       height: 3em;
       &__avatar {
-        height: 100%;
+        height: 48px;
+        width: 48px;
+        object-fit: cover;
         border-radius: 50%;
         margin-left: .7em;
       }
