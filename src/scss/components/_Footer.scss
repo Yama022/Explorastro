@@ -14,17 +14,17 @@
     filter:  invert(1) drop-shadow(30px 10px 4px black);
   }
   &__description {
-    margin-top: 1.5em;
+    margin-top: $gutter;
     & a {
-      margin-right: 2em;
+      margin-right: 2rem;
     }
     & p {
-      margin-top: 0.4em;
-      padding-bottom: 0.3em;
+      margin-top: 0.4rem;
+      padding-bottom: 0.3rem;
     }
   }
   @include mobTab {
-    margin-top: 6em;
+    margin-top: 5rem;
   }
 }
 
