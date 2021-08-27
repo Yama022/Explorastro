@@ -48,12 +48,10 @@ module.exports = {
       const accessToken = jwt.generateAccessToken(userData);
       const refreshToken = jwt.generateRefreshToken(userData);
 
-      const tokenToSave = new Token({
+      const tokenToSave = Token.create({
         user_id: user.id,
         token: refreshToken,
       });
-
-      await tokenToSave.save();
 
       return res.json({
         ...userData,
@@ -103,7 +101,7 @@ module.exports = {
         });
       }
 
-      const user = new User({
+      const user = await User.create({
         firstname,
         lastname,
         username,
@@ -111,9 +109,7 @@ module.exports = {
         password: bcrypt.hashSync(password, 8),
       });
 
-      await user.save();
-
-      res.status(200).json({ user });
+      res.status(200).json(user);
 
       return await event.saveUserAction(EVENT.ACTION.SIGN_UP, user, {});
     }
