@@ -23,5 +23,8 @@
       padding-bottom: 0.3em;
     }
   }
+  @include mobTab {
+    margin-top: 6em;
+  }
 }
 
