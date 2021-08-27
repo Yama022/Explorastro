@@ -7,7 +7,6 @@ import {
   OnclickPublished,
   eventsCreated,
   clickModal,
-  saveAddress,
 } from 'src/actions/exploration';
 
 import { findEvent } from 'src/selectors/exploration';
@@ -58,10 +57,6 @@ const mapDispatchToProps = (dispatch) => ({
 
   OnClickModal: () => {
     const action = clickModal();
-    dispatch(action);
-  },
-  saveAddress: (value) => {
-    const action = saveAddress(value);
     dispatch(action);
   },
 

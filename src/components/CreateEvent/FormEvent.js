@@ -1,15 +1,14 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect } from 'react';
-import { MapContainer, TileLayer } from 'react-leaflet';
 import * as dayjs from 'dayjs';
 import PropTypes from 'prop-types';
 import Header from 'src/containers/Header';
 import Footer from 'src/components/Footer';
 import Loader from 'src/components/Loader';
 import { Link } from 'react-router-dom';
-import ControlGeocoder from './controlGeocoder';
 import Modal from './Modal';
+import Map from './Map';
 
 export default function FormEvent({
   onChangeInput,
@@ -27,7 +26,6 @@ export default function FormEvent({
   OnClickModal,
   modal,
   imageUrl,
-  saveAddress,
   getEvent,
 
 }) {
@@ -55,28 +53,6 @@ export default function FormEvent({
 
   const handleOnClick = () => {
     OnClick();
-  };
-
-  const coordTest = () => {
-    let controlGeocoder;
-    if (coord) {
-      controlGeocoder = (
-        <ControlGeocoder
-          coordLocation={getCoordLocation}
-          coord={coord.coordinates}
-          saveAddress={saveAddress}
-        />
-      );
-    }
-    else {
-      controlGeocoder = (
-        <ControlGeocoder
-          coordLocation={getCoordLocation}
-          saveAddress={saveAddress}
-        />
-      );
-    }
-    return controlGeocoder;
   };
 
   return (
@@ -107,7 +83,7 @@ export default function FormEvent({
             placeholder="Ex : Soirée nuit des étoiles"
           />
 
-          <h4>Descirption</h4>
+          <h4>Description</h4>
           <textarea
             name="descEvent"
             id="txtArea"
@@ -127,27 +103,7 @@ export default function FormEvent({
               // min={dayjs().format('YYYY-MM-DDTHH:mm:ss')}
             onChange={handleOnchange}
           />
-
-          <div className="createEventForm__form__map">
-            <MapContainer
-          // Centering on the map of france
-              center={[44.840291, 2.109375]}
-              zoom={6}
-              maxZoom={18}
-              minZoom={3}
-            >
-
-              {/* Add layer dark map */}
-              <TileLayer
-                attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
-                name="tiles"
-              />
-              {/* Add Markers events astro on the map */}
-              {coordTest()}
-            </MapContainer>
-          </div>
-
+          {coord ? <Map getCoordLocation={getCoordLocation} coord={coord} /> : <Loader />}
           <h4>Nombre de personne(s) maximum
             <input
               value={maxRateEvent !== null ? maxRateEvent.toString() : 0}
@@ -210,7 +166,6 @@ FormEvent.propTypes = {
   OnClickModal: PropTypes.func.isRequired,
   modal: PropTypes.bool.isRequired,
   imageUrl: PropTypes.string.isRequired,
-  saveAddress: PropTypes.func.isRequired,
 };
 
 FormEvent.defaultProps = {

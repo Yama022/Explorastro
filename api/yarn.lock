@@ -1244,6 +1244,13 @@ bson@^4.5.1:
   dependencies:
     buffer "^5.6.0"
 
+bucket@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/bucket/-/bucket-0.0.1.tgz#d09ac2c33052dd23d68cc7029f11d076a0c4f362"
+  integrity sha1-0JrCwzBS3SPWjMcCnxHQdqDE82I=
+  dependencies:
+    xml2js "0.1.10"
+
 buffer-equal-constant-time@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/buffer-equal-constant-time/-/buffer-equal-constant-time-1.0.1.tgz#f8e71132f7ffe6e01a5c9697a4c6f3e48d5cc819"
@@ -3421,7 +3428,7 @@ sax@1.2.1:
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.1.tgz#7b8e656190b228e81a66aea748480d828cd2d37a"
   integrity sha1-e45lYZCyKOgaZq6nSEgNgozS03o=
 
-sax@>=0.6.0:
+sax@>=0.1.1, sax@>=0.6.0:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
   integrity sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==
@@ -4004,6 +4011,13 @@ wrappy@1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/wrappy/-/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
   integrity sha1-tSQ9jz7BqjXxNkYFvA0QNuMKtp8=
+
+xml2js@0.1.10:
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/xml2js/-/xml2js-0.1.10.tgz#f904e6105a7fc617acf0b7a58ef5aff93745dbae"
+  integrity sha1-+QTmEFp/xhes8LeljvWv+TdF264=
+  dependencies:
+    sax ">=0.1.1"
 
 xml2js@0.4.19:
   version "0.4.19"

@@ -11,7 +11,6 @@ import {
   REMOVE_LAST_EVENT_ID,
   CLICK_MODAL,
   SAVE_ALL_EVENTS,
-  SAVE_ADDRESS,
   UPDATE_EVENTS,
   SAVE_EXPLORATION_BY_ID,
 } from 'src/actions/exploration';
@@ -83,7 +82,6 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
     case EVENTS_CREATED: {
-      console.log(action.value);
       return {
         ...state,
         titleEvent: action.value.name,
@@ -123,13 +121,7 @@ const reducer = (state = initialState, action = {}) => {
 
       };
     }
-    case SAVE_ADDRESS: {
-      return {
-        ...state,
-        address: [...state.address, action.value],
 
-      };
-    }
     case UPDATE_EVENTS: {
       return {
         ...state,

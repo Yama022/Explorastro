@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
-
 import EventCreated from './EventCreated';
 
 export default function CreateEvent({
