@@ -1,15 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import PropTypes from 'prop-types';
-import Loader from 'src/components/Loader';
+import * as dayjs from 'dayjs';
 
 const Information = ({ information }) => {
-  if (!information.author) {
-    return (<Loader />);
-  }
   const {
+    author: { username },
+    author_id: idAuthor,
     image_url: image,
     name,
+    date,
+    createdAt,
   } = information;
 
   return (
@@ -18,8 +20,10 @@ const Information = ({ information }) => {
       <div className="Exploration__main__informations__general">
         <div className="Exploration__main__informations__general__left">
           <div>
-            <h2>{name}</h2>
-            <p>{`créé par ${information.author.username}`}</p>
+            <h2>{name} le {dayjs(date).format('DD-MM-YYYY à HH:mm')}</h2>
+            <p>créé par
+              <Link to={`/profile/${idAuthor}`}> {username} </Link> le {dayjs(createdAt).format('DD-MM-YYYY')}
+            </p>
             <div className="Exploration__main__informations__general__left__title__stars">
               <AiFillStar />
               <AiFillStar />

@@ -3,7 +3,7 @@
 require("dotenv").config();
 const log = require("log-beautify");
 const { Role } = require("../app/models");
-const { roleSeeding } = require("../app/constants");
+const { ROLE } = require("../app/constants");
 
 const seeding = {
   async init() {
@@ -18,8 +18,8 @@ const seeding = {
   async seedRoles() {
     log.info("Seed Roles...");
     let i = 0;
-    for (i = 0; i < roleSeeding.length; i += 1) {
-      await Role.create(roleSeeding[i]);
+    for (i = 0; i < ROLE.length; i += 1) {
+      await Role.create(ROLE[i]);
     }
     log.success("Seed Roles Done!");
   },

@@ -70,7 +70,6 @@ const event = (store) => (next) => (action) => {
           const result = resp.data;
           const titleEvent = action.value;
           const lastEvent = findEventByName(result.organized_explorations, titleEvent);
-          console.log(lastEvent);
           store.dispatch(saveEventcreatedlast(lastEvent));
         }
         catch (err) {
@@ -87,7 +86,6 @@ const event = (store) => (next) => (action) => {
 
       };
       const sendEventName = async () => {
-        console.log(state.exploration.titleEvent);
         try {
           await api.post('/api/v1/exploration/create', newEvent);
           store.dispatch(getEventCreatedlast(state.exploration.titleEvent));

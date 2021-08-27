@@ -42,10 +42,8 @@ export default function Timeline({ getTimeline, loggedUserId, timelineContent })
         <div className="timeline-main__exploration">
           {
             timelineContent.map((content) => {
-              console.log(content);
               // I extract the id of the object
               const { _id } = content;
-              // console.log('id', _id);
               switch (content.type) {
                 case ACTION.COMMENT:
                   return <Comment key={_id} props={content} />;

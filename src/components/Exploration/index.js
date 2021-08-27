@@ -2,11 +2,11 @@ import React, { useEffect } from 'react';
 import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import PropTypes from 'prop-types';
 import Loader from 'src/components/Loader';
-import Weather from './Weather';
+// import Weather from './Weather';
 import Information from './Information';
 import Partcipants from './Participant';
-import Comments from './Comments';
-import Author from './Author';
+// import Comments from './Comments';
+// import Author from './Author';
 
 export default function Exploration({ getExploration, id, exploration }) {
   useEffect(() => {
