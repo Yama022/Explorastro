@@ -1,15 +1,15 @@
 import { connect } from 'react-redux';
 import Exploration from 'src/components/Exploration';
 
-import { checkUserLogged } from 'src/actions/user';
+import { getExplorationById } from 'src/actions/exploration';
 
-const mapStateToProps = () => ({
+const mapStateToProps = (state) => ({
+  exploration: state.exploration.exploration,
 
 });
-
 const mapDispatchToProps = (dispatch) => ({
-  checkIsLogged: () => {
-    dispatch(checkUserLogged());
+  getExploration: (payload) => {
+    dispatch(getExplorationById(payload));
   },
 });
 

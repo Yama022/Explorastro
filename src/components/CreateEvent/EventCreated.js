@@ -21,7 +21,7 @@ export default function EventCreated({
       <img src={img} alt={img} />
       <h2>{name}</h2>
       <div className="createEvent__event-list__content">
-        <span>{dayjs(date).format('DD-MM-YY')}</span>
+        <span>{date ? `date : ${dayjs(date).format('DD-MM-YY')}` : 'date :'}</span>
         <span>{max_participants}<ImMan /></span>
       </div>
       <div className="published">

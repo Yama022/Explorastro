@@ -1,31 +1,24 @@
-import {
-
-} from 'src/actions/user';
+import { GET_EXPLORATION_BY_ID, saveExplorationById } from 'src/actions/exploration';
 import api from './utils/api';
 
 const exploration = (store) => (next) => (action) => {
   switch (action.type) {
-    // case LOGIN: {
-    //   const state = store.getState();
-    //   const data = {
-    //     login: state.user.email,
-    //     password: state.user.password,
-    //   };
-    //   const login = async () => {
-    //     try {
-    //       const response = await api.post('api/v1/login', data);
-    //       localStorage.setItem('user', JSON.stringify(response.data));
-    //       api.defaults.headers.common.authorization = `Bearer ${response.data.accessToken}`;
-    //       const actionSaveUser = saveUser(response.data);
-    //       store.dispatch(actionSaveUser);
-    //     }
-    //     catch (error) {
-    //       console.error(error.response);
-    //     }
-    //   };
-    //   login();
-    //   break;
-    // }
+    case GET_EXPLORATION_BY_ID: {
+      const id = action.payload;
+      const getEvent = async () => {
+        try {
+          const resp = await api.get(`/api/v1/exploration/${id}/`);
+          const result = resp.data;
+          console.log(resp.data);
+          store.dispatch(saveExplorationById(result));
+        }
+        catch (err) {
+          console.error(err);
+        }
+      };
+      getEvent();
+      break;
+    }
 
     default:
       next(action);

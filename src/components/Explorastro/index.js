@@ -57,16 +57,22 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
               <Timeline />
               <Footer />
             </Route>
-            <Route exact path="/exploration">
-              <Header />
-              <Exploration />
-              <Footer />
-            </Route>
             <Route exact path="/exploration/create">
               <Header />
               <CreateEvent />
               <Footer />
             </Route>
+            <Route
+              exact
+              path="/exploration/:id"
+              render={(prop) => (
+                <>
+                  <Header />
+                  <Exploration id={Number(prop.match.params.id)} />
+                  <Footer />
+                </>
+              )}
+            />
             <Route exact path="/discover">
               <Header />
               <Discover />
