@@ -20,7 +20,7 @@ import FormEvent from 'src/containers/FormEvent';
 import Exploration from 'src/containers/Exploration';
 import Avatar from 'src/components/Avatar';
 import Particles from 'src/components/Particles';
-import DotRing from 'src/components/DotRing/DotRing';
+// import DotRing from 'src/components/DotRing/DotRing';
 
 import { IoIosArrowUp } from 'react-icons/io';
 
@@ -40,7 +40,7 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
 
   return (
     <div className="explorastro">
-      <DotRing />
+      {/* <DotRing /> */}
       <Particles />
       {isLogged
         ? (

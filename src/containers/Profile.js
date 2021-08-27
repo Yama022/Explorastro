@@ -3,7 +3,7 @@ import Profile from 'src/components/Profile';
 
 import {
   changeProfileMenu, getUserInfo, follow, unfollow, toggleBioEdit,
-  changeInputValue,
+  changeInputValue, changeBio,
 } from 'src/actions/profile';
 
 const mapStateToProps = (state) => ({
@@ -18,6 +18,7 @@ const mapStateToProps = (state) => ({
   explorations: state.profile.explorations,
   bioEditIsOpen: state.profile.bioEditOpen,
   biography: state.profile.biography,
+  biographyEdit: state.profile.biographyEdit,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -38,6 +39,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   handleToggleBioEdit: () => {
     dispatch(toggleBioEdit());
+  },
+  handleBioEdit: () => {
+    dispatch(changeBio());
   },
 });
 
