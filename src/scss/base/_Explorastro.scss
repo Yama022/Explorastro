@@ -1,5 +1,5 @@
 html {
-  font-family: 'Exo', sans-serif;
+  font-family: "Exo", sans-serif;
   background-color: $primary-color;
 }
 
@@ -9,7 +9,11 @@ body {
   overflow: auto;
 }
 
-*::selection {
+* {
+  cursor: none !important;
+}
+
+i *::selection {
   background-color: $secondary-color;
   color: $light-color;
 }
