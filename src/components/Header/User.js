@@ -5,13 +5,13 @@ import { Link } from 'react-router-dom';
 import { BiCog, BiUserCircle, BiPowerOff } from 'react-icons/bi';
 
 export default function User({
-  username, isOpen, onClickUser, handleLogout, loggedUserId,
+  username, avatarUrl, isOpen, onClickUser, handleLogout, loggedUserId,
 }) {
   return (
     <div className="header__user">
       <div className="header__user__container" onClick={onClickUser}>
         <p className="header__user__container__pseudo">{username}</p>
-        <img src="https://st.depositphotos.com/1779253/5140/v/950/depositphotos_51405259-stock-illustration-male-avatar-profile-picture-use.jpg" alt="Avatar de l'utilisateur" className="header__user__container__avatar" />
+        <img src={avatarUrl} alt="Avatar de l'utilisateur" className="header__user__container__avatar" />
       </div>
       <ul className={isOpen ? 'header__user__dropdown header__user__dropdown--open' : 'header__user__dropdown'}>
         <li className="header__user__dropdown__username">{username}</li>
@@ -47,6 +47,7 @@ export default function User({
 
 User.propTypes = {
   username: PropTypes.string.isRequired,
+  avatarUrl: PropTypes.string.isRequired,
   loggedUserId: PropTypes.number.isRequired,
   isOpen: PropTypes.bool.isRequired,
   onClickUser: PropTypes.func.isRequired,

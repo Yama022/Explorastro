@@ -4,6 +4,7 @@ export const SAVE_USER_INFO = 'SAVE_USER_INFO';
 export const FOLLOW = 'FOLLOW';
 export const UNFOLLOW = 'UNFOLLOW';
 export const TOGGLE_FOLLOW = 'TOGGLE_FOLLOW';
+export const TOGGLE_BIO_EDIT = 'TOGGLE_BIO_EDIT';
 
 export const changeProfileMenu = (payload) => ({
   type: CHANGE_PROFILE_MENU,
@@ -32,4 +33,8 @@ export const unfollow = (payload) => ({
 
 export const toggleFollow = () => ({
   type: TOGGLE_FOLLOW,
+});
+
+export const toggleBioEdit = () => ({
+  type: TOGGLE_BIO_EDIT,
 });

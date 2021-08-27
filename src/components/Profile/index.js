@@ -5,9 +5,8 @@ import { Link } from 'react-router-dom';
 import avatar from 'src/assets/images/mascot-skating.svg';
 import { AiOutlineUserAdd, AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { GrAchievement, GrTrophy } from 'react-icons/gr';
-import { FaMedal } from 'react-icons/fa';
-import { BiMedal, BiCog } from 'react-icons/bi';
-import { TiTick } from 'react-icons/ti';
+import { FaMedal, FaPen } from 'react-icons/fa';
+import { BiMedal, BiCog, BiCheck } from 'react-icons/bi';
 
 import Loader from 'src/components/Loader';
 
@@ -29,6 +28,8 @@ export default function Profile({
   handleFollow,
   handleUnfollow,
   userFollowed,
+  handleToggleBioEdit,
+  bioEditIsOpen,
 }) {
   const handleToggleNav = (event) => {
     changeMenuValue(event.target.dataset.toggle);
@@ -37,7 +38,7 @@ export default function Profile({
     getInfo(profileId);
   }, [profileId]);
 
-  if (!loggedUserId || !explorations) {
+  if (!loggedUserId || !explorations || !profileId) {
     return (<Loader />);
   }
   return (
@@ -88,7 +89,7 @@ export default function Profile({
                       }}
                     >
                       <span className="icon is-small">
-                        <TiTick />
+                        <BiCheck />
                       </span>
                       <span>Suivi(e)</span>
                     </button>
@@ -101,14 +102,31 @@ export default function Profile({
               <BiMedal className="profile__header__description__bio__explo__medal" />
               <span>25 explorations</span>
             </div>
-            <p className="profile__header__description__bio__paragraph">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut tortor a magna
-              dapibusblanditac elementum massa.Morbi eget cursus massa. Integer elementum
-              tincidunt magna viverra pharetra. Nam ac diam lobortis ex euismod ornare. Maecenas
-              at ipsum velit. Proin bibendum eget mauris in imperdiet. Praesent interdum egestas
-              magna nec dignissim. Nullam at sodales turpis. Suspendisse eleifend scelerisque
-              iaculis.
-            </p>
+            {(profileId === loggedUserId)
+              ? (
+                <FaPen
+                  className="profile__header__description__bio__edit"
+                  onClick={() => {
+                    handleToggleBioEdit();
+                  }}
+                />
+              ) : '' }
+            {bioEditIsOpen
+              ? (
+                <form className="profile__header__description__bio__form" onSubmit={() => {}}>
+                  <textarea value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut tortor a magna dapibusblanditac elementum massa.Morbi eget cursus massa. Integer elementum tincidunt magna viverra pharetra. Nam ac diam lobortis ex euismod ornare. Maecenas at ipsum velit. Proin bibendum eget mauris in imperdiet. Praesent interdum egestasnec dignissim. Nullam at sodales turpis. Suspendisse eleifend scelerisque iaculis." />
+                </form>
+              )
+              : (
+                <p className="profile__header__description__bio__paragraph">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut tortor a magna
+                  dapibusblanditac elementum massa.Morbi eget cursus massa. Integer elementum
+                  tincidunt magna viverra pharetra. Nam ac diam lobortis ex euismod ornare.
+                  Maecenas at ipsum velit. Proin bibendum eget mauris in imperdiet. Praesent
+                  interdum egestasnec dignissim. Nullam at sodales turpis. Suspendisse eleifend
+                  scelerisque iaculis.
+                </p>
+              )}
             <div className="profile__header__description__bio__achievements">
               <FaMedal /> <GrAchievement /> <BiMedal /> <GrTrophy />
             </div>
@@ -155,4 +173,6 @@ Profile.propTypes = {
   handleFollow: PropTypes.func.isRequired,
   handleUnfollow: PropTypes.func.isRequired,
   userFollowed: PropTypes.bool.isRequired,
+  handleToggleBioEdit: PropTypes.func.isRequired,
+  bioEditIsOpen: PropTypes.bool.isRequired,
 };

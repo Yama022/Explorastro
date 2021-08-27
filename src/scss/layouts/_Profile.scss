@@ -48,12 +48,14 @@
             color: $tertiary-color;
             &:hover {
               color: $light-color;
+              filter: drop-shadow(0 0 0.2em $tertiary-color);
             }
           }
         }
       }
 
       &__bio {
+        position: relative;
         &__explo {
           font-size: 1.2em;
           margin: 1em 0;
@@ -74,7 +76,42 @@
           }
         }
 
+        &__edit {
+          font-size: 1.2rem;
+          color: $tertiary-color;
+          position: absolute;
+          right: -1.7rem;
+          top: 2.9rem;
+          &:hover {
+            cursor: pointer;
+            color: $light-color;
+            filter: drop-shadow(0 0 0.2em $tertiary-color);
+          }
+        }
+        &__form {
+          border: 1px solid $secondary-color;
+          border-radius: 10px;
+          height: 120px;
+          width: 100%;
+          overflow: hidden;
+          & textarea {
+            padding: 0.2em;
+            font-size: 1em;
+            resize: none;
+            height: 100%;
+            width: 100%;
+            background-color: $primary-color;
+            color: $light-color;
+            font-family: inherit;
+            border: none;
+            &:focus {
+              outline: none;
+            }
+          }
+        }
         &__paragraph {
+          height: 120px;
+          overflow-y: auto;
           text-align: justify;
           text-justify: inter-word;
           line-height: 1.3;
@@ -133,7 +170,10 @@
     &__elem {
       cursor: pointer;
 
-      & :after {
+      &:hover {
+        text-shadow: 0 0 0.2em $tertiary-color;
+      }
+      &:after {
         content: "";
         display: block;
         margin: 0 auto;
@@ -144,7 +184,7 @@
       &--active {
         text-shadow: 0 0 0.2em $tertiary-color;
 
-        & :after {
+        &:after {
           border-bottom: 1px solid $secondary-color;
         }
       }
