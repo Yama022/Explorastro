@@ -12,7 +12,7 @@ import img from 'src/assets/images/default-explo.jpg';
 export default function EventCreated({
   name, id, onClick, date, max_participants, is_published,
 }) {
-  console.log(date);
+  // console.log(date);
   const handleOnClick = () => {
     onClick(id);
   };

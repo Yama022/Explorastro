@@ -1,5 +1,5 @@
-const { sequelize } = require("../database");
-const { DataTypes, Model } = require("sequelize");
+const { DataTypes, Model } = require('sequelize');
+const { sequelize } = require('../database');
 
 class Exploration extends Model {}
 
@@ -32,8 +32,8 @@ Exploration.init(
   },
   {
     sequelize,
-    tableName: "exploration",
-  }
+    tableName: 'exploration',
+  },
 );
 
 module.exports = Exploration;

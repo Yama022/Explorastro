@@ -1,14 +1,15 @@
-const { eventFormat } = require("../services");
-const { mongo } = require("../database");
-const { EVENT } = require("../constants");
-const date = require("./date");
+/* eslint-disable no-console */
+const { eventFormat } = require('../services');
+const { mongo } = require('../database');
+const { EVENT } = require('../constants');
+const date = require('./date');
 
 module.exports = {
   saveUserAction: async (action, user, data) => {
     const db = await mongo.connect();
-    console.log("New request for", action);
+    // console.log('New request for', action);
     const getEventData = () => {
-      const label = action.label;
+      const { label } = action;
       const createdDate = date.getDate();
       return {
         action: EVENT.ACTION[label].label,
@@ -16,8 +17,8 @@ module.exports = {
         date: {
           createdAt: createdDate,
           locales: {
-            fr: date.format(createdDate, "fr"),
-            en: date.format(createdDate, "en"),
+            fr: date.format(createdDate, 'fr'),
+            en: date.format(createdDate, 'en'),
           },
         },
       };

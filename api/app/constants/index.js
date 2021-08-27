@@ -1,6 +1,11 @@
+const ROLE = require('./role');
+const ERROR = require('./error');
+const SWAGGER = require('./swagger');
+const EVENT = require('./event');
+
 module.exports = {
-  roleSeeding: require("./role"),
-  ERROR: require("./error"),
-  swaggerOptions: require('./swagger'),
-  EVENT: require("./event"),
-}
+  ROLE,
+  ERROR,
+  SWAGGER,
+  EVENT,
+};

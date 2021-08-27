@@ -1,5 +1,5 @@
-const { sequelize } = require("../database");
-const { DataTypes, Model } = require("sequelize");
+const { DataTypes, Model } = require('sequelize');
+const { sequelize } = require('../database');
 
 class Token extends Model {}
 
@@ -13,8 +13,8 @@ Token.init(
   },
   {
     sequelize,
-    tableName: "jwt_refresh_token",
-  }
+    tableName: 'jwt_refresh_token',
+  },
 );
 
 module.exports = Token;

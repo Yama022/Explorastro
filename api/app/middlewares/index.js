@@ -1,6 +1,11 @@
+const tokenMiddleware = require('./token');
+const userMiddleware = require('./user');
+const explorationMiddleware = require('./exploration');
+const commentMiddleware = require('./comment');
+
 module.exports = {
-    tokenMiddleware: require('./token'),
-    userMiddleware: require('./user'),
-    explorationMiddleware: require('./exploration'),
-    commentMiddleware: require('./comment'),
-}
+  tokenMiddleware,
+  userMiddleware,
+  explorationMiddleware,
+  commentMiddleware,
+};

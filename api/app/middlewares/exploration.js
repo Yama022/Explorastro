@@ -1,5 +1,6 @@
-const { Exploration } = require("../models");
-const { ERROR } = require("../constants");
+/* eslint-disable consistent-return */
+const { Exploration } = require('../models');
+const { ERROR } = require('../constants');
 
 module.exports = {
   checkIfExists: async (req, res, next) => {
