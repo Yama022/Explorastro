@@ -5,7 +5,7 @@ class User extends Model {}
 
 // Never return the user's password hash
 User.prototype.toJSON = () => {
-  const values = { ...this.get() };
+  const values = Object.assign({}, this.get());
   delete values.password;
   return values;
 };
