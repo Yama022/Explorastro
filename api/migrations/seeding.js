@@ -1,8 +1,12 @@
+/* eslint-disable no-await-in-loop */
 require("dotenv").config();
 const faker = require("faker");
 const log = require("log-beautify");
-const { User, Role, Exploration, Comment } = require("../app/models");
-const { roleSeeding } = require("../app/constants");
+const {
+  User, Role, Exploration, Comment,
+} = require("../app/models");
+
+const { ROLE } = require("../app/constants");
 
 const config = {
   MAX_USER: 500,
@@ -17,7 +21,9 @@ const seeding = {
       await seeding.seedUsers();
       await seeding.seedExplorations();
       await seeding.seedComments();
-    } catch (err) {
+    }
+    catch (err) {
+      // eslint-disable-next-line no-console
       console.error(err);
     }
   },
@@ -25,14 +31,14 @@ const seeding = {
   async seedRoles() {
     log.info("Seed Roles...");
     let i = 0;
-    for (i = 0; i < roleSeeding.length; i += 1) {
-      await Role.create(roleSeeding[i]);
+    for (i = 0; i < ROLE.length; i += 1) {
+      await Role.create(ROLE[i]);
     }
   },
 
   async seedUsers() {
     log.info("Seed Users...");
-    for (let i = 0; i < config.MAX_USER; i++) {
+    for (let i = 0; i < config.MAX_USER; i += 1) {
       await User.create({
         firstname: faker.name.firstName(),
         lastname: faker.name.lastName(),
@@ -78,13 +84,6 @@ const seeding = {
       });
     }
   },
-
-  async seedExplorationsParticipants() {
-    log.info("Seed Exploration Participants...");
-    for (let i = 0; i < config.MAX_EXPLORATION; i += 1) {}
-  },
-
-  async seedExplorationsComments() {},
 };
 
 seeding.init();

@@ -1,9 +1,10 @@
-const express = require("express");
+const express = require('express');
+
 const router = express.Router();
 
-const validate = require("../validations/validate");
-const { userSchema } = require("../validations/schemas");
-const { authController } = require("../controllers");
+const validate = require('../validations/validate');
+const { userSchema } = require('../validations/schemas');
+const { authController } = require('../controllers');
 
 router
   /**
@@ -15,7 +16,7 @@ router
    * @returns {User.model} 200 - An object containing the user's information
    * @returns {Error.model}  default - An object containing the error message
    */
-  .post("/login", authController.login)
+  .post('/login', authController.login)
   /**
    * Sign up a new user in the database
    * @route POST /api/v1/signup
@@ -28,7 +29,7 @@ router
    * @returns {User.model} 200 - An object containing the user's information
    * @returns {Error.model}  default - An object containing the error message
    */
-  .post("/signup", validate("body", userSchema), authController.signup)
+  .post('/signup', validate('body', userSchema), authController.signup)
   /**
    * Refresh the user's token
    * @route POST /api/v1/token
@@ -36,6 +37,6 @@ router
    * @param {string} token.body.required - The user's refresh token
    * @returns {Object} 200 - An object containing the new token
    */
-  .post("/token", authController.refreshToken);
+  .post('/token', authController.refreshToken);
 
 module.exports = router;

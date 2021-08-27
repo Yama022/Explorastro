@@ -1,7 +1,8 @@
-const express = require("express");
+const express = require('express');
+
 const router = express.Router();
-const { mainController, timelineController } = require("../controllers");
-const { tokenMiddleware } = require("../middlewares");
+const { mainController, timelineController } = require('../controllers');
+const { tokenMiddleware } = require('../middlewares');
 
 /**
  * Return API Informations
@@ -9,7 +10,7 @@ const { tokenMiddleware } = require("../middlewares");
  * @group Informations - Operations about API
  * @returns {API-Infos.model} 200 - An object containing API informations
  */
-router.get("/", mainController.informationsAPI);
+router.get('/', mainController.informationsAPI);
 
 /**
  * Returns the timeline of the connected user
@@ -18,9 +19,9 @@ router.get("/", mainController.informationsAPI);
  * @returns {API-Infos.model} 200 - An object containing API informations
  */
 router.get(
-  "/timeline",
+  '/timeline',
   tokenMiddleware.authenticateToken,
-  timelineController.get
+  timelineController.get,
 );
 
 module.exports = router;

@@ -7,13 +7,14 @@ import event from 'src/middlewares/event';
 import settings from 'src/middlewares/settings';
 import profile from 'src/middlewares/profile';
 import exploration from 'src/middlewares/exploration';
+import timeline from 'src/middlewares/timeline';
 
 // Redux Devtools
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 // Warning declare here middleware !!!
 const enhancers = composeEnhancers(
-  applyMiddleware(auth, event, exploration, settings, profile),
+  applyMiddleware(auth, event, exploration, settings, profile, timeline),
 );
 
 const store = createStore(reducer, enhancers);

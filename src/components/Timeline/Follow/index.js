@@ -1,5 +1,7 @@
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
 import { Link } from 'react-router-dom';
 
 import defaultAvatar from 'src/assets/images/luffy.png';
@@ -7,12 +9,19 @@ import satoru from 'src/assets/images/Satoru.jpg';
 
 import { RiUserFollowLine } from 'react-icons/ri';
 
-export default function Follow() {
+export default function Follow({ props }) {
+  const {
+    date: { locales },
+    follower,
+    followed,
+    message,
+  } = props;
   return (
     <div className="follow">
       <div className="follow__title">
-        <img src={defaultAvatar} alt="avatar" />
-        <h3> <Link to="/profile">John Doe</Link> à commencé à suivre <Link to="/profile">Baptiste</Link></h3>
+        {/* Avatar url TO ADD ! */}
+        <img src={props.avatar_url} alt="avatar" />
+        <h3> <Link to={`/profile/${follower.id}`}>{follower.username}</Link> {message.fr} <Link to={`/profile/${followed.id}`}>{followed.username}</Link></h3>
       </div>
 
       <div className="follow__content">
@@ -29,8 +38,16 @@ export default function Follow() {
       </div>
 
       <div className="follow__date">
-        <p>Le Mardi 29 Août à 13h48</p>
+        <p>{locales.fr}</p>
       </div>
     </div>
   );
 }
+
+Follow.propTypes = {
+  props: PropTypes.object.isRequired,
+  date: PropTypes.object.isRequired,
+  follower: PropTypes.object.isRequired,
+  followed: PropTypes.object.isRequired,
+  message: PropTypes.object.isRequired,
+};

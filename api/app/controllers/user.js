@@ -1,8 +1,10 @@
-const { User } = require("../models");
-const bcrypt = require("bcrypt");
-const { upload } = require("../utils");
-const { ERROR, EVENT } = require("../constants");
-const { event } = require("../utils");
+/* eslint-disable no-console */
+/* eslint-disable consistent-return */
+const bcrypt = require('bcrypt');
+const { User } = require('../models');
+const { upload } = require('../utils');
+const { ERROR, EVENT } = require('../constants');
+const { event } = require('../utils');
 
 /**
  * @typedef {User} User
@@ -35,16 +37,17 @@ module.exports = {
 
       const user = await User.findByPk(id, {
         include: [
-          "followers",
-          "following",
-          "organized_explorations",
-          "explorations",
-          "role",
+          'followers',
+          'following',
+          'organized_explorations',
+          'explorations',
+          'role',
         ],
       });
 
       return res.status(200).json(user);
-    } catch (error) {
+    }
+    catch (error) {
       console.error(error);
       res.status(400).json({
         message: ERROR.internal_error,
@@ -54,9 +57,12 @@ module.exports = {
 
   update: async (req, res) => {
     try {
-      const user = req.user;
+      const { user } = req;
 
-      // We need to delete username and password from the request, if the user want to change it, he must to do a separate request
+      /*
+      We need to delete username and password from the request,
+      if the user want to change it, he must to do a separate request
+      */
       delete req.body.id;
       delete req.body.username;
       delete req.body.password;
@@ -76,11 +82,12 @@ module.exports = {
       });
 
       if (isUpdateHisBio) {
-        await event.saveUserAction(EVENT.ACTION.UPDATE_BIO, user, {})
+        await event.saveUserAction(EVENT.ACTION.UPDATE_BIO, user, {});
       }
 
       return await event.saveUserAction(EVENT.ACTION.UPDATE_USER, user, {});
-    } catch (error) {
+    }
+    catch (error) {
       console.error(error);
       return res.status(500).json({
         message: ERROR.INTERNAL_ERROR,
@@ -116,8 +123,8 @@ module.exports = {
       });
 
       return await event.saveUserAction(EVENT.ACTION.UPDATE_USERNAME, user, {});
-
-    } catch (error) {
+    }
+    catch (error) {
       console.error(error);
       return res.status(500).json({
         message: ERROR.INTERNAL_ERROR,
@@ -127,13 +134,15 @@ module.exports = {
 
   updatePassword: async (req, res) => {
     try {
+      // eslint-disable-next-line camelcase
       const { old_password, new_password } = req.body;
       const user = await User.findByPk(req.user.id);
       const isMatch = await bcrypt.compare(
         old_password,
-        user.password
+        user.password,
       );
 
+      // eslint-disable-next-line camelcase
       if (!old_password || !new_password) {
         return res.status(400).json({
           message: ERROR.MISSING_CREDENTIALS,
@@ -153,7 +162,7 @@ module.exports = {
       }
 
       await user.update({
-        password: bcrypt.hashSync(new_password, 8)
+        password: bcrypt.hashSync(new_password, 8),
       });
 
       res.json({
@@ -161,8 +170,8 @@ module.exports = {
       });
 
       return await event.saveUserAction(EVENT.ACTION.UPDATE_PASSWORD, user, {});
-
-    } catch (error) {
+    }
+    catch (error) {
       console.error(error);
       return res.status(500).json({
         message: ERROR.INTERNAL_ERROR,
@@ -170,15 +179,15 @@ module.exports = {
     }
   },
 
-  updateAvatar: (req, res) => {    
+  updateAvatar: (req, res) => {
     upload(req, res, async (err) => {
       if (err) {
         return res.status(400).json({
           message: err.message,
         });
       }
-      
-      const file = req.file;
+
+      const { file } = req;
       const user = await User.findByPk(req.user.id);
 
       user.update({
@@ -192,7 +201,7 @@ module.exports = {
   delete: async (req, res) => {
     try {
       const { id } = req.params;
-      const password = req.body.password;
+      const { password } = req.body;
       const user = await User.findByPk(id);
 
       if (!password) {
@@ -203,7 +212,7 @@ module.exports = {
 
       const isMatch = await bcrypt.compare(
         password,
-        user.password
+        user.password,
       );
 
       if (!isMatch) {
@@ -215,7 +224,8 @@ module.exports = {
       await user.destroy();
 
       return res.status(200).json({ OK: true });
-    } catch (error) {
+    }
+    catch (error) {
       console.error(error);
       return res.status(500).json({
         message: ERROR.INTERNAL_ERROR,

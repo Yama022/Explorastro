@@ -49,7 +49,6 @@ export default function FormEvent({
 
   const handleOnClick = () => {
     OnClick();
-    console.log(published);
   };
 
   const coordTest = () => {

@@ -94,12 +94,10 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
     case SAVE_EVENT_CREATED_LAST: {
-      console.log(action.value);
       return {
         ...state,
         eventCreated: [...state.eventCreated, action.value],
         eventCreatedLast: action.value,
-        // published: initialState.published,
 
       };
     }
@@ -132,7 +130,6 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
     case UPDATE_EVENTS: {
-      console.log(action.value);
       return {
         ...state,
         eventCreated: [...action.value],

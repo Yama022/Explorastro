@@ -1,5 +1,6 @@
-const log = require("log-beautify");
-const { Sequelize } = require("sequelize");
+/* eslint-disable no-console */
+const log = require('log-beautify');
+const { Sequelize } = require('sequelize');
 
 try {
   const sequelize = new Sequelize(process.env.DATABASE_URL, {
@@ -13,7 +14,7 @@ try {
       idle: 10000,
       acquire: 30000,
     },
-    dialect: "postgres",
+    dialect: 'postgres',
     dialectOptions: {
       ssl: {
         rejectUnauthorized: false,
@@ -21,10 +22,11 @@ try {
     },
   });
 
-  log.success("Connected to PostgresQL");
+  log.success('Connected to PostgresQL');
 
   module.exports = sequelize;
-} catch (error) {
+}
+catch (error) {
   console.error(error);
-  log.error("Sequelize Connection Error", error);
+  log.error('Sequelize Connection Error', error);
 }

@@ -1,16 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Discover from './Discover';
 import Follow from './Follow';
-import HasFollow from './HasFollow';
 import Comment from './Comment';
 import NewExploration from './NewExploration';
 import UpdateAvatar from './UpdateAvatar';
 import Participation from './Participation';
 import Description from './Description';
 
-export default function Timeline({ loggedUserId }) {
+const ACTION = {
+  FOLLOW: 'FOLLOW',
+  COMMENT: 'COMMENT',
+  PARTICIPATION: 'PARTICIPATION',
+  EXPLORATION: 'EXPLORATION',
+  AVATAR: 'AVATAR',
+  BIO: 'BIO',
+  UPDATE: 'UPDATE',
+};
+
+export default function Timeline({ getTimeline, loggedUserId, timelineContent }) {
+  useEffect(() => {
+    getTimeline();
+  }, []);
+
   return (
     <div className="timeline">
       <aside className="timeline-left">
@@ -22,13 +35,29 @@ export default function Timeline({ loggedUserId }) {
       </aside>
       <main className="timeline-main">
         <div className="timeline-main__exploration">
-          <Description />
-          <Participation />
-          <UpdateAvatar />
-          <Follow />
-          <HasFollow loggedUserId={loggedUserId} />
-          <Comment />
-          <NewExploration />
+          {
+            timelineContent.map((content) => {
+              // I extract the id of the object
+              const { _id } = content;
+              // console.log('id', _id);
+              switch (content.type) {
+                case ACTION.COMMENT:
+                  return <Comment key={_id} props={content} />;
+                case ACTION.FOLLOW:
+                  return <Follow key={_id} props={content} loggedUserId={loggedUserId} />;
+                case ACTION.PARTICIPATION:
+                  return <Participation key={_id} props={content} />;
+                case ACTION.EXPLORATION:
+                  return <NewExploration key={_id} props={content} />;
+                case ACTION.AVATAR:
+                  return <UpdateAvatar key={_id} props={content} />;
+                case ACTION.BIO:
+                  return <Description key={_id} props={content} />;
+                default:
+                  return null;
+              }
+            })
+            }
         </div>
       </main>
       <aside className="timeline-right">
@@ -43,4 +72,6 @@ export default function Timeline({ loggedUserId }) {
 
 Timeline.propTypes = {
   loggedUserId: PropTypes.number.isRequired,
+  getTimeline: PropTypes.func.isRequired,
+  timelineContent: PropTypes.array.isRequired,
 };

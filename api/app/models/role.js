@@ -1,5 +1,5 @@
-const { sequelize } = require("../database");
-const { DataTypes, Model } = require("sequelize");
+const { DataTypes, Model } = require('sequelize');
+const { sequelize } = require('../database');
 
 class Role extends Model {}
 
@@ -12,8 +12,8 @@ Role.init(
   },
   {
     sequelize,
-    tableName: "role",
-  }
+    tableName: 'role',
+  },
 );
 
 module.exports = Role;

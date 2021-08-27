@@ -52,7 +52,7 @@ export default function Header({
                 to="/exploration/create"
                 exact
               >
-                Organiser
+                Explorations
               </NavLink>
               <NavLink
                 className="header__nav__link"

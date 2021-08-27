@@ -1,8 +1,11 @@
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
 import defaultAvatar from 'src/assets/images/luffy.png';
 
-export default function Description() {
+export default function Description({ props }) {
+  console.log('Je rentre dans le composant Description de Timeline');
   return (
     <div className="desc">
       <div className="desc__title">
@@ -26,3 +29,7 @@ export default function Description() {
     </div>
   );
 }
+
+Description.propTypes = {
+  props: PropTypes.object.isRequired,
+};

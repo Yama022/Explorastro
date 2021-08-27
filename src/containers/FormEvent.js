@@ -12,7 +12,7 @@ import {
 import { findEvent } from 'src/selectors/exploration';
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(state.exploration.eventCreated);
+  console.log('Je suis dans FormEvent Containers', state.exploration.eventCreated);
   return ({
 
     eventCreated: findEvent(state.exploration.eventCreated, ownProps.match.params.id),
