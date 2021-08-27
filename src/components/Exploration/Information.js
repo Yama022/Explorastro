@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import * as dayjs from 'dayjs';
 
 const Information = ({ information }) => {
-  console.log('info', information);
   const {
     author: { username },
     author_id: idAuthor,

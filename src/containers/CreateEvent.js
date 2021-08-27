@@ -6,8 +6,6 @@ import {
 } from 'src/actions/exploration';
 
 const mapStateToProps = (state) => ({
-  // console.log(state.exploration.eventCreatedLast);
-
   eventsCreated: state.exploration.eventCreated,
   eventCreatedLastID: state.exploration.eventCreatedLast.id,
   events: state.exploration.events,
