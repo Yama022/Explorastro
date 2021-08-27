@@ -10,10 +10,10 @@ body {
 }
 
 * {
-  cursor: none !important;
+  // cursor: none !important;
 }
 
-i *::selection {
+*::selection {
   background-color: $secondary-color;
   color: $light-color;
 }
