@@ -11,6 +11,7 @@ const initialState = {
   password: '',
   passwordConfirmation: '',
   newPassword: '',
+  passwordForUsername: '',
   username: '',
   usernameChange: '',
   logged: false,
@@ -45,6 +46,9 @@ const reducer = (state = initialState, action = {}) => {
         logged: !!action.payload?.username,
         email: '',
         password: '',
+        passwordConfirmation: '',
+        usernameChange: '',
+        passwordForUsername: '',
       };
     }
     default:

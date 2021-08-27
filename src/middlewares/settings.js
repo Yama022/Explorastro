@@ -1,5 +1,5 @@
 import {
-  CHANGE_USERNAME, CHANGE_PASSWORD, logout, DELETE_ACCOUNT,
+  CHANGE_USERNAME, CHANGE_PASSWORD, logout, DELETE_ACCOUNT, saveUser,
 } from 'src/actions/user';
 import api from './utils/api';
 
@@ -11,12 +11,13 @@ const settings = (store) => (next) => (action) => {
         const user = JSON.parse(localStorage.getItem('user'));
         const userId = user.id;
         try {
-          const response = await api.patch(`api/v1/user/${userId}/update`, {
+          await api.patch(`api/v1/user/${userId}/update/username`, {
+            id: userId,
             username: state.user.usernameChange,
+            password: state.user.passwordForUsername,
           });
-          // const actionSaveUser = saveUser(state.user.usernameChange);
-          // store.dispatch(actionSaveUser);
-          console.log(response);
+          const actionSaveUser = saveUser(state.user.usernameChange);
+          store.dispatch(actionSaveUser);
         }
         catch (error) {
           console.log(error);
@@ -31,11 +32,10 @@ const settings = (store) => (next) => (action) => {
         const user = JSON.parse(localStorage.getItem('user'));
         const userId = user.id;
         try {
-          const response = await api.patch(`api/v1/user/${userId}/update/password`, {
+          await api.patch(`api/v1/user/${userId}/update/password`, {
             old_password: state.user.password,
             new_password: state.user.newPassword,
           });
-          console.log(response);
         }
         catch (error) {
           console.log(error.response);
@@ -51,12 +51,11 @@ const settings = (store) => (next) => (action) => {
         const user = JSON.parse(localStorage.getItem('user'));
         const userId = user.id;
         try {
-          const response = await api.delete(`api/v1/user/${userId}/delete`, {
+          await api.delete(`api/v1/user/${userId}/delete`, {
             data: {
               password: state.user.passwordConfirmation,
             },
           });
-          console.log(response);
         }
         catch (error) {
           console.log(error.response);
