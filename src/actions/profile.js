@@ -40,6 +40,8 @@ export const toggleBioEdit = () => ({
   type: TOGGLE_BIO_EDIT,
 });
 
-export const changeInputValue = () => ({
+export const changeInputValue = (value, key) => ({
   type: CHANGE_INPUT_VALUE,
+  value,
+  key,
 });

@@ -7,6 +7,8 @@ import { AiOutlineUserAdd, AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { GrAchievement, GrTrophy } from 'react-icons/gr';
 import { FaMedal, FaPen } from 'react-icons/fa';
 import { BiMedal, BiCog, BiCheck } from 'react-icons/bi';
+import { IoClose } from 'react-icons/io5';
+import { MdCheck } from 'react-icons/md';
 
 import Loader from 'src/components/Loader';
 
@@ -38,7 +40,6 @@ export default function Profile({
   };
 
   const handleChange = (event) => {
-    console.log(event.target.value, event.target.name);
     changeField(event.target.value, event.target.name);
   };
 
@@ -110,7 +111,7 @@ export default function Profile({
               <BiMedal className="profile__header__description__bio__explo__medal" />
               <span>25 explorations</span>
             </div>
-            {(profileId === loggedUserId)
+            {(profileId === loggedUserId && !bioEditIsOpen)
               ? (
                 <FaPen
                   className="profile__header__description__bio__edit"
@@ -123,6 +124,14 @@ export default function Profile({
               ? (
                 <form className="profile__header__description__bio__form" onSubmit={() => {}}>
                   <textarea name="biography" onChange={handleChange} value={biography} />
+                  <div className="profile__header__description__bio__form__buttons">
+                    <button type="button" className="button --secondary" onClick={handleToggleBioEdit}>
+                      <span className="icon"><IoClose /></span>
+                    </button>
+                    <button type="submit" className="button --secondary">
+                      <span className="icon"><MdCheck /></span>
+                    </button>
+                  </div>
                 </form>
               )
               : (

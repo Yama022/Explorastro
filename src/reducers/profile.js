@@ -1,3 +1,4 @@
+import { SAVE_USER } from 'src/actions/user';
 import {
   CHANGE_PROFILE_MENU, SAVE_USER_INFO, TOGGLE_FOLLOW, TOGGLE_BIO_EDIT, CHANGE_INPUT_VALUE,
 } from 'src/actions/profile';
