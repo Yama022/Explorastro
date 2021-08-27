@@ -9,6 +9,7 @@ const mapStateToProps = (state) => ({
   dropdownIsOpen: state.header.dropdownOpen,
   burgerIsOpen: state.header.burgerOpen,
   loggedUserId: state.user.loggedUserId,
+  avatarUrl: state.user.avatar_url,
 });
 
 const mapDispatchToProps = (dispatch) => ({

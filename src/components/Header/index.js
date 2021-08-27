@@ -4,13 +4,14 @@ import { PropTypes } from 'prop-types';
 
 import { GiHamburgerMenu } from 'react-icons/gi';
 
-import logo from 'src/assets/images/logo-explorastro.png';
-
 import User from 'src/components/Header/User';
+
+import logo from 'src/assets/images/logo-explorastro.png';
 
 export default function Header({
   isLogged,
   username,
+  avatarUrl,
   loggedUserId,
   burgerIsOpen,
   dropdownIsOpen,
@@ -110,6 +111,7 @@ export default function Header({
         ? (
           <User
             username={username}
+            avatarUrl={avatarUrl}
             loggedUserId={loggedUserId}
             isOpen={dropdownIsOpen}
             onClickUser={handleToggleDropdown}
@@ -130,10 +132,15 @@ export default function Header({
 Header.propTypes = {
   isLogged: PropTypes.bool.isRequired,
   username: PropTypes.string.isRequired,
+  avatarUrl: PropTypes.string,
   loggedUserId: PropTypes.number.isRequired,
   burgerIsOpen: PropTypes.bool.isRequired,
   dropdownIsOpen: PropTypes.bool.isRequired,
   handleToggleDropdown: PropTypes.func.isRequired,
   handleToggleBurger: PropTypes.func.isRequired,
   handleLogout: PropTypes.func.isRequired,
+};
+
+Header.defaultProps = {
+  avatarUrl: 'src/assets/image/defaultavatar.jpg',
 };
