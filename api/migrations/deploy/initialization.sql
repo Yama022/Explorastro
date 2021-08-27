@@ -64,16 +64,16 @@ CREATE TABLE "exploration_has_comments" (
 
 CREATE TABLE "exploration_has_users" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    "exploration_id" INT NOT NULL REFERENCES "exploration"("id"),
-    "user_id" INT NOT NULL REFERENCES "user"("id"),
+    "exploration_id" INT NOT NULL REFERENCES "exploration"("id") ON DELETE CASCADE,
+    "user_id" INT NOT NULL REFERENCES "user"("id") ON DELETE CASCADE,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
     "updated_at" TIMESTAMPTZ
 );
 
 CREATE TABLE "user_has_followers" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    "user_id" INT NOT NULL REFERENCES "user"("id"),
-    "follower_id" INT NOT NULL REFERENCES "user"("id"),
+    "user_id" INT NOT NULL REFERENCES "user"("id") ON DELETE CASCADE,
+    "follower_id" INT NOT NULL REFERENCES "user"("id") ON DELETE CASCADE,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
     "updated_at" TIMESTAMPTZ
 );
