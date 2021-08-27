@@ -16,7 +16,7 @@ export default function Landing() {
           <img className="landing__welcome__images__mascot" src={mascotRocket} alt="AstroCharles, mascotte d'ExplorAstro sur sa fusée" />
         </div>
         <div className="landing__welcome__description">
-          <h2 className="landing__welcome__description__title">Participez à des observations astronomiques entre passionés</h2>
+          <h2 className="landing__welcome__description__title">Participez à des observations astronomiques entre passionnés</h2>
           <Link to="/login" className="button --secondary">Créer un compte</Link>
         </div>
       </div>
@@ -51,7 +51,7 @@ export default function Landing() {
             sit incidunt, impedit soluta sunt delectus reiciendis saepe tempore non numquam quidem! Sit
             necessitatibus quos temporibus placeat?
           </p>
-          <Link to="/login" className="button --secondary">Découvrir les sorties autour de moi</Link>
+          <Link to="/login" className="button --secondary">Découvrir les sorties</Link>
         </div>
         <div className="landing__previews__card">
           <img src={defaultExplo} alt="Aperçu des fonctionnalités" />

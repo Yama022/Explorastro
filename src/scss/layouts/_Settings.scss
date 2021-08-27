@@ -22,4 +22,7 @@
       border-color: $secondary-color !important;
     }
   }
+  @include tab {
+    width: 52%;
+  }
 }

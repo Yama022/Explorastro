@@ -14,10 +14,10 @@
   width: 78%;
   margin: auto;
   color: $light-color;
+  margin-top: 4*$gutter;
   &__welcome {
     display: flex;
     justify-content: space-between;
-    margin-top: 4*$gutter;
     &__images {
       width: 48%;
       position: relative;
@@ -81,12 +81,93 @@
       padding: 0.8*$gutter $gutter;
       width: 28%;
       p {
-        margin: .8em 0;
+        margin: 1.8em 0;
         text-align: center;
       }
     }
     & .button {
       width: 100%;
+    }
+  }
+  @include mobTab {
+    margin-top: $gutter;
+    width: 90%;
+    &__welcome {
+      flex-direction: column;
+      align-items: center;
+      &__images {
+        width: 70%;
+      }
+      &__description {
+        margin-top: $gutter;
+        width: 100%;
+        text-align: center;
+        & .button {
+          font-size: 1.2rem;
+          margin-top: $gutter;
+        }
+      }
+    }
+    &__presentation {
+      margin-top: $gutter;
+      flex-direction: column-reverse;
+      align-items: center;
+      &__image {
+        width: 70%;
+      }
+      &__paragraphs {
+        width: 90%;
+        & p {
+          font-size: 1.2rem;
+          margin-bottom: 0.8em;
+        }
+      }
+    }
+    &__previews {
+      flex-direction: column;
+      width: 60%;
+      margin: auto;
+      &__card {
+        width: 100%;
+        margin-top: 3*$gutter;
+        & p {
+          font-size: 1.1rem;
+        }
+        & .button {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+  @include mob {
+    .landing {
+      &__welcome {
+        &__description{
+          &__title {
+            margin-top: $gutter;
+            font-size: 2rem;
+          }
+        }
+      }
+      &__presentation {
+        &__paragraphs {
+          & p {
+            font-size: 0.9rem;
+          }
+        }
+      }
+      &__previews {
+        font-size: 1rem;
+        width: 92%;
+        &__card {
+          & p {
+            font-size: 0.9rem;
+          }
+          & .button {
+            font-size: 1.2rem;
+          }
+        }
+      }
     }
   }
 }

@@ -12,7 +12,6 @@ import {
 import { findEvent } from 'src/selectors/exploration';
 
 const mapStateToProps = (state, ownProps) => ({
-
   eventCreated: findEvent(state.exploration.eventCreated, ownProps.match.params.id),
   titleEvent: state.exploration.titleEvent,
   dateEvent: state.exploration.dateEvent,

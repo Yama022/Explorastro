@@ -11,19 +11,21 @@ export default function ControlGeocoder({ coordLocation, coord }) {
   const map = useMap();
   let reverseTabCoord;
   const objCoord = {};
-  let geocoder = L.Control.Geocoder.arcgis();
-  if (typeof URLSearchParams !== 'undefined' && location.search) {
-    // parse /?geocoder=nominatim from URL
-    const params = new URLSearchParams(location.search);
-    const geocoderString = params.get('geocoder');
-    if (geocoderString && L.Control.Geocoder[geocoderString]) {
-      geocoder = L.Control.Geocoder[geocoderString]();
-    }
-    else if (geocoderString) {
-      console.warn('Unsupported geocoder', geocoderString);
-    }
-  }
+
   useEffect(() => {
+    let geocoder = L.Control.Geocoder.arcgis();
+
+    if (typeof URLSearchParams !== 'undefined' && location.search) {
+      // parse /?geocoder=nominatim from URL
+      const params = new URLSearchParams(location.search);
+      const geocoderString = params.get('geocoder');
+      if (geocoderString && L.Control.Geocoder[geocoderString]) {
+        geocoder = L.Control.Geocoder[geocoderString]();
+      }
+      else if (geocoderString) {
+        console.warn('Unsupported geocoder', geocoderString);
+      }
+    }
     console.log(coord);
     if (coord.length) {
       reverseTabCoord = coord.reverse();
@@ -37,27 +39,26 @@ export default function ControlGeocoder({ coordLocation, coord }) {
         .bindPopup(resp[0].name)
         .openPopup()));
     }
-  }, [coord]);
 
-  
-  L.Control.geocoder({
-    query: '',
-    placeholder: 'adresse... ',
-    defaultMarkGeocode: false,
-    geocoder,
-    collapsed: false,
-    position: 'topleft',
-  })
-    .on('markgeocode', (e) => {
-      const latlng = e.geocode.center;
-      coordLocation(latlng);
-      L.marker(latlng)
-        .addTo(map)
-        .bindPopup(e.geocode.name)
-        .openPopup();
-      map.fitBounds(e.geocode.bbox);
+    L.Control.geocoder({
+      query: '',
+      placeholder: 'adresse... ',
+      defaultMarkGeocode: false,
+      geocoder,
+      collapsed: false,
+      position: 'topleft',
     })
-    .addTo(map);
+      .on('markgeocode', (e) => {
+        const latlng = e.geocode.center;
+        coordLocation(latlng);
+        L.marker(latlng)
+          .addTo(map)
+          .bindPopup(e.geocode.name)
+          .openPopup();
+        map.fitBounds(e.geocode.bbox);
+      })
+      .addTo(map);
+  }, [coord]);
 
   return null;
 }

@@ -9,7 +9,6 @@ const exploration = (store) => (next) => (action) => {
         try {
           const resp = await api.get(`/api/v1/exploration/${id}/`);
           const result = resp.data;
-          console.log(resp.data);
           store.dispatch(saveExplorationById(result));
         }
         catch (err) {

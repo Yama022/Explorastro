@@ -3,14 +3,16 @@
   margin: auto;
   color: $light-color;
   font-size: 1.2em;
-  
+
   & p {
     font-size: .9em;
     margin-bottom: $gutter;
   }
+
   &__presentation {
     display: flex;
     flex-direction: column;
+
     &__avatar {
       &__avatar {
         right: 2%;
@@ -19,13 +21,15 @@
         position: absolute;
       }
     }
+
     &__title {
       font-size: 1.5em;
     }
+
     &__sous-title {
       padding: $gutter;
     }
-    
+
     &__paragraphe {
       background-color: $primary-color;
       margin: 0 0 $gutter 0;
@@ -33,31 +37,38 @@
       border: 1px solid $secondary-color;
       box-shadow: 0px 0px 9px -1px $secondary-color;
       border-radius: 5px;
+
       & em {
         color: red;
         margin-left: 15%;
       }
     }
   }
+
   &__section {
-      &__title {
-        font-size: 1.5em;
-        margin-bottom: $gutter;
-      }
-      &__paragraphe {
-        background-color: $primary-color;
-        margin: $gutter 0;
-        padding: 1rem;
-        border: 1px solid $secondary-color;
-        box-shadow: 0px 0px 9px -1px $secondary-color;
-        border-radius: 5px;
-        &__images {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: space-around;
-        }
+    &__title {
+      font-size: 1.5em;
+      margin-bottom: $gutter;
+    }
+
+    &__paragraphe {
+      background-color: $primary-color;
+      margin: $gutter 0;
+      padding: 1rem;
+      border: 1px solid $secondary-color;
+      box-shadow: 0px 0px 9px -1px $secondary-color;
+      border-radius: 5px;
+
+      &__images {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
       }
     }
+  }
+  @include mobTab {
+    width: 85%;
+  }
 }
 
 .figGuide {
@@ -70,9 +81,11 @@
   padding: 5px;
   width: 200px;
   margin: $gutter;
+
   &--main {
     width: 350px;
     border-radius: 5px;
+
     & a {
       & img {
         height: 350px;
@@ -80,11 +93,12 @@
       }
     }
   }
+
   & figcaption {
-  color: $light-color;
-  font: italic smaller sans-serif;
-  padding: 3px;
-  text-align: center;
+    color: $light-color;
+    font: italic smaller sans-serif;
+    padding: 3px;
+    text-align: center;
   }
 }
 
@@ -95,23 +109,26 @@
   width: 70%;
   margin: $gutter auto;
   color: $light-color;
-  
-  &__content{
+
+  &__content {
     background-color: $primary-color;
     padding: $gutter;
     margin-top: 1em;
     border: 1px solid $secondary-color;
     box-shadow: 0px 0px 9px -1px $secondary-color;
     border-radius: 5px;
+
     &__title {
       font-size: 1.5em;
       color: $light-color;
     }
+
     &__sous-title {
       font-size: 1.2em;
       color: $light-color;
       padding: 1em;
     }
+
     & em {
       color: red;
       margin-left: 15%;

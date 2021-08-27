@@ -19,10 +19,9 @@ export default function Visuel() {
     window.scrollTo(0, 0);
   }, []);
   return (
-    
     <div className="guide">
 
-    <BackButton />
+      <BackButton />
 
       <div className="guide__section">
         <div className="guide__section__paragraphe">

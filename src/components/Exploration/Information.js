@@ -1,12 +1,18 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import PropTypes from 'prop-types';
-import Loader from 'src/components/Loader';
+import * as dayjs from 'dayjs';
 
 const Information = ({ information }) => {
-  if (!information.author) {
-    return (<Loader />);
-  }
+  const {
+    author: { username },
+    author_id: idAuthor,
+    image_url: image,
+    name,
+    date,
+    createdAt,
+  } = information;
 
   return (
 
@@ -14,8 +20,10 @@ const Information = ({ information }) => {
       <div className="Exploration__main__informations__general">
         <div className="Exploration__main__informations__general__left">
           <div>
-            <h2>{information.name}</h2>
-            <p>{`créé par ${information.author.username}`}</p>
+            <h2>{name} le {dayjs(date).format('DD-MM-YYYY à HH:mm')}</h2>
+            <p>créé par
+              <Link to={`/profile/${idAuthor}`}> {username} </Link> le {dayjs(createdAt).format('DD-MM-YYYY')}
+            </p>
             <div className="Exploration__main__informations__general__left__title__stars">
               <AiFillStar />
               <AiFillStar />
@@ -25,8 +33,8 @@ const Information = ({ information }) => {
             </div>
           </div>
           <img
-            src="https://img.20mn.fr/r4hnPca8RRWkXhjG7q86mA/768x492_galaxie.jpg"
-            alt=""
+            src={image}
+            alt={name}
             className="Exploration__main__informations__general__illustration"
           />
         </div>
@@ -48,5 +56,6 @@ export default Information;
 
 Information.propTypes = {
   information: PropTypes.object.isRequired,
-
+  image_url: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
 };

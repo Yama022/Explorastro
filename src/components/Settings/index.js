@@ -8,6 +8,7 @@ import BackButton from 'src/components/BackButton';
 
 export default function Settings({
   usernameChange,
+  passwordForUsername,
   changeField,
   handleUsernameChange,
   password,
@@ -49,11 +50,20 @@ export default function Settings({
         <form className="settings__elems__form" onSubmit={handleUsernameForm}>
 
           <div className="field">
-            <label className="label">Pseudo</label>
+            <label className="label">Nouveau pseudo</label>
             <div className="control has-icons-left has-icons-right">
               <input className="input is-success" type="text" placeholder="ex: AstroCharles" value={usernameChange} name="usernameChange" onChange={handleChange} />
               <span className="icon is-small is-left">
                 <FaUser />
+              </span>
+            </div>
+          </div>
+          <div className="field">
+            <label className="label">Mot de passe</label>
+            <div className="control has-icons-left has-icons-right">
+              <input className="input is-success" type="password" placeholder="ex: MyStr0ngP455sWoRD" value={passwordForUsername} name="passwordForUsername" onChange={handleChange} />
+              <span className="icon is-small is-left">
+                <FaKey />
               </span>
             </div>
           </div>
@@ -116,6 +126,7 @@ export default function Settings({
 
 Settings.propTypes = {
   usernameChange: PropTypes.string.isRequired,
+  passwordForUsername: PropTypes.string.isRequired,
   changeField: PropTypes.func.isRequired,
   handleUsernameChange: PropTypes.func.isRequired,
   password: PropTypes.string.isRequired,

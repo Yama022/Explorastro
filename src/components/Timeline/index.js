@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import Loader from 'src/components/Loader';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Discover from './Discover';
@@ -24,6 +25,10 @@ export default function Timeline({ getTimeline, loggedUserId, timelineContent })
     getTimeline();
   }, []);
 
+  if (timelineContent.length === 0) {
+    return <Loader />;
+  }
+
   return (
     <div className="timeline">
       <aside className="timeline-left">
@@ -39,7 +44,6 @@ export default function Timeline({ getTimeline, loggedUserId, timelineContent })
             timelineContent.map((content) => {
               // I extract the id of the object
               const { _id } = content;
-              // console.log('id', _id);
               switch (content.type) {
                 case ACTION.COMMENT:
                   return <Comment key={_id} props={content} />;
