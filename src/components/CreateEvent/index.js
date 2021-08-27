@@ -32,26 +32,28 @@ export default function CreateEvent({
   return (
     <>
       {redirectForm}
-      <h1 className="main-title__createEvent">J'organise</h1>
-      <section className="container">
-        <div className="createEvent">
-          <form className="createEvent__form" onSubmit={handleSubmit}>
-            <div className="createEvent__form__title">
-              <h2>Créer une sortie</h2>
-            </div>
-            <label htmlFor="titleEvent" className="createEvent__form__name">Nom de la sortie :
-              <input name="titleEvent" type="text" placeholder="Ex : Soirée nuit des étoiles" onChange={handleOnchange} />
-            </label>
-            <button className="button" type="submit">Créer</button>
-          </form>
+      <div className="main">
+        <h1 className="main__titlecreateEvent">J'organise</h1>
+        <section className="container">
+          <div className="createEvent">
+            <form className="createEvent__form" onSubmit={handleSubmit}>
+              <div className="createEvent__form__title">
+                <h2>Créer une sortie</h2>
+              </div>
+              <label htmlFor="titleEvent" className="createEvent__form__name">Nom de la sortie :
+                <input name="titleEvent" type="text" placeholder="Ex : Soirée nuit des étoiles" onChange={handleOnchange} />
+              </label>
+              <button className="button" type="submit">Créer</button>
+            </form>
 
-          { eventsCreated.map((element) => (
+            { eventsCreated.map((element) => (
 
-            <EventCreated onClick={onClickRemove} key={element.id} {...element} />
-          ))}
+              <EventCreated onClick={onClickRemove} key={element.id} {...element} />
+            ))}
 
-        </div>
-      </section>
+          </div>
+        </section>
+      </div>
     </>
   );
 }

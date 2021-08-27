@@ -19,6 +19,8 @@ export const SAVE_ALL_EVENTS = 'SAVE_ALL_EVENTS';
 export const SAVE_ADDRESS = 'SAVE_ADDRESS';
 export const FORM_SUBMIT_SEARCH_ADDRESS = 'FORM_SUBMIT_SEARCH_ADDRESS';
 export const UPDATE_EVENTS = 'UPDATE_EVENTS';
+export const GET_EXPLORATION_BY_ID = 'GET_EXPLORATION_BY_ID';
+export const SAVE_EXPLORATION_BY_ID = 'SAVE_EXPLORATION_BY_ID';
 
 // Action creators
 export const formSubmitSearchAddress = (payload) => ({
@@ -113,4 +115,13 @@ export const saveAddress = (value) => ({
 export const updateEvents = (value) => ({
   type: UPDATE_EVENTS,
   value,
+});
+export const getExplorationById = (payload) => ({
+  type: GET_EXPLORATION_BY_ID,
+  payload,
+});
+
+export const saveExplorationById = (payload) => ({
+  type: SAVE_EXPLORATION_BY_ID,
+  payload,
 });

@@ -13,12 +13,14 @@ import {
   SAVE_ALL_EVENTS,
   SAVE_ADDRESS,
   UPDATE_EVENTS,
+  SAVE_EXPLORATION_BY_ID,
 } from 'src/actions/exploration';
 
 export const initialState = {
   addressInput: '',
   address: [],
   events: [],
+  exploration: {},
   titleEvent: '',
   descEvent: '',
   zone: 10,
@@ -131,9 +133,15 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         eventCreated: [...action.value],
-
       };
     }
+    case SAVE_EXPLORATION_BY_ID: {
+      return {
+        ...state,
+        exploration: action.payload,
+      };
+    }
+
     default:
       return state;
   }
