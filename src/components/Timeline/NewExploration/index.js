@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 
-
 export default function NewExplo({ props }) {
   // const d = new Date();
   // const myDate = d.getDate()+'-'+(d.getMonth()+1)+'-'+d.getFullYear();

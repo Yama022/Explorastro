@@ -11,8 +11,6 @@ const Information = ({ information }) => {
     image_url: image,
     name,
   } = information;
-  console.log(image);
-  console.log(name);
 
   return (
 

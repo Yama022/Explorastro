@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Loader from 'src/components/Loader';
 
 const Participant = ({ participants }) => {
-  console.log('participants', participants);
   const { max_participants: participantsMax } = participants;
   if (!participants.id) {
     return (<Loader />);
