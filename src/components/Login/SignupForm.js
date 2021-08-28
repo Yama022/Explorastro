@@ -28,7 +28,11 @@ export default function SignupForm({
       formIsValid = false;
       errors.firstname = 'Veuillez renseigner votre prénom.';
     }
-    else if (firstname.length < 2) {
+    if (/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(firstname)) {
+      formIsValid = false;
+      errors.firstname = 'Merci de ne pas utiliser de caractère spécial.';
+    }
+    if (firstname.length < 2) {
       formIsValid = false;
       errors.firstname = 'Le prénom renseigné est trop court';
     }
@@ -38,7 +42,11 @@ export default function SignupForm({
       formIsValid = false;
       errors.lastname = 'Veuillez renseigner votre nom.';
     }
-    else if (lastname.length < 2) {
+    if (/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(lastname)) {
+      formIsValid = false;
+      errors.lastname = 'Merci de ne pas utiliser de caractère spécial.';
+    }
+    if (lastname.length < 2) {
       formIsValid = false;
       errors.lastname = 'Le nom renseigné est trop court';
     }
@@ -48,7 +56,11 @@ export default function SignupForm({
       formIsValid = false;
       errors.username = 'Veuillez renseigner votre pseudo.';
     }
-    else if (username.length < 6) {
+    if (/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(username)) {
+      formIsValid = false;
+      errors.username = 'Merci de ne pas utiliser de caractère spécial.';
+    }
+    if (username.length < 6) {
       formIsValid = false;
       errors.username = 'Le pseudo renseigné est trop court';
     }
@@ -87,6 +99,10 @@ export default function SignupForm({
         formIsValid = false;
         errors.email = "L'adresse email n'est pas valide.";
       }
+    }
+    if (/[ `!#$%^&*()_+=\[\]{};':"\\|,<>\/?~]/.test(email)) {
+      formIsValid = false;
+      errors.email = 'Merci de ne pas utiliser de caractère spécial.';
     }
 
     handleFieldHasError(errors);
