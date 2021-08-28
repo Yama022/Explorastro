@@ -29,15 +29,12 @@ export default function Login({
   handleSignup,
   signup,
   loginError,
+  fieldHasError,
+  handleFieldHasError,
 }) {
   const handleChange = (event) => {
     changeField(event.target.value, event.target.name);
   };
-
-  // const handleSubmitLogin = (event) => {
-  //   event.preventDefault();
-  //   handleLogin();
-  // };
 
   const handleSubmitSignup = (event) => {
     event.preventDefault();
@@ -76,13 +73,15 @@ export default function Login({
           </Link>
 
           <LoginForm
-            handleLogin={handleLogin}
             email={email}
             password={password}
             signup={signup}
             handleChange={handleChange}
+            handleLogin={handleLogin}
             handleToggleSignup={handleToggleSignup}
             loginError={loginError}
+            fieldHasError={fieldHasError}
+            handleFieldHasError={handleFieldHasError}
           />
 
           <SignupForm
@@ -97,6 +96,8 @@ export default function Login({
             handleSubmitSignup={handleSubmitSignup}
             handleToggleSignup={handleToggleSignup}
             signupError={loginError}
+            fieldHasError={fieldHasError}
+            handleFieldHasError={handleFieldHasError}
           />
 
         </div>
@@ -118,4 +119,6 @@ Login.propTypes = {
   handleSignup: PropTypes.func.isRequired,
   signup: PropTypes.bool.isRequired,
   loginError: PropTypes.bool.isRequired,
+  fieldHasError: PropTypes.object.isRequired,
+  handleFieldHasError: PropTypes.func.isRequired,
 };

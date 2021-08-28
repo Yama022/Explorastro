@@ -16,6 +16,8 @@ export default function SignupForm({
   handleSubmitSignup,
   signup,
   signupError,
+  fieldHasError,
+  handleFieldHasError,
 }) {
   return (
     <form onSubmit={handleSubmitSignup} className={signup ? 'login__container__form__elem' : 'login__container__form__elem--hidden'}>
@@ -94,4 +96,6 @@ SignupForm.propTypes = {
   handleSubmitSignup: PropTypes.func.isRequired,
   signup: PropTypes.bool.isRequired,
   signupError: PropTypes.bool.isRequired,
+  fieldHasError: PropTypes.object.isRequired,
+  handleFieldHasError: PropTypes.func.isRequired,
 };

@@ -1,5 +1,6 @@
 import {
   CHANGE_VALUE, TOGGLE_SIGNUP, LOGOUT, SAVE_USER, LOGIN_ERROR,
+  SET_FIELD_HAS_ERROR,
 } from 'src/actions/user';
 
 const initialState = {
@@ -17,6 +18,7 @@ const initialState = {
   logged: false,
   signup: false,
   loginError: false,
+  fieldHasError: {},
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -32,6 +34,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         signup: !state.signup,
         loginError: false,
+        fieldHasError: {},
       };
     }
     case LOGOUT: {
@@ -58,6 +61,12 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         loginError: true,
+      };
+    }
+    case SET_FIELD_HAS_ERROR: {
+      return {
+        ...state,
+        fieldHasError: action.value,
       };
     }
     default:
