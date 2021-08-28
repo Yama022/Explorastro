@@ -17,7 +17,7 @@ const initialState = {
   usernameChange: '',
   logged: false,
   signup: false,
-  loginError: false,
+  loginError: '',
   fieldHasError: {},
 };
 
@@ -33,7 +33,7 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         signup: !state.signup,
-        loginError: false,
+        loginError: '',
         fieldHasError: {},
       };
     }
@@ -60,7 +60,7 @@ const reducer = (state = initialState, action = {}) => {
     case LOGIN_ERROR: {
       return {
         ...state,
-        loginError: true,
+        loginError: action.payload,
       };
     }
     case SET_FIELD_HAS_ERROR: {

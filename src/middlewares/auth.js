@@ -20,7 +20,7 @@ const auth = (store) => (next) => (action) => {
           store.dispatch(actionSaveUser);
         }
         catch (error) {
-          store.dispatch(loginError());
+          store.dispatch(loginError(error.response.data.message));
         }
       };
       login();
@@ -42,7 +42,7 @@ const auth = (store) => (next) => (action) => {
           store.dispatch(toggleSignup);
         }
         catch (error) {
-          store.dispatch(loginError());
+          store.dispatch(loginError(error.response.data.message));
         }
       };
       signup();

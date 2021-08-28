@@ -105,7 +105,7 @@ LoginForm.propTypes = {
   handleChange: PropTypes.func.isRequired,
   handleLogin: PropTypes.func.isRequired,
   signup: PropTypes.bool.isRequired,
-  loginError: PropTypes.bool.isRequired,
+  loginError: PropTypes.string.isRequired,
   fieldHasError: PropTypes.object.isRequired,
   handleFieldHasError: PropTypes.func.isRequired,
 };

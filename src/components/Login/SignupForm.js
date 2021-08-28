@@ -100,9 +100,22 @@ export default function SignupForm({
       handleSignup();
     }
   };
+
+  let errorMessage;
+
+  if (signupError.includes('Username')) {
+    errorMessage = 'Ce pseudo est déjà utilisé';
+  }
+  else if (signupError.includes('Email')) {
+    errorMessage = 'Cette adresse mail est déjà utilisée';
+  }
+  else {
+    errorMessage = `Erreur: ${signupError}`;
+  }
+
   return (
     <form onSubmit={handleFormSubmit} className={signup ? 'login__container__form__elem' : 'login__container__form__elem--hidden'}>
-      {signupError && <div className="login__container__form__elem__error">Merci de vérifier vos informations.</div>}
+      {signupError && <div className="login__container__form__elem__error">{errorMessage}</div>}
       <div className="field">
         <label className="label">Prénom</label>
         <div className="control has-icons-left has-icons-right">
@@ -182,7 +195,7 @@ SignupForm.propTypes = {
   handleChange: PropTypes.func.isRequired,
   handleSignup: PropTypes.func.isRequired,
   signup: PropTypes.bool.isRequired,
-  signupError: PropTypes.bool.isRequired,
+  signupError: PropTypes.string.isRequired,
   fieldHasError: PropTypes.object.isRequired,
   handleFieldHasError: PropTypes.func.isRequired,
 };

@@ -143,8 +143,8 @@ export default function Header({
 Header.propTypes = {
   isLogged: PropTypes.bool.isRequired,
   username: PropTypes.string.isRequired,
+  loggedUserId: PropTypes.number,
   avatarUrl: PropTypes.string,
-  loggedUserId: PropTypes.number.isRequired,
   burgerIsOpen: PropTypes.bool.isRequired,
   dropdownIsOpen: PropTypes.bool.isRequired,
   handleToggleDropdown: PropTypes.func.isRequired,
@@ -153,5 +153,6 @@ Header.propTypes = {
 };
 
 Header.defaultProps = {
+  loggedUserId: 0,
   avatarUrl: 'src/assets/image/defaultavatar.jpg',
 };

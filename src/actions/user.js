@@ -30,8 +30,9 @@ export const login = () => ({
   type: LOGIN,
 });
 
-export const loginError = () => ({
+export const loginError = (payload) => ({
   type: LOGIN_ERROR,
+  payload,
 });
 
 export const logout = () => ({
