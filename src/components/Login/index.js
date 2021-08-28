@@ -36,11 +36,6 @@ export default function Login({
     changeField(event.target.value, event.target.name);
   };
 
-  const handleSubmitSignup = (event) => {
-    event.preventDefault();
-    handleSignup();
-  };
-
   useEffect(() => {
     function parallax(e) {
       document.querySelectorAll('.object').forEach((move) => {
@@ -93,7 +88,7 @@ export default function Login({
             signup={signup}
             passwordConfirmation={passwordConfirmation}
             handleChange={handleChange}
-            handleSubmitSignup={handleSubmitSignup}
+            handleSignup={handleSignup}
             handleToggleSignup={handleToggleSignup}
             signupError={loginError}
             fieldHasError={fieldHasError}
