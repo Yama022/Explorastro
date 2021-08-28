@@ -52,7 +52,7 @@ export default function Settings({
           <div className="field">
             <label className="label">Nouveau pseudo</label>
             <div className="control has-icons-left has-icons-right">
-              <input className="input is-success" type="text" placeholder="ex: AstroCharles" value={usernameChange} name="usernameChange" onChange={handleChange} />
+              <input className="input is-success" type="text" placeholder="ex: AstroCharles" value={usernameChange} name="usernameChange" onChange={handleChange} autoComplete="off" />
               <span className="icon is-small is-left">
                 <FaUser />
               </span>
@@ -61,7 +61,7 @@ export default function Settings({
           <div className="field">
             <label className="label">Mot de passe</label>
             <div className="control has-icons-left has-icons-right">
-              <input className="input is-success" type="password" placeholder="ex: MyStr0ngP455sWoRD" value={passwordForUsername} name="passwordForUsername" onChange={handleChange} />
+              <input className="input is-success" type="password" placeholder="ex: MyStr0ngP455sWoRD" value={passwordForUsername} name="passwordForUsername" onChange={handleChange} autoComplete="off" />
               <span className="icon is-small is-left">
                 <FaKey />
               </span>
@@ -78,7 +78,7 @@ export default function Settings({
           <div className="field">
             <label className="label">Mot de passe actuel</label>
             <div className="control has-icons-left has-icons-right">
-              <input className="input is-success" type="password" placeholder="ex: MyStr0ngP455sWoRD" value={password} name="password" onChange={handleChange} required />
+              <input className="input is-success" type="password" placeholder="ex: MyStr0ngP455sWoRD" value={password} name="password" onChange={handleChange} required autoComplete="off" />
               <span className="icon is-small is-left">
                 <FaKey />
               </span>
@@ -88,7 +88,7 @@ export default function Settings({
           <div className="field">
             <label className="label">Nouveau mot de passe</label>
             <div className="control has-icons-left has-icons-right">
-              <input className="input is-success" type="password" placeholder="ex: MyStr0ngP455sWoRD" value={newPassword} name="newPassword" onChange={handleChange} />
+              <input className="input is-success" type="password" placeholder="ex: MyStr0ngP455sWoRD" value={newPassword} name="newPassword" onChange={handleChange} autoComplete="off" />
               <span className="icon is-small is-left">
                 <FaKey />
               </span>
@@ -108,7 +108,7 @@ export default function Settings({
           <div className="field">
             <label className="label">Mot de passe</label>
             <div className="control has-icons-left has-icons-right">
-              <input className="input is-success" type="password" placeholder="ex: MyStr0ngP455sWoRD" value={passwordConfirmation} name="passwordConfirmation" onChange={handleChange} />
+              <input className="input is-success" type="password" placeholder="ex: MyStr0ngP455sWoRD" value={passwordConfirmation} name="passwordConfirmation" onChange={handleChange} autoComplete="off" />
               <span className="icon is-small is-left">
                 <FaKey />
               </span>
