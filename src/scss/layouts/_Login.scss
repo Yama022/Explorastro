@@ -34,6 +34,10 @@
         &--hidden {
           display: none;
         }
+        &__error {
+          font-size: 1.1rem;
+          text-shadow: 0 0 0.2rem $tertiary-color;
+        }
       }
 
       img {
@@ -58,6 +62,10 @@
 
       .field {
         margin: 2em 0;
+        &__error {
+          font-size: 0.8rem;
+          text-shadow: 0 0 0.2rem $tertiary-color;
+        }
       }
 
       &__buttons-container {

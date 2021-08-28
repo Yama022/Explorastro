@@ -28,19 +28,12 @@ export default function Login({
   handleLogin,
   handleSignup,
   signup,
+  loginError,
+  fieldHasError,
+  handleFieldHasError,
 }) {
   const handleChange = (event) => {
     changeField(event.target.value, event.target.name);
-  };
-
-  const handleSubmitLogin = (event) => {
-    event.preventDefault();
-    handleLogin();
-  };
-
-  const handleSubmitSignup = (event) => {
-    event.preventDefault();
-    handleSignup();
   };
 
   useEffect(() => {
@@ -75,12 +68,15 @@ export default function Login({
           </Link>
 
           <LoginForm
-            handleSubmitLogin={handleSubmitLogin}
             email={email}
             password={password}
             signup={signup}
             handleChange={handleChange}
+            handleLogin={handleLogin}
             handleToggleSignup={handleToggleSignup}
+            loginError={loginError}
+            fieldHasError={fieldHasError}
+            handleFieldHasError={handleFieldHasError}
           />
 
           <SignupForm
@@ -92,8 +88,11 @@ export default function Login({
             signup={signup}
             passwordConfirmation={passwordConfirmation}
             handleChange={handleChange}
-            handleSubmitSignup={handleSubmitSignup}
+            handleSignup={handleSignup}
             handleToggleSignup={handleToggleSignup}
+            signupError={loginError}
+            fieldHasError={fieldHasError}
+            handleFieldHasError={handleFieldHasError}
           />
 
         </div>
@@ -114,4 +113,7 @@ Login.propTypes = {
   handleLogin: PropTypes.func.isRequired,
   handleSignup: PropTypes.func.isRequired,
   signup: PropTypes.bool.isRequired,
+  loginError: PropTypes.string.isRequired,
+  fieldHasError: PropTypes.object.isRequired,
+  handleFieldHasError: PropTypes.func.isRequired,
 };

@@ -1,5 +1,5 @@
 import {
-  LOGIN, SIGNUP, saveUser, CHECK_TOKEN, CHECK_USER_LOGGED, toggleSignup,
+  LOGIN, SIGNUP, saveUser, CHECK_TOKEN, CHECK_USER_LOGGED, toggleSignup, loginError,
 } from 'src/actions/user';
 import api from './utils/api';
 
@@ -20,7 +20,7 @@ const auth = (store) => (next) => (action) => {
           store.dispatch(actionSaveUser);
         }
         catch (error) {
-          console.error(error.response);
+          store.dispatch(loginError(error.response.data.message));
         }
       };
       login();
@@ -42,7 +42,7 @@ const auth = (store) => (next) => (action) => {
           store.dispatch(toggleSignup);
         }
         catch (error) {
-          console.error(error.response);
+          store.dispatch(loginError(error.response.data.message));
         }
       };
       signup();
