@@ -96,6 +96,7 @@ export default function Login({
             handleChange={handleChange}
             handleSubmitSignup={handleSubmitSignup}
             handleToggleSignup={handleToggleSignup}
+            signupError={loginError}
           />
 
         </div>

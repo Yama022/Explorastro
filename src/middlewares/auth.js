@@ -42,7 +42,7 @@ const auth = (store) => (next) => (action) => {
           store.dispatch(toggleSignup);
         }
         catch (error) {
-          console.error(error.response);
+          store.dispatch(loginError());
         }
       };
       signup();

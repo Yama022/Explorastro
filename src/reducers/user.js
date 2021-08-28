@@ -31,6 +31,7 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         signup: !state.signup,
+        loginError: false,
       };
     }
     case LOGOUT: {

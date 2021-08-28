@@ -19,7 +19,7 @@ export default function LoginForm({
   };
   return (
     <form onSubmit={handleSubmitLogin} className={signup ? 'login__container__form__elem--hidden' : 'login__container__form__elem'}>
-      {loginError ? <div className="login__container__form__elem__error">Vos identifiants sont incorrects.</div> : ''}
+      {loginError && <div className="login__container__form__elem__error">Vos identifiants sont incorrects.</div>}
       <div className="field">
         <label className="label">Email ou nom d'utilisateur</label>
         <div className="control has-icons-left has-icons-right">
@@ -54,8 +54,8 @@ export default function LoginForm({
         </div>
       </div>
       <div className="login__container__form__buttons-container">
-        <button type="button" className="button --outlined" onClick={handleToggleSignup}>Inscription</button>
-        <button type="submit" className="button purple">Se Connecter</button>
+        <button type="button" className="button purple" onClick={handleToggleSignup}>Inscription</button>
+        <button type="submit" className="button --outlined">Se Connecter</button>
       </div>
     </form>
   );

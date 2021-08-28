@@ -15,9 +15,11 @@ export default function SignupForm({
   handleChange,
   handleSubmitSignup,
   signup,
+  signupError,
 }) {
   return (
     <form onSubmit={handleSubmitSignup} className={signup ? 'login__container__form__elem' : 'login__container__form__elem--hidden'}>
+      {signupError && <div className="login__container__form__elem__error">Merci de vérifier vos informations.</div>}
       <div className="field">
         <label className="label">Prénom</label>
         <div className="control has-icons-left has-icons-right">
@@ -73,8 +75,8 @@ export default function SignupForm({
         </div>
       </div>
       <div className="login__container__form__buttons-container">
-        <button type="button" className="button --outlined" onClick={handleToggleSignup}>Connexion</button>
-        <button type="submit" className="button purple">S'inscrire</button>
+        <button type="button" className="button purple" onClick={handleToggleSignup}>Connexion</button>
+        <button type="submit" className="button --outlined">S'inscrire</button>
       </div>
     </form>
   );
@@ -91,4 +93,5 @@ SignupForm.propTypes = {
   handleChange: PropTypes.func.isRequired,
   handleSubmitSignup: PropTypes.func.isRequired,
   signup: PropTypes.bool.isRequired,
+  signupError: PropTypes.bool.isRequired,
 };
