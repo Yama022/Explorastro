@@ -1,5 +1,5 @@
 import {
-  CHANGE_VALUE, TOGGLE_SIGNUP, LOGOUT, SAVE_USER,
+  CHANGE_VALUE, TOGGLE_SIGNUP, LOGOUT, SAVE_USER, LOGIN_ERROR,
 } from 'src/actions/user';
 
 const initialState = {
@@ -16,6 +16,7 @@ const initialState = {
   usernameChange: '',
   logged: false,
   signup: false,
+  loginError: false,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -50,6 +51,12 @@ const reducer = (state = initialState, action = {}) => {
         passwordConfirmation: '',
         usernameChange: '',
         passwordForUsername: '',
+      };
+    }
+    case LOGIN_ERROR: {
+      return {
+        ...state,
+        loginError: true,
       };
     }
     default:

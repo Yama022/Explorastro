@@ -2,6 +2,7 @@ export const TOGGLE_SIGNUP = 'TOGGLE_SIGNUP';
 export const CHANGE_VALUE = 'CHANGE_VALUE';
 export const SIGNUP = 'SIGNUP';
 export const LOGIN = 'LOGIN';
+export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const LOGOUT = 'LOGOUT';
 export const SAVE_USER = 'SAVE_USER';
 export const CHECK_TOKEN = 'CHECK_TOKEN';
@@ -26,6 +27,10 @@ export const signup = () => ({
 
 export const login = () => ({
   type: LOGIN,
+});
+
+export const loginError = () => ({
+  type: LOGIN_ERROR,
 });
 
 export const logout = () => ({

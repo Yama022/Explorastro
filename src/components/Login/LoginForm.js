@@ -9,25 +9,28 @@ export default function LoginForm({
   email,
   password,
   handleChange,
-  handleSubmitLogin,
+  handleLogin,
   signup,
+  loginError,
 }) {
-  let passwordTooShort = false;
-  const handleSubmitLoginForm = (event) => {
+  const handleSubmitLogin = (event) => {
     event.preventDefault();
-    if (password.length < 6) {
-      passwordTooShort = true;
-    }
-    else {
-      handleSubmitLogin();
-    }
+    handleLogin();
   };
   return (
-    <form onSubmit={handleSubmitLoginForm} className={signup ? 'login__container__form__elem--hidden' : 'login__container__form__elem'}>
+    <form onSubmit={handleSubmitLogin} className={signup ? 'login__container__form__elem--hidden' : 'login__container__form__elem'}>
+      {loginError ? <div className="login__container__form__elem__error">Vos identifiants sont incorrects.</div> : ''}
       <div className="field">
         <label className="label">Email ou nom d'utilisateur</label>
         <div className="control has-icons-left has-icons-right">
-          <input className="input" placeholder="ex: astroCharles@explorastro.com" value={email} name="email" onChange={handleChange} autoComplete="on" />
+          <input
+            className="input"
+            placeholder="ex: astroCharles@explorastro.com"
+            value={email}
+            name="email"
+            onChange={handleChange}
+            autoComplete="on"
+          />
           <span className="icon is-small is-left">
             <FaAt />
           </span>
@@ -36,7 +39,15 @@ export default function LoginForm({
       <div className="field">
         <label className="label">Mot de Passe</label>
         <div className="control has-icons-left has-icons-right">
-          <input className={passwordTooShort ? 'input is-danger' : 'input'} type="password" placeholder="ex: MyStr0ngP455sWoRD" value={password} name="password" onChange={handleChange} autoComplete="off" />
+          <input
+            className="input"
+            type="password"
+            placeholder="ex: MyStr0ngP455sWoRD"
+            value={password}
+            name="password"
+            onChange={handleChange}
+            autoComplete="off"
+          />
           <span className="icon is-small is-left">
             <FaKey />
           </span>
@@ -55,6 +66,7 @@ LoginForm.propTypes = {
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
-  handleSubmitLogin: PropTypes.func.isRequired,
+  handleLogin: PropTypes.func.isRequired,
   signup: PropTypes.bool.isRequired,
+  loginError: PropTypes.bool.isRequired,
 };
