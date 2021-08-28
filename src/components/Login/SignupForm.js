@@ -57,7 +57,7 @@ export default function SignupForm({
       <div className="field">
         <label className="label">Mot de Passe</label>
         <div className="control has-icons-left has-icons-right">
-          <input className="input" type="password" placeholder="ex: MyStr0ngP455sWoRD" value={password} name="password" onChange={handleChange} />
+          <input className="input" type="password" placeholder="ex: MyStr0ngP455sWoRD" value={password} name="password" onChange={handleChange} autoComplete="off" />
           <span className="icon is-small is-left">
             <FaKey />
           </span>
@@ -66,7 +66,7 @@ export default function SignupForm({
       <div className="field">
         <label className="label">Confirmer le mot de passe</label>
         <div className="control has-icons-left has-icons-right">
-          <input className="input" type="password" placeholder="ex: MyStr0ngP455sWoRD" value={passwordConfirmation} name="passwordConfirmation" onChange={handleChange} />
+          <input className="input" type="password" placeholder="ex: MyStr0ngP455sWoRD" value={passwordConfirmation} name="passwordConfirmation" onChange={handleChange} autoComplete="off" />
           <span className="icon is-small is-left">
             <FaKey />
           </span>

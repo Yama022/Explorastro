@@ -12,12 +12,22 @@ export default function LoginForm({
   handleSubmitLogin,
   signup,
 }) {
+  let passwordTooShort = false;
+  const handleSubmitLoginForm = (event) => {
+    event.preventDefault();
+    if (password.length < 6) {
+      passwordTooShort = true;
+    }
+    else {
+      handleSubmitLogin();
+    }
+  };
   return (
-    <form onSubmit={handleSubmitLogin} className={signup ? 'login__container__form__elem--hidden' : 'login__container__form__elem'}>
+    <form onSubmit={handleSubmitLoginForm} className={signup ? 'login__container__form__elem--hidden' : 'login__container__form__elem'}>
       <div className="field">
         <label className="label">Email ou nom d'utilisateur</label>
         <div className="control has-icons-left has-icons-right">
-          <input className="input" placeholder="ex: astroCharles@explorastro.com" value={email} name="email" onChange={handleChange} />
+          <input className="input" placeholder="ex: astroCharles@explorastro.com" value={email} name="email" onChange={handleChange} autoComplete="on" />
           <span className="icon is-small is-left">
             <FaAt />
           </span>
@@ -26,7 +36,7 @@ export default function LoginForm({
       <div className="field">
         <label className="label">Mot de Passe</label>
         <div className="control has-icons-left has-icons-right">
-          <input className="input" type="password" placeholder="ex: MyStr0ngP455sWoRD" value={password} name="password" onChange={handleChange} />
+          <input className={passwordTooShort ? 'input is-danger' : 'input'} type="password" placeholder="ex: MyStr0ngP455sWoRD" value={password} name="password" onChange={handleChange} autoComplete="off" />
           <span className="icon is-small is-left">
             <FaKey />
           </span>

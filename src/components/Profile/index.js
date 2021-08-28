@@ -53,7 +53,7 @@ export default function Profile({
 
   useEffect(() => {
     getInfo(profileId);
-  }, [profileId, biography]);
+  }, [profileId]);
 
   if (!loggedUserId || !explorations || !profileId) {
     return <Loader />;

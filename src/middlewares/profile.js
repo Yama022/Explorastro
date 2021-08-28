@@ -1,5 +1,5 @@
 import {
-  GET_USER_INFO, saveUserInfo, FOLLOW, UNFOLLOW, toggleFollow, CHANGE_BIO,
+  GET_USER_INFO, saveUserInfo, FOLLOW, UNFOLLOW, toggleFollow, CHANGE_BIO, saveBio,
 } from 'src/actions/profile';
 
 import api from './utils/api';
@@ -56,7 +56,9 @@ const profile = (store) => (next) => (action) => {
       const handleChangeBio = async () => {
         try {
           const response = await api.patch(`/api/v1/user/${state.user.loggedUserId}/update`, data);
-          console.log(response);
+          console.log(response.data.user.bio);
+          const actionSaveBio = saveBio(response.data.user.bio);
+          store.dispatch(actionSaveBio);
         }
         catch (error) {
           console.error(error.response);

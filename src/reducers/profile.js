@@ -1,6 +1,6 @@
 import { SAVE_USER } from 'src/actions/user';
 import {
-  CHANGE_PROFILE_MENU, SAVE_USER_INFO, TOGGLE_FOLLOW, TOGGLE_BIO_EDIT, CHANGE_INPUT_VALUE,
+  CHANGE_PROFILE_MENU, SAVE_USER_INFO, TOGGLE_FOLLOW, TOGGLE_BIO_EDIT, CHANGE_INPUT_VALUE, SAVE_BIO,
 } from 'src/actions/profile';
 
 const initialState = {
@@ -64,6 +64,13 @@ const profile = (state = initialState, action = {}) => {
       return {
         ...state,
         [action.key]: action.value,
+      };
+    }
+    case SAVE_BIO: {
+      console.log(action.payload);
+      return {
+        ...state,
+        biography: action.payload,
       };
     }
     default:
