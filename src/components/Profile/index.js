@@ -73,7 +73,7 @@ export default function Profile({
             <div className="profile__header__description__top__left">
               <h3 className="profile__header__description__top__left__name">{firstName} {lastName}</h3>
               <h2 className="profile__header__description__top__left__username">{username}</h2>
-              <div className="profile__header__description__top__left__stars">
+              <div className="profile__header__description__top__left__stars" title="4 stars out of 5!">
                 <AiFillStar /><AiFillStar /><AiFillStar /><AiFillStar /><AiOutlineStar />
               </div>
             </div>

@@ -1,5 +1,5 @@
 import {
-  CHANGE_USERNAME, CHANGE_PASSWORD, logout, DELETE_ACCOUNT, saveUser,
+  CHANGE_USERNAME, CHANGE_PASSWORD, logout, DELETE_ACCOUNT, saveUser, loginError,
 } from 'src/actions/user';
 import api from './utils/api';
 
@@ -20,7 +20,7 @@ const settings = (store) => (next) => (action) => {
           store.dispatch(actionSaveUser);
         }
         catch (error) {
-          console.log(error);
+          store.dispatch(loginError([error.response.config.url, error.response.data.message]));
         }
       };
       sendData();
@@ -36,13 +36,13 @@ const settings = (store) => (next) => (action) => {
             old_password: state.user.password,
             new_password: state.user.newPassword,
           });
+          store.dispatch(logout());
         }
         catch (error) {
-          console.log(error.response);
+          store.dispatch(loginError([error.response.config.url, error.response.data.message]));
         }
       };
       sendData();
-      store.dispatch(logout());
       break;
     }
     case DELETE_ACCOUNT: {
@@ -56,13 +56,13 @@ const settings = (store) => (next) => (action) => {
               password: state.user.passwordConfirmation,
             },
           });
+          store.dispatch(logout());
         }
         catch (error) {
-          console.log(error.response);
+          store.dispatch(loginError([error.response.config.url, error.response.data.message]));
         }
       };
       sendData();
-      store.dispatch(logout());
       break;
     }
     default:
