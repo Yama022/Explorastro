@@ -9,167 +9,173 @@
     margin: $gutter;
   }
 }
-  .container {
-    color: white;
 
-    .main-title__createEvent {
-      font-size: 2em;
-      margin: $gutter 0;
+.container {
+  color: white;
+
+  .main-title__createEvent {
+    font-size: 2em;
+    margin: $gutter 0;
+  }
+
+  .createEvent {
+
+    display: flex;
+    text-align: center;
+    flex-wrap: wrap;
+    justify-content: center;
+
+
+    &__form {
+      margin: $gutter;
+      border: 1px solid $secondary-color;
+      box-shadow: 0px 0px 9px -1px $secondary-color;
+      border-radius: 10px;
+      width: 15em;
+      background-color: $primary-color;
+
+      &__title {
+        font-size: 1.4em;
+        background-color: $secondary-color;
+        width: 100%;
+
+        h2 {
+          padding: $gutter;
+        }
+      }
+
+      &__name {
+        display: flex;
+        flex-direction: column;
+        padding: $gutter;
+        margin-top: $gutter*4;
+
+        input {
+          padding: 1em;
+        }
+      }
+
+      .button {
+        background-color: $secondary-color;
+        border: none;
+        margin-bottom: $gutter;
+
+        &:hover {
+          background-color: $light-color;
+          color: black
+        }
+      }
     }
 
-    .createEvent {
 
-      display: flex;
-      text-align: center;
-      flex-wrap: wrap;
-      justify-content: center;
+    &__event-list {
+      margin: $gutter;
+      border: 1px solid $secondary-color;
+      box-shadow: 0px 0px 9px -1px $secondary-color;
+      border-radius: 10px;
+      width: 15em;
+      background-color: $primary-color;
 
+      img {
 
-      &__form {
-        margin: $gutter;
-        border: 1px solid $secondary-color;
-        box-shadow: 0px 0px 9px -1px $secondary-color;
-        border-radius: 10px;
-        width: 15em;
-        background-color: $primary-color;
+        width: 100%;
+      }
 
-        &__title {
-          font-size: 1.4em;
-          background-color: $secondary-color;
-          width: 100%;
+      h2 {
 
-          h2 {
-            padding: $gutter;
-          }
-        }
+        padding: $gutter;
+      }
 
-        &__name {
-          display: flex;
-          flex-direction: column;
-          padding: $gutter;
-          margin-top: $gutter*4;
-
-          input {
-            padding: 1em;
-          }
-        }
+      &__button {
 
         .button {
-          background-color: $secondary-color;
           border: none;
-          margin-bottom: $gutter;
+          margin: $gutter;
+          background-color: $secondary-color;
 
           &:hover {
             background-color: $light-color;
             color: black
           }
         }
+
+        .isDelete {
+          background-color: #f14668;
+        }
       }
 
-
-      &__event-list {
-        margin: $gutter;
-        border: 1px solid $secondary-color;
-        box-shadow: 0px 0px 9px -1px $secondary-color;
-        border-radius: 10px;
-        width: 15em;
-        background-color: $primary-color;
-
-        img {
-
-          width: 100%;
-        }
-
-        h2 {
-
-          padding: $gutter;
-        }
-
-        &__button {
-
-          .button {
-            border: none;
-            margin: $gutter;
-            background-color: $secondary-color;
-
-            &:hover {
-              background-color: $light-color;
-              color: black
-            }
-          }
-
-          .isDelete {
-            background-color: #f14668;
-          }
-        }
-
-        &__content {
-          display: flex;
-          padding: $gutter;
-          justify-content: space-between;
-        }
-
+      &__content {
+        display: flex;
+        padding: $gutter;
+        justify-content: space-between;
       }
+
     }
   }
+}
 
 
-  .createEventForm {
-    color: white;
-    font-size: 1.4em;
-    width: 50%;
-    margin: 0 auto;
-    background-color: $secondary-color;
-    padding: $gutter;
-    border-radius: 10px;
+.createEventForm {
+  color: white;
+  font-size: 1.4em;
+  width: 50%;
+  margin: 0 auto;
+  background-color: $secondary-color;
+  padding: $gutter;
+  border-radius: 10px;
 
-    &__form {
+  &__form {
 
-      textarea {
-        resize: none;
-        width: 100%;
+    textarea {
+      resize: none;
+      width: 100%;
+    }
+
+    h4 {
+      margin: $gutter 0;
+    }
+
+    &__map {
+      height: 374px;
+      margin: 15px 0;
+      background-color: $light-color;
+      border: 1px solid $light-color;
+      width: 100%;
+      overflow: hidden;
+
+    }
+
+    .maxRateEvent {
+      padding: 0.4em;
+      margin-left: 1em;
+      width: 12%;
+    }
+
+    .checkbox {
+      padding: $gutter;
+      margin: 0 $gutter;
+    }
+
+    &__checkbox {
+      text-align: left;
+      width: $gutter;
+      padding-left: $gutter;
+    }
+
+    &__add-img {
+
+      .upload-box {
+        padding: $gutter 1em;
+        font-size: 1em;
+        background-color: $primary-color;
+        line-height: 50px;
       }
 
-      h4 {
-        margin: $gutter 0;
-      }
+    }
 
-      &__map {
-        height: 374px;
-        margin: 15px 0;
-        background-color: $light-color;
-        border: 1px solid $light-color;
-        width: 100%;
-        overflow: hidden;
-
-      }
-
-      .maxRateEvent {
-        padding: 0.4em;
-        margin-left: 1em;
-        width: 12%;
-      }
-
-      .checkbox {
-        padding: $gutter;
-        margin: 0 $gutter;
-      }
-
-      &__checkbox {
-        text-align: left;
-        width: $gutter;
-        padding-left: $gutter;
-      }
-
-      &__add-img {
-        background-color: $secondary-color;
-        height: $gutter;
-      }
-
-      &__validate {
-        display: flex;
-        justify-content: center;
-      }
+    &__validate {
+      display: flex;
+      justify-content: center;
 
       .button {
         border: none;
@@ -181,7 +187,6 @@
           color: black
         }
       }
-
     }
   }
-
+}

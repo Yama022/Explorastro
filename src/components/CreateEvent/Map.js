@@ -7,10 +7,8 @@ import ControlGeocoder from './controlGeocoder';
 export default function Map({ getCoordLocation, coord }) {
   const coordTest = () => {
     let controlGeocoder;
-    console.log(coord);
 
     if (coord) {
-      console.log(coord.coordinates);
       controlGeocoder = (
         <ControlGeocoder
           coordLocation={getCoordLocation}
@@ -19,7 +17,6 @@ export default function Map({ getCoordLocation, coord }) {
       );
     }
     else {
-      console.log('ici');
       controlGeocoder = (
         <ControlGeocoder
           coordLocation={getCoordLocation}

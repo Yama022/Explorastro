@@ -30,7 +30,6 @@ export default function ControlGeocoder({ coordLocation, coord }) {
       const latLon = L.latLng(reverseTabCoord);
       const bounds = latLon.toBounds(500);
       map.panTo(latLon).fitBounds(bounds);
-      console.log(objCoord);
       geocoder.reverse(latLon, 1, (resp) => (L.marker(objCoord)
         .addTo(map)
         .bindPopup(resp[0].name)
