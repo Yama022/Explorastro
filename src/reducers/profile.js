@@ -1,6 +1,12 @@
 import { SAVE_USER } from 'src/actions/user';
 import {
-  CHANGE_PROFILE_MENU, SAVE_USER_INFO, TOGGLE_FOLLOW, TOGGLE_BIO_EDIT, CHANGE_INPUT_VALUE, SAVE_BIO,
+  CHANGE_PROFILE_MENU,
+  SAVE_USER_INFO,
+  TOGGLE_FOLLOW,
+  TOGGLE_BIO_EDIT,
+  CHANGE_INPUT_VALUE,
+  SAVE_BIO,
+  USER_EXISTS,
 } from 'src/actions/profile';
 
 const initialState = {
@@ -17,6 +23,7 @@ const initialState = {
   explorations: [],
   userFollowed: false,
   bioEditOpen: false,
+  userFound: false,
 };
 
 const profile = (state = initialState, action = {}) => {
@@ -70,6 +77,12 @@ const profile = (state = initialState, action = {}) => {
       return {
         ...state,
         biography: action.payload,
+      };
+    }
+    case USER_EXISTS: {
+      return {
+        ...state,
+        userFound: action.value,
       };
     }
     default:

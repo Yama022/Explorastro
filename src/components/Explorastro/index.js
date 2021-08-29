@@ -20,6 +20,7 @@ import FormEvent from 'src/containers/FormEvent';
 import Exploration from 'src/containers/Exploration';
 import Avatar from 'src/components/Avatar';
 import Particles from 'src/components/Particles';
+import Loader from 'src/components/Loader';
 // import DotRing from 'src/components/DotRing/DotRing';
 
 import { IoIosArrowUp } from 'react-icons/io';
@@ -36,7 +37,12 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
       }
     });
     checkIsLogged();
+    setTimeout(3000);
   }, []);
+
+  if (!(typeof (isLogged) === 'boolean')) {
+    return <Loader />;
+  }
 
   return (
     <div className="explorastro">
@@ -182,6 +188,10 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
 }
 
 Explorastro.propTypes = {
-  isLogged: PropTypes.bool.isRequired,
+  isLogged: PropTypes.bool,
   checkIsLogged: PropTypes.func.isRequired,
+};
+
+Explorastro.defaultProps = {
+  isLogged: false,
 };
