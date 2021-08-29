@@ -15,7 +15,7 @@ const initialState = {
   passwordForUsername: '',
   username: '',
   usernameChange: '',
-  logged: false,
+  logged: null,
   signup: false,
   loginError: '',
   fieldHasError: {},
@@ -41,6 +41,7 @@ const reducer = (state = initialState, action = {}) => {
       localStorage.removeItem('user');
       return {
         ...initialState,
+        logged: false,
       };
     }
     case SAVE_USER: {

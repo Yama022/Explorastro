@@ -19,6 +19,7 @@ const mapStateToProps = (state) => ({
   bioEditIsOpen: state.profile.bioEditOpen,
   biography: state.profile.biography,
   biographyEdit: state.profile.biographyEdit,
+  userFound: state.profile.userFound,
 });
 
 const mapDispatchToProps = (dispatch) => ({

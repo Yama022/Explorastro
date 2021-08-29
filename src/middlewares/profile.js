@@ -1,5 +1,5 @@
 import {
-  GET_USER_INFO, saveUserInfo, FOLLOW, UNFOLLOW, toggleFollow, CHANGE_BIO, saveBio,
+  GET_USER_INFO, saveUserInfo, FOLLOW, UNFOLLOW, toggleFollow, CHANGE_BIO, saveBio, userExists,
 } from 'src/actions/profile';
 
 import api from './utils/api';
@@ -12,9 +12,11 @@ const profile = (store) => (next) => (action) => {
           const response = await api.get(`/api/v1/user/${action.payload}`);
           const actionSaveUserInfo = saveUserInfo(response.data);
           store.dispatch(actionSaveUserInfo);
+          store.dispatch(userExists(true));
         }
         catch (error) {
           console.error(error.response);
+          store.dispatch(userExists(false));
         }
       };
       getInfo();

@@ -276,6 +276,6 @@ Settings.propTypes = {
   fieldHasError: PropTypes.object.isRequired,
   formError: PropTypes.oneOfType([
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.array,
   ]).isRequired,
 };

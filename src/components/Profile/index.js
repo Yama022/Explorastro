@@ -36,6 +36,7 @@ export default function Profile({
   biographyEdit,
   changeField,
   handleBioEdit,
+  userFound,
 }) {
   const handleToggleNav = (event) => {
     changeMenuValue(event.target.dataset.toggle);
@@ -58,9 +59,13 @@ export default function Profile({
   if (!loggedUserId || !explorations || !profileId) {
     return <Loader />;
   }
+
+  if (!userFound) {
+    return <h1 className="main-title" style={{ height: '80vh' }}>Utilisateur introuvable</h1>;
+  }
+
   return (
     <div className="profile">
-
       <div className="profile__header">
 
         <div className="profile__header__avatar">
@@ -202,4 +207,5 @@ Profile.propTypes = {
   biographyEdit: PropTypes.string.isRequired,
   changeField: PropTypes.func.isRequired,
   handleBioEdit: PropTypes.func.isRequired,
+  userFound: PropTypes.bool.isRequired,
 };
