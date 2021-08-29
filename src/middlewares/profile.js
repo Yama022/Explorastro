@@ -1,5 +1,5 @@
 import {
-  GET_USER_INFO, saveUserInfo, FOLLOW, UNFOLLOW, toggleFollow,
+  GET_USER_INFO, saveUserInfo, FOLLOW, UNFOLLOW, toggleFollow, CHANGE_BIO, saveBio,
 } from 'src/actions/profile';
 
 import api from './utils/api';
@@ -46,6 +46,25 @@ const profile = (store) => (next) => (action) => {
         }
       };
       handleUnfollow();
+      break;
+    }
+    case CHANGE_BIO: {
+      const state = store.getState();
+      const data = {
+        bio: state.profile.biographyEdit,
+      };
+      const handleChangeBio = async () => {
+        try {
+          const response = await api.patch(`/api/v1/user/${state.user.loggedUserId}/update`, data);
+          console.log(response.data.user.bio);
+          const actionSaveBio = saveBio(response.data.user.bio);
+          store.dispatch(actionSaveBio);
+        }
+        catch (error) {
+          console.error(error.response);
+        }
+      };
+      handleChangeBio();
       break;
     }
     default:

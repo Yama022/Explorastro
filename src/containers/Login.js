@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import Login from 'src/components/Login';
 import {
   changeValue, login, logout, toggleSignup, signup,
+  setFieldHasError,
 } from 'src/actions/user';
 
 const mapStateToProps = (state) => ({
@@ -13,6 +14,8 @@ const mapStateToProps = (state) => ({
   passwordConfirmation: state.user.passwordConfirmation,
   isLogged: state.user.logged,
   signup: state.user.signup,
+  loginError: state.user.loginError,
+  fieldHasError: state.user.fieldHasError,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -30,6 +33,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   handleSignup: () => {
     dispatch(signup());
+  },
+  handleFieldHasError: (value) => {
+    dispatch(setFieldHasError(value));
   },
 });
 

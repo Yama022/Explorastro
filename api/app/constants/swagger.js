@@ -3,7 +3,7 @@ module.exports = {
     info: {
       description: 'Official documentation of the ExplorAstro API for my love Front-End Developers',
       title: 'ExplorAstro-API',
-      version: '0.7-alpha',
+      version: '1.8.2-beta',
     },
     host: 'explorastro-api.herokuapp.com',
     basePath: '/',
