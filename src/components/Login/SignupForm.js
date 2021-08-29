@@ -56,7 +56,7 @@ export default function SignupForm({
       formIsValid = false;
       errors.username = 'Veuillez renseigner votre pseudo.';
     }
-    if (!username.match(/^[a-zA-Z]+$/)) {
+    if (!username.match(/^[a-z0-9]+$/i)) {
       formIsValid = false;
       errors.username = 'Merci de ne pas utiliser de caractère spécial.';
     }

@@ -7,6 +7,7 @@ import { FaUser, FaKey } from 'react-icons/fa';
 import BackButton from 'src/components/BackButton';
 
 export default function Settings({
+  username,
   usernameChange,
   passwordForUsername,
   changeField,
@@ -18,6 +19,7 @@ export default function Settings({
   handleDeleteAccount,
   handleFieldHasError,
   fieldHasError,
+  formError,
 }) {
   const handleChange = (event) => {
     changeField(event.target.value, event.target.name);
@@ -36,9 +38,13 @@ export default function Settings({
       formIsValid = false;
       errors.usernameChange = 'Le pseudo renseigné est trop court';
     }
-    else if (!usernameChange.match(/^[a-zA-Z]+$/)) {
+    else if (!usernameChange.match(/^[a-z0-9]+$/i)) {
       formIsValid = false;
       errors.usernameChange = 'Merci de ne pas utiliser de caractère spécial.';
+    }
+    if (usernameChange === username) {
+      formIsValid = false;
+      errors.usernameChange = "Votre nouveau pseudo doit être différent de l'ancien.";
     }
 
     // password
@@ -62,21 +68,25 @@ export default function Settings({
     // Old password
     if (!password) {
       formIsValid = false;
-      errors.password = 'Veuillez renseigner le mot de passe';
+      errors.password = 'Veuillez renseigner le mot de passe.';
     }
     else if (password.length < 6) {
       formIsValid = false;
-      errors.password = 'Le mot de passe est trop court';
+      errors.password = 'Le mot de passe est trop court.';
     }
 
     // New password
     if (!newPassword) {
       formIsValid = false;
-      errors.newPassword = 'Veuillez renseigner le mot de passe';
+      errors.newPassword = 'Veuillez renseigner le mot de passe.';
     }
-    else if (newPassword.length < 6) {
+    else if (newPassword.length < 8) {
       formIsValid = false;
-      errors.newPassword = 'Le mot de passe est trop court';
+      errors.newPassword = 'Le mot de passe est trop court.';
+    }
+    if (password === newPassword) {
+      formIsValid = false;
+      errors.newPassword = "Le nouveau mot de passe doit être différent de l'ancien.";
     }
 
     handleFieldHasError(errors);
@@ -90,11 +100,11 @@ export default function Settings({
     // password for deletion
     if (!passwordConfirmation) {
       formIsValid = false;
-      errors.passwordConfirmation = 'Veuillez renseigner le mot de passe';
+      errors.passwordConfirmation = 'Veuillez renseigner le mot de passe.';
     }
     else if (passwordConfirmation.length < 6) {
       formIsValid = false;
-      errors.passwordConfirmation = 'Le mot de passe est trop court';
+      errors.passwordConfirmation = 'Le mot de passe est trop court.';
     }
 
     handleFieldHasError(errors);
@@ -128,6 +138,43 @@ export default function Settings({
     }
   };
 
+  let usernameChangeError;
+  let passwordChangeError;
+  let accountDeletionError;
+
+  if (formError) {
+    // Form validation for username change
+    if (formError[0].includes('username')) {
+      if (formError[1].includes('Password')) {
+        usernameChangeError = 'Le mot de passe renseigné est incorrect.';
+      }
+      else if (formError[1].includes('Username')) {
+        usernameChangeError = 'Ce pseudo est déjà utilisé.';
+      }
+      else {
+        usernameChangeError = "Une erreur s'est produite.";
+      }
+    }
+    // Form validation for password change
+    if (formError[0].includes('password')) {
+      if (formError[1].includes('Password')) {
+        passwordChangeError = 'Le mot de passe renseigné est incorrect.';
+      }
+      else {
+        passwordChangeError = "Une erreur s'est produite.";
+      }
+    }
+    // Form validation for account deletion
+    if (formError[0].includes('delete')) {
+      if (formError[1].includes('Password')) {
+        accountDeletionError = 'Le mot de passe renseigné est incorrect.';
+      }
+      else {
+        accountDeletionError = "Une erreur s'est produite.";
+      }
+    }
+  }
+
   return (
     <div className="settings">
       <h1 className="main-title">Paramètres</h1>
@@ -135,7 +182,7 @@ export default function Settings({
       <div className="settings__elems">
         <h2>Changer le pseudo</h2>
         <form className="settings__elems__form" onSubmit={handleUsernameForm}>
-
+          <div className="settings__elems__form__error"> {usernameChangeError} </div>
           <div className="field">
             <label className="label">Nouveau pseudo</label>
             <div className="control has-icons-left has-icons-right">
@@ -163,7 +210,7 @@ export default function Settings({
       <div className="settings__elems">
         <h2>Changer le mot de passe</h2>
         <form className="settings__elems__form" onSubmit={handlePasswordForm}>
-
+          <div className="settings__elems__form__error"> {passwordChangeError} </div>
           <div className="field">
             <label className="label">Mot de passe actuel</label>
             <div className="control has-icons-left has-icons-right">
@@ -193,9 +240,8 @@ export default function Settings({
 
       <div className="settings__elems">
         <form className="settings__elems__form" onSubmit={handleDelete}>
-
           <h2>Supprimer le compte</h2>
-
+          <div className="settings__elems__form__error"> {accountDeletionError} </div>
           <div className="field">
             <label className="label">Mot de passe</label>
             <div className="control has-icons-left has-icons-right">
@@ -216,6 +262,7 @@ export default function Settings({
 }
 
 Settings.propTypes = {
+  username: PropTypes.string.isRequired,
   usernameChange: PropTypes.string.isRequired,
   passwordForUsername: PropTypes.string.isRequired,
   changeField: PropTypes.func.isRequired,
@@ -227,4 +274,8 @@ Settings.propTypes = {
   handleDeleteAccount: PropTypes.func.isRequired,
   handleFieldHasError: PropTypes.func.isRequired,
   fieldHasError: PropTypes.object.isRequired,
+  formError: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+  ]).isRequired,
 };

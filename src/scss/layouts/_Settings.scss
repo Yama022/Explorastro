@@ -28,6 +28,12 @@
           border-color: transparent;
         }
       }
+      &__error {
+        font-size: 1.1rem;
+        margin-bottom: 0.4rem;
+        color: $light-color;
+        text-shadow: 0 0 0.2rem $tertiary-color;
+      }
     }
     & input {
       border-color: $secondary-color !important;

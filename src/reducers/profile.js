@@ -67,7 +67,6 @@ const profile = (state = initialState, action = {}) => {
       };
     }
     case SAVE_BIO: {
-      console.log(action.payload);
       return {
         ...state,
         biography: action.payload,
