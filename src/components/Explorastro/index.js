@@ -131,6 +131,9 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
               <Landing />
               <Footer />
             </Route>
+            <Route exact path="/login">
+              <Login />
+            </Route>
             <Route exact path="/">
               <Redirect to="/landing" />
             </Route>
@@ -148,9 +151,6 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
             </Route>
             <Route path="/formEvent">
               <Redirect to="/login" />
-            </Route>
-            <Route exact path="/login">
-              <Login />
             </Route>
             <Route path="/profile">
               <Redirect to="/login" />
