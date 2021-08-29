@@ -28,7 +28,7 @@ export default function SignupForm({
       formIsValid = false;
       errors.firstname = 'Veuillez renseigner votre prénom.';
     }
-    if (/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(firstname)) {
+    if (/[ `!@#$%^&*()_+=[\]{};':"\\|,.<>/?~]/.test(firstname)) {
       formIsValid = false;
       errors.firstname = 'Merci de ne pas utiliser de caractère spécial.';
     }
@@ -42,7 +42,7 @@ export default function SignupForm({
       formIsValid = false;
       errors.lastname = 'Veuillez renseigner votre nom.';
     }
-    if (/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(lastname)) {
+    if (/[ `!@#$%^&*()_+=[\]{};':"\\|,.<>/?~]/.test(lastname)) {
       formIsValid = false;
       errors.lastname = 'Merci de ne pas utiliser de caractère spécial.';
     }
@@ -56,7 +56,7 @@ export default function SignupForm({
       formIsValid = false;
       errors.username = 'Veuillez renseigner votre pseudo.';
     }
-    if (/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(username)) {
+    if (!username.match(/^[a-zA-Z]+$/)) {
       formIsValid = false;
       errors.username = 'Merci de ne pas utiliser de caractère spécial.';
     }
@@ -70,7 +70,7 @@ export default function SignupForm({
       formIsValid = false;
       errors.password = 'Veuillez renseigner un mot de passe';
     }
-    else if (password.length < 6) {
+    if (password.length < 6) {
       formIsValid = false;
       errors.password = 'Le mot de passe renseigné est trop court';
     }
@@ -80,7 +80,7 @@ export default function SignupForm({
       formIsValid = false;
       errors.passwordConfirmation = 'Veuillez confirmer votre mot de passe';
     }
-    else if (passwordConfirmation !== password) {
+    if (passwordConfirmation !== password) {
       formIsValid = false;
       errors.passwordConfirmation = 'Les mots de passe ne correspondent pas.';
     }
@@ -100,7 +100,7 @@ export default function SignupForm({
         errors.email = "L'adresse email n'est pas valide.";
       }
     }
-    if (/[ `!#$%^&*()_+=\[\]{};':"\\|,<>\/?~]/.test(email)) {
+    if (/[ `!#$%^&*()+=[\]{};':"\\|,<>/?~]/.test(email)) {
       formIsValid = false;
       errors.email = 'Merci de ne pas utiliser de caractère spécial.';
     }
