@@ -126,16 +126,34 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
         )
         : (
           <Switch>
-            <Route exact path="/">
-              <Redirect to="/landing" />
-            </Route>
             <Route exact path="/landing">
               <Header />
               <Landing />
               <Footer />
             </Route>
+            <Route exact path="/">
+              <Redirect to="/landing" />
+            </Route>
+            <Route exact path="/timeline">
+              <Redirect to="/landing" />
+            </Route>
+            <Route path="/guide">
+              <Redirect to="/login" />
+            </Route>
+            <Route path="/exploration">
+              <Redirect to="/login" />
+            </Route>
+            <Route exact path="/discover">
+              <Redirect to="/login" />
+            </Route>
+            <Route path="/formEvent">
+              <Redirect to="/login" />
+            </Route>
             <Route exact path="/login">
               <Login />
+            </Route>
+            <Route path="/profile">
+              <Redirect to="/login" />
             </Route>
             <Route exact path="/settings">
               <Redirect to="/login" />
