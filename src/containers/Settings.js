@@ -3,6 +3,7 @@ import Settings from 'src/components/Settings';
 
 import {
   changeValue, changeUsername, changePassword, deleteAccount,
+  setFieldHasError,
 } from 'src/actions/user';
 
 const mapStateToProps = (state) => ({
@@ -11,6 +12,7 @@ const mapStateToProps = (state) => ({
   password: state.user.password,
   newPassword: state.user.newPassword,
   passwordConfirmation: state.user.passwordConfirmation,
+  fieldHasError: state.user.fieldHasError,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -25,6 +27,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   handleDeleteAccount: () => {
     dispatch(deleteAccount());
+  },
+  handleFieldHasError: (value) => {
+    dispatch(setFieldHasError(value));
   },
 });
 

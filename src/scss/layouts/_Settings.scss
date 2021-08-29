@@ -17,6 +17,17 @@
         font-size: 0.9em;
         color: $light-color;
       }
+      .field__error {
+        color: $light-color;
+        font-size: 0.8rem;
+        text-shadow: 0 0 0.2rem $tertiary-color;
+      }
+      .is-danger {
+        &:focus {
+          background-color: #f14668;
+          border-color: transparent;
+        }
+      }
     }
     & input {
       border-color: $secondary-color !important;
