@@ -111,7 +111,7 @@ export default function FormEvent({
             placeholder="Ex : Soirée nuit des étoiles"
           />
 
-          <h4>Descirption</h4>
+          <h4>Description</h4>
           <textarea
             name="descEvent"
             id="txtArea"

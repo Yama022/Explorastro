@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import avatar from 'src/assets/images/mascot-skating.svg';
 import { AiOutlineUserAdd, AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { GrAchievement, GrTrophy } from 'react-icons/gr';
 import { FaMedal, FaPen } from 'react-icons/fa';
@@ -19,6 +18,7 @@ export default function Profile({
   firstName,
   lastName,
   username,
+  avatarUrl,
   menuValue,
   changeMenuValue,
   profileId,
@@ -70,7 +70,7 @@ export default function Profile({
 
         <div className="profile__header__avatar">
           <div className="profile__header__avatar__background" />
-          <img src={avatar} alt="Avatar de l'utilisateur" />
+          <img src={avatarUrl} alt="Avatar de l'utilisateur" />
         </div>
 
         <div className="profile__header__description">
@@ -191,6 +191,7 @@ Profile.propTypes = {
   loggedUserId: PropTypes.number.isRequired,
   profileId: PropTypes.number.isRequired,
   username: PropTypes.string.isRequired,
+  avatarUrl: PropTypes.string.isRequired,
   firstName: PropTypes.string.isRequired,
   lastName: PropTypes.string.isRequired,
   menuValue: PropTypes.number.isRequired,

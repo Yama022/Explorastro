@@ -26,6 +26,7 @@
 
 
       &__form {
+        overflow: hidden;
         margin: $gutter;
         border: 1px solid $secondary-color;
         box-shadow: 0px 0px 9px -1px $secondary-color;
@@ -68,6 +69,7 @@
 
 
       &__event-list {
+        overflow: hidden;
         margin: $gutter;
         border: 1px solid $secondary-color;
         box-shadow: 0px 0px 9px -1px $secondary-color;

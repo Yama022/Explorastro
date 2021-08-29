@@ -233,10 +233,14 @@
     justify-content: space-evenly;
 
     &__user {
-      width: 10em;
       margin: 1em;
+      display: flex;
+      flex-direction: column;
       
       &__avatar {
+        width: 170px;
+        height: 170px;
+        object-fit: cover;
         background-color: $primary-color;
         border: 2px solid $secondary-color;
         box-shadow: 0px 0px 9px -1px $secondary-color;
@@ -323,8 +327,10 @@
     &__follows {
       width: 100%;
       &__user {
-        width: 5.4em;
-        margin: 0.3em;
+        &__avatar {
+          width: 120px;
+          height: 120px;
+        }
       }
     }
     &__explorations {

@@ -20,6 +20,7 @@ const mapStateToProps = (state) => ({
   biography: state.profile.biography,
   biographyEdit: state.profile.biographyEdit,
   userFound: state.profile.userFound,
+  avatarUrl: state.profile.avatar_url,
 });
 
 const mapDispatchToProps = (dispatch) => ({
