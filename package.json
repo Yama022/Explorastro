@@ -53,6 +53,7 @@
     "axios": "^0.21.1",
     "bulma": "^0.9.3",
     "dayjs": "^1.10.6",
+    "esri-leaflet-geocoder": "^3.1.1",
     "leaflet": "^1.7.1",
     "leaflet-control-geocoder": "^2.3.0",
     "leaflet.markercluster": "^1.5.0",

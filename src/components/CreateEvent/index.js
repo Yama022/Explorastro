@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
-
 import EventCreated from './EventCreated';
 
 export default function CreateEvent({
   getEvent, eventsCreated, onChangeInput,
-  onFormSubmitCreate, onClickRemove, eventCreatedLastID, removEventCreatedLastID,
+  onFormSubmitCreate, onClickRemove, eventCreatedLastID,
 }) {
   let redirectForm;
   useEffect(() => {
@@ -25,9 +24,6 @@ export default function CreateEvent({
   if (eventCreatedLastID) {
     redirectForm = <Redirect to={`/formEvent/${eventCreatedLastID}`} />;
   }
-  useEffect(() => {
-    removEventCreatedLastID();
-  }, [eventCreatedLastID]);
 
   return (
     <>
@@ -65,7 +61,6 @@ CreateEvent.propTypes = {
   onFormSubmitCreate: PropTypes.func.isRequired,
   onClickRemove: PropTypes.func.isRequired,
   eventCreatedLastID: PropTypes.number,
-  removEventCreatedLastID: PropTypes.func.isRequired,
 };
 
 CreateEvent.defaultProps = {

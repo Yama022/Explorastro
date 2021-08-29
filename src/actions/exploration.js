@@ -16,7 +16,6 @@ export const REMOVE_LAST_EVENT_ID = 'REMOVE_LAST_EVENT_ID';
 export const CLICK_MODAL = 'CLICK_MODAL';
 export const GET_ALL_EVENTS = 'GET_ALL_EVENTS';
 export const SAVE_ALL_EVENTS = 'SAVE_ALL_EVENTS';
-export const SAVE_ADDRESS = 'SAVE_ADDRESS';
 export const FORM_SUBMIT_SEARCH_ADDRESS = 'FORM_SUBMIT_SEARCH_ADDRESS';
 export const UPDATE_EVENTS = 'UPDATE_EVENTS';
 export const GET_EXPLORATION_BY_ID = 'GET_EXPLORATION_BY_ID';
@@ -108,10 +107,7 @@ export const saveAllEvents = (value) => ({
   type: SAVE_ALL_EVENTS,
   value,
 });
-export const saveAddress = (value) => ({
-  type: SAVE_ADDRESS,
-  value,
-});
+
 export const updateEvents = (value) => ({
   type: UPDATE_EVENTS,
   value,
