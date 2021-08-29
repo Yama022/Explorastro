@@ -27,8 +27,14 @@ export default function FormEvent({
   modal,
   imageUrl,
   getEvent,
+  eventCreatedLastID,
+  removEventCreatedLastID,
 
 }) {
+  useEffect(() => {
+    removEventCreatedLastID();
+  }, [eventCreatedLastID]);
+
   useEffect(() => {
     getEvent();
   }, []);
@@ -103,7 +109,7 @@ export default function FormEvent({
               // min={dayjs().format('YYYY-MM-DDTHH:mm:ss')}
             onChange={handleOnchange}
           />
-          {coord ? <Map getCoordLocation={getCoordLocation} coord={coord} /> : <Loader />}
+          <Map getCoordLocation={getCoordLocation} coord={coord} />
           <h4>Nombre de personne(s) maximum
             <input
               value={maxRateEvent !== null ? maxRateEvent.toString() : 0}
@@ -166,6 +172,8 @@ FormEvent.propTypes = {
   OnClickModal: PropTypes.func.isRequired,
   modal: PropTypes.bool.isRequired,
   imageUrl: PropTypes.string.isRequired,
+  eventCreatedLastID: PropTypes.number,
+  removEventCreatedLastID: PropTypes.func.isRequired,
 };
 
 FormEvent.defaultProps = {
@@ -176,4 +184,5 @@ FormEvent.defaultProps = {
   eventCreated: {},
   titleEvent: '',
   published: false,
+  eventCreatedLastID: 0,
 };

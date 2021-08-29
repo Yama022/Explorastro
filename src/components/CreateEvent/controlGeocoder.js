@@ -11,10 +11,8 @@ export default function ControlGeocoder({ coordLocation, coord }) {
   const map = useMap();
   let reverseTabCoord;
   const objCoord = {};
-
+  let geocoder = L.Control.Geocoder.arcgis();
   useEffect(() => {
-    let geocoder = L.Control.Geocoder.arcgis();
-
     if (typeof URLSearchParams !== 'undefined' && location.search) {
       // parse /?geocoder=nominatim from URL
       const params = new URLSearchParams(location.search);
@@ -26,7 +24,6 @@ export default function ControlGeocoder({ coordLocation, coord }) {
         console.warn('Unsupported geocoder', geocoderString);
       }
     }
-    console.log(coord);
     if (coord.length) {
       reverseTabCoord = coord.reverse();
       [objCoord.lat, objCoord.lng] = [reverseTabCoord[0], reverseTabCoord[1]];
@@ -39,7 +36,9 @@ export default function ControlGeocoder({ coordLocation, coord }) {
         .bindPopup(resp[0].name)
         .openPopup()));
     }
+  }, [coord]);
 
+  useEffect(() => {
     L.Control.geocoder({
       query: '',
       placeholder: 'adresse... ',
@@ -58,8 +57,7 @@ export default function ControlGeocoder({ coordLocation, coord }) {
         map.fitBounds(e.geocode.bbox);
       })
       .addTo(map);
-  }, [coord]);
-
+  }, []);
   return null;
 }
 

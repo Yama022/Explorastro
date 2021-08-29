@@ -7,6 +7,7 @@ import {
   OnclickPublished,
   eventsCreated,
   clickModal,
+  removeLastEventID,
 } from 'src/actions/exploration';
 
 import { findEvent } from 'src/selectors/exploration';
@@ -21,7 +22,7 @@ const mapStateToProps = (state, ownProps) => ({
   coord: state.exploration.geog,
   modal: state.exploration.modal,
   imageUrl: state.exploration.imageUrl,
-  eventCreatedLast: state.exploration.eventCreated,
+  eventCreatedLastID: state.exploration.eventCreatedLast.id,
 }
 );
 
@@ -56,6 +57,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   OnClickModal: () => {
     const action = clickModal();
+    dispatch(action);
+  },
+  removEventCreatedLastID: () => {
+    const action = removeLastEventID();
     dispatch(action);
   },
 
