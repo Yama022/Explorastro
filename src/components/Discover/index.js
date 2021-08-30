@@ -22,18 +22,20 @@ export default function Discover({
     getEvents();
   }, []);
   const eventsList = explorationsFilter.length > 0 ? explorationsFilter : events;
-  // const geocoder = L.Control.Geocoder.arcgis();
+  const geocoder = L.Control.Geocoder.arcgis();
+  const adress = [];
 
-  // const coord = eventsList.map((element) => {
-  //   if (element.geog.coordinates) {
-  //     const objCoord = {};
-  //     const reverseTabCoord = element.geog.coordinates.reverse();
-  //     [objCoord.lat, objCoord.lng] = [reverseTabCoord[0], reverseTabCoord[1]];
-  //     const latLon = L.latLng(reverseTabCoord);
-  //     console.log(latLon);
-  //     return console.log(geocoder.reverse(latLon, 1, (resp) => (resp[0].name)));
-  //   }
-  // });
+  const coord = eventsList.map(async (element) => {
+    const objCoord = {};
+    [objCoord.lat, objCoord.lng] = [element.geog.coordinates[1], element.geog.coordinates[0]];
+    const latLon = L.latLng(objCoord);
+    await geocoder.reverse(latLon, 1, (resp) => adress.push(resp[0].name));
+    return adress;
+  });
+  // const test = adress.splice(0, adress.length);
+  // const test2 = test[3];
+  // console.log(test2[0]);
+  console.log('yo', adress);
 
   return (
     <div className="discover">

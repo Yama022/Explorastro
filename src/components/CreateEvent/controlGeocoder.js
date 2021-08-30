@@ -11,7 +11,8 @@ export default function ControlGeocoder({ coordLocation, coord }) {
   const map = useMap();
   let reverseTabCoord;
   const objCoord = {};
-  let geocoder = L.Control.Geocoder.arcgis();
+  // eslint-disable-next-line max-len
+  let geocoder = L.Control.Geocoder.arcgis('AAPKcffce9aba8714a5f9f7d6c6fdc3f1c55pdj3nizxuNXswKYKCo0njoJsvKFgFniob5uOFbSUTnPn3zdOhJueIuGJWw9mskMm');
   useEffect(() => {
     if (typeof URLSearchParams !== 'undefined' && location.search) {
       // parse /?geocoder=nominatim from URL
