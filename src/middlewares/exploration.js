@@ -8,8 +8,8 @@ const exploration = (store) => (next) => (action) => {
       const getEvent = async () => {
         try {
           const resp = await api.get(`/api/v1/exploration/${id}/`);
-          const result = resp.data;
-          store.dispatch(saveExplorationById(result));
+          const result = saveExplorationById(resp.data);
+          store.dispatch(result);
         }
         catch (err) {
           console.error(err);

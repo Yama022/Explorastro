@@ -2,7 +2,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import * as dayjs from 'dayjs';
-import imageEvent from 'src/assets/images/default-explo.jpg';
 import L from 'leaflet';
 import { Link } from 'react-router-dom';
 import Map from './Map';
@@ -42,7 +41,7 @@ export default function Discover({
       <div className="discover__list-events">
         {eventsList.map((element) => (
           <div key={element.id} className="discover__list-events__box">
-            <img className="discover__list-events__box__img" src={imageEvent} alt="" />
+            <img className="discover__list-events__box__img" src={element.image_url} alt="" />
             <div className="discover__list-events__box__content">
               <h2 className="discover__list-events__box__content__h2">{element.name}</h2>
               <div className="discover__list-events__box__content__info">

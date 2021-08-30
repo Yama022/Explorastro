@@ -10,14 +10,14 @@ import * as dayjs from 'dayjs';
 import img from 'src/assets/images/default-explo.jpg';
 
 export default function EventCreated({
-  name, id, onClick, date, max_participants, is_published,
+  name, id, onClick, date, max_participants, is_published, image_url,
 }) {
   const handleOnClick = () => {
     onClick(id);
   };
   return (
     <div className="createEvent__event-list">
-      <img src={img} alt={img} />
+      <img src={image_url} alt={name} />
       <h2>{name}</h2>
       <div className="createEvent__event-list__content">
         <span>{date ? `date : ${dayjs(date).format('DD-MM-YY')}` : 'date :'}</span>
@@ -41,6 +41,7 @@ EventCreated.propTypes = {
   date: PropTypes.string,
   max_participants: PropTypes.number.isRequired,
   is_published: PropTypes.bool.isRequired,
+  image_url: PropTypes.string.isRequired,
 };
 
 EventCreated.defaultProps = {

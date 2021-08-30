@@ -13,6 +13,9 @@ import {
   SAVE_ALL_EVENTS,
   UPDATE_EVENTS,
   SAVE_EXPLORATION_BY_ID,
+  REMOVE_OLD_STATE_EXPLORATION,
+  CLEAR_OLD_STATE,
+
 } from 'src/actions/exploration';
 
 export const initialState = {
@@ -134,7 +137,19 @@ const reducer = (state = initialState, action = {}) => {
         exploration: action.payload,
       };
     }
-
+    case REMOVE_OLD_STATE_EXPLORATION:
+    {
+      return {
+        ...state,
+        exploration: initialState.exploration,
+      };
+    }
+    case CLEAR_OLD_STATE: {
+      return {
+        ...state,
+        geog: initialState.geog,
+      };
+    }
     default:
       return state;
   }

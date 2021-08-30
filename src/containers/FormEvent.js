@@ -8,6 +8,7 @@ import {
   eventsCreated,
   clickModal,
   removeLastEventID,
+  clearOldState,
 } from 'src/actions/exploration';
 
 import { findEvent } from 'src/selectors/exploration';
@@ -61,6 +62,10 @@ const mapDispatchToProps = (dispatch) => ({
   },
   removEventCreatedLastID: () => {
     const action = removeLastEventID();
+    dispatch(action);
+  },
+  clearOldState: () => {
+    const action = clearOldState();
     dispatch(action);
   },
 

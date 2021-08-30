@@ -36,8 +36,8 @@ export default function CreateEvent({
               <div className="createEvent__form__title">
                 <h2>Créer une sortie</h2>
               </div>
-              <label htmlFor="titleEvent" className="createEvent__form__name">Nom de la sortie :
-                <input name="titleEvent" type="text" placeholder="Ex : Soirée nuit des étoiles" onChange={handleOnchange} />
+              <label htmlFor="titleEvent" className="createEvent__form__name">
+                <input className="input" name="titleEvent" type="text" placeholder="Ex : Soirée nuit des étoiles" onChange={handleOnchange} />
               </label>
               <button className="button" type="submit">Créer</button>
             </form>

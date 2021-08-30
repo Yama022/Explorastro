@@ -29,6 +29,7 @@ export default function FormEvent({
   getEvent,
   eventCreatedLastID,
   removEventCreatedLastID,
+  clearOldState,
 
 }) {
   useEffect(() => {
@@ -37,6 +38,9 @@ export default function FormEvent({
 
   useEffect(() => {
     getEvent();
+    return () => {
+      clearOldState();
+    };
   }, []);
 
   useEffect(() => {
@@ -81,7 +85,7 @@ export default function FormEvent({
           <h4>Nom de l'événement</h4>
 
           <input
-            className="input is-link is-small"
+            className="input is-link"
             name="titleEvent"
             type="text"
             value={titleEvent}
@@ -91,6 +95,7 @@ export default function FormEvent({
 
           <h4>Description</h4>
           <textarea
+            className="textearea"
             name="descEvent"
             id="txtArea"
             rows="10"
@@ -102,10 +107,10 @@ export default function FormEvent({
 
           <h4>Date de l'événement</h4>
           <input
-            className="input is-link is-small"
+            className="input is-link"
             type="datetime-local"
             name="dateEvent"
-            value={dateEvent ? dayjs(dateEvent).format('YYYY-MM-DDTHH:mm:ss') : dayjs().format('YYYY-MM-DDTHH:mm:ss')}
+            value={dateEvent ? dayjs(dateEvent).format('YYYY-MM-DDTHH:mm') : dayjs().format('YYYY-MM-DDTHH:mm')}
               // min={dayjs().format('YYYY-MM-DDTHH:mm:ss')}
             onChange={handleOnchange}
           />
@@ -181,13 +186,14 @@ FormEvent.propTypes = {
   imageUrl: PropTypes.string.isRequired,
   eventCreatedLastID: PropTypes.number,
   removEventCreatedLastID: PropTypes.func.isRequired,
+  clearOldState: PropTypes.func.isRequired,
 };
 
 FormEvent.defaultProps = {
   descEvent: '',
   dateEvent: '',
   maxRateEvent: 0,
-  coord: [],
+  coord: null,
   eventCreated: {},
   titleEvent: '',
   published: false,
