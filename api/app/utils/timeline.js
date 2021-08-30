@@ -10,8 +10,8 @@ module.exports = {
     // And sort them by date
     const timelineEvents = await db.find({
       'concern.user': {
-        $in:followingIds,
-        $nin:user.id,
+        $in: followingIds,
+        $nin: [user.id],
       },
       isUselessForTimeline: {
         $ne: true,
