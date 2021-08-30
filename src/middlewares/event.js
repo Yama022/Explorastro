@@ -21,7 +21,6 @@ const event = (store) => (next) => (action) => {
       const state = store.getState();
       const position = state.exploration.coord;
       const id = action.value;
-
       const newEvent = {
         name: state.exploration.titleEvent,
         description: state.exploration.descEvent,
@@ -35,8 +34,7 @@ const event = (store) => (next) => (action) => {
       };
       const sendPostEvent = async () => {
         try {
-          const resp = await api.patch(`/api/v1/exploration/${id}/update`, newEvent);
-          console.log('resp middleware sendPostEvent', resp);
+          await api.patch(`/api/v1/exploration/${id}/update`, newEvent);
         }
         catch (err) {
           console.error(err);

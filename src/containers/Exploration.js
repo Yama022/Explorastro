@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Exploration from 'src/components/Exploration';
 
-import { getExplorationById } from 'src/actions/exploration';
+import { getExplorationById, removeOldStateExploration } from 'src/actions/exploration';
 
 const mapStateToProps = (state) => ({
   exploration: state.exploration.exploration,
@@ -10,6 +10,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   getExploration: (payload) => {
     dispatch(getExplorationById(payload));
+  },
+  removeOldStateExploration: (payload) => {
+    dispatch(removeOldStateExploration(payload));
   },
 });
 

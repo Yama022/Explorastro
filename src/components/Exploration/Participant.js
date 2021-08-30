@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Loader from 'src/components/Loader';
 
+import { Link } from 'react-router-dom';
+
 const Participant = ({ participants }) => {
-  console.log(participants);
   const {
     max_participants: participantsMax,
     participants: participantsName,
-    author: { username },
   } = participants;
   if (!participants.id) {
     return (<Loader />);
@@ -16,21 +16,22 @@ const Participant = ({ participants }) => {
     <div className="Exploration__main__participants">
       <h3>Participants max : {participantsMax}</h3>
       <ul className="Exploration__main__participants__list">
-        <li className="Exploration__main__participants__list__item">
-          <span className="icon">
-            <img
-              src="https://www.recia.fr/wp-content/uploads/2018/10/default-avatar-300x300.png"
-              alt=""
-            />
-          </span>
-          <span>{username}</span>
-          <li>{participantsName}</li>
-          <span>
-            <button type="button" className="button --secondary">
-              i
-            </button>
-          </span>
-        </li>
+        {participantsName.map((participant) => (
+          <li key={participant.id}>
+            <span className="icon">
+              <img
+                src={participant.avatar_url}
+                alt="Avatar du participant"
+              />
+            </span>
+            <span>{participant.username}</span>
+            <span>
+              <Link className="button --secondary" to={`/profile/${participant.id}`}>
+                i
+              </Link>
+            </span>
+          </li>
+        ))}
       </ul>
     </div>
   );

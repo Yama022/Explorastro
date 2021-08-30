@@ -20,6 +20,8 @@ export const FORM_SUBMIT_SEARCH_ADDRESS = 'FORM_SUBMIT_SEARCH_ADDRESS';
 export const UPDATE_EVENTS = 'UPDATE_EVENTS';
 export const GET_EXPLORATION_BY_ID = 'GET_EXPLORATION_BY_ID';
 export const SAVE_EXPLORATION_BY_ID = 'SAVE_EXPLORATION_BY_ID';
+export const REMOVE_OLD_STATE_EXPLORATION = 'REMOVE_OLD_STATE_EXPLORATION';
+export const CLEAR_OLD_STATE = 'CLEAR_OLD_STATE';
 
 // Action creators
 export const formSubmitSearchAddress = (payload) => ({
@@ -120,4 +122,10 @@ export const getExplorationById = (payload) => ({
 export const saveExplorationById = (payload) => ({
   type: SAVE_EXPLORATION_BY_ID,
   payload,
+});
+export const removeOldStateExploration = () => ({
+  type: REMOVE_OLD_STATE_EXPLORATION,
+});
+export const clearOldState = () => ({
+  type: CLEAR_OLD_STATE,
 });

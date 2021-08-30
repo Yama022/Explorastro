@@ -20,8 +20,14 @@ const Information = ({ information }) => {
       <div className="Exploration__main__informations__general">
         <div className="Exploration__main__informations__general__left">
           <div>
-            <h2>{name} le {dayjs(date).format('DD-MM-YYYY à HH:mm')}</h2>
-            <p>créé par
+            <h2>{name}</h2>
+            {date && (
+              <p>
+                Exploration le {dayjs(date).format('DD-MM-YYYY à HH:mm')}
+              </p>
+            )}
+            <p>
+              Créée par
               <Link to={`/profile/${idAuthor}`}> {username} </Link> le {dayjs(createdAt).format('DD-MM-YYYY')}
             </p>
             <div className="Exploration__main__informations__general__left__title__stars">
@@ -55,7 +61,13 @@ const Information = ({ information }) => {
 export default Information;
 
 Information.propTypes = {
-  information: PropTypes.object.isRequired,
-  image_url: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
+  information: PropTypes.object,
+  image_url: PropTypes.string,
+  name: PropTypes.string,
+};
+
+Information.defaultProps = {
+  information: {},
+  image_url: '',
+  name: '',
 };
