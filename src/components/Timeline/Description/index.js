@@ -17,8 +17,7 @@ export default function Description({ props }) {
         <div className="desc__title">
           <img src={avatar} alt="avatar" />
           <h3>
-            {username}
-            {message}
+            {username} {message}
           </h3>
         </div>
       </Link>

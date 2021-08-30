@@ -24,7 +24,7 @@
     max-height: 100vh;
     overflow-y: scroll;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     align-items: center;
 
     // Hide scrollbar but keep it accessible
@@ -135,7 +135,9 @@
   }
 
   & img {
-    width: 20%;
+    object-fit: cover;
+    width: 8rem;
+    height: 8rem;
     border-radius: 50%;
     filter: brightness(0.5);
     transition: 0.2s ease-in-out;
@@ -145,7 +147,9 @@
     display: flex;
     justify-content: flex-start;
     & img {
-      width: 15%;
+      object-fit: cover;
+      width: 2.5rem;
+      height: 2.5rem;
       border-radius: 50%;
       filter: brightness(0.5);
       transition: 0.2s ease-in-out;
