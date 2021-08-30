@@ -1,8 +1,10 @@
 import { connect } from 'react-redux';
 import CreateEvent from 'src/components/CreateEvent';
 import {
-  getUserEvents, changeInputValue,
-  submitFormCreateEvent, removeEvent,
+  getUserEvents,
+  changeInputValue,
+  submitFormCreateEvent,
+  removeEvent,
 } from 'src/actions/exploration';
 
 const mapStateToProps = (state) => ({
@@ -10,11 +12,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-
   getEvent: () => {
     const action = getUserEvents();
-    // eslint-disable-next-line no-console
-    console.log('Je vais récupérer les événements', action);
     dispatch(action);
   },
   onChangeInput: (value, key) => {
@@ -29,7 +28,6 @@ const mapDispatchToProps = (dispatch) => ({
     const action = removeEvent(value);
     dispatch(action);
   },
-
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateEvent);

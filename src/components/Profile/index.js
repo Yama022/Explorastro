@@ -55,7 +55,6 @@ export default function Profile({
   };
 
   const handleChangeAvatar = (event) => {
-    console.log(event.target.files[0]);
     event.preventDefault();
     changeField(event.target.files[0], event.target.name);
   };
@@ -216,7 +215,7 @@ Profile.propTypes = {
   loggedUserId: PropTypes.number.isRequired,
   profileId: PropTypes.number.isRequired,
   username: PropTypes.string.isRequired,
-  avatarUrl: PropTypes.string.isRequired,
+  avatarUrl: PropTypes.string,
   firstName: PropTypes.string.isRequired,
   lastName: PropTypes.string.isRequired,
   menuValue: PropTypes.number.isRequired,
@@ -229,10 +228,16 @@ Profile.propTypes = {
   userFollowed: PropTypes.bool.isRequired,
   handleToggleBioEdit: PropTypes.func.isRequired,
   bioEditIsOpen: PropTypes.bool.isRequired,
-  biography: PropTypes.string.isRequired,
-  biographyEdit: PropTypes.string.isRequired,
+  biography: PropTypes.string,
+  biographyEdit: PropTypes.string,
   changeField: PropTypes.func.isRequired,
   handleBioEdit: PropTypes.func.isRequired,
   userFound: PropTypes.bool.isRequired,
   handleAvatarUpload: PropTypes.func.isRequired,
+};
+
+Profile.defaultProps = {
+  avatarUrl: '',
+  biography: '',
+  biographyEdit: '',
 };

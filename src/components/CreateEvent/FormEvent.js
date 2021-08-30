@@ -42,8 +42,6 @@ export default function FormEvent({
     return <Loader />;
   }
 
-  // eslint-disable-next-line no-console
-  console.log('eventToModify', eventToModify);
   return (
     <div className="exploration">
       {modal && (

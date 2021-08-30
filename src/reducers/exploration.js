@@ -56,7 +56,6 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
     case CHANGE_INPUT_VALUE_EXPLORATION: {
-      console.log('Je change la valeur d\'un input', action);
       return {
         ...state,
         eventToModify: {
@@ -66,7 +65,6 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
     case SAVE_EVENT_TO_MODIFY: {
-      console.log('Je suis en train de sauvegarder la data d\'une explo');
       return {
         ...state,
         eventToModify: action.payload,
@@ -79,7 +77,6 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
     case ON_CLICK_PUBLISH: {
-      console.log('Je suis en train de publier une sortie');
       return {
         ...state,
         eventToModify: {
@@ -89,7 +86,6 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
     case ADD_NEW_EXPLORATION: {
-      console.log('Je suis en train de publier une sortie');
       return {
         ...state,
         userEvents: [...state.userEvents, action.payload],
@@ -120,14 +116,12 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
     case REMOVE_OLD_STATE_EXPLORATION: {
-      console.log('Je vide le state d\'une exploration');
       return {
         ...state,
         exploration: {},
       };
     }
     default:
-      console.log('Je suis dans le default, il doit y avoir un soucis');
       return state;
   }
 };

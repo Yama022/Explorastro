@@ -37,6 +37,7 @@ const profile = (store) => (next) => (action) => {
           store.dispatch(toggleFollow());
         }
         catch (error) {
+          // eslint-disable-next-line no-console
           console.error(error.response);
         }
       };
@@ -51,6 +52,7 @@ const profile = (store) => (next) => (action) => {
           store.dispatch(toggleFollow());
         }
         catch (error) {
+          // eslint-disable-next-line no-console
           console.error(error.response);
         }
       };
