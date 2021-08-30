@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useMap } from 'react-leaflet';
 import 'leaflet-control-geocoder/dist/Control.Geocoder.css';
 import 'leaflet-control-geocoder/dist/Control.Geocoder';
+
 import L from 'leaflet';
 import PropTypes from 'prop-types';
 
@@ -10,10 +11,8 @@ export default function ControlGeocoder({ coordLocation, coord }) {
   const map = useMap();
   let reverseTabCoord;
   const objCoord = {};
-
+  let geocoder = L.Control.Geocoder.arcgis();
   useEffect(() => {
-    let geocoder = L.Control.Geocoder.arcgis();
-
     if (typeof URLSearchParams !== 'undefined' && location.search) {
       // parse /?geocoder=nominatim from URL
       const params = new URLSearchParams(location.search);
@@ -25,21 +24,21 @@ export default function ControlGeocoder({ coordLocation, coord }) {
         console.warn('Unsupported geocoder', geocoderString);
       }
     }
-
     if (coord.length) {
       reverseTabCoord = coord.reverse();
-
       [objCoord.lat, objCoord.lng] = [reverseTabCoord[0], reverseTabCoord[1]];
-
       const latLon = L.latLng(reverseTabCoord);
       const bounds = latLon.toBounds(500);
       map.panTo(latLon).fitBounds(bounds);
-      L.marker(objCoord)
+      console.log(objCoord);
+      geocoder.reverse(latLon, 1, (resp) => (L.marker(objCoord)
         .addTo(map)
-        .bindPopup('e.geocode.name')
-        .openPopup();
+        .bindPopup(resp[0].name)
+        .openPopup()));
     }
+  }, [coord]);
 
+  useEffect(() => {
     L.Control.geocoder({
       query: '',
       placeholder: 'adresse... ',
@@ -51,7 +50,6 @@ export default function ControlGeocoder({ coordLocation, coord }) {
       .on('markgeocode', (e) => {
         const latlng = e.geocode.center;
         coordLocation(latlng);
-        // saveAddress(e.geocode.name);
         L.marker(latlng)
           .addTo(map)
           .bindPopup(e.geocode.name)
@@ -60,15 +58,12 @@ export default function ControlGeocoder({ coordLocation, coord }) {
       })
       .addTo(map);
   }, []);
-
   return null;
 }
 
 ControlGeocoder.propTypes = {
   coordLocation: PropTypes.func.isRequired,
   coord: PropTypes.array,
-  // saveAddress: PropTypes.func.isRequired,
-
 };
 
 ControlGeocoder.defaultProps = {

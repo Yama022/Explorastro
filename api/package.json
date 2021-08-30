@@ -20,6 +20,7 @@
     "@babel/preset-env": "^7.15.0",
     "aws-sdk": "^2.974.0",
     "bcrypt": "^5.0.1",
+    "bucket": "^0.0.1",
     "cors": "^2.8.5",
     "dayjs": "^1.10.6",
     "dotenv": "^10.0.0",

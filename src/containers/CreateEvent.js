@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import CreateEvent from 'src/components/CreateEvent';
 import {
   getEventCreated, changeInputCreateEvent,
-  submitFormCreateEvent, removeEvent, removeLastEventID,
+  submitFormCreateEvent, removeEvent,
 } from 'src/actions/exploration';
 
 const mapStateToProps = (state) => ({
@@ -10,7 +10,6 @@ const mapStateToProps = (state) => ({
   eventCreatedLastID: state.exploration.eventCreatedLast.id,
   events: state.exploration.events,
   titleEvent: state.exploration.titleEvent,
-  eventCreatedLast: state.exploration.eventCreatedLast,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -29,10 +28,6 @@ const mapDispatchToProps = (dispatch) => ({
   },
   onClickRemove: (value) => {
     const action = removeEvent(value);
-    dispatch(action);
-  },
-  removEventCreatedLastID: () => {
-    const action = removeLastEventID();
     dispatch(action);
   },
 

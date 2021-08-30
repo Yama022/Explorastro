@@ -10,15 +10,15 @@ import { BsArrowRightShort } from 'react-icons/bs';
 export default function Update({ props }) {
   console.log('Update de Timeline', props);
   const {
-    user,
-    date: { locales },
+    user: { username },
+    date: { locales: { fr } },
   } = props;
   return (
     <div className="update">
 
       <div className="update__title">
         <img src={defaultAvatar} alt="avatar" />
-        <h3> {user.username} à mit à jour sa photo de profil</h3>
+        <h3> {username} à mit à jour sa photo de profil</h3>
       </div>
 
       <div className="update__content">
@@ -30,7 +30,7 @@ export default function Update({ props }) {
       </div>
 
       <div className="update__date">
-        <p>Le {locales.fr}</p>
+        <p>Le {fr}</p>
       </div>
     </div>
   );
