@@ -1,76 +1,78 @@
 import {
   SUBMIT_FORM_UPDATE_EVENT,
-  GET_EVENT_CREATED,
-  saveEventcreated,
+  GET_USER_EVENTS,
   SUBMIT_FROM_CREATE_EVENT,
   REMOVE_EVENT,
-  getEventCreatedlast,
-  GET_EVENT_CREATED_LAST,
-  saveEventcreatedlast,
   GET_ALL_EVENTS,
+  GET_EVENT_TO_MODIFY_DATA,
+  saveUserEvents,
   saveAllEvents,
   updateEvents,
+  saveEventToModify,
+  addNewExploration,
 } from 'src/actions/exploration';
-import { findEventByName } from '../selectors/exploration';
+
 import api from './utils/api';
 
 const event = (store) => (next) => (action) => {
+  console.log('Je lance une action', action);
   switch (action.type) {
     case SUBMIT_FORM_UPDATE_EVENT: {
-      const { username } = localStorage.getItem('user');
       const state = store.getState();
-      const position = state.exploration.coord;
-      const id = action.value;
-      const newEvent = {
-        name: state.exploration.titleEvent,
-        description: state.exploration.descEvent,
-        username: username,
-        date: state.exploration.dateEvent,
-        max_participants: state.exploration.maxRateEvent,
-        location: position,
-        is_published: state.exploration.published,
-        image_url: state.exploration.imageUrl,
-
-      };
+      console.log('state avant de send les data', state);
+      const explorationData = state.exploration.eventToModify;
+      console.log(explorationData);
       const sendPostEvent = async () => {
         try {
-          await api.patch(`/api/v1/exploration/${id}/update`, newEvent);
+          await api.patch(`/api/v1/exploration/${explorationData.id}/update`, {
+            name: explorationData.name,
+            description: explorationData.description,
+            date: explorationData.date,
+            max_participants: explorationData.max_participants,
+            is_published: explorationData.is_published,
+            image_url: explorationData.image_url,
+            location: {
+              lng: explorationData.location?.lng ?? explorationData.geog?.coordinates[0],
+              lat: explorationData.location?.lat ?? explorationData.geog?.coordinates[1],
+            },
+          });
         }
         catch (err) {
+          // eslint-disable-next-line no-console
           console.error(err);
         }
       };
       sendPostEvent();
       break;
     }
-    case GET_EVENT_CREATED: {
+    case GET_USER_EVENTS: {
       const user = JSON.parse(localStorage.getItem('user'));
       const { id } = user;
       const getEvent = async () => {
         try {
-          const resp = await api.get(`/api/v1/user/${id}`);
-          const result = resp.data;
-          store.dispatch(saveEventcreated(result));
+          const response = await api.get(`/api/v1/user/${id}`);
+          const results = response.data;
+          const userExplorations = results.organized_explorations;
+          store.dispatch(saveUserEvents(userExplorations));
         }
         catch (err) {
+          // eslint-disable-next-line no-console
           console.error(err);
         }
       };
       getEvent();
       break;
     }
-    case GET_EVENT_CREATED_LAST: {
-      const user = JSON.parse(localStorage.getItem('user'));
-      const { id } = user;
+    case GET_EVENT_TO_MODIFY_DATA: {
+      console.log('Je suis sur la page formulaire, je veux les infos');
       const getEvent = async () => {
         try {
-          const resp = await api.get(`/api/v1/user/${id}`);
-          const result = resp.data;
-          const titleEvent = action.value;
-          const lastEvent = findEventByName(result.organized_explorations, titleEvent);
-          store.dispatch(saveEventcreatedlast(lastEvent));
+          const response = await api.get(`/api/v1/exploration/${action.payload}`);
+          const results = response.data;
+          store.dispatch(saveEventToModify(results));
         }
         catch (err) {
+          // eslint-disable-next-line no-console
           console.error(err);
         }
       };
@@ -79,16 +81,16 @@ const event = (store) => (next) => (action) => {
     }
     case SUBMIT_FROM_CREATE_EVENT: {
       const state = store.getState();
-      const newEvent = {
-        name: state.exploration.titleEvent,
-
-      };
       const sendEventName = async () => {
         try {
-          await api.post('/api/v1/exploration/create', newEvent);
-          store.dispatch(getEventCreatedlast(state.exploration.titleEvent));
+          const response = await api.post('/api/v1/exploration/create', {
+            name: state.exploration.eventToModify.newTitle,
+          });
+          console.log('Je viens de créer une nouvelle exploration', response, state.exploration.eventToModify.newTitle);
+          store.dispatch(addNewExploration(response.data));
         }
         catch (err) {
+          // eslint-disable-next-line no-console
           console.error(err);
         }
       };
@@ -96,16 +98,16 @@ const event = (store) => (next) => (action) => {
       break;
     }
     case REMOVE_EVENT: {
-      const id = action.value;
+      const id = action.payload;
       const state = store.getState();
-      const eventRemove = state.exploration.eventCreated.filter((element) => (
-        element.id !== id));
+      const removedEvent = state.exploration.userEvents.filter((evt) => (evt.id !== id));
       const deleteEvent = async () => {
         try {
           await api.delete(`/api/v1/exploration/${id}/delete`);
-          store.dispatch(updateEvents(eventRemove));
+          store.dispatch(updateEvents(removedEvent));
         }
         catch (err) {
+          // eslint-disable-next-line no-console
           console.error(err);
         }
       };
@@ -120,6 +122,7 @@ const event = (store) => (next) => (action) => {
           store.dispatch(saveAllEvents(result));
         }
         catch (err) {
+          // eslint-disable-next-line no-console
           console.error(err);
         }
       };
