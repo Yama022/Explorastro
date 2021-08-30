@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 const { Op } = require('sequelize');
-const { Exploration } = require('../models');
+const { Exploration, Comment } = require('../models');
 const { ERROR, EVENT } = require('../constants');
 const { owp } = require('../utils');
 const { event, upload } = require('../utils');
@@ -75,7 +75,10 @@ module.exports = {
   getInformations: async (req, res) => {
     const { id } = req.params;
     const exploration = await Exploration.findByPk(id, {
-      include: { all: true },
+      include: ['author', 'participants', {
+       association: 'comments',
+        include: ['author'],
+      }],
     });
 
     // Save exploration data in object for attach weather data if needed
