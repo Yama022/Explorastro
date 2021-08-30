@@ -35,9 +35,17 @@ export default function Description({ props }) {
 }
 
 Description.propTypes = {
-  props: PropTypes.object.isRequired,
-  content: PropTypes.string.isRequired,
-  message: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-  user: PropTypes.string.isRequired,
+  props: PropTypes.object,
+  content: PropTypes.string,
+  message: PropTypes.string,
+  date: PropTypes.string,
+  user: PropTypes.string,
+};
+
+Description.defaultProps = {
+  props: {},
+  content: '',
+  message: '',
+  date: '',
+  user: '',
 };

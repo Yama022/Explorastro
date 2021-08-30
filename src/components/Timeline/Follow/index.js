@@ -46,11 +46,21 @@ export default function Follow({ props }) {
 }
 
 Follow.propTypes = {
-  props: PropTypes.object.isRequired,
-  date: PropTypes.object.isRequired,
-  follower: PropTypes.object.isRequired,
-  followed: PropTypes.object.isRequired,
-  message: PropTypes.object.isRequired,
-  _id: PropTypes.number.isRequired,
-  avatar_url: PropTypes.string.isRequired,
+  props: PropTypes.object,
+  date: PropTypes.string,
+  follower: PropTypes.string,
+  followed: PropTypes.string,
+  message: PropTypes.string,
+  _id: PropTypes.number,
+  avatar_url: PropTypes.string,
+};
+
+Follow.defaultProps = {
+  props: {},
+  date: '',
+  follower: '',
+  followed: '',
+  message: '',
+  _id: 0,
+  avatar_url: '',
 };
