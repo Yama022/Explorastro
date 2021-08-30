@@ -4,19 +4,16 @@ import PropTypes from 'prop-types';
 
 import { Link } from 'react-router-dom';
 
-import defaultAvatar from 'src/assets/images/luffy.png';
-import satoru from 'src/assets/images/Satoru.jpg';
-
 import { RiUserFollowLine } from 'react-icons/ri';
 
 export default function Follow({ props }) {
+  console.log('follow', props);
   const {
     _id: idFollow,
     date: { locales },
-    follower,
-    followed,
+    follower: { username: usernameFollower, avatar_url: avatarFollower, id: idFollower },
+    followed: { username: usernameFollowed, avatar_url: avatarFollowed, id: idFollowed },
     message,
-    avatar_url: avatarUrl,
   } = props;
   if (!idFollow) {
     return <Loader />;
@@ -25,19 +22,19 @@ export default function Follow({ props }) {
     <div className="follow">
       <div className="follow__title">
         {/* Avatar url TO ADD ! */}
-        <img src={avatarUrl} alt="avatar" />
-        <h3> <Link to={`/profile/${follower.id}`}>{follower.username}</Link> {message.fr} <Link to={`/profile/${followed.id}`}>{followed.username}</Link></h3>
+        <img src={avatarFollower} alt="avatar" />
+        <h3> <Link to={`/profile/${idFollower}`}>{usernameFollower}</Link> {message.fr} <Link to={`/profile/${idFollowed}`}>{usernameFollowed}</Link></h3>
       </div>
 
       <div className="follow__content">
         {/* <Link to="/profile" className="follow__content__image"> */}
-        <img src={defaultAvatar} alt="avatar" />
+        <img src={avatarFollower} alt="avatar" />
         {/* </Link> */}
         <span className="follow__content-buttonUpdate">
           <RiUserFollowLine />
         </span>
         {/* <Link to="/profile" className="follow__content__image"> */}
-        <img src={satoru} alt="avatar" />
+        <img src={avatarFollowed} alt="avatar" />
         {/* </Link> */}
 
       </div>

@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 import Loader from 'src/components/Loader';
 
 const Participant = ({ participants }) => {
-  const { max_participants: participantsMax } = participants;
+  console.log(participants);
+  const {
+    max_participants: participantsMax,
+    participants: participantsName,
+    author: { username },
+  } = participants;
   if (!participants.id) {
     return (<Loader />);
   }
@@ -18,7 +23,8 @@ const Participant = ({ participants }) => {
               alt=""
             />
           </span>
-          <span>DavDav (Théo BIET)</span>
+          <span>{username}</span>
+          <li>{participantsName}</li>
           <span>
             <button type="button" className="button --secondary">
               i
