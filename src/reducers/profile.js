@@ -11,6 +11,7 @@ import {
 
 const initialState = {
   loggedUserId: 0,
+  avatarFile: null,
   avatar_url: '',
   username: '',
   firstname: '',

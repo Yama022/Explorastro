@@ -1,5 +1,13 @@
 import {
-  GET_USER_INFO, saveUserInfo, FOLLOW, UNFOLLOW, toggleFollow, CHANGE_BIO, saveBio, userExists,
+  GET_USER_INFO,
+  saveUserInfo,
+  FOLLOW,
+  UNFOLLOW,
+  toggleFollow,
+  CHANGE_BIO,
+  saveBio,
+  userExists,
+  UPLOAD_AVATAR,
 } from 'src/actions/profile';
 
 import api from './utils/api';
@@ -15,7 +23,6 @@ const profile = (store) => (next) => (action) => {
           store.dispatch(userExists(true));
         }
         catch (error) {
-          console.error(error.response);
           store.dispatch(userExists(false));
         }
       };
@@ -67,6 +74,33 @@ const profile = (store) => (next) => (action) => {
         }
       };
       handleChangeBio();
+      break;
+    }
+    case UPLOAD_AVATAR: {
+      const state = store.getState();
+
+      const formData = new FormData();
+
+      formData.append('avatar',
+        state.profile.avatarFile,
+        state.profile.avatarFile.name);
+
+      console.log(formData);
+
+      const handleUploadAvatar = async () => {
+        try {
+          const response = await api.put(`/api/v1/user/${state.user.loggedUserId}/update/avatar`, {
+            data: '[formData]',
+          });
+          console.log(response);
+          // const actionSaveBio = saveBio(response.data.user.bio);
+          // store.dispatch(actionSaveBio);
+        }
+        catch (error) {
+          console.error(error.response);
+        }
+      };
+      handleUploadAvatar();
       break;
     }
     default:

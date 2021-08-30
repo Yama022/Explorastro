@@ -46,7 +46,6 @@ const event = (store) => (next) => (action) => {
       break;
     }
     case GET_EVENT_CREATED: {
-      console.log('ici')
       const user = JSON.parse(localStorage.getItem('user'));
       const { id } = user;
       const getEvent = async () => {

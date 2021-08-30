@@ -38,6 +38,7 @@ export default function Profile({
   changeField,
   handleBioEdit,
   userFound,
+  handleAvatarUpload,
 }) {
   const handleToggleNav = (event) => {
     changeMenuValue(event.target.dataset.toggle);
@@ -53,8 +54,10 @@ export default function Profile({
     handleToggleBioEdit();
   };
 
-  const handleAvatarEdit = () => {
-    console.log('JE CHANGE MON AVATAR STP');
+  const handleChangeAvatar = (event) => {
+    console.log(event.target.files[0]);
+    event.preventDefault();
+    changeField(event.target.files[0], event.target.name);
   };
 
   useEffect(() => {
@@ -79,7 +82,16 @@ export default function Profile({
                 <form className="profile__header__avatar__edit">
                   <label htmlFor="upload-avatar">
                     <RiImageEditLine className="profile__header__avatar__edit__icon" />
-                    <input type="file" name="avatar" id="upload-avatar" accept="image/png, image/jpeg, image/jpg, image/gif, image/webp" onChange={handleAvatarEdit} />
+                    <input
+                      type="file"
+                      name="avatarFile"
+                      id="upload-avatar"
+                      accept="image/png, image/jpeg, image/jpg, image/gif, image/webp"
+                      onChange={(event) => {
+                        handleChangeAvatar(event);
+                        handleAvatarUpload();
+                      }}
+                    />
                   </label>
                 </form>
               )}
@@ -222,4 +234,5 @@ Profile.propTypes = {
   changeField: PropTypes.func.isRequired,
   handleBioEdit: PropTypes.func.isRequired,
   userFound: PropTypes.bool.isRequired,
+  handleAvatarUpload: PropTypes.func.isRequired,
 };
