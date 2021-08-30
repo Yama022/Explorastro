@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 const { userController, followController } = require('../controllers');
-const { userMiddleware } = require('../middlewares');
+const { userMiddleware, rateLimit } = require('../middlewares');
 
 router
   /**
@@ -43,6 +43,7 @@ router
    */
   .patch(
     '/:id(\\d+)/update',
+    rateLimit.updateProfile,
     userMiddleware.checkPermissions,
     userMiddleware.checkIfExists,
     userController.update,
@@ -61,6 +62,7 @@ router
    */
   .patch(
     '/:id(\\d+)/update/password',
+    rateLimit.updatePassword,
     userMiddleware.checkPermissions,
     userMiddleware.checkIfExists,
     userController.updatePassword,
@@ -79,13 +81,25 @@ router
    */
   .patch(
     '/:id(\\d+)/update/username',
+    rateLimit.updateUsername,
     userMiddleware.checkPermissions,
     userMiddleware.checkIfExists,
     userController.updateUsername,
   )
 
+  /**
+   * Update user's avatar
+   * @route PUT /api/v1/user/1/update/avatar
+   * @group User - Operations about users
+   * @param {integer} id.param.required - The id of the user.
+   * @param {file} file.body.required - The file you want to set as avatar (only jpg/png/gif/webp)
+   * @returns {Object} 200 - An object containing a success message
+   * @returns {Error.model}  default - An object containing the error message
+   * @security JWT
+   */
   .put(
     '/:id(\\d+)/update/avatar',
+    rateLimit.updateAvatar,
     userMiddleware.checkPermissions,
     userMiddleware.checkIfExists,
     userController.updateAvatar,

@@ -135,7 +135,9 @@
   }
 
   & img {
-    width: 20%;
+    object-fit: cover;
+    width: 8rem;
+    height: 8rem;
     border-radius: 50%;
     filter: brightness(0.5);
     transition: 0.2s ease-in-out;
@@ -143,8 +145,11 @@
 
   &__title {
     display: flex;
+    justify-content: flex-start;
     & img {
-      width: 5%;
+      object-fit: cover;
+      width: 2.5rem;
+      height: 2.5rem;
       border-radius: 50%;
       filter: brightness(0.5);
       transition: 0.2s ease-in-out;

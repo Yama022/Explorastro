@@ -2,11 +2,11 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import avatar from 'src/assets/images/mascot-skating.svg';
 import { AiOutlineUserAdd, AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { GrAchievement, GrTrophy } from 'react-icons/gr';
 import { FaMedal, FaPen } from 'react-icons/fa';
 import { BiMedal, BiCog, BiCheck } from 'react-icons/bi';
+import { RiImageEditLine } from 'react-icons/ri';
 import { IoClose } from 'react-icons/io5';
 import { MdCheck } from 'react-icons/md';
 
@@ -19,6 +19,7 @@ export default function Profile({
   firstName,
   lastName,
   username,
+  avatarUrl,
   menuValue,
   changeMenuValue,
   profileId,
@@ -52,6 +53,10 @@ export default function Profile({
     handleToggleBioEdit();
   };
 
+  const handleAvatarEdit = () => {
+    console.log('JE CHANGE MON AVATAR STP');
+  };
+
   useEffect(() => {
     getInfo(profileId);
   }, [profileId]);
@@ -69,8 +74,16 @@ export default function Profile({
       <div className="profile__header">
 
         <div className="profile__header__avatar">
-          <div className="profile__header__avatar__background" />
-          <img src={avatar} alt="Avatar de l'utilisateur" />
+          {(profileId === loggedUserId)
+              && (
+                <form className="profile__header__avatar__edit">
+                  <label htmlFor="upload-avatar">
+                    <RiImageEditLine className="profile__header__avatar__edit__icon" />
+                    <input type="file" name="avatar" id="upload-avatar" accept="image/png, image/jpeg, image/jpg, image/gif, image/webp" onChange={handleAvatarEdit} />
+                  </label>
+                </form>
+              )}
+          <img src={avatarUrl} alt="Avatar de l'utilisateur" />
         </div>
 
         <div className="profile__header__description">
@@ -125,14 +138,14 @@ export default function Profile({
               <span>25 explorations</span>
             </div>
             {(profileId === loggedUserId && !bioEditIsOpen)
-              ? (
+              && (
                 <FaPen
                   className="profile__header__description__bio__edit"
                   onClick={() => {
                     handleToggleBioEdit();
                   }}
                 />
-              ) : '' }
+              )}
             {bioEditIsOpen
               ? (
                 <form
@@ -191,6 +204,7 @@ Profile.propTypes = {
   loggedUserId: PropTypes.number.isRequired,
   profileId: PropTypes.number.isRequired,
   username: PropTypes.string.isRequired,
+  avatarUrl: PropTypes.string.isRequired,
   firstName: PropTypes.string.isRequired,
   lastName: PropTypes.string.isRequired,
   menuValue: PropTypes.number.isRequired,

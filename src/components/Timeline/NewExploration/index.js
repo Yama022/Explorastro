@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 export default function NewExplo({ props }) {
   const {
     user,
-    date: { locales },
+    date: { locales: { fr: date } },
     exploration: { name, id, image_url: imageUrl },
     message,
     _id: idProps,
@@ -23,7 +23,7 @@ export default function NewExplo({ props }) {
         <div className="explo__organized--title">
           <h3><Link to={`/profile/${user.id}`}>{user.username}</Link> {message.fr}</h3>
           <h3 className="explo__organized__subtitle">"{name}"</h3>
-          <p>{locales.fr}</p>
+          <p>{date}</p>
         </div>
       </div>
       <Link to={`/exploration/${id}`}>
@@ -32,17 +32,26 @@ export default function NewExplo({ props }) {
         </div>
       </Link>
       <div className="explo__date">
-        <p>Le Mardi 29 Août à 13h48</p>
+        <p>Le {date}</p>
       </div>
     </div>
   );
 }
 
 NewExplo.propTypes = {
-  props: PropTypes.string.isRequired,
-  user: PropTypes.string.isRequired,
-  message: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-  exploration: PropTypes.string.isRequired,
-  _id: PropTypes.number.isRequired,
+  props: PropTypes.object,
+  user: PropTypes.string,
+  message: PropTypes.string,
+  date: PropTypes.string,
+  exploration: PropTypes.string,
+  _id: PropTypes.number,
+};
+
+NewExplo.defaultProps = {
+  props: {},
+  user: '',
+  message: '',
+  date: '',
+  exploration: '',
+  _id: 0,
 };
