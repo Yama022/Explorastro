@@ -64,6 +64,7 @@ export const userExists = (value) => ({
   value,
 });
 
-export const uploadAvatar = () => ({
+export const uploadAvatar = (value) => ({
   type: UPLOAD_AVATAR,
+  value,
 });

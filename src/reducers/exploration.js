@@ -147,7 +147,7 @@ const reducer = (state = initialState, action = {}) => {
     case CLEAR_OLD_STATE: {
       return {
         ...state,
-        geog: initialState.geog,
+        eventCreated: initialState.eventCreated,
       };
     }
     default:

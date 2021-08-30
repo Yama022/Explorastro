@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import { AiOutlineUserAdd, AiFillStar, AiOutlineStar } from 'react-icons/ai';
+import { AiOutlineUserAdd } from 'react-icons/ai';
+// , AiFillStar, AiOutlineStar
 import { GrAchievement, GrTrophy } from 'react-icons/gr';
 import { FaMedal, FaPen } from 'react-icons/fa';
 import { BiMedal, BiCog, BiCheck } from 'react-icons/bi';
@@ -28,6 +29,7 @@ export default function Profile({
   followers,
   following,
   explorations,
+  participatesTo,
   handleFollow,
   handleUnfollow,
   userFollowed,
@@ -54,17 +56,21 @@ export default function Profile({
     handleToggleBioEdit();
   };
 
-  const handleChangeAvatar = (event) => {
-    console.log(event.target.files[0]);
-    event.preventDefault();
-    changeField(event.target.files[0], event.target.name);
+  // const handleChangeAvatar = (event) => {
+  //   console.log(event.target.files[0]);
+  //   event.preventDefault();
+  //   changeField(event.target.files[0], event.target.name);
+  // };
+
+  const handleAvatarUploadForm = (event) => {
+    handleAvatarUpload(event.target.files[0]);
   };
 
   useEffect(() => {
     getInfo(profileId);
   }, [profileId]);
 
-  if (!loggedUserId || !explorations || !profileId) {
+  if (!loggedUserId || !explorations || !profileId || !participatesTo) {
     return <Loader />;
   }
 
@@ -88,8 +94,8 @@ export default function Profile({
                       id="upload-avatar"
                       accept="image/png, image/jpeg, image/jpg, image/gif, image/webp"
                       onChange={(event) => {
-                        handleChangeAvatar(event);
-                        handleAvatarUpload();
+                        // handleChangeAvatar(event);
+                        handleAvatarUploadForm(event);
                       }}
                     />
                   </label>
@@ -103,9 +109,10 @@ export default function Profile({
             <div className="profile__header__description__top__left">
               <h3 className="profile__header__description__top__left__name">{firstName} {lastName}</h3>
               <h2 className="profile__header__description__top__left__username">{username}</h2>
-              <div className="profile__header__description__top__left__stars" title="4 stars out of 5!">
+              {/* eslint-disable-next-line max-len */}
+              {/* <div className="profile__header__description__top__left__stars" title="4 stars out of 5!">
                 <AiFillStar /><AiFillStar /><AiFillStar /><AiFillStar /><AiOutlineStar />
-              </div>
+              </div> */}
             </div>
             <div className="profile__header__description__top__right">
               {(profileId === loggedUserId)
@@ -147,7 +154,7 @@ export default function Profile({
           <div className="profile__header__description__bio">
             <div className="profile__header__description__bio__explo">
               <BiMedal className="profile__header__description__bio__explo__medal" />
-              <span>25 explorations</span>
+              <span>{participatesTo.length + explorations.length} explorations</span>
             </div>
             {(profileId === loggedUserId && !bioEditIsOpen)
               && (
@@ -224,6 +231,7 @@ Profile.propTypes = {
   followers: PropTypes.array.isRequired,
   following: PropTypes.array.isRequired,
   explorations: PropTypes.array.isRequired,
+  participatesTo: PropTypes.array.isRequired,
   handleFollow: PropTypes.func.isRequired,
   handleUnfollow: PropTypes.func.isRequired,
   userFollowed: PropTypes.bool.isRequired,

@@ -79,19 +79,22 @@ const profile = (store) => (next) => (action) => {
     case UPLOAD_AVATAR: {
       const state = store.getState();
 
+      console.log(action.value, 'action value');
+
       const formData = new FormData();
 
       formData.append('avatar',
-        state.profile.avatarFile,
-        state.profile.avatarFile.name);
-
-      console.log(formData);
+        action.value,
+        action.value.name);
 
       const handleUploadAvatar = async () => {
         try {
-          const response = await api.put(`/api/v1/user/${state.user.loggedUserId}/update/avatar`, {
-            data: '[formData]',
-          });
+          const response = await api.put(`/api/v1/user/${state.user.loggedUserId}/update/avatar`, formData,
+            {
+              headers: {
+                'Content-Type': 'multipart/form-data',
+              },
+            });
           console.log(response);
           // const actionSaveBio = saveBio(response.data.user.bio);
           // store.dispatch(actionSaveBio);
