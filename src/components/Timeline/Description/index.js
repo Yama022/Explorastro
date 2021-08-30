@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 export default function Description({ props }) {
-  console.log('Desc', props);
   const {
     content,
     message: { fr: message },
