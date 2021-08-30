@@ -3,161 +3,124 @@
 import React, { useEffect } from 'react';
 import * as dayjs from 'dayjs';
 import PropTypes from 'prop-types';
-import Header from 'src/containers/Header';
-import Footer from 'src/components/Footer';
 import Loader from 'src/components/Loader';
 import { Link } from 'react-router-dom';
 import Modal from './Modal';
 import Map from './Map';
 
 export default function FormEvent({
-  onChangeInput,
+  eventToModify,
   onFormSubmitUpdateEvent,
-  getCoordLocation,
-  eventCreated,
-  OnClick,
-  getEventsCreated,
-  titleEvent,
-  dateEvent,
-  maxRateEvent,
-  descEvent,
-  published,
-  coord,
-  OnClickModal,
+  onClickModal,
+  onChangeInput,
+  onClick,
   modal,
-  imageUrl,
-  getEvent,
-  eventCreatedLastID,
-  removEventCreatedLastID,
-  clearOldState,
-
+  getCoordLocation,
+  getEventData,
+  id,
 }) {
   useEffect(() => {
-    removEventCreatedLastID();
-  }, [eventCreatedLastID]);
-
-  useEffect(() => {
-    getEvent();
-    return () => {
-      clearOldState();
-    };
+    getEventData(id);
   }, []);
-
-  useEffect(() => {
-    getEventsCreated(eventCreated);
-  }, [eventCreated]);
-
-  if (!eventCreated) {
-    return (<Loader />);
-  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onFormSubmitUpdateEvent(eventCreated.id);
-    OnClickModal();
+    onFormSubmitUpdateEvent(eventToModify.id);
+    onClickModal();
   };
 
   const handleOnchange = (event) => {
     onChangeInput(event.target.value, event.target.name);
   };
 
-  const handleOnClick = () => {
-    OnClick();
+  const handleOnClick = (event) => {
+    event.preventDefault();
+    onClick();
   };
 
+  if (!eventToModify.id) {
+    return <Loader />;
+  }
+
+  // eslint-disable-next-line no-console
+  console.log('eventToModify', eventToModify);
   return (
-    <>
-      {modal
-      && (
-      <Modal
-        OnClickModal={OnClickModal}
-        modal={modal}
-        titleEvent={titleEvent}
-      />
+    <div className="exploration">
+      {modal && (
+        <Modal
+          onClickModal={onClickModal}
+          modal={modal}
+          titleEvent={eventToModify.name}
+        />
       )}
-
-      <Header />
-
       <h1 className="main-title">Créer un événement</h1>
       <div className="createEventForm">
-
-        <form className="createEventForm__form" onSubmit={handleSubmit}>
-          <h4>Nom de l'événement</h4>
-
-          <input
-            className="input is-link"
-            name="titleEvent"
-            type="text"
-            value={titleEvent}
-            onChange={handleOnchange}
-            placeholder="Ex : Soirée nuit des étoiles"
-          />
-
-          <h4>Description</h4>
-          <textarea
-            className="textearea"
-            name="descEvent"
-            id="txtArea"
-            rows="10"
-            cols="70"
-            onChange={handleOnchange}
-            placeholder="Ex : J'organise une soirée pour la nuit des étoiles dans un endroit bien connu vers chez moi..."
-            value={descEvent !== null ? descEvent : ''}
-          />
-
-          <h4>Date de l'événement</h4>
-          <input
-            className="input is-link"
-            type="datetime-local"
-            name="dateEvent"
-            value={dateEvent ? dayjs(dateEvent).format('YYYY-MM-DDTHH:mm') : dayjs().format('YYYY-MM-DDTHH:mm')}
-              // min={dayjs().format('YYYY-MM-DDTHH:mm:ss')}
-            onChange={handleOnchange}
-          />
-          <Map getCoordLocation={getCoordLocation} coord={coord} />
-          <h4>Nombre de personne(s) maximum
+        <form className="createEventForm__form">
+          <div className="right">
+            <h4>Nom de l'événement</h4>
             <input
-              value={maxRateEvent !== null ? maxRateEvent.toString() : 0}
+              className="input"
+              name="name"
+              type="text"
+              value={eventToModify.name}
+              onChange={handleOnchange}
+              placeholder="Ex : Soirée nuit des étoiles"
+            />
+            <h4>Description</h4>
+            <textarea
+              className="textarea"
+              name="description"
+              id="txtArea"
+              rows="10"
+              cols="70"
+              onChange={handleOnchange}
+              placeholder="Ex : J'organise une soirée pour la nuit des étoiles dans un endroit bien connu vers chez moi..."
+              value={eventToModify.description !== null ? eventToModify.description : ''}
+            />
+            <h4>Date de l'événement</h4>
+            <input
+              className="input"
+              type="datetime-local"
+              name="date"
+              value={
+                eventToModify.date
+                  ? dayjs(eventToModify.date).format('YYYY-MM-DDTHH:mm')
+                  : dayjs().format('YYYY-MM-DDTHH:mm')
+              }
+              // min={dayjs().format('YYYY-MM-DDTHH:mm:ss')}
+              onChange={handleOnchange}
+            />
+            <h4>Nombre de personne(s) maximum</h4>
+            <input
+              value={eventToModify.max_participants}
               className="maxRateEvent"
-              name="maxRateEvent"
+              name="max_participants"
               type="number"
               onChange={handleOnchange}
               placeholder="0"
             />
-          </h4>
-
-          <input
-            type="checkbox"
-            name="published"
-            className="createEventForm__form__checkbox"
-            onClick={handleOnClick}
-            value={published}
-            disabled={!(dateEvent != null || coord != null)}
-          />
-          <label className="published" htmlFor="checkbox">{published ? 'Publié' : 'Non publié' } {dateEvent != null || coord != null ? '' : '(Veuillez indiquer une date et une adresse !)'}  </label>
-
-          <div className="createEventForm__form__add-img">
-            <h4>Ajouter une image ? </h4>
-            <input
-              value={imageUrl !== 'undefined' ? imageUrl : 'src/assets/images/nigthSky.jpg'}
-                    // accept="image/*"
-              onChange={handleOnchange}
-              id="contained-button-file"
-              multiple
-              name="imageUrl"
-              type="file"
-              className="upload-box"
-            />
+            {eventToModify.is_published ? (
+              <button className="button is-danger" onClick={handleOnClick}>
+                Rendre privée
+              </button>
+            ) : (
+              <button className="button is-link" onClick={handleOnClick}>
+                Publier
+              </button>
+            )}
           </div>
-          <div className="createEventForm__form__validate">
-            <button className="button" type="submit">Modifier</button>
-            <Link className="button" to="/exploration/create">Annuler </Link>
-          </div>
+          <div className="right"><Map getCoordLocation={getCoordLocation} coord={eventToModify.geog?.coordinates} /></div>
         </form>
+        <div className="createEventForm__form__validate">
+          <button className="button is-success" onClick={handleSubmit}>
+            Sauvegarder
+          </button>
+          <Link className="button is-danger" to="/exploration/create">
+            Annuler{' '}
+          </Link>
+        </div>
       </div>
-
-      <Footer />
-    </>
+    </div>
   );
 }
 
@@ -165,37 +128,15 @@ FormEvent.propTypes = {
   onChangeInput: PropTypes.func.isRequired,
   onFormSubmitUpdateEvent: PropTypes.func.isRequired,
   getCoordLocation: PropTypes.func.isRequired,
-  eventCreated: PropTypes.object,
-  OnClick: PropTypes.func.isRequired,
-  getEventsCreated: PropTypes.func.isRequired,
-  getEvent: PropTypes.func.isRequired,
-  titleEvent: PropTypes.string,
-  dateEvent: PropTypes.string,
-  maxRateEvent: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string,
-  ]),
-  descEvent: PropTypes.string,
-  published: PropTypes.bool,
-  coord: PropTypes.oneOfType([
-    PropTypes.array,
-    PropTypes.object,
-  ]),
-  OnClickModal: PropTypes.func.isRequired,
-  modal: PropTypes.bool.isRequired,
-  imageUrl: PropTypes.string.isRequired,
-  eventCreatedLastID: PropTypes.number,
-  removEventCreatedLastID: PropTypes.func.isRequired,
-  clearOldState: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
+  onClickModal: PropTypes.func.isRequired,
+  modal: PropTypes.bool,
+  eventToModify: PropTypes.object,
+  getEventData: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired,
 };
 
 FormEvent.defaultProps = {
-  descEvent: '',
-  dateEvent: '',
-  maxRateEvent: 0,
-  coord: null,
-  eventCreated: {},
-  titleEvent: '',
-  published: false,
-  eventCreatedLastID: 0,
+  eventToModify: {},
+  modal: false,
 };

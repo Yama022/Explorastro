@@ -1,25 +1,24 @@
 import { connect } from 'react-redux';
 import CreateEvent from 'src/components/CreateEvent';
 import {
-  getEventCreated, changeInputCreateEvent,
+  getUserEvents, changeInputValue,
   submitFormCreateEvent, removeEvent,
 } from 'src/actions/exploration';
 
 const mapStateToProps = (state) => ({
-  eventsCreated: state.exploration.eventCreated,
-  eventCreatedLastID: state.exploration.eventCreatedLast.id,
-  events: state.exploration.events,
-  titleEvent: state.exploration.titleEvent,
+  userEvents: state.exploration.userEvents,
 });
 
 const mapDispatchToProps = (dispatch) => ({
 
   getEvent: () => {
-    const action = getEventCreated();
+    const action = getUserEvents();
+    // eslint-disable-next-line no-console
+    console.log('Je vais récupérer les événements', action);
     dispatch(action);
   },
   onChangeInput: (value, key) => {
-    const action = changeInputCreateEvent(value, key);
+    const action = changeInputValue(value, key);
     dispatch(action);
   },
   onFormSubmitCreate: (value) => {

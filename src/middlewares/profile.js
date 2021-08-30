@@ -65,11 +65,11 @@ const profile = (store) => (next) => (action) => {
       const handleChangeBio = async () => {
         try {
           const response = await api.patch(`/api/v1/user/${state.user.loggedUserId}/update`, data);
-          console.log(response.data.user.bio);
           const actionSaveBio = saveBio(response.data.user.bio);
           store.dispatch(actionSaveBio);
         }
         catch (error) {
+          // eslint-disable-next-line no-console
           console.error(error.response);
         }
       };
@@ -85,18 +85,18 @@ const profile = (store) => (next) => (action) => {
         state.profile.avatarFile,
         state.profile.avatarFile.name);
 
-      console.log(formData);
-
       const handleUploadAvatar = async () => {
         try {
+          // eslint-disable-next-line no-unused-vars
           const response = await api.put(`/api/v1/user/${state.user.loggedUserId}/update/avatar`, {
             data: '[formData]',
           });
-          console.log(response);
+          // console.log(response);
           // const actionSaveBio = saveBio(response.data.user.bio);
           // store.dispatch(actionSaveBio);
         }
         catch (error) {
+          // eslint-disable-next-line no-console
           console.error(error.response);
         }
       };

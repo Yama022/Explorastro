@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import mascotRocket from 'src/assets/images/mascot-rocket.svg';
 import PropTypes from 'prop-types';
 
-export default function Modal({ OnClickModal, modal, titleEvent }) {
+export default function Modal({ onClickModal, modal, titleEvent }) {
   const handleOnClickModal = () => {
-    OnClickModal();
+    onClickModal();
   };
 
   return (
@@ -31,7 +31,7 @@ export default function Modal({ OnClickModal, modal, titleEvent }) {
 }
 
 Modal.propTypes = {
-  OnClickModal: PropTypes.func.isRequired,
+  onClickModal: PropTypes.func.isRequired,
   modal: PropTypes.bool.isRequired,
   titleEvent: PropTypes.string.isRequired,
 };

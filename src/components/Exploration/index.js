@@ -5,7 +5,7 @@ import Loader from 'src/components/Loader';
 import Weather from './Weather';
 import Information from './Information';
 import Partcipants from './Participant';
-import Comments from './Comments';
+// import Comments from './Comments';
 // import Author from './Author';
 
 export default function Exploration({
@@ -32,7 +32,7 @@ export default function Exploration({
       <section className="Exploration__overview">
         <div className="Exploration__overview__left">
           <Weather />
-          <Comments comments={exploration} />
+          {/* <Comments comments={exploration} /> */}
         </div>
         <div className="Exploration__overview__map">
           { console.log(coordinates) }
@@ -66,5 +66,4 @@ Exploration.propTypes = {
   id: PropTypes.number.isRequired,
   exploration: PropTypes.object.isRequired,
   removeOldStateExploration: PropTypes.func.isRequired,
-
 };

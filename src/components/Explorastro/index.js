@@ -86,7 +86,16 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
               <Discover />
               <Footer />
             </Route>
-            <Route path="/formEvent/:id" component={FormEvent} />
+            <Route
+              path="/formEvent/:id"
+              render={(prop) => (
+                <>
+                  <Header />
+                  <FormEvent id={Number(prop.match.params.id)} />
+                  <Footer />
+                </>
+              )}
+            />
             <Route exact path="/guide">
               <Header />
               <Guide />
