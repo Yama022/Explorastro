@@ -78,6 +78,16 @@ router
     explorationController.update,
   )
 
+  /**
+   * Update exploration's illustration
+   * @route PUT /api/v1/user/1/exploration/update/illustration
+   * @group Exploration - Operations about explorations
+   * @param {integer} id.param.required - The id of the user.
+   * @param {file} file.body.required - The file you want to set as illustration (only jpg/png/gif/webp)
+   * @returns {Object} 200 - An object containing a success message
+   * @returns {Error.model}  default - An object containing the error message
+   * @security JWT
+   */
   .put(
     '/:id(\\d+)/update/illustration',
     explorationMiddleware.checkIfExists,
