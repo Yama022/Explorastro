@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 import { RiUserFollowLine } from 'react-icons/ri';
 
 export default function Follow({ props }) {
-  console.log('follow', props);
   const {
     _id: idFollow,
     date: { locales },
@@ -27,15 +26,15 @@ export default function Follow({ props }) {
       </div>
 
       <div className="follow__content">
-        {/* <Link to="/profile" className="follow__content__image"> */}
-        <img src={avatarFollower} alt="avatar" />
-        {/* </Link> */}
+        <Link to={`/profile/${idFollower}`} className="follow__content__image">
+          <img src={avatarFollower} alt="avatar" />
+        </Link>
         <span className="follow__content-buttonUpdate">
           <RiUserFollowLine />
         </span>
-        {/* <Link to="/profile" className="follow__content__image"> */}
-        <img src={avatarFollowed} alt="avatar" />
-        {/* </Link> */}
+        <Link to={`/profile/${idFollowed}`} className="follow__content__image">
+          <img src={avatarFollowed} alt="avatar" />
+        </Link>
 
       </div>
 
