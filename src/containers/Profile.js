@@ -45,6 +45,9 @@ const mapDispatchToProps = (dispatch) => ({
   handleBioEdit: () => {
     dispatch(changeBio());
   },
+  handleChangeAvatar: () => {
+    console.log('lmao wtf r u doin here? XD');
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);
