@@ -32,5 +32,9 @@ export default function Comment({ props }) {
 }
 
 Comment.propTypes = {
-  props: PropTypes.object.isRequired,
+  props: PropTypes.object,
+};
+
+Comment.defaultProps = {
+  props: {},
 };

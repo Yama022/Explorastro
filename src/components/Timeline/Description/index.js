@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 export default function Description({ props }) {
-  console.log('Desc', props);
   const {
     content,
     message: { fr: message },
@@ -17,8 +16,7 @@ export default function Description({ props }) {
         <div className="desc__title">
           <img src={avatar} alt="avatar" />
           <h3>
-            {username}
-            {message}
+            {username} {message}
           </h3>
         </div>
       </Link>
@@ -36,9 +34,17 @@ export default function Description({ props }) {
 }
 
 Description.propTypes = {
-  props: PropTypes.object.isRequired,
-  content: PropTypes.string.isRequired,
-  message: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-  user: PropTypes.string.isRequired,
+  props: PropTypes.object,
+  content: PropTypes.string,
+  message: PropTypes.string,
+  date: PropTypes.string,
+  user: PropTypes.string,
+};
+
+Description.defaultProps = {
+  props: {},
+  content: '',
+  message: '',
+  date: '',
+  user: '',
 };

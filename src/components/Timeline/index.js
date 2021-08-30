@@ -77,5 +77,9 @@ export default function Timeline({ getTimeline, loggedUserId, timelineContent })
 Timeline.propTypes = {
   loggedUserId: PropTypes.number.isRequired,
   getTimeline: PropTypes.func.isRequired,
-  timelineContent: PropTypes.array.isRequired,
+  timelineContent: PropTypes.array,
+};
+
+Timeline.defaultProps = {
+  timelineContent: [],
 };

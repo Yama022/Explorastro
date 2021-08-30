@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 export default function NewExplo({ props }) {
-  // console.log('explo', props);
   const {
     user,
     date: { locales: { fr: date } },
@@ -40,10 +39,19 @@ export default function NewExplo({ props }) {
 }
 
 NewExplo.propTypes = {
-  props: PropTypes.string.isRequired,
-  user: PropTypes.string.isRequired,
-  message: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-  exploration: PropTypes.string.isRequired,
-  _id: PropTypes.number.isRequired,
+  props: PropTypes.object,
+  user: PropTypes.string,
+  message: PropTypes.string,
+  date: PropTypes.string,
+  exploration: PropTypes.string,
+  _id: PropTypes.number,
+};
+
+NewExplo.defaultProps = {
+  props: {},
+  user: '',
+  message: '',
+  date: '',
+  exploration: '',
+  _id: 0,
 };

@@ -105,7 +105,19 @@ module.exports = {
         });
       }
 
-      const user = await User.findByPk(req.user.id);
+      const user = req.user;
+      const usernameAlreadyExist = await User.findOne({
+        where: {
+          username,
+        },
+      });
+
+      if (usernameAlreadyExist) {
+        return res.status(400).json({
+          message: ERROR.USER_ALREADY_EXISTS,
+        });
+      }
+
       const isMatch = await bcrypt.compare(password, user.password);
 
       if (!isMatch) {

@@ -11,7 +11,7 @@ export default function JoinExplo({ props }) {
     <div className="explo">
       <div className="explo__title">
         <img src={defaultAvatar} alt="avatar" />
-        <h3> Toto l'asticot participe à "La Nuit des Etoiles"</h3>
+        <h3> Toto participe à "La Nuit des Etoiles"</h3>
       </div>
       <div className="explo__organized">
         <div className="explo__organized--title">
@@ -32,5 +32,9 @@ export default function JoinExplo({ props }) {
 }
 
 JoinExplo.propTypes = {
-  props: PropTypes.object.isRequired,
+  props: PropTypes.object,
+};
+
+JoinExplo.defaultProps = {
+  props: {},
 };
