@@ -9,24 +9,17 @@ import {
   getEventToModifyData,
 } from 'src/actions/exploration';
 
-const mapStateToProps = (state) => {
-  // eslint-disable-next-line no-console
-  console.log('State d\'exploration', state.exploration);
-  return {
-    eventToModify: state.exploration.eventToModify,
-    modal: state.exploration.modal,
-  };
-};
+const mapStateToProps = (state) => ({
+  eventToModify: state.exploration.eventToModify,
+  modal: state.exploration.modal,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   getEventData: (id) => {
-    console.log('Je lance l\'action getEventData');
     dispatch(getEventToModifyData(id));
   },
   onChangeInput: (value, key) => {
-    console.log(changeInputValue);
     const action = changeInputValue(value, key);
-    console.log('Je souhaite changer la value', value, key);
     dispatch(action);
   },
   onFormSubmitUpdateEvent: (value) => {

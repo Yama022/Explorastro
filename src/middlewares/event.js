@@ -15,13 +15,10 @@ import {
 import api from './utils/api';
 
 const event = (store) => (next) => (action) => {
-  console.log('Je lance une action', action);
   switch (action.type) {
     case SUBMIT_FORM_UPDATE_EVENT: {
       const state = store.getState();
-      console.log('state avant de send les data', state);
       const explorationData = state.exploration.eventToModify;
-      console.log(explorationData);
       const sendPostEvent = async () => {
         try {
           await api.patch(`/api/v1/exploration/${explorationData.id}/update`, {
@@ -64,7 +61,6 @@ const event = (store) => (next) => (action) => {
       break;
     }
     case GET_EVENT_TO_MODIFY_DATA: {
-      console.log('Je suis sur la page formulaire, je veux les infos');
       const getEvent = async () => {
         try {
           const response = await api.get(`/api/v1/exploration/${action.payload}`);
@@ -86,7 +82,6 @@ const event = (store) => (next) => (action) => {
           const response = await api.post('/api/v1/exploration/create', {
             name: state.exploration.eventToModify.newTitle,
           });
-          console.log('Je viens de créer une nouvelle exploration', response, state.exploration.eventToModify.newTitle);
           store.dispatch(addNewExploration(response.data));
         }
         catch (err) {

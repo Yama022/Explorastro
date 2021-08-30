@@ -3,14 +3,7 @@ import PropTypes from 'prop-types';
 import { FiSend } from 'react-icons/fi';
 
 const Comments = ({ comments }) => {
-  console.log('comm', comments);
-  const { comments: commentaire, author: { avatar_url: image } } = comments;
-
-  console.log(image);
-  const [content] = commentaire;
-  console.log('com', content);
-  const { content: comm } = content;
-  console.log('com', comm);
+  console.log('comments', comments);
   return (
     <div className="Exploration__overview__left__comments">
       <h3>Commentaires</h3>
