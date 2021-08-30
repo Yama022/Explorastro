@@ -11,7 +11,8 @@ export default function ControlGeocoder({ coordLocation, coord }) {
   const map = useMap();
   let reverseTabCoord;
   const objCoord = {};
-  let geocoder = L.Control.Geocoder.arcgis();
+  // eslint-disable-next-line max-len
+  let geocoder = L.Control.Geocoder.arcgis('AAPKcffce9aba8714a5f9f7d6c6fdc3f1c55pdj3nizxuNXswKYKCo0njoJsvKFgFniob5uOFbSUTnPn3zdOhJueIuGJWw9mskMm');
   useEffect(() => {
     if (typeof URLSearchParams !== 'undefined' && location.search) {
       // parse /?geocoder=nominatim from URL
@@ -30,7 +31,6 @@ export default function ControlGeocoder({ coordLocation, coord }) {
       const latLon = L.latLng(reverseTabCoord);
       const bounds = latLon.toBounds(500);
       map.panTo(latLon).fitBounds(bounds);
-      console.log(objCoord);
       geocoder.reverse(latLon, 1, (resp) => (L.marker(objCoord)
         .addTo(map)
         .bindPopup(resp[0].name)
