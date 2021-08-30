@@ -12,6 +12,7 @@ const {
   explorationMiddleware,
   userMiddleware,
   commentMiddleware,
+  rateLimit,
 } = require('../middlewares');
 
 const validate = require('../validations/validate');
@@ -73,6 +74,7 @@ router
    */
   .patch(
     '/:id(\\d+)/update',
+    rateLimit.updateExploration,
     explorationMiddleware.checkIfExists,
     explorationMiddleware.checkPermissions,
     explorationController.update,
@@ -90,6 +92,7 @@ router
    */
   .put(
     '/:id(\\d+)/update/illustration',
+    rateLimit.updateIllustration,
     explorationMiddleware.checkIfExists,
     explorationMiddleware.checkPermissions,
     explorationController.updateIllustration,

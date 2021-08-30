@@ -30,5 +30,12 @@ module.exports = {
   COMMENT_EDITED: 'Comment edited successfully',
   COMMENT_DELETED: 'Comment deleted successfully',
   COMMENT_NOT_FOUND: 'Comment not found',
-  RATE_LIMIT: "Too many requests from this IP, please try again later" 
+  RATE_LIMIT: "Too many requests from this IP, please try again later",
+  TOO_MANY_ACCOUNTS: 'Too many accounts created from this IP, please try again after an hour',
+  TOO_MANY_AVATARS: 'Too many avatars updated from this IP, please try again after an hour',
+  TOO_MANY_ILLUSTRATIONS: 'Too many illustrations updated from this IP, please try again after an hour',
+  TOO_MANY_PROFILES: 'Too many profiles updated from this IP, please try again after an hour',
+  TOO_MANY_EXPLORATIONS: 'Too many explorations updated from this IP, please try again after an hour',
+  TOO_MANY_PASSWORDS: 'Too many passwords updated from this IP, please try again after an hour',
+  TOO_MANY_USERNAMES: 'Too many usernames updated from this IP, please try again after 24 hour',
 };
