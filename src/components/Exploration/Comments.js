@@ -8,22 +8,25 @@ const Comments = ({ comments }) => {
     <div className="Exploration__overview__left__comments">
       <h3>Commentaires</h3>
       <ul className="Exploration__overview__left__comments__list">
-        <li className="Exploration__overview__left__comments__list__item">
-          <div className="Exploration__overview__left__comments__list__item__author">
-            <span className="avatar">
-              <img
-                src={image}
-                alt=""
-              />
+        {comments.map((comment) => (
+          <li className="Exploration__overview__left__comments__list__item">
+            <div className="Exploration__overview__left__comments__list__item__author">
+              <span className="avatar">
+                <img
+                  src={comment.author?.avatar_url}
+                  alt=""
+                />
+              </span>
+              {/* eslint-disable-next-line max-len */}
+              <span>{comment.author?.username} ({comment.author?.firstname} {comment.author?.lastname})</span>
+            </div>
+            <span className="Exploration__overview__left__comments__list__item__text">
+              <p>
+                {comment.content}
+              </p>
             </span>
-            <span>DavDav (Théo BIET)</span>
-          </div>
-          <span className="Exploration__overview__left__comments__list__item__text">
-            <p>
-              {comm}
-            </p>
-          </span>
-        </li>
+          </li>
+        ))}
       </ul>
       <div className="Exploration__overview__left__comments__form">
         <div className="Exploration__overview__left__comments__form__input">
