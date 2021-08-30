@@ -143,8 +143,9 @@
 
   &__title {
     display: flex;
+    justify-content: flex-start;
     & img {
-      width: 5%;
+      width: 15%;
       border-radius: 50%;
       filter: brightness(0.5);
       transition: 0.2s ease-in-out;

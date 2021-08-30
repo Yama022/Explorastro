@@ -1,22 +1,27 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 
-import defaultAvatar from 'src/assets/images/luffy.png';
-
 export default function Description({ props }) {
+  console.log('Desc', props);
   const {
     content,
     message: { fr: message },
     date: { locales: { fr: date } },
-    user: { username },
+    user: { username, avatar_url: avatar, id },
   } = props;
   return (
     <div className="desc">
-      <div className="desc__title">
-        <img src={defaultAvatar} alt="avatar" />
-        <h3> {username} {message}</h3>
-      </div>
+      <Link to={`/profile/${id}`}>
+        <div className="desc__title">
+          <img src={avatar} alt="avatar" />
+          <h3>
+            {username}
+            {message}
+          </h3>
+        </div>
+      </Link>
       <div className="desc__content">
         <p>
           {content}
