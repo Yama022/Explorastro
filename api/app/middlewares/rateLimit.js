@@ -2,15 +2,7 @@ const rateLimit = require("express-rate-limit");
 const { ERROR } = require("../constants");
 
 module.exports = {
-  apiRequest: rateLimit({
-      windowMs: 1 * 30 * 1000, // 1 minute
-      max: 10 * (60 / 2), // limit each IP to 2 requests per windowMs (60 seconds) // 5 requests per second, so 300 requests per minute
-      handler: (req, res) => {
-        return res.status(429).json({ message: ERROR.RATE_LIMIT });
-      }
-  }),
-  
-  createAccountLimiter: rateLimit({
+   createAccountLimiter: rateLimit({
     windowMs: 60 * 60 * 1000, // 1 hour window
     max: 2, // start blocking after 2 requests
     handler: (req, res) => {

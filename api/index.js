@@ -9,7 +9,6 @@ const port = process.env.PORT || 3003;
 const expressSwagger = require("express-swagger-generator")(app);
 const router = require("./app/routers");
 const { SWAGGER } = require("./app/constants");
-const { rateLimit } = require("./app/middlewares");
 
 app.use(cors());
 app.use(express.json());
@@ -26,8 +25,6 @@ expressSwagger(SWAGGER);
 // Images uploaded to the server will be served on /uploads
 app.use("/uploads", express.static("./uploads"));
 
-// Rate Limiting for API
-app.use("/api/v1", rateLimit.apiRequest);
 app.use("/api/v1", router);
 
 app.listen(port, () => {
