@@ -6,7 +6,7 @@ module.exports = {
   checkIfExists: async (req, res, next) => {
     let user;
     if (req.params.userId) {
-      user = await User.findByPk(req.params.id);
+      user = await User.findByPk(req.params.userId);
       if (!user) {
         return res.status(404).json({
           message: ERROR.USER_NOT_FOUND,

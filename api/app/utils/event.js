@@ -138,6 +138,7 @@ module.exports = {
           isUselessForTimeline: true,
           user: eventFormat.user(user),
           exploration: eventFormat.exploration(data.exploration),
+          exploration_date: eventFormat.exploration_date(data.exploration.date),
           message: { ...EVENT.MESSAGES.EDIT_EXPLORATION },
         });
         break;
@@ -150,6 +151,7 @@ module.exports = {
           },
           user: eventFormat.user(user),
           exploration: eventFormat.exploration(data.exploration),
+          exploration_date: eventFormat.exploration_date(data.exploration.date),
           message: { ...EVENT.MESSAGES.PUBLISH_EXPLORATION },
         });
         break;
