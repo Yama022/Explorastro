@@ -161,6 +161,13 @@ module.exports = {
       const lat = req.body.location?.lat;
       const { user } = req;
       const { exploration } = req;
+      const maxParticipants = 100;
+
+      if (maxParticipants < req.body.max_participants) {
+        return res.status(400).json({
+          message: ERROR.MAX_PARTICIPANTS_LIMIT_REACHED,
+        });
+      }
 
       // We need to remove the information from the body that could corrupt the database record
       delete req.body.id;

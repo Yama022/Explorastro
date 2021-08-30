@@ -20,6 +20,9 @@ Exploration.init(
     },
     max_participants: {
       type: DataTypes.INTEGER,
+      defaultValue: 10,
+      min: 1,
+      max: 100
     },
     is_published: {
       type: DataTypes.BOOLEAN,
