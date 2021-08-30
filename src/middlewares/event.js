@@ -53,7 +53,6 @@ const event = (store) => (next) => (action) => {
           const resp = await api.get(`/api/v1/user/${id}`);
           const result = resp.data;
           store.dispatch(saveEventcreated(result));
-          console.log(result);
         }
         catch (err) {
           console.error(err);

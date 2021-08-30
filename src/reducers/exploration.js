@@ -24,7 +24,7 @@ export const initialState = {
   descEvent: '',
   zone: 10,
   dateEvent: '',
-  maxRateEvent: 0,
+  maxRateEvent: '',
   coord: [],
   eventCreated: [],
   published: false,

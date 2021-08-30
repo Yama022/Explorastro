@@ -121,8 +121,15 @@ export default function FormEvent({
             />
           </h4>
 
-          <input type="checkbox" name="published" className="createEventForm__form__checkbox" onClick={handleOnClick} value={published} />
-          <label className="published" htmlFor="checkbox">{published ? 'Publié' : 'Non publié' } </label>
+          <input
+            type="checkbox"
+            name="published"
+            className="createEventForm__form__checkbox"
+            onClick={handleOnClick}
+            value={published}
+            disabled={!(dateEvent != null || coord != null)}
+          />
+          <label className="published" htmlFor="checkbox">{published ? 'Publié' : 'Non publié' } {dateEvent != null || coord != null ? '' : '(Veuillez indiquer une date et une adresse !)'}  </label>
 
           <div className="createEventForm__form__add-img">
             <h4>Ajouter une image ? </h4>

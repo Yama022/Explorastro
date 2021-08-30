@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 const { userController, followController } = require('../controllers');
-const { userMiddleware } = require('../middlewares');
+const { userMiddleware, rateLimit } = require('../middlewares');
 
 router
   /**
@@ -43,6 +43,7 @@ router
    */
   .patch(
     '/:id(\\d+)/update',
+    rateLimit.updateProfile,
     userMiddleware.checkPermissions,
     userMiddleware.checkIfExists,
     userController.update,
@@ -61,6 +62,7 @@ router
    */
   .patch(
     '/:id(\\d+)/update/password',
+    rateLimit.updatePassword,
     userMiddleware.checkPermissions,
     userMiddleware.checkIfExists,
     userController.updatePassword,
@@ -79,6 +81,7 @@ router
    */
   .patch(
     '/:id(\\d+)/update/username',
+    rateLimit.updateUsername,
     userMiddleware.checkPermissions,
     userMiddleware.checkIfExists,
     userController.updateUsername,
@@ -96,6 +99,7 @@ router
    */
   .put(
     '/:id(\\d+)/update/avatar',
+    rateLimit.updateAvatar,
     userMiddleware.checkPermissions,
     userMiddleware.checkIfExists,
     userController.updateAvatar,
