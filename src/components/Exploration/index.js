@@ -32,7 +32,7 @@ export default function Exploration({
       <section className="Exploration__overview">
         <div className="Exploration__overview__left">
           <Weather />
-          <Comments />
+          <Comments comments={exploration} />
         </div>
         <div className="Exploration__overview__map">
           { console.log(coordinates) }

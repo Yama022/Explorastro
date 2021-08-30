@@ -166,12 +166,12 @@
               display: flex;
               align-items: center;
 
-              .avatar {
-                width: 3em;
+              &.avatar {
+                width: 2em;
       
                 img {
                   border-radius: 50%;
-                  width: 70%;
+                  width: 50%;
                 }
               }
             }
@@ -189,7 +189,7 @@
           left: 0;
           right: 0;
           display: flex;
-          justify-content: space-around;
+          justify-content: space-between;
         }
       }
     }
