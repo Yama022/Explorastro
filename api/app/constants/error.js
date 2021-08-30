@@ -30,4 +30,5 @@ module.exports = {
   COMMENT_EDITED: 'Comment edited successfully',
   COMMENT_DELETED: 'Comment deleted successfully',
   COMMENT_NOT_FOUND: 'Comment not found',
+  RATE_LIMIT: "Too many requests from this IP, please try again later" 
 };
