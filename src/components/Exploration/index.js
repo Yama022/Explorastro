@@ -24,8 +24,7 @@ export default function Exploration({
 
   const coordinates = geog?.coordinates.reverse();
 
-  const franceCoordinates = [48.856614, 2.352222]
-
+  const franceCoordinates = [48.856614, 2.352222];
 
   return (
     <div className="Exploration">

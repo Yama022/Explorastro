@@ -72,6 +72,9 @@ export default function Profile({
     return <h1 className="main-title" style={{ height: '80vh' }}>Utilisateur introuvable</h1>;
   }
 
+  const publishedEvents = explorations.filter((evt) => evt.is_published === true);
+  const totalExplorations = participatesTo.length + publishedEvents.length;
+
   return (
     <div className="profile">
       <div className="profile__header">
@@ -153,10 +156,31 @@ export default function Profile({
             </div>
           </div>
           <div className="profile__header__description__bio">
-            <div className="profile__header__description__bio__explo">
-              <BiMedal className="profile__header__description__bio__explo__medal" />
-              <span>{participatesTo.length + explorations.length} explorations</span>
-            </div>
+            {
+              (() => {
+                if (totalExplorations > 10) {
+                  return (
+                    <div className="profile__header__description__bio__explo">
+                      <BiMedal className="profile__header__description__bio__explo__medal --bronze" />
+                      <span>{totalExplorations} explorations</span>
+                    </div>
+                  );
+                } if (totalExplorations > 20) {
+                  return (
+                    <div className="profile__header__description__bio__explo">
+                      <BiMedal className="profile__header__description__bio__explo__medal --silver" />
+                      <span>{totalExplorations} explorations</span>
+                    </div>
+                  );
+                }
+                return (
+                  <div className="profile__header__description__bio__explo">
+                    <GrTrophy className="profile__header__description__bio__explo__medal --gold" />
+                    <span>{totalExplorations} explorations</span>
+                  </div>
+                );
+              })()
+          }
             {(profileId === loggedUserId && !bioEditIsOpen)
               && (
                 <FaPen
@@ -206,7 +230,7 @@ export default function Profile({
         {
           (() => {
             switch (menuValue) {
-              case 1: return <> <h2 className="profile__content__title">Explorations publiées</h2> <Explorations explorations={explorations} /> </>;
+              case 1: return <> <h2 className="profile__content__title">Explorations publiées</h2> <Explorations explorations={publishedEvents} /> </>;
               case 2: return <> <h2 className="profile__content__title">Les personnes qui le suivent</h2> <Follows users={followers} /> </>;
               case 3: return <> <h2 className="profile__content__title">Les personnes qu'il suit</h2> <Follows users={following} /> </>;
               default: return <h2 className="profile__content__title">Une erreur est survenue</h2>;
