@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 const { Op } = require('sequelize');
-const { Exploration, Comment } = require('../models');
+const { Exploration, Comment, User } = require('../models');
 const { ERROR, EVENT } = require('../constants');
 const { owp } = require('../utils');
 const { event, upload } = require('../utils');
@@ -102,7 +102,7 @@ module.exports = {
   create: async (req, res) => {
     try {
       const { name } = req.body;
-      const { user } = req;
+      const user = await User.findByPk(req.user.id);
 
       if (!name) {
         return res.status(400).json({
@@ -113,7 +113,7 @@ module.exports = {
       const numberOfExplorations = await Exploration.count({
         where: {
           [Op.and]: [
-            { author_id: req.user.id },
+            { author_id: user.id },
             {
               date: {
                 [Op.or]: {
@@ -134,11 +134,13 @@ module.exports = {
 
       const exploration = new Exploration({
         name,
-        author_id: req.user.id,
+        author_id: user.id,
         ...req.body,
       });
 
       await exploration.save();
+
+      await exploration.addParticipant(user);
 
       res.json(exploration);
 

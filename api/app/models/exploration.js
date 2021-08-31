@@ -17,6 +17,7 @@ Exploration.init(
     },
     date: {
       type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW,
     },
     max_participants: {
       type: DataTypes.INTEGER,
