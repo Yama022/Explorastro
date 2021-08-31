@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
-const { eventFormat } = require('../services');
-const { mongo } = require('../database');
-const { EVENT } = require('../constants');
-const date = require('./date');
+const { eventFormat } = require("../services");
+const { mongo } = require("../database");
+const { EVENT } = require("../constants");
+const date = require("./date");
 
 module.exports = {
   saveUserAction: async (action, user, data) => {
@@ -16,8 +16,8 @@ module.exports = {
         date: {
           createdAt: createdDate,
           locales: {
-            fr: date.format(createdDate, 'fr'),
-            en: date.format(createdDate, 'en'),
+            fr: date.format(createdDate, "fr"),
+            en: date.format(createdDate, "en"),
           },
         },
       };
@@ -96,7 +96,13 @@ module.exports = {
           },
           user: eventFormat.user(user),
           exploration: eventFormat.exploration(data.exploration),
-          exploration_date: eventFormat.exploration_date(data.exploration.date),
+          exploration_date: {
+            at: data.exploration.date,
+            locales: {
+              fr: date.format(data.exploration.date, "fr"),
+              en: date.format(data.exploration.date, "en"),
+            },
+          },
           message: { ...EVENT.MESSAGES.PARTICIPATION_ADD },
         });
         break;
@@ -123,7 +129,13 @@ module.exports = {
           isUselessForTimeline: true,
           user: eventFormat.user(user),
           exploration: eventFormat.exploration(data.exploration),
-          exploration_date: eventFormat.exploration_date(data.exploration.date),
+          exploration_date: {
+            at: data.exploration.date,
+            locales: {
+              fr: date.format(data.exploration.date, "fr"),
+              en: date.format(data.exploration.date, "en"),
+            },
+          },
           message: { ...EVENT.MESSAGES.CREATE_EXPLORATION },
         });
         break;
@@ -137,7 +149,13 @@ module.exports = {
           isUselessForTimeline: true,
           user: eventFormat.user(user),
           exploration: eventFormat.exploration(data.exploration),
-          exploration_date: eventFormat.exploration_date(data.exploration.date),
+          exploration_date: {
+            at: data.exploration.date,
+            locales: {
+              fr: date.format(data.exploration.date, "fr"),
+              en: date.format(data.exploration.date, "en"),
+            },
+          },
           message: { ...EVENT.MESSAGES.EDIT_EXPLORATION },
         });
         break;
@@ -150,7 +168,13 @@ module.exports = {
           },
           user: eventFormat.user(user),
           exploration: eventFormat.exploration(data.exploration),
-          exploration_date: eventFormat.exploration_date(data.exploration.date),
+          exploration_date: {
+            at: data.exploration.date,
+            locales: {
+              fr: date.format(data.exploration.date, "fr"),
+              en: date.format(data.exploration.date, "en"),
+            },
+          },
           message: { ...EVENT.MESSAGES.PUBLISH_EXPLORATION },
         });
         break;
