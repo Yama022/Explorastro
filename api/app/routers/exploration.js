@@ -6,6 +6,7 @@ const {
   explorationController,
   participationController,
   commentController,
+  searchController,
 } = require('../controllers');
 
 const {
@@ -28,7 +29,7 @@ router
    * @returns {Error.model}  default - An object containing the error message
    * @security JWT
    */
-  .get('/', explorationController.getAll)
+  .get('/', searchController.explorations)
 
   /**
    * Get informations about an exploration by his id
