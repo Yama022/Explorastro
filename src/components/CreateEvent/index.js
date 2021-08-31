@@ -27,27 +27,28 @@ export default function CreateEvent({
   }
 
   return (
-    <>
-      <div className="main">
-        <h1 className="main__titlecreateEvent">J'organise</h1>
-        <section className="container">
-          <div className="createEvent">
-            <form className="createEvent__form" onSubmit={handleSubmit}>
-              <div className="createEvent__form__title">
-                <h2>Créer une sortie</h2>
-              </div>
-              <label htmlFor="newTitle" className="createEvent__form__name">
+    <div className="main">
+      <h1 className="main-title">J'organise</h1>
+      <section className="container">
+        <div className="createEvent">
+          <form className="createEvent__form" onSubmit={handleSubmit}>
+            <div className="createEvent__form__title">
+              <h2>Créer une sortie</h2>
+            </div>
+            <div className="createEvent__form__content">
+              <label htmlFor="newTitle" className="createEvent__form__content__name">
                 <input className="input" name="newTitle" type="text" placeholder="Ex : Soirée nuit des étoiles" onChange={handleOnchange} />
               </label>
-              <button className="button" type="submit">Créer</button>
-            </form>
-            {userEvents.map((element) => (
-              <EventCreated onClick={onClickRemove} key={element.id} {...element} />
-            ))}
-          </div>
-        </section>
-      </div>
-    </>
+              <button className="button --secondary" type="submit">Créer</button>
+            </div>
+          </form>
+          {userEvents.map((element) => (
+            <EventCreated onClick={onClickRemove} key={element.id} {...element} />
+          ))}
+        </div>
+      </section>
+      <h1 className="main-title">Je participe</h1>
+    </div>
   );
 }
 

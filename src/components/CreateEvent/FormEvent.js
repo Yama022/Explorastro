@@ -54,7 +54,7 @@ export default function FormEvent({
       <h1 className="main-title">Créer un événement</h1>
       <div className="createEventForm">
         <form className="createEventForm__form">
-          <div className="right">
+          <div className="left">
             <h4>Nom de l'événement</h4>
             <input
               className="input"
@@ -97,10 +97,14 @@ export default function FormEvent({
               onChange={handleOnchange}
               placeholder="0"
             />
+            {/* <button className="button is-danger" onClick={handleOnClick}>
+               Rendre privée
+             </button> */}
             {eventToModify.is_published ? (
-              <button className="button is-danger" onClick={handleOnClick}>
-                Rendre privée
-              </button>
+              <div className="field">
+                <input id="switchRoundedDefault" type="checkbox" name="switchRoundedDefault" className="switch is-rounded" checked="checked" />
+                <label htmlFor="switchRoundedDefault">Publié</label>
+              </div>
             ) : (
               <button className="button is-link" onClick={handleOnClick}>
                 Publier

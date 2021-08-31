@@ -114,6 +114,7 @@ export default function SignupForm({
 
     if (handleValidation()) {
       handleSignup();
+      handleToggleSignup();
     }
   };
 
