@@ -1,26 +1,28 @@
 .createEvent {
   min-height: 80vh;
-  display : flex;
+  display: flex;
   justify-content: space-between;
   padding: 0 $gutter*5;
- 
+
 
   &__titlecreateEvent {
     font-size: 2em;
     color: $light-color;
     margin: $gutter;
   }
- 
-}
-.flex{  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;}
 
-.createEvent__container {
-  color: white;
 
-  text-align: center;
 
+  &__container {
+    color: white;
+
+    text-align: center;
+
+    &__flex {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
 
     &__form {
       overflow: hidden;
@@ -47,13 +49,14 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+
         & button {
           width: 70%;
           margin: .8em auto 0 auto;
         }
       }
 
-      
+
     }
 
 
@@ -94,9 +97,9 @@
       }
 
     }
-  
-}
 
+  }
+}
 
 .createEventForm {
   color: white;
@@ -113,14 +116,15 @@
 
     & .left {
       width: 40%;
+
       textarea {
         width: 100%;
       }
-  
+
       h4 {
         margin: $gutter 0;
       }
-  
+
       & input[type="datetime-local"]::-webkit-calendar-picker-indicator {
         background: transparent;
         bottom: 0;
@@ -146,6 +150,7 @@
       box-shadow: 0px 0px 9px -1px $secondary-color;
       height: 25em;
       overflow: hidden;
+
       & .leaflet-container {
         margin: 0;
       }

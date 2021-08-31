@@ -17,7 +17,7 @@ export default function EventCreated({
     <div className="createEvent__container__event-list">
       <img src={image_url} alt={name} />
       <h2>{name}</h2>
-      <div className="createEvent__container__event-list__content">
+      <div className="createEvent__container__event_list__content">
         <span>{date ? `date : ${dayjs(date).format('DD-MM-YY')}` : 'date :'}</span>
         <span>{max_participants}<ImMan /></span>
       </div>
