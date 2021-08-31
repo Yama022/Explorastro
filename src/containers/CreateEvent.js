@@ -9,6 +9,7 @@ import {
 
 const mapStateToProps = (state) => ({
   userEvents: state.exploration.userEvents,
+  participate: state.exploration.participate,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -49,7 +49,7 @@ const event = (store) => (next) => (action) => {
         try {
           const response = await api.get(`/api/v1/user/${id}`);
           const results = response.data;
-          const userExplorations = results.organized_explorations;
+          const userExplorations = results;
           store.dispatch(saveUserEvents(userExplorations));
         }
         catch (err) {
@@ -96,10 +96,11 @@ const event = (store) => (next) => (action) => {
       const id = action.payload;
       const state = store.getState();
       const removedEvent = state.exploration.userEvents.filter((evt) => (evt.id !== id));
+      const removedParticipate = state.exploration.participate.filter((evt) => (evt.id !== id));
       const deleteEvent = async () => {
         try {
           await api.delete(`/api/v1/exploration/${id}/delete`);
-          store.dispatch(updateEvents(removedEvent));
+          store.dispatch(updateEvents(removedEvent, removedParticipate));
         }
         catch (err) {
           // eslint-disable-next-line no-console

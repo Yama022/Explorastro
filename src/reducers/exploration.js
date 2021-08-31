@@ -24,6 +24,7 @@ export const initialState = {
   eventToModify: {},
   zone: 10,
   modal: false,
+  participate: [],
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -73,7 +74,8 @@ const reducer = (state = initialState, action = {}) => {
     case SAVE_USER_EVENTS: {
       return {
         ...state,
-        userEvents: action.value,
+        userEvents: action.value.organized_explorations,
+        participate: action.value.explorations,
       };
     }
     case ON_CLICK_PUBLISH: {
@@ -89,6 +91,7 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         userEvents: [...state.userEvents, action.payload],
+        participate: [...state.userEvents, action.payload],
       };
     }
     case CLICK_MODAL: {
@@ -112,7 +115,8 @@ const reducer = (state = initialState, action = {}) => {
     case UPDATE_EVENTS: {
       return {
         ...state,
-        userEvents: [...action.value],
+        userEvents: [...action.removedEvent],
+        participate: [...action.removedParticipate],
       };
     }
     case REMOVE_OLD_STATE_EXPLORATION: {

@@ -101,9 +101,10 @@ export const saveAllEvents = (value) => ({
   value,
 });
 
-export const updateEvents = (value) => ({
+export const updateEvents = (removedEvent, removedParticipate) => ({
   type: UPDATE_EVENTS,
-  value,
+  removedEvent,
+  removedParticipate,
 });
 
 export const getExplorationById = (payload) => ({

@@ -3,11 +3,11 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ImPencil, ImCross, ImMan } from 'react-icons/im';
+import { ImCross, ImMan } from 'react-icons/im';
 import { Link } from 'react-router-dom';
 import * as dayjs from 'dayjs';
 
-export default function EventCreated({
+export default function Participate({
   name, id, onClick, date, max_participants, is_published, image_url,
 }) {
   const handleOnClick = () => {
@@ -26,13 +26,13 @@ export default function EventCreated({
       </div>
       <div className="createEvent__container__event-list__button">
         <button className="button is-danger" onClick={handleOnClick}><ImCross /></button>
-        <Link className="button --secondary" to={`/formEvent/${id}`}><ImPencil /></Link>
+        <Link className="button --secondary" to={`/exploration/${id}`}>Consulter</Link>
       </div>
     </div>
   );
 }
 
-EventCreated.propTypes = {
+Participate.propTypes = {
   name: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
   onClick: PropTypes.func.isRequired,
@@ -42,6 +42,6 @@ EventCreated.propTypes = {
   image_url: PropTypes.string.isRequired,
 };
 
-EventCreated.defaultProps = {
+Participate.defaultProps = {
   date: dayjs().format('DD-MM-YY'),
 };
