@@ -38,6 +38,7 @@ User.init(
       type: DataTypes.TEXT,
       name: 'avatar_URL',
       allowNull: true,
+      defaultValue: 'https://explorastro-s3.s3.amazonaws.com/default.jpg',
     },
     bio: {
       type: DataTypes.TEXT,
