@@ -45,8 +45,6 @@ export default function Timeline({
       <aside className="timeline-left">
         <Link to="/discover" className="timeline-left__widget">
           <Discover />
-          <Discover />
-          <Discover />
         </Link>
       </aside>
       <main className="timeline-main">
@@ -77,9 +75,7 @@ export default function Timeline({
       </main>
       <aside className="timeline-right">
         <div className="timeline-left__widget">
-          <Discover />
           <Following following={following} />
-          <Discover />
         </div>
       </aside>
     </div>
