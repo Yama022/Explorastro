@@ -11,6 +11,12 @@ module.exports = {
         include: ['participants'],
       });
 
+      if (!exploration) {
+        return res.status(404).json({
+          message: ERROR.EXPLORATION_NOT_FOUND,
+        });
+      }
+
       res.json(exploration.participants);
     }
     catch (error) {

@@ -234,7 +234,6 @@ module.exports = {
   delete: async (req, res) => {
     try {
       const { user } = req;
-
       const { exploration } = req;
 
       await exploration.destroy();

@@ -25,7 +25,8 @@ module.exports = {
     next();
   },
   checkPermissions: async (req, res, next, id = +req.params.id) => {
-    if (id !== +req.user.id) {
+    const adminRoleId = 3;
+    if (id !== +req.user.id && req.user.role_id !== adminRoleId) {
       return res.status(403).json({
         message: ERROR.UNAUTHORIZED,
       });

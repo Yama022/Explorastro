@@ -67,6 +67,11 @@ User.init(
   {
     sequelize,
     tableName: 'user',
+    // Never return user password, even if someone tries to get the user
+    defaultScope: {
+      attributes: { exclude: ['password'] },
+      include: ['role']
+    },
   },
 );
 
