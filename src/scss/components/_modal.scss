@@ -1,52 +1,48 @@
 .modal {
-
   z-index: 9999;
 }
 
 .modal-card {
-
-  height: 30%;
+  width: 60%;
+  height: 40%;
   color: $light-color;
-  font-family: 'Roboto';
+  background-color: $primary-color;
   border-radius: 10px;
 
-
   &-title {
-
     color: $light-color;
   }
 
-  &-foot {
-    border-top: none;
+  &-head, &-foot {
+    height: 25%;
+    background: none;
+    border: none;
   }
 
-  &-head {
-    border-bottom: none;
-  }
-
-  &-head,
-  &-foot {
-
-    background-color: $primary-color;
+  &-head button:hover {
+    background-color: $secondary-color ;
   }
 
   &-body {
+    margin: 0;
+    padding: 0;
+    height: 50%;
     display: flex;
     align-items: center;
+    justify-content: center;
     font-size: 1.4em;
     background-color: $secondary-color;
+    overflow: none;
+    padding: 0;
 
     &-mascotte {
-
       width: 20%;
     }
+
   }
 
-}
+  &-foot {
+    margin: auto;
+  }
 
-
-.button--modal {
-
-  margin: 0 auto;
-  padding: 1em;
 }

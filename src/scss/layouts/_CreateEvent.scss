@@ -121,6 +121,14 @@
       textarea {
         width: 100%;
       }
+
+      input[type="text"], input[type="datetime-local"], textarea {
+        box-shadow: 0 0 4px $tertiary-color;
+      }
+
+      .textarea {
+        resize: none;
+      }
   
       h4 {
         margin: $gutter 0;
@@ -138,6 +146,83 @@
         top: 0;
         width: auto;
       }
+
+      &__range-input {
+        width: 70%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        & input {
+          width: 85%;
+        }
+        & span {
+          width: 5%;
+        }
+      }
+
+      &__publish-switch {
+        &__switch {
+          position: relative;
+          display: inline-block;
+          width: 60px;
+          height: 34px;
+        }
+        
+        /* Hide default HTML checkbox */
+        &__switch input {
+          opacity: 0;
+          width: 0;
+          height: 0;
+        }
+        
+        /* The slider */
+        &__slider {
+          position: absolute;
+          cursor: pointer;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: $secondary-color;
+          -webkit-transition: .4s;
+          transition: .4s;
+        }
+        
+        &__slider:before {
+          position: absolute;
+          content: "";
+          height: 26px;
+          width: 26px;
+          left: 4px;
+          bottom: 4px;
+          background-color: $light-color;
+          -webkit-transition: .4s;
+          transition: .4s;
+        }
+        
+        input:checked + .left__publish-switch__slider {
+          background-color: $tertiary-color;
+        }
+        
+        input:focus + .left__publish-switch__slider {
+          box-shadow: 0 0 1px $tertiary-color;
+        }
+        
+        input:checked + .left__publish-switch__slider:before {
+          -webkit-transform: translateX(26px);
+          -ms-transform: translateX(26px);
+          transform: translateX(26px);
+        }
+        
+        /* Rounded sliders */
+        &__slider.round {
+          border-radius: 34px;
+        }
+        
+        &__slider.round:before {
+          border-radius: 50%;
+        }
+      }
     }
 
     & .right {
@@ -145,6 +230,7 @@
     }
 
     &__map {
+      height: 100%;
       background-color: $light-color;
       border: 1px solid $secondary-color;
       border-radius: 10px;
@@ -179,8 +265,12 @@
     }
 
     &__validate {
+      margin-top: 1.5*$gutter;
       display: flex;
       justify-content: center;
+      & > * {
+        margin: $gutter;
+      }
     }
   }
 }

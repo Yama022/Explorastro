@@ -1,7 +1,7 @@
 /* eslint-disable react/button-has-type */
 import React from 'react';
 import { Link } from 'react-router-dom';
-import mascotRocket from 'src/assets/images/mascot-rocket.svg';
+import mascotSkating from 'src/assets/images/mascot-skating.svg';
 import PropTypes from 'prop-types';
 
 export default function Modal({ onClickModal, modal, titleEvent }) {
@@ -18,11 +18,11 @@ export default function Modal({ onClickModal, modal, titleEvent }) {
           <button className="delete" aria-label="close" onClick={handleOnClickModal} />
         </header>
         <section className="modal-card-body">
-          <img className="modal-card-body-mascotte" src={mascotRocket} alt="Belle mascotte" />
+          <img className="modal-card-body-mascotte" src={mascotSkating} alt="Belle mascotte" />
           <p>"Vos modifications ont bien été pris en compte"</p>
         </section>
         <footer className="modal-card-foot">
-          <Link className="button--modal" to="/exploration/create" onClick={handleOnClickModal}>Fermer </Link>
+          <Link className="button --secondary" to="/exploration/create" onClick={handleOnClickModal}>Fermer </Link>
         </footer>
       </div>
     </div>
