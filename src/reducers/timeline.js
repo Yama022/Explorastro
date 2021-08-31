@@ -1,8 +1,10 @@
 import { SAVE_TIMELINE } from 'src/actions/timeline';
+import { SAVE_USER_INFO } from 'src/actions/profile';
 
 // les valeurs par défaut sont stockées dans le state initial
 export const initialState = {
   timelineContent: [],
+  following: [],
 };
 
 // fonction qui traduit une intention/action en changement de state
@@ -15,6 +17,12 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         timelineContent: [...action.payload],
+      };
+    }
+    case SAVE_USER_INFO: {
+      return {
+        ...state,
+        following: action.payload.following,
       };
     }
     default:

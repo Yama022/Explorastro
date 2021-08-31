@@ -8,7 +8,7 @@ export default function Follows({ users }) {
       {users.length > 0
         ? users.map((user) => (
           <Link to={`/profile/${user.id}`} className="profile__follows__user" key={user.id}>
-            <img src={user.avatar_url} className="profile__follows__user__avatar" alt={`Avatar de ${user.username}`} />
+            <img src={user.avatar_url ?? 'https://explorastro-s3.s3.amazonaws.com/default.jpg'} className="profile__follows__user__avatar" alt={`Avatar de ${user.username}`} />
             <span className="profile__follows__user__username">{user.username}</span>
           </Link>
         ))
