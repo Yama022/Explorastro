@@ -11,7 +11,7 @@ export default function Following({ following }) {
           id, firstname, lastname, username, avatar_url: avatar,
         } = follow;
         return (
-          <Link to={`/profile/${id}`}>
+          <Link key={id} to={`/profile/${id}`}>
             <li>
               <img src={avatar ?? 'https://explorastro-s3.s3.amazonaws.com/default.jpg'} alt={username} />
               <p>{firstname} {lastname}</p>
