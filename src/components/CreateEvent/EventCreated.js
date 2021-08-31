@@ -14,17 +14,17 @@ export default function EventCreated({
     onClick(id);
   };
   return (
-    <div className="createEvent__event-list">
+    <div className="createEvent__container__event-list">
       <img src={image_url} alt={name} />
       <h2>{name}</h2>
-      <div className="createEvent__event-list__content">
+      <div className="createEvent__container__event-list__content">
         <span>{date ? `date : ${dayjs(date).format('DD-MM-YY')}` : 'date :'}</span>
         <span>{max_participants}<ImMan /></span>
       </div>
       <div className="published">
         <span>{is_published ? 'Publié' : 'Non publié'}</span>
       </div>
-      <div className="createEvent__event-list__button">
+      <div className="createEvent__container__event-list__button">
         <button className="button is-danger" onClick={handleOnClick}><ImCross /></button>
         <Link className="button --secondary" to={`/formEvent/${id}`}><ImPencil /></Link>
       </div>
