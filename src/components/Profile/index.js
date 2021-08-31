@@ -4,12 +4,17 @@ import { Link } from 'react-router-dom';
 
 import { AiOutlineUserAdd } from 'react-icons/ai';
 // , AiFillStar, AiOutlineStar
-import { GrAchievement, GrTrophy } from 'react-icons/gr';
-import { FaMedal, FaPen } from 'react-icons/fa';
-import { BiMedal, BiCog, BiCheck } from 'react-icons/bi';
+import { GrTrophy } from 'react-icons/gr';
+import {
+  FaPen, FaFacebookSquare, FaTwitter, FaInstagram,
+} from 'react-icons/fa';
+import {
+  BiMedal, BiCog, BiCheck, BiPlanet,
+} from 'react-icons/bi';
 import { RiImageEditLine } from 'react-icons/ri';
 import { IoClose } from 'react-icons/io5';
 import { MdCheck } from 'react-icons/md';
+import { SiTiktok } from 'react-icons/si';
 
 import Loader from 'src/components/Loader';
 
@@ -71,6 +76,9 @@ export default function Profile({
   if (!userFound) {
     return <h1 className="main-title" style={{ height: '80vh' }}>Utilisateur introuvable</h1>;
   }
+
+  const publishedEvents = explorations.filter((evt) => evt.is_published === true);
+  const totalExplorations = participatesTo.length + publishedEvents.length;
 
   return (
     <div className="profile">
@@ -153,10 +161,31 @@ export default function Profile({
             </div>
           </div>
           <div className="profile__header__description__bio">
-            <div className="profile__header__description__bio__explo">
-              <BiMedal className="profile__header__description__bio__explo__medal" />
-              <span>{participatesTo.length + explorations.length} explorations</span>
-            </div>
+            {
+              (() => {
+                if (totalExplorations < 10) {
+                  return (
+                    <div className="profile__header__description__bio__explo">
+                      <BiMedal className="profile__header__description__bio__explo__medal --bronze" />
+                      <span>{totalExplorations} explorations</span>
+                    </div>
+                  );
+                } if (totalExplorations < 20) {
+                  return (
+                    <div className="profile__header__description__bio__explo">
+                      <BiMedal className="profile__header__description__bio__explo__medal --silver" />
+                      <span>{totalExplorations} explorations</span>
+                    </div>
+                  );
+                }
+                return (
+                  <div className="profile__header__description__bio__explo">
+                    <GrTrophy className="profile__header__description__bio__explo__medal --gold" />
+                    <span>{totalExplorations} explorations</span>
+                  </div>
+                );
+              })()
+          }
             {(profileId === loggedUserId && !bioEditIsOpen)
               && (
                 <FaPen
@@ -188,8 +217,22 @@ export default function Profile({
                   {biography}
                 </p>
               )}
-            <div className="profile__header__description__bio__achievements">
-              <FaMedal /> <GrAchievement /> <BiMedal /> <GrTrophy />
+            <div className="profile__header__description__bio__socials">
+              <Link className="profile__header__description__bio__socials__item --twitter" to="https://twitter.com/">
+                <FaTwitter />
+              </Link>
+              <Link className="profile__header__description__bio__socials__item --instagram" to="https://www.instagram.com/">
+                <FaInstagram />
+              </Link>
+              <Link className="profile__header__description__bio__socials__item --facebook" to="https://www.facebook.com/">
+                <FaFacebookSquare />
+              </Link>
+              <Link className="profile__header__description__bio__socials__item --tiktok" to="https://www.tiktok.com/">
+                <SiTiktok />
+              </Link>
+              <Link className="profile__header__description__bio__socials__item --astrobin" to="https://www.astrobin.com/">
+                <BiPlanet />
+              </Link>
             </div>
           </div>
         </div>
@@ -206,7 +249,7 @@ export default function Profile({
         {
           (() => {
             switch (menuValue) {
-              case 1: return <> <h2 className="profile__content__title">Explorations publiées</h2> <Explorations explorations={explorations} /> </>;
+              case 1: return <> <h2 className="profile__content__title">Explorations publiées</h2> <Explorations explorations={publishedEvents} /> </>;
               case 2: return <> <h2 className="profile__content__title">Les personnes qui le suivent</h2> <Follows users={followers} /> </>;
               case 3: return <> <h2 className="profile__content__title">Les personnes qu'il suit</h2> <Follows users={following} /> </>;
               default: return <h2 className="profile__content__title">Une erreur est survenue</h2>;

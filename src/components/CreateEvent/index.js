@@ -44,7 +44,6 @@ export default function CreateEvent({
               <button className="button --secondary" type="submit">Créer</button>
             </div>
           </form>
-
           {userEvents.map((element) => (
             <EventCreated onClick={onClickRemove} key={element.id} {...element} />
           ))}

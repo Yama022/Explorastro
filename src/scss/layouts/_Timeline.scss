@@ -31,8 +31,14 @@
         padding: $gutter;
         text-align: center;
       }
-      & ul {
+
+      a {
         display: flex;
+      }
+
+      li {
+        display: flex;
+        align-items: center;
         padding: 1rem;
         border-top: 1px solid $secondary-color;
         height: 100%;
@@ -40,17 +46,18 @@
         margin: auto;
       }
       & img {
-        width: 15%;
+        width: 3em;
         border-radius: 50%;
       }
+
       & p {
         display: inline;
-        font-size: 1.3em;
         width: 100%;
         height: 100%;
         margin: auto;
         margin-left: .8rem;
         font-weight: bold;
+        font-size: 1.1em;
       }
     }
   }

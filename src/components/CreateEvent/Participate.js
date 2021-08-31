@@ -4,6 +4,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ImCross, ImMan } from 'react-icons/im';
+import { FaInfoCircle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import * as dayjs from 'dayjs';
 
@@ -26,7 +27,7 @@ export default function Participate({
       </div>
       <div className="createEvent__container__event-list__button">
         <button className="button is-danger" onClick={handleOnClick}><ImCross /></button>
-        <Link className="button --secondary" to={`/exploration/${id}`}>Consulter</Link>
+        <Link className="button --secondary" to={`/exploration/${id}`}><FaInfoCircle /></Link>
       </div>
     </div>
   );

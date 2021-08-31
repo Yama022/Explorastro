@@ -20,8 +20,11 @@ export default function Exploration({
   if (!exploration?.id) {
     return (<Loader />);
   }
-  const { geog: { coordinates } } = exploration;
-  coordinates.reverse();
+  const { geog } = exploration;
+
+  const coordinates = geog?.coordinates.reverse();
+
+  const franceCoordinates = [48.856614, 2.352222];
 
   return (
     <div className="Exploration">
@@ -36,7 +39,7 @@ export default function Exploration({
         </div>
         <div className="Exploration__overview__map">
           <MapContainer
-            center={coordinates}
+            center={coordinates ?? franceCoordinates}
             zoom={6}
             maxZoom={18}
             minZoom={3}
@@ -49,7 +52,7 @@ export default function Exploration({
               name="tiles"
             />
             {/* Add Markers events astro on the map */}
-            <Marker names="marker" position={coordinates} />
+            <Marker names="marker" position={coordinates ?? franceCoordinates} />
           </MapContainer>
         </div>
       </section>

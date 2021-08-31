@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import PropTypes from 'prop-types';
 import * as dayjs from 'dayjs';
 
@@ -30,13 +29,6 @@ const Information = ({ information }) => {
               Créée par
               <Link to={`/profile/${idAuthor}`}> {username} </Link> le {dayjs(createdAt).format('DD-MM-YYYY')}
             </p>
-            <div className="Exploration__main__informations__general__left__title__stars">
-              <AiFillStar />
-              <AiFillStar />
-              <AiFillStar />
-              <AiFillStar />
-              <AiOutlineStar />
-            </div>
           </div>
           <img
             src={image}
