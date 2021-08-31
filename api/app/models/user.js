@@ -68,6 +68,7 @@ User.init(
     sequelize,
     tableName: 'user',
     // Never return user password, even if someone tries to get the user
+    // Send role by default for checking if user is admin
     defaultScope: {
       attributes: { exclude: ['password'] },
       include: ['role']
