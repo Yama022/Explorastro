@@ -38,6 +38,7 @@ User.init(
       type: DataTypes.TEXT,
       name: 'avatar_URL',
       allowNull: true,
+      defaultValue: 'https://explorastro-s3.s3.amazonaws.com/default.jpg',
     },
     bio: {
       type: DataTypes.TEXT,
@@ -67,6 +68,11 @@ User.init(
   {
     sequelize,
     tableName: 'user',
+    // Never return user password, even if someone tries to get the user
+    // Send role by default for checking if user is admin
+    defaultScope: {
+      include: ['role']
+    },
   },
 );
 

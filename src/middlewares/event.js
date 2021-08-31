@@ -50,7 +50,6 @@ const event = (store) => (next) => (action) => {
           const response = await api.get(`/api/v1/user/${id}`);
           const results = response.data;
           const userExplorations = results;
-          console.log(results);
           store.dispatch(saveUserEvents(userExplorations));
         }
         catch (err) {

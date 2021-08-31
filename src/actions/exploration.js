@@ -101,7 +101,7 @@ export const saveAllEvents = (value) => ({
   value,
 });
 
-export const updateEvents = (removedEvent, removedParticipate ) => ({
+export const updateEvents = (removedEvent, removedParticipate) => ({
   type: UPDATE_EVENTS,
   removedEvent,
   removedParticipate,

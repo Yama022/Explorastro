@@ -9,6 +9,7 @@ import NewExploration from './NewExploration';
 import UpdateAvatar from './UpdateAvatar';
 import Participation from './Participation';
 import Description from './Description';
+import Following from './Following';
 
 const ACTION = {
   FOLLOW: 'FOLLOW',
@@ -20,10 +21,20 @@ const ACTION = {
   UPDATE: 'UPDATE',
 };
 
-export default function Timeline({ getTimeline, loggedUserId, timelineContent }) {
+export default function Timeline({
+  getTimeline,
+  loggedUserId,
+  timelineContent,
+  following,
+  getInfo,
+}) {
   useEffect(() => {
     getTimeline();
   }, []);
+
+  useEffect(() => {
+    getInfo(loggedUserId);
+  }, [loggedUserId]);
 
   if (timelineContent.length === 0) {
     return <Loader />;
@@ -33,8 +44,6 @@ export default function Timeline({ getTimeline, loggedUserId, timelineContent })
     <div className="timeline">
       <aside className="timeline-left">
         <Link to="/discover" className="timeline-left__widget">
-          <Discover />
-          <Discover />
           <Discover />
         </Link>
       </aside>
@@ -66,8 +75,7 @@ export default function Timeline({ getTimeline, loggedUserId, timelineContent })
       </main>
       <aside className="timeline-right">
         <div className="timeline-left__widget">
-          <Discover />
-          <Discover />
+          <Following following={following} />
         </div>
       </aside>
     </div>
@@ -78,8 +86,11 @@ Timeline.propTypes = {
   loggedUserId: PropTypes.number.isRequired,
   getTimeline: PropTypes.func.isRequired,
   timelineContent: PropTypes.array,
+  following: PropTypes.array,
+  getInfo: PropTypes.func.isRequired,
 };
 
 Timeline.defaultProps = {
   timelineContent: [],
+  following: [],
 };

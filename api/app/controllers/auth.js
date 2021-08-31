@@ -10,6 +10,8 @@ module.exports = {
     try {
       const { login, password } = req.body;
 
+      console.log(login, password);
+
       if (!login || !password) {
         return res.status(400).json({
           message: ERROR.MISSING_CREDENTIALS,

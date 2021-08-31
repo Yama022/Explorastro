@@ -52,26 +52,6 @@ const { event, upload } = require('../utils');
  */
 
 module.exports = {
-  getAll: async (req, res) => {
-    try {
-      const explorations = await Exploration.findAll({
-        where: {
-          is_published: true,
-        },
-        include: ['author'],
-        order: [['date', 'ASC']],
-      });
-
-      res.status(200).json(explorations);
-    }
-    catch (error) {
-      console.error(error);
-      res.status(500).json({
-        error: ERROR.INTERNAL_SERVER_ERROR,
-      });
-    }
-  },
-
   getInformations: async (req, res) => {
     const { id } = req.params;
     const exploration = await Exploration.findByPk(id, {
@@ -234,7 +214,6 @@ module.exports = {
   delete: async (req, res) => {
     try {
       const { user } = req;
-
       const { exploration } = req;
 
       await exploration.destroy();

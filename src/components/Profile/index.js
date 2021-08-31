@@ -206,7 +206,7 @@ export default function Profile({
         {
           (() => {
             switch (menuValue) {
-              case 1: return <> <h2 className="profile__content__title">Dernières explorations</h2> <Explorations explorations={explorations} /> </>;
+              case 1: return <> <h2 className="profile__content__title">Explorations publiées</h2> <Explorations explorations={explorations} /> </>;
               case 2: return <> <h2 className="profile__content__title">Les personnes qui le suivent</h2> <Follows users={followers} /> </>;
               case 3: return <> <h2 className="profile__content__title">Les personnes qu'il suit</h2> <Follows users={following} /> </>;
               default: return <h2 className="profile__content__title">Une erreur est survenue</h2>;

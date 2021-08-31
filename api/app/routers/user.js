@@ -1,8 +1,8 @@
-const express = require('express');
+const express = require("express");
 
 const router = express.Router();
-const { userController, followController } = require('../controllers');
-const { userMiddleware, rateLimit } = require('../middlewares');
+const { userController, followController, searchController } = require("../controllers");
+const { userMiddleware, rateLimit } = require("../middlewares");
 
 router
   /**
@@ -15,10 +15,21 @@ router
    * @security JWT
    */
   .get(
-    '/:id(\\d+)',
+    "/:id(\\d+)",
     userMiddleware.checkIfExists,
-    userController.getInformations,
+    userController.getInformations
   )
+
+  /**
+   * Get informations about a user by his id
+   * @route GET /api/v1/user/1
+   * @group User - Operations about users
+   * @param {integer} id.param.required - The id of the user.
+   * @returns {User.model} 200 - An object containing the user's information
+   * @returns {Error.model}  default - An object containing the error message
+   * @security JWT
+   */
+  .get("/search", searchController.searchUserByName)
 
   /**
    * Update informations about a user by his id
@@ -42,11 +53,11 @@ router
    * @security JWT
    */
   .patch(
-    '/:id(\\d+)/update',
+    "/:id(\\d+)/update",
     rateLimit.updateProfile,
     userMiddleware.checkPermissions,
     userMiddleware.checkIfExists,
-    userController.update,
+    userController.update
   )
 
   /**
@@ -61,11 +72,11 @@ router
    * @security JWT
    */
   .patch(
-    '/:id(\\d+)/update/password',
+    "/:id(\\d+)/update/password",
     rateLimit.updatePassword,
     userMiddleware.checkPermissions,
     userMiddleware.checkIfExists,
-    userController.updatePassword,
+    userController.updatePassword
   )
 
   /**
@@ -80,11 +91,11 @@ router
    * @security JWT
    */
   .patch(
-    '/:id(\\d+)/update/username',
+    "/:id(\\d+)/update/username",
     rateLimit.updateUsername,
     userMiddleware.checkPermissions,
     userMiddleware.checkIfExists,
-    userController.updateUsername,
+    userController.updateUsername
   )
 
   /**
@@ -98,11 +109,11 @@ router
    * @security JWT
    */
   .put(
-    '/:id(\\d+)/update/avatar',
+    "/:id(\\d+)/update/avatar",
     rateLimit.updateAvatar,
     userMiddleware.checkPermissions,
     userMiddleware.checkIfExists,
-    userController.updateAvatar,
+    userController.updateAvatar
   )
 
   /**
@@ -116,10 +127,10 @@ router
    * @security JWT
    */
   .delete(
-    '/:id(\\d+)/delete',
+    "/:id(\\d+)/delete",
     userMiddleware.checkPermissions,
     userMiddleware.checkIfExists,
-    userController.delete,
+    userController.delete
   )
 
   /**
@@ -132,10 +143,10 @@ router
    * @security JWT
    */
   .post(
-    '/:id(\\d+)/follow/:toFollowId(\\d+)',
+    "/:id(\\d+)/follow/:toFollowId(\\d+)",
     userMiddleware.checkPermissions,
     userMiddleware.checkIfExists,
-    followController.follow,
+    followController.follow
   )
 
   /**
@@ -148,10 +159,10 @@ router
    * @security JWT
    */
   .delete(
-    '/:id(\\d+)/unfollow/:toUnfollowId(\\d+)',
+    "/:id(\\d+)/unfollow/:toUnfollowId(\\d+)",
     userMiddleware.checkPermissions,
     userMiddleware.checkIfExists,
-    followController.unfollow,
+    followController.unfollow
   );
 
 module.exports = router;

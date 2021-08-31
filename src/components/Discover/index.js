@@ -34,7 +34,7 @@ export default function Discover({
                 <div><span>{element.max_participants}</span> invités maximum</div>
               </div>
               <div className="discover__list-events__box__content__description">{element.description}</div>
-              <Link className="button --secondary" to={`/exploration/${element.id}`}>Participer</Link>
+              <Link className="button --secondary" to={`/exploration/${element.id}`}>Informations</Link>
             </div>
           </div>
         ))}

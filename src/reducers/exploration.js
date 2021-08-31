@@ -113,8 +113,6 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
     case UPDATE_EVENTS: {
-      console.log('participate', action.removedParticipate);
-      console.log('event', action.removedEvent);
       return {
         ...state,
         userEvents: [...action.removedEvent],
