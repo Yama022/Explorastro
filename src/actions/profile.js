@@ -10,6 +10,7 @@ export const CHANGE_BIO = 'CHANGE_BIO';
 export const SAVE_BIO = 'SAVE_BIO';
 export const USER_EXISTS = 'USER_EXISTS';
 export const UPLOAD_AVATAR = 'UPLOAD_AVATAR';
+export const SAVE_AVATAR = 'SAVE_AVATAR';
 
 export const changeProfileMenu = (payload) => ({
   type: CHANGE_PROFILE_MENU,
@@ -64,6 +65,12 @@ export const userExists = (value) => ({
   value,
 });
 
-export const uploadAvatar = () => ({
+export const uploadAvatar = (value) => ({
   type: UPLOAD_AVATAR,
+  value,
+});
+
+export const saveAvatar = (payload) => ({
+  type: SAVE_AVATAR,
+  payload,
 });

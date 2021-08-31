@@ -7,6 +7,7 @@ import {
   CHANGE_INPUT_VALUE,
   SAVE_BIO,
   USER_EXISTS,
+  SAVE_AVATAR,
 } from 'src/actions/profile';
 
 const initialState = {
@@ -22,6 +23,7 @@ const initialState = {
   followers: [],
   following: [],
   explorations: [],
+  participatesTo: [],
   userFollowed: false,
   bioEditOpen: false,
   userFound: false,
@@ -50,6 +52,7 @@ const profile = (state = initialState, action = {}) => {
         followers: action.payload.followers,
         following: action.payload.following,
         explorations: action.payload.organized_explorations,
+        participatesTo: action.payload.explorations,
         biography: action.payload.bio,
         biographyEdit: action.payload.bio,
         avatar_url: action.payload.avatar_url,
@@ -84,6 +87,12 @@ const profile = (state = initialState, action = {}) => {
       return {
         ...state,
         userFound: action.value,
+      };
+    }
+    case SAVE_AVATAR: {
+      return {
+        ...state,
+        avatar_url: action.payload,
       };
     }
     default:

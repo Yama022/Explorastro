@@ -18,6 +18,7 @@ const mapStateToProps = (state) => ({
   explorations: state.profile.explorations,
   bioEditIsOpen: state.profile.bioEditOpen,
   biography: state.profile.biography,
+  participatesTo: state.profile.participatesTo,
   biographyEdit: state.profile.biographyEdit,
   userFound: state.profile.userFound,
   avatarUrl: state.profile.avatar_url,
@@ -45,8 +46,8 @@ const mapDispatchToProps = (dispatch) => ({
   handleBioEdit: () => {
     dispatch(changeBio());
   },
-  handleAvatarUpload: () => {
-    dispatch(uploadAvatar());
+  handleAvatarUpload: (value) => {
+    dispatch(uploadAvatar(value));
   },
 });
 

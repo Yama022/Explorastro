@@ -8,6 +8,7 @@ import {
   saveBio,
   userExists,
   UPLOAD_AVATAR,
+  saveAvatar,
 } from 'src/actions/profile';
 
 import api from './utils/api';
@@ -84,18 +85,19 @@ const profile = (store) => (next) => (action) => {
       const formData = new FormData();
 
       formData.append('avatar',
-        state.profile.avatarFile,
-        state.profile.avatarFile.name);
+        action.value,
+        action.value.name);
 
       const handleUploadAvatar = async () => {
         try {
-          // eslint-disable-next-line no-unused-vars
-          const response = await api.put(`/api/v1/user/${state.user.loggedUserId}/update/avatar`, {
-            data: '[formData]',
-          });
-          // console.log(response);
-          // const actionSaveBio = saveBio(response.data.user.bio);
-          // store.dispatch(actionSaveBio);
+          const response = await api.put(`/api/v1/user/${state.user.loggedUserId}/update/avatar`, formData,
+            {
+              headers: {
+                'Content-Type': 'multipart/form-data',
+              },
+            });
+          const actionSaveAvatar = saveAvatar(response.data.avatar_url);
+          store.dispatch(actionSaveAvatar);
         }
         catch (error) {
           // eslint-disable-next-line no-console
