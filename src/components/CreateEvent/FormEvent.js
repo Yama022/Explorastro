@@ -33,8 +33,7 @@ export default function FormEvent({
     onChangeInput(event.target.value, event.target.name);
   };
 
-  const handleOnClick = (event) => {
-    event.preventDefault();
+  const handleOnClick = () => {
     onClick();
   };
 
@@ -89,37 +88,27 @@ export default function FormEvent({
               onChange={handleOnchange}
             />
             <h4>Nombre de personne(s) maximum</h4>
-            <input
-              value={eventToModify.max_participants}
-              className="maxRateEvent"
-              name="max_participants"
-              type="number"
-              onChange={handleOnchange}
-              placeholder="0"
-            />
-            {/* <button className="button is-danger" onClick={handleOnClick}>
-               Rendre privée
-             </button> */}
-            {eventToModify.is_published ? (
-              <div className="field">
-                <input id="switchRoundedDefault" type="checkbox" name="switchRoundedDefault" className="switch is-rounded" checked="checked" />
-                <label htmlFor="switchRoundedDefault">Publié</label>
-              </div>
-            ) : (
-              <button className="button is-link" onClick={handleOnClick}>
-                Publier
-              </button>
-            )}
+            <div className="left__range-input field has-addons">
+              <input type="range" id="km" name="max_participants" min="2" max="100" step="1" onChange={handleOnchange} value={eventToModify.max_participants} />
+              <span className="left__participant-nbr">{eventToModify.max_participants}</span>
+            </div>
+            <div className="left__publish-switch">
+              <h4>Publier l'exploration</h4>
+              <label className="left__publish-switch__switch">
+                <input type="checkbox" onChange={handleOnClick} checked={eventToModify.is_published} />
+                <span className="left__publish-switch__slider round" />
+              </label>
+            </div>
           </div>
           <div className="right"><Map getCoordLocation={getCoordLocation} coord={eventToModify.geog?.coordinates} /></div>
         </form>
         <div className="createEventForm__form__validate">
-          <button className="button is-success" onClick={handleSubmit}>
-            Sauvegarder
-          </button>
-          <Link className="button is-danger" to="/exploration/create">
+          <Link className="button --secondary" to="/exploration/create">
             Annuler{' '}
           </Link>
+          <button className="button --outlined" onClick={handleSubmit}>
+            Sauvegarder
+          </button>
         </div>
       </div>
     </div>
