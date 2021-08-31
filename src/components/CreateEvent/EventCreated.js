@@ -25,8 +25,8 @@ export default function EventCreated({
         <span>{is_published ? 'Publié' : 'Non publié'}</span>
       </div>
       <div className="createEvent__event-list__button">
-        <Link className="button --secondary" to={`/formEvent/${id}`}><ImPencil /></Link>
         <button className="button is-danger" onClick={handleOnClick}><ImCross /></button>
+        <Link className="button --secondary" to={`/formEvent/${id}`}><ImPencil /></Link>
       </div>
     </div>
   );

@@ -10,107 +10,122 @@
     margin: $gutter;
   }
 }
-  .container {
-    color: white;
 
-    .main-title__createEvent {
-      font-size: 2em;
-      margin: $gutter 0;
-    }
+.container {
+  color: white;
 
-    .createEvent {
-
-      display: flex;
-      text-align: center;
-      flex-wrap: wrap;
-      justify-content: center;
-
-
-      &__form {
-        overflow: hidden;
-        margin: $gutter;
-        border: 1px solid $secondary-color;
-        box-shadow: 0px 0px 9px -1px $secondary-color;
-        border-radius: 10px;
-        background-color: $primary-color;
-
-        &__title {
-          font-size: 1.4em;
-          background-color: $secondary-color;
-          width: 100%;
-
-          h2 {
-            padding: $gutter;
-          }
-        }
-
-        &__name {
-          display: flex;
-          flex-direction: column;
-          padding: $gutter;
-          margin-top: $gutter*4;
-
-          input {
-            padding: 1em;
-          }
-        }
-      }
-
-
-      &__event-list {
-        overflow: hidden;
-        margin: $gutter;
-        border: 1px solid $secondary-color;
-        box-shadow: 0px 0px 9px -1px $secondary-color;
-        border-radius: 10px;
-        width: 15em;
-        background-color: $primary-color;
-
-        img {
-          width: 100%;
-        }
-
-        h2 {
-
-          padding: $gutter;
-        }
-
-        &__content {
-          display: flex;
-          padding: $gutter;
-          justify-content: space-between;
-        }
-
-      }
-    }
+  .main-title__createEvent {
+    font-size: 2em;
+    margin: $gutter 0;
   }
 
+  .createEvent {
 
-  .createEventForm {
-    color: white;
-    font-size: 1.4em;
-    width: 80%;
-    margin: 0 auto;
-    padding: $gutter;
-    border-radius: 10px;
+    display: flex;
+    text-align: center;
+    flex-wrap: wrap;
+    justify-content: center;
+
 
     &__form {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
+      overflow: hidden;
+      margin: $gutter;
+      width: 15.5rem;
+      border: 1px solid $secondary-color;
+      box-shadow: 0px 0px 9px -1px $secondary-color;
+      border-radius: 10px;
+      background-color: $primary-color;
 
-      & .right {
-        width: 40%;
+      &__title {
+        font-size: 1.6em;
+        text-shadow: 0 0 0.2em $tertiary-color;
+        width: 100%;
+        border-bottom: 1px solid $secondary-color;
+        box-shadow: 0px 3px 7px -2px $secondary-color;
+        padding: $gutter;
       }
 
+      &__content {
+        width: 85%;
+        margin: auto;
+        height: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        & button {
+          width: 70%;
+          margin: .8em auto 0 auto;
+        }
+      }
+
+      
+    }
+
+
+    &__event-list {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      overflow: hidden;
+      margin: $gutter;
+      border: 1px solid $secondary-color;
+      box-shadow: 0px 0px 9px -1px $secondary-color;
+      border-radius: 10px;
+      width: 15.5rem;
+      background-color: $primary-color;
+      padding-bottom: 0.8rem;
+
+      img {
+        width: 250px;
+        height: 150px;
+        object-fit: cover;
+      }
+
+      h2 {
+
+        padding: $gutter;
+      }
+
+      &__content {
+        display: flex;
+        padding: $gutter;
+        justify-content: space-between;
+      }
+
+      &__button {
+        margin-top: 0.8rem;
+        display: flex;
+        justify-content: space-evenly;
+      }
+
+    }
+  }
+}
+
+
+.createEventForm {
+  color: white;
+  font-size: 1.4em;
+  width: 80%;
+  margin: 0 auto;
+  padding: $gutter;
+  border-radius: 10px;
+
+  &__form {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    & .left {
+      width: 40%;
       textarea {
         width: 100%;
       }
-
+  
       h4 {
         margin: $gutter 0;
       }
-
+  
       & input[type="datetime-local"]::-webkit-calendar-picker-indicator {
         background: transparent;
         bottom: 0;
@@ -123,39 +138,49 @@
         top: 0;
         width: auto;
       }
+    }
 
-      &__map {
-        background-color: $light-color;
-        border: 1px solid $light-color;
-        height: 25em;
-        overflow: hidden;
-      }
+    & .right {
+      width: 40%;
+    }
 
-      .maxRateEvent {
-        padding: 0.4em;
-        margin-left: 1em;
-        width: 12%;
-      }
-
-      .checkbox {
-        padding: $gutter;
-        margin: 0 $gutter;
-      }
-
-      &__checkbox {
-        text-align: left;
-        width: $gutter;
-        padding-left: $gutter;
-      }
-
-      &__add-img {
-        background-color: $secondary-color;
-        height: $gutter;
-      }
-
-      &__validate {
-        display: flex;
-        justify-content: center;
+    &__map {
+      background-color: $light-color;
+      border: 1px solid $secondary-color;
+      border-radius: 10px;
+      box-shadow: 0px 0px 9px -1px $secondary-color;
+      height: 25em;
+      overflow: hidden;
+      & .leaflet-container {
+        margin: 0;
       }
     }
+
+    .maxRateEvent {
+      padding: 0.4em;
+      margin-left: 1em;
+      width: 12%;
+    }
+
+    .checkbox {
+      padding: $gutter;
+      margin: 0 $gutter;
+    }
+
+    &__checkbox {
+      text-align: left;
+      width: $gutter;
+      padding-left: $gutter;
+    }
+
+    &__add-img {
+      background-color: $secondary-color;
+      height: $gutter;
+    }
+
+    &__validate {
+      display: flex;
+      justify-content: center;
+    }
   }
+}
