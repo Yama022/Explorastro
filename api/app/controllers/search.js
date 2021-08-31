@@ -3,7 +3,6 @@ const { Op } = require("sequelize");
 
 module.exports = {
     searchUserByName: async (req, res) => {
-        console.log(req.query.name);
         const { name } = req.query;
 
         const usersFound = await User.findAll({
