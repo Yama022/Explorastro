@@ -8,7 +8,6 @@ import satoru from 'src/assets/images/Satoru.jpg';
 import { BsArrowRightShort } from 'react-icons/bs';
 
 export default function Update({ props }) {
-  console.log('Update de Timeline', props);
   const {
     user: { username },
     date: { locales: { fr } },

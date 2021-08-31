@@ -7,6 +7,7 @@ import {
   CHANGE_INPUT_VALUE,
   SAVE_BIO,
   USER_EXISTS,
+  SAVE_AVATAR,
 } from 'src/actions/profile';
 
 const initialState = {
@@ -86,6 +87,12 @@ const profile = (state = initialState, action = {}) => {
       return {
         ...state,
         userFound: action.value,
+      };
+    }
+    case SAVE_AVATAR: {
+      return {
+        ...state,
+        avatar_url: action.payload,
       };
     }
     default:

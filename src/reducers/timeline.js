@@ -3,7 +3,6 @@ import { SAVE_TIMELINE } from 'src/actions/timeline';
 // les valeurs par défaut sont stockées dans le state initial
 export const initialState = {
   timelineContent: [],
-  // loader: true,
 };
 
 // fonction qui traduit une intention/action en changement de state
@@ -15,8 +14,7 @@ const reducer = (state = initialState, action = {}) => {
     case SAVE_TIMELINE: {
       return {
         ...state,
-        timelineContent: [...state.timelineContent, ...action.payload],
-        // loader: false,
+        timelineContent: [...action.payload],
       };
     }
     default:

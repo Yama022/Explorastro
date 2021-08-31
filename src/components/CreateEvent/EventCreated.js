@@ -7,8 +7,6 @@ import { ImPencil, ImCross, ImMan } from 'react-icons/im';
 import { Link } from 'react-router-dom';
 import * as dayjs from 'dayjs';
 
-import img from 'src/assets/images/default-explo.jpg';
-
 export default function EventCreated({
   name, id, onClick, date, max_participants, is_published, image_url,
 }) {
@@ -27,8 +25,8 @@ export default function EventCreated({
         <span>{is_published ? 'Publié' : 'Non publié'}</span>
       </div>
       <div className="createEvent__event-list__button">
-        <Link className="button" to={`/formEvent/${id}`}><ImPencil /></Link>
-        <button className="button isDelete" onClick={handleOnClick}><ImCross /></button>
+        <Link className="button --secondary" to={`/formEvent/${id}`}><ImPencil /></Link>
+        <button className="button is-danger" onClick={handleOnClick}><ImCross /></button>
       </div>
     </div>
   );

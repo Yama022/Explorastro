@@ -1,35 +1,25 @@
 import { connect } from 'react-redux';
 import FormEvent from 'src/components/CreateEvent/FormEvent';
 import {
-  changeInputCreateEvent,
+  changeInputValue,
   submitFormUpdateEvent,
-  getCoord, getEventCreated,
-  OnclickPublished,
-  eventsCreated,
+  getCoord,
+  onClickPublished,
   clickModal,
-  removeLastEventID,
-  clearOldState,
+  getEventToModifyData,
 } from 'src/actions/exploration';
 
-import { findEvent } from 'src/selectors/exploration';
-
-const mapStateToProps = (state, ownProps) => ({
-  eventCreated: findEvent(state.exploration.eventCreated, ownProps.match.params.id),
-  titleEvent: state.exploration.titleEvent,
-  dateEvent: state.exploration.dateEvent,
-  maxRateEvent: state.exploration.maxRateEvent,
-  descEvent: state.exploration.descEvent,
-  published: state.exploration.published,
-  coord: state.exploration.geog,
+const mapStateToProps = (state) => ({
+  eventToModify: state.exploration.eventToModify,
   modal: state.exploration.modal,
-  imageUrl: state.exploration.imageUrl,
-  eventCreatedLastID: state.exploration.eventCreatedLast.id,
-}
-);
+});
 
 const mapDispatchToProps = (dispatch) => ({
+  getEventData: (id) => {
+    dispatch(getEventToModifyData(id));
+  },
   onChangeInput: (value, key) => {
-    const action = changeInputCreateEvent(value, key);
+    const action = changeInputValue(value, key);
     dispatch(action);
   },
   onFormSubmitUpdateEvent: (value) => {
@@ -40,35 +30,14 @@ const mapDispatchToProps = (dispatch) => ({
     const action = getCoord(value);
     dispatch(action);
   },
-
-  getEvent: () => {
-    const action = getEventCreated();
+  onClick: () => {
+    const action = onClickPublished();
     dispatch(action);
   },
-
-  OnClick: () => {
-    const action = OnclickPublished();
-    dispatch(action);
-  },
-
-  getEventsCreated: (value) => {
-    const action = eventsCreated(value);
-    dispatch(action);
-  },
-
-  OnClickModal: () => {
+  onClickModal: () => {
     const action = clickModal();
     dispatch(action);
   },
-  removEventCreatedLastID: () => {
-    const action = removeLastEventID();
-    dispatch(action);
-  },
-  clearOldState: () => {
-    const action = clearOldState();
-    dispatch(action);
-  },
-
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FormEvent);

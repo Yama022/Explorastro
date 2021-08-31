@@ -1,13 +1,15 @@
 // Action types
 export const SAVE_EXPLORATION = 'SAVE_EXPLORATION';
 export const CHANGE_INPUT = 'CHANGE_INPUT';
-export const CHANGE_INPUT_CREATE_EVENT = 'CHANGE_INPUT_CREATE_EVENT';
+export const CHANGE_INPUT_VALUE_EXPLORATION = 'CHANGE_INPUT_VALUE_EXPLORATION';
 export const SUBMIT_FORM_UPDATE_EVENT = 'SUBMIT_FORM_UPDATE_EVENT';
 export const GET_COORD = 'GET_COORD';
-export const GET_EVENT_CREATED = 'GET_EVENT_CREATED';
-export const SAVE_EVENT_CREATED = 'SAVE_EVENT_CREATED';
-export const ON_CLICK_PUBLISHED = 'ON_CLICK_PUBLISHED';
-export const EVENTS_CREATED = 'EVENTS_CREATED';
+export const GET_USER_EVENTS = 'GET_USER_EVENTS';
+export const SAVE_USER_EVENTS = 'SAVE_USER_EVENTS';
+export const GET_EVENT_TO_MODIFY_DATA = 'GET_EVENT_TO_MODIFY_DATA';
+export const SAVE_EVENT_TO_MODIFY = 'SAVE_EVENT_TO_MODIFY';
+export const ON_CLICK_PUBLISH = 'ON_CLICK_PUBLISHED';
+export const ADD_NEW_EXPLORATION = 'ADD_NEW_EXPLORATION';
 export const SUBMIT_FROM_CREATE_EVENT = 'SUBMIT_FROM_CREATE_EVENT';
 export const REMOVE_EVENT = 'REMOVE_EVENT';
 export const GET_EVENT_CREATED_LAST = 'GET_EVENT_CREATED_LAST';
@@ -21,7 +23,6 @@ export const UPDATE_EVENTS = 'UPDATE_EVENTS';
 export const GET_EXPLORATION_BY_ID = 'GET_EXPLORATION_BY_ID';
 export const SAVE_EXPLORATION_BY_ID = 'SAVE_EXPLORATION_BY_ID';
 export const REMOVE_OLD_STATE_EXPLORATION = 'REMOVE_OLD_STATE_EXPLORATION';
-export const CLEAR_OLD_STATE = 'CLEAR_OLD_STATE';
 
 // Action creators
 export const formSubmitSearchAddress = (payload) => ({
@@ -34,8 +35,8 @@ export const changeInput = (payload) => ({
   payload,
 });
 
-export const changeInputCreateEvent = (value, key) => ({
-  type: CHANGE_INPUT_CREATE_EVENT,
+export const changeInputValue = (value, key) => ({
+  type: CHANGE_INPUT_VALUE_EXPLORATION,
   value,
   key,
 });
@@ -50,52 +51,41 @@ export const getCoord = (value) => ({
   value,
 });
 
-export const getEventCreated = () => ({
-  type: GET_EVENT_CREATED,
-
+export const getUserEvents = () => ({
+  type: GET_USER_EVENTS,
 });
-export const saveEventcreated = (value) => ({
-  type: SAVE_EVENT_CREATED,
+
+export const saveUserEvents = (value) => ({
+  type: SAVE_USER_EVENTS,
   value,
-
 });
 
-export const OnclickPublished = () => ({
-  type: ON_CLICK_PUBLISHED,
-
+export const getEventToModifyData = (payload) => ({
+  type: GET_EVENT_TO_MODIFY_DATA,
+  payload,
 });
 
-export const eventsCreated = (value) => ({
-  type: EVENTS_CREATED,
-  value,
+export const saveEventToModify = (payload) => ({
+  type: SAVE_EVENT_TO_MODIFY,
+  payload,
+});
 
+export const onClickPublished = () => ({
+  type: ON_CLICK_PUBLISH,
+});
+
+export const removeEvent = (payload) => ({
+  type: REMOVE_EVENT,
+  payload,
 });
 
 export const submitFormCreateEvent = () => ({
   type: SUBMIT_FROM_CREATE_EVENT,
-
 });
 
-export const removeEvent = (value) => ({
-  type: REMOVE_EVENT,
-  value,
-
-});
-
-export const getEventCreatedlast = (value) => ({
-  type: GET_EVENT_CREATED_LAST,
-  value,
-
-});
-
-export const saveEventcreatedlast = (value) => ({
-  type: SAVE_EVENT_CREATED_LAST,
-  value,
-
-});
-
-export const removeLastEventID = () => ({
-  type: REMOVE_LAST_EVENT_ID,
+export const addNewExploration = (payload) => ({
+  type: ADD_NEW_EXPLORATION,
+  payload,
 });
 
 export const clickModal = () => ({
@@ -105,6 +95,7 @@ export const clickModal = () => ({
 export const getAllEvents = () => ({
   type: GET_ALL_EVENTS,
 });
+
 export const saveAllEvents = (value) => ({
   type: SAVE_ALL_EVENTS,
   value,
@@ -114,6 +105,7 @@ export const updateEvents = (value) => ({
   type: UPDATE_EVENTS,
   value,
 });
+
 export const getExplorationById = (payload) => ({
   type: GET_EXPLORATION_BY_ID,
   payload,
@@ -123,9 +115,7 @@ export const saveExplorationById = (payload) => ({
   type: SAVE_EXPLORATION_BY_ID,
   payload,
 });
+
 export const removeOldStateExploration = () => ({
   type: REMOVE_OLD_STATE_EXPLORATION,
-});
-export const clearOldState = () => ({
-  type: CLEAR_OLD_STATE,
 });

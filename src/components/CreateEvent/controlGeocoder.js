@@ -9,29 +9,21 @@ import PropTypes from 'prop-types';
 
 export default function ControlGeocoder({ coordLocation, coord }) {
   const map = useMap();
-  let reverseTabCoord;
-  const objCoord = {};
   // eslint-disable-next-line max-len
-  let geocoder = L.Control.Geocoder.arcgis('AAPKcffce9aba8714a5f9f7d6c6fdc3f1c55pdj3nizxuNXswKYKCo0njoJsvKFgFniob5uOFbSUTnPn3zdOhJueIuGJWw9mskMm');
+  let geocoder = L.Control.Geocoder.arcgis(process.env.ARCIS_API_KEY);
   useEffect(() => {
     if (typeof URLSearchParams !== 'undefined' && location.search) {
-      // parse /?geocoder=nominatim from URL
       const params = new URLSearchParams(location.search);
       const geocoderString = params.get('geocoder');
       if (geocoderString && L.Control.Geocoder[geocoderString]) {
         geocoder = L.Control.Geocoder[geocoderString]();
       }
-      else if (geocoderString) {
-        console.warn('Unsupported geocoder', geocoderString);
-      }
     }
     if (coord.length) {
-      reverseTabCoord = coord.reverse();
-      [objCoord.lat, objCoord.lng] = [reverseTabCoord[0], reverseTabCoord[1]];
-      const latLon = L.latLng(reverseTabCoord);
+      const latLon = L.latLng(coord);
       const bounds = latLon.toBounds(500);
       map.panTo(latLon).fitBounds(bounds);
-      geocoder.reverse(latLon, 1, (resp) => (L.marker(objCoord)
+      geocoder.reverse(latLon, 1, (resp) => (L.marker(coord)
         .addTo(map)
         .bindPopup(resp[0].name)
         .openPopup()));
@@ -67,6 +59,5 @@ ControlGeocoder.propTypes = {
 };
 
 ControlGeocoder.defaultProps = {
-
   coord: [],
 };

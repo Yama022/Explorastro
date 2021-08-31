@@ -2,20 +2,17 @@ import {
   FORM_SUBMIT_SEARCH_ADDRESS,
   SAVE_EXPLORATION,
   CHANGE_INPUT,
-  CHANGE_INPUT_CREATE_EVENT,
+  CHANGE_INPUT_VALUE_EXPLORATION,
   GET_COORD,
-  SAVE_EVENT_CREATED,
-  ON_CLICK_PUBLISHED,
-  EVENTS_CREATED,
-  SAVE_EVENT_CREATED_LAST,
-  REMOVE_LAST_EVENT_ID,
+  ON_CLICK_PUBLISH,
+  ADD_NEW_EXPLORATION,
   CLICK_MODAL,
   SAVE_ALL_EVENTS,
   UPDATE_EVENTS,
+  SAVE_USER_EVENTS,
+  SAVE_EVENT_TO_MODIFY,
   SAVE_EXPLORATION_BY_ID,
   REMOVE_OLD_STATE_EXPLORATION,
-  CLEAR_OLD_STATE,
-
 } from 'src/actions/exploration';
 
 export const initialState = {
@@ -23,18 +20,10 @@ export const initialState = {
   address: [],
   events: [],
   exploration: {},
-  titleEvent: '',
-  descEvent: '',
+  userEvents: [],
+  eventToModify: {},
   zone: 10,
-  dateEvent: '',
-  maxRateEvent: '',
-  coord: [],
-  eventCreated: [],
-  published: false,
-  eventCreatedLast: [],
-  geog: [],
   modal: false,
-  imageUrl: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -60,75 +49,58 @@ const reducer = (state = initialState, action = {}) => {
     case GET_COORD: {
       return {
         ...state,
-        coord: action.value,
+        eventToModify: {
+          ...state.eventToModify,
+          location: action.value,
+        },
       };
     }
-    case CHANGE_INPUT_CREATE_EVENT: {
+    case CHANGE_INPUT_VALUE_EXPLORATION: {
       return {
         ...state,
-        [action.key]: action.value,
-
+        eventToModify: {
+          ...state.eventToModify,
+          [action.key]: action.value,
+        },
       };
     }
-    case SAVE_EVENT_CREATED: {
+    case SAVE_EVENT_TO_MODIFY: {
       return {
         ...state,
-        eventCreated: action.value.organized_explorations,
-
+        eventToModify: action.payload,
       };
     }
-    case ON_CLICK_PUBLISHED: {
+    case SAVE_USER_EVENTS: {
       return {
         ...state,
-        published: !state.published,
-
+        userEvents: action.value,
       };
     }
-    case EVENTS_CREATED: {
+    case ON_CLICK_PUBLISH: {
       return {
         ...state,
-        titleEvent: action.value.name,
-        descEvent: action.value.description,
-        dateEvent: action.value.date,
-        maxRateEvent: action.value.max_participants,
-        geog: action.value.geog,
-        published: action.value.is_published,
+        eventToModify: {
+          ...state.eventToModify,
+          is_published: !state.eventToModify.is_published,
+        },
       };
     }
-    case SAVE_EVENT_CREATED_LAST: {
+    case ADD_NEW_EXPLORATION: {
       return {
         ...state,
-        eventCreated: [...state.eventCreated, action.value],
-        eventCreatedLast: action.value,
-
-      };
-    }
-    case REMOVE_LAST_EVENT_ID: {
-      return {
-        ...state,
-        eventCreatedLast: initialState.eventCreatedLast,
-
+        userEvents: [...state.userEvents, action.payload],
       };
     }
     case CLICK_MODAL: {
       return {
         ...state,
         modal: !state.modal,
-
       };
     }
     case SAVE_ALL_EVENTS: {
       return {
         ...state,
         events: action.value,
-
-      };
-    }
-
-    case UPDATE_EVENTS: {
-      return {
-        ...state,
-        eventCreated: [...action.value],
       };
     }
     case SAVE_EXPLORATION_BY_ID: {
@@ -137,17 +109,16 @@ const reducer = (state = initialState, action = {}) => {
         exploration: action.payload,
       };
     }
-    case REMOVE_OLD_STATE_EXPLORATION:
-    {
+    case UPDATE_EVENTS: {
       return {
         ...state,
-        exploration: initialState.exploration,
+        userEvents: [...action.value],
       };
     }
-    case CLEAR_OLD_STATE: {
+    case REMOVE_OLD_STATE_EXPLORATION: {
       return {
         ...state,
-        eventCreated: initialState.eventCreated,
+        exploration: {},
       };
     }
     default:

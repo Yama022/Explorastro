@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Loader from 'src/components/Loader';
 import Weather from './Weather';
 import Information from './Information';
-import Partcipants from './Participant';
+import Participants from './Participant';
 import Comments from './Comments';
 // import Author from './Author';
 
@@ -27,17 +27,15 @@ export default function Exploration({
     <div className="Exploration">
       <section className="Exploration__main">
         <Information information={exploration} />
-        <Partcipants participants={exploration} />
+        <Participants participants={exploration} />
       </section>
       <section className="Exploration__overview">
         <div className="Exploration__overview__left">
           <Weather />
-          <Comments comments={exploration} />
+          <Comments comments={exploration.comments} />
         </div>
         <div className="Exploration__overview__map">
-          { console.log(coordinates) }
           <MapContainer
-            // Centering on the map of france
             center={coordinates}
             zoom={6}
             maxZoom={18}
@@ -47,7 +45,7 @@ export default function Exploration({
             {/* Add layer dark map */}
             <TileLayer
               attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-              url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
+              url={`https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png?api_key=${process.env.STADIA_API_KEY}`}
               name="tiles"
             />
             {/* Add Markers events astro on the map */}
@@ -66,5 +64,4 @@ Exploration.propTypes = {
   id: PropTypes.number.isRequired,
   exploration: PropTypes.object.isRequired,
   removeOldStateExploration: PropTypes.func.isRequired,
-
 };

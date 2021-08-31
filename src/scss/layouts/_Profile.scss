@@ -8,39 +8,67 @@
   &__header {
     display: flex;
     justify-content: space-evenly;
-
+    
     &__avatar {
+      &:hover {
+        .profile__header__avatar {
+          &__edit {
+            opacity: 1;
+            height: auto;
+          }
+          &__img {
+            &__elem {
+              &--logged {
+                filter: brightness(0.5) blur(5px);
+                transform: scale(1.02);
+              }
+            }
+          } 
+        }
+      }
       position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
 
       &__edit {
+        height: 0;
+        opacity: 0;
+        transition: opacity .1s ease-in-out;
         & #upload-avatar {
           position: absolute;
           opacity: 0;
           z-index: -1;
         }
-
+        
         &__icon {
-          font-size: 1.8rem;
+          font-size: 5rem;
           position: absolute;
           color: $tertiary-color;
-          top: 14px;
-          right: 4px;
-
+          filter: drop-shadow(0 0 0.2em $primary-color);
+          top: 50%;
+          left: 50%;
+          z-index: 3;
+          transform: translate(-50%, -50%);
+          
           &:hover {
             color: $light-color;
             filter: drop-shadow(0 0 0.2em $tertiary-color);
           }
         }
       }
-
-      & img {
-        object-fit: cover;
+      
+      &__img {
+        overflow: hidden;
         width: 350px;
         height: 350px;
         border-radius: 50%;
+        &__elem {
+          min-height: 100%;
+          max-height: 100%;
+          object-fit: cover;
+          transition: .2s ease-in-out;
+        }
       }
     }
 
@@ -328,6 +356,12 @@
       width: 15em;
       display: flex;
       flex-direction: column;
+
+      & img {
+        width: 220px;
+        height: 170px;
+        object-fit: cover;
+      }
 
       &__name {
         margin: 1em 0;

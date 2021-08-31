@@ -1,31 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import defaultAvatar from 'src/assets/images/luffy.png';
+import { Link } from 'react-router-dom';
 
 export default function Comment({ props }) {
-  console.log('Je suis dans le composant Comment de Timeline', props);
+  const {
+    author: { username, avatar_url: avatarUrl, id: authorId },
+    message: { fr: messageFr },
+    comment: { content },
+    date: { fr: dateFr },
+    exploration: { id: explorationId, name },
+  } = props;
   return (
     <div className="comment">
 
       <div className="comment__title">
-        <img src={defaultAvatar} alt="avatar" />
-        <h3>Théo a commenté "La Nuit des Etoiles"</h3>
+        <img src={avatarUrl} alt="avatar" />
+        <h3><Link to={`/profile/${authorId}`}>{username}</Link> {messageFr} <Link to={`/exploration/${explorationId}`}>"{name}"</Link></h3>
       </div>
 
       <div className="comment__content">
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor
-          enim assumenda dolorum suscipit voluptatibus, consectetur minima
-          nobis itaque ab laboriosam nihil asperiores repudiandae
-          doloremque eius optio soluta, pariatur incidunt obcaecati?
-          Dolorem sint recusandae corrupti harum repellendus, vitae
-          molestias temporibus sed.
+          {content}
         </p>
       </div>
 
       <div className="comment__date">
-        <p>Le Mardi 29 Août à 13h48</p>
+        <p>{dateFr}</p>
       </div>
     </div>
   );
@@ -33,8 +33,18 @@ export default function Comment({ props }) {
 
 Comment.propTypes = {
   props: PropTypes.object,
+  author: PropTypes.object,
+  message: PropTypes.object,
+  comment: PropTypes.object,
+  date: PropTypes.object,
+  exploration: PropTypes.object,
 };
 
 Comment.defaultProps = {
   props: {},
+  author: {},
+  message: {},
+  comment: {},
+  date: {},
+  exploration: {},
 };

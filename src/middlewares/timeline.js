@@ -13,6 +13,7 @@ const timeline = (store) => (next) => (action) => {
           store.dispatch(saveUserTimeline(result));
         }
         catch (err) {
+          // eslint-disable-next-line no-console
           console.error('Erreur requête API', err);
         }
       };

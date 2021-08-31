@@ -1,3 +1,4 @@
+import { SAVE_AVATAR } from 'src/actions/profile';
 import {
   CHANGE_VALUE, TOGGLE_SIGNUP, LOGOUT, SAVE_USER, LOGIN_ERROR,
   SET_FIELD_HAS_ERROR,
@@ -56,6 +57,12 @@ const reducer = (state = initialState, action = {}) => {
         passwordConfirmation: '',
         usernameChange: '',
         passwordForUsername: '',
+      };
+    }
+    case SAVE_AVATAR: {
+      return {
+        ...state,
+        avatar_url: action.payload,
       };
     }
     case LOGIN_ERROR: {

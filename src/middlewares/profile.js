@@ -8,6 +8,7 @@ import {
   saveBio,
   userExists,
   UPLOAD_AVATAR,
+  saveAvatar,
 } from 'src/actions/profile';
 
 import api from './utils/api';
@@ -37,6 +38,7 @@ const profile = (store) => (next) => (action) => {
           store.dispatch(toggleFollow());
         }
         catch (error) {
+          // eslint-disable-next-line no-console
           console.error(error.response);
         }
       };
@@ -51,6 +53,7 @@ const profile = (store) => (next) => (action) => {
           store.dispatch(toggleFollow());
         }
         catch (error) {
+          // eslint-disable-next-line no-console
           console.error(error.response);
         }
       };
@@ -65,11 +68,11 @@ const profile = (store) => (next) => (action) => {
       const handleChangeBio = async () => {
         try {
           const response = await api.patch(`/api/v1/user/${state.user.loggedUserId}/update`, data);
-          console.log(response.data.user.bio);
           const actionSaveBio = saveBio(response.data.user.bio);
           store.dispatch(actionSaveBio);
         }
         catch (error) {
+          // eslint-disable-next-line no-console
           console.error(error.response);
         }
       };
@@ -78,8 +81,6 @@ const profile = (store) => (next) => (action) => {
     }
     case UPLOAD_AVATAR: {
       const state = store.getState();
-
-      console.log(action.value, 'action value');
 
       const formData = new FormData();
 
@@ -95,11 +96,11 @@ const profile = (store) => (next) => (action) => {
                 'Content-Type': 'multipart/form-data',
               },
             });
-          console.log(response);
-          // const actionSaveBio = saveBio(response.data.user.bio);
-          // store.dispatch(actionSaveBio);
+          const actionSaveAvatar = saveAvatar(response.data.avatar_url);
+          store.dispatch(actionSaveAvatar);
         }
         catch (error) {
+          // eslint-disable-next-line no-console
           console.error(error.response);
         }
       };
