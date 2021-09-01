@@ -9,3 +9,4 @@ exploration_date_allow_null 2021-08-16T13:41:21Z Théo BIET <dev.theobiet@gmail.
 add_default_value 2021-08-26T14:41:38Z Théo BIET <dev.theobiet@gmail.com> # Add default value for exploration illstration & max_participants
 indexes 2021-08-30T08:56:51Z Théo BIET <dev.theobiet@gmail.com> # Add indexes on tables for improve response time
 default_avatar 2021-08-31T14:39:46Z Théo BIET <dev.theobiet@gmail.com> # Add default value for user avatar
+comment_fkey_constraint 2021-09-01T09:42:25Z Théo BIET <dev.theobiet@gmail.com> # Remove old constraint and make new
