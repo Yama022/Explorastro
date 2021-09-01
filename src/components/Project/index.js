@@ -22,9 +22,10 @@ export default function Project() {
           </div>
           <div className="project__container__developper__content">
             <h3 className="project__container__developper__content__name">Théo BIET</h3>
-            h4 className="project__container__developper__content__job">Développeur Web</h4>
+            <h4 className="project__container__developper__content__job">Développeur Web</h4>
           </div>
         </div>
       </div>
+    </div>
   );
 }
