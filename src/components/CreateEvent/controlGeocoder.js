@@ -50,6 +50,7 @@ export default function ControlGeocoder({ coordLocation, coord }) {
       })
       .addTo(map);
   }, []);
+
   return null;
 }
 

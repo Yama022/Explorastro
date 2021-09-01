@@ -1,4 +1,7 @@
-import { GET_EXPLORATION_BY_ID, saveExplorationById } from 'src/actions/exploration';
+import {
+  GET_EXPLORATION_BY_ID,
+  saveExplorationById,
+} from 'src/actions/exploration';
 import api from './utils/api';
 
 const exploration = (store) => (next) => (action) => {

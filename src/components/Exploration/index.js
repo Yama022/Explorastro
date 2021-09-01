@@ -22,7 +22,7 @@ export default function Exploration({
   }
   const { geog } = exploration;
 
-  const coordinates = geog?.coordinates.reverse();
+  const coordinates = geog?.coordinates;
 
   const franceCoordinates = [48.856614, 2.352222];
 

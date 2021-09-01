@@ -10,6 +10,8 @@ import {
   updateEvents,
   saveEventToModify,
   addNewExploration,
+  UPLOAD_EXPLORATION_ILLUSTRATION,
+  saveExplorationIllustration,
 } from 'src/actions/exploration';
 
 import api from './utils/api';
@@ -125,7 +127,33 @@ const event = (store) => (next) => (action) => {
       getAllEvents();
       break;
     }
+    case UPLOAD_EXPLORATION_ILLUSTRATION: {
+      const formData = new FormData();
 
+      formData.append('avatar',
+        action.value,
+        action.value.name);
+
+      const handleUploadIllustration = async () => {
+        try {
+          const response = await api.put(`/api/v1/exploration/${action.id}/update/illustration`, formData,
+            {
+              headers: {
+                'Content-Type': 'multipart/form-data',
+              },
+            });
+          console.log('response', response);
+          const actionSaveIllustration = saveExplorationIllustration(response.data.image_url);
+          store.dispatch(actionSaveIllustration);
+        }
+        catch (error) {
+          // eslint-disable-next-line no-console
+          console.error(error.response);
+        }
+      };
+      handleUploadIllustration();
+      break;
+    }
     default:
       next(action);
   }

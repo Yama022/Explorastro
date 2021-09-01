@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import EventCreated from './EventCreated';
-import Loader from '../Loader';
 import Participate from './Participate';
 
 export default function CreateEvent({
-  getEvent, userEvents, onChangeInput,
-  onFormSubmitCreate, onClickRemove, participate,
+  getEvent,
+  userEvents,
+  onChangeInput,
+  onFormSubmitCreate,
+  onClickRemove,
+  participate,
 }) {
   useEffect(async () => {
     getEvent();
@@ -20,12 +23,6 @@ export default function CreateEvent({
   const handleOnchange = (event) => {
     onChangeInput(event.target.value, event.target.name);
   };
-
-  if (!userEvents) {
-    return (
-      <Loader />
-    );
-  }
 
   return (
 
