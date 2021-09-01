@@ -5,8 +5,8 @@ import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import ControlGeocoder from './controlGeocoder';
 
 export default function Map({ getCoordLocation, coord }) {
-  coord.reverse();
   return (
+
     <div className="createEventForm__form__map">
       <MapContainer
         // Centering on the map of france

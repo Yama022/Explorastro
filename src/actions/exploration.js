@@ -8,7 +8,7 @@ export const GET_USER_EVENTS = 'GET_USER_EVENTS';
 export const SAVE_USER_EVENTS = 'SAVE_USER_EVENTS';
 export const GET_EVENT_TO_MODIFY_DATA = 'GET_EVENT_TO_MODIFY_DATA';
 export const SAVE_EVENT_TO_MODIFY = 'SAVE_EVENT_TO_MODIFY';
-export const ON_CLICK_PUBLISH = 'ON_CLICK_PUBLISHED';
+export const ON_CLICK_PUBLISH = 'ON_CLICK_PUBLISH';
 export const ADD_NEW_EXPLORATION = 'ADD_NEW_EXPLORATION';
 export const SUBMIT_FROM_CREATE_EVENT = 'SUBMIT_FROM_CREATE_EVENT';
 export const REMOVE_EVENT = 'REMOVE_EVENT';
@@ -23,6 +23,8 @@ export const UPDATE_EVENTS = 'UPDATE_EVENTS';
 export const GET_EXPLORATION_BY_ID = 'GET_EXPLORATION_BY_ID';
 export const SAVE_EXPLORATION_BY_ID = 'SAVE_EXPLORATION_BY_ID';
 export const REMOVE_OLD_STATE_EXPLORATION = 'REMOVE_OLD_STATE_EXPLORATION';
+export const UPLOAD_EXPLORATION_ILLUSTRATION = 'UPLOAD_EXPLORATION_ILLUSTRATION';
+export const SAVE_EXPLORATION_ILLUSTRATION = 'SAVE_EXPLORATION_ILLUSTRATION';
 export const POST_COMMENT = 'POST_COMMENT';
 export const CHANGE_VALUE_COMMENT = 'CHANGE_VALUE_COMMENT';
 
@@ -72,7 +74,7 @@ export const saveEventToModify = (payload) => ({
   payload,
 });
 
-export const onClickPublished = () => ({
+export const onClickPublish = () => ({
   type: ON_CLICK_PUBLISH,
 });
 
@@ -121,6 +123,17 @@ export const saveExplorationById = (payload) => ({
 
 export const removeOldStateExploration = () => ({
   type: REMOVE_OLD_STATE_EXPLORATION,
+});
+
+export const uploadExplorationIllustration = (value, id) => ({
+  type: UPLOAD_EXPLORATION_ILLUSTRATION,
+  value,
+  id,
+});
+
+export const saveExplorationIllustration = (payload) => ({
+  type: SAVE_EXPLORATION_ILLUSTRATION,
+  payload,
 });
 
 export const postComment = () => ({

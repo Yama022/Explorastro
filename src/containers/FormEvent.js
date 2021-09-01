@@ -4,9 +4,10 @@ import {
   changeInputValue,
   submitFormUpdateEvent,
   getCoord,
-  onClickPublished,
+  onClickPublish,
   clickModal,
   getEventToModifyData,
+  uploadExplorationIllustration,
 } from 'src/actions/exploration';
 
 const mapStateToProps = (state) => ({
@@ -30,13 +31,16 @@ const mapDispatchToProps = (dispatch) => ({
     const action = getCoord(value);
     dispatch(action);
   },
-  onClick: () => {
-    const action = onClickPublished();
+  togglePublished: () => {
+    const action = onClickPublish();
     dispatch(action);
   },
   onClickModal: () => {
     const action = clickModal();
     dispatch(action);
+  },
+  uploadIllustration: (value, id) => {
+    dispatch(uploadExplorationIllustration(value, id));
   },
 });
 

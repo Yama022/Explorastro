@@ -5,6 +5,9 @@ import * as dayjs from 'dayjs';
 import PropTypes from 'prop-types';
 import Loader from 'src/components/Loader';
 import { Link } from 'react-router-dom';
+
+import { RiImageEditLine } from 'react-icons/ri';
+
 import Modal from './Modal';
 import Map from './Map';
 
@@ -13,11 +16,12 @@ export default function FormEvent({
   onFormSubmitUpdateEvent,
   onClickModal,
   onChangeInput,
-  onClick,
+  togglePublished,
   modal,
   getCoordLocation,
   getEventData,
   id,
+  uploadIllustration,
 }) {
   useEffect(() => {
     getEventData(id);
@@ -34,7 +38,11 @@ export default function FormEvent({
   };
 
   const handleOnClick = () => {
-    onClick();
+    togglePublished();
+  };
+
+  const handleIllustrationUpload = (event) => {
+    uploadIllustration(event.target.files[0], id);
   };
 
   if (!eventToModify.id) {
@@ -92,19 +100,44 @@ export default function FormEvent({
               <input type="range" id="km" name="max_participants" min="2" max="100" step="1" onChange={handleOnchange} value={eventToModify.max_participants} />
               <span className="left__participant-nbr">{eventToModify.max_participants}</span>
             </div>
-            <div className="left__publish-switch">
-              <h4>Publier l'exploration</h4>
-              <label className="left__publish-switch__switch">
-                <input type="checkbox" onChange={handleOnClick} checked={eventToModify.is_published} />
-                <span className="left__publish-switch__slider round" />
-              </label>
+            <div className="left__bottom">
+              <div className="left__bottom__publish-switch">
+                <h4>Publier l'exploration</h4>
+                <label className="left__bottom__publish-switch__switch">
+                  <input type="checkbox" onChange={handleOnClick} checked={eventToModify.is_published} />
+                  <span className="left__bottom__publish-switch__slider round" />
+                </label>
+              </div>
+              <div className="left__bottom__upload">
+                {/* <h4>Ajouter une illustration</h4> */}
+                <div className="left__bottom__upload__edit">
+                  <label htmlFor="upload-illustration">
+                    <RiImageEditLine className="left__bottom__upload__edit__icon" />
+                    <input
+                      type="file"
+                      id="upload-illustration"
+                      accept="image/png, image/jpeg, image/jpg, image/gif, image/webp"
+                      onChange={(event) => {
+                        handleIllustrationUpload(event);
+                      }}
+                    />
+                  </label>
+                </div>
+                <div className="left__bottom__upload__img">
+                  <img
+                    src={eventToModify.image_url}
+                    alt="Illustration de la sortie"
+                    className="left__bottom__upload__img__elem"
+                  />
+                </div>
+              </div>
             </div>
           </div>
-          <div className="right"><Map getCoordLocation={getCoordLocation} coord={eventToModify.geog?.coordinates} /></div>
+          <div className="right"><Map getCoordLocation={getCoordLocation} coord={eventToModify.geog?.coordinates.reverse()} /></div>
         </form>
         <div className="createEventForm__form__validate">
           <Link className="button --secondary" to="/exploration/create">
-            Annuler{' '}
+            Annuler
           </Link>
           <button className="button --outlined" onClick={handleSubmit}>
             Sauvegarder
@@ -119,12 +152,13 @@ FormEvent.propTypes = {
   onChangeInput: PropTypes.func.isRequired,
   onFormSubmitUpdateEvent: PropTypes.func.isRequired,
   getCoordLocation: PropTypes.func.isRequired,
-  onClick: PropTypes.func.isRequired,
+  togglePublished: PropTypes.func.isRequired,
   onClickModal: PropTypes.func.isRequired,
   modal: PropTypes.bool,
   eventToModify: PropTypes.object,
   getEventData: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
+  uploadIllustration: PropTypes.func.isRequired,
 };
 
 FormEvent.defaultProps = {
