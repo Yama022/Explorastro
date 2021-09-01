@@ -25,6 +25,8 @@ export const SAVE_EXPLORATION_BY_ID = 'SAVE_EXPLORATION_BY_ID';
 export const REMOVE_OLD_STATE_EXPLORATION = 'REMOVE_OLD_STATE_EXPLORATION';
 export const UPLOAD_EXPLORATION_ILLUSTRATION = 'UPLOAD_EXPLORATION_ILLUSTRATION';
 export const SAVE_EXPLORATION_ILLUSTRATION = 'SAVE_EXPLORATION_ILLUSTRATION';
+export const POST_COMMENT = 'POST_COMMENT';
+export const CHANGE_VALUE_COMMENT = 'CHANGE_VALUE_COMMENT';
 
 // Action creators
 export const formSubmitSearchAddress = (payload) => ({
@@ -132,4 +134,14 @@ export const uploadExplorationIllustration = (value, id) => ({
 export const saveExplorationIllustration = (payload) => ({
   type: SAVE_EXPLORATION_ILLUSTRATION,
   payload,
+});
+
+export const postComment = () => ({
+  type: POST_COMMENT,
+});
+
+export const changeValueComment = (value, key) => ({
+  type: CHANGE_VALUE_COMMENT,
+  value,
+  key,
 });

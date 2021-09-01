@@ -11,7 +11,7 @@ const Weather = () => (
     </div>
     <div className="Exploration__overview__left__weather__temp">
       {/* {props.weather} */}
-      45°C
+      25°C
     </div>
   </div>
 );

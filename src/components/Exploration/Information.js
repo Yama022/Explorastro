@@ -11,8 +11,14 @@ const Information = ({ information }) => {
     name,
     date,
     createdAt,
+    getParticipate,
   } = information;
 
+  console.log(information);
+
+  const handleOnClickParticipate = () => {
+    getParticipate();
+  };
   return (
 
     <div className="Exploration__main__informations animate__animated animate__fadeIn">
@@ -41,7 +47,7 @@ const Information = ({ information }) => {
           <p>
             {information.description ? information.description : '' }
           </p>
-          <button type="button" className="button --secondary">
+          <button onClick={handleOnClickParticipate} type="button" className="button --secondary">
             Participer
           </button>
         </div>
@@ -56,10 +62,12 @@ Information.propTypes = {
   information: PropTypes.object,
   image_url: PropTypes.string,
   name: PropTypes.string,
+  getParticipate: PropTypes.func,
 };
 
 Information.defaultProps = {
   information: {},
   image_url: '',
   name: '',
+  getParticipate: {},
 };
