@@ -2,7 +2,7 @@ import {
   GET_EXPLORATION_BY_ID,
   saveExplorationById,
   POST_COMMENT,
-  saveComment,
+  getExplorationById,
 } from 'src/actions/exploration';
 import api from './utils/api';
 
@@ -17,6 +17,7 @@ const exploration = (store) => (next) => (action) => {
           store.dispatch(result);
         }
         catch (err) {
+          // eslint-disable-next-line no-console
           console.error(err);
         }
       };
@@ -32,10 +33,10 @@ const exploration = (store) => (next) => (action) => {
           const response = await api.post(`/api/v1/exploration/${id}/comments/add`, {
             content: state.exploration.comment,
           });
-          const result = saveComment(response.data);
-          store.dispatch(result);
+          if (response.status === 200) store.dispatch(getExplorationById(id));
         }
         catch (err) {
+          // eslint-disable-next-line no-console
           console.error(err);
         }
       };

@@ -20,7 +20,6 @@ const mapDispatchToProps = (dispatch) => ({
   },
   onSubmitMessage: () => {
     const action = postComment();
-    console.log('action containers', action);
     dispatch(action);
   },
   onChangeValue: (value, key) => {

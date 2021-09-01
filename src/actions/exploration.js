@@ -24,7 +24,6 @@ export const GET_EXPLORATION_BY_ID = 'GET_EXPLORATION_BY_ID';
 export const SAVE_EXPLORATION_BY_ID = 'SAVE_EXPLORATION_BY_ID';
 export const REMOVE_OLD_STATE_EXPLORATION = 'REMOVE_OLD_STATE_EXPLORATION';
 export const POST_COMMENT = 'POST_COMMENT';
-export const SAVE_COMMENT = 'SAVE_COMMENT';
 export const CHANGE_VALUE_COMMENT = 'CHANGE_VALUE_COMMENT';
 
 // Action creators
@@ -126,11 +125,6 @@ export const removeOldStateExploration = () => ({
 
 export const postComment = () => ({
   type: POST_COMMENT,
-});
-
-export const saveComment = (payload) => ({
-  type: SAVE_COMMENT,
-  payload,
 });
 
 export const changeValueComment = (value, key) => ({

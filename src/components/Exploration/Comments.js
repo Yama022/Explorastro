@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { FiSend } from 'react-icons/fi';
 
-const Comments = ({ comments, onSubmit, onChangeValue }) => {
+const Comments = ({
+  comments, onSubmit, onChangeValue,
+}) => {
   const handleOnSubmit = (event) => {
     event.preventDefault();
     onSubmit();
@@ -12,8 +14,6 @@ const Comments = ({ comments, onSubmit, onChangeValue }) => {
   const handleChange = (event) => {
     onChangeValue(event.target.value, event.target.name);
   };
-
-  console.log(comments);
   return (
     <div className="Exploration__overview__left__comments">
       <h3>Commentaires</h3>

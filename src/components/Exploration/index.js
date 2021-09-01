@@ -23,9 +23,6 @@ export default function Exploration({
     };
   }, []);
 
-  useEffect(() => {
-    getExploration(id);
-  }, [exploration]);
   if (!exploration?.id) {
     return (<Loader />);
   }
