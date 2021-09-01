@@ -14,7 +14,6 @@ import {
   SAVE_EXPLORATION_BY_ID,
   REMOVE_OLD_STATE_EXPLORATION,
   SAVE_EXPLORATION_ILLUSTRATION,
-  SAVE_COMMENT,
   CHANGE_VALUE_COMMENT,
 } from 'src/actions/exploration';
 
@@ -135,18 +134,6 @@ const reducer = (state = initialState, action = {}) => {
         eventToModify: {
           ...state.eventToModify,
           image_url: action.payload,
-        },
-      };
-    }
-    case SAVE_COMMENT: {
-      return {
-        ...state,
-        exploration: {
-          ...state.exploration,
-          comments: [
-            ...state.exploration.comments,
-            action.payload,
-          ],
         },
       };
     }
