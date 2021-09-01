@@ -34,7 +34,7 @@ module.exports = {
       await exploration.addComment(comment);
 
       res.status(200).json({
-        message: ERROR.COMMENT_ADDED,
+        comment,
       });
 
       await event.saveUserAction(EVENT.ACTION.COMMENT, user, {
