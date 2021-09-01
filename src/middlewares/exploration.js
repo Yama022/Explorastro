@@ -1,4 +1,9 @@
-import { GET_EXPLORATION_BY_ID, saveExplorationById } from 'src/actions/exploration';
+import {
+  GET_EXPLORATION_BY_ID,
+  saveExplorationById,
+  POST_COMMENT,
+  saveComment,
+} from 'src/actions/exploration';
 import api from './utils/api';
 
 const exploration = (store) => (next) => (action) => {
@@ -16,6 +21,25 @@ const exploration = (store) => (next) => (action) => {
         }
       };
       getEvent();
+      break;
+    }
+
+    case POST_COMMENT: {
+      const state = store.getState();
+      const { id } = state.exploration.exploration;
+      const onSubmitMessage = async () => {
+        try {
+          const response = await api.post(`/api/v1/exploration/${id}/comments/add`, {
+            content: state.exploration.comment,
+          });
+          const result = saveComment(response.data);
+          store.dispatch(result);
+        }
+        catch (err) {
+          console.error(err);
+        }
+      };
+      onSubmitMessage();
       break;
     }
 

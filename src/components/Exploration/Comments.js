@@ -1,57 +1,76 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { FiSend } from 'react-icons/fi';
 
-const Comments = ({ comments }) => (
-  <div className="Exploration__overview__left__comments">
-    <h3>Commentaires</h3>
-    <ul className="Exploration__overview__left__comments__list">
-      {comments.map((comment) => (
-        <li className="Exploration__overview__left__comments__list__item">
-          <div className="Exploration__overview__left__comments__list__item__author">
-            <span className="avatar">
-              <img
-                src={comment.author?.avatar_url}
-                alt=""
-              />
+const Comments = ({ comments, onSubmit, onChangeValue }) => {
+  const handleOnSubmit = (event) => {
+    event.preventDefault();
+    onSubmit();
+  };
+
+  const handleChange = (event) => {
+    onChangeValue(event.target.value, event.target.name);
+  };
+
+  console.log(comments);
+  return (
+    <div className="Exploration__overview__left__comments">
+      <h3>Commentaires</h3>
+      <ul className="Exploration__overview__left__comments__list">
+        {comments.map((comment) => (
+          <li key={comment.id} className="Exploration__overview__left__comments__list__item">
+            <Link to={`/profile/${comment.author_id}`} className="Exploration__overview__left__comments__list__item__author">
+              <span className="Exploration__overview__left__comments__list__item__author__avatar">
+                <img
+                  src={comment.author?.avatar_url}
+                  alt=""
+                />
+              </span>
+              {/* eslint-disable-next-line max-len */}
+              <span>{comment.author?.username} </span>
+            </Link>
+            <span className="Exploration__overview__left__comments__list__item__text">
+              <p>
+                {comment.content}
+              </p>
             </span>
-            {/* eslint-disable-next-line max-len */}
-            <span>{comment.author?.username} ({comment.author?.firstname} {comment.author?.lastname})</span>
-          </div>
-          <span className="Exploration__overview__left__comments__list__item__text">
-            <p>
-              {comment.content}
-            </p>
-          </span>
-        </li>
-      ))}
-    </ul>
-    <div className="Exploration__overview__left__comments__form">
-      <div className="Exploration__overview__left__comments__form__input">
-        <input
-          type="text"
-          placeholder="Commenter"
-          className="Exploration__overview__left__comments__form__input__input input"
-        />
-      </div>
-      <div className="Exploration__overview__left__comments__form__button">
-        <button
-          type="submit"
-          className="Exploration__overview__left__comments__form__button__button button --secondary"
-        >
-          <FiSend />
-        </button>
-      </div>
+          </li>
+        ))}
+      </ul>
+      <form className="Exploration__overview__left__comments__form" onSubmit={handleOnSubmit}>
+        <div className="Exploration__overview__left__comments__form__input">
+          <input
+            type="text"
+            placeholder="Commenter"
+            className="Exploration__overview__left__comments__form__input__input input"
+            onChange={handleChange}
+            name="comment"
+          />
+        </div>
+        <div className="Exploration__overview__left__comments__form__button">
+          <button
+            type="submit"
+            className="Exploration__overview__left__comments__form__button__button button --secondary"
+          >
+            <FiSend />
+          </button>
+        </div>
+      </form>
     </div>
-  </div>
-);
+  );
+};
 
 Comments.propTypes = {
-  comments: PropTypes.object,
+  comments: PropTypes.array,
+  onSubmit: PropTypes.func,
+  onChangeValue: PropTypes.func,
 };
 
 Comments.defaultProps = {
-  comments: {},
+  comments: [],
+  onSubmit: {},
+  onChangeValue: {},
 };
 
 export default Comments;

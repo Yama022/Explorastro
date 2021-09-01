@@ -24,12 +24,14 @@
       border-radius: 5px;
       color: $light-color;
       box-shadow: 0px 0px 9px -1px $secondary-color;
+      
       & h3 {
         width: 100%;
         font-size: 2em;
         font-weight: bold;
         padding: $gutter;
         text-align: center;
+        
       }
 
       a {
@@ -44,9 +46,15 @@
         height: 100%;
         width: 100%;
         margin: auto;
+        &:hover {
+          color: $light-color;
+          text-shadow: 1px 1px 8px $tertiary-color;
+        }
       }
       & img {
-        width: 3em;
+        height: 48px;
+        width: 48px;
+        object-fit: cover;
         border-radius: 50%;
       }
 
@@ -191,12 +199,15 @@
     display: flex;
     justify-content: flex-start;
     & img {
-      object-fit: cover;
-      width: 2.5rem;
-      height: 2.5rem;
-      border-radius: 50%;
       filter: brightness(0.5);
       transition: 0.2s ease-in-out;
+      height: 48px;
+      width: 48px;
+      object-fit: cover;
+      &:hover {
+        color: $light-color;
+        text-shadow: 1px 1px 8px $tertiary-color;
+      }
     }
     & h3 {
       margin: auto;
@@ -211,9 +222,9 @@
     background-color: $primary-color !important;
     margin: 1em 0;
     & > img {
-      background-size: cover;
-      border-radius: 50%;
-      width: 20%;
+      height: 120px;
+      width: 120px;
+      object-fit: cover;
       color: $light-color;
       filter: brightness(0.5);
       transition: 0.2s ease-in-out;

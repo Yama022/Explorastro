@@ -9,7 +9,12 @@ import Comments from './Comments';
 // import Author from './Author';
 
 export default function Exploration({
-  getExploration, id, exploration, removeOldStateExploration,
+  getExploration,
+  id,
+  exploration,
+  removeOldStateExploration,
+  onSubmitMessage,
+  onChangeValue,
 }) {
   useEffect(() => {
     getExploration(id);
@@ -17,6 +22,10 @@ export default function Exploration({
       removeOldStateExploration();
     };
   }, []);
+
+  useEffect(() => {
+    getExploration(id);
+  }, [exploration]);
   if (!exploration?.id) {
     return (<Loader />);
   }
@@ -35,7 +44,11 @@ export default function Exploration({
       <section className="Exploration__overview">
         <div className="Exploration__overview__left">
           <Weather />
-          <Comments comments={exploration.comments} />
+          <Comments
+            comments={exploration.comments}
+            onSubmit={onSubmitMessage}
+            onChangeValue={onChangeValue}
+          />
         </div>
         <div className="Exploration__overview__map">
           <MapContainer
@@ -67,4 +80,6 @@ Exploration.propTypes = {
   id: PropTypes.number.isRequired,
   exploration: PropTypes.object.isRequired,
   removeOldStateExploration: PropTypes.func.isRequired,
+  onSubmitMessage: PropTypes.func.isRequired,
+  onChangeValue: PropTypes.func.isRequired,
 };

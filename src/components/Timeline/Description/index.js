@@ -12,14 +12,17 @@ export default function Description({ props }) {
   } = props;
   return (
     <div className="desc">
-      <Link to={`/profile/${id}`}>
-        <div className="desc__title">
+      <div className="desc__title">
+        <Link to={`/profile/${id}`}>
           <img src={avatar ?? 'https://explorastro-s3.s3.amazonaws.com/default.jpg'} alt="avatar" />
-          <h3>
-            {username} {message}
-          </h3>
-        </div>
-      </Link>
+        </Link>
+        <h3>
+          <Link to={`/profile/${id}`}>
+            {username}&nbsp;
+          </Link>
+          {message}
+        </h3>
+      </div>
       <div className="desc__content">
         <p>
           {content}

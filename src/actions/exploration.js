@@ -23,6 +23,9 @@ export const UPDATE_EVENTS = 'UPDATE_EVENTS';
 export const GET_EXPLORATION_BY_ID = 'GET_EXPLORATION_BY_ID';
 export const SAVE_EXPLORATION_BY_ID = 'SAVE_EXPLORATION_BY_ID';
 export const REMOVE_OLD_STATE_EXPLORATION = 'REMOVE_OLD_STATE_EXPLORATION';
+export const POST_COMMENT = 'POST_COMMENT';
+export const SAVE_COMMENT = 'SAVE_COMMENT';
+export const CHANGE_VALUE_COMMENT = 'CHANGE_VALUE_COMMENT';
 
 // Action creators
 export const formSubmitSearchAddress = (payload) => ({
@@ -119,4 +122,19 @@ export const saveExplorationById = (payload) => ({
 
 export const removeOldStateExploration = () => ({
   type: REMOVE_OLD_STATE_EXPLORATION,
+});
+
+export const postComment = () => ({
+  type: POST_COMMENT,
+});
+
+export const saveComment = (payload) => ({
+  type: SAVE_COMMENT,
+  payload,
+});
+
+export const changeValueComment = (value, key) => ({
+  type: CHANGE_VALUE_COMMENT,
+  value,
+  key,
 });

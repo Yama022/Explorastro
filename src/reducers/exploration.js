@@ -13,6 +13,8 @@ import {
   SAVE_EVENT_TO_MODIFY,
   SAVE_EXPLORATION_BY_ID,
   REMOVE_OLD_STATE_EXPLORATION,
+  SAVE_COMMENT,
+  CHANGE_VALUE_COMMENT,
 } from 'src/actions/exploration';
 
 export const initialState = {
@@ -25,6 +27,7 @@ export const initialState = {
   zone: 10,
   modal: false,
   participate: [],
+  comment: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -123,6 +126,24 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         exploration: {},
+      };
+    }
+    case SAVE_COMMENT: {
+      return {
+        ...state,
+        exploration: {
+          ...state.exploration,
+          comments: [
+            ...state.exploration.comments,
+            action.payload,
+          ],
+        },
+      };
+    }
+    case CHANGE_VALUE_COMMENT: {
+      return {
+        ...state,
+        [action.key]: action.value,
       };
     }
     default:

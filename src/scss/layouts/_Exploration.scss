@@ -160,27 +160,36 @@
 
         &__list {
           margin-top: $gutter;
+          height: 100%;
           
           &__item {
             display: flex;
             flex-direction: column;
+            margin-bottom: 1rem;
 
             &__author {
+              &:hover {
+                color: $light-color;
+                text-shadow: 1px 1px 8px $tertiary-color;
+              }
               display: flex;
               align-items: center;
+              font-weight: bold;
 
-              &.avatar {
-                width: 2em;
+              &__avatar {
+                margin-right: 1rem;
       
                 img {
+                  height: 40px;
+                  width: 40px;
+                  object-fit: cover;
                   border-radius: 50%;
-                  width: 50%;
                 }
               }
             }
 
             &__text {
-              font-size: smaller;
+              font-size: large;
               margin-left: 3em;
             }
           }
