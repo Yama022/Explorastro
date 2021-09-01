@@ -3,7 +3,8 @@
 }
 
 .modal-card {
-  width: 60%;
+  width: 55%;
+  max-width: 735px;
   height: 40%;
   color: $light-color;
   background-color: $primary-color;
@@ -32,7 +33,7 @@
     justify-content: center;
     font-size: 1.4em;
     background-color: $secondary-color;
-    overflow: none;
+    overflow: hidden;
     padding: 0;
 
     &-mascotte {
