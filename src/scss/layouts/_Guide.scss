@@ -66,8 +66,33 @@
       }
     }
   }
+
   @include mobTab {
     width: 85%;
+  }
+
+  @include tab {
+    &__presentation {
+      &__avatar {
+        &__avatar {
+          right: 4%;
+          top: 3.5%;
+          width: 19%;
+        }
+      }
+    }
+  }
+
+  @include mob {
+    &__presentation {
+      &__avatar {
+        &__avatar {
+          right: 4%;
+          top: 2.8%;
+          width: 24%;
+        }
+      }
+    }
   }
 }
 

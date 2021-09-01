@@ -64,6 +64,7 @@
         height: 350px;
         border-radius: 50%;
         &__elem {
+          border-radius: 50%;
           min-height: 100%;
           max-height: 100%;
           object-fit: cover;
@@ -221,6 +222,7 @@
           justify-content: space-around;
 
           &__item {
+            color: $light-color;
             border-radius: 10px;
             cursor: pointer;
             padding: 0.4em;
@@ -233,7 +235,9 @@
             font-size: 1.5em;
 
             &:hover {
+              color: $light-color;
               transform: scale(1.1);
+              box-shadow: 0 0 0.4em $secondary-color;
             }
           }
 
@@ -251,7 +255,10 @@
           }
 
           .--tiktok {
-            background:#000000
+            background:#000000;
+            & > * {
+              filter: drop-shadow(-2px -1px 0 #69c9d0) drop-shadow(2px 2px 0 #ee1d52);
+            }
           }
 
           .--astrobin {
@@ -317,6 +324,11 @@
       margin: 1em;
       display: flex;
       flex-direction: column;
+      transition: .2s ease-in-out;
+
+      &:hover {
+        transform: scale(1.02);
+      }
 
       &__avatar {
         width: 170px;
@@ -364,6 +376,7 @@
     justify-content: space-evenly;
     
     &__item {
+      
       overflow: hidden;
       background-color: $primary-color;
       margin: $gutter;
@@ -374,6 +387,11 @@
       width: 15em;
       display: flex;
       flex-direction: column;
+      transition: .2s ease-in-out;
+
+      &:hover {
+        transform: scale(1.02);
+      }
 
       & img {
         width: 240px;

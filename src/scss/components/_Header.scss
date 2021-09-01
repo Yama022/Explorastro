@@ -1,4 +1,12 @@
 .header {
+  & + div {
+    padding-top: 114px;
+  }
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  right: 0;
+  left: 0;
   background-color: $primary-color;
   font-family: 'Exo', sans-serif;
   font-weight: 400;
@@ -9,6 +17,7 @@
   justify-content: space-between;
   align-items: center;
   color: $light-color;
+
   &__burger {
     display: none;
     margin-left: 0.2em;
@@ -87,7 +96,7 @@
           & a {
             color: $light-color;
           }
-          text-shadow: 1px 1px 8px $light-color;
+          text-shadow: 1px 1px 8px $tertiary-color;
         }
         &__link {
           display: flex;
@@ -163,6 +172,11 @@
     }
   }
   @include mob {
+    &__logo {
+      img {
+        width: 9.5em;
+      }
+    }
     &__user {
       &__container {
         &__pseudo {

@@ -218,19 +218,19 @@ export default function Profile({
                 </p>
               )}
             <div className="profile__header__description__bio__socials">
-              <Link className="profile__header__description__bio__socials__item --twitter" to="https://twitter.com/">
+              <Link className="profile__header__description__bio__socials__item --twitter" to={{ pathname: 'https://twitter.com/' }} target="_blank">
                 <FaTwitter />
               </Link>
-              <Link className="profile__header__description__bio__socials__item --instagram" to="https://www.instagram.com/">
+              <Link className="profile__header__description__bio__socials__item --instagram" to={{ pathname: 'https://www.instagram.com/' }} target="_blank">
                 <FaInstagram />
               </Link>
-              <Link className="profile__header__description__bio__socials__item --facebook" to="https://www.facebook.com/">
+              <Link className="profile__header__description__bio__socials__item --facebook" to={{ pathname: 'https://www.facebook.com/' }} target="_blank">
                 <FaFacebookSquare />
               </Link>
-              <Link className="profile__header__description__bio__socials__item --tiktok" to="https://www.tiktok.com/">
+              <Link className="profile__header__description__bio__socials__item --tiktok" to={{ pathname: 'https://www.tiktok.com/' }} target="_blank">
                 <SiTiktok />
               </Link>
-              <Link className="profile__header__description__bio__socials__item --astrobin" to="https://www.astrobin.com/">
+              <Link className="profile__header__description__bio__socials__item --astrobin" to={{ pathname: 'https://www.astrobin.com/' }} target="_blank">
                 <BiPlanet />
               </Link>
             </div>

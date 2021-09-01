@@ -2,15 +2,11 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import planet1 from 'src/assets/images/login/1.png';
+import charlesOnPlanet from 'src/assets/images/login/1.png';
 import planet2 from 'src/assets/images/login/2.png';
 import planet3 from 'src/assets/images/login/3.png';
 import planet4 from 'src/assets/images/login/4.png';
 import planet5 from 'src/assets/images/login/5.png';
-import planet6 from 'src/assets/images/login/6.png';
-import planet7 from 'src/assets/images/login/7.png';
-import planet8 from 'src/assets/images/login/8.png';
-import planet9 from 'src/assets/images/login/9.png';
 import logo from 'src/assets/images/logo-explorastro.png';
 
 import LoginForm from './LoginForm';
@@ -52,15 +48,13 @@ export default function Login({
 
   return (
     <div className="login">
-      <img src={planet1} className="object" data-value="-2" alt="" />
-      <img src={planet2} className="object" data-value="6" alt="" />
-      <img src={planet3} className="object" data-value="4" alt="" />
-      <img src={planet4} className="object" data-value="-6" alt="" />
-      <img src={planet5} className="object" data-value="8" alt="" />
-      <img src={planet6} className="object" data-value="-4" alt="" />
-      <img src={planet7} className="object" data-value="5" alt="" />
-      <img src={planet8} className="object" data-value="-9" alt="" />
-      <img src={planet9} className="object" data-value="-5" alt="" />
+      <div className="login__parallax">
+        <img src={charlesOnPlanet} className="object" data-value="-1" alt="" />
+        <img src={planet2} className="object" data-value="2" alt="" />
+        <img src={planet3} className="object" data-value="4" alt="" />
+        <img src={planet4} className="object" data-value="-6" alt="" />
+        <img src={planet5} className="object" data-value="5" alt="" />
+      </div>
       <div className="login__container">
         <div className="login__container__form">
           <Link to="/landing">
