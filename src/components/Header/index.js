@@ -1,8 +1,7 @@
-import React from 'react';
-// , { useContext }
+import React, { useEffect, useContext } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
-// import { MouseContext } from 'src/context/mouse-context';
+import { MouseContext } from 'src/context/mouse-context';
 
 import { GiHamburgerMenu } from 'react-icons/gi';
 
@@ -25,9 +24,23 @@ export default function Header({
     if (burgerIsOpen) handleToggleBurger();
   };
 
-  // const { cursorChangeHandler } = useContext(MouseContext);
+  useEffect(() => {
+    let previousScrollPosition = window.pageYOffset;
+    window.onscroll = () => {
+      const currentScrollPosition = window.pageYOffset;
+      if (previousScrollPosition > currentScrollPosition) {
+        document.getElementById('header').style.top = '0';
+      }
+      else {
+        document.getElementById('header').style.top = '-500px';
+      }
+      previousScrollPosition = currentScrollPosition;
+    };
+  }, []);
+
+  const { cursorChangeHandler } = useContext(MouseContext);
   return (
-    <header className="header">
+    <header className="header" id="header">
       <div className="header__burger" onClick={handleToggleBurger}>
         <GiHamburgerMenu className="header__burger__img" />
       </div>
@@ -47,8 +60,8 @@ export default function Header({
                 onClick={handleNavBurgerToggle}
                 to="/timeline"
                 exact
-                // onMouseEnter={() => cursorChangeHandler('hovered')}
-                // onMouseLeave={() => cursorChangeHandler('')}
+                onMouseEnter={() => cursorChangeHandler('hovered')}
+                onMouseLeave={() => cursorChangeHandler('')}
               >
                 Fil d'actualités
               </NavLink>
@@ -58,8 +71,8 @@ export default function Header({
                 onClick={handleNavBurgerToggle}
                 to="/exploration/create"
                 exact
-                // onMouseEnter={() => cursorChangeHandler('hovered')}
-                // onMouseLeave={() => cursorChangeHandler('')}
+                onMouseEnter={() => cursorChangeHandler('hovered')}
+                onMouseLeave={() => cursorChangeHandler('')}
               >
                 Explorations
               </NavLink>
@@ -69,8 +82,8 @@ export default function Header({
                 onClick={handleNavBurgerToggle}
                 to="/discover"
                 exact
-                // onMouseEnter={() => cursorChangeHandler('hovered')}
-                // onMouseLeave={() => cursorChangeHandler('')}
+                onMouseEnter={() => cursorChangeHandler('hovered')}
+                onMouseLeave={() => cursorChangeHandler('')}
               >
                 Carte
               </NavLink>
@@ -80,8 +93,8 @@ export default function Header({
                 onClick={handleNavBurgerToggle}
                 to="/guide"
                 exact
-                // onMouseEnter={() => cursorChangeHandler('hovered')}
-                // onMouseLeave={() => cursorChangeHandler('')}
+                onMouseEnter={() => cursorChangeHandler('hovered')}
+                onMouseLeave={() => cursorChangeHandler('')}
               >
                 Le guide de l'explorateur
               </NavLink>
