@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 // , { useContext }
 import { NavLink, Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
@@ -25,9 +25,23 @@ export default function Header({
     if (burgerIsOpen) handleToggleBurger();
   };
 
+  useEffect(() => {
+    let previousScrollPosition = window.pageYOffset;
+    window.onscroll = () => {
+      const currentScrollPosition = window.pageYOffset;
+      if (previousScrollPosition > currentScrollPosition) {
+        document.getElementById('header').style.top = '0';
+      }
+      else {
+        document.getElementById('header').style.top = '-500px';
+      }
+      previousScrollPosition = currentScrollPosition;
+    };
+  }, []);
+
   // const { cursorChangeHandler } = useContext(MouseContext);
   return (
-    <header className="header">
+    <header className="header" id="header">
       <div className="header__burger" onClick={handleToggleBurger}>
         <GiHamburgerMenu className="header__burger__img" />
       </div>
