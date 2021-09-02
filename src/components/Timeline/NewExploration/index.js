@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 export default function NewExplo({ props }) {
-  console.log(props);
   const {
     user: { avatar_url: avatar, id: userId, username },
     date: { locales: { fr: date } },

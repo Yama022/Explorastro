@@ -10,6 +10,7 @@ import UpdateAvatar from './UpdateAvatar';
 import Participation from './Participation';
 import Description from './Description';
 import Following from './Following';
+import Search from './Search';
 
 const ACTION = {
   FOLLOW: 'FOLLOW',
@@ -27,6 +28,8 @@ export default function Timeline({
   timelineContent,
   following,
   getInfo,
+  onChange,
+  search,
 }) {
   useEffect(() => {
     getTimeline();
@@ -75,6 +78,7 @@ export default function Timeline({
       </main>
       <aside className="timeline-right">
         <div className="timeline-left__widget">
+          <Search onChange={onChange} search={search} />
           <Following following={following} />
         </div>
       </aside>
@@ -88,6 +92,8 @@ Timeline.propTypes = {
   timelineContent: PropTypes.array,
   following: PropTypes.array,
   getInfo: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+  search: PropTypes.string.isRequired,
 };
 
 Timeline.defaultProps = {
