@@ -17,7 +17,7 @@ export default function Search({
       <input
         className="search__input"
         type="text"
-        placeholder="Rechercher une personne"
+        placeholder="Rechercher un utilisateur"
         value={searchInput}
         name="searchInput"
         onChange={handleFieldChange}

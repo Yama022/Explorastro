@@ -6,7 +6,7 @@ import { AiOutlineUserAdd } from 'react-icons/ai';
 // , AiFillStar, AiOutlineStar
 import { GrTrophy } from 'react-icons/gr';
 import {
-  FaPen, FaFacebookSquare, FaTwitter, FaInstagram,
+  FaPen, FaFacebookSquare, FaTwitter, FaInstagram, FaCrown,
 } from 'react-icons/fa';
 import {
   BiMedal, BiCog, BiCheck, BiPlanet,
@@ -15,6 +15,7 @@ import { RiImageEditLine } from 'react-icons/ri';
 import { IoClose } from 'react-icons/io5';
 import { MdCheck } from 'react-icons/md';
 import { SiTiktok } from 'react-icons/si';
+import { HiOutlineTerminal } from 'react-icons/hi';
 
 import Loader from 'src/components/Loader';
 
@@ -25,6 +26,7 @@ export default function Profile({
   firstName,
   lastName,
   username,
+  role,
   avatarUrl,
   menuValue,
   changeMenuValue,
@@ -117,7 +119,10 @@ export default function Profile({
           <div className="profile__header__description__top">
             <div className="profile__header__description__top__left">
               <h3 className="profile__header__description__top__left__name">{firstName} {lastName}</h3>
-              <h2 className="profile__header__description__top__left__username">{username}</h2>
+              <h2 className="profile__header__description__top__left__username">
+                {username}
+                {(role === 3) && <> <FaCrown title="Admin" className="admin-icon" />  <HiOutlineTerminal title="Developer" className="admin-icon" /> </>}
+              </h2>
               {/* eslint-disable-next-line max-len */}
               {/* <div className="profile__header__description__top__left__stars" title="4 stars out of 5!">
                 <AiFillStar /><AiFillStar /><AiFillStar /><AiFillStar /><AiOutlineStar />
@@ -292,6 +297,7 @@ Profile.propTypes = {
   loggedUserId: PropTypes.number.isRequired,
   profileId: PropTypes.number.isRequired,
   username: PropTypes.string.isRequired,
+  role: PropTypes.number.isRequired,
   avatarUrl: PropTypes.string,
   firstName: PropTypes.string.isRequired,
   lastName: PropTypes.string.isRequired,

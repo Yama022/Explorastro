@@ -12,6 +12,7 @@ import {
 
 const initialState = {
   loggedUserId: 0,
+  role_id: 0,
   avatarFile: null,
   avatar_url: '',
   username: '',
@@ -56,6 +57,7 @@ const profile = (state = initialState, action = {}) => {
         biography: action.payload.bio,
         biographyEdit: action.payload.bio,
         avatar_url: action.payload.avatar_url,
+        role_id: action.payload.role_id,
         userFollowed: action.payload.followers.some((follow) => follow.id === state.loggedUserId),
       };
     }
