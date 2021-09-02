@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 export default function JoinExplo({ props }) {
+  console.log('participe', props);
   const {
     user: { id: userId, username, avatar_url: avatarURL },
     exploration: {
       id: explorationId, name, image_url: imageURL,
     },
-    date: { fr: dateFr },
+    date: { locales: { fr: dateFr } },
     message: { fr: messageFR },
     exploration_date: { locales: { fr: dateExploration } },
   } = props;
@@ -21,7 +22,7 @@ export default function JoinExplo({ props }) {
       <div className="explo__organized">
         <div className="explo__organized--title">
           <h3 className="explo__organized__subtitle"><Link to={`/exploration/${explorationId}`}>"{name}"</Link></h3>
-          <p>{dateExploration}</p>
+          <p>Le {dateExploration}</p>
         </div>
       </div>
 
@@ -32,7 +33,7 @@ export default function JoinExplo({ props }) {
       </div>
 
       <div className="explo__date">
-        <p>{dateFr}</p>
+        <p>Le {dateFr}</p>
       </div>
     </div>
   );
