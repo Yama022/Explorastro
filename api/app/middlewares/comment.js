@@ -15,7 +15,7 @@ module.exports = {
   checkPermissions: async (req, res, next) => {
     const comment = await Comment.findByPk(req.params.commentId);
     const adminRoleId = 3;
-    if (comment.author_id !== req.user.id || req.user.role_id !== adminRoleId) {
+    if (comment.author_id !== req.user.id && req.user.role_id !== adminRoleId) {
       return res.status(403).json({
         message: ERROR.UNAUTHORIZED,
       });
