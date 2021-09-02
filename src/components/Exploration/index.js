@@ -15,6 +15,7 @@ export default function Exploration({
   removeOldStateExploration,
   onSubmitMessage,
   onChangeValue,
+  deleteComment,
   getParticipate,
   notParticipate,
   loggedUserId,
@@ -53,6 +54,7 @@ export default function Exploration({
             comments={exploration.comments}
             onSubmit={onSubmitMessage}
             onChangeValue={onChangeValue}
+            deleteComment={deleteComment}
           />
         </div>
         <div className="Exploration__overview__map">
@@ -87,6 +89,7 @@ Exploration.propTypes = {
   removeOldStateExploration: PropTypes.func.isRequired,
   onSubmitMessage: PropTypes.func.isRequired,
   onChangeValue: PropTypes.func.isRequired,
+  deleteComment: PropTypes.func.isRequired,
   getParticipate: PropTypes.func.isRequired,
   notParticipate: PropTypes.func.isRequired,
   loggedUserId: PropTypes.number.isRequired,

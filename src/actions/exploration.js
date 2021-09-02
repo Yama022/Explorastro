@@ -144,8 +144,9 @@ export const postComment = () => ({
   type: POST_COMMENT,
 });
 
-export const removeComment = () => ({
+export const removeComment = (value) => ({
   type: REMOVE_COMMENT,
+  value,
 });
 
 export const changeValueComment = (value, key) => ({

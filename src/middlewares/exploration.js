@@ -2,6 +2,7 @@ import {
   GET_EXPLORATION_BY_ID,
   saveExplorationById,
   POST_COMMENT,
+  REMOVE_COMMENT,
   getExplorationById,
   ADD_PARTICIPANT,
   REMOVE_PARTICIPANT,
@@ -43,6 +44,24 @@ const exploration = (store) => (next) => (action) => {
         }
       };
       onSubmitMessage();
+      break;
+    }
+
+    case REMOVE_COMMENT: {
+      const state = store.getState();
+      const { id: idExplor } = state.exploration.exploration;
+      const id = action.value;
+      const deleteComment = async () => {
+        try {
+          const response = await api.delete(`/api/v1/exploration/${idExplor}/comments/delete/${id}`);
+          if (response.status === 200) store.dispatch(getExplorationById(idExplor));
+        }
+        catch (error) {
+          // eslint-disable-next-line no-console
+          console.error(error);
+        }
+      };
+      deleteComment();
       break;
     }
 

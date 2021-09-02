@@ -5,6 +5,7 @@ import {
   getExplorationById,
   removeOldStateExploration,
   postComment,
+  removeComment,
   changeValueComment,
   addParticipant,
   removeParticipant,
@@ -24,6 +25,9 @@ const mapDispatchToProps = (dispatch) => ({
   onSubmitMessage: () => {
     const action = postComment();
     dispatch(action);
+  },
+  deleteComment: (value) => {
+    dispatch(removeComment(value));
   },
   onChangeValue: (value, key) => {
     dispatch(changeValueComment(value, key));

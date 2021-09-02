@@ -15,6 +15,7 @@ import {
   REMOVE_OLD_STATE_EXPLORATION,
   SAVE_EXPLORATION_ILLUSTRATION,
   CHANGE_VALUE_COMMENT,
+  REMOVE_COMMENT,
   NEW_PARTICIPANT,
   REMOVE_PARTICIPANT,
 } from 'src/actions/exploration';
@@ -143,6 +144,11 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         [action.key]: action.value,
+      };
+    }
+    case REMOVE_COMMENT: {
+      return {
+        ...state,
       };
     }
     case NEW_PARTICIPANT: {

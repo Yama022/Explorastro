@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { FiSend } from 'react-icons/fi';
 
 const Comments = ({
-  comments, onSubmit, onChangeValue,
+  comments, onSubmit, onChangeValue, deleteComment,
 }) => {
   const handleOnSubmit = (event) => {
     event.preventDefault();
@@ -19,7 +19,7 @@ const Comments = ({
       <h3>Commentaires</h3>
       <ul className="Exploration__overview__left__comments__list">
         {comments.map((comment) => (
-          <li key={comment.id} className="Exploration__overview__left__comments__list__item">
+          <li key={comment.id} data-id={comment.id} className="Exploration__overview__left__comments__list__item">
             <Link to={`/profile/${comment.author_id}`} className="Exploration__overview__left__comments__list__item__author">
               <span className="Exploration__overview__left__comments__list__item__author__avatar">
                 <img
@@ -34,7 +34,14 @@ const Comments = ({
               <p>
                 {comment.content}
               </p>
-              <button type="button">
+              <button
+                type="button"
+                onClick={(event) => {
+                  const button = event.target.closest('li');
+                  const { id } = button.dataset;
+                  deleteComment(id);
+                }}
+              >
                 X
               </button>
             </span>
@@ -68,6 +75,7 @@ Comments.propTypes = {
   comments: PropTypes.array,
   onSubmit: PropTypes.func,
   onChangeValue: PropTypes.func,
+  deleteComment: PropTypes.func.isRequired,
 };
 
 Comments.defaultProps = {
