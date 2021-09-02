@@ -93,7 +93,6 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
     case ADD_NEW_EXPLORATION: {
-      console.log(action.payload);
       return {
         ...state,
         userEvents: [...state.userEvents, action.payload],
