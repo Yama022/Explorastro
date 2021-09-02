@@ -1,0 +1,29 @@
+.project {
+  width: 60%;
+  margin: auto;
+
+  &__container {
+    &__header {
+      font-size: 1.2em;
+      color: $light-color;
+      width: 100%;
+
+      &__content {
+        width: 70%;
+        margin: auto;
+        text-align: center;
+      }
+    }
+
+    &__developper {
+        width: 100%;
+        display: flex;
+
+        &__avatar {
+            img {
+                width: 100%;
+            }
+        }
+    }
+  }
+}
