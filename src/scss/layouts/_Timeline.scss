@@ -308,6 +308,12 @@
       margin: auto;
       margin-left: math.div($gutter, 2);
     }
+    & a {
+      &:hover {
+        color: $light-color;
+        text-shadow: 1px 1px 8px $tertiary-color;
+      }
+    }
   }
   &__organized {
     margin: math.div($gutter, 2) 0;
@@ -317,22 +323,38 @@
     justify-content: center;
     & img {
       align-self: center;
-      width: 10%;
+      width: 15%;
       border-radius: 50%;
       filter: brightness(0.5);
       transition: 0.2s ease-in-out;
     }
-    &--title {
       text-align: center;
       margin: math.div($gutter, 2) 0;
+      & h3 {
+        padding-top: 1rem;
+      
+      & a {
+        &:hover {
+          color: $light-color;
+          text-shadow: 1px 1px 8px $tertiary-color;
+        }
+      }
     }
+    
     &__subtitle {
       margin: math.div($gutter, 2) 0;
       font-size: 1.5em;
       font-weight: 900;
+      & a {
+        &:hover {
+          color: $light-color;
+          text-shadow: 1px 1px 8px $tertiary-color;
+        }
+      }
     }
   }
   &__image {
+    object-fit: cover;
     padding: $gutter;
     display: flex;
     justify-content: center;

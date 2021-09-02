@@ -23,6 +23,7 @@ import Particles from 'src/components/Particles';
 import Loader from 'src/components/Loader';
 import Project from 'src/components/Project';
 import RGPD from 'src/components/RGPD';
+import Report from 'src/components/Report';
 // import DotRing from 'src/components/DotRing/DotRing';
 
 import { IoIosArrowUp } from 'react-icons/io';
@@ -50,6 +51,8 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
     <div className="explorastro">
       {/* <DotRing /> */}
       <Particles />
+      <Report />
+      {!isLogged && <RGPD />}
       {isLogged
         ? (
           <Switch>
@@ -187,7 +190,6 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
             </Route>
           </Switch>
         )}
-      <RGPD />
       <button
         type="button"
         className="button__return__top button --secondary animate__animated animate__fadeInRight animate__faster"

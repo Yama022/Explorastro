@@ -191,6 +191,14 @@
             &__text {
               font-size: large;
               margin-left: 3em;
+              &__button {
+                font-size: 1.2rem;
+                color: $tertiary-color;
+                // position: absolute;
+                // right: 1rem;
+                // bottom: 0rem;
+              }
+              
             }
           }
         }
