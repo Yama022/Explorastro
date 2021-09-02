@@ -22,9 +22,13 @@ const { commentSchema } = require('../validations/schemas');
 router
 
   /**
-   * Get all explorations that are public.
+   * Get all explorations that are public. Can filter by some params
    * @route GET /api/v1/exploration
    * @group Exploration - Operations about explorations
+   * @param {string} name.param.required - The name of the researched explorations
+   * @param {integer} lat.param.required - Your lattitude
+   * @param {integer} lat.param.required - Your longitude
+   * @param {integer} lat.param.required - The radius you wan't to search in
    * @returns {Array.<Exploration>} 200 - An object containing the exploration's information
    * @returns {Error.model}  default - An object containing the error message
    * @security JWT

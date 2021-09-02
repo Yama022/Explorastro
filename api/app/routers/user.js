@@ -21,10 +21,10 @@ router
   )
 
   /**
-   * Get informations about a user by his id
-   * @route GET /api/v1/user/1
+   * Search user by name
+   * @route GET /api/v1/user/search
    * @group User - Operations about users
-   * @param {integer} id.param.required - The id of the user.
+   * @param {string} name.param.required - The name of the researched user
    * @returns {User.model} 200 - An object containing the user's information
    * @returns {Error.model}  default - An object containing the error message
    * @security JWT
