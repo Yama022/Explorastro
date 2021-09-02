@@ -11,15 +11,17 @@ export default function EventCreated({
   name, id, onClick, date, max_participants, is_published, image_url,
 }) {
   const handleOnClick = () => {
-    onClick(id);
+    if (window.confirm('Êtes-vous sûr de vouloir supprimer cette exploration?')) {
+      onClick(id);
+    }
   };
   return (
     <div className="createEvent__container__event-list">
       <img src={image_url} alt={name} />
       <h2>{name}</h2>
-      <div className="createEvent__container__event_list__content">
+      <div className="createEvent__container__event-list__content">
         <span>{date ? `date : ${dayjs(date).format('DD-MM-YY')}` : 'date :'}</span>
-        <span>{max_participants}<ImMan /></span>
+        <span className="createEvent__container__event-list__content__participants">{max_participants}<ImMan /></span>
       </div>
       <div className="published">
         <span>{is_published ? 'Publié' : 'Non publié'}</span>

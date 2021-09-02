@@ -96,7 +96,7 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         userEvents: [...state.userEvents, action.payload],
-        participate: [...state.userEvents, action.payload],
+        participate: [...state.participate, action.payload],
       };
     }
     case CLICK_MODAL: {
