@@ -1,9 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { AiOutlineUserAdd } from 'react-icons/ai';
+import { BiCheck } from 'react-icons/bi';
 import PropTypes from 'prop-types';
 import * as dayjs from 'dayjs';
 
-const Information = ({ information, getParticipate }) => {
+const Information = ({
+  information,
+  getParticipate,
+  notParticipate,
+  loggedUserId,
+}) => {
   const {
     author: { username },
     author_id: idAuthor,
@@ -12,8 +19,9 @@ const Information = ({ information, getParticipate }) => {
     date,
     createdAt,
     id: explorationId,
+    participants,
   } = information;
-
+  const removePart = participants.some((part) => part.id === loggedUserId);
   return (
 
     <div className="Exploration__main__informations animate__animated animate__fadeIn">
@@ -42,15 +50,37 @@ const Information = ({ information, getParticipate }) => {
           <p>
             {information.description ? information.description : '' }
           </p>
-          <button
-            onClick={() => {
-              getParticipate(explorationId);
-            }}
-            type="button"
-            className="button --secondary"
-          >
-            Participer
-          </button>
+          {(!removePart)
+            ? (
+
+              <button
+                onClick={() => {
+                  getParticipate(explorationId);
+                }}
+                type="button"
+                className="button --secondary"
+              >
+                <span className="icon is-small">
+                  <AiOutlineUserAdd />
+                </span>
+                <span>Participer</span>
+              </button>
+            ) : (
+              <button
+                onClick={() => {
+                  notParticipate(explorationId);
+                }}
+                type="button"
+                className="button --outlined"
+              >
+                <span className="icon is-small">
+                  <BiCheck />
+                </span>
+                <span>Ne plus participer</span>
+              </button>
+
+            )}
+
         </div>
       </div>
     </div>
@@ -64,7 +94,9 @@ Information.propTypes = {
   image_url: PropTypes.string,
   name: PropTypes.string,
   getParticipate: PropTypes.func.isRequired,
+  notParticipate: PropTypes.func.isRequired,
   id: PropTypes.number,
+  loggedUserId: PropTypes.number.isRequired,
 };
 
 Information.defaultProps = {
@@ -72,5 +104,4 @@ Information.defaultProps = {
   image_url: '',
   name: '',
   id: 0,
-  // getParticipate: {},
 };

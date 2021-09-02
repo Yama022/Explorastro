@@ -16,6 +16,7 @@ import {
   SAVE_EXPLORATION_ILLUSTRATION,
   CHANGE_VALUE_COMMENT,
   NEW_PARTICIPANT,
+  REMOVE_PARTICIPANT,
 } from 'src/actions/exploration';
 
 export const initialState = {
@@ -145,6 +146,11 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
     case NEW_PARTICIPANT: {
+      return {
+        ...state,
+      };
+    }
+    case REMOVE_PARTICIPANT: {
       return {
         ...state,
       };

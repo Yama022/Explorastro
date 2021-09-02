@@ -7,6 +7,7 @@ import {
   postComment,
   changeValueComment,
   addParticipant,
+  removeParticipant,
 } from 'src/actions/exploration';
 
 const mapStateToProps = (state) => ({
@@ -29,6 +30,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   getParticipate: (value) => {
     dispatch(addParticipant(value));
+  },
+  notParticipate: (value) => {
+    dispatch(removeParticipant(value));
   },
 });
 

@@ -26,9 +26,11 @@ export const REMOVE_OLD_STATE_EXPLORATION = 'REMOVE_OLD_STATE_EXPLORATION';
 export const UPLOAD_EXPLORATION_ILLUSTRATION = 'UPLOAD_EXPLORATION_ILLUSTRATION';
 export const SAVE_EXPLORATION_ILLUSTRATION = 'SAVE_EXPLORATION_ILLUSTRATION';
 export const POST_COMMENT = 'POST_COMMENT';
+export const REMOVE_COMMENT = 'REMOVE_COMMENT';
 export const CHANGE_VALUE_COMMENT = 'CHANGE_VALUE_COMMENT';
 export const ADD_PARTICIPANT = 'ADD_PARTICIPANT';
 export const NEW_PARTICIPANT = 'NEW_PARTICIPANT';
+export const REMOVE_PARTICIPANT = 'REMOVE_PARTICIPANT';
 
 // Action creators
 export const formSubmitSearchAddress = (payload) => ({
@@ -142,6 +144,10 @@ export const postComment = () => ({
   type: POST_COMMENT,
 });
 
+export const removeComment = () => ({
+  type: REMOVE_COMMENT,
+});
+
 export const changeValueComment = (value, key) => ({
   type: CHANGE_VALUE_COMMENT,
   value,
@@ -155,4 +161,8 @@ export const addParticipant = (payload) => ({
 
 export const newParticipant = () => ({
   type: NEW_PARTICIPANT,
+});
+
+export const removeParticipant = () => ({
+  type: REMOVE_PARTICIPANT,
 });
