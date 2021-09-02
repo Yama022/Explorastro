@@ -6,10 +6,11 @@ export default function JoinExplo({ props }) {
   const {
     user: { id: userId, username, avatar_url: avatarURL },
     exploration: {
-      id: explorationId, name, image_url: imageURL, date: { fr: explorationDateFr },
+      id: explorationId, name, image_url: imageURL,
     },
     date: { fr: dateFr },
     message: { fr: messageFR },
+    exploration_date: { locales: { fr: dateExploration } },
   } = props;
   return (
     <div className="explo">
@@ -20,7 +21,7 @@ export default function JoinExplo({ props }) {
       <div className="explo__organized">
         <div className="explo__organized--title">
           <h3 className="explo__organized__subtitle"><Link to={`/exploration/${explorationId}`}>"La Nuit des Etoiles"</Link></h3>
-          <p>{explorationDateFr}</p>
+          <p>{dateExploration}</p>
         </div>
       </div>
 
@@ -41,6 +42,7 @@ JoinExplo.propTypes = {
   exploration: PropTypes.object,
   message: PropTypes.object,
   date: PropTypes.object,
+  exploration_date: PropTypes.string,
 };
 
 JoinExplo.defaultProps = {
@@ -49,4 +51,5 @@ JoinExplo.defaultProps = {
   exploration: {},
   message: {},
   date: {},
+  exploration_date: '',
 };

@@ -34,7 +34,6 @@ module.exports = {
         }
       );
 
-        console.log(results)
         res.status(200).json(results[0]);
     } catch (error) {
       console.error(error);

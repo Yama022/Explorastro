@@ -12,6 +12,7 @@ export default function NewExplo({ props }) {
     exploration: { name, id, image_url: imageUrl },
     message,
     _id: idProps,
+    exploration_date: { locales: { fr: dateExploration } },
   } = props;
   if (!idProps) {
     return <Loader />;
@@ -23,7 +24,7 @@ export default function NewExplo({ props }) {
         <div className="explo__organized--title">
           <h3><Link to={`/profile/${userId}`}>{username}</Link> {message.fr}</h3>
           <h3 className="explo__organized__subtitle">"{name}"</h3>
-          <p>{date}</p>
+          <p>{dateExploration ?? date}</p>
         </div>
       </div>
       <Link to={`/exploration/${id}`}>
@@ -45,6 +46,7 @@ NewExplo.propTypes = {
   date: PropTypes.string,
   exploration: PropTypes.string,
   _id: PropTypes.number,
+  exploration_date: PropTypes.string,
 };
 
 NewExplo.defaultProps = {
@@ -54,4 +56,5 @@ NewExplo.defaultProps = {
   date: '',
   exploration: '',
   _id: 0,
+  exploration_date: '',
 };

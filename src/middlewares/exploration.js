@@ -3,6 +3,7 @@ import {
   saveExplorationById,
   POST_COMMENT,
   getExplorationById,
+  ADD_PARTICIPANT,
 } from 'src/actions/exploration';
 import api from './utils/api';
 
@@ -41,6 +42,23 @@ const exploration = (store) => (next) => (action) => {
         }
       };
       onSubmitMessage();
+      break;
+    }
+
+    case ADD_PARTICIPANT: {
+      const state = store.getState();
+      const { id } = state.exploration.exploration;
+      const getParticipate = async () => {
+        try {
+          const response = await api.put(`/api/v1/exploration/${id}/participants/add/${state.user.loggedUserId}`);
+          if (response.status === 200) store.dispatch(getExplorationById(id));
+        }
+        catch (error) {
+          // eslint-disable-next-line no-console
+          console.error(error);
+        }
+      };
+      getParticipate();
       break;
     }
 

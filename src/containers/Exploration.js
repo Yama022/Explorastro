@@ -6,10 +6,12 @@ import {
   removeOldStateExploration,
   postComment,
   changeValueComment,
+  addParticipant,
 } from 'src/actions/exploration';
 
 const mapStateToProps = (state) => ({
   exploration: state.exploration.exploration,
+  loggedUserId: state.user.loggedUserId,
 });
 const mapDispatchToProps = (dispatch) => ({
   getExploration: (payload) => {
@@ -24,6 +26,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   onChangeValue: (value, key) => {
     dispatch(changeValueComment(value, key));
+  },
+  getParticipate: (value) => {
+    dispatch(addParticipant(value));
   },
 });
 
