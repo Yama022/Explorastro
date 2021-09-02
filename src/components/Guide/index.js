@@ -12,7 +12,7 @@ export default function Guide() {
   return (
     // Div qui englobe l'ensemble des paragaphe
     <div className="guide">
-      <h1 className="main-title">Le guide de l'explorateur</h1>
+      <h1 className="main-title">Le guide de l'explorateur</h1> <h1 className="main-title"> PAGE EN COURS DE CONSTRUCTION !</h1>
       <div className="guide__presentation">
         <h2 className="guide__presentation__title"><FcAdvance /> Tu souhaites découvrir ce milieu fabuleux qu'est l'astronomie ?!</h2>
         <h3 className="guide__presentation__sous-title"> <FcDownRight /> Oui ? Alors t'es au bon endroit !</h3>
