@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { FiSend } from 'react-icons/fi';
+import { ImCross } from 'react-icons/im';
 
 const Comments = ({
   comments, onSubmit, onChangeValue, deleteComment,
@@ -35,6 +36,7 @@ const Comments = ({
                 {comment.content}
               </p>
               <button
+                className="Exploration__overview__left__comments__list__item__text__button"
                 type="button"
                 onClick={(event) => {
                   const button = event.target.closest('li');
@@ -42,7 +44,7 @@ const Comments = ({
                   deleteComment(id);
                 }}
               >
-                X
+                <ImCross />
               </button>
             </span>
           </li>
