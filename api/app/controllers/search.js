@@ -50,17 +50,17 @@ module.exports = {
         [Op.or]: [
           {
             firstname: {
-              [Op.like]: `%${name}%`,
+              [Op.ilike]: `%${name}%`,
             },
           },
           {
             lastname: {
-              [Op.like]: `%${name}%`,
+              [Op.ilike]: `%${name}%`,
             },
           },
           {
             username: {
-              [Op.like]: `%${name}%`,
+              [Op.ilike]: `%${name}%`,
             },
           },
         ],
