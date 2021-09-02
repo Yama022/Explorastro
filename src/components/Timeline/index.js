@@ -39,9 +39,9 @@ export default function Timeline({
     getInfo(loggedUserId);
   }, [loggedUserId]);
 
-  if (timelineContent.length === 0) {
-    return <Loader />;
-  }
+  // if (timelineContent.length === 0) {
+  //   return <Loader />;
+  // }
 
   return (
     <div className="timeline">
