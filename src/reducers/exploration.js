@@ -15,6 +15,7 @@ import {
   REMOVE_OLD_STATE_EXPLORATION,
   SAVE_EXPLORATION_ILLUSTRATION,
   CHANGE_VALUE_COMMENT,
+  NEW_PARTICIPANT,
 } from 'src/actions/exploration';
 
 export const initialState = {
@@ -141,6 +142,11 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         [action.key]: action.value,
+      };
+    }
+    case NEW_PARTICIPANT: {
+      return {
+        ...state,
       };
     }
     default:

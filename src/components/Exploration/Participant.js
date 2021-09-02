@@ -9,12 +9,13 @@ const Participant = ({ participants }) => {
     max_participants: participantsMax,
     participants: participantsName,
   } = participants;
+
   if (!participants.id) {
     return (<Loader />);
   }
   return (
     <div className="Exploration__main__participants">
-      <h3>Participants max : {participantsMax}</h3>
+      <h3>Participants max : {participantsName.length} / {participantsMax}</h3>
       <ul className="Exploration__main__participants__list">
         {participantsName.map((participant) => (
           <li key={participant.id}>

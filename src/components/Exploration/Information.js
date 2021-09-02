@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as dayjs from 'dayjs';
 
-const Information = ({ information }) => {
+const Information = ({ information, getParticipate }) => {
   const {
     author: { username },
     author_id: idAuthor,
@@ -11,14 +11,9 @@ const Information = ({ information }) => {
     name,
     date,
     createdAt,
-    getParticipate,
+    id: explorationId,
   } = information;
 
-  console.log(information);
-
-  const handleOnClickParticipate = () => {
-    getParticipate();
-  };
   return (
 
     <div className="Exploration__main__informations animate__animated animate__fadeIn">
@@ -47,7 +42,13 @@ const Information = ({ information }) => {
           <p>
             {information.description ? information.description : '' }
           </p>
-          <button onClick={handleOnClickParticipate} type="button" className="button --secondary">
+          <button
+            onClick={() => {
+              getParticipate(explorationId);
+            }}
+            type="button"
+            className="button --secondary"
+          >
             Participer
           </button>
         </div>
@@ -62,12 +63,14 @@ Information.propTypes = {
   information: PropTypes.object,
   image_url: PropTypes.string,
   name: PropTypes.string,
-  getParticipate: PropTypes.func,
+  getParticipate: PropTypes.func.isRequired,
+  id: PropTypes.number,
 };
 
 Information.defaultProps = {
   information: {},
   image_url: '',
   name: '',
-  getParticipate: {},
+  id: 0,
+  // getParticipate: {},
 };

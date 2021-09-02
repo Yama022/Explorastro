@@ -142,7 +142,6 @@ const event = (store) => (next) => (action) => {
                 'Content-Type': 'multipart/form-data',
               },
             });
-          console.log('response', response);
           const actionSaveIllustration = saveExplorationIllustration(response.data.image_url);
           store.dispatch(actionSaveIllustration);
         }

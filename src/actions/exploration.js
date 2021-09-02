@@ -27,6 +27,8 @@ export const UPLOAD_EXPLORATION_ILLUSTRATION = 'UPLOAD_EXPLORATION_ILLUSTRATION'
 export const SAVE_EXPLORATION_ILLUSTRATION = 'SAVE_EXPLORATION_ILLUSTRATION';
 export const POST_COMMENT = 'POST_COMMENT';
 export const CHANGE_VALUE_COMMENT = 'CHANGE_VALUE_COMMENT';
+export const ADD_PARTICIPANT = 'ADD_PARTICIPANT';
+export const NEW_PARTICIPANT = 'NEW_PARTICIPANT';
 
 // Action creators
 export const formSubmitSearchAddress = (payload) => ({
@@ -144,4 +146,13 @@ export const changeValueComment = (value, key) => ({
   type: CHANGE_VALUE_COMMENT,
   value,
   key,
+});
+
+export const addParticipant = (payload) => ({
+  type: ADD_PARTICIPANT,
+  payload,
+});
+
+export const newParticipant = () => ({
+  type: NEW_PARTICIPANT,
 });

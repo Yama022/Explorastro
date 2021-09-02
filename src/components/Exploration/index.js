@@ -15,6 +15,7 @@ export default function Exploration({
   removeOldStateExploration,
   onSubmitMessage,
   onChangeValue,
+  getParticipate,
 }) {
   useEffect(() => {
     getExploration(id);
@@ -35,7 +36,7 @@ export default function Exploration({
   return (
     <div className="Exploration">
       <section className="Exploration__main">
-        <Information information={exploration} />
+        <Information information={exploration} getParticipate={getParticipate} />
         <Participants participants={exploration} />
       </section>
       <section className="Exploration__overview">
@@ -79,4 +80,5 @@ Exploration.propTypes = {
   removeOldStateExploration: PropTypes.func.isRequired,
   onSubmitMessage: PropTypes.func.isRequired,
   onChangeValue: PropTypes.func.isRequired,
+  getParticipate: PropTypes.func.isRequired,
 };
