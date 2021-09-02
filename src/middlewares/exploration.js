@@ -4,6 +4,7 @@ import {
   POST_COMMENT,
   getExplorationById,
   ADD_PARTICIPANT,
+  REMOVE_PARTICIPANT,
 } from 'src/actions/exploration';
 import api from './utils/api';
 
@@ -59,6 +60,23 @@ const exploration = (store) => (next) => (action) => {
         }
       };
       getParticipate();
+      break;
+    }
+
+    case REMOVE_PARTICIPANT: {
+      const state = store.getState();
+      const { id } = state.exploration.exploration;
+      const notParticipate = async () => {
+        try {
+          const response = await api.delete(`/api/v1/exploration/${id}/participants/delete/${state.user.loggedUserId}`);
+          if (response.status === 200) store.dispatch(getExplorationById(id));
+        }
+        catch (error) {
+          // eslint-disable-next-line no-console
+          console.error(error);
+        }
+      };
+      notParticipate();
       break;
     }
 

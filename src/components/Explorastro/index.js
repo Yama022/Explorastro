@@ -21,6 +21,7 @@ import Exploration from 'src/containers/Exploration';
 import Avatar from 'src/components/Avatar';
 import Particles from 'src/components/Particles';
 import Loader from 'src/components/Loader';
+import Project from 'src/components/Project';
 // import DotRing from 'src/components/DotRing/DotRing';
 
 import { IoIosArrowUp } from 'react-icons/io';
@@ -144,6 +145,11 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
             <Route exact path="/landing">
               <Header />
               <Landing />
+              <Footer />
+            </Route>
+            <Route exact path="/aboutus">
+              <Header />
+              <Project />
               <Footer />
             </Route>
             <Route exact path="/login">

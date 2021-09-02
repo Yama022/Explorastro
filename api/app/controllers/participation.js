@@ -80,7 +80,7 @@ module.exports = {
     try {
       const { id, userId } = req.params;
 
-      if (userId !== req.user.id) {
+      if (+userId !== req.user.id) {
         return res.status(403).json({
           message: ERROR.UNAUTHORIZED,
         });

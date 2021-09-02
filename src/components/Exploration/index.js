@@ -16,6 +16,8 @@ export default function Exploration({
   onSubmitMessage,
   onChangeValue,
   getParticipate,
+  notParticipate,
+  loggedUserId,
 }) {
   useEffect(() => {
     getExploration(id);
@@ -36,7 +38,12 @@ export default function Exploration({
   return (
     <div className="Exploration">
       <section className="Exploration__main">
-        <Information information={exploration} getParticipate={getParticipate} />
+        <Information
+          information={exploration}
+          getParticipate={getParticipate}
+          notParticipate={notParticipate}
+          loggedUserId={loggedUserId}
+        />
         <Participants participants={exploration} />
       </section>
       <section className="Exploration__overview">
@@ -81,4 +88,6 @@ Exploration.propTypes = {
   onSubmitMessage: PropTypes.func.isRequired,
   onChangeValue: PropTypes.func.isRequired,
   getParticipate: PropTypes.func.isRequired,
+  notParticipate: PropTypes.func.isRequired,
+  loggedUserId: PropTypes.number.isRequired,
 };

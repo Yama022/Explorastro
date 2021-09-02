@@ -34,6 +34,9 @@ const Comments = ({
               <p>
                 {comment.content}
               </p>
+              <button type="button">
+                X
+              </button>
             </span>
           </li>
         ))}
