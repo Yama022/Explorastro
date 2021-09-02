@@ -4,7 +4,7 @@
 
   &__container {
     &__header {
-      font-size: 1.2em;
+      font-size: 1.1em;
       color: $light-color;
       width: 100%;
 
@@ -12,18 +12,78 @@
         width: 70%;
         margin: auto;
         text-align: center;
+        margin-bottom: 2em;
       }
     }
 
     &__developper {
         width: 100%;
         display: flex;
+        color: $light-color;
+        margin: 5em 0;
+        justify-content: space-between;
+
+        &:nth-child(odd) {
+          flex-direction: row-reverse;
+        }
+
+        &__content {
+          margin: 5em 0;
+          width: 60%;
+          display: flex;
+          justify-content: space-evenly;
+          flex-direction: column;
+
+          &__name {
+            font-size: 2em;
+            font-weight: bold;
+          }
+
+          &__job {
+            font-size: 1.3em;
+            color: $secondary-color;
+            margin-bottom: 1rem;
+          }
+        }
 
         &__avatar {
             img {
-                width: 100%;
+              object-fit: cover;
+              width: 20rem;
+              height: 20rem;
+              border-radius: 50%;
+              filter: grayscale(100%);
+              transition: .3s ease-in-out;
+
+              &:hover {
+                filter: grayscale(0);
+                transform: translateY(-10px);
+              }
             }
         }
     }
+  }
+}
+
+.--linkedin {
+  background-color: #0e76a8;
+  &:hover {
+    box-shadow: 0 0 0.4em #0e76a8;
+  }
+}
+
+.--github {
+  background-color: #171515;
+  &:hover {
+    box-shadow: 0 0 0.4em $light-color;
+  }
+}
+
+.--portfolio {
+  background-color: $light-color;
+  color: #000000;
+  &:hover {
+    box-shadow: 0 0 0.4em $light-color;
+    color: black;
   }
 }

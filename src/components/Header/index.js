@@ -98,15 +98,17 @@ export default function Header({
               >
                 Accueil
               </NavLink>
-              <NavLink
+              {/*
+                <NavLink
                 className="header__nav__link"
                 activeClassName="header__nav__link--active"
                 onClick={handleNavBurgerToggle}
                 to="/news"
                 exact
-              >
-                Actualités
-              </NavLink>
+                >
+                  Actualités
+                </NavLink>
+              */}
               <NavLink
                 className="header__nav__link"
                 activeClassName="header__nav__link--active"

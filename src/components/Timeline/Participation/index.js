@@ -19,10 +19,8 @@ export default function JoinExplo({ props }) {
         <h3> <Link to={`/username/${userId}`}>{username}</Link> {messageFR} <Link to={`/exploration/${explorationId}`}>"{name}"</Link></h3>
       </div>
       <div className="explo__organized">
-        <div className="explo__organized--title">
-          <h3 className="explo__organized__subtitle"><Link to={`/exploration/${explorationId}`}>"{name}"</Link></h3>
-          <p>Le {dateExploration}</p>
-        </div>
+        <h3 className="explo__organized__subtitle"><Link to={`/exploration/${explorationId}`}>"{name}"</Link></h3>
+        <p>Le {dateExploration}</p>
       </div>
 
       <div className="explo__image">

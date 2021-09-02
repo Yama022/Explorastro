@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import Loader from 'src/components/Loader';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Discover from './Discover';
@@ -41,10 +40,6 @@ export default function Timeline({
     getInfo(loggedUserId);
   }, [loggedUserId]);
 
-  if (timelineContent.length === 0) {
-    return <Loader />;
-  }
-
   return (
     <div className="timeline">
       <aside className="timeline-left">
@@ -52,9 +47,16 @@ export default function Timeline({
           <Discover />
         </Link>
       </aside>
-      <main className="timeline-main">
-        <div className="timeline-main__exploration">
-          {
+      {(timelineContent.length === 0)
+        ? (
+          <div className="timeline-main">
+            <h1 className="main-title">Cherche de nouveaux amis(es) pour ne rien manquer de leur activité !</h1>
+          </div>
+        )
+        : (
+          <main className="timeline-main">
+            <div className="timeline-main__exploration">
+              {
             timelineContent.map((content) => {
               // I extract the id of the object
               const { _id } = content;
@@ -76,8 +78,9 @@ export default function Timeline({
               }
             })
             }
-        </div>
-      </main>
+            </div>
+          </main>
+        )}
       <aside className="timeline-right">
         <div className="timeline-left__widget">
           <Search
