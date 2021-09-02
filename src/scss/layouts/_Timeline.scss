@@ -18,56 +18,7 @@
       border-radius: 5px;
       margin-bottom: $gutter;
     }
-    &__follow {
-      width: 100%;
-      border: 1px solid $secondary-color;
-      border-radius: 5px;
-      color: $light-color;
-      box-shadow: 0px 0px 9px -1px $secondary-color;
-      
-      & h3 {
-        width: 100%;
-        font-size: 2em;
-        font-weight: bold;
-        padding: $gutter;
-        text-align: center;
-        
-      }
-
-      a {
-        display: flex;
-      }
-
-      li {
-        display: flex;
-        align-items: center;
-        padding: 1rem;
-        border-top: 1px solid $secondary-color;
-        height: 100%;
-        width: 100%;
-        margin: auto;
-        &:hover {
-          color: $light-color;
-          text-shadow: 1px 1px 8px $tertiary-color;
-        }
-      }
-      & img {
-        height: 48px;
-        width: 48px;
-        object-fit: cover;
-        border-radius: 50%;
-      }
-
-      & p {
-        display: inline;
-        width: 100%;
-        height: 100%;
-        margin: auto;
-        margin-left: .8rem;
-        font-weight: bold;
-        font-size: 1.1em;
-      }
-    }
+    
   }
   &-main {
     max-width: 50%;
@@ -107,7 +58,65 @@
       margin: 0.2em 0;
       
     }
-    
+    &__follow {
+      width: 100%;
+      border: 1px solid $secondary-color;
+      border-radius: 5px;
+      color: $light-color;
+      box-shadow: 0px 0px 9px -1px $secondary-color;
+      &__title{
+        position: sticky;
+        width: 100%;
+        font-size: $gutter;
+        font-weight: bold;
+        padding: $gutter;
+        text-align: center;
+        border-bottom: 1px solid $secondary-color;
+      }
+      
+      &__list {
+        height: 300px;
+        overflow: auto;
+        & a:first-child li {
+          border: none;
+        }
+      }
+      
+      a {
+        display: flex;
+      }
+      
+      li {
+        font-size: 0.8rem;
+        display: flex;
+        align-items: center;
+        padding: 0.5rem;
+        border-top: 1px solid $secondary-color;
+        height: 100%;
+        width: 100%;
+        margin: auto;
+        &:hover {
+          color: $light-color;
+          text-shadow: 1px 1px 8px $tertiary-color;
+        }
+      }
+      & img {
+        height: 48px;
+        width: 48px;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+
+      & p {
+        display: inline;
+        width: 100%;
+        height: 100%;
+        margin: auto;
+        margin-left: .8rem;
+        font-weight: bold;
+        font-size: 1.1em;
+      }
+    }
   }
 }
 
@@ -261,7 +270,7 @@
 // COMPONENT NewExploration
 .explo {
   margin-bottom: $gutter;
-  padding: math.div($gutter, 2);
+  padding: $gutter;
   display: flex;
   flex-direction: column;
   border: 1px solid $secondary-color;
@@ -283,7 +292,8 @@
   &__title {
     display: flex;
     & img {
-      width: 5%;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       filter: brightness(0.5);
       transition: 0.2s ease-in-out;
