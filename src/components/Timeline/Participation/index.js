@@ -6,10 +6,11 @@ export default function JoinExplo({ props }) {
   const {
     user: { id: userId, username, avatar_url: avatarURL },
     exploration: {
-      id: explorationId, name, image_url: imageURL, date: { fr: explorationDateFr },
+      id: explorationId, name, image_url: imageURL,
     },
     date: { fr: dateFr },
     message: { fr: messageFR },
+    exploration_date: { fr: explorationDateFr },
   } = props;
   return (
     <div className="explo">
@@ -41,6 +42,7 @@ JoinExplo.propTypes = {
   exploration: PropTypes.object,
   message: PropTypes.object,
   date: PropTypes.object,
+  exploration_date: PropTypes.object,
 };
 
 JoinExplo.defaultProps = {
@@ -49,4 +51,5 @@ JoinExplo.defaultProps = {
   exploration: {},
   message: {},
   date: {},
+  exploration_date: {},
 };
