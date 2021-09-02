@@ -4,7 +4,7 @@ const { Comment } = require('../models');
 
 module.exports = {
   checkIfExists: async (req, res, next) => {
-    const comment = await Comment.findByPk(req.params.id);
+    const comment = await Comment.findByPk(req.params.commentId);
     if (!comment) {
       return res.status(404).json({
         message: ERROR.COMMENT_NOT_FOUND,
