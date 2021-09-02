@@ -1,17 +1,14 @@
-import { SAVE_TIMELINE } from 'src/actions/timeline';
+import { SAVE_TIMELINE, CHANGE_VALUE_TIMELINE, SAVE_PEOPLE } from 'src/actions/timeline';
 import { SAVE_USER_INFO } from 'src/actions/profile';
 
-// les valeurs par défaut sont stockées dans le state initial
 export const initialState = {
   timelineContent: [],
   following: [],
+  searchInput: '',
+  searchResult: [],
 };
 
-// fonction qui traduit une intention/action en changement de state
-// mission principale => RETOURNE TOUJOURS UN STATE
 const reducer = (state = initialState, action = {}) => {
-// en fonction de la propriété type de l'action
-// on va retourner un state changer ou pas
   switch (action.type) {
     case SAVE_TIMELINE: {
       return {
@@ -23,6 +20,18 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         following: action.payload.following,
+      };
+    }
+    case CHANGE_VALUE_TIMELINE: {
+      return {
+        ...state,
+        [action.key]: action.value,
+      };
+    }
+    case SAVE_PEOPLE: {
+      return {
+        ...state,
+        searchResult: action.value,
       };
     }
     default:

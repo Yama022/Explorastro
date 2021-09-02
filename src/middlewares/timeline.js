@@ -1,5 +1,6 @@
-// import { GET_TIMELINE } from 'src/actions/timeline';
-import { GET_TIMELINE, saveUserTimeline } from 'src/actions/timeline';
+import {
+  GET_TIMELINE, saveUserTimeline, SEARCH_PEOPLE, savePeople,
+} from 'src/actions/timeline';
 
 import api from './utils/api';
 
@@ -18,6 +19,21 @@ const timeline = (store) => (next) => (action) => {
         }
       };
       getTimeline();
+      break;
+    }
+    case SEARCH_PEOPLE: {
+      const state = store.getState();
+      const searchForPeople = async () => {
+        try {
+          const resp = await api.get(`/api/v1/user/search?name=${state.timeline.searchInput}`);
+          store.dispatch(savePeople(resp.data));
+        }
+        catch (err) {
+          // eslint-disable-next-line no-console
+          console.error('Erreur requête API', err);
+        }
+      };
+      searchForPeople();
       break;
     }
     default:

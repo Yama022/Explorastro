@@ -85,6 +85,9 @@
         &__left {
           &__username {
             font-size: 2em;
+            & .admin-icon {
+              color: $tertiary-color;
+            }
           }
 
           &__stars {
