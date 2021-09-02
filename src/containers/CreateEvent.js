@@ -21,8 +21,8 @@ const mapDispatchToProps = (dispatch) => ({
     const action = changeInputValue(value, key);
     dispatch(action);
   },
-  onFormSubmitCreate: (value) => {
-    const action = submitFormCreateEvent(value);
+  onFormSubmitCreate: () => {
+    const action = submitFormCreateEvent();
     dispatch(action);
   },
   onClickRemove: (value) => {

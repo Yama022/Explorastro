@@ -11,7 +11,7 @@ export default function CreateEvent({
   onClickRemove,
   participate,
 }) {
-  useEffect(async () => {
+  useEffect(() => {
     getEvent();
   }, []);
 
@@ -50,7 +50,7 @@ export default function CreateEvent({
         <h1 className="main-title">Je participe</h1>
         <div className="createEvent__container__flex">
           {participate.map((element) => (
-            <Participate onClick={onClickRemove} key={element.id} {...element} />
+            <Participate key={element.id} {...element} />
           ))}
         </div>
       </section>

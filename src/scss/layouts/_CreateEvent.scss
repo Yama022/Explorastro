@@ -1,17 +1,15 @@
 .createEvent {
-  height: 80%;
+  width: 95%;
+  margin: auto;
+  min-height: 80vh;
   display: flex;
   justify-content: space-between;
-  padding: 0 $gutter*5;
-
 
   &__titlecreateEvent {
     font-size: 2em;
     color: $light-color;
     margin: $gutter;
   }
-
-
 
   &__container {
     color: white;
@@ -27,7 +25,7 @@
     &__form {
       overflow: hidden;
       margin: $gutter;
-      width: 15.5rem;
+      width: 14rem;
       min-height: 316px;
       border: 1px solid $secondary-color;
       box-shadow: 0px 0px 9px -1px $secondary-color;
@@ -35,16 +33,19 @@
       background-color: $primary-color;
 
       &__title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 20%;
         font-size: 1.6em;
         text-shadow: 0 0 0.2em $tertiary-color;
         width: 100%;
         border-bottom: 1px solid $secondary-color;
         box-shadow: 0px 3px 7px -2px $secondary-color;
-        padding: $gutter;
       }
 
       &__content {
-        width: 85%;
+        width: 95%;
         margin: auto;
         height: 80%;
         display: flex;
@@ -57,11 +58,10 @@
         }
       }
 
-
     }
 
-
     &__event-list {
+      min-height: 400px;
       display: flex;
       justify-content: space-between;
       flex-direction: column;
@@ -70,7 +70,7 @@
       border: 1px solid $secondary-color;
       box-shadow: 0px 0px 9px -1px $secondary-color;
       border-radius: 10px;
-      width: 15.5rem;
+      width: 14rem;
       background-color: $primary-color;
       padding-bottom: 0.8rem;
 
@@ -89,6 +89,10 @@
         display: flex;
         padding: $gutter;
         justify-content: space-between;
+        align-items: center;
+        &__participants {
+          padding-bottom: 0.2rem;
+        }
       }
 
       &__button {
@@ -96,9 +100,7 @@
         display: flex;
         justify-content: space-evenly;
       }
-
     }
-
   }
 }
 
