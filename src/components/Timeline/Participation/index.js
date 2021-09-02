@@ -16,11 +16,11 @@ export default function JoinExplo({ props }) {
     <div className="explo">
       <div className="explo__title">
         <Link to={`/username/${userId}`}><img src={avatarURL ?? 'https://explorastro-s3.s3.amazonaws.com/default.jpg'} alt="avatar" /></Link>
-        <h3> <Link to={`/username/${userId}`}>{username}</Link> {messageFR} à <Link to={`/exploration/${explorationId}`}>"{name}"</Link></h3>
+        <h3> <Link to={`/username/${userId}`}>{username}</Link> {messageFR} <Link to={`/exploration/${explorationId}`}>"{name}"</Link></h3>
       </div>
       <div className="explo__organized">
         <div className="explo__organized--title">
-          <h3 className="explo__organized__subtitle"><Link to={`/exploration/${explorationId}`}>"La Nuit des Etoiles"</Link></h3>
+          <h3 className="explo__organized__subtitle"><Link to={`/exploration/${explorationId}`}>"{name}"</Link></h3>
           <p>{dateExploration}</p>
         </div>
       </div>

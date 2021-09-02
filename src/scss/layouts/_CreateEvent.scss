@@ -25,7 +25,7 @@
     &__form {
       overflow: hidden;
       margin: $gutter;
-      width: 14rem;
+      width: 14.5rem;
       min-height: 316px;
       border: 1px solid $secondary-color;
       box-shadow: 0px 0px 9px -1px $secondary-color;
@@ -45,7 +45,7 @@
       }
 
       &__content {
-        width: 95%;
+        width: 90%;
         margin: auto;
         height: 80%;
         display: flex;
@@ -61,7 +61,7 @@
     }
 
     &__event-list {
-      min-height: 400px;
+      min-height: 350px;
       display: flex;
       justify-content: space-between;
       flex-direction: column;
@@ -70,29 +70,26 @@
       border: 1px solid $secondary-color;
       box-shadow: 0px 0px 9px -1px $secondary-color;
       border-radius: 10px;
-      width: 14rem;
+      width: 14.5rem;
       background-color: $primary-color;
       padding-bottom: 0.8rem;
 
       img {
-        width: 250px;
+        width: 260px;
         height: 150px;
         object-fit: cover;
       }
 
       h2 {
 
-        padding: $gutter;
+        padding: 1rem;
       }
 
       &__content {
         display: flex;
-        padding: $gutter;
+        padding: 1rem;
         justify-content: space-between;
         align-items: center;
-        &__participants {
-          padding-bottom: 0.2rem;
-        }
       }
 
       &__button {
@@ -234,7 +231,7 @@
           }
         }
         &__upload {
-          width: 50%;
+          width: 45%;
           position: relative;
           display: flex;
           align-items: center;
@@ -282,11 +279,11 @@
           }
           &__img {
             overflow: hidden;
-            width: 255px;
-            height: 150px;
+            width: 100%;
+            height: 170px;
             &__elem {
-              width: 255px;
-              height: 150px;
+              width: 100%;
+              height: 170px;
               object-fit: cover;
               transition: .2s ease-in-out;
             }

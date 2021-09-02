@@ -4,6 +4,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ImPencil, ImCross, ImMan } from 'react-icons/im';
+import { FaRegCalendarAlt } from 'react-icons/fa';
+
 import { Link } from 'react-router-dom';
 import * as dayjs from 'dayjs';
 
@@ -20,7 +22,7 @@ export default function EventCreated({
       <img src={image_url} alt={name} />
       <h2>{name}</h2>
       <div className="createEvent__container__event-list__content">
-        <span>{date ? `date : ${dayjs(date).format('DD-MM-YY')}` : 'date :'}</span>
+        <span>{date && <> <FaRegCalendarAlt /> {dayjs(date).format('DD/MM/YYYY')} </>}</span>
         <span className="createEvent__container__event-list__content__participants">{max_participants}<ImMan /></span>
       </div>
       <div className="published">

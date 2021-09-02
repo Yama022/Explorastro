@@ -237,21 +237,29 @@
             &:hover {
               color: $light-color;
               transform: scale(1.1);
-              box-shadow: 0 0 0.4em $secondary-color;
             }
           }
 
 
           .--twitter {
             background-color: #1DA1F2;
+            &:hover {
+              box-shadow: 0 0 0.4em #1DA1F2;
+            }
           }
 
           .--instagram {
             background:linear-gradient(45deg,#feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+            &:hover {
+              box-shadow: 0 0 0.4em #d62976;
+            }
           }
 
           .--facebook {
             background-color: #3B5998;
+            &:hover {
+              box-shadow: 0 0 0.4em #3B5998;
+            }
           }
 
           .--tiktok {
@@ -259,10 +267,16 @@
             & > * {
               filter: drop-shadow(-2px -1px 0 #69c9d0) drop-shadow(2px 2px 0 #ee1d52);
             }
+            &:hover {
+              box-shadow: -3px -4px 18px -10px #69c9d0, 4px 6px 18px -10px #ee1d52;
+            }
           }
 
           .--astrobin {
             background-color: #ff8707;
+            &:hover {
+              box-shadow: 0 0 0.4em #ff8707;
+            }
           }
         }
       }

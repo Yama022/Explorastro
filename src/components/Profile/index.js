@@ -218,19 +218,44 @@ export default function Profile({
                 </p>
               )}
             <div className="profile__header__description__bio__socials">
-              <Link className="profile__header__description__bio__socials__item --twitter" to={{ pathname: 'https://twitter.com/' }} target="_blank">
+              <Link
+                className="profile__header__description__bio__socials__item --twitter"
+                to={{ pathname: 'https://twitter.com/' }}
+                target="_blank"
+                title="Twitter"
+              >
                 <FaTwitter />
               </Link>
-              <Link className="profile__header__description__bio__socials__item --instagram" to={{ pathname: 'https://www.instagram.com/' }} target="_blank">
+              <Link
+                className="profile__header__description__bio__socials__item --instagram"
+                to={{ pathname: 'https://www.instagram.com/' }}
+                target="_blank"
+                title="Instagram"
+              >
                 <FaInstagram />
               </Link>
-              <Link className="profile__header__description__bio__socials__item --facebook" to={{ pathname: 'https://www.facebook.com/' }} target="_blank">
+              <Link
+                className="profile__header__description__bio__socials__item --facebook"
+                to={{ pathname: 'https://www.facebook.com/' }}
+                target="_blank"
+                title="Facebook"
+              >
                 <FaFacebookSquare />
               </Link>
-              <Link className="profile__header__description__bio__socials__item --tiktok" to={{ pathname: 'https://www.tiktok.com/' }} target="_blank">
+              <Link
+                className="profile__header__description__bio__socials__item --tiktok"
+                to={{ pathname: 'https://www.tiktok.com/' }}
+                target="_blank"
+                title="TikTok"
+              >
                 <SiTiktok />
               </Link>
-              <Link className="profile__header__description__bio__socials__item --astrobin" to={{ pathname: 'https://www.astrobin.com/' }} target="_blank">
+              <Link
+                className="profile__header__description__bio__socials__item --astrobin"
+                to={{ pathname: 'https://www.astrobin.com/' }}
+                target="_blank"
+                title="Astrobin"
+              >
                 <BiPlanet />
               </Link>
             </div>
