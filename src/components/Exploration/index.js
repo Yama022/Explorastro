@@ -49,7 +49,7 @@ export default function Exploration({
       </section>
       <section className="Exploration__overview">
         <div className="Exploration__overview__left">
-          <Weather />
+          <Weather data={exploration.weather} />
           <Comments
             comments={exploration.comments}
             onSubmit={onSubmitMessage}
