@@ -12,6 +12,8 @@
     align-items: center;
     flex-direction: column;
     padding: $gutter 0;
+    position: fixed;
+    left: 0;
 
     &__widget  {
       width: 80%;
@@ -21,12 +23,14 @@
     
   }
   &-main {
-    max-width: 50%;
-    max-height: 100vh;
-    overflow-y: scroll;
+    min-width: 50%;
+    max-width: 60%;
+    min-height: 100vh;
+    // overflow-y: scroll;
     display: flex;
     flex-direction: column;
     align-items: center;
+    
 
     // Hide scrollbar but keep it accessible
     & {
@@ -51,6 +55,8 @@
     justify-content: center;
     align-items: flex-start;
     padding: $gutter 0;
+    position: fixed;
+    right: 0;
     &__widget  {
       width: 80%;
       padding: 0.5em;
