@@ -1,11 +1,8 @@
 .modal {
-  z-index: 9999;
+  z-index: 99999;
 }
 
 .modal-card {
-  width: 55%;
-  max-width: 735px;
-  height: 40%;
   color: $light-color;
   background-color: $primary-color;
   border-radius: 10px;
@@ -15,7 +12,6 @@
   }
 
   &-head, &-foot {
-    height: 25%;
     background: none;
     border: none;
   }
@@ -27,7 +23,6 @@
   &-body {
     margin: 0;
     padding: 0;
-    height: 50%;
     display: flex;
     align-items: center;
     justify-content: center;

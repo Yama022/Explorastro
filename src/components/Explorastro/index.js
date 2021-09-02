@@ -22,6 +22,7 @@ import Avatar from 'src/components/Avatar';
 import Particles from 'src/components/Particles';
 import Loader from 'src/components/Loader';
 import Project from 'src/components/Project';
+import Report from 'src/components/Report';
 // import DotRing from 'src/components/DotRing/DotRing';
 
 import { IoIosArrowUp } from 'react-icons/io';
@@ -49,6 +50,7 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
     <div className="explorastro">
       {/* <DotRing /> */}
       <Particles />
+      <Report />
       {isLogged
         ? (
           <Switch>
