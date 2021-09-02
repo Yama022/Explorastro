@@ -14,7 +14,7 @@ export default function Comment({ props }) {
     <div className="comment">
 
       <div className="comment__title">
-        <img src={avatarUrl ?? 'https://explorastro-s3.s3.amazonaws.com/default.jpg'} alt="avatar" />
+        <Link to={`/profile/${authorId}`}><img src={avatarUrl ?? 'https://explorastro-s3.s3.amazonaws.com/default.jpg'} alt="avatar" /></Link>
         <h3><Link to={`/profile/${authorId}`}>{username}</Link> {messageFr} <Link to={`/exploration/${explorationId}`}>"{name}"</Link></h3>
       </div>
 

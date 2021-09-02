@@ -21,7 +21,7 @@ export default function Follow({ props }) {
     <div className="follow">
       <div className="follow__title">
         {/* Avatar url TO ADD ! */}
-        <img src={avatarFollower ?? 'https://explorastro-s3.s3.amazonaws.com/default.jpg'} alt="avatar" />
+        <Link to={`/profile/${idFollower}`}><img src={avatarFollower ?? 'https://explorastro-s3.s3.amazonaws.com/default.jpg'} alt="avatar" /></Link>
         <h3> <Link to={`/profile/${idFollower}`}>{usernameFollower}</Link> {message.fr} <Link to={`/profile/${idFollowed}`}>{usernameFollowed}</Link></h3>
       </div>
 
