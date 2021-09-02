@@ -1,6 +1,7 @@
 import {
   LOGIN, SIGNUP, saveUser, CHECK_USER_LOGGED, toggleSignup, loginError,
 } from 'src/actions/user';
+
 import api from './utils/api';
 
 const auth = (store) => (next) => (action) => {

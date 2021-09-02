@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 export default function JoinExplo({ props }) {
-  console.log('participe', props);
   const {
     user: { id: userId, username, avatar_url: avatarURL },
     exploration: {

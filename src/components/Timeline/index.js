@@ -28,8 +28,10 @@ export default function Timeline({
   timelineContent,
   following,
   getInfo,
-  onChange,
-  search,
+  changeField,
+  searchInput,
+  searchForPeople,
+  searchResult,
 }) {
   useEffect(() => {
     getTimeline();
@@ -78,7 +80,12 @@ export default function Timeline({
       </main>
       <aside className="timeline-right">
         <div className="timeline-left__widget">
-          <Search onChange={onChange} search={search} />
+          <Search
+            changeField={changeField}
+            searchInput={searchInput}
+            searchForPeople={searchForPeople}
+            searchResult={searchResult}
+          />
           <Following following={following} />
         </div>
       </aside>
@@ -92,8 +99,10 @@ Timeline.propTypes = {
   timelineContent: PropTypes.array,
   following: PropTypes.array,
   getInfo: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
-  search: PropTypes.string.isRequired,
+  changeField: PropTypes.func.isRequired,
+  searchInput: PropTypes.string.isRequired,
+  searchForPeople: PropTypes.func.isRequired,
+  searchResult: PropTypes.array.isRequired,
 };
 
 Timeline.defaultProps = {
