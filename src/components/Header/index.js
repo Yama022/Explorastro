@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
+
 import { GiHamburgerMenu } from 'react-icons/gi';
 
 import User from 'src/components/Header/User';

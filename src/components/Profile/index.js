@@ -123,10 +123,6 @@ export default function Profile({
                 {username}
                 {(role === 3) && <> <FaCrown title="Admin" className="admin-icon" />  <HiOutlineTerminal title="Developer" className="admin-icon" /> </>}
               </h2>
-              {/* eslint-disable-next-line max-len */}
-              {/* <div className="profile__header__description__top__left__stars" title="4 stars out of 5!">
-                <AiFillStar /><AiFillStar /><AiFillStar /><AiFillStar /><AiOutlineStar />
-              </div> */}
             </div>
             <div className="profile__header__description__top__right">
               {(profileId === loggedUserId)
