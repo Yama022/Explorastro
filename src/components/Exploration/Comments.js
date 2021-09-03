@@ -43,7 +43,7 @@ const Comments = ({
               </Link>
               {/* eslint-disable-next-line max-len */}
               <Link to={`/profile/${comment.author_id}`}>
-                <span className="Exploration__overview__left__comments__list__item__author__username">{comment.author?.username} </span>
+                <span className="Exploration__overview__left__comments__list__item__author__username">{comment.author?.username}</span>
               </Link>
             </div>
             <span className="Exploration__overview__left__comments__list__item__text">
