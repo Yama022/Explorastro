@@ -19,6 +19,7 @@ export default function Exploration({
   getParticipate,
   notParticipate,
   loggedUserId,
+  comment,
 }) {
   useEffect(() => {
     getExploration(id);
@@ -53,6 +54,7 @@ export default function Exploration({
           <Weather data={exploration.weather} />
           <Comments
             comments={exploration.comments}
+            commentInput={comment}
             onSubmit={onSubmitMessage}
             onChangeValue={onChangeValue}
             deleteComment={deleteComment}
@@ -94,4 +96,5 @@ Exploration.propTypes = {
   getParticipate: PropTypes.func.isRequired,
   notParticipate: PropTypes.func.isRequired,
   loggedUserId: PropTypes.number.isRequired,
+  comment: PropTypes.string.isRequired,
 };

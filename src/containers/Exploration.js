@@ -14,6 +14,7 @@ import {
 const mapStateToProps = (state) => ({
   exploration: state.exploration.exploration,
   loggedUserId: state.user.loggedUserId,
+  comment: state.exploration.comment,
 });
 const mapDispatchToProps = (dispatch) => ({
   getExploration: (payload) => {

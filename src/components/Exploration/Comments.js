@@ -6,7 +6,11 @@ import { ImCross } from 'react-icons/im';
 import { FaPen } from 'react-icons/fa';
 
 const Comments = ({
-  comments, onSubmit, onChangeValue, deleteComment,
+  comments,
+  onSubmit,
+  onChangeValue,
+  deleteComment,
+  commentInput,
 }) => {
   const handleOnSubmit = (event) => {
     event.preventDefault();
@@ -72,6 +76,7 @@ const Comments = ({
           placeholder="Commenter"
           className="Exploration__overview__left__comments__form__input input"
           onChange={handleChange}
+          value={commentInput}
           name="comment"
         />
         <button
@@ -90,6 +95,7 @@ Comments.propTypes = {
   onSubmit: PropTypes.func,
   onChangeValue: PropTypes.func,
   deleteComment: PropTypes.func.isRequired,
+  commentInput: PropTypes.string.isRequired,
 };
 
 Comments.defaultProps = {
