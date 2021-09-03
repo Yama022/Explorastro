@@ -1,7 +1,7 @@
 const { DataTypes, Model } = require('sequelize');
 const { sequelize } = require('../database');
 
-class Comment extends Model {}
+class Comment extends Model { }
 
 Comment.init(
   {
@@ -11,6 +11,9 @@ Comment.init(
     },
   },
   {
+    defaultScope: {
+      order: [['createdAt', 'ASC']],
+    },
     sequelize,
     tableName: 'comment',
   },

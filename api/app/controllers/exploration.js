@@ -56,11 +56,14 @@ module.exports = {
     const { id } = req.params;
     const exploration = await Exploration.findByPk(id, {
       include: ['author', 'participants', {
-       association: 'comments',
-        include: ['author'],
-        order: [['createdAt', 'ASC']],
+      association: 'comments',
+      include: ['author'],
+      order: [['createdAt', 'ASC']],
       }],
     });
+
+    // Sequelize dosen'nt want to order comments by date so we have to do it manually
+    exploration.comments.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
 
     // Save exploration data in object for attach weather data if needed
     const explorationData = exploration.toJSON();
