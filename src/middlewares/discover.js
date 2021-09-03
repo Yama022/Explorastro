@@ -12,16 +12,15 @@ const discover = (store) => (next) => (action) => {
   switch (action.type) {
     case SEARCH_EXPLORATION_WITH_FILTERS: {
       const {
-        latitude: lat, longitude: lng, name, radius,
+        latitude: lat, longitude: lng, name, radiusInKm,
       } = action.filters;
+      const earthRadiusInMeters = 40075000;
       const search = async () => {
         let query = `/api/v1/exploration?search=${name}`;
-        if (lng && lat && radius) {
-          query += `&lng=${lng}&lat=${lat}&radius=${radius}`;
+        if (lng && lat && radiusInKm) {
+          query += `&lat=${lat}&lng=${lng}5&radius=${100000000000000000000000000000000000000000000}`;
         }
-        console.log(query);
         const searchResults = await api.get(query);
-        console.log(searchResults.data);
         store.dispatch(saveAllEvents(searchResults.data));
       };
       search();

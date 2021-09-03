@@ -16,7 +16,7 @@ export default function Filter({ onSubmit, onChange, fieldZone }) {
           name: value,
           latitude,
           longitude,
-          radius: fieldZone,
+          radiusInKm: fieldZone * 1000,
         });
       });
     }
@@ -38,9 +38,9 @@ export default function Filter({ onSubmit, onChange, fieldZone }) {
           </div>
         </div>
 
-        <label className="label discover__map__filter__label" htmlFor="km">Autour de moi sur {fieldZone} km
+        <label className="label discover__map__filter__label" htmlFor="km">Autour de moi sur {fieldZone ? `${fieldZone}` : '∞'} km
           <div className="field has-addons">
-            <input type="range" id="km" name="distance" min="10" max="400" step="10" onChange={handleOnchange} />
+            <input type="range" id="km" name="distance" min="0" max="400" step="10" onChange={handleOnchange} />
           </div>
         </label>
 

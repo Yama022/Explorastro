@@ -8,13 +8,17 @@ module.exports = {
     try {
       const { search, radius, lng, lat } = req.query;
 
+      console.log(lng, lat)
+
       const franceCoord = {
         lat: 46.227638,
-        lng: 2.213749,
+        lng: 2.213749
       };
 
-      const earthRadius = 6371;
-      const earthRadiusInKm = earthRadius * 1000;
+      const earthRadius = 63710;
+      const earthRadiusInMeters = earthRadius * 1000;
+
+      
 
       const results = await sequelize.query(
         `
@@ -27,9 +31,9 @@ module.exports = {
     `,
         {
           bind: [
-            lat ?? franceCoord.lat,
             lng ?? franceCoord.lng,
-            radius ?? earthRadiusInKm,
+            lat ?? franceCoord.lat,
+            earthRadiusInMeters
           ],
         }
       );

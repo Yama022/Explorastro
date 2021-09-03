@@ -117,6 +117,7 @@ const event = (store) => (next) => (action) => {
         try {
           const resp = await api.get('/api/v1/exploration');
           const result = resp.data;
+          console.log(result);
           store.dispatch(saveAllEvents(result));
         }
         catch (err) {
