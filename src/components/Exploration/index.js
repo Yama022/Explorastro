@@ -30,9 +30,10 @@ export default function Exploration({
   if (!exploration?.id) {
     return (<Loader />);
   }
+
   const { geog } = exploration;
 
-  const coordinates = geog?.coordinates;
+  const coordinates = geog?.coordinates.reverse();
 
   const franceCoordinates = [48.856614, 2.352222];
 
