@@ -16,10 +16,16 @@ export default function Exploration({
   onSubmitMessage,
   onChangeValue,
   deleteComment,
+  modifyComment,
   getParticipate,
   notParticipate,
   loggedUserId,
   comment,
+  commentEdit,
+  commentEditOpen,
+  toggleEditComment,
+  editCommentValue,
+  editCommentId,
 }) {
   useEffect(() => {
     getExploration(id);
@@ -55,9 +61,16 @@ export default function Exploration({
           <Comments
             comments={exploration.comments}
             commentInput={comment}
+            commentEditInput={commentEdit}
             onSubmit={onSubmitMessage}
             onChangeValue={onChangeValue}
             deleteComment={deleteComment}
+            modifyComment={modifyComment}
+            commentEditOpen={commentEditOpen}
+            toggleEditComment={toggleEditComment}
+            editCommentValue={editCommentValue}
+            editCommentId={editCommentId}
+            loggedUserId={loggedUserId}
           />
         </div>
         <div className="Exploration__overview__map">
@@ -93,8 +106,14 @@ Exploration.propTypes = {
   onSubmitMessage: PropTypes.func.isRequired,
   onChangeValue: PropTypes.func.isRequired,
   deleteComment: PropTypes.func.isRequired,
+  modifyComment: PropTypes.func.isRequired,
   getParticipate: PropTypes.func.isRequired,
   notParticipate: PropTypes.func.isRequired,
   loggedUserId: PropTypes.number.isRequired,
   comment: PropTypes.string.isRequired,
+  commentEdit: PropTypes.string.isRequired,
+  commentEditOpen: PropTypes.bool.isRequired,
+  toggleEditComment: PropTypes.func.isRequired,
+  editCommentValue: PropTypes.func.isRequired,
+  editCommentId: PropTypes.func.isRequired,
 };

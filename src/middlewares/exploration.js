@@ -3,6 +3,7 @@ import {
   saveExplorationById,
   POST_COMMENT,
   REMOVE_COMMENT,
+  EDIT_COMMENT,
   getExplorationById,
   ADD_PARTICIPANT,
   REMOVE_PARTICIPANT,
@@ -62,6 +63,25 @@ const exploration = (store) => (next) => (action) => {
         }
       };
       deleteComment();
+      break;
+    }
+
+    case EDIT_COMMENT: {
+      const state = store.getState();
+      const { id: idExplor } = state.exploration.exploration;
+      const modifyComment = async () => {
+        try {
+          const response = await api.patch(`/api/v1/exploration/${idExplor}/comments/edit/${state.exploration.commentEditId}`, {
+            content: state.exploration.commentEdit,
+          });
+          if (response.status === 200) store.dispatch(getExplorationById(idExplor));
+        }
+        catch (error) {
+          // eslint-disable-next-line no-console
+          console.error(error);
+        }
+      };
+      modifyComment();
       break;
     }
 

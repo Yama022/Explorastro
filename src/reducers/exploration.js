@@ -15,6 +15,10 @@ import {
   SAVE_EXPLORATION_ILLUSTRATION,
   CHANGE_VALUE_COMMENT,
   REMOVE_COMMENT,
+  EDIT_COMMENT,
+  SET_COMMENT_EDIT_VALUE,
+  SET_COMMENT_ID_VALUE,
+  HANDLE_TOGGLE_COMM_EDIT,
   NEW_PARTICIPANT,
   REMOVE_PARTICIPANT,
 } from 'src/actions/exploration';
@@ -30,6 +34,9 @@ export const initialState = {
   modal: false,
   participate: [],
   comment: '',
+  commentEdit: '',
+  commentEditId: 0,
+  commentEditOpen: false,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -110,6 +117,8 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         exploration: action.payload,
         comment: '',
+        commentEdit: '',
+        commentEditOpen: false,
       };
     }
     case UPDATE_EVENTS: {
@@ -143,6 +152,29 @@ const reducer = (state = initialState, action = {}) => {
     case REMOVE_COMMENT: {
       return {
         ...state,
+      };
+    }
+    case EDIT_COMMENT: {
+      return {
+        ...state,
+      };
+    }
+    case SET_COMMENT_EDIT_VALUE: {
+      return {
+        ...state,
+        commentEdit: action.value,
+      };
+    }
+    case SET_COMMENT_ID_VALUE: {
+      return {
+        ...state,
+        commentEditId: action.value,
+      };
+    }
+    case HANDLE_TOGGLE_COMM_EDIT: {
+      return {
+        ...state,
+        commentEditOpen: !state.commentEditOpen,
       };
     }
     case NEW_PARTICIPANT: {

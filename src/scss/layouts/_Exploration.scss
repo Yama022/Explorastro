@@ -228,13 +228,24 @@
           position: absolute;
           bottom: 0;
           padding-bottom: .5rem;
-          display: flex;
-          justify-content: space-evenly;
-          &__input {
-            width: 78%;
+          &__elem {
+            display: flex;
+            justify-content: space-evenly;
+            &__input {
+              width: 78%;
+            }
+            &__button {
+              width: 18%;
+            }
           }
-          &__button {
-            width: 18%;
+          &__edit {
+            bottom: 3rem;
+            background-color: $primary-color;
+            display: inline-block;
+            width: 100%;
+            padding-left: .7rem;
+            text-shadow: 1px 1px 8px $tertiary-color;
+            box-shadow: 0px -3px 16px 4px $primary-color;
           }
         }
       }

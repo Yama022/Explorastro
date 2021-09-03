@@ -26,10 +26,14 @@ export const UPLOAD_EXPLORATION_ILLUSTRATION = 'UPLOAD_EXPLORATION_ILLUSTRATION'
 export const SAVE_EXPLORATION_ILLUSTRATION = 'SAVE_EXPLORATION_ILLUSTRATION';
 export const POST_COMMENT = 'POST_COMMENT';
 export const REMOVE_COMMENT = 'REMOVE_COMMENT';
+export const EDIT_COMMENT = 'EDIT_COMMENT';
+export const SET_COMMENT_ID_VALUE = 'SET_COMMENT_ID_VALUE';
+export const SET_COMMENT_EDIT_VALUE = 'SET_COMMENT_EDIT_VALUE';
 export const CHANGE_VALUE_COMMENT = 'CHANGE_VALUE_COMMENT';
 export const ADD_PARTICIPANT = 'ADD_PARTICIPANT';
 export const NEW_PARTICIPANT = 'NEW_PARTICIPANT';
 export const REMOVE_PARTICIPANT = 'REMOVE_PARTICIPANT';
+export const HANDLE_TOGGLE_COMM_EDIT = 'HANDLE_TOGGLE_COMM_EDIT';
 
 export const changeInput = (payload) => ({
   type: CHANGE_INPUT,
@@ -139,6 +143,24 @@ export const postComment = () => ({
 
 export const removeComment = (value) => ({
   type: REMOVE_COMMENT,
+  value,
+});
+
+export const editComment = () => ({
+  type: EDIT_COMMENT,
+});
+
+export const handleToggleCommEdit = () => ({
+  type: HANDLE_TOGGLE_COMM_EDIT,
+});
+
+export const setCommentEditValue = (value) => ({
+  type: SET_COMMENT_EDIT_VALUE,
+  value,
+});
+
+export const setCommentIdValue = (value) => ({
+  type: SET_COMMENT_ID_VALUE,
   value,
 });
 
