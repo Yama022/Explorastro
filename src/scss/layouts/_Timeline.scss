@@ -297,6 +297,7 @@
   &__title {
     display: flex;
     & img {
+      object-fit: cover;
       width: 48px;
       height: 48px;
       border-radius: 50%;

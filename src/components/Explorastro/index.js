@@ -18,7 +18,7 @@ import Profile from 'src/containers/Profile';
 import Settings from 'src/containers/Settings';
 import FormEvent from 'src/containers/FormEvent';
 import Exploration from 'src/containers/Exploration';
-import Avatar from 'src/components/Avatar';
+import Avatar from 'src/containers/Avatar';
 import Particles from 'src/components/Particles';
 import Loader from 'src/components/Loader';
 import Project from 'src/components/Project';
@@ -115,7 +115,9 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
               <Footer />
             </Route>
             <Route exact path="/avatar">
+              <Header />
               <Avatar />
+              <Footer />
             </Route>
             <Route exact path="/login">
               <Redirect to="/timeline" />

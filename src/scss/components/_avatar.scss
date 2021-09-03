@@ -1,14 +1,37 @@
 .avatar {
+  position: relative;
   display: flex;
   justify-content: space-evenly;
-  width: 70%;
-  margin: auto;
-  border-radius: 10px;
-  overflow: hidden;
+  
+  &__preview {
+    width: 40%;
+    position: relative;
+    .button {
+      position: fixed;
+      top: 8rem;
+    }
+    &__container {
+      position: fixed;
+      width: 40%;
+      left: 10%;
+      top: 7rem;
+      & #preview {
+        margin: auto;
+        width: 22rem;
+        height: 22rem; 
+      }
+    }
+  }
 
   .choosers {
-    max-width: 50%;
+    width: 54%;
+    &__save {
+      margin-top: 2 * $gutter;
+      display: flex;
+      justify-content: center;
+    }
   }
+
   .chooser {
     margin: 2em 0;
     color: $light-color;
@@ -28,11 +51,11 @@
   }
 
   .title {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: .3em;
-      color: $light-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: .3em;
+    color: $light-color;
   }
 
   .choices {
@@ -87,4 +110,5 @@
   .color::focus {
     border-radius: 50%;
   }
+
 }
