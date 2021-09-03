@@ -14,7 +14,7 @@ const Participant = ({ participants }) => {
     return (<Loader />);
   }
   return (
-    <div className="Exploration__main__participants">
+    <div className="Exploration__main__participants animate__animated animate__fadeIn">
       <h3>Participants {participantsName.length} / {participantsMax}</h3>
       <ul className="Exploration__main__participants__list">
         {participantsName.map((participant) => (

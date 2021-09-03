@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 export default function Follows({ users }) {
   return (
-    <div className="profile__follows">
+    <div className="profile__follows animate__animated animate__fadeIn">
       {users.length > 0
         ? users.map((user) => (
           <Link to={`/profile/${user.id}`} className="profile__follows__user" key={user.id}>

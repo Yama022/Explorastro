@@ -18,7 +18,7 @@ export default function EventCreated({
     }
   };
   return (
-    <div className="createEvent__container__event-list">
+    <div className="createEvent__container__event-list animate__animated animate__fadeIn">
       <img src={image_url} alt={name} />
       <h2>{name}</h2>
       <div className="createEvent__container__event-list__content">

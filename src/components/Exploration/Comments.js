@@ -53,7 +53,7 @@ const Comments = ({
   };
 
   return (
-    <div className="Exploration__overview__left__comments">
+    <div className="Exploration__overview__left__comments animate__animated animate__fadeIn">
       <h3>Commentaires</h3>
       <ul className="Exploration__overview__left__comments__list">
         {comments.map((comment) => (

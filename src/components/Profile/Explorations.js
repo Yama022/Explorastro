@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 export default function Explorations({ explorations }) {
   return (
-    <div className="profile__explorations">
+    <div className="profile__explorations animate__animated animate__fadeIn">
       {explorations.length > 0
         ? explorations.map((exploration) => (
           <div className="profile__explorations__item" key={exploration.id}>

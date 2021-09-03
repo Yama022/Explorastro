@@ -10,9 +10,9 @@ export default function RGPD() {
 
   return (
     <div className="RGPD">
-      <div className={modal ? 'modal is-active' : 'modal'}>
+      <div className={modal ? 'modal is-active ' : 'modal'}>
         <div className="modal-background" />
-        <div className="modal-card">
+        <div className="modal-card  animate__animated animate__fadeInDown">
           <header className="modal-card-head">
             <p className="modal-card-title"><BiCookie /> Accepter les cookies</p>
           </header>

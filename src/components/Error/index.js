@@ -14,9 +14,9 @@ export default function Error() {
         </Suspense>
       </Canvas>
       <div className="error__content">
-        <h2>404</h2>
-        <p>Cette page n'a pas été trouvée!</p>
-        <button type="button" className="button purple">
+        <h2 className="animate__animated animate__fadeInDown">404</h2>
+        <p className="animate__animated animate__fadeInLeft">Cette page n'a pas été trouvée!</p>
+        <button type="button" className="button purple  animate__animated animate__fadeInRight">
           <span className="icon">
             <BiHome />
           </span>

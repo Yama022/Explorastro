@@ -56,7 +56,7 @@ export default function Login({
         <img src={planet5} className="object" data-value="5" alt="" />
       </div>
       <div className="login__container">
-        <div className="login__container__form">
+        <div className="login__container__form animate__animated animate__fadeInDown">
           <Link to="/landing">
             <img src={logo} alt="" />
           </Link>

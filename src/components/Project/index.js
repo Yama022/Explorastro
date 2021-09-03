@@ -21,7 +21,7 @@ export default function Project() {
             apprendre plus à propos de chacun de nous.
           </div>
         </div>
-        <div className="project__container__developper">
+        <div className="project__container__developper animate_animated">
           <div className="project__container__developper__avatar">
             <img src={theo} alt="Profil de Théo" />
           </div>
@@ -37,7 +37,7 @@ export default function Project() {
               de nouvelles choses chaque jour, je fais des obstacles ma force et essaye de donner
               mon maximum en toutes circonstances. 🌱
             </p>
-            <div className="profile__header__description__bio__socials">
+            <div className="profile__header__description__bio__socials animate_animated">
               <Link className="profile__header__description__bio__socials__item --github" to={{ pathname: 'https://github.com/TheoBIET' }} target="_blank">
                 <SiGithub />
               </Link>
@@ -53,7 +53,7 @@ export default function Project() {
             </div>
           </div>
         </div>
-        <div className="project__container__developper">
+        <div className="project__container__developper animate_animated">
           <div className="project__container__developper__avatar">
             <img src={remi} alt="Profil de Théo" />
           </div>

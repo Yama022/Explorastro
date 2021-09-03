@@ -23,9 +23,13 @@
         margin: 5em 0;
         justify-content: space-between;
         align-items: center;
+        animation: fadeInRight;
+        animation-duration: 1s;
 
         &:nth-child(odd) {
           flex-direction: row-reverse;
+          animation: fadeInRight;
+          animation-duration: 1s;
         }
 
         &__content {

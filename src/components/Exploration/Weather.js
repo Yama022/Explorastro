@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const Weather = ({ data }) => (
   <>
     {data?.list?.length ? (
-      <div className="Exploration__overview__left__weather">
+      <div className="Exploration__overview__left__weather animate__animated animate__fadeIn">
         <div className="Exploration__overview__left__weather__icon">
           <img
             src={`http://openweathermap.org/img/wn/${data.list[0].weather[0].icon}.png`}
