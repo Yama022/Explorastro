@@ -116,6 +116,7 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         exploration: action.payload,
+        comment: '',
       };
     }
     case UPDATE_EVENTS: {
