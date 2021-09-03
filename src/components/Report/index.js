@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { useState } from 'react';
 import { FaBug } from 'react-icons/fa';
 
@@ -28,15 +29,19 @@ export default function Report() {
             <div className="select">
               <select>
                 <option>Sélectionner une raison</option>
-                <option>Je rencontre un bug</option>
-                <option>Je rencontre un bug</option>
-                <option>Je rencontre un bug</option>
+                <option>
+                  Je rencontre un soucis sur une page (je précise en commentaire mon soucis)
+                </option>
+                <option>
+                  Je rencontre un problème avec un utilisateur (je précise la nature / raison du problème en commentaire)
+                </option>
+                <option>Je rencontre un soucis non mentionné (je précise en commentaire)</option>
               </select>
             </div>
-            <textarea type="text" control="content" name="content" className="textarea" placeholder="Text input" />
+            <textarea type="text" control="content" name="content" className="textarea" placeholder="J'explique le problème rencontré" />
           </section>
           <footer className="modal-card-foot">
-            <button type="button" className="button purple">Envoyer</button>
+            <button type="button" className="button purple" onClick={toggleModal}>Envoyer</button>
             <button type="button" className="button --outlined" onClick={toggleModal}>Annuler</button>
           </footer>
         </div>

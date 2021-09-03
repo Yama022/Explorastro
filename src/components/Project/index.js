@@ -1,6 +1,6 @@
 import React from 'react';
 import theo from 'src/assets/images/avatar/theo.jpeg';
-import remi from 'src/assets/images/avatar/remi.jpg';
+import remi from 'src/assets/images/avatar/remibis.PNG';
 import pf from 'src/assets/images/avatar/pf.jpg';
 import { Link } from 'react-router-dom';
 
@@ -28,7 +28,7 @@ export default function Project() {
           <div className="project__container__developper__content">
             <div>
               <h3 className="project__container__developper__content__name">Théo BIET</h3>
-              <h4 className="project__container__developper__content__job">Lead Dév Back & Git Master</h4>
+              <h4 className="project__container__developper__content__job">Lead Dév Back & Git Master & Product Owner</h4>
             </div>
             <p className="project__container__developper__content__job__description">
               Passionné d’informatique, et de nouvelles technologies depuis mon plus jeune âge,
@@ -60,7 +60,7 @@ export default function Project() {
           <div className="project__container__developper__content">
             <div>
               <h3 className="project__container__developper__content__name">Rémi Jacquemin</h3>
-              <h4 className="project__container__developper__content__job">Scrum Master</h4>
+              <h4 className="project__container__developper__content__job">Scrum Master & Product Owner</h4>
             </div>
             <p className="project__container__developper__content__job__description">
               Après plus de 10 ans dans le domaine de la sécurité incendie, de pompier volontaire
@@ -87,7 +87,7 @@ export default function Project() {
           <div className="project__container__developper__content">
             <div>
               <h3 className="project__container__developper__content__name">Pierre-François Lainé</h3>
-              <h4 className="project__container__developper__content__job">Lead Dév Front</h4>
+              <h4 className="project__container__developper__content__job">Lead Dév Front & Product Owner</h4>
             </div>
             <p className="project__container__developper__content__job__description">
               Les posts que Pierre-François a créés, partagés ou commentés au cours des 90 derniers
