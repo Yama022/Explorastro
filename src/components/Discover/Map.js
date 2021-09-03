@@ -7,14 +7,23 @@ import {
   MapContainer, TileLayer, Marker, Popup, useMap,
 } from 'react-leaflet';
 import L from 'leaflet';
-import home from 'src/assets/images/home.png';
+import home from 'src/assets/images/map/home.png';
+import markerIcon from 'src/assets/images/map/telescope.png';
+
+const telescopIcon = L.icon({
+  iconUrl: markerIcon,
+  iconSize: [30, 30],
+  iconAnchor: [15, 30],
+  popupAnchor: [0, -30],
+});
+
+const homeIcon = L.icon({
+  iconUrl: home,
+  iconSize: [30, 20],
+});
 
 export default function Map({ eventsList, fieldZone }) {
   // eslint-disable-next-line new-cap
-  const newicon = new L.icon({
-    iconUrl: home,
-    iconSize: [30, 20],
-  });
   function LocationMarker() {
     const [positionGeoloc, setPosition] = useState(null);
     const map = useMap();
@@ -39,10 +48,10 @@ export default function Map({ eventsList, fieldZone }) {
           });
 
           const radius = fieldZone * 1000;
-          circle = L.circle(e.latlng, radius);
+          circle = L.circle(e.latlng, radius, { color: '#220033' });
 
           // rendu géométrique
-          circle = L.circle(e.latlng, radius);
+          circle = L.circle(e.latlng, radius, { color: '#220033' });
           circle.addTo(map);
         }
       });
@@ -63,14 +72,14 @@ export default function Map({ eventsList, fieldZone }) {
           const coord = [lat, long];
           return (
             <div key={element.id}>
-              <Marker names="marker" position={coord}>
-                <Popup name="popup">Exploration vers {element.name}</Popup>
+              <Marker names="marker" position={coord} icon={telescopIcon}>
+                <Popup name="popup">{element.name}</Popup>
               </Marker>
             </div>
           );
         })}
 
-        <Marker position={positionGeoloc} icon={newicon}>
+        <Marker position={positionGeoloc} icon={homeIcon}>
           <Popup>
             Votre domicile
           </Popup>

@@ -1,7 +1,7 @@
 /* eslint-disable react/button-has-type */
 import React from 'react';
 import { Link } from 'react-router-dom';
-import mascotSkating from 'src/assets/images/mascot-skating.svg';
+import mascotSkating from 'src/assets/images/mascot/mascot-skating.svg';
 import PropTypes from 'prop-types';
 
 export default function Modal({ onClickModal, modal, titleEvent }) {
