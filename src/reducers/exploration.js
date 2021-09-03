@@ -1,5 +1,4 @@
 import {
-  FORM_SUBMIT_SEARCH_ADDRESS,
   SAVE_EXPLORATION,
   CHANGE_INPUT,
   CHANGE_INPUT_VALUE_EXPLORATION,
@@ -35,12 +34,6 @@ export const initialState = {
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case FORM_SUBMIT_SEARCH_ADDRESS: {
-      return {
-        ...state,
-        addressInput: action.payload,
-      };
-    }
     case SAVE_EXPLORATION: {
       return {
         ...state,

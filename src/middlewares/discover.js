@@ -14,11 +14,12 @@ const discover = (store) => (next) => (action) => {
       const {
         latitude: lat, longitude: lng, name, radiusInKm,
       } = action.filters;
-      const earthRadiusInMeters = 40075000;
+      const earthRadius = 63710;
+      const earthRadiusInMeters = earthRadius * 1000;
       const search = async () => {
         let query = `/api/v1/exploration?search=${name}`;
         if (lng && lat && radiusInKm) {
-          query += `&lat=${lat}&lng=${lng}5&radius=${100000000000000000000000000000000000000000000}`;
+          query += `&lat=${lat}&lng=${lng}5&radius=${radiusInKm ?? earthRadiusInMeters}`;
         }
         const searchResults = await api.get(query);
         store.dispatch(saveAllEvents(searchResults.data));
