@@ -54,7 +54,7 @@ export default function Exploration({
           <Weather data={exploration.weather} />
           <Comments
             comments={exploration.comments}
-            comment={comment}
+            commentInput={comment}
             onSubmit={onSubmitMessage}
             onChangeValue={onChangeValue}
             deleteComment={deleteComment}

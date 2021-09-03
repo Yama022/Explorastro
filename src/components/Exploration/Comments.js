@@ -10,7 +10,7 @@ const Comments = ({
   onSubmit,
   onChangeValue,
   deleteComment,
-  comment,
+  commentInput,
 }) => {
   const handleOnSubmit = (event) => {
     event.preventDefault();
@@ -76,7 +76,7 @@ const Comments = ({
           placeholder="Commenter"
           className="Exploration__overview__left__comments__form__input input"
           onChange={handleChange}
-          value={comment}
+          value={commentInput}
           name="comment"
         />
         <button
@@ -95,7 +95,7 @@ Comments.propTypes = {
   onSubmit: PropTypes.func,
   onChangeValue: PropTypes.func,
   deleteComment: PropTypes.func.isRequired,
-  comment: PropTypes.string.isRequired,
+  commentInput: PropTypes.string.isRequired,
 };
 
 Comments.defaultProps = {
