@@ -22,6 +22,7 @@
         color: $light-color;
         margin: 5em 0;
         justify-content: space-between;
+        align-items: center;
 
         &:nth-child(odd) {
           flex-direction: row-reverse;
@@ -30,6 +31,7 @@
         &__content {
           margin: 5em 0;
           width: 60%;
+          height: 20rem;
           display: flex;
           justify-content: space-evenly;
           flex-direction: column;
@@ -37,12 +39,20 @@
           &__name {
             font-size: 2em;
             font-weight: bold;
+            text-shadow: 1px 1px 8px $tertiary-color;
+            margin-bottom: .5rem;
           }
 
           &__job {
             font-size: 1.3em;
-            color: $secondary-color;
-            margin-bottom: 1rem;
+            color: $light-color;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            display: inline;
+            border-bottom: 1px solid $light-color;
+            &__description {
+              margin-top: 1rem;
+            }
           }
         }
 
