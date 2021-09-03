@@ -10,7 +10,6 @@ import 'leaflet-control-geocoder/dist/Control.Geocoder';
 export default function Discover({
   onFormSubmit,
   events,
-  explorationsFilter,
   onChangeInput,
   zone,
   getEvents,
@@ -19,12 +18,11 @@ export default function Discover({
   useEffect(() => {
     getEvents();
   }, []);
-  const eventsList = explorationsFilter.length > 0 ? explorationsFilter : events;
 
   return (
     <div className="discover">
       <div className="discover__list-events">
-        {eventsList.map((element) => (
+        {events.map((element) => (
           <div key={element.id} className="discover__list-events__box">
             <img className="discover__list-events__box__img" src={element.image_url} alt="" />
             <div className="discover__list-events__box__content">
@@ -40,8 +38,12 @@ export default function Discover({
         ))}
       </div>
       <div className="discover__map">
-        <Filter onSubmit={onFormSubmit} onChange={onChangeInput} fieldZone={zone} />
-        <Map eventsList={eventsList} fieldZone={zone} address={address} />
+        <Filter
+          onSubmit={onFormSubmit}
+          onChange={onChangeInput}
+          fieldZone={zone}
+        />
+        <Map eventsList={events} fieldZone={zone} address={address} />
       </div>
     </div>
   );
@@ -50,7 +52,6 @@ export default function Discover({
 Discover.propTypes = {
   onFormSubmit: PropTypes.func.isRequired,
   events: PropTypes.arrayOf(PropTypes.object).isRequired,
-  explorationsFilter: PropTypes.arrayOf(PropTypes.object).isRequired,
   onChangeInput: PropTypes.func.isRequired,
   zone: PropTypes.number.isRequired,
   getEvents: PropTypes.func.isRequired,

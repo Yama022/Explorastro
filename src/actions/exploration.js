@@ -18,7 +18,6 @@ export const REMOVE_LAST_EVENT_ID = 'REMOVE_LAST_EVENT_ID';
 export const CLICK_MODAL = 'CLICK_MODAL';
 export const GET_ALL_EVENTS = 'GET_ALL_EVENTS';
 export const SAVE_ALL_EVENTS = 'SAVE_ALL_EVENTS';
-export const FORM_SUBMIT_SEARCH_ADDRESS = 'FORM_SUBMIT_SEARCH_ADDRESS';
 export const UPDATE_EVENTS = 'UPDATE_EVENTS';
 export const GET_EXPLORATION_BY_ID = 'GET_EXPLORATION_BY_ID';
 export const SAVE_EXPLORATION_BY_ID = 'SAVE_EXPLORATION_BY_ID';
@@ -31,12 +30,6 @@ export const CHANGE_VALUE_COMMENT = 'CHANGE_VALUE_COMMENT';
 export const ADD_PARTICIPANT = 'ADD_PARTICIPANT';
 export const NEW_PARTICIPANT = 'NEW_PARTICIPANT';
 export const REMOVE_PARTICIPANT = 'REMOVE_PARTICIPANT';
-
-// Action creators
-export const formSubmitSearchAddress = (payload) => ({
-  type: FORM_SUBMIT_SEARCH_ADDRESS,
-  payload,
-});
 
 export const changeInput = (payload) => ({
   type: CHANGE_INPUT,

@@ -7,10 +7,21 @@ export default function Filter({ onSubmit, onChange, fieldZone }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const { value } = event.target[0];
-    onSubmit(value);
+
+    // Récupération des coordonées de l'utilisateur
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        const { latitude, longitude } = position.coords;
+        onSubmit({
+          name: value,
+          latitude,
+          longitude,
+          radius: fieldZone,
+        });
+      });
+    }
   };
   const handleOnchange = (event) => {
-    // event.preventDefault();
     const { value } = event.target;
     const zone = parseInt(value, 10);
     onChange(zone);

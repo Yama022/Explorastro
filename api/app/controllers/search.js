@@ -27,8 +27,8 @@ module.exports = {
     `,
         {
           bind: [
-            lng ?? franceCoord.lng,
             lat ?? franceCoord.lat,
+            lng ?? franceCoord.lng,
             radius ?? earthRadiusInKm,
           ],
         }

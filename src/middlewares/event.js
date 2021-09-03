@@ -5,12 +5,12 @@ import {
   REMOVE_EVENT,
   GET_ALL_EVENTS,
   GET_EVENT_TO_MODIFY_DATA,
+  UPLOAD_EXPLORATION_ILLUSTRATION,
   saveUserEvents,
   saveAllEvents,
   updateEvents,
   saveEventToModify,
   addNewExploration,
-  UPLOAD_EXPLORATION_ILLUSTRATION,
   saveExplorationIllustration,
 } from 'src/actions/exploration';
 
