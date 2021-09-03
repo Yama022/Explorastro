@@ -37,7 +37,7 @@ export default function Header({
   }, []);
 
   return (
-    <header className="header" id="header">
+    <header className="header animate__animated animate__fadeInDown" id="header">
       <div className="header__burger" onClick={handleToggleBurger}>
         <GiHamburgerMenu className="header__burger__img" />
       </div>

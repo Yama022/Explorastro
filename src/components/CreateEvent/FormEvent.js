@@ -59,9 +59,9 @@ export default function FormEvent({
         />
       )}
       <h1 className="main-title">Créer un événement</h1>
-      <div className="createEventForm">
-        <form className="createEventForm__form">
-          <div className="left">
+      <div className="createEventForm ">
+        <form className="createEventForm__form ">
+          <div className="left animate__animated animate__fadeInLeft">
             <h4>Nom de l'événement</h4>
             <input
               className="input"
@@ -133,7 +133,7 @@ export default function FormEvent({
               </div>
             </div>
           </div>
-          <div className="right"><Map getCoordLocation={getCoordLocation} coord={eventToModify.geog?.coordinates.reverse()} /></div>
+          <div className="right animate__animated animate__fadeInRight"><Map getCoordLocation={getCoordLocation} coord={eventToModify.geog?.coordinates.reverse()} /></div>
         </form>
         <div className="createEventForm__form__validate">
           <Link className="button --secondary" to="/exploration/create">

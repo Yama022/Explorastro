@@ -21,7 +21,7 @@ export default function Discover({
 
   return (
     <div className="discover">
-      <div className="discover__list-events">
+      <div className="discover__list-events  animate__animated animate__fadeInLeft">
         {events.map((element) => (
           <div key={element.id} className="discover__list-events__box">
             <img className="discover__list-events__box__img" src={element.image_url} alt="" />

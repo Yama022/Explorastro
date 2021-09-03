@@ -49,7 +49,7 @@ export default function Timeline({
       </aside>
       {(timelineContent.length === 0)
         ? (
-          <div className="timeline-main">
+          <div className="timeline-main animate__animated animate__slideInUp">
             <h1 className="main-title">Cherche de nouveaux amis(es) pour ne rien manquer de leur activité !</h1>
           </div>
         )

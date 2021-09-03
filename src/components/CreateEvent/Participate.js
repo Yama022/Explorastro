@@ -10,7 +10,7 @@ export default function Participate({
   name, id, date, max_participants: maxParticipants, image_url: imageUrl,
 }) {
   return (
-    <div className="createEvent__container__event-list">
+    <div className="createEvent__container__event-list animate__animated animate__fadeIn">
       <img src={imageUrl} alt={name} />
       <h2>{name}</h2>
       <div className="createEvent__container__event-list__content">

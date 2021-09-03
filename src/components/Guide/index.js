@@ -12,13 +12,13 @@ export default function Guide() {
   return (
     // Div qui englobe l'ensemble des paragaphe
     <div className="guide">
-      <h1 className="main-title">Le guide de l'explorateur</h1> <h1 className="main-title"> PAGE EN COURS DE CONSTRUCTION !</h1>
-      <div className="guide__presentation">
+      <div className="guide__avatar">
+        <img src={mascot} alt="mascot" className="guide__presentation__avatar__avatar" />
+      </div>
+      <h1 className="main-title animate__animated animate__fadeInDown">Le guide de l'explorateur</h1>
+      <div className="guide__presentation animate__animated animate__fadeInRight">
         <h2 className="guide__presentation__title"><FcAdvance /> Tu souhaites découvrir ce milieu fabuleux qu'est l'astronomie ?!</h2>
         <h3 className="guide__presentation__sous-title"> <FcDownRight /> Oui ? Alors t'es au bon endroit !</h3>
-        <div className="guide__avatar">
-          <img src={mascot} alt="mascot" className="guide__presentation__avatar__avatar" />
-        </div>
         <div className="guide__presentation__paragraphe">
           <p>Laisse moi t'expliquer un peu comment tout ce bazard, qu'est l'astronomie amateur, fonctionne ! (faut bien commencer quelque part non ?!)</p><br />
           <p>Dans le milieu de l'astronomie 'visuel' (Oui, j'ai bien dis visuel, ce détail a son importance !)</p>
@@ -37,7 +37,7 @@ export default function Guide() {
         </div>
       </div>
       {/* Création du 1er paragaphe pour expliquer ce qu'il est possible de voir suivant l'instrument utilisé */}
-      <div className="guide__section">
+      <div className="guide__section animate__animated animate__fadeInLeft">
         <h2 className="guide__section__title"><FcAdvance /> On peut utiliser différents matériels pour du visuel !</h2>
         <div className="guide__section__paragraphe">
 

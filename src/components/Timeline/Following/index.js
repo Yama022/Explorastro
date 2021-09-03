@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 export default function Following({ following }) {
   return (
-    <div className="timeline-right__follow">
+    <div className="timeline-right__follow animate__animated animate__fadeInRight">
       <h3 className="timeline-right__follow__title">Vos amis</h3>
       <ul className="timeline-right__follow__list">
         {following.map((follow) => {

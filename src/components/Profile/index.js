@@ -86,7 +86,7 @@ export default function Profile({
     <div className="profile">
       <div className="profile__header">
 
-        <div className="profile__header__avatar">
+        <div className="profile__header__avatar animate__animated animate__bounceIn">
           {(profileId === loggedUserId)
               && (
                 <form className="profile__header__avatar__edit">
@@ -115,7 +115,7 @@ export default function Profile({
           </div>
         </div>
 
-        <div className="profile__header__description">
+        <div className="profile__header__description animate__animated animate__fadeInDown">
           <div className="profile__header__description__top">
             <div className="profile__header__description__top__left">
               <h3 className="profile__header__description__top__left__name">{firstName} {lastName}</h3>

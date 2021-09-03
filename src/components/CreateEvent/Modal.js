@@ -12,7 +12,7 @@ export default function Modal({ onClickModal, modal, titleEvent }) {
   return (
     <div className={modal ? 'modal is-active' : 'modal'}>
       <div className="modal-background" />
-      <div className="modal-card">
+      <div className="modal-card  animate__animated animate__fadeInDown">
         <header className="modal-card-head">
           <p className="modal-card-title">Exploration : {titleEvent}</p>
           <button className="delete" aria-label="close" onClick={handleOnClickModal} />

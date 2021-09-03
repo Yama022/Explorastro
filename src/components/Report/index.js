@@ -11,13 +11,13 @@ export default function Report() {
 
   return (
     <>
-      <div className="report" onClick={toggleModal}>
+      <div className="report animate__animated animate__fadeInRight" onClick={toggleModal}>
         <span className="icon"><FaBug /></span>
         <span>Signaler un bug</span>
       </div>
       <div className={modal ? 'modal is-active' : 'modal'}>
         <div className="modal-background" />
-        <div className="modal-card">
+        <div className="modal-card animate__animated animate__fadeInDown">
           <header className="modal-card-head">
             <p className="modal-card-title"><FaBug /> Signaler un bug</p>
             <button type="button" className="delete" aria-label="close" onClick={toggleModal} />

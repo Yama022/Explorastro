@@ -13,7 +13,7 @@ export default function Search({
   };
 
   return (
-    <div className="search control has-icons-left">
+    <div className="search control has-icons-left animate__animated animate__fadeInUp">
       <input
         className="search__input"
         type="text"

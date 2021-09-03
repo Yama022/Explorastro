@@ -29,7 +29,7 @@ export default function CreateEvent({
     <div className="createEvent">
       <section className="createEvent__container">
         <h1 className="main-title">J'organise</h1>
-        <div className="createEvent__container__flex">
+        <div className="createEvent__container__flex animate__animated animate__fadeIn">
           <form className="createEvent__container__form" onSubmit={handleSubmit}>
             <div className="createEvent__container__form__title">
               <h2>Créer une sortie</h2>
