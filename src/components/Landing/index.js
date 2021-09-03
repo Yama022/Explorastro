@@ -2,9 +2,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import mascotBackground from 'src/assets/images/mascot-background.svg';
-import mascotRocket from 'src/assets/images/mascot-rocket.svg';
-import mascotJetpack from 'src/assets/images/mascot-jetpack.svg';
+import mascotBackground from 'src/assets/images/mascot/mascot-background.svg';
+import mascotRocket from 'src/assets/images/mascot/mascot-rocket.svg';
+import mascotJetpack from 'src/assets/images/mascot/mascot-jetpack.svg';
 import mascotPen from 'src/assets/images/mascot/fly-on-pen.svg';
 import mascotRead from 'src/assets/images/mascot/read-on-saturn.svg';
 

@@ -2,7 +2,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { MapContainer, TileLayer, Marker } from 'react-leaflet';
+import L from 'leaflet';
+
+import markerIcon from 'src/assets/images/map/telescope.png';
 import ControlGeocoder from './controlGeocoder';
+
+const telescopIcon = L.icon({
+  iconUrl: markerIcon,
+  iconSize: [30, 30],
+  iconAnchor: [15, 30],
+  popupAnchor: [0, -30],
+});
 
 export default function Map({ getCoordLocation, coord }) {
   return (
@@ -31,6 +41,7 @@ export default function Map({ getCoordLocation, coord }) {
         <Marker
           names="marker"
           position={coord.length === 2 ? coord : [44.840291, 2.109375]}
+          icon={telescopIcon}
         />
       </MapContainer>
     </div>
