@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+
+import Loader from 'src/components/Loader';
+
 import EventCreated from './EventCreated';
 import Participate from './Participate';
 
@@ -10,6 +13,7 @@ export default function CreateEvent({
   onFormSubmitCreate,
   onClickRemove,
   participate,
+  isLoading,
 }) {
   useEffect(() => {
     getEvent();
@@ -23,6 +27,10 @@ export default function CreateEvent({
   const handleOnchange = (event) => {
     onChangeInput(event.target.value, event.target.name);
   };
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
 
@@ -66,6 +74,7 @@ CreateEvent.propTypes = {
   onFormSubmitCreate: PropTypes.func.isRequired,
   onClickRemove: PropTypes.func.isRequired,
   participate: PropTypes.arrayOf(PropTypes.object),
+  isLoading: PropTypes.bool.isRequired,
 };
 
 CreateEvent.defaultProps = {

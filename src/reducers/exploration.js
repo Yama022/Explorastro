@@ -37,6 +37,7 @@ export const initialState = {
   commentEdit: '',
   commentEditId: 0,
   commentEditOpen: false,
+  isLoading: true,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -82,6 +83,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         userEvents: action.value.organized_explorations,
         participate: action.value.explorations,
+        isLoading: false,
       };
     }
     case ON_CLICK_PUBLISH: {

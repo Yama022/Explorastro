@@ -49,6 +49,7 @@ export default function Profile({
   handleBioEdit,
   userFound,
   handleAvatarUpload,
+  isLoading,
 }) {
   const handleToggleNav = (event) => {
     changeMenuValue(event.target.dataset.toggle);
@@ -72,7 +73,7 @@ export default function Profile({
     getInfo(profileId);
   }, [profileId]);
 
-  if (!loggedUserId || !explorations || !profileId || !participatesTo) {
+  if (isLoading || !explorations || !participatesTo) {
     return <Loader />;
   }
 
@@ -300,7 +301,7 @@ Profile.propTypes = {
   profileId: PropTypes.number.isRequired,
   username: PropTypes.string.isRequired,
   role: PropTypes.number.isRequired,
-  avatarUrl: PropTypes.string,
+  avatarUrl: PropTypes.string.isRequired,
   firstName: PropTypes.string.isRequired,
   lastName: PropTypes.string.isRequired,
   menuValue: PropTypes.number.isRequired,
@@ -320,10 +321,10 @@ Profile.propTypes = {
   handleBioEdit: PropTypes.func.isRequired,
   userFound: PropTypes.bool.isRequired,
   handleAvatarUpload: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
 };
 
 Profile.defaultProps = {
-  avatarUrl: '',
   biography: '',
   biographyEdit: '',
 };

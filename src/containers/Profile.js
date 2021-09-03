@@ -23,6 +23,7 @@ const mapStateToProps = (state) => ({
   userFound: state.profile.userFound,
   avatarUrl: state.profile.avatar_url,
   role: state.profile.role_id,
+  isLoading: state.profile.isLoading,
 });
 
 const mapDispatchToProps = (dispatch) => ({

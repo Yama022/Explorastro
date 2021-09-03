@@ -28,6 +28,7 @@ const initialState = {
   userFollowed: false,
   bioEditOpen: false,
   userFound: false,
+  isLoading: true,
 };
 
 const profile = (state = initialState, action = {}) => {
@@ -59,6 +60,7 @@ const profile = (state = initialState, action = {}) => {
         avatar_url: action.payload.avatar_url,
         role_id: action.payload.role_id,
         userFollowed: action.payload.followers.some((follow) => follow.id === state.loggedUserId),
+        isLoading: false,
       };
     }
     case TOGGLE_FOLLOW: {

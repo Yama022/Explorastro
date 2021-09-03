@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+
+import Loader from 'src/components/Loader';
+
 import Discover from './Discover';
 import Follow from './Follow';
 import Comment from './Comment';
@@ -31,15 +34,16 @@ export default function Timeline({
   searchInput,
   searchForPeople,
   searchResult,
+  isLoading,
 }) {
   useEffect(() => {
     getTimeline();
+    getInfo(loggedUserId);
   }, []);
 
-  useEffect(() => {
-    getInfo(loggedUserId);
-  }, [loggedUserId]);
-
+  if (!isLoading) {
+    return <Loader />;
+  }
   return (
     <div className="timeline">
       <aside className="timeline-left">
@@ -106,6 +110,7 @@ Timeline.propTypes = {
   searchInput: PropTypes.string.isRequired,
   searchForPeople: PropTypes.func.isRequired,
   searchResult: PropTypes.array.isRequired,
+  isLoading: PropTypes.bool.isRequired,
 };
 
 Timeline.defaultProps = {
