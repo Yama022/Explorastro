@@ -1,16 +1,13 @@
 .avatar {
   display: flex;
-  align-items: center;
-  flex-direction: column;
   justify-content: space-evenly;
-  width: 25%;
+  width: 70%;
   margin: auto;
-  background-color: $primary-color;
-  border: 2px solid $secondary-color;
   border-radius: 10px;
+  overflow: hidden;
 
   .choosers {
-    max-width: 40%;
+    max-width: 50%;
   }
   .chooser {
     margin: 2em 0;
