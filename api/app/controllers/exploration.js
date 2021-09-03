@@ -58,6 +58,7 @@ module.exports = {
       include: ['author', 'participants', {
        association: 'comments',
         include: ['author'],
+        order: [['createdAt', 'ASC']],
       }],
     });
 
