@@ -6,6 +6,7 @@ export const initialState = {
   following: [],
   searchInput: '',
   searchResult: [],
+  isLoading: true,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -14,6 +15,7 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         timelineContent: [...action.payload],
+        isLoading: false,
       };
     }
     case SAVE_USER_INFO: {

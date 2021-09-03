@@ -10,6 +10,7 @@ import {
 const mapStateToProps = (state) => ({
   userEvents: state.exploration.userEvents,
   participate: state.exploration.participate,
+  isLoading: state.exploration.isLoading,
 });
 
 const mapDispatchToProps = (dispatch) => ({

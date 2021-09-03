@@ -12,6 +12,7 @@ const mapStateToProps = (state) => ({
   following: state.profile.following,
   searchInput: state.timeline.searchInput,
   searchResult: state.timeline.searchResult,
+  isLoading: state.timeline.isLoading,
 });
 
 const mapDispatchToProps = (dispatch) => ({
