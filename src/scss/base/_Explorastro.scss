@@ -9,10 +9,6 @@ body {
   overflow: auto;
 }
 
-* {
-  cursor: none !important;
-}
-
 *::selection {
   background-color: $secondary-color;
   color: $light-color;

@@ -24,7 +24,6 @@ import Loader from 'src/components/Loader';
 import Project from 'src/components/Project';
 import RGPD from 'src/components/RGPD';
 import Report from 'src/components/Report';
-import DotRing from 'src/components/DotRing/DotRing';
 
 import { IoIosArrowUp } from 'react-icons/io';
 
@@ -49,7 +48,6 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
 
   return (
     <div className="explorastro">
-      <DotRing />
       <Particles />
       <Report />
       {!isLogged && <RGPD />}
