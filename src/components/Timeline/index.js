@@ -41,7 +41,7 @@ export default function Timeline({
     getInfo(loggedUserId);
   }, []);
 
-  if (!isLoading) {
+  if (isLoading) {
     return <Loader />;
   }
   return (
