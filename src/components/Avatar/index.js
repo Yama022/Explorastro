@@ -71,6 +71,7 @@ export default function AvatarMaker() {
         width: node.offsetWidth * scale,
       });
 
+      // eslint-disable-next-line no-console
       console.log(blob);
     }
   };
