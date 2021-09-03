@@ -47,9 +47,27 @@
           color: $tertiary-color;
           filter: drop-shadow(0 0 0.2em $primary-color);
           top: 50%;
-          left: 50%;
+          right: 24%;
           z-index: 3;
-          transform: translate(-50%, -50%);
+          transform: translateY(-50%);
+          
+          &:hover {
+            color: $light-color;
+            filter: drop-shadow(0 0 0.2em $tertiary-color);
+          }
+        }
+
+      }
+      &__awesome {
+        &__icon {
+          font-size: 5rem;
+          position: absolute;
+          color: $tertiary-color;
+          filter: drop-shadow(0 0 0.2em $primary-color);
+          top: 50%;
+          left: 24%;
+          z-index: 3;
+          transform: translateY(-50%);
           
           &:hover {
             color: $light-color;

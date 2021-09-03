@@ -16,6 +16,7 @@ import { IoClose } from 'react-icons/io5';
 import { MdCheck } from 'react-icons/md';
 import { SiTiktok } from 'react-icons/si';
 import { HiOutlineTerminal } from 'react-icons/hi';
+import { CgProfile } from 'react-icons/cg';
 
 import Loader from 'src/components/Loader';
 
@@ -89,20 +90,25 @@ export default function Profile({
         <div className="profile__header__avatar">
           {(profileId === loggedUserId)
               && (
-                <form className="profile__header__avatar__edit">
-                  <label htmlFor="upload-avatar">
-                    <RiImageEditLine className="profile__header__avatar__edit__icon" />
-                    <input
-                      type="file"
-                      name="avatarFile"
-                      id="upload-avatar"
-                      accept="image/png, image/jpeg, image/jpg, image/gif, image/webp"
-                      onChange={(event) => {
-                        handleAvatarUploadForm(event);
-                      }}
-                    />
-                  </label>
-                </form>
+                <div className="profile__header__avatar__edit">
+                  <form>
+                    <label htmlFor="upload-avatar">
+                      <RiImageEditLine className="profile__header__avatar__edit__icon" title="Upload un avatar" />
+                      <input
+                        type="file"
+                        name="avatarFile"
+                        id="upload-avatar"
+                        accept="image/png, image/jpeg, image/jpg, image/gif, image/webp"
+                        onChange={(event) => {
+                          handleAvatarUploadForm(event);
+                        }}
+                      />
+                    </label>
+                  </form>
+                  <Link className="profile__header__avatar__awesome" to="/avatar" title="Avatar builder">
+                    <CgProfile className="profile__header__avatar__awesome__icon" />
+                  </Link>
+                </div>
               )}
           <div className="profile__header__avatar__img">
             <img

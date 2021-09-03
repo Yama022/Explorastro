@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 import Avatar, { genConfig } from 'react-nice-avatar';
 import domtoimage from 'dom-to-image';
+
+import { FaLongArrowAltLeft } from 'react-icons/fa';
 import { GiRollingDices } from 'react-icons/gi';
 import { GrRestroomWomen, GrRestroomMen } from 'react-icons/gr';
 
@@ -23,7 +28,7 @@ const DEFAULT_STYLES = {
   hairColorRandom: [],
 };
 
-export default function AvatarMaker() {
+export default function AvatarMaker({ loggedUserId, handleAvatarUpload }) {
   const [styles, setStyles] = useState(genConfig());
   const [hairColor, setHairColor] = useState(styles.hairColor);
   const [faceColor, setFaceColor] = useState(styles.faceColor);
@@ -61,6 +66,16 @@ export default function AvatarMaker() {
   const download = async () => {
     const scale = 2;
     const node = document.getElementById('preview');
+
+    const blobToImage = (blob) => {
+      blob.name = 'avatar.jpeg';
+      blob.lastModified = new Date();
+      const myFile = new File([blob], 'avatar.jpeg', {
+        type: blob.type,
+      });
+      return myFile;
+    };
+
     if (node) {
       const blob = await domtoimage.toBlob(node, {
         height: node.offsetHeight * scale,
@@ -70,17 +85,25 @@ export default function AvatarMaker() {
         },
         width: node.offsetWidth * scale,
       });
-
+      const avatarFile = blobToImage(blob);
+      await handleAvatarUpload(avatarFile);
       // eslint-disable-next-line no-console
-      console.log(blob);
     }
   };
 
   return (
     <div className="avatar">
-      <div className="avatar-container">
-        <h1 className="title is-1">Créer votre avatar</h1>
-        <Avatar id="preview" style={{ width: '30rem', height: '30rem' }} {...styles} />
+      <div className="avatar__preview">
+        <Link className="button --secondary" to={`/profile/${loggedUserId}`}>
+          <span className="icon is-small">
+            <FaLongArrowAltLeft />
+          </span>
+          <span> Retour </span>
+        </Link>
+        <div className="avatar__preview__container">
+          <h1 className="title is-1">Créer votre avatar</h1>
+          <Avatar id="preview" {...styles} />
+        </div>
       </div>
       <div className="choosers">
         <div className="chooser bgColor">
@@ -573,10 +596,17 @@ export default function AvatarMaker() {
             </button>
           </div>
         </div>
-        <button type="button" className="button purple" onClick={download}>
-          Sauvegarder
-        </button>
+        <div className="choosers__save">
+          <button type="button" className="button --outlined" onClick={download}>
+            Sauvegarder
+          </button>
+        </div>
       </div>
     </div>
   );
 }
+
+AvatarMaker.propTypes = {
+  loggedUserId: PropTypes.number.isRequired,
+  handleAvatarUpload: PropTypes.func.isRequired,
+};
