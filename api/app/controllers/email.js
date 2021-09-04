@@ -8,11 +8,11 @@ module.exports = {
         try {
             const { email } = req.body;
             const lowerEmail = email.toLowerCase();
-            const user = req.user;
+            const user = await User.findOne({ where: { email: lowerEmail } });
 
-            if (user.email !== lowerEmail) {
+            if (!user) {
                 return res.status(400).json({
-                    message: ERROR.EMAIL_NOT_MATCH,
+                    message: ERROR.EMAIL_NOT_FOUND
                 });
             }
 

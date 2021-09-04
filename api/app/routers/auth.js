@@ -44,9 +44,8 @@ router
    * @security JWT
    */
     .post(
-      "/password/forgot/:id(\\d+)",
+      "/password/forgot",
       rateLimit.sendMail,
-    userMiddleware.checkIfExists,
     emailController.forgotPassword
 )
   
