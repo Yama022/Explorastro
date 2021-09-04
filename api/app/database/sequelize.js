@@ -7,7 +7,7 @@ try {
     define: {
       underscored: true,
     },
-    logging:  process.env.NODE_ENV === 'production' ? false : console.log,
+    logging:  false,
     pool: {
       max: 5,
       min: 0,

@@ -49,7 +49,7 @@ module.exports = {
       const accessToken = jwt.generateAccessToken(userData);
       const refreshToken = jwt.generateRefreshToken(userData);
 
-      const tokenToSave = Token.create({
+      await Token.create({
         user_id: user.id,
         token: refreshToken,
       });
@@ -122,14 +122,14 @@ module.exports = {
     }
   },
 
-  refreshToken: (req, res) => {
+  refreshToken: async (req, res) => {
     const refreshToken = req.body.token;
 
     if (!refreshToken) {
       return res.status(400).json({ message: ERROR.MISSING_TOKEN });
     }
 
-    const token = Token.findOne({
+    const token = await Token.findOne({
       where: {
         token: refreshToken,
       },
@@ -139,15 +139,33 @@ module.exports = {
       return res.status(400).json({ message: ERROR.INVALID_TOKEN });
     }
 
-    return jwt.verifyRefreshToken(refreshToken, (err, user) => {
-      if (err) return res.status(400).json({ message: ERROR.INVALID_TOKEN });
-      const accessToken = jwt.generateAccessToken({
-        name: user.name,
-      });
-      return res.json({
-        accessToken,
+    token.destroy().then(() => {
+      jwt.verifyRefreshToken(refreshToken, async (err, user) => {
+        const userData = await User.findByPk(user.id);
+        if (err || !userData) return res.status(400).json({ message: ERROR.INVALID_TOKEN });
+
+        console.log(userData)
+
+        const newAccessToken = jwt.generateAccessToken({
+          ...userData.toJSON(),
+        });
+        const newRefreshToken = jwt.generateRefreshToken({
+          ...userData.toJSON(),
+        });
+  
+        await Token.create({
+          user_id: user.id,
+          token: newRefreshToken,
+        });
+  
+        return res.json({
+          accessToken: newAccessToken,
+          refreshToken: newRefreshToken,
+        });
       });
     });
+
+    
   },
 
   resetForgottenPassword: async (req, res) => {
