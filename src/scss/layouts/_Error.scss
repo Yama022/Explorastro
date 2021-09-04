@@ -1,23 +1,56 @@
 .error {
-    position: relative;
-    width: 100%;
+  position: relative;
+  width: 100%;
 
-    &__content {
+  &__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    max-width: 500px;
+    padding: 0 20px;
+    color: $light-color;
+
+    &__404 {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      position: relative;
+      &__astrocharles {
         position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
-        max-width: 500px;
-        padding: 0 20px;
-        color: $light-color;
-
-        h2 {
-            font-size: 5rem;
-        }
-
-        p {
-            font-size: 3rem;
-        }
+        width: 15rem;
+        bottom: -1.5rem;
+      }
     }
+
+    
+    h2 {
+      margin: 0 1rem;
+      user-select: none;
+      font-size: 8rem;
+    }
+    
+    p {
+      user-select: none;
+      font-size: 3rem;
+    }
+
+    .button {
+      margin-top: $gutter;
+    }
+  }
+  @include mobTab {
+    .mars-model {
+      margin-top: -3rem;
+    }
+    &__content {
+      top: 45%;
+      &__404 {
+        h2 {
+          margin: 0 4rem;
+        }
+      }
+    }
+  }
 }

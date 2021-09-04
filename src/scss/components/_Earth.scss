@@ -1,4 +1,7 @@
-.earth-model {
-    min-height: 90vh;
-    position: absolute;
+.mars-model {
+  min-height: 90vh;
+  position: absolute;
+  @include mobTab {
+    min-height: 80vh;
+  }
 }
