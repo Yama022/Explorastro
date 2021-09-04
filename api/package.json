@@ -19,6 +19,7 @@
     "@babel/node": "^7.14.9",
     "@babel/preset-env": "^7.15.0",
     "aws-sdk": "^2.974.0",
+    "axios": "^0.21.2",
     "bcrypt": "^5.0.1",
     "bucket": "^0.0.1",
     "cors": "^2.8.5",
