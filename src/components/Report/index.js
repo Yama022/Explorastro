@@ -41,8 +41,8 @@ export default function Report() {
             <textarea type="text" control="content" name="content" className="textarea" placeholder="J'explique le problème rencontré" />
           </section>
           <footer className="modal-card-foot">
-            <button type="button" className="button purple" onClick={toggleModal}>Envoyer</button>
-            <button type="button" className="button --outlined" onClick={toggleModal}>Annuler</button>
+            <button type="button" className="button --secondary" onClick={toggleModal}>Annuler</button>
+            <button type="button" className="button --outlined" onClick={toggleModal}>Envoyer</button>
           </footer>
         </div>
       </div>
