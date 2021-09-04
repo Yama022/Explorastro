@@ -2,6 +2,9 @@ import React from 'react';
 import theo from 'src/assets/images/avatar/theo.jpeg';
 import remi from 'src/assets/images/avatar/remibis.PNG';
 import pf from 'src/assets/images/avatar/pf.jpg';
+import theoPass from 'src/assets/images/tickets/theo_pass.png';
+import remiPass from 'src/assets/images/tickets/remi_pass.png';
+import pfPass from 'src/assets/images/tickets/pierre_pass.png';
 import { Link } from 'react-router-dom';
 
 import { FaTwitter, FaLinkedinIn, FaGlobeEurope } from 'react-icons/fa';
@@ -23,7 +26,8 @@ export default function Project() {
         </div>
         <div className="project__container__developper animate_animated">
           <div className="project__container__developper__avatar">
-            <img src={theo} alt="Profil de Théo" />
+            <img src={theo} alt="Profil de Théo" className="avatar" />
+            <img src={theoPass} alt="Pass de Théo" className="pass" />
           </div>
           <div className="project__container__developper__content">
             <div>
@@ -55,7 +59,8 @@ export default function Project() {
         </div>
         <div className="project__container__developper animate_animated">
           <div className="project__container__developper__avatar">
-            <img src={remi} alt="Profil de Théo" />
+            <img src={remi} alt="Profil de Rémi" className="avatar" />
+            <img src={remiPass} alt="Pass de Rémi" className="pass" />
           </div>
           <div className="project__container__developper__content">
             <div>
@@ -82,7 +87,8 @@ export default function Project() {
         </div>
         <div className="project__container__developper">
           <div className="project__container__developper__avatar">
-            <img src={pf} alt="Profil de Théo" />
+            <img src={pf} alt="Profil de PF" className="avatar" />
+            <img src={pfPass} alt="Pass de PF" className="pass" />
           </div>
           <div className="project__container__developper__content">
             <div>
