@@ -3,7 +3,7 @@ import Profile from 'src/components/Profile';
 
 import {
   changeProfileMenu, getUserInfo, follow, unfollow, toggleBioEdit,
-  changeInputValue, changeBio, uploadAvatar,
+  changeInputValue, changeBio, uploadAvatar, setFieldHasError,
 } from 'src/actions/profile';
 
 const mapStateToProps = (state) => ({
@@ -24,6 +24,7 @@ const mapStateToProps = (state) => ({
   avatarUrl: state.profile.avatar_url,
   role: state.profile.role_id,
   isLoading: state.profile.isLoading,
+  fieldHasError: state.profile.fieldHasError,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -50,6 +51,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   handleAvatarUpload: (value) => {
     dispatch(uploadAvatar(value));
+  },
+  handleFieldHasError: (value) => {
+    dispatch(setFieldHasError(value));
   },
 });
 
