@@ -1,5 +1,8 @@
 import {
-  GET_TIMELINE, saveUserTimeline, SEARCH_PEOPLE, savePeople,
+  GET_TIMELINE,
+  SEARCH_PEOPLE,
+  saveUserTimeline,
+  savePeople,
 } from 'src/actions/timeline';
 
 import api from './utils/api';

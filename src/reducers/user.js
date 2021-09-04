@@ -1,6 +1,10 @@
 import { SAVE_AVATAR } from 'src/actions/profile';
 import {
-  CHANGE_VALUE, TOGGLE_SIGNUP, LOGOUT, SAVE_USER, LOGIN_ERROR,
+  CHANGE_VALUE,
+  TOGGLE_SIGNUP,
+  LOGOUT,
+  SAVE_USER,
+  LOGIN_ERROR,
   SET_FIELD_HAS_ERROR,
 } from 'src/actions/user';
 

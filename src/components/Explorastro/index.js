@@ -24,6 +24,8 @@ import Loader from 'src/components/Loader';
 import Project from 'src/components/Project';
 import RGPD from 'src/components/RGPD';
 import Report from 'src/components/Report';
+import CGU from 'src/components/CGU';
+import PatchNote from 'src/components/PatchNote';
 
 import { IoIosArrowUp } from 'react-icons/io';
 
@@ -50,6 +52,7 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
     <div className="explorastro">
       <Particles />
       <Report />
+      <PatchNote />
       {!isLogged && <RGPD />}
       {isLogged
         ? (
@@ -87,6 +90,11 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
             <Route exact path="/discover">
               <Header />
               <Discover />
+              <Footer />
+            </Route>
+            <Route exact path="/cgu">
+              <Header />
+              <CGU />
               <Footer />
             </Route>
             <Route
@@ -154,6 +162,11 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
             <Route exact path="/aboutus">
               <Header />
               <Project />
+              <Footer />
+            </Route>
+            <Route exact path="/cgu">
+              <Header />
+              <CGU />
               <Footer />
             </Route>
             <Route exact path="/login">

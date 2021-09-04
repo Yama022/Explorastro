@@ -1,14 +1,14 @@
 import {
   GET_USER_INFO,
-  saveUserInfo,
   FOLLOW,
   UNFOLLOW,
-  toggleFollow,
   CHANGE_BIO,
-  saveBio,
-  userExists,
   UPLOAD_AVATAR,
   saveAvatar,
+  saveUserInfo,
+  saveBio,
+  userExists,
+  toggleFollow,
 } from 'src/actions/profile';
 
 import api from './utils/api';
