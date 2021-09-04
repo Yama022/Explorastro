@@ -1,5 +1,5 @@
 const { ERROR } = require('../constants');
-const { Token } = require('../models');
+const { PasswordToken } = require('../models');
 const { email: emailUtils } = require('../utils');
 const crypto = require('crypto');
 
@@ -18,7 +18,7 @@ module.exports = {
 
             const tokenPassword = crypto.randomBytes(32).toString('hex');
 
-            await Token.create({
+            await PasswordToken.create({
                 user_id: user.id,
                 token: tokenPassword,
             });

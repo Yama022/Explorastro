@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 const bcrypt = require('bcrypt');
 const { Op } = require('sequelize');
-const { User, Token } = require('../models');
+const { User, Token, PasswordToken } = require('../models');
 const { ERROR, EVENT } = require('../constants');
 const { jwt, event } = require('../utils');
 
@@ -164,7 +164,7 @@ module.exports = {
         return res.status(400).json({ message: ERROR.PASSWORD_NOT_MATCH });
       }
 
-      const userToken = await Token.findOne({
+      const userToken = await PasswordToken.findOne({
         where: {
           token,
         },

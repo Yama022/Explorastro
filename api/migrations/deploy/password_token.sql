@@ -14,7 +14,7 @@ CREATE FUNCTION password_token_delete_old_rows() RETURNS trigger
     LANGUAGE plpgsql
     AS $$
 BEGIN
-  DELETE FROM "password_token" WHERE timestamp < NOW() - INTERVAL '1 day';
+  DELETE FROM "password_token" WHERE "created_at" < NOW() - INTERVAL '1 day';
   RETURN NEW;
 END;
 $$;
