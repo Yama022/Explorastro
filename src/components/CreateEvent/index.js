@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
@@ -9,23 +10,46 @@ import Participate from './Participate';
 export default function CreateEvent({
   getEvent,
   userEvents,
-  onChangeInput,
+  onNewEventChange,
   onFormSubmitCreate,
   onClickRemove,
   participate,
   isLoading,
+  fieldHasError,
+  handleFieldHasError,
+  newTitle,
 }) {
   useEffect(() => {
     getEvent();
   }, []);
+  const handleValidation = () => {
+    const errors = {};
+    let formIsValid = true;
+
+    if (newTitle.length < 3) {
+      errors.newTitle = 'Minimum 3 caractères';
+      formIsValid = false;
+    }
+
+    if (newTitle.length > 60) {
+      errors.newTitle = 'Maximum 60 caractères';
+      formIsValid = false;
+    }
+
+    handleFieldHasError(errors);
+    return formIsValid;
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onFormSubmitCreate();
+
+    if (handleValidation()) {
+      onFormSubmitCreate();
+    }
   };
 
   const handleOnchange = (event) => {
-    onChangeInput(event.target.value, event.target.name);
+    onNewEventChange(event.target.value, event.target.name);
   };
 
   if (isLoading) {
@@ -33,7 +57,6 @@ export default function CreateEvent({
   }
 
   return (
-
     <div className="createEvent">
       <section className="createEvent__container">
         <h1 className="main-title">J'organise</h1>
@@ -43,9 +66,22 @@ export default function CreateEvent({
               <h2>Créer une sortie</h2>
             </div>
             <div className="createEvent__container__form__content">
-              <label htmlFor="newTitle" className="createEvent__container__name">
-                <input className="input" name="newTitle" type="text" placeholder="Ex : Soirée nuit des étoiles" onChange={handleOnchange} />
-              </label>
+
+              <div className="field">
+                <label htmlFor="newTitle" className="createEvent__container__name">Nom de l'exploration</label>
+                <div className="control has-icons-left has-icons-right">
+                  <input className={fieldHasError.newTitle ? 'input is-danger' : 'input'} type="text" placeholder="Exemple: La Nuit des Étoiles" name="newTitle" value={newTitle} onChange={handleOnchange} />
+                  <span className="icon is-small is-left">
+                    <i className="fas fa-envelope" />
+                  </span>
+                  {fieldHasError.newTitle && (
+                  <span className="icon is-small is-right">
+                    <i className="fas fa-exclamation-triangle" />
+                  </span>
+                  )}
+                </div>
+                <p className="help is-danger">{fieldHasError.newTitle}</p>
+              </div>
               <button className="button --secondary" type="submit">Créer</button>
             </div>
           </form>
@@ -70,14 +106,19 @@ export default function CreateEvent({
 CreateEvent.propTypes = {
   getEvent: PropTypes.func.isRequired,
   userEvents: PropTypes.arrayOf(PropTypes.object),
-  onChangeInput: PropTypes.func.isRequired,
+  onNewEventChange: PropTypes.func.isRequired,
   onFormSubmitCreate: PropTypes.func.isRequired,
   onClickRemove: PropTypes.func.isRequired,
   participate: PropTypes.arrayOf(PropTypes.object),
   isLoading: PropTypes.bool.isRequired,
+  fieldHasError: PropTypes.object,
+  handleFieldHasError: PropTypes.func.isRequired,
+  newTitle: PropTypes.string,
 };
 
 CreateEvent.defaultProps = {
   userEvents: [],
   participate: [],
+  fieldHasError: {},
+  newTitle: '',
 };

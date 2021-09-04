@@ -82,7 +82,7 @@ const event = (store) => (next) => (action) => {
       const sendEventName = async () => {
         try {
           const response = await api.post('/api/v1/exploration/create', {
-            name: state.exploration.eventToModify.newTitle,
+            name: state.exploration.newTitle,
           });
           store.dispatch(addNewExploration(response.data));
         }
