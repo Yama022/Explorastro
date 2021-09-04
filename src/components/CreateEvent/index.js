@@ -1,6 +1,8 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { GoTelescope } from 'react-icons/go';
+import { AiOutlineWarning } from 'react-icons/ai';
 
 import Loader from 'src/components/Loader';
 
@@ -72,11 +74,11 @@ export default function CreateEvent({
                 <div className="control has-icons-left has-icons-right">
                   <input className={fieldHasError.newTitle ? 'input is-danger' : 'input'} type="text" placeholder="Exemple: La Nuit des Étoiles" name="newTitle" value={newTitle} onChange={handleOnchange} />
                   <span className="icon is-small is-left">
-                    <i className="fas fa-envelope" />
+                    <GoTelescope />
                   </span>
                   {fieldHasError.newTitle && (
                   <span className="icon is-small is-right">
-                    <i className="fas fa-exclamation-triangle" />
+                    <AiOutlineWarning />
                   </span>
                   )}
                 </div>
