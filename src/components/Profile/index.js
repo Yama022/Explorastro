@@ -50,7 +50,22 @@ export default function Profile({
   userFound,
   handleAvatarUpload,
   isLoading,
+  fieldHasError,
+  handleFieldHasError,
 }) {
+  const handleBiographyValidation = () => {
+    const errors = {};
+    let formIsValid = true;
+
+    if (biographyEdit.length > 280) {
+      formIsValid = false;
+      errors.biography = 'La biographie est trop longue.';
+    }
+
+    handleFieldHasError(errors);
+    return formIsValid;
+  };
+
   const handleToggleNav = (event) => {
     changeMenuValue(event.target.dataset.toggle);
   };
@@ -61,8 +76,10 @@ export default function Profile({
 
   const handleBioEditSubmit = (event) => {
     event.preventDefault();
-    handleBioEdit();
-    handleToggleBioEdit();
+    if (handleBiographyValidation()) {
+      handleBioEdit();
+      handleToggleBioEdit();
+    }
   };
 
   const handleAvatarUploadForm = (event) => {
@@ -210,6 +227,7 @@ export default function Profile({
                   onSubmit={handleBioEditSubmit}
                 >
                   <textarea name="biographyEdit" onChange={handleChange} value={biographyEdit} />
+                  <span className="profile__header__description__bio__form__error">{fieldHasError.biography}</span>
                   <div className="profile__header__description__bio__form__buttons">
                     <button type="button" className="button --secondary" onClick={handleToggleBioEdit}>
                       <span className="icon"><IoClose /></span>
@@ -322,6 +340,8 @@ Profile.propTypes = {
   userFound: PropTypes.bool.isRequired,
   handleAvatarUpload: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
+  fieldHasError: PropTypes.object.isRequired,
+  handleFieldHasError: PropTypes.func.isRequired,
 };
 
 Profile.defaultProps = {

@@ -8,6 +8,7 @@ import {
   SAVE_BIO,
   USER_EXISTS,
   SAVE_AVATAR,
+  SET_FIELD_HAS_ERROR,
 } from 'src/actions/profile';
 
 const initialState = {
@@ -29,6 +30,7 @@ const initialState = {
   bioEditOpen: false,
   userFound: false,
   isLoading: true,
+  fieldHasError: {},
 };
 
 const profile = (state = initialState, action = {}) => {
@@ -98,6 +100,12 @@ const profile = (state = initialState, action = {}) => {
       return {
         ...state,
         avatar_url: action.payload,
+      };
+    }
+    case SET_FIELD_HAS_ERROR: {
+      return {
+        ...state,
+        fieldHasError: action.value,
       };
     }
     default:
