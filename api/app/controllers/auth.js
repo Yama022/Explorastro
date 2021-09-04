@@ -9,8 +9,7 @@ module.exports = {
   login: async (req, res) => {
     try {
       const { login, password } = req.body;
-
-
+      
       if (!login || !password) {
         return res.status(400).json({
           message: ERROR.MISSING_CREDENTIALS,
@@ -164,8 +163,6 @@ module.exports = {
         });
       });
     });
-
-    
   },
 
   resetForgottenPassword: async (req, res) => {

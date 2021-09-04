@@ -1,7 +1,7 @@
 const express = require('express');
 
 const router = express.Router();
-const { mainController, timelineController } = require('../controllers');
+const { mainController, timelineController, emailController } = require('../controllers');
 const { tokenMiddleware } = require('../middlewares');
 
 /**
@@ -24,4 +24,15 @@ router.get(
   timelineController.get,
 );
 
+/**
+ * Report a bug
+ * @route POST /api/v1/report
+ * @group Informations - Operations about API
+ * @returns {API-Infos.model} 200 - An object containing API informations
+ */
+ router.post(
+  '/report',
+  tokenMiddleware.authenticateToken,
+  emailController.report,
+);
 module.exports = router;

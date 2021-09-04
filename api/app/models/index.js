@@ -4,6 +4,7 @@ const Token = require('./token');
 const Exploration = require('./exploration');
 const Comment = require('./comment');
 const PasswordToken = require('./passwordToken');
+const Report = require('./report');
 
 // User Role
 Role.hasMany(User, {
@@ -46,6 +47,21 @@ PasswordToken.belongsTo(User, {
   as: 'user',
   foreignKey: {
     name: 'user_id',
+    allowNull: false,
+    onDelete: 'CASCADE',
+  },
+});
+
+User.hasMany(Report, {
+  as: 'report',
+  foreignKey: 'author_id',
+  onDelete: 'CASCADE',
+});
+
+Report.belongsTo(User, {
+  as: 'author',
+  foreignKey: {
+    name: 'author_id',
     allowNull: false,
     onDelete: 'CASCADE',
   },
@@ -135,4 +151,5 @@ module.exports = {
   PasswordToken,
   Exploration,
   Comment,
+  Report,
 };
