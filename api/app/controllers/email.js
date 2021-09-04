@@ -1,7 +1,10 @@
 const { ERROR } = require('../constants');
+const { Token } = require('../models');
+const { email: emailUtils } = require('../utils');
+const crypto = require('crypto');
 
 module.exports = {
-    forgotPassword: (req, res) => {
+    forgotPassword: async (req, res) => {
         try {
             const { email } = req.body;
             const lowerEmail = email.toLowerCase();
@@ -13,11 +16,22 @@ module.exports = {
                 });
             }
 
-            // TODO : Send a message to the user with a link to reset password
+            const tokenPassword = crypto.randomBytes(32).toString('hex');
 
-            return res.status(200).json({
-                message: 'Email sent',
+            await Token.create({
+                user_id: user.id,
+                token: tokenPassword,
             });
+
+            const isSend = await emailUtils.forgotPassword(lowerEmail, `https://www.explorastro.com/password/forgot/update?token=${tokenPassword}`);
+
+            if (isSend) {
+                return res.status(200).json({
+                    message: 'A message has been sent to your email',
+                });
+            } else {
+                throw new Error('Error sending email');
+            }
 
         } catch (error) {
             console.log(error);

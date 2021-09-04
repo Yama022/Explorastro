@@ -47,7 +47,12 @@ router
     "/password/forgot/:id(\\d+)",
     userMiddleware.checkIfExists,
     emailController.forgotPassword
-    )
+)
+  
+.post(
+  "/password/forgot/update",
+  authController.resetForgottenPassword
+  )
   
   
   /**

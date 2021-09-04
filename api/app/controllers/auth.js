@@ -149,4 +149,47 @@ module.exports = {
       });
     });
   },
+
+  resetForgottenPassword: async (req, res) => {
+    try {
+      const { token, password, confirm } = req.body;
+
+      if (password.length < 8) {
+        return res.status(400).json({
+          message: ERROR.PASSWORD_TOO_SHORT,
+        });
+      }
+
+      if (password !== confirm) {
+        return res.status(400).json({ message: ERROR.PASSWORD_NOT_MATCH });
+      }
+
+      const userToken = await Token.findOne({
+        where: {
+          token,
+        },
+      });
+
+      if (!userToken) {
+        return res.status(400).json({ message: ERROR.INVALID_TOKEN });
+      }
+
+      const user = await User.findByPk(userToken.user_id);
+
+      const hashedPassword = await bcrypt.hashSync(req.body.password, 8);
+
+      await user.update({
+        password: hashedPassword,
+      });
+
+      await userToken.destroy();
+
+      return res.status(200).json({ message: 'Password has been reset' });
+    } catch (error) {
+      console.error(error);
+      return res.status(500).send({
+        message: ERROR.INTERNAL_ERROR,
+      });
+    }
+  },
 };
