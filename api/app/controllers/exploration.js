@@ -94,6 +94,12 @@ module.exports = {
         });
       }
 
+      const totalExplorations = await Exploration.count({
+        where: {
+          author_id: user.id,
+        },
+      });
+
       const numberOfExplorations = await Exploration.count({
         where: {
           [Op.and]: [
@@ -110,7 +116,7 @@ module.exports = {
         },
       });
 
-      if (numberOfExplorations >= 10) {
+      if (numberOfExplorations >= 10 || totalExplorations >= 50) {
         return res.status(400).json({
           message: ERROR.EXPLORATION_LIMIT_REACHED,
         });

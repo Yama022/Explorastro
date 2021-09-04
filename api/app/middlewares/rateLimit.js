@@ -57,4 +57,12 @@ module.exports = {
       return res.status(429).json({ message: ERROR.TOO_MANY_EXPLORATIONS });
     }
   }),
+
+  sendMail: rateLimit({
+    windowMs: 60 * 60 * 1000, // 1 hour window
+    max: 5, // start blocking after 2 requests
+    handler: (req, res) => {
+      return res.status(429).json({ message: ERROR.TOO_MANY_MAILS });
+    }
+  }),
 }

@@ -4,7 +4,8 @@ const router = express.Router();
 
 const validate = require('../validations/validate');
 const { userSchema } = require('../validations/schemas');
-const { authController } = require('../controllers');
+const { authController, emailController } = require('../controllers');
+const { userMiddleware, rateLimit } = require('../middlewares');
 
 router
   /**
@@ -17,6 +18,7 @@ router
    * @returns {Error.model}  default - An object containing the error message
    */
   .post('/login', authController.login)
+
   /**
    * Sign up a new user in the database
    * @route POST /api/v1/signup
@@ -30,6 +32,40 @@ router
    * @returns {Error.model}  default - An object containing the error message
    */
   .post('/signup', validate('body', userSchema), authController.signup)
+
+  /**
+   * Send email when the user forgot his password
+   * @route POST /api/v1/password/forgot
+   * @group User - Operations about users
+   * @param {integer} id.param.required - The id of the user.
+   * @param {string} email.body.required - User email
+   * @returns {Object} 200 - An object containing a success message
+   * @returns {Error.model}  default - An object containing the error message
+   * @security JWT
+   */
+    .post(
+      "/password/forgot",
+      rateLimit.sendMail,
+    emailController.forgotPassword
+)
+  
+  /**
+   * Change the user's password
+   * @route POST /api/v1/password/forgot/update
+   * @group User - Operations about users
+   * @param {string} password.body.required - User new password
+   * @param {string} confirm.body.required - User new password confirmation
+   * @param {string} token.body.required - User token
+   * @returns {Object} 200 - An object containing a success message
+   * @returns {Error.model}  default - An object containing the error message
+   * @security JWT
+   */
+.post(
+  "/password/forgot/update",
+  authController.resetForgottenPassword
+  )
+  
+  
   /**
    * Refresh the user's token
    * @route POST /api/v1/token

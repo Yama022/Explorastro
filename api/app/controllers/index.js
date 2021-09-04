@@ -7,6 +7,7 @@ const participationController = require('./participation');
 const commentController = require('./comment');
 const timelineController = require('./timeline');
 const searchController = require('./search');
+const emailController = require('./email');
 
 module.exports = {
   mainController,
@@ -17,5 +18,6 @@ module.exports = {
   participationController,
   commentController,
   timelineController,
-  searchController
+  searchController,
+  emailController
 };

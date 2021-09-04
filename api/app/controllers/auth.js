@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 const bcrypt = require('bcrypt');
 const { Op } = require('sequelize');
-const { User, Token } = require('../models');
+const { User, Token, PasswordToken } = require('../models');
 const { ERROR, EVENT } = require('../constants');
 const { jwt, event } = require('../utils');
 
@@ -9,8 +9,7 @@ module.exports = {
   login: async (req, res) => {
     try {
       const { login, password } = req.body;
-
-
+      
       if (!login || !password) {
         return res.status(400).json({
           message: ERROR.MISSING_CREDENTIALS,
@@ -49,7 +48,7 @@ module.exports = {
       const accessToken = jwt.generateAccessToken(userData);
       const refreshToken = jwt.generateRefreshToken(userData);
 
-      const tokenToSave = Token.create({
+      await Token.create({
         user_id: user.id,
         token: refreshToken,
       });
@@ -122,14 +121,14 @@ module.exports = {
     }
   },
 
-  refreshToken: (req, res) => {
+  refreshToken: async (req, res) => {
     const refreshToken = req.body.token;
 
     if (!refreshToken) {
       return res.status(400).json({ message: ERROR.MISSING_TOKEN });
     }
 
-    const token = Token.findOne({
+    const token = await Token.findOne({
       where: {
         token: refreshToken,
       },
@@ -139,14 +138,73 @@ module.exports = {
       return res.status(400).json({ message: ERROR.INVALID_TOKEN });
     }
 
-    return jwt.verifyRefreshToken(refreshToken, (err, user) => {
-      if (err) return res.status(400).json({ message: ERROR.INVALID_TOKEN });
-      const accessToken = jwt.generateAccessToken({
-        name: user.name,
-      });
-      return res.json({
-        accessToken,
+    token.destroy().then(() => {
+      jwt.verifyRefreshToken(refreshToken, async (err, user) => {
+        const userData = await User.findByPk(user.id);
+        if (err || !userData) return res.status(400).json({ message: ERROR.INVALID_TOKEN });
+
+        console.log(userData)
+
+        const newAccessToken = jwt.generateAccessToken({
+          ...userData.toJSON(),
+        });
+        const newRefreshToken = jwt.generateRefreshToken({
+          ...userData.toJSON(),
+        });
+  
+        await Token.create({
+          user_id: user.id,
+          token: newRefreshToken,
+        });
+  
+        return res.json({
+          accessToken: newAccessToken,
+          refreshToken: newRefreshToken,
+        });
       });
     });
+  },
+
+  resetForgottenPassword: async (req, res) => {
+    try {
+      const { token, password, confirm } = req.body;
+
+      if (password.length < 8) {
+        return res.status(400).json({
+          message: ERROR.PASSWORD_TOO_SHORT,
+        });
+      }
+
+      if (password !== confirm) {
+        return res.status(400).json({ message: ERROR.PASSWORD_NOT_MATCH });
+      }
+
+      const userToken = await PasswordToken.findOne({
+        where: {
+          token,
+        },
+      });
+
+      if (!userToken) {
+        return res.status(400).json({ message: ERROR.INVALID_TOKEN });
+      }
+
+      const user = await User.findByPk(userToken.user_id);
+
+      const hashedPassword = await bcrypt.hashSync(req.body.password, 8);
+
+      await user.update({
+        password: hashedPassword,
+      });
+
+      await userToken.destroy();
+
+      return res.status(200).json({ message: 'Password has been reset' });
+    } catch (error) {
+      console.error(error);
+      return res.status(500).send({
+        message: ERROR.INTERNAL_ERROR,
+      });
+    }
   },
 };

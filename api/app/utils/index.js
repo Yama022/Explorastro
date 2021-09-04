@@ -4,6 +4,7 @@ const upload = require('./multer');
 const event = require('./event');
 const date = require('./date');
 const timeline = require('./timeline');
+const email = require('./email');
 
 module.exports = {
   jwt,
@@ -12,4 +13,5 @@ module.exports = {
   event,
   date,
   timeline,
+  email,
 };
