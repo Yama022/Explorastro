@@ -36,6 +36,10 @@ export default function SignupForm({
       formIsValid = false;
       errors.firstname = 'Le prénom renseigné est trop court';
     }
+    if (firstname.length > 50) {
+      formIsValid = false;
+      errors.firstname = 'Le prénom renseigné est trop long.';
+    }
 
     // Last Name
     if (!lastname) {
@@ -50,6 +54,10 @@ export default function SignupForm({
       formIsValid = false;
       errors.lastname = 'Le nom renseigné est trop court';
     }
+    if (lastname.length > 50) {
+      formIsValid = false;
+      errors.lastame = 'Le nom renseigné est trop long.';
+    }
 
     // Username
     if (!username) {
@@ -60,9 +68,13 @@ export default function SignupForm({
       formIsValid = false;
       errors.username = 'Merci de ne pas utiliser de caractère spécial.';
     }
-    if (username.length < 6) {
+    if (username.length < 3) {
       formIsValid = false;
-      errors.username = 'Le pseudo renseigné est trop court';
+      errors.username = 'Le pseudo renseigné est trop court.';
+    }
+    if (username.length > 50) {
+      formIsValid = false;
+      errors.username = 'Le pseudo renseigné est trop long.';
     }
 
     // password
@@ -73,6 +85,10 @@ export default function SignupForm({
     if (password.length < 6) {
       formIsValid = false;
       errors.password = 'Le mot de passe renseigné est trop court';
+    }
+    if (password.length > 50) {
+      formIsValid = false;
+      errors.password = 'Le mot de passe renseigné est trop long';
     }
 
     // password confirmation
@@ -86,7 +102,6 @@ export default function SignupForm({
     }
 
     // email
-
     if (!email) {
       formIsValid = false;
       errors.email = 'Veuillez renseigner une adresse mail.';
@@ -97,12 +112,16 @@ export default function SignupForm({
 
       if (!(lastAtPos < lastDotPos && lastAtPos > 0 && email.indexOf('@@') === -1 && lastDotPos > 2 && (email.length - lastDotPos) > 2)) {
         formIsValid = false;
-        errors.email = "L'adresse email n'est pas valide.";
+        errors.email = "L'adresse email renseignée n'est pas valide.";
       }
     }
     if (/[ `!#$%^&*()+=[\]{};':"\\|,<>/?~]/.test(email)) {
       formIsValid = false;
       errors.email = 'Merci de ne pas utiliser de caractère spécial.';
+    }
+    if (email.length > 50) {
+      formIsValid = false;
+      errors.email = "L'adresse email renseignée est trop longue";
     }
 
     handleFieldHasError(errors);
