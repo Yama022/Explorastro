@@ -1,4 +1,8 @@
-import { SAVE_TIMELINE, CHANGE_VALUE_TIMELINE, SAVE_PEOPLE } from 'src/actions/timeline';
+import {
+  SAVE_TIMELINE,
+  CHANGE_VALUE_TIMELINE,
+  SAVE_PEOPLE,
+} from 'src/actions/timeline';
 import { SAVE_USER_INFO } from 'src/actions/profile';
 
 export const initialState = {
