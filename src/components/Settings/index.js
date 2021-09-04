@@ -114,6 +114,7 @@ export default function Settings({
   const handleUsernameForm = (event) => {
     event.preventDefault();
     if (handleUsernameValidation()) {
+      // eslint-disable-next-line no-alert
       if (window.confirm('Êtes-vous sûr de vouloir changer votre pseudo?')) {
         handleUsernameChange();
       }
@@ -123,6 +124,7 @@ export default function Settings({
   const handlePasswordForm = (event) => {
     event.preventDefault();
     if (handlePasswordValidation()) {
+      // eslint-disable-next-line no-alert
       if (window.confirm('Êtes-vous sûr de vouloir changer votre mot de passe?')) {
         handlePasswordChange();
       }
@@ -132,6 +134,7 @@ export default function Settings({
   const handleDelete = (event) => {
     event.preventDefault();
     if (handleDeleteValidation()) {
+      // eslint-disable-next-line no-alert
       if (window.confirm('Êtes-vous sûr de vouloir supprimer votre compte? Cette action est irréversible.')) {
         handleDeleteAccount();
       }
