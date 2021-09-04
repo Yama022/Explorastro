@@ -23,17 +23,19 @@ export default function Header({
   };
 
   useEffect(() => {
-    let previousScrollPosition = window.pageYOffset;
-    window.onscroll = () => {
-      const currentScrollPosition = window.pageYOffset;
-      if (previousScrollPosition > currentScrollPosition) {
-        document.getElementById('header').style.top = '0';
-      }
-      else {
-        document.getElementById('header').style.top = '-500px';
-      }
-      previousScrollPosition = currentScrollPosition;
-    };
+    if (window.matchMedia('(min-width: 1024px)').matches) {
+      let previousScrollPosition = window.pageYOffset;
+      window.onscroll = () => {
+        const currentScrollPosition = window.pageYOffset;
+        if (previousScrollPosition > currentScrollPosition) {
+          document.getElementById('header').style.top = '0';
+        }
+        else {
+          document.getElementById('header').style.top = '-500px';
+        }
+        previousScrollPosition = currentScrollPosition;
+      };
+    }
   }, []);
 
   return (
