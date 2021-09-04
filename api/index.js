@@ -10,7 +10,9 @@ const expressSwagger = require("express-swagger-generator")(app);
 const router = require("./app/routers");
 const { SWAGGER } = require("./app/constants");
 
-app.use(cors());
+app.use(cors({
+  'Access-Control-Allow-Origin': '*',
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
