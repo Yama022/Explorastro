@@ -1,51 +1,68 @@
 .patch-note {
-    position: fixed;
-    left: 2em;
-    bottom: 2em;
-    padding: .5em 1em;
+  z-index: 9999;
+  position: fixed;
+  left: 2em;
+  bottom: 2em;
+  padding: .5em 1em;
+  display: flex;
+  align-items: center;
+  color: white;
+  background-color: red;
+  background-color: $primary-color;
+  border: 2px solid $secondary-color;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: .2s ease-in-out;
+  box-shadow: 0px 0px 9px -1px $secondary-color;
+
+  &:hover {
+    box-shadow: $secondary-color 0px 15px 15px -10px;
+    transform: translateY(-5px)
+  }
+
+  .modal {
+    height: 20em;
+  }
+
+  .modal-card-body {
     display: flex;
+    flex-direction: column;
+    justify-content: left;
     align-items: center;
-    color: white;
+    text-align: left;
     background-color: red;
-    background-color: $primary-color;
-    border: 2px solid $secondary-color;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: .2s ease-in-out;
-    box-shadow: 0px 0px 9px -1px $secondary-color;
 
-    &:hover {
-        box-shadow: $secondary-color 0px 15px 15px -10px;
-        transform: translateY(-5px)
+    h3 {
+      text-decoration: underline;
     }
 
-    .modal {
-        height: 20em;
+    p {
+      color: $light-color;
+      text-align: left;
+      font-weight: lighter;
+
+      span {
+        font-size: 1.1em;
+        font-weight: bold;
+        color: $secondary-color;
+      }
     }
 
-    .modal-card-body {
-        display: flex;
-        flex-direction: column;
-        justify-content: left;
-        align-items: center;
-        text-align: left;
-        background-color: red;
+    
+  }
+  @include mob {
+    display: none;
+  }
+}
 
-        h3 {
-            text-decoration: underline;
-            margin-bottom: 1em;
-        }
-        
-        p {
-            color: $light-color;
-            text-align: left;
-            font-weight: lighter;
-
-            span {
-                font-size: 1.1em;
-                font-weight: bold;
-                color: $secondary-color;
-            }
-        }
+.--report {
+  ul {
+    font-size: 0.9rem;
+    li {
+      margin-bottom: .2rem;
     }
+    &:first-of-type {
+      margin-top: 1rem;
+    }
+  }
 }

@@ -332,7 +332,9 @@
 
     & img {
       align-self: center;
-      width: 15%;
+      object-fit: cover;
+      width: 80px;
+      height: 80px;
       border-radius: 50%;
       filter: brightness(0.5);
       transition: 0.2s ease-in-out;
