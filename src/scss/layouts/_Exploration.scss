@@ -75,7 +75,7 @@
       overflow-y: auto;
       border: 1px solid $secondary-color;
       box-shadow: 0px 0px 9px -1px $secondary-color;
-      
+
       h3 {
         font-weight: 900;
         font-size: 1.5em;
@@ -168,7 +168,7 @@
           padding: .4rem 0 0 .8rem;
           height: 82%;
           overflow: auto;
-          
+
           &__item {
             display: flex;
             flex-direction: column;
@@ -179,10 +179,10 @@
               display: flex;
               align-items: center;
               font-weight: bold;
-              
+
               &__avatar {
                 margin-right: 1rem;
-                
+
                 img {
                   height: 40px;
                   width: 40px;
@@ -192,6 +192,7 @@
                   border-radius: 50%;
                 }
               }
+
               &__username {
                 &:hover {
                   color: $light-color;
@@ -204,11 +205,13 @@
               position: absolute;
               top: 1rem;
               right: 1rem;
+
               &__elem {
                 cursor: pointer;
                 margin-left: 0.3rem;
                 font-size: 0.9rem;
                 color: $tertiary-color;
+
                 &:hover {
                   color: $light-color;
                   filter: drop-shadow(1px 1px 8px $tertiary-color);
@@ -219,25 +222,30 @@
             &__text {
               font-size: large;
               margin-left: 3em;
-              
+
             }
           }
         }
+
         &__form {
           width: 95%;
           position: absolute;
           bottom: 0;
           padding-bottom: .5rem;
+
           &__elem {
             display: flex;
             justify-content: space-evenly;
+
             &__input {
               width: 78%;
             }
+
             &__button {
               width: 18%;
             }
           }
+
           &__edit {
             bottom: 3rem;
             background-color: $primary-color;
@@ -256,13 +264,107 @@
       border-radius: 5px;
       border: 1px solid $secondary-color;
       box-shadow: 0px 0px 9px -1px $secondary-color;
-      overflow:hidden;
+      overflow: hidden;
+
       &__elem {
         margin: 0;
       }
     }
   }
 
-  // &__author {
-  // }
+  @include mobTab {
+    &__main {
+      &__informations {
+        width: 55%;
+        &__general {
+          display: block;
+          &__left {
+            width: 100%;
+          }
+          &__right {
+            margin-top: $gutter;
+            width: 100%;
+            .button {
+              margin-top: 0.8rem;
+            }
+          }
+        }
+      }
+      &__participants {
+        width: 40%;
+      }
+    }
+    &__overview {
+      flex-direction: column-reverse;
+      height: auto;
+      &__map {
+        width: 90%;
+        height: 28rem;
+        margin: auto;
+        & > * {
+          height: 100%;
+        }
+      }
+      &__left {
+        margin: $gutter auto;
+        width: 80%;
+        flex-direction: row;
+        &__weather {
+          width: 35%;
+          &__icon img {
+            width: 30px;
+            height: 30px;
+          }
+        }
+        &__comments {
+          width: 60%;
+          height: 30rem;
+          &__list {
+            height: 76%;
+            &__item {
+              &__icons {
+                &__elem {
+                  margin-left: 1.4rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  @include mob {
+    &__main {
+      height: auto;
+      flex-direction: column;
+      margin: $gutter 0 0 0;
+      &__informations {
+        margin-top: 0;
+        width: 100%;
+      }
+      &__participants {
+        margin: $gutter auto 0 auto; 
+        width: 90%;
+        height: 22rem;
+      }
+    }
+    &__overview {
+      margin-top: $gutter;
+      &__left {
+        flex-direction: column;
+        &__weather {
+          width: 100%;
+          &__icon img {
+            width: 60px;
+            height: 60px;
+          }
+        }
+        &__comments {
+          margin-top: $gutter;
+          width: 100%;
+          height: 30rem;
+        }
+      }
+    }
+  }
 }

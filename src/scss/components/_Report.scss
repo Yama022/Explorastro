@@ -19,6 +19,9 @@
     box-shadow: $secondary-color 0px 15px 15px -10px;
     transform: translateY(-5px)
   }
+  @include mob {
+    display: none;
+  }
 }
 
 .--report {

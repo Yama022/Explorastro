@@ -73,7 +73,7 @@ export default function Profile({
     getInfo(profileId);
   }, [profileId]);
 
-  if (isLoading || !explorations || !participatesTo) {
+  if (isLoading) {
     return <Loader />;
   }
 

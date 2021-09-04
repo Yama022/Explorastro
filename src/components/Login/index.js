@@ -48,7 +48,7 @@ export default function Login({
 
   return (
     <div className="login">
-      <div>
+      <div className="login__parallax">
         <img src={charlesOnPlanet} className="object" data-value="-1" alt="" />
         <img src={planet2} className="object" data-value="2" alt="" />
         <img src={planet3} className="object" data-value="4" alt="" />

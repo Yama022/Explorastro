@@ -91,6 +91,7 @@ const profile = (state = initialState, action = {}) => {
       return {
         ...state,
         userFound: action.value,
+        isLoading: false,
       };
     }
     case SAVE_AVATAR: {

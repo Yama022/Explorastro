@@ -1,12 +1,15 @@
 .guide {
-  width: 65%;
+  width: 60%;
   margin: auto;
   color: $light-color;
   font-size: 1.2em;
 
   & p {
-    font-size: .9em;
+    font-size: .8em;
     margin-bottom: $gutter;
+    &::first-letter {
+      font-size: 120%;
+    }
   }
 
   &__presentation {
@@ -33,14 +36,17 @@
     &__paragraphe {
       background-color: $primary-color;
       margin: 0 0 $gutter 0;
-      padding: 1rem;
+      padding: 1rem 2rem;
       border: 1px solid $secondary-color;
       box-shadow: 0px 0px 9px -1px $secondary-color;
       border-radius: 5px;
+      p:nth-child(odd) {
+        text-shadow: 1px 1px 8px $tertiary-color;
+      }
 
       & em {
-        color: red;
-        margin-left: 15%;
+        font-weight: bold;
+        text-align: center;
       }
     }
   }
