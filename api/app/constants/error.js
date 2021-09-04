@@ -5,6 +5,7 @@ module.exports = {
   EXPLORATION_NOT_FOUND: 'Exploration not found',
   MISSING_CREDENTIALS: 'Missing credentials',
   EMAIL_NOT_FOUND: 'This email or username does not exist',
+  EMAIL_NOT_MATCH: 'Email does not match',
   PASSWORD_NOT_MATCH: 'Password does not match',
   USER_ALREADY_EXISTS: 'Username already exists',
   EMAIL_ALREADY_EXISTS: 'Email already exists',

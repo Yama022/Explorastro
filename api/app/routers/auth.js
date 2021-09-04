@@ -4,7 +4,7 @@ const router = express.Router();
 
 const validate = require('../validations/validate');
 const { userSchema } = require('../validations/schemas');
-const { authController, userController } = require('../controllers');
+const { authController, emailController } = require('../controllers');
 const { userMiddleware } = require('../middlewares');
 
 router
@@ -44,9 +44,9 @@ router
    * @security JWT
    */
     .post(
-    "/password/forgot",
+    "/password/forgot/:id(\\d+)",
     userMiddleware.checkIfExists,
-    userController.updatePassword
+    emailController.forgotPassword
     )
   
   

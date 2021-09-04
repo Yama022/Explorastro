@@ -4,9 +4,10 @@ module.exports = {
     forgotPassword: (req, res) => {
         try {
             const { email } = req.body;
+            const lowerEmail = email.toLowerCase();
             const user = req.user;
 
-            if (user.email !== email) {
+            if (user.email !== lowerEmail) {
                 return res.status(400).json({
                     message: ERROR.EMAIL_NOT_MATCH,
                 });
