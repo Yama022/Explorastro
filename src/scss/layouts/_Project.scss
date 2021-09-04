@@ -61,7 +61,9 @@
         }
 
         &__avatar {
-            img {
+          position: relative;
+
+            .avatar {
               object-fit: cover;
               width: 20rem;
               height: 20rem;
@@ -73,6 +75,16 @@
                 filter: grayscale(0);
                 transform: translateY(-10px);
               }
+            }
+
+            .pass {
+              object-fit: cover;
+              width: 20rem;
+              height: auto;
+              position: absolute;
+              bottom: -20%;
+              left: 0;
+              border-radius: 5px;
             }
         }
     }
