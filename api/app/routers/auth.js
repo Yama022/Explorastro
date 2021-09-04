@@ -5,7 +5,7 @@ const router = express.Router();
 const validate = require('../validations/validate');
 const { userSchema } = require('../validations/schemas');
 const { authController, emailController } = require('../controllers');
-const { userMiddleware } = require('../middlewares');
+const { userMiddleware, rateLimit } = require('../middlewares');
 
 router
   /**
@@ -38,17 +38,29 @@ router
    * @route POST /api/v1/password/forgot
    * @group User - Operations about users
    * @param {integer} id.param.required - The id of the user.
-   * @param {string} old_password.email.required - User email
+   * @param {string} email.body.required - User email
    * @returns {Object} 200 - An object containing a success message
    * @returns {Error.model}  default - An object containing the error message
    * @security JWT
    */
     .post(
-    "/password/forgot/:id(\\d+)",
+      "/password/forgot/:id(\\d+)",
+      rateLimit.sendMail,
     userMiddleware.checkIfExists,
     emailController.forgotPassword
 )
   
+  /**
+   * Change the user's password
+   * @route POST /api/v1/password/forgot/update
+   * @group User - Operations about users
+   * @param {string} password.body.required - User new password
+   * @param {string} confirm.body.required - User new password confirmation
+   * @param {string} token.body.required - User token
+   * @returns {Object} 200 - An object containing a success message
+   * @returns {Error.model}  default - An object containing the error message
+   * @security JWT
+   */
 .post(
   "/password/forgot/update",
   authController.resetForgottenPassword

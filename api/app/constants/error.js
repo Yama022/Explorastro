@@ -40,4 +40,5 @@ module.exports = {
   TOO_MANY_PASSWORDS: 'Too many passwords updated from this IP, please try again after an hour',
   TOO_MANY_USERNAMES: 'Too many usernames updated from this IP, please try again after 24 hour',
   MAX_PARTICIPANTS_LIMIT_REACHED: 'You have reached the maximum number of users allowed in an exploration (100)',
+  TOO_MANY_MAILS: 'Too many emails sent from this IP, please try again after an hour',
 };
