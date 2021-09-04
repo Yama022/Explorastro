@@ -42,7 +42,7 @@ export default function Report() {
             </ul>
           </section>
           <footer className="modal-card-foot">
-            <button type="button" className="button --outlined" onClick={toggleModal}>Annuler</button>
+            <button type="button" className="button --secondary" onClick={toggleModal}>Fermer</button>
           </footer>
         </div>
       </div>

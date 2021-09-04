@@ -25,7 +25,7 @@ export default function FormEvent({
 }) {
   useEffect(() => {
     getEventData(id);
-  }, []);
+  }, [id]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
