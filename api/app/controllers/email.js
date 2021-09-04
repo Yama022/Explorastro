@@ -1,5 +1,5 @@
 const { ERROR } = require('../constants');
-const { PasswordToken, Report } = require('../models');
+const { PasswordToken, Report, User } = require('../models');
 const { email: emailUtils } = require('../utils');
 const crypto = require('crypto');
 
