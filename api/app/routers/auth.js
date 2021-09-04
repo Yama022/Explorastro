@@ -5,6 +5,7 @@ const router = express.Router();
 const validate = require('../validations/validate');
 const { userSchema } = require('../validations/schemas');
 const { authController } = require('../controllers');
+const { userMiddleware } = require('../middlewares');
 
 router
   /**
@@ -17,6 +18,7 @@ router
    * @returns {Error.model}  default - An object containing the error message
    */
   .post('/login', authController.login)
+
   /**
    * Sign up a new user in the database
    * @route POST /api/v1/signup
@@ -30,6 +32,24 @@ router
    * @returns {Error.model}  default - An object containing the error message
    */
   .post('/signup', validate('body', userSchema), authController.signup)
+
+  /**
+   * Send email when the user forgot his password
+   * @route POST /api/v1/password/forgot
+   * @group User - Operations about users
+   * @param {integer} id.param.required - The id of the user.
+   * @param {string} old_password.email.required - User email
+   * @returns {Object} 200 - An object containing a success message
+   * @returns {Error.model}  default - An object containing the error message
+   * @security JWT
+   */
+    .post(
+    "/password/forgot",
+    userMiddleware.checkIfExists,
+    userController.updatePassword
+    )
+  
+  
   /**
    * Refresh the user's token
    * @route POST /api/v1/token
