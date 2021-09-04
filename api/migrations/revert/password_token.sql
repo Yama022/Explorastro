@@ -2,6 +2,8 @@
 
 BEGIN;
 
--- XXX Add DDLs here.
+DROP TABLE "password_token";
+DROP FUNCTION "password_token_delete_old_rows";
+DROP TRIGGER "password_token_delete_old_rows_trigger";
 
 COMMIT;

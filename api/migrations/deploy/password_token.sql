@@ -10,6 +10,17 @@ CREATE TABLE "password_token" (
     "updated_at" TIMESTAMPTZ
 );
 
-DELETE FROM "password_token" WHERE "created_at"<=DATE_SUB(NOW(), INTERVAL 1 DAY)
+CREATE FUNCTION password_token_delete_old_rows() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+  DELETE FROM "password_token" WHERE timestamp < NOW() - INTERVAL '1 day';
+  RETURN NEW;
+END;
+$$;
+
+CREATE TRIGGER "password_token_delete_old_rows_trigger"
+    AFTER INSERT ON "password_token"
+    EXECUTE PROCEDURE password_token_delete_old_rows();
 
 COMMIT;

@@ -2,6 +2,6 @@
 
 BEGIN;
 
--- XXX Add verifications here.
-
+SELECT id FROM "password_token" LIMIT WHERE false;
+ 
 ROLLBACK;

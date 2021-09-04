@@ -10,5 +10,5 @@ add_default_value 2021-08-26T14:41:38Z Théo BIET <dev.theobiet@gmail.com> # Add
 indexes 2021-08-30T08:56:51Z Théo BIET <dev.theobiet@gmail.com> # Add indexes on tables for improve response time
 default_avatar 2021-08-31T14:39:46Z Théo BIET <dev.theobiet@gmail.com> # Add default value for user avatar
 comment_fkey_constraint 2021-09-01T09:42:25Z Théo BIET <dev.theobiet@gmail.com> # Remove old constraint and make new
-password_token 2021-09-04T11:59:21Z Théo BIET <dev.theobiet@gmail.com> # store password token in database for destroy after 24 hours
 report 2021-09-03T17:39:39Z Théo BIET <dev.theobiet@gmail.com> # Stock user reports in database
+password_token 2021-09-04T11:59:21Z Théo BIET <dev.theobiet@gmail.com> # store password token in database for destroy after 24 hours
