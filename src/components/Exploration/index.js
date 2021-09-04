@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import PropTypes from 'prop-types';
 import Loader from 'src/components/Loader';
+import { Redirect } from 'react-router-dom';
 import Weather from './Weather';
 import Information from './Information';
 import Participants from './Participant';
@@ -26,6 +27,7 @@ export default function Exploration({
   toggleEditComment,
   editCommentValue,
   editCommentId,
+  isEventLoading,
 }) {
   useEffect(() => {
     getExploration(id);
@@ -34,8 +36,18 @@ export default function Exploration({
     };
   }, []);
 
-  if (!exploration?.id) {
+  if (isEventLoading) {
     return (<Loader />);
+  }
+
+  if (!exploration?.id) {
+    return (
+      <Redirect
+        to={{
+          pathname: '/404',
+        }}
+      />
+    );
   }
 
   const { geog } = exploration;
@@ -116,4 +128,5 @@ Exploration.propTypes = {
   toggleEditComment: PropTypes.func.isRequired,
   editCommentValue: PropTypes.func.isRequired,
   editCommentId: PropTypes.func.isRequired,
+  isEventLoading: PropTypes.bool.isRequired,
 };

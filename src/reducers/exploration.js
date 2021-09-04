@@ -41,7 +41,7 @@ export const initialState = {
   commentEdit: '',
   commentEditId: 0,
   commentEditOpen: false,
-  isLoading: true,
+  isEventLoading: true,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -131,6 +131,7 @@ const reducer = (state = initialState, action = {}) => {
         comment: '',
         commentEdit: '',
         commentEditOpen: false,
+        isEventLoading: false,
       };
     }
     case UPDATE_EVENTS: {
@@ -144,6 +145,7 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         exploration: {},
+        isEventLoading: true,
       };
     }
     case SAVE_EXPLORATION_ILLUSTRATION: {

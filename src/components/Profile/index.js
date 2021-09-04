@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import { AiOutlineUserAdd } from 'react-icons/ai';
 // , AiFillStar, AiOutlineStar
@@ -95,7 +95,13 @@ export default function Profile({
   }
 
   if (!userFound) {
-    return <div><h1 className="main-title" style={{ height: '80vh' }}>Utilisateur introuvable</h1></div>;
+    return (
+      <Redirect
+        to={{
+          pathname: '/404',
+        }}
+      />
+    );
   }
 
   const publishedEvents = explorations.filter((evt) => evt.is_published === true);
