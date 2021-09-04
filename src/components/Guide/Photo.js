@@ -2,10 +2,7 @@
 import React from 'react';
 import BackButton from 'src/components/BackButton';
 
-import { FcDownRight, FcAdvance } from 'react-icons/fc';
 import { MdReportProblem } from 'react-icons/md';
-
-// import data from './Visuel/data';
 
 export default function Photo() {
   return (
@@ -13,8 +10,8 @@ export default function Photo() {
       <BackButton />
       <div className="photo__content">
 
-        <h1 className="photo__content__title"><FcAdvance /> Tu souhaites découvrir ce milieu fabuleux qu'est l'astronomie ?!</h1>
-        <h3 className="photo__content__sous-title"> <FcDownRight /> Oui ? Alors t'es au bon endroit !</h3>
+        <h1 className="photo__content__title">Tu souhaites découvrir ce milieu fabuleux qu'est l'astronomie ?!</h1>
+        <h3 className="photo__content__sous-title">Oui ? Alors t'es au bon endroit !</h3>
         <div className="photo__content__paragraphe">
           <p>Laisse moi t'expliquer un peu comment tout ce bazard, qu'est l'astronomie amateur, fonctionne ! (faut bien commencer quelque part non ?!)</p><br />
           <p>Dans le milieu de l'astronomie 'visuel' (Oui, j'ai bien dis visuel, ce détail a son importance !)</p>

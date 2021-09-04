@@ -86,7 +86,7 @@ export default function Timeline({
           </main>
         )}
       <aside className="timeline-right">
-        <div className="timeline-left__widget">
+        <div className="timeline-right__widget">
           <Search
             changeField={changeField}
             searchInput={searchInput}
