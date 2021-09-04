@@ -91,7 +91,7 @@ export default function LoginForm({
         <span className="field__error">{fieldHasError.password}</span>
       </div>
       <div className="login__container__form__buttons-container">
-        <button type="button" className="button purple" onClick={handleToggleSignup}>Inscription</button>
+        <button type="button" className="button --secondary" onClick={handleToggleSignup}>Inscription</button>
         <button type="submit" className="button --outlined">Se Connecter</button>
       </div>
     </form>
