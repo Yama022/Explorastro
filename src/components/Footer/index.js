@@ -1,6 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
 import logo from 'src/assets/images/logo-explorastro.png';
 
 import background from 'src/assets/images/cropped-moon-footer.svg';
