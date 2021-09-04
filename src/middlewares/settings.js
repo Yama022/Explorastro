@@ -1,5 +1,10 @@
 import {
-  CHANGE_USERNAME, CHANGE_PASSWORD, logout, DELETE_ACCOUNT, saveUser, loginError,
+  CHANGE_USERNAME,
+  CHANGE_PASSWORD,
+  DELETE_ACCOUNT,
+  logout,
+  saveUser,
+  loginError,
 } from 'src/actions/user';
 import api from './utils/api';
 

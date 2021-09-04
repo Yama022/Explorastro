@@ -1,12 +1,12 @@
 import {
   GET_EXPLORATION_BY_ID,
-  saveExplorationById,
   POST_COMMENT,
   REMOVE_COMMENT,
   EDIT_COMMENT,
-  getExplorationById,
   ADD_PARTICIPANT,
   REMOVE_PARTICIPANT,
+  saveExplorationById,
+  getExplorationById,
 } from 'src/actions/exploration';
 import api from './utils/api';
 

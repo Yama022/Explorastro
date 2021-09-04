@@ -1,5 +1,6 @@
 import {
-  TOGGLE_DROPDOWN, TOGGLE_BURGER,
+  TOGGLE_DROPDOWN,
+  TOGGLE_BURGER,
 } from 'src/actions/header';
 
 const initialState = {

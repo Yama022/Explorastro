@@ -1,0 +1,27 @@
+.cgu {
+    color: $light-color;
+    width: 50%;
+    margin: 0 auto;
+
+    .main-title {
+        text-align: left;
+        font-size: 1.5rem;
+    }
+
+    .--main {
+        text-align: center;
+        font-size: 3rem;
+    }
+    
+    .header-content  {
+       text-align: center;
+       font-size: 1.6em;
+    }
+
+    .content {
+        ul {
+            text-align: left;
+            padding: .5em;
+        }
+    }
+}
