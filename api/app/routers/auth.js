@@ -5,7 +5,7 @@ const router = express.Router();
 const validate = require('../validations/validate');
 const { userSchema } = require('../validations/schemas');
 const { authController, emailController } = require('../controllers');
-const { userMiddleware, rateLimit } = require('../middlewares');
+const { rateLimit } = require('../middlewares');
 
 router
   /**
@@ -31,7 +31,7 @@ router
    * @returns {User.model} 200 - An object containing the user's information
    * @returns {Error.model}  default - An object containing the error message
    */
-  .post('/signup', validate('body', userSchema), authController.signup)
+  .post('/signup', validate('body', userSchema), rateLimit.createAccountLimiter, authController.signup)
 
   /**
    * Send email when the user forgot his password

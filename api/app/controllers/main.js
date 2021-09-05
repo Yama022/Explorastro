@@ -26,15 +26,11 @@ module.exports = {
           github: 'https://github.com/TheoBIET',
         },
         {
-          name: 'Baptise Faidherbe',
-          github: 'https://github.com/baptistefaidherbe',
-        },
-        {
-          name: 'Pierre François L',
+          name: 'Pierre François Lainé',
           github: 'https://github.com/JebNewman',
         },
         {
-          name: 'Rémi J',
+          name: 'Rémi Jacquemin',
           github: 'https://github.com/Yama022',
         },
       ],
