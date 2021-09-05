@@ -45,6 +45,11 @@ export default function Profile({
   bioEditIsOpen,
   biography,
   biographyEdit,
+  twitter,
+  instagram,
+  facebook,
+  tiktok,
+  astrobin,
   changeField,
   handleBioEdit,
   userFound,
@@ -244,46 +249,61 @@ export default function Profile({
                 </p>
               )}
             <div className="profile__header__description__bio__socials">
+              {twitter
+              && (
               <Link
                 className="profile__header__description__bio__socials__item --twitter"
-                to={{ pathname: 'https://twitter.com/' }}
+                to={{ pathname: twitter }}
                 target="_blank"
                 title="Twitter"
               >
                 <FaTwitter />
               </Link>
+              )}
+              {instagram
+              && (
               <Link
                 className="profile__header__description__bio__socials__item --instagram"
-                to={{ pathname: 'https://www.instagram.com/' }}
+                to={{ pathname: instagram }}
                 target="_blank"
                 title="Instagram"
               >
                 <FaInstagram />
               </Link>
+              )}
+              {facebook
+              && (
               <Link
                 className="profile__header__description__bio__socials__item --facebook"
-                to={{ pathname: 'https://www.facebook.com/' }}
+                to={{ pathname: facebook }}
                 target="_blank"
                 title="Facebook"
               >
                 <FaFacebookSquare />
               </Link>
+              )}
+              {tiktok
+              && (
               <Link
                 className="profile__header__description__bio__socials__item --tiktok"
-                to={{ pathname: 'https://www.tiktok.com/' }}
+                to={{ pathname: tiktok }}
                 target="_blank"
                 title="TikTok"
               >
                 <SiTiktok />
               </Link>
+              )}
+              {astrobin
+              && (
               <Link
                 className="profile__header__description__bio__socials__item --astrobin"
-                to={{ pathname: 'https://www.astrobin.com/' }}
+                to={{ pathname: astrobin }}
                 target="_blank"
                 title="Astrobin"
               >
                 <BiPlanet />
               </Link>
+              )}
             </div>
           </div>
         </div>
@@ -335,6 +355,11 @@ Profile.propTypes = {
   bioEditIsOpen: PropTypes.bool.isRequired,
   biography: PropTypes.string,
   biographyEdit: PropTypes.string,
+  twitter: PropTypes.string,
+  instagram: PropTypes.string,
+  facebook: PropTypes.string,
+  tiktok: PropTypes.string,
+  astrobin: PropTypes.string,
   changeField: PropTypes.func.isRequired,
   handleBioEdit: PropTypes.func.isRequired,
   userFound: PropTypes.bool.isRequired,
@@ -347,4 +372,9 @@ Profile.propTypes = {
 Profile.defaultProps = {
   biography: '',
   biographyEdit: '',
+  twitter: '',
+  instagram: '',
+  facebook: '',
+  tiktok: '',
+  astrobin: '',
 };
