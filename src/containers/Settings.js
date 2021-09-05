@@ -3,7 +3,7 @@ import Settings from 'src/components/Settings';
 
 import {
   changeValue, changeUsername, changePassword, deleteAccount,
-  setFieldHasError,
+  setFieldHasError, changeSocials,
 } from 'src/actions/user';
 
 const mapStateToProps = (state) => ({
@@ -37,6 +37,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   handleFieldHasError: (value) => {
     dispatch(setFieldHasError(value));
+  },
+  handleSocialChange: () => {
+    dispatch(changeSocials());
   },
 });
 

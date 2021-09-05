@@ -29,6 +29,7 @@ export default function Settings({
   newFacebook,
   newTiktok,
   newAstrobin,
+  handleSocialChange,
 }) {
   const handleChange = (event) => {
     changeField(event.target.value, event.target.name);
@@ -122,7 +123,62 @@ export default function Settings({
 
   const handleSocialValidation = () => {
     const errors = {};
-    const formIsValid = true;
+    let formIsValid = true;
+
+    if (newTwitter) {
+      if (!(newTwitter.length === 0) && !/^(https?:\/\/)?((w{3}\.)?)twitter\.com\/(#!\/)?[a-z0-9_]+$/i.test(newTwitter)) {
+        formIsValid = false;
+        errors.twitter = "Merci d'entrer un lien Twitter valide.";
+      }
+      else if (!(newTwitter.length === 0) && (newTwitter.length > 200)) {
+        formIsValid = false;
+        errors.twitter = 'Le lien Twitter est trop long';
+      }
+    }
+
+    if (newInstagram) {
+      if (!(newInstagram.length === 0) && !/^(https?:\/\/)?((w{3}\.)?)instagram.com\/.*/i.test(newInstagram)) {
+        formIsValid = false;
+        errors.instagram = "Merci d'entrer un lien Instagram valide.";
+      }
+      else if (!(newInstagram.length === 0) && (newInstagram.length > 200)) {
+        formIsValid = false;
+        errors.instagram = 'Le lien Instagram est trop long';
+      }
+    }
+
+    if (newFacebook) {
+      if (!(newFacebook.length === 0) && !/^(https?:\/\/)?((w{3}\.)?)facebook.com\/.*/i.test(newFacebook)) {
+        formIsValid = false;
+        errors.facebook = "Merci d'entrer un lien Facebook valide.";
+      }
+      else if (!(newFacebook.length === 0) && (newFacebook.length > 200)) {
+        formIsValid = false;
+        errors.facebook = 'Le lien Facebook est trop long';
+      }
+    }
+
+    if (newTiktok) {
+      if (!(newTiktok.length === 0) && !/^(https?:\/\/)?((w{3}\.)?)tiktok.com\/.*/i.test(newTiktok)) {
+        formIsValid = false;
+        errors.tiktok = "Merci d'entrer un lien TikTok valide.";
+      }
+      else if (!(newTiktok.length === 0) && (newTiktok.length > 200)) {
+        formIsValid = false;
+        errors.tiktok = 'Le lien TikTok est trop long';
+      }
+    }
+
+    if (newAstrobin) {
+      if (!(newAstrobin.length === 0) && !/^(https?:\/\/)?((w{3}\.)?)astrobin.com\/.*/i.test(newAstrobin)) {
+        formIsValid = false;
+        errors.astrobin = "Merci d'entrer un lien Astrobin valide.";
+      }
+      else if (!(newAstrobin.length === 0) && (newAstrobin.length > 200)) {
+        formIsValid = false;
+        errors.astrobin = 'Le lien Astrobin est trop long';
+      }
+    }
 
     handleFieldHasError(errors);
     return formIsValid;
@@ -133,7 +189,7 @@ export default function Settings({
     if (handleSocialValidation()) {
       // eslint-disable-next-line no-alert
       if (window.confirm('Confirmer les changements?')) {
-        handleUsernameChange();
+        handleSocialChange();
       }
     }
   };
@@ -204,6 +260,10 @@ export default function Settings({
         accountDeletionError = "Une erreur s'est produite.";
       }
     }
+    // Form validation for socials change
+    if (formError[0].includes('Socials updated')) {
+      socialsError = 'Vos modifications ont été prises en compte.';
+    }
   }
 
   return (
@@ -215,9 +275,9 @@ export default function Settings({
         <form className="settings__elems__form" onSubmit={handleSocialForm}>
           <div className="settings__elems__form__error"> {socialsError} </div>
           <div className="field">
-            <label className="label">Twitter</label>
+            <label className="label">Lien Twitter</label>
             <div className="control has-icons-left has-icons-right">
-              <input className="input is-success" type="text" placeholder="ex: https://twitter.com/" value={newTwitter} name="newTwitter" onChange={handleChange} autoComplete="off" />
+              <input className="input is-success" type="text" placeholder="ex: https://twitter.com/" value={newTwitter ?? ''} name="newTwitter" onChange={handleChange} autoComplete="off" />
               <span className="icon is-small is-left">
                 <FaTwitter />
               </span>
@@ -225,9 +285,9 @@ export default function Settings({
             <span className="field__error">{fieldHasError.twitter}</span>
           </div>
           <div className="field">
-            <label className="label">Instagram</label>
+            <label className="label">Lien Instagram</label>
             <div className="control has-icons-left has-icons-right">
-              <input className="input is-success" type="text" placeholder="ex: https://www.instagram.com/" value={newInstagram} name="newInstagram" onChange={handleChange} autoComplete="off" />
+              <input className="input is-success" type="text" placeholder="ex: https://www.instagram.com/" value={newInstagram ?? ''} name="newInstagram" onChange={handleChange} autoComplete="off" />
               <span className="icon is-small is-left">
                 <FaInstagram />
               </span>
@@ -235,9 +295,9 @@ export default function Settings({
             <span className="field__error">{fieldHasError.instagram}</span>
           </div>
           <div className="field">
-            <label className="label">Facebook</label>
+            <label className="label">Lien Facebook</label>
             <div className="control has-icons-left has-icons-right">
-              <input className="input is-success" type="text" placeholder="ex: https://www.facebook.com/" value={newFacebook} name="newFacebook" onChange={handleChange} autoComplete="off" />
+              <input className="input is-success" type="text" placeholder="ex: https://www.facebook.com/" value={newFacebook ?? ''} name="newFacebook" onChange={handleChange} autoComplete="off" />
               <span className="icon is-small is-left">
                 <FaFacebookSquare />
               </span>
@@ -245,9 +305,9 @@ export default function Settings({
             <span className="field__error">{fieldHasError.facebook}</span>
           </div>
           <div className="field">
-            <label className="label">TikTok</label>
+            <label className="label">Lien TikTok</label>
             <div className="control has-icons-left has-icons-right">
-              <input className="input is-success" type="text" placeholder="ex: https://www.tiktok.com/" value={newTiktok} name="newTiktok" onChange={handleChange} autoComplete="off" />
+              <input className="input is-success" type="text" placeholder="ex: https://www.tiktok.com/" value={newTiktok ?? ''} name="newTiktok" onChange={handleChange} autoComplete="off" />
               <span className="icon is-small is-left">
                 <SiTiktok />
               </span>
@@ -255,16 +315,16 @@ export default function Settings({
             <span className="field__error">{fieldHasError.tiktok}</span>
           </div>
           <div className="field">
-            <label className="label">Astrobin</label>
+            <label className="label">Lien Astrobin</label>
             <div className="control has-icons-left has-icons-right">
-              <input className="input is-success" type="text" placeholder="ex: https://www.astrobin.com/" value={newAstrobin} name="newAstrobin" onChange={handleChange} autoComplete="off" />
+              <input className="input is-success" type="text" placeholder="ex: https://www.astrobin.com/" value={newAstrobin ?? ''} name="newAstrobin" onChange={handleChange} autoComplete="off" />
               <span className="icon is-small is-left">
                 <BiPlanet />
               </span>
             </div>
             <span className="field__error">{fieldHasError.astrobin}</span>
           </div>
-          <button type="button" className="button --secondary settings__elems__form__submit" onClick={handleUsernameForm}>Enregistrer</button>
+          <button type="submit" className="button --secondary settings__elems__form__submit">Enregistrer</button>
 
         </form>
       </div>
@@ -363,13 +423,22 @@ Settings.propTypes = {
   handleDeleteAccount: PropTypes.func.isRequired,
   handleFieldHasError: PropTypes.func.isRequired,
   fieldHasError: PropTypes.object.isRequired,
-  newTwitter: PropTypes.string.isRequired,
-  newInstagram: PropTypes.string.isRequired,
-  newFacebook: PropTypes.string.isRequired,
-  newTiktok: PropTypes.string.isRequired,
-  newAstrobin: PropTypes.string.isRequired,
+  newTwitter: PropTypes.string,
+  newInstagram: PropTypes.string,
+  newFacebook: PropTypes.string,
+  newTiktok: PropTypes.string,
+  newAstrobin: PropTypes.string,
+  handleSocialChange: PropTypes.func.isRequired,
   formError: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.array,
   ]).isRequired,
+};
+
+Settings.defaultProps = {
+  newTwitter: '',
+  newInstagram: '',
+  newFacebook: '',
+  newTiktok: '',
+  newAstrobin: '',
 };
