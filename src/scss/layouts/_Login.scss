@@ -40,6 +40,15 @@
           font-size: 1.1rem;
           text-shadow: 0 0 0.2rem $tertiary-color;
         }
+        &__forgot {
+          display: block;
+          text-align: center;
+          cursor: pointer;
+          margin-bottom: $gutter;
+          &:hover { 
+            text-shadow: 0 0 0.2rem $tertiary-color;
+          }
+        }
       }
 
       img {

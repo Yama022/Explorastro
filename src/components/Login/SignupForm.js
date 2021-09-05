@@ -133,7 +133,6 @@ export default function SignupForm({
 
     if (handleValidation()) {
       handleSignup();
-      handleToggleSignup();
     }
   };
 
@@ -150,7 +149,7 @@ export default function SignupForm({
   }
 
   return (
-    <form onSubmit={handleFormSubmit} className={signup ? 'login__container__form__elem' : 'login__container__form__elem--hidden'}>
+    <form onSubmit={handleFormSubmit} className={(signup === 1) ? 'login__container__form__elem' : 'login__container__form__elem--hidden'}>
       {signupError && <div className="login__container__form__elem__error">{errorMessage}</div>}
       <div className="field">
         <label className="label">Prénom</label>
@@ -213,7 +212,14 @@ export default function SignupForm({
         <span className="field__error">{fieldHasError.passwordConfirmation}</span>
       </div>
       <div className="login__container__form__buttons-container">
-        <button type="button" className="button --secondary" onClick={handleToggleSignup}>Connexion</button>
+        <button
+          type="button"
+          className="button --secondary"
+          onClick={() => {
+            handleToggleSignup(2);
+          }}
+        >Connexion
+        </button>
         <button type="submit" className="button --outlined">S'inscrire</button>
       </div>
     </form>
@@ -230,7 +236,7 @@ SignupForm.propTypes = {
   passwordConfirmation: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
   handleSignup: PropTypes.func.isRequired,
-  signup: PropTypes.bool.isRequired,
+  signup: PropTypes.number.isRequired,
   signupError: PropTypes.string.isRequired,
   fieldHasError: PropTypes.object.isRequired,
   handleFieldHasError: PropTypes.func.isRequired,

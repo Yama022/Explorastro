@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import Login from 'src/components/Login';
 import {
   changeValue, login, logout, toggleSignup, signup,
-  setFieldHasError,
+  setFieldHasError, forgot,
 } from 'src/actions/user';
 
 const mapStateToProps = (state) => ({
@@ -19,8 +19,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  handleToggleSignup: () => {
-    dispatch(toggleSignup());
+  handleToggleSignup: (value) => {
+    dispatch(toggleSignup(value));
   },
   changeField: (value, key) => {
     dispatch(changeValue(value, key));
@@ -33,6 +33,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   handleSignup: () => {
     dispatch(signup());
+  },
+  handleForgot: () => {
+    dispatch(forgot());
   },
   handleFieldHasError: (value) => {
     dispatch(setFieldHasError(value));

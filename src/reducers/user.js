@@ -21,7 +21,7 @@ const initialState = {
   username: '',
   usernameChange: '',
   logged: null,
-  signup: false,
+  signup: 1,
   loginError: '',
   fieldHasError: {},
 };
@@ -37,7 +37,7 @@ const reducer = (state = initialState, action = {}) => {
     case TOGGLE_SIGNUP: {
       return {
         ...state,
-        signup: !state.signup,
+        signup: action.value,
         loginError: '',
         fieldHasError: {},
       };
