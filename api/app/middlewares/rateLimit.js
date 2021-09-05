@@ -5,7 +5,8 @@ module.exports = {
    createAccountLimiter: rateLimit({
     windowMs: 60 * 60 * 1000, // 1 hour window
     max: 2, // start blocking after 2 requests
-    handler: (req, res) => {
+     handler: (req, res) => {
+      console.log('je passe ici')
       return res.status(429).json({ message: ERROR.TOO_MANY_ACCOUNTS });
     },
   }),

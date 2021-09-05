@@ -42,4 +42,8 @@ module.exports = {
   MAX_PARTICIPANTS_LIMIT_REACHED: 'You have reached the maximum number of users allowed in an exploration (100)',
   TOO_MANY_MAILS: 'Too many emails sent from this IP, please try again after an hour',
   REQUIRED_FIELDS: 'Please fill all required fields',
+  PASSWORD_HAS_BEEN_RESET: 'Password has been reset.',
+  EMAIL_HAS_BEEN_SENT: 'Email has been sent.',
+  EMAIL_HAS_FAILED: 'Email has failed.',
+  REPORT_SEND: 'Report has been sent.',
 };
