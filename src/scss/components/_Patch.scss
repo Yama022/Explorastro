@@ -21,20 +21,17 @@
   }
 
   .modal {
-    height: 20em;
+    max-height: 20em;
   }
 
   .modal-card-body {
     display: flex;
     flex-direction: column;
     justify-content: left;
-    align-items: center;
+    align-items: left;
     text-align: left;
     background-color: red;
-
-    h3 {
-      text-decoration: underline;
-    }
+    overflow-y: scroll;
 
     p {
       color: $light-color;
@@ -56,8 +53,19 @@
 }
 
 .--report {
+  overflow-y: scroll;
+  padding-top: 45em;
+
+  h3 {
+    text-decoration: underline;
+    padding: .3em;
+  }
+
+
   ul {
     font-size: 0.9rem;
+    margin-bottom: 2em;
+    width: 100%;
     li {
       margin-bottom: .2rem;
     }
