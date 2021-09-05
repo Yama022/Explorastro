@@ -14,6 +14,8 @@ export const SET_FIELD_HAS_ERROR = 'SET_FIELD_HAS_ERROR';
 export const SET_FORGOT_PASSWORD_FORM_ERRORS = 'SET_FORGOT_PASSWORD_FORM_ERRORS';
 export const TOKEN_FORGOT_PASSWORD = 'TOKEN_FORGOT_PASSWORD';
 export const CHANGE_SOCIALS = 'CHANGE_SOCIALS';
+export const ON_FORGOTTEN_PASSWORD_FORM_SUBMIT = 'ON_FORGOTTEN_PASSWORD_FORM_SUBMIT';
+export const PASSWORD_RESET_IS_SUCCESS = 'PASSWORD_RESET_IS_SUCCESS';
 
 export const toggleSignup = (value) => ({
   type: TOGGLE_SIGNUP,
@@ -73,14 +75,20 @@ export const setFieldHasError = (value) => ({
   value,
 });
 
-export const setForgotPasswordFormErrors = () => ({
+export const setForgotPasswordFormErrors = (value) => ({
   type: SET_FORGOT_PASSWORD_FORM_ERRORS,
+  value,
 });
 
-export const tokenForgotPassword = () => ({
-  type: TOKEN_FORGOT_PASSWORD,
+export const onForgottenPasswordFormSubmit = (value) => ({
+  type: ON_FORGOTTEN_PASSWORD_FORM_SUBMIT,
+  value,
 });
 
 export const changeSocials = () => ({
   type: CHANGE_SOCIALS,
+});
+
+export const passwordResetIsSuccess = () => ({
+  type: PASSWORD_RESET_IS_SUCCESS,
 });

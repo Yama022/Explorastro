@@ -11,16 +11,15 @@ import planet5 from 'src/assets/images/login/5.png';
 import logo from 'src/assets/images/logo-explorastro.png';
 
 export default function ForgottenPassword({
+  newForgottenPassword,
+  newForgottenPasswordConfirm,
+  forgottenPasswordFieldHasError,
+  handleSubmitForgottenPasswordForm,
+  handleErrors,
+  onChangeInputValue,
   token,
-  receipeTokenForgotPassword,
-  setForgotPasswordFormErrors,
-  password,
-  passwordConfirmation,
-  handleFieldHasError,
+  isPasswordResetSuccess,
 }) {
-  console.log('token', receipeTokenForgotPassword);
-  console.log('token2', setForgotPasswordFormErrors);
-
   useEffect(() => {
     function parallax(e) {
       document.querySelectorAll('.object').forEach((move) => {
@@ -39,35 +38,44 @@ export default function ForgottenPassword({
     const errors = {};
     let formIsValid = true;
 
-    if (!password) {
+    if (!newForgottenPassword) {
       formIsValid = false;
       errors.password = 'Veuillez renseigner le mot de passe';
     }
-    if (!passwordConfirmation) {
-      formIsValid = false;
-      errors.password = 'Veuillez renseigner le mot de passe';
-    }
-    else if (password.length < 100) {
+
+    if (newForgottenPassword.length > 100) {
       formIsValid = false;
       errors.password = 'Le mot de passe doit faire moins de 100 caractères';
     }
-    else if (password.length > 8) {
+
+    if (newForgottenPassword.length < 8) {
       formIsValid = false;
       errors.password = 'Le mot de passe doit faire plus de 8 caractères';
     }
-    else if (password !== passwordConfirmation) {
+
+    if (newForgottenPassword !== newForgottenPasswordConfirm) {
       formIsValid = false;
-      errors.password = 'Les mot de passe doit correspondre';
+      errors.password = 'Les mot de passe doivent correspondre';
     }
-    handleFieldHasError(errors);
+
+    handleErrors(errors);
     return formIsValid;
   };
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
     if (handleValidation()) {
-      setForgotPasswordFormErrors();
+      handleSubmitForgottenPasswordForm({
+        newForgottenPassword,
+        newForgottenPasswordConfirm,
+        token,
+      });
     }
+  };
+
+  const onChange = (e) => {
+    const { name, value } = e.target;
+    onChangeInputValue(value, name);
   };
 
   return (
@@ -85,6 +93,8 @@ export default function ForgottenPassword({
             <img src={logo} alt="" />
           </Link>
           <form className="login__container__form__elem" onSubmit={handleFormSubmit}>
+            {isPasswordResetSuccess && <div className="login__container__form__elem__error">Le mot de passe a été réinitialisé avec succès. <br /> <Link to="/login">Cliquez ici pour vous connecter</Link></div>}
+            <div className="login__container__form__elem__error">{forgottenPasswordFieldHasError.password}</div>
             <div className="field">
               <label className="label">Nouveau mot de passe</label>
               <div className="control has-icons-left has-icons-right">
@@ -92,8 +102,10 @@ export default function ForgottenPassword({
                   className="input"
                   placeholder="ex: MyStr0ngP455sWoRD"
                   type="password"
-                  name="password"
+                  name="newForgottenPassword"
                   autoComplete="on"
+                  value={newForgottenPassword}
+                  onChange={onChange}
                 />
                 <span className="icon is-small is-left">
                   <FaKey />
@@ -107,8 +119,10 @@ export default function ForgottenPassword({
                   className="input"
                   type="password"
                   placeholder="ex: MyStr0ngP455sWoRD"
-                  name="confirm"
+                  name="newForgottenPasswordConfirm"
                   autoComplete="off"
+                  value={newForgottenPasswordConfirm}
+                  onChange={onChange}
                 />
                 <input type="hidden" value={token} />
                 <span className="icon is-small is-left">
@@ -120,10 +134,6 @@ export default function ForgottenPassword({
               <button
                 type="submit"
                 className="button --secondary"
-                onClick={() => {
-                  receipeTokenForgotPassword();
-                  console.log('je clic', receipeTokenForgotPassword);
-                }}
               >
                 Changer mon mot de passe
               </button>
@@ -137,15 +147,11 @@ export default function ForgottenPassword({
 
 ForgottenPassword.propTypes = {
   token: PropTypes.string.isRequired,
-  receipeTokenForgotPassword: PropTypes.func,
-  setForgotPasswordFormErrors: PropTypes.func,
-  password: PropTypes.string.isRequired,
-  passwordConfirmation: PropTypes.string.isRequired,
-  handleFieldHasError: PropTypes.func,
-};
-
-ForgottenPassword.defaultProps = {
-  receipeTokenForgotPassword: () => {},
-  setForgotPasswordFormErrors: () => {},
-  handleFieldHasError: () => {},
+  handleSubmitForgottenPasswordForm: PropTypes.func.isRequired,
+  handleErrors: PropTypes.func.isRequired,
+  onChangeInputValue: PropTypes.func.isRequired,
+  newForgottenPassword: PropTypes.string.isRequired,
+  newForgottenPasswordConfirm: PropTypes.string.isRequired,
+  forgottenPasswordFieldHasError: PropTypes.object.isRequired,
+  isPasswordResetSuccess: PropTypes.bool.isRequired,
 };

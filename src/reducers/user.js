@@ -7,6 +7,7 @@ import {
   LOGIN_ERROR,
   SET_FIELD_HAS_ERROR,
   SET_FORGOT_PASSWORD_FORM_ERRORS,
+  PASSWORD_RESET_IS_SUCCESS,
 } from 'src/actions/user';
 
 const initialState = {
@@ -25,12 +26,15 @@ const initialState = {
   signup: 2,
   loginError: '',
   fieldHasError: {},
-  token: '',
   newTwitter: '',
   newInstagram: '',
   newFacebook: '',
   newTiktok: '',
   newAstrobin: '',
+  newForgottenPassword: '',
+  newForgottenPasswordConfirm: '',
+  forgottenPasswordFieldHasError: {},
+  isPasswordResetSuccess: false,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -73,6 +77,7 @@ const reducer = (state = initialState, action = {}) => {
         passwordConfirmation: '',
         usernameChange: '',
         passwordForUsername: '',
+        isPasswordResetSucces: false,
       };
     }
     case SAVE_AVATAR: {
@@ -96,9 +101,17 @@ const reducer = (state = initialState, action = {}) => {
     case SET_FORGOT_PASSWORD_FORM_ERRORS: {
       return {
         ...state,
-        token: '',
-        password: '',
-        passwordConfirmation: '',
+        newForgottenPassword: '',
+        newForgottenPasswordConfirm: '',
+        forgottenPasswordFieldHasError: action.value,
+      };
+    }
+    case PASSWORD_RESET_IS_SUCCESS: {
+      return {
+        ...state,
+        newForgottenPassword: '',
+        newForgottenPasswordConfirm: '',
+        isPasswordResetSuccess: true,
       };
     }
     default:

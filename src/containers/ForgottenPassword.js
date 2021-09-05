@@ -3,25 +3,26 @@ import ForgottenPassword from 'src/components/ForgottenPassword';
 
 import {
   setForgotPasswordFormErrors,
-  tokenForgotPassword,
-  setFieldHasError,
+  onForgottenPasswordFormSubmit,
+  changeValue,
 } from 'src/actions/user';
 
 const mapStateToProps = (state) => ({
-  password: state.user.password,
-  passwordConfirmation: state.user.passwordConfirmation,
-  fieldHasError: state.user.fieldHasError,
+  newForgottenPassword: state.user.newForgottenPassword,
+  newForgottenPasswordConfirm: state.user.newForgottenPasswordConfirm,
+  forgottenPasswordFieldHasError: state.user.forgottenPasswordFieldHasError,
+  isPasswordResetSuccess: state.user.isPasswordResetSuccess,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setForgotPasswordForm: () => {
-    dispatch(setForgotPasswordFormErrors());
+  handleSubmitForgottenPasswordForm: (value) => {
+    dispatch(onForgottenPasswordFormSubmit(value));
   },
-  receipeTokenForgotPassword: () => {
-    dispatch(tokenForgotPassword());
+  handleErrors: (value) => {
+    dispatch(setForgotPasswordFormErrors(value));
   },
-  handleFieldHasError: (value) => {
-    dispatch(setFieldHasError(value));
+  onChangeInputValue: (value, key) => {
+    dispatch(changeValue(value, key));
   },
 });
 

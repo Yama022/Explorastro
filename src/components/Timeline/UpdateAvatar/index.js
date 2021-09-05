@@ -1,12 +1,12 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { BsArrowRightShort } from 'react-icons/bs';
 
 export default function Update({ props }) {
   const {
-    user: { username, avatar_url: avatar },
+    user: { id: userId, username, avatar_url: avatar },
     date: { locales: { fr } },
     lastAvatarURL,
   } = props;
@@ -14,16 +14,16 @@ export default function Update({ props }) {
     <div className="update">
 
       <div className="update__title">
-        <img src={avatar ?? 'https://s3-explorastro.s3.us-east-2.amazonaws.com/1630856500282-313912004.jpg'} alt="avatar" />
-        <h3> {username} a mis à jour sa photo de profil</h3>
+        <Link to={`/profile/${userId}`}><img src={avatar ?? 'https://s3-explorastro.s3.us-east-2.amazonaws.com/1630856500282-313912004.jpg'} alt="avatar" /></Link>
+        <h3><Link to={`/profile/${userId}`}>{username}</Link> a mis à jour sa photo de profil</h3>
       </div>
 
       <div className="update__content">
-        <img src={lastAvatarURL ?? 'https://s3-explorastro.s3.us-east-2.amazonaws.com/1630856500282-313912004.jpg'} alt="avatar" />
+        <Link to={`/profile/${userId}`}><img src={lastAvatarURL ?? 'https://s3-explorastro.s3.us-east-2.amazonaws.com/1630856500282-313912004.jpg'} alt="avatar" /></Link>
         <span className="update__content-buttonUpdate">
           <BsArrowRightShort />
         </span>
-        <img src={avatar ?? 'https://s3-explorastro.s3.us-east-2.amazonaws.com/1630856500282-313912004.jpg'} alt="avatar" />
+        <Link to={`/profile/${userId}`}><img src={avatar ?? 'https://s3-explorastro.s3.us-east-2.amazonaws.com/1630856500282-313912004.jpg'} alt="avatar" /></Link>
       </div>
 
       <div className="update__date">

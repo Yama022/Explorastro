@@ -6,8 +6,8 @@ import {
   toggleSignup,
   loginError,
   FORGOT,
-  SET_FORGOT_PASSWORD_FORM_ERRORS,
-  TOKEN_FORGOT_PASSWORD,
+  ON_FORGOTTEN_PASSWORD_FORM_SUBMIT,
+  passwordResetIsSuccess,
 } from 'src/actions/user';
 
 import api from './utils/api';
@@ -83,31 +83,23 @@ const auth = (store) => (next) => (action) => {
       store.dispatch(userData);
       break;
     }
-    case SET_FORGOT_PASSWORD_FORM_ERRORS: {
-      const state = store.getState();
-      const setForgotPasswordFormErrors = async () => {
-        try {
-          const response = await api.post('api/v1/password/forgot/update', {
-            token: state.user.token,
-            password: state.user.password,
-            password_confirmation: state.user.passwordConfirmation,
-          });
-          console.log(response);
-        }
-        catch (error) {
-          console.error(error);
-        }
-      };
-      setForgotPasswordFormErrors();
-      break;
-    }
-    case TOKEN_FORGOT_PASSWORD: {
+    case ON_FORGOTTEN_PASSWORD_FORM_SUBMIT: {
       const tokenForgotPassword = async () => {
+        const {
+          token,
+          newForgottenPassword: password,
+          newForgottenPasswordConfirm: confirm,
+        } = action.value;
         try {
-          const response = await api.get('api/v1/login/forgot/update?token=b05e1cdcbeacad4613eea8047d4de0f4b55b918b3d918970559a52caf4035909');
-          console.log('response auth.js', response);
+          await api.post('api/v1/password/forgot/update', {
+            password,
+            confirm,
+            token,
+          });
+          store.dispatch(passwordResetIsSuccess());
         }
         catch (error) {
+          // eslint-disable-next-line no-console
           console.error(error);
         }
       };
