@@ -52,9 +52,24 @@ export default function LoginForm({
     }
   };
 
+  let topMessage;
+
+  if (loginError.includes('Email has been sent.')) {
+    topMessage = 'Un email de réinitialisation vous a été envoyé.';
+  }
+  else if (loginError.includes('email or username')) {
+    topMessage = "L'email ou le pseudo n'existe pas.";
+  }
+  else if (loginError.includes('Password does not')) {
+    topMessage = 'Le mot de passe est incorrect';
+  }
+  else {
+    topMessage = `Erreur: ${loginError}`;
+  }
+
   return (
-    <form onSubmit={handleFormSubmit} className={signup ? 'login__container__form__elem--hidden' : 'login__container__form__elem'}>
-      {loginError && <div className="login__container__form__elem__error">Vos identifiants sont incorrects.</div>}
+    <form onSubmit={handleFormSubmit} className={(signup === 2) ? 'login__container__form__elem' : 'login__container__form__elem--hidden'}>
+      {loginError && <div className="login__container__form__elem__error">{topMessage}</div>}
       <div className="field">
         <label className="label">Email ou nom d'utilisateur</label>
         <div className="control has-icons-left has-icons-right">
@@ -90,8 +105,22 @@ export default function LoginForm({
         </div>
         <span className="field__error">{fieldHasError.password}</span>
       </div>
+      <span
+        className="login__container__form__elem__forgot"
+        onClick={() => {
+          handleToggleSignup(3);
+        }}
+      >Mot de passe oublié ?
+      </span>
       <div className="login__container__form__buttons-container">
-        <button type="button" className="button --secondary" onClick={handleToggleSignup}>Inscription</button>
+        <button
+          type="button"
+          className="button --secondary"
+          onClick={() => {
+            handleToggleSignup(1);
+          }}
+        >Inscription
+        </button>
         <button type="submit" className="button --outlined">Se Connecter</button>
       </div>
     </form>
@@ -104,7 +133,7 @@ LoginForm.propTypes = {
   password: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
   handleLogin: PropTypes.func.isRequired,
-  signup: PropTypes.bool.isRequired,
+  signup: PropTypes.number.isRequired,
   loginError: PropTypes.string.isRequired,
   fieldHasError: PropTypes.object.isRequired,
   handleFieldHasError: PropTypes.func.isRequired,

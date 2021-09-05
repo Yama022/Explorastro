@@ -2,6 +2,7 @@ export const TOGGLE_SIGNUP = 'TOGGLE_SIGNUP';
 export const CHANGE_VALUE = 'CHANGE_VALUE';
 export const SIGNUP = 'SIGNUP';
 export const LOGIN = 'LOGIN';
+export const FORGOT = 'FORGOT';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const LOGOUT = 'LOGOUT';
 export const SAVE_USER = 'SAVE_USER';
@@ -11,8 +12,9 @@ export const CHANGE_PASSWORD = 'CHANGE_PASSWORD';
 export const DELETE_ACCOUNT = 'DELETE_ACCOUNT';
 export const SET_FIELD_HAS_ERROR = 'SET_FIELD_HAS_ERROR';
 
-export const toggleSignup = () => ({
+export const toggleSignup = (value) => ({
   type: TOGGLE_SIGNUP,
+  value,
 });
 
 export const changeValue = (value, key) => ({
@@ -27,6 +29,10 @@ export const signup = () => ({
 
 export const login = () => ({
   type: LOGIN,
+});
+
+export const forgot = () => ({
+  type: FORGOT,
 });
 
 export const loginError = (payload) => ({

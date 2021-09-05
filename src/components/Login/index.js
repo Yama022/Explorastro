@@ -11,6 +11,7 @@ import logo from 'src/assets/images/logo-explorastro.png';
 
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
+import ForgotPassword from './ForgotPassword';
 
 export default function Login({
   handleToggleSignup,
@@ -23,6 +24,7 @@ export default function Login({
   changeField,
   handleLogin,
   handleSignup,
+  handleForgot,
   signup,
   loginError,
   fieldHasError,
@@ -89,6 +91,17 @@ export default function Login({
             handleFieldHasError={handleFieldHasError}
           />
 
+          <ForgotPassword
+            email={email}
+            signup={signup}
+            handleChange={handleChange}
+            handleForgot={handleForgot}
+            handleToggleSignup={handleToggleSignup}
+            forgotError={loginError}
+            fieldHasError={fieldHasError}
+            handleFieldHasError={handleFieldHasError}
+          />
+
         </div>
       </div>
     </div>
@@ -106,7 +119,8 @@ Login.propTypes = {
   changeField: PropTypes.func.isRequired,
   handleLogin: PropTypes.func.isRequired,
   handleSignup: PropTypes.func.isRequired,
-  signup: PropTypes.bool.isRequired,
+  handleForgot: PropTypes.func.isRequired,
+  signup: PropTypes.number.isRequired,
   loginError: PropTypes.string.isRequired,
   fieldHasError: PropTypes.object.isRequired,
   handleFieldHasError: PropTypes.func.isRequired,

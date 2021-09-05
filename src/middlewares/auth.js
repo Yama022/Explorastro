@@ -1,5 +1,11 @@
 import {
-  LOGIN, SIGNUP, saveUser, CHECK_USER_LOGGED, toggleSignup, loginError,
+  LOGIN,
+  SIGNUP,
+  saveUser,
+  CHECK_USER_LOGGED,
+  toggleSignup,
+  loginError,
+  FORGOT,
 } from 'src/actions/user';
 
 import api from './utils/api';
@@ -41,13 +47,31 @@ const auth = (store) => (next) => (action) => {
       const signup = async () => {
         try {
           await api.post('api/v1/signup', data);
-          store.dispatch(toggleSignup);
+          store.dispatch(toggleSignup(2));
         }
         catch (error) {
           store.dispatch(loginError(error.response.data.message));
         }
       };
       signup();
+      break;
+    }
+    case FORGOT: {
+      const state = store.getState();
+      const data = {
+        email: state.user.email,
+      };
+      const forgot = async () => {
+        try {
+          const response = await api.post('api/v1/password/forgot', data);
+          store.dispatch(toggleSignup(2));
+          store.dispatch(loginError(response.data.message));
+        }
+        catch (error) {
+          store.dispatch(loginError(error.response.data.message));
+        }
+      };
+      forgot();
       break;
     }
     case CHECK_USER_LOGGED: {
