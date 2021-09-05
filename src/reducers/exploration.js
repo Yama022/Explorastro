@@ -21,6 +21,8 @@ import {
   HANDLE_TOGGLE_COMM_EDIT,
   NEW_PARTICIPANT,
   REMOVE_PARTICIPANT,
+  SET_FORM_EVENT_FIELDS_HAS_ERROR,
+  CHANGE_INPUT_NEW_EVENT,
 } from 'src/actions/exploration';
 
 export const initialState = {
@@ -29,7 +31,9 @@ export const initialState = {
   events: [],
   exploration: {},
   userEvents: [],
-  eventToModify: {},
+  eventToModify: {
+    newTitle: '',
+  },
   zone: 10,
   modal: false,
   participate: [],
@@ -37,7 +41,7 @@ export const initialState = {
   commentEdit: '',
   commentEditId: 0,
   commentEditOpen: false,
-  isLoading: true,
+  isEventLoading: true,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -70,6 +74,12 @@ const reducer = (state = initialState, action = {}) => {
           ...state.eventToModify,
           [action.key]: action.value,
         },
+      };
+    }
+    case CHANGE_INPUT_NEW_EVENT: {
+      return {
+        ...state,
+        [action.key]: action.value,
       };
     }
     case SAVE_EVENT_TO_MODIFY: {
@@ -121,6 +131,7 @@ const reducer = (state = initialState, action = {}) => {
         comment: '',
         commentEdit: '',
         commentEditOpen: false,
+        isEventLoading: false,
       };
     }
     case UPDATE_EVENTS: {
@@ -134,6 +145,7 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         exploration: {},
+        isEventLoading: true,
       };
     }
     case SAVE_EXPLORATION_ILLUSTRATION: {
@@ -187,6 +199,12 @@ const reducer = (state = initialState, action = {}) => {
     case REMOVE_PARTICIPANT: {
       return {
         ...state,
+      };
+    }
+    case SET_FORM_EVENT_FIELDS_HAS_ERROR: {
+      return {
+        ...state,
+        fieldHasError: action.payload,
       };
     }
     default:

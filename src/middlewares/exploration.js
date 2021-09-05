@@ -23,6 +23,11 @@ const exploration = (store) => (next) => (action) => {
         catch (err) {
           // eslint-disable-next-line no-console
           console.error(err);
+          // Même si on a pas réussi à récupérer l'exploration,
+          // on continue, car je veux que l'on puisse arrêter le loader,
+          // et être redirigé vers la page d'erreur
+          const result = saveExplorationById({});
+          store.dispatch(result);
         }
       };
       getEvent();

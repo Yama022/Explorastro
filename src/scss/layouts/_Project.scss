@@ -53,7 +53,6 @@
             margin-bottom: 1.5rem;
             font-style: italic;
             display: inline;
-            border-bottom: 1px solid $light-color;
             &__description {
               margin-top: 1rem;
             }
@@ -111,5 +110,21 @@
   &:hover {
     box-shadow: 0 0 0.4em $light-color;
     color: black;
+  }
+}
+
+@include mobTab {
+  .project {
+    width: 100%;
+    &__container {
+      &__developper {
+        text-align: center;
+        flex-direction: column-reverse;
+
+        &:nth-child(odd) {
+          flex-direction: column-reverse;
+        }
+      }
+    }
   }
 }
