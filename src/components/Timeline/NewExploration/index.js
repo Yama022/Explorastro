@@ -20,7 +20,7 @@ export default function NewExplo({ props }) {
   return (
     <div className="explo">
       <div className="explo__organized">
-        <Link to={`/profile/${userId}`}><img src={avatar ?? 'https://explorastro-s3.s3.amazonaws.com/default.jpg'} alt="avatar" /></Link>
+        <Link to={`/profile/${userId}`}><img src={avatar ?? 'https://s3-explorastro.s3.us-east-2.amazonaws.com/1630856500282-313912004.jpg'} alt="avatar" /></Link>
         <div className="explo__organized--title">
           <h3><Link to={`/profile/${userId}`}>{username}</Link> {message.fr}</h3>
           <h3 className="explo__organized__subtitle">"{name}"</h3>

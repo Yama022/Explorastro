@@ -32,6 +32,7 @@ Exploration.init(
     },
     image_url: {
       type: DataTypes.TEXT,
+      defaultValue: 'https://s3-explorastro.s3.us-east-2.amazonaws.com/1630856794055-151662587.jpeg',
     },
   },
   {
