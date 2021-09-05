@@ -511,6 +511,23 @@
     }
   }
 
+  @include tab {
+    &__header {
+      &__avatar {
+        &__awesome {
+          &__icon {
+            left: 32%;
+          }
+        }
+        &__edit {
+          &__icon {
+            right: 32%;
+          }
+        }
+      }
+    }
+  }
+
   @include mob {
     &__header {
       &__avatar {
@@ -528,7 +545,7 @@
       align-items: center;
       flex-direction: column;
       &__item {
-        // width: 8.5em;
+        width: 8.5em;
         margin: 0 0.1em $gutter 0.1em;
 
         &__name {
