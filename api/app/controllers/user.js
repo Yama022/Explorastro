@@ -202,6 +202,8 @@ module.exports = {
       const { file } = req;
       const user = await User.findByPk(req.user.id);
 
+      const lastAvatarURL = user.avatar_url;
+
       user.update({
         avatar_url: file.location,
       });
@@ -209,7 +211,7 @@ module.exports = {
       res.json(user);
 
       return await event.saveUserAction(EVENT.ACTION.UPDATE_AVATAR, user, {
-        lastAvatarURL: user.avatar_url,
+        lastAvatarURL,
       });
     });
   },
