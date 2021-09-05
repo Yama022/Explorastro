@@ -1,4 +1,3 @@
-/* eslint-disable react/button-has-type */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect } from 'react';
 import * as dayjs from 'dayjs';
@@ -22,15 +21,56 @@ export default function FormEvent({
   getEventData,
   id,
   uploadIllustration,
+  handleFieldHasError,
+  eventFieldHasError,
 }) {
   useEffect(() => {
     getEventData(id);
   }, [id]);
 
+  const handleValidation = () => {
+    const errors = {};
+    let formIsValid = true;
+
+    // event name
+    if (!eventToModify.name) {
+      formIsValid = false;
+      errors.name = "Veuillez renseigner le nom de l'événement";
+    }
+    else if (eventToModify.name.length < 2) {
+      formIsValid = false;
+      errors.name = "Le nom de l'événement est trop court";
+    }
+    else if (eventToModify.name.length > 60) {
+      formIsValid = false;
+      errors.name = "Le nom de l'événement est trop long";
+    }
+
+    // event description
+
+    if (!eventToModify.description) {
+      formIsValid = false;
+      errors.description = 'Veuillez indiquer une description.';
+    }
+    else if (eventToModify.description.length < 2) {
+      formIsValid = false;
+      errors.description = 'La description est trop courte.';
+    }
+    else if (eventToModify.description.length > 280) {
+      formIsValid = false;
+      errors.description = 'La description est trop longue.';
+    }
+
+    handleFieldHasError(errors);
+    return formIsValid;
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    onFormSubmitUpdateEvent(eventToModify.id);
-    onClickModal();
+    if (handleValidation()) {
+      onFormSubmitUpdateEvent(eventToModify.id);
+      onClickModal();
+    }
   };
 
   const handleOnchange = (event) => {
@@ -71,6 +111,7 @@ export default function FormEvent({
               onChange={handleOnchange}
               placeholder="Ex : Soirée nuit des étoiles"
             />
+            <span className="createEventForm__form__error">{eventFieldHasError.name}</span>
             <h4>Description</h4>
             <textarea
               className="textarea"
@@ -82,6 +123,7 @@ export default function FormEvent({
               placeholder="Ex : J'organise une soirée pour la nuit des étoiles dans un endroit bien connu vers chez moi..."
               value={eventToModify.description !== null ? eventToModify.description : ''}
             />
+            <span className="createEventForm__form__error">{eventFieldHasError.description}</span>
             <h4>Date de l'événement</h4>
             <input
               className="input"
@@ -139,7 +181,7 @@ export default function FormEvent({
           <Link className="button --secondary" to="/exploration/create">
             Annuler
           </Link>
-          <button className="button --outlined" onClick={handleSubmit}>
+          <button className="button --outlined" type="button" onClick={handleSubmit}>
             Sauvegarder
           </button>
         </div>
@@ -159,6 +201,8 @@ FormEvent.propTypes = {
   getEventData: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
   uploadIllustration: PropTypes.func.isRequired,
+  handleFieldHasError: PropTypes.func.isRequired,
+  eventFieldHasError: PropTypes.object.isRequired,
 };
 
 FormEvent.defaultProps = {

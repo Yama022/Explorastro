@@ -8,11 +8,13 @@ import {
   clickModal,
   getEventToModifyData,
   uploadExplorationIllustration,
+  setEventFieldHasError,
 } from 'src/actions/exploration';
 
 const mapStateToProps = (state) => ({
   eventToModify: state.exploration.eventToModify,
   modal: state.exploration.modal,
+  eventFieldHasError: state.exploration.eventFieldHasError,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -41,6 +43,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   uploadIllustration: (value, id) => {
     dispatch(uploadExplorationIllustration(value, id));
+  },
+  handleFieldHasError: (value) => {
+    dispatch(setEventFieldHasError(value));
   },
 });
 
