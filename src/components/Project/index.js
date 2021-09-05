@@ -96,7 +96,7 @@ export default function Project() {
               <h4 className="project__container__developper__content__job">Lead Dév Front & Product Owner</h4>
             </div>
             <p className="project__container__developper__content__job__description">
-              Développeur front end spécialisé en React
+              Pierre-François est un développeur front end spécialisé en React.
             </p>
             <div className="profile__header__description__bio__socials">
               <Link className="profile__header__description__bio__socials__item --github" to={{ pathname: 'https://github.com/JebNewman' }} target="_blank">

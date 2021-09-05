@@ -24,6 +24,7 @@ import {
   SET_FORM_EVENT_FIELDS_HAS_ERROR,
   CHANGE_INPUT_NEW_EVENT,
   SET_COMMENT_FIELD_HAS_ERROR,
+  SET_EVENT_FIELD_HAS_ERROR,
 } from 'src/actions/exploration';
 
 export const initialState = {
@@ -43,7 +44,9 @@ export const initialState = {
   commentEditId: 0,
   commentEditOpen: false,
   isEventLoading: true,
+  isLoading: true,
   commentFieldHasError: {},
+  eventFieldHasError: {},
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -214,6 +217,12 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         commentFieldHasError: action.payload,
+      };
+    }
+    case SET_EVENT_FIELD_HAS_ERROR: {
+      return {
+        ...state,
+        eventFieldHasError: action.value,
       };
     }
     default:

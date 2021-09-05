@@ -6,7 +6,7 @@ ALTER TABLE "exploration"
     ALTER "max_participants" SET DEFAULT 10;
 
 ALTER TABLE "exploration" 
-    ALTER "image_url" SET DEFAULT 'https://explorastro-s3.s3.amazonaws.com/1629988474864-235593875.jpeg';
+    ALTER "image_url" SET DEFAULT 'https://s3-explorastro.s3.us-east-2.amazonaws.com/1630856794055-151662587.jpeg';
 
 ALTER TABLE "exploration"
     ADD CONSTRAINT "name_len" CHECK (length("name") > 0 AND length("name") <= 60);

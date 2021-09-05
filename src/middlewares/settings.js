@@ -5,6 +5,7 @@ import {
   logout,
   saveUser,
   loginError,
+  CHANGE_SOCIALS,
 } from 'src/actions/user';
 import api from './utils/api';
 
@@ -62,6 +63,31 @@ const settings = (store) => (next) => (action) => {
             },
           });
           store.dispatch(logout());
+        }
+        catch (error) {
+          store.dispatch(loginError([error.response.config.url, error.response.data.message]));
+        }
+      };
+      sendData();
+      break;
+    }
+    case CHANGE_SOCIALS: {
+      const sendData = async () => {
+        const state = store.getState();
+        const user = JSON.parse(localStorage.getItem('user'));
+        const userId = user.id;
+
+        const data = {
+          twitter: state.user.newTwitter,
+          instagram: state.user.newInstagram,
+          facebook: state.user.newFacebook,
+          tiktok: state.user.newTiktok,
+          astrobin: state.user.newAstrobin,
+        };
+
+        try {
+          await api.patch(`api/v1/user/${userId}/update/`, data);
+          store.dispatch(loginError([['Socials updated']]));
         }
         catch (error) {
           store.dispatch(loginError([error.response.config.url, error.response.data.message]));

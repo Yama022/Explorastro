@@ -1,8 +1,11 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React from 'react';
+import React, { createRef } from 'react';
 import PropTypes from 'prop-types';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 import { FaKey, FaAt } from 'react-icons/fa';
+
+const siteKey = process.env.RECAPTCHA_SITE_KEY;
 
 export default function LoginForm({
   handleToggleSignup,
@@ -43,15 +46,6 @@ export default function LoginForm({
     handleFieldHasError(errors);
     return formIsValid;
   };
-
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
-
-    if (handleValidation()) {
-      handleLogin();
-    }
-  };
-
   let topMessage;
 
   if (loginError.includes('Email has been sent.')) {
@@ -67,8 +61,32 @@ export default function LoginForm({
     topMessage = `Erreur: ${loginError}`;
   }
 
+  const recaptchaRef = createRef();
+
+  const handleForm = () => {
+    if (handleValidation()) {
+      handleLogin();
+    }
+  };
+
+  const showCaptcha = async (e) => {
+    e.preventDefault();
+    const div = document.getElementById('re-captcha');
+    div.className = 're-captcha-active';
+
+    const token = await recaptchaRef.current.getValue();
+
+    if (token) {
+      handleForm();
+    }
+  };
+
+  function onChange() {
+    handleForm();
+  }
+
   return (
-    <form onSubmit={handleFormSubmit} className={(signup === 2) ? 'login__container__form__elem' : 'login__container__form__elem--hidden'}>
+    <form onSubmit={showCaptcha} className={(signup === 2) ? 'login__container__form__elem' : 'login__container__form__elem--hidden'}>
       {loginError && <div className="login__container__form__elem__error">{topMessage}</div>}
       <div className="field">
         <label className="label">Email ou nom d'utilisateur</label>
@@ -122,6 +140,16 @@ export default function LoginForm({
         >Inscription
         </button>
         <button type="submit" className="button --outlined">Se Connecter</button>
+      </div>
+      <div className="re-captcha" id="re-captcha">
+        <ReCAPTCHA
+          ref={recaptchaRef}
+        // eslint-disable-next-line no-return-assign
+          sitekey={siteKey}
+        // eslint-disable-next-line react/jsx-no-bind
+          theme="dark"
+          onChange={onChange}
+        />
       </div>
     </form>
   );

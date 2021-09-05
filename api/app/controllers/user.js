@@ -208,7 +208,9 @@ module.exports = {
 
       res.json(user);
 
-      return await event.saveUserAction(EVENT.ACTION.UPDATE_AVATAR, user, {});
+      return await event.saveUserAction(EVENT.ACTION.UPDATE_AVATAR, user, {
+        lastAvatarURL: user.avatar_url,
+      });
     });
   },
 

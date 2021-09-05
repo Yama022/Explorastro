@@ -13,6 +13,7 @@ export const DELETE_ACCOUNT = 'DELETE_ACCOUNT';
 export const SET_FIELD_HAS_ERROR = 'SET_FIELD_HAS_ERROR';
 export const SET_FORGOT_PASSWORD_FORM_ERRORS = 'SET_FORGOT_PASSWORD_FORM_ERRORS';
 export const TOKEN_FORGOT_PASSWORD = 'TOKEN_FORGOT_PASSWORD';
+export const CHANGE_SOCIALS = 'CHANGE_SOCIALS';
 
 export const toggleSignup = (value) => ({
   type: TOGGLE_SIGNUP,
@@ -78,4 +79,8 @@ export const setForgotPasswordFormErrors = () => ({
 
 export const tokenForgotPassword = () => ({
   type: TOKEN_FORGOT_PASSWORD,
+});
+
+export const changeSocials = () => ({
+  type: CHANGE_SOCIALS,
 });

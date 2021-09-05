@@ -22,10 +22,15 @@ const initialState = {
   username: '',
   usernameChange: '',
   logged: null,
-  signup: 1,
+  signup: 2,
   loginError: '',
   fieldHasError: {},
   token: '',
+  newTwitter: '',
+  newInstagram: '',
+  newFacebook: '',
+  newTiktok: '',
+  newAstrobin: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -58,6 +63,11 @@ const reducer = (state = initialState, action = {}) => {
         username: action.payload?.username ?? '',
         logged: !!action.payload?.username,
         avatar_url: action.payload?.avatar_url,
+        newTwitter: action.payload?.twitter,
+        newInstagram: action.payload?.instagram,
+        newFacebook: action.payload?.facebook,
+        newTiktok: action.payload?.tiktok,
+        newAstrobin: action.payload?.astrobin,
         email: '',
         password: '',
         passwordConfirmation: '',
