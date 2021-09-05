@@ -35,6 +35,7 @@ export const REMOVE_PARTICIPANT = 'REMOVE_PARTICIPANT';
 export const HANDLE_TOGGLE_COMM_EDIT = 'HANDLE_TOGGLE_COMM_EDIT';
 export const SET_FORM_EVENT_FIELDS_HAS_ERROR = 'SET_FORM_EVENT_FIELDS_HAS_ERROR';
 export const CHANGE_INPUT_NEW_EVENT = 'CHANGE_INPUT_NEW_EVENT';
+export const SET_COMMENT_FIELD_HAS_ERROR = 'SET_COMMENT_FIELD_HAS_ERROR';
 
 export const changeInput = (payload) => ({
   type: CHANGE_INPUT,
@@ -192,5 +193,10 @@ export const removeParticipant = () => ({
 
 export const setFormEventFielsHasErrors = (payload) => ({
   type: SET_FORM_EVENT_FIELDS_HAS_ERROR,
+  payload,
+});
+
+export const setCommentFieldHasErrors = (payload) => ({
+  type: SET_COMMENT_FIELD_HAS_ERROR,
   payload,
 });

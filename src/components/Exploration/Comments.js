@@ -18,10 +18,47 @@ const Comments = ({
   editCommentValue,
   editCommentId,
   loggedUserId,
+  commentFieldHasError,
+  handleFieldHasError,
 }) => {
+  const handleValidation = (actionType) => {
+    let isValid = true;
+    const errors = {};
+
+    if (actionType === 'edit') {
+      if (commentEditInput.length <= 2) {
+        errors.commentInput = '3 caractères minimums';
+        isValid = false;
+      }
+
+      if (commentEditInput.length > 280) {
+        errors.commentInput = '280 caractères maximums';
+        isValid = false;
+      }
+    }
+
+    if (actionType === 'add') {
+      if (commentInput.length <= 2) {
+        errors.commentInput = '3 caractères minimums';
+        isValid = false;
+      }
+
+      if (commentInput.length > 280) {
+        errors.commentInput = '280 caractères maximums';
+        isValid = false;
+      }
+    }
+
+    handleFieldHasError(errors);
+    return isValid;
+  };
+
   const handleOnSubmit = (event) => {
     event.preventDefault();
-    onSubmit();
+
+    if (handleValidation('add')) {
+      onSubmit();
+    }
   };
 
   const handleChange = (event) => {
@@ -39,8 +76,10 @@ const Comments = ({
 
   const handleOnSubmitEdit = (event) => {
     event.preventDefault();
-    modifyComment();
-    toggleEditComment();
+    if (handleValidation('edit')) {
+      modifyComment();
+      toggleEditComment();
+    }
   };
 
   const handleDelete = (event) => {
@@ -94,6 +133,7 @@ const Comments = ({
         ))}
       </ul>
       <form className="Exploration__overview__left__comments__form" onSubmit={commentEditOpen ? handleOnSubmitEdit : handleOnSubmit}>
+        <span className="Exploration__overview__left__comments__form__edit">{commentFieldHasError.commentInput}</span>
         {commentEditOpen && <span className="Exploration__overview__left__comments__form__edit">Vous modifiez un commentaire...</span>}
         <div className="Exploration__overview__left__comments__form__elem">
           <input
@@ -129,12 +169,15 @@ Comments.propTypes = {
   editCommentValue: PropTypes.func.isRequired,
   editCommentId: PropTypes.func.isRequired,
   loggedUserId: PropTypes.number.isRequired,
+  commentFieldHasError: PropTypes.object,
+  handleFieldHasError: PropTypes.func.isRequired,
 };
 
 Comments.defaultProps = {
   comments: [],
   onSubmit: {},
   onChangeValue: {},
+  commentFieldHasError: {},
 };
 
 export default Comments;
