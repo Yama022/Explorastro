@@ -22,7 +22,7 @@ export default function Report() {
             <p className="modal-card-title"><BiGitPullRequest /> Patch-Note</p>
             <button type="button" className="delete" aria-label="close" onClick={toggleModal} />
           </header>
-          <section className="modal-card-body --report">
+          <section className="modal-card-body --patch">
             <h3>
               Version 1 - 05 Septembre 2021
             </h3>

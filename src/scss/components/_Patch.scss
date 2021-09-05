@@ -24,37 +24,19 @@
     max-height: 20em;
   }
 
-  .modal-card-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
-    align-items: left;
-    text-align: left;
-    background-color: red;
-    overflow-y: scroll;
-
-    p {
-      color: $light-color;
-      text-align: left;
-      font-weight: lighter;
-
-      span {
-        font-size: 1.1em;
-        font-weight: bold;
-        color: $secondary-color;
-      }
-    }
-
-    
-  }
   @include mob {
     display: none;
   }
 }
 
-.--report {
+.--patch {
   overflow-y: scroll;
-  padding-top: 45em;
+  display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    text-align: left;
+    overflow-y: scroll;
 
   h3 {
     text-decoration: underline;
@@ -68,6 +50,7 @@
     width: 100%;
     li {
       margin-bottom: .2rem;
+      padding-left: 1em;
     }
     &:first-of-type {
       margin-top: 1rem;

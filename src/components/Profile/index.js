@@ -95,13 +95,7 @@ export default function Profile({
   }
 
   if (!userFound) {
-    return (
-      <Redirect
-        to={{
-          pathname: '/404',
-        }}
-      />
-    );
+    return <div><h1 className="main-title" style={{ height: '80vh' }}>Utilisateur introuvable</h1></div>;
   }
 
   const publishedEvents = explorations.filter((evt) => evt.is_published === true);
