@@ -2,7 +2,7 @@ const { ERROR } = require('../constants');
 const { PasswordToken, Report, User } = require('../models');
 const { email: emailUtils } = require('../utils');
 const crypto = require('crypto');
-const baseUrlForgotPassword = "https://www.explorastro.com/password/forgot/update"
+const baseUrlForgotPassword = "https://www.explorastro.com/login/forgot/update"
 
 module.exports = {
     forgotPassword: async (req, res) => {
