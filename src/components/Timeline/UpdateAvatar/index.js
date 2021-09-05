@@ -8,6 +8,7 @@ export default function Update({ props }) {
   const {
     user: { username, avatar_url: avatar },
     date: { locales: { fr } },
+    lastAvatarURL,
   } = props;
   return (
     <div className="update">
@@ -18,7 +19,7 @@ export default function Update({ props }) {
       </div>
 
       <div className="update__content">
-        <img src={avatar ?? 'https://s3-explorastro.s3.us-east-2.amazonaws.com/1630856500282-313912004.jpg'} alt="avatar" />
+        <img src={lastAvatarURL ?? 'https://s3-explorastro.s3.us-east-2.amazonaws.com/1630856500282-313912004.jpg'} alt="avatar" />
         <span className="update__content-buttonUpdate">
           <BsArrowRightShort />
         </span>
@@ -34,6 +35,13 @@ export default function Update({ props }) {
 
 Update.propTypes = {
   props: PropTypes.object.isRequired,
-  user: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
+  user: PropTypes.string,
+  date: PropTypes.string,
+  lastAvatarURL: PropTypes.string,
+};
+
+Update.defaultProps = {
+  user: '',
+  date: '',
+  lastAvatarURL: '',
 };
