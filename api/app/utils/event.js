@@ -209,7 +209,7 @@ module.exports = {
             user: [user.id],
           },
           user: eventFormat.user(user),
-          lastAvatarURL: user.data.lastAvatarURL,
+          lastAvatarURL: data.lastAvatarURL,
           message: { ...EVENT.MESSAGES.UPDATE_AVATAR },
         });
         break;

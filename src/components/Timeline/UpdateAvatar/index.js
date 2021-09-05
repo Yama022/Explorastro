@@ -13,16 +13,16 @@ export default function Update({ props }) {
     <div className="update">
 
       <div className="update__title">
-        <img src={avatar ?? 'https://explorastro-s3.s3.amazonaws.com/default.jpg'} alt="avatar" />
+        <img src={avatar ?? 'https://s3-explorastro.s3.us-east-2.amazonaws.com/1630856500282-313912004.jpg'} alt="avatar" />
         <h3> {username} a mis à jour sa photo de profil</h3>
       </div>
 
       <div className="update__content">
-        <img src={avatar ?? 'https://explorastro-s3.s3.amazonaws.com/default.jpg'} alt="avatar" />
+        <img src={avatar ?? 'https://s3-explorastro.s3.us-east-2.amazonaws.com/1630856500282-313912004.jpg'} alt="avatar" />
         <span className="update__content-buttonUpdate">
           <BsArrowRightShort />
         </span>
-        <img src={avatar ?? 'https://explorastro-s3.s3.amazonaws.com/default.jpg'} alt="avatar" />
+        <img src={avatar ?? 'https://s3-explorastro.s3.us-east-2.amazonaws.com/1630856500282-313912004.jpg'} alt="avatar" />
       </div>
 
       <div className="update__date">
