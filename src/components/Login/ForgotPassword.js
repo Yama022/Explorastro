@@ -1,8 +1,11 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React from 'react';
+import React, { createRef } from 'react';
 import PropTypes from 'prop-types';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 import { FaAt } from 'react-icons/fa';
+
+const siteKey = process.env.RECAPTCHA_SITE_KEY;
 
 export default function ForgotPassword({
   handleToggleSignup,
@@ -45,16 +48,33 @@ export default function ForgotPassword({
     return formIsValid;
   };
 
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
+  const recaptchaRef = createRef();
 
+  const handleForm = () => {
     if (handleValidation()) {
       handleForgot();
     }
   };
 
+  async function onChange() {
+    handleForm();
+  }
+
+  // eslint-disable-next-line consistent-return
+  const showCaptcha = async (e) => {
+    e.preventDefault();
+    const div = document.getElementById('re-captcha-forgot');
+    div.className = 're-captcha-active';
+
+    const token = await recaptchaRef.current.getValue();
+
+    if (token) {
+      handleForm();
+    }
+  };
+
   return (
-    <form onSubmit={handleFormSubmit} className={(signup === 3) ? 'login__container__form__elem' : 'login__container__form__elem--hidden'}>
+    <form onSubmit={showCaptcha} className={(signup === 3) ? 'login__container__form__elem' : 'login__container__form__elem--hidden'}>
       {forgotError && <div className="login__container__form__elem__error">L'adresse mail n'a pas été trouvée.</div>}
       <div className="field">
         <label className="label">Email</label>
@@ -83,6 +103,17 @@ export default function ForgotPassword({
         >Retour
         </button>
         <button type="submit" className="button --outlined">Réinitialiser</button>
+      </div>
+      <div className="re-captcha" id="re-captcha-forgot">
+        <ReCAPTCHA
+          ref={recaptchaRef}
+      // eslint-disable-next-line no-return-assign
+          sitekey={siteKey}
+      // eslint-disable-next-line react/jsx-no-bind
+          theme="dark"
+          onChange={onChange}
+          hl="fr"
+        />
       </div>
     </form>
   );
