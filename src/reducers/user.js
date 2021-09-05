@@ -24,6 +24,11 @@ const initialState = {
   signup: 1,
   loginError: '',
   fieldHasError: {},
+  newTwitter: '',
+  newInstagram: '',
+  newFacebook: '',
+  newTiktok: '',
+  newAstrobin: '',
 };
 
 const reducer = (state = initialState, action = {}) => {

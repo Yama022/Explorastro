@@ -2,7 +2,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { FaUser, FaKey } from 'react-icons/fa';
+import {
+  FaUser, FaKey, FaFacebookSquare, FaTwitter, FaInstagram,
+} from 'react-icons/fa';
+import { SiTiktok } from 'react-icons/si';
+import { BiPlanet } from 'react-icons/bi';
 
 import BackButton from 'src/components/BackButton';
 
@@ -20,6 +24,11 @@ export default function Settings({
   handleFieldHasError,
   fieldHasError,
   formError,
+  newTwitter,
+  newInstagram,
+  newFacebook,
+  newTiktok,
+  newAstrobin,
 }) {
   const handleChange = (event) => {
     changeField(event.target.value, event.target.name);
@@ -111,6 +120,24 @@ export default function Settings({
     return formIsValid;
   };
 
+  const handleSocialValidation = () => {
+    const errors = {};
+    const formIsValid = true;
+
+    handleFieldHasError(errors);
+    return formIsValid;
+  };
+
+  const handleSocialForm = (event) => {
+    event.preventDefault();
+    if (handleSocialValidation()) {
+      // eslint-disable-next-line no-alert
+      if (window.confirm('Confirmer les changements?')) {
+        handleUsernameChange();
+      }
+    }
+  };
+
   const handleUsernameForm = (event) => {
     event.preventDefault();
     if (handleUsernameValidation()) {
@@ -144,6 +171,7 @@ export default function Settings({
   let usernameChangeError;
   let passwordChangeError;
   let accountDeletionError;
+  let socialsError;
 
   if (formError) {
     // Form validation for username change
@@ -183,6 +211,64 @@ export default function Settings({
       <h1 className="main-title">Paramètres</h1>
       <BackButton />
       <div className="settings__elems">
+        <h2>Changer les réseaux sociaux</h2>
+        <form className="settings__elems__form" onSubmit={handleSocialForm}>
+          <div className="settings__elems__form__error"> {socialsError} </div>
+          <div className="field">
+            <label className="label">Twitter</label>
+            <div className="control has-icons-left has-icons-right">
+              <input className="input is-success" type="text" placeholder="ex: https://twitter.com/" value={newTwitter} name="newTwitter" onChange={handleChange} autoComplete="off" />
+              <span className="icon is-small is-left">
+                <FaTwitter />
+              </span>
+            </div>
+            <span className="field__error">{fieldHasError.twitter}</span>
+          </div>
+          <div className="field">
+            <label className="label">Instagram</label>
+            <div className="control has-icons-left has-icons-right">
+              <input className="input is-success" type="text" placeholder="ex: https://www.instagram.com/" value={newInstagram} name="newInstagram" onChange={handleChange} autoComplete="off" />
+              <span className="icon is-small is-left">
+                <FaInstagram />
+              </span>
+            </div>
+            <span className="field__error">{fieldHasError.instagram}</span>
+          </div>
+          <div className="field">
+            <label className="label">Facebook</label>
+            <div className="control has-icons-left has-icons-right">
+              <input className="input is-success" type="text" placeholder="ex: https://www.facebook.com/" value={newFacebook} name="newFacebook" onChange={handleChange} autoComplete="off" />
+              <span className="icon is-small is-left">
+                <FaFacebookSquare />
+              </span>
+            </div>
+            <span className="field__error">{fieldHasError.facebook}</span>
+          </div>
+          <div className="field">
+            <label className="label">TikTok</label>
+            <div className="control has-icons-left has-icons-right">
+              <input className="input is-success" type="text" placeholder="ex: https://www.tiktok.com/" value={newTiktok} name="newTiktok" onChange={handleChange} autoComplete="off" />
+              <span className="icon is-small is-left">
+                <SiTiktok />
+              </span>
+            </div>
+            <span className="field__error">{fieldHasError.tiktok}</span>
+          </div>
+          <div className="field">
+            <label className="label">Astrobin</label>
+            <div className="control has-icons-left has-icons-right">
+              <input className="input is-success" type="text" placeholder="ex: https://www.astrobin.com/" value={newAstrobin} name="newAstrobin" onChange={handleChange} autoComplete="off" />
+              <span className="icon is-small is-left">
+                <BiPlanet />
+              </span>
+            </div>
+            <span className="field__error">{fieldHasError.astrobin}</span>
+          </div>
+          <button type="button" className="button --secondary settings__elems__form__submit" onClick={handleUsernameForm}>Enregistrer</button>
+
+        </form>
+      </div>
+      <div className="settings__elems">
         <h2>Changer le pseudo</h2>
         <form className="settings__elems__form" onSubmit={handleUsernameForm}>
           <div className="settings__elems__form__error"> {usernameChangeError} </div>
@@ -206,7 +292,7 @@ export default function Settings({
             </div>
             <span className="field__error">{fieldHasError.passwordForUsername}</span>
           </div>
-          <button type="button" className="button --secondary settings__elems__form__submit" onClick={handleUsernameForm}>Changer le pseudo</button>
+          <button type="submit" className="button --secondary settings__elems__form__submit">Changer le pseudo</button>
 
         </form>
       </div>
@@ -277,6 +363,11 @@ Settings.propTypes = {
   handleDeleteAccount: PropTypes.func.isRequired,
   handleFieldHasError: PropTypes.func.isRequired,
   fieldHasError: PropTypes.object.isRequired,
+  newTwitter: PropTypes.string.isRequired,
+  newInstagram: PropTypes.string.isRequired,
+  newFacebook: PropTypes.string.isRequired,
+  newTiktok: PropTypes.string.isRequired,
+  newAstrobin: PropTypes.string.isRequired,
   formError: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.array,

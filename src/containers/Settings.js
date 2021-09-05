@@ -15,6 +15,11 @@ const mapStateToProps = (state) => ({
   passwordConfirmation: state.user.passwordConfirmation,
   fieldHasError: state.user.fieldHasError,
   formError: state.user.loginError,
+  newTwitter: state.user.newTwitter,
+  newInstagram: state.user.newInstagram,
+  newFacebook: state.user.newFacebook,
+  newTiktok: state.user.newTiktok,
+  newAstrobin: state.user.newAstrobin,
 });
 
 const mapDispatchToProps = (dispatch) => ({
