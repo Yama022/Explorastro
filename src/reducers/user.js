@@ -6,6 +6,7 @@ import {
   SAVE_USER,
   LOGIN_ERROR,
   SET_FIELD_HAS_ERROR,
+  SET_FORGOT_PASSWORD_FORM_ERRORS,
 } from 'src/actions/user';
 
 const initialState = {
@@ -24,6 +25,7 @@ const initialState = {
   signup: 2,
   loginError: '',
   fieldHasError: {},
+  token: '',
   newTwitter: '',
   newInstagram: '',
   newFacebook: '',
@@ -89,6 +91,14 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         fieldHasError: action.value,
+      };
+    }
+    case SET_FORGOT_PASSWORD_FORM_ERRORS: {
+      return {
+        ...state,
+        token: '',
+        password: '',
+        passwordConfirmation: '',
       };
     }
     default:

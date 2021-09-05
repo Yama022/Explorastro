@@ -1,6 +1,8 @@
 /* eslint-disable react/button-has-type */
 import React, { useEffect } from 'react';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import {
+  Redirect, Route, Switch, useLocation,
+} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Header from 'src/containers/Header';
@@ -23,10 +25,10 @@ import Particles from 'src/components/Particles';
 import Loader from 'src/components/Loader';
 import Project from 'src/components/Project';
 import RGPD from 'src/components/RGPD';
-import Report from 'src/components/Report';
+import Report from 'src/containers/Report';
 import CGU from 'src/components/CGU';
 import PatchNote from 'src/components/PatchNote';
-import ForgottenPassword from 'src/components/ForgottenPassword';
+import ForgottenPassword from 'src/containers/ForgottenPassword';
 
 import { IoIosArrowUp } from 'react-icons/io';
 
@@ -44,6 +46,9 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
     checkIsLogged();
     setTimeout(3000);
   }, []);
+
+  const useQuery = () => new URLSearchParams(useLocation().search);
+  const query = useQuery();
 
   if (!(typeof (isLogged) === 'boolean')) {
     return <Loader />;
@@ -170,9 +175,15 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
               <CGU />
               <Footer />
             </Route>
-            <Route exact path="/login/forgot/update">
-              <ForgottenPassword />
-            </Route>
+            <Route
+              path="/login/forgot/update"
+              render={() => (
+                <>
+                  <ForgottenPassword token={query.get('token')} />
+                </>
+              )}
+            />
+
             <Route exact path="/login">
               <Login />
             </Route>
