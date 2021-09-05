@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { AiOutlineUserAdd } from 'react-icons/ai';
 // , AiFillStar, AiOutlineStar
