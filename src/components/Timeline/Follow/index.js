@@ -21,19 +21,19 @@ export default function Follow({ props }) {
     <div className="follow">
       <div className="follow__title">
         {/* Avatar url TO ADD ! */}
-        <Link to={`/profile/${idFollower}`}><img src={avatarFollower ?? 'https://explorastro-s3.s3.amazonaws.com/default.jpg'} alt="avatar" /></Link>
+        <Link to={`/profile/${idFollower}`}><img src={avatarFollower ?? 'https://s3-explorastro.s3.us-east-2.amazonaws.com/1630856500282-313912004.jpg'} alt="avatar" /></Link>
         <h3> <Link to={`/profile/${idFollower}`}>{usernameFollower}</Link> {message.fr} <Link to={`/profile/${idFollowed}`}>{usernameFollowed}</Link></h3>
       </div>
 
       <div className="follow__content">
         <Link to={`/profile/${idFollower}`} className="follow__content__image">
-          <img src={avatarFollower ?? 'https://explorastro-s3.s3.amazonaws.com/default.jpg'} alt="avatar" />
+          <img src={avatarFollower ?? 'https://s3-explorastro.s3.us-east-2.amazonaws.com/1630856500282-313912004.jpg'} alt="avatar" />
         </Link>
         <span className="follow__content-buttonUpdate">
           <RiUserFollowLine />
         </span>
         <Link to={`/profile/${idFollowed}`} className="follow__content__image">
-          <img src={avatarFollowed ?? 'https://explorastro-s3.s3.amazonaws.com/default.jpg'} alt="avatar" />
+          <img src={avatarFollowed ?? 'https://s3-explorastro.s3.us-east-2.amazonaws.com/1630856500282-313912004.jpg'} alt="avatar" />
         </Link>
 
       </div>

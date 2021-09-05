@@ -110,6 +110,7 @@ export default function ForgottenPassword({
                   name="confirm"
                   autoComplete="off"
                 />
+                <input type="hidden" value={token} />
                 <span className="icon is-small is-left">
                   <FaKey />
                 </span>

@@ -14,7 +14,7 @@ export default function Following({ following }) {
           return (
             <Link key={id} to={`/profile/${id}`}>
               <li>
-                <img src={avatar ?? 'https://explorastro-s3.s3.amazonaws.com/default.jpg'} alt={username} />
+                <img src={avatar ?? 'https://s3-explorastro.s3.us-east-2.amazonaws.com/1630856500282-313912004.jpg'} alt={username} />
                 <p>{firstname} {lastname}</p>
               </li>
             </Link>

@@ -14,7 +14,7 @@ export default function Description({ props }) {
     <div className="desc">
       <div className="desc__title">
         <Link to={`/profile/${id}`}>
-          <img src={avatar ?? 'https://explorastro-s3.s3.amazonaws.com/default.jpg'} alt="avatar" />
+          <img src={avatar ?? 'https://s3-explorastro.s3.us-east-2.amazonaws.com/1630856500282-313912004.jpg'} alt="avatar" />
         </Link>
         <h3>
           <Link to={`/profile/${id}`}>

@@ -25,7 +25,7 @@ import Particles from 'src/components/Particles';
 import Loader from 'src/components/Loader';
 import Project from 'src/components/Project';
 import RGPD from 'src/components/RGPD';
-import Report from 'src/components/Report';
+import Report from 'src/containers/Report';
 import CGU from 'src/components/CGU';
 import PatchNote from 'src/components/PatchNote';
 import ForgottenPassword from 'src/containers/ForgottenPassword';
@@ -177,7 +177,7 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
             </Route>
             <Route
               path="/login/forgot/update"
-              render={(prop) => (
+              render={() => (
                 <>
                   <ForgottenPassword token={query.get('token')} />
                 </>
