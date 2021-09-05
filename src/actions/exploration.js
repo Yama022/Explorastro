@@ -33,6 +33,8 @@ export const ADD_PARTICIPANT = 'ADD_PARTICIPANT';
 export const NEW_PARTICIPANT = 'NEW_PARTICIPANT';
 export const REMOVE_PARTICIPANT = 'REMOVE_PARTICIPANT';
 export const HANDLE_TOGGLE_COMM_EDIT = 'HANDLE_TOGGLE_COMM_EDIT';
+export const SET_FORM_EVENT_FIELDS_HAS_ERROR = 'SET_FORM_EVENT_FIELDS_HAS_ERROR';
+export const CHANGE_INPUT_NEW_EVENT = 'CHANGE_INPUT_NEW_EVENT';
 
 export const changeInput = (payload) => ({
   type: CHANGE_INPUT,
@@ -41,6 +43,12 @@ export const changeInput = (payload) => ({
 
 export const changeInputValue = (value, key) => ({
   type: CHANGE_INPUT_VALUE_EXPLORATION,
+  value,
+  key,
+});
+
+export const changeNewEventInputValue = (value, key) => ({
+  type: CHANGE_INPUT_NEW_EVENT,
   value,
   key,
 });
@@ -180,4 +188,9 @@ export const newParticipant = () => ({
 
 export const removeParticipant = () => ({
   type: REMOVE_PARTICIPANT,
+});
+
+export const setFormEventFielsHasErrors = (payload) => ({
+  type: SET_FORM_EVENT_FIELDS_HAS_ERROR,
+  payload,
 });

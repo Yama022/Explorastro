@@ -98,3 +98,4 @@ ForgotPassword.propTypes = {
   fieldHasError: PropTypes.object.isRequired,
   handleFieldHasError: PropTypes.func.isRequired,
 };
+

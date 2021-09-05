@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 const { mainController, timelineController, emailController } = require('../controllers');
-const { tokenMiddleware } = require('../middlewares');
+const { tokenMiddleware, rateLimit } = require('../middlewares');
 
 /**
  * Return API Informations
@@ -31,7 +31,8 @@ router.get(
  * @returns {API-Infos.model} 200 - An object containing API informations
  */
  router.post(
-  '/report',
+   '/report',
+   rateLimit.sendMail,
   tokenMiddleware.authenticateToken,
   emailController.report,
 );

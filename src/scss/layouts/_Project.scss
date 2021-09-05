@@ -53,7 +53,6 @@
             margin-bottom: 1.5rem;
             font-style: italic;
             display: inline;
-            border-bottom: 1px solid $light-color;
             &__description {
               margin-top: 1rem;
             }
@@ -61,7 +60,9 @@
         }
 
         &__avatar {
-            img {
+          position: relative;
+
+            .avatar {
               object-fit: cover;
               width: 20rem;
               height: 20rem;
@@ -73,6 +74,16 @@
                 filter: grayscale(0);
                 transform: translateY(-10px);
               }
+            }
+
+            .pass {
+              object-fit: cover;
+              width: 20rem;
+              height: auto;
+              position: absolute;
+              bottom: -20%;
+              left: 0;
+              border-radius: 5px;
             }
         }
     }
@@ -99,5 +110,21 @@
   &:hover {
     box-shadow: 0 0 0.4em $light-color;
     color: black;
+  }
+}
+
+@include mobTab {
+  .project {
+    width: 100%;
+    &__container {
+      &__developper {
+        text-align: center;
+        flex-direction: column-reverse;
+
+        &:nth-child(odd) {
+          flex-direction: column-reverse;
+        }
+      }
+    }
   }
 }

@@ -21,6 +21,7 @@ const mapStateToProps = (state) => ({
   comment: state.exploration.comment,
   commentEdit: state.exploration.commentEdit,
   commentEditOpen: state.exploration.commentEditOpen,
+  isEventLoading: state.exploration.isEventLoading,
 });
 const mapDispatchToProps = (dispatch) => ({
   getExploration: (payload) => {

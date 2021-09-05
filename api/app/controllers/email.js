@@ -1,7 +1,8 @@
 const { ERROR } = require('../constants');
-const { PasswordToken, Report } = require('../models');
+const { PasswordToken, Report, User } = require('../models');
 const { email: emailUtils } = require('../utils');
 const crypto = require('crypto');
+const baseUrlForgotPassword = "https://www.explorastro.com/password/forgot/update"
 
 module.exports = {
     forgotPassword: async (req, res) => {
@@ -23,14 +24,14 @@ module.exports = {
                 token: tokenPassword,
             });
 
-            const isSend = await emailUtils.forgotPassword(lowerEmail, `https://www.explorastro.com/password/forgot/update?token=${tokenPassword}`);
+            const isSend = await emailUtils.forgotPassword(lowerEmail, `${baseUrlForgotPassword}?token=${tokenPassword}`);
 
             if (isSend) {
                 return res.status(200).json({
-                    message: 'A message has been sent to your email',
+                    message: ERROR.EMAIL_HAS_BEEN_SENT,
                 });
             } else {
-                throw new Error('Error sending email');
+                throw new Error(ERROR.EMAIL_HAS_FAILED);
             }
 
         } catch (error) {
@@ -61,11 +62,11 @@ module.exports = {
             const isSend = await emailUtils.report(content, object);
 
             if (!isSend) {
-                throw new Error('Error sending email');
+                throw new Error(ERROR.EMAIL_HAS_FAILED);
             }
 
             return res.status(200).json({
-                message: 'Report send',
+                message: ERROR.REPORT_SEND,
             });
         } catch (error) {
             console.log(error);

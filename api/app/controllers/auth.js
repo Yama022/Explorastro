@@ -199,7 +199,7 @@ module.exports = {
 
       await userToken.destroy();
 
-      return res.status(200).json({ message: 'Password has been reset' });
+      return res.status(200).json({ message: ERROR.PASSWORD_HAS_BEEN_RESET });
     } catch (error) {
       console.error(error);
       return res.status(500).send({
