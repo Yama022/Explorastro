@@ -23,6 +23,7 @@ import {
   REMOVE_PARTICIPANT,
   SET_FORM_EVENT_FIELDS_HAS_ERROR,
   CHANGE_INPUT_NEW_EVENT,
+  SET_COMMENT_FIELD_HAS_ERROR,
 } from 'src/actions/exploration';
 
 export const initialState = {
@@ -42,6 +43,7 @@ export const initialState = {
   commentEditId: 0,
   commentEditOpen: false,
   isEventLoading: true,
+  commentFieldHasError: {},
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -132,6 +134,7 @@ const reducer = (state = initialState, action = {}) => {
         commentEdit: '',
         commentEditOpen: false,
         isEventLoading: false,
+        commentFieldHasError: {},
       };
     }
     case UPDATE_EVENTS: {
@@ -205,6 +208,12 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         fieldHasError: action.payload,
+      };
+    }
+    case SET_COMMENT_FIELD_HAS_ERROR: {
+      return {
+        ...state,
+        commentFieldHasError: action.payload,
       };
     }
     default:

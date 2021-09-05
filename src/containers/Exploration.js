@@ -13,6 +13,7 @@ import {
   handleToggleCommEdit,
   setCommentEditValue,
   setCommentIdValue,
+  setCommentFieldHasErrors,
 } from 'src/actions/exploration';
 
 const mapStateToProps = (state) => ({
@@ -22,6 +23,7 @@ const mapStateToProps = (state) => ({
   commentEdit: state.exploration.commentEdit,
   commentEditOpen: state.exploration.commentEditOpen,
   isEventLoading: state.exploration.isEventLoading,
+  commentFieldHasError: state.exploration.commentFieldHasError,
 });
 const mapDispatchToProps = (dispatch) => ({
   getExploration: (payload) => {
@@ -57,6 +59,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   notParticipate: (value) => {
     dispatch(removeParticipant(value));
+  },
+  handleFieldHasError: (payload) => {
+    dispatch(setCommentFieldHasErrors(payload));
   },
 });
 

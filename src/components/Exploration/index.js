@@ -28,6 +28,8 @@ export default function Exploration({
   editCommentValue,
   editCommentId,
   isEventLoading,
+  commentFieldHasError,
+  handleFieldHasError,
 }) {
   useEffect(() => {
     getExploration(id);
@@ -83,6 +85,8 @@ export default function Exploration({
             editCommentValue={editCommentValue}
             editCommentId={editCommentId}
             loggedUserId={loggedUserId}
+            commentFieldHasError={commentFieldHasError}
+            handleFieldHasError={handleFieldHasError}
           />
         </div>
         <div className="Exploration__overview__map">
@@ -129,4 +133,6 @@ Exploration.propTypes = {
   editCommentValue: PropTypes.func.isRequired,
   editCommentId: PropTypes.func.isRequired,
   isEventLoading: PropTypes.bool.isRequired,
+  commentFieldHasError: PropTypes.object.isRequired,
+  handleFieldHasError: PropTypes.func.isRequired,
 };
