@@ -21,7 +21,7 @@ const initialState = {
   username: '',
   usernameChange: '',
   logged: null,
-  signup: 1,
+  signup: 2,
   loginError: '',
   fieldHasError: {},
   newTwitter: '',
