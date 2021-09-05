@@ -57,7 +57,7 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
   return (
     <div className="explorastro">
       <Particles />
-      <Report />
+      {isLogged && <Report />}
       <PatchNote />
       {!isLogged && <RGPD />}
       {isLogged
