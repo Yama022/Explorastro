@@ -152,9 +152,7 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
               <Footer />
             </Route>
             <Route>
-              <Header />
               <Error />
-              <Footer />
             </Route>
           </Switch>
         )
@@ -212,9 +210,7 @@ export default function Explorastro({ isLogged, checkIsLogged }) {
               <Redirect to="/login" />
             </Route>
             <Route>
-              <Header />
               <Error />
-              <Footer />
             </Route>
           </Switch>
         )}
