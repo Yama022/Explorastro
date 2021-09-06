@@ -174,7 +174,7 @@ export default function SignupForm({
       <div className="field">
         <label className="label">Prénom</label>
         <div className="control has-icons-left has-icons-right">
-          <input className="input" type="text" placeholder="ex: John" value={firstname} name="firstname" onChange={handleChange} />
+          <input className="input" type="text" placeholder="ex: Jon" value={firstname} name="firstname" onChange={handleChange} />
           <span className="icon is-small is-left">
             <FaUser />
           </span>
