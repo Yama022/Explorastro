@@ -31,16 +31,16 @@ export default function Search({
         <FaSearch />
       </span>
       {!(searchInput.length === 0) && (
-        <ul className="search__list">
-          {searchResult.map((result) => (
-            <li className="search__list__item" key={result.id}>
-              <Link to={`profile/${result.id}`}>
-                <img src={result.avatar_url} className="search__list__item__img" alt="Avatar de l'utilisateur" />
-                <span>{result.username}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
+      <ul className="search__list">
+        {searchResult.map((result) => (
+          <li className="search__list__item" key={result.id}>
+            <Link to={`profile/${result.id}`}>
+              <img src={result.avatar_url} className="search__list__item__img" alt="Avatar de l'utilisateur" />
+              <span>{result.username}</span>
+            </Link>
+          </li>
+        ))}
+      </ul>
       )}
     </div>
   );

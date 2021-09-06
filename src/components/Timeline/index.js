@@ -87,13 +87,13 @@ export default function Timeline({
         )}
       <aside className="timeline-right">
         <div className="timeline-right__widget">
+          <Following following={following} />
           <Search
             changeField={changeField}
             searchInput={searchInput}
             searchForPeople={searchForPeople}
             searchResult={searchResult}
           />
-          <Following following={following} />
         </div>
       </aside>
     </div>
