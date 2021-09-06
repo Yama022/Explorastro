@@ -2,8 +2,10 @@ import React from 'react';
 import theo from 'src/assets/images/avatar/theo.jpeg';
 import remi from 'src/assets/images/avatar/remibis.PNG';
 import pf from 'src/assets/images/avatar/pf.jpg';
+import baptiste from 'src/assets/images/mascot/mascot-jetpack.svg';
 import theoPass from 'src/assets/images/tickets/theo_pass.png';
 import remiPass from 'src/assets/images/tickets/remi_pass.png';
+import baptPass from 'src/assets/images/tickets/bapt_pass.png';
 import pfPass from 'src/assets/images/tickets/pierre_pass.png';
 import { Link } from 'react-router-dom';
 
@@ -96,7 +98,7 @@ export default function Project() {
               <h4 className="project__container__developper__content__job">Lead Dév Front & Product Owner</h4>
             </div>
             <p className="project__container__developper__content__job__description">
-              Pierre-François est un développeur front end spécialisé en React.
+              Pierre-François est devenu récemment un développeur front end spécialisé en React.
             </p>
             <div className="profile__header__description__bio__socials">
               <Link className="profile__header__description__bio__socials__item --github" to={{ pathname: 'https://github.com/JebNewman' }} target="_blank">
@@ -104,6 +106,25 @@ export default function Project() {
               </Link>
               <Link className="profile__header__description__bio__socials__item --linkedin" to={{ pathname: 'https://www.linkedin.com/in/pierre-fran%C3%A7ois-lain%C3%A9-1983615a/' }} target="_blank">
                 <FaLinkedinIn />
+              </Link>
+            </div>
+          </div>
+        </div>
+        <div className="project__container__developper">
+          <div className="project__container__developper__avatar">
+            <img src={baptiste} alt="Profil de Baptiste" className="avatar" />
+            <img src={baptPass} alt="Pass de Baptiste" className="pass" />
+          </div>
+          <div className="project__container__developper__content">
+            <div>
+              <h3 className="project__container__developper__content__name">Baptiste Faidherbe</h3>
+            </div>
+            <p className="project__container__developper__content__job__description">
+              Baptiste a suivi la formation O'clock developer javascript fullstack.
+            </p>
+            <div className="profile__header__description__bio__socials">
+              <Link className="profile__header__description__bio__socials__item --github" to={{ pathname: 'https://github.com/baptistefaidherbe' }} target="_blank">
+                <SiGithub />
               </Link>
             </div>
           </div>
