@@ -33,7 +33,7 @@ module.exports = {
           bind: [
             lng ?? franceCoord.lng,
             lat ?? franceCoord.lat,
-            earthRadiusInMeters
+            radius ?? earthRadiusInMeters
           ],
         }
       );
