@@ -43,7 +43,7 @@ export default function Exploration({
 
   if (!exploration?.id) {
     return (
-      <Loader />
+      <h1 className="main-title">L'exploration n'existe pas</h1>
     );
   }
 
