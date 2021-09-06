@@ -17,7 +17,7 @@ export default function Earth() {
       <directionalLight />
       <mesh>
         {/* Width and height segments for displacementMap */}
-        <sphereBufferGeometry args={[2.7, 300, 300]} />
+        <sphereBufferGeometry args={[3, 300, 300]} />
         <meshStandardMaterial
           displacementScale={0.2}
           map={MarsMap}
