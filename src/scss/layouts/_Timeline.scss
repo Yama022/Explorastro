@@ -1,6 +1,7 @@
 @use "sass:math";
 
 .timeline {
+  position: relative;
   display: flex;
   justify-content: center;
   width: 100%;
@@ -40,6 +41,8 @@
     }
 
     &__follow {
+      position: relative;
+      z-index: 1;
       width: 100%;
       border: 1px solid $secondary-color;
       border-radius: 5px;
@@ -48,6 +51,7 @@
 
       &__title {
         position: sticky;
+        z-index: 1;
         width: 100%;
         font-size: $gutter;
         font-weight: bold;
@@ -57,7 +61,9 @@
       }
 
       &__list {
-        height: 300px;
+        position: relative;
+        z-index: 1;
+        height: 270px;
         overflow: auto;
 
         & a:first-child li {
@@ -408,7 +414,7 @@
 .search {
   position: relative;
   width: 100%;
-  margin-bottom: $gutter;
+  margin: $gutter 0;
 
   &__input {
     color: $light-color;
@@ -424,7 +430,7 @@
   &__list {
     background-color: $primary-color;
     position: absolute;
-    z-index: 10;
+    z-index: 20;
     top: 2.6rem;
     left: 0;
     right: 0;
