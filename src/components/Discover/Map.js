@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import MarkerClusterGroup from 'react-leaflet-markercluster';
 import PropTypes from 'prop-types';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import uuid from 'uuid';
 import {
   MapContainer, TileLayer, Marker, Popup, useMap,
 } from 'react-leaflet';
@@ -62,29 +59,26 @@ export default function Map({ eventsList, fieldZone }) {
     }, [fieldZone]);
 
     return positionGeoloc && (
-      <MarkerClusterGroup
-        name="MarkerClusterGroup"
-        key={uuid.v4()}
-      >
-        {eventsList.map((element) => {
-          const lat = element.geog.coordinates[1];
-          const long = element.geog.coordinates[0];
-          const coord = [lat, long];
-          return (
-            <div key={element.id}>
-              <Marker names="marker" position={coord} icon={telescopIcon}>
-                <Popup name="popup">{element.name}</Popup>
-              </Marker>
-            </div>
-          );
-        })}
+    <>
+      {eventsList.map((element) => {
+        const lat = element.geog.coordinates[1];
+        const long = element.geog.coordinates[0];
+        const coord = [lat, long];
+        return (
+          <div key={element.id}>
+            <Marker names="marker" position={coord} icon={telescopIcon}>
+              <Popup name="popup">{element.name}</Popup>
+            </Marker>
+          </div>
+        );
+      })}
 
-        <Marker position={positionGeoloc} icon={homeIcon}>
-          <Popup>
-            Votre domicile
-          </Popup>
-        </Marker>
-      </MarkerClusterGroup>
+      <Marker position={positionGeoloc} icon={homeIcon}>
+        <Popup>
+          Votre domicile
+        </Popup>
+      </Marker>
+    </>
     );
   }
 
