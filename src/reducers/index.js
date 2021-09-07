@@ -6,6 +6,7 @@ import headerReducer from './header';
 import profileReducer from './profile';
 import timelineReducer from './timeline';
 import reportReducer from './report';
+import RGPDReducer from './RGPD';
 
 const rootReducer = combineReducers({
   exploration: explorationReducer,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   profile: profileReducer,
   timeline: timelineReducer,
   report: reportReducer,
+  RGPD: RGPDReducer,
 });
 
 export default rootReducer;

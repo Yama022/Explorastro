@@ -1,16 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { BiCookie } from 'react-icons/bi';
 
-export default function RGPD() {
-  const [modal, setModal] = useState(true);
-
-  const toggleModal = () => {
-    setModal(!modal);
-  };
-
+export default function RGPD({ modal, setModal }) {
   return (
     <div className="RGPD">
-      <div className={modal ? 'modal is-active ' : 'modal'}>
+      <div className={!modal ? 'modal is-active ' : 'modal'}>
         <div className="modal-background" />
         <div className="modal-card  animate__animated animate__fadeInDown">
           <header className="modal-card-head">
@@ -29,10 +24,15 @@ export default function RGPD() {
             </p>
           </section>
           <footer className="modal-card-foot">
-            <button type="button" className="button --secondary" onClick={toggleModal}>J'accepte</button>
+            <button type="button" className="button --secondary" onClick={setModal}>J'accepte</button>
           </footer>
         </div>
       </div>
     </div>
   );
 }
+
+RGPD.propTypes = {
+  modal: PropTypes.bool.isRequired,
+  setModal: PropTypes.func.isRequired,
+};

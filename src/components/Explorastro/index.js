@@ -24,7 +24,7 @@ import Avatar from 'src/containers/Avatar';
 import Particles from 'src/components/Particles';
 import Loader from 'src/components/Loader';
 import Project from 'src/components/Project';
-import RGPD from 'src/components/RGPD';
+import RGPD from 'src/containers/RGPD';
 import Report from 'src/containers/Report';
 import CGU from 'src/components/CGU';
 import PatchNote from 'src/components/PatchNote';
