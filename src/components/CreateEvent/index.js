@@ -58,6 +58,11 @@ export default function CreateEvent({
     return <Loader />;
   }
 
+  const authorID = userEvents[0].author_id;
+  const participateFiltered = participate.filter(
+    (event) => event.author_id !== authorID,
+  );
+
   return (
     <div className="createEvent">
       <section className="createEvent__container">
@@ -95,7 +100,7 @@ export default function CreateEvent({
       <section className="createEvent__container">
         <h1 className="main-title">Je participe</h1>
         <div className="createEvent__container__flex">
-          {participate.map((element) => (
+          {participateFiltered.map((element) => (
             <Participate key={element.id} {...element} />
           ))}
         </div>

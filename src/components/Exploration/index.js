@@ -87,7 +87,7 @@ export default function Exploration({
         <div className="Exploration__overview__map">
           <MapContainer
             center={coordinates ?? franceCoordinates}
-            zoom={6}
+            zoom={13}
             maxZoom={18}
             minZoom={3}
             className="Exploration__overview__map__elem"

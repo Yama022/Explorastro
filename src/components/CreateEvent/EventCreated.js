@@ -4,7 +4,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ImPencil, ImCross, ImMan } from 'react-icons/im';
-import { FaRegCalendarAlt } from 'react-icons/fa';
+import { FaRegCalendarAlt, FaInfoCircle } from 'react-icons/fa';
 
 import { Link } from 'react-router-dom';
 import * as dayjs from 'dayjs';
@@ -13,6 +13,7 @@ export default function EventCreated({
   name, id, onClick, date, max_participants, is_published, image_url,
 }) {
   const handleOnClick = () => {
+    // eslint-disable-next-line no-alert
     if (window.confirm('Êtes-vous sûr de vouloir supprimer cette exploration?')) {
       onClick(id);
     }
@@ -29,8 +30,9 @@ export default function EventCreated({
         <span>{is_published ? 'Publié' : 'Non publié'}</span>
       </div>
       <div className="createEvent__container__event-list__button">
-        <button className="button is-danger" onClick={handleOnClick}><ImCross /></button>
+        <Link className="button --secondary" to={`/exploration/${id}`}><FaInfoCircle /></Link>
         <Link className="button --secondary" to={`/formEvent/${id}`}><ImPencil /></Link>
+        <button className="button is-danger" onClick={handleOnClick}><ImCross /></button>
       </div>
     </div>
   );
