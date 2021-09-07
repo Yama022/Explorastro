@@ -24,7 +24,7 @@ export default function Search({
         onBlur={() => {
           setTimeout(() => {
             changeField('', 'searchInput');
-          }, 100);
+          }, 200);
         }}
       />
       <span className="icon is-small is-left">
