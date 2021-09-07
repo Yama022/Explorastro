@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import * as dayjs from 'dayjs';
+import * as locale from 'dayjs/locale/fr';
 import { Link } from 'react-router-dom';
 
 export default function Comment({ props }) {
@@ -7,7 +9,7 @@ export default function Comment({ props }) {
     author: { username, avatar_url: avatarUrl, id: authorId },
     message: { fr: messageFr },
     comment: { content },
-    date: { fr: dateFr },
+    date: { createdAt },
     exploration: { id: explorationId, name },
   } = props;
   return (
@@ -25,7 +27,7 @@ export default function Comment({ props }) {
       </div>
 
       <div className="comment__date">
-        <p>{dateFr}</p>
+        <p>Le {dayjs(createdAt).locale(locale).format('dddd DD MMMM YYYY à HH:mm')}</p>
       </div>
     </div>
   );
