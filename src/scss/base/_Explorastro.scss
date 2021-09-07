@@ -56,3 +56,34 @@ body {
 .re-captcha-active {
   display: block;
 }
+
+.leaflet-popup-content-wrapper {
+  background-color: $primary-color;
+  color: $light-color !important;
+  font-weight: bold;
+  padding: .5em;
+
+  img {
+    width: 100%;
+    max-width: 20em;
+    max-height: 15em;
+    object-fit: cover;
+    margin: .5em 0;
+  }
+
+  a {
+    color: $light-color !important;
+    font-weight: normal;
+    font-size: .8em;
+  }
+}
+
+.leaflet-popup-content-wrapper .leaflet-popup-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.leaflet-popup-tip-container {
+}

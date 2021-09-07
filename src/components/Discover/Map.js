@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 import {
   MapContainer, TileLayer, Marker, Popup, useMap,
 } from 'react-leaflet';
+import { Link } from 'react-router-dom';
 import L from 'leaflet';
 import home from 'src/assets/images/map/home.png';
 import markerIcon from 'src/assets/images/map/telescope.png';
+import { FaInfoCircle } from 'react-icons/fa';
 
 const telescopIcon = L.icon({
   iconUrl: markerIcon,
@@ -67,7 +69,16 @@ export default function Map({ eventsList, fieldZone }) {
         return (
           <div key={element.id}>
             <Marker names="marker" position={coord} icon={telescopIcon}>
-              <Popup name="popup">{element.name}</Popup>
+              <Popup name="popup" className="map-popup">
+                <h3>{element.name}</h3>
+                <img src={element.image_url} alt={element.name} />
+                <Link className="button --secondary" to={`/exploration/${element.id}`}>
+                  <span className="icon">
+                    <FaInfoCircle />
+                  </span>
+                  <span>Informations</span>
+                </Link>
+              </Popup>
             </Marker>
           </div>
         );
