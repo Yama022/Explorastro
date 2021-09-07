@@ -58,7 +58,7 @@ export default function CreateEvent({
     return <Loader />;
   }
 
-  const authorID = userEvents[0].author_id;
+  const authorID = userEvents[0]?.author_id;
   const participateFiltered = participate.filter(
     (event) => event.author_id !== authorID,
   );
