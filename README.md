@@ -15,12 +15,13 @@ ExplorAstro is a social network for astronomy enthusiasts. Organize and join exp
 <a href="https://github.com/JebNewman" target="_blank">
 <img src="https://img.shields.io/badge/PF LAINÉ-100000?style=for-the-badge&logo=github&logoColor=whit" />
 </a>
-<a href="https://github.com/baptistefaidherbe" target="_blank">
-<img src="https://img.shields.io/badge/bAPTISTE Faidherbe-100000?style=for-the-badge&logo=github&logoColor=whit" />
-</a>
 <a href="https://github.com/Yama022" target="_blank">
 <img src="https://img.shields.io/badge/Rémi Jacquemin-100000?style=for-the-badge&logo=github&logoColor=whit" />
 </a>
+<a href="https://github.com/baptistefaidherbe" target="_blank">
+<img src="https://img.shields.io/badge/bAPTISTE Faidherbe-100000?style=for-the-badge&logo=github&logoColor=whit" />
+</a>
+
 </div>
 
 ## 👨‍💻 Technologies
