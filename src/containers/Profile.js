@@ -4,6 +4,7 @@ import Profile from 'src/components/Profile';
 import {
   changeProfileMenu, getUserInfo, follow, unfollow, toggleBioEdit,
   changeInputValue, changeBio, uploadAvatar, setFieldHasError,
+  setLoading,
 } from 'src/actions/profile';
 
 const mapStateToProps = (state) => ({
@@ -59,6 +60,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   handleFieldHasError: (value) => {
     dispatch(setFieldHasError(value));
+  },
+  setIsLoading: () => {
+    dispatch(setLoading());
   },
 });
 

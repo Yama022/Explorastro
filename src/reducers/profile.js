@@ -9,6 +9,7 @@ import {
   USER_EXISTS,
   SAVE_AVATAR,
   SET_FIELD_HAS_ERROR,
+  SET_LOADING,
 } from 'src/actions/profile';
 
 const initialState = {
@@ -111,6 +112,12 @@ const profile = (state = initialState, action = {}) => {
       return {
         ...state,
         fieldHasError: action.value,
+      };
+    }
+    case SET_LOADING: {
+      return {
+        ...state,
+        isLoading: true,
       };
     }
     default:

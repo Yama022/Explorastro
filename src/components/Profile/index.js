@@ -57,6 +57,7 @@ export default function Profile({
   isLoading,
   fieldHasError,
   handleFieldHasError,
+  setIsLoading,
 }) {
   const handleBiographyValidation = () => {
     const errors = {};
@@ -93,6 +94,7 @@ export default function Profile({
 
   useEffect(() => {
     getInfo(profileId);
+    return setIsLoading();
   }, [profileId]);
 
   if (isLoading) {
@@ -367,6 +369,7 @@ Profile.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   fieldHasError: PropTypes.object.isRequired,
   handleFieldHasError: PropTypes.func.isRequired,
+  setIsLoading: PropTypes.func.isRequired,
 };
 
 Profile.defaultProps = {
