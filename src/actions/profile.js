@@ -12,6 +12,7 @@ export const USER_EXISTS = 'USER_EXISTS';
 export const UPLOAD_AVATAR = 'UPLOAD_AVATAR';
 export const SAVE_AVATAR = 'SAVE_AVATAR';
 export const SET_FIELD_HAS_ERROR = 'SET_FIELD_HAS_ERROR';
+export const SET_LOADING = 'SET_LOADING';
 
 export const changeProfileMenu = (payload) => ({
   type: CHANGE_PROFILE_MENU,
@@ -79,4 +80,8 @@ export const saveAvatar = (payload) => ({
 export const setFieldHasError = (value) => ({
   type: SET_FIELD_HAS_ERROR,
   value,
+});
+
+export const setLoading = () => ({
+  type: SET_LOADING,
 });
