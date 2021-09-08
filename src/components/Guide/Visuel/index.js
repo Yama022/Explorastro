@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 import React, { useEffect } from 'react';
 import BackButton from 'src/components/BackButton';
+import { Link } from 'react-router-dom';
 
 import { ImSad } from 'react-icons/im';
 import { TiArrowRight } from 'react-icons/ti';
@@ -51,6 +52,9 @@ export default function Visuel() {
               <ThirdPart key={element.id} {...element} />
             ))}
           </div>
+        </div>
+        <div>
+          <Link className="button purple" to="/404">404</Link>
         </div>
       </div>
     </div>
