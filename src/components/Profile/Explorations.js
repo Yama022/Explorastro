@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FaInfoCircle } from 'react-icons/fa';
 
 import PropTypes from 'prop-types';
 
@@ -11,7 +12,11 @@ export default function Explorations({ explorations }) {
           <div className="profile__explorations__item" key={exploration.id}>
             <img src={exploration.image_url} className="explorations__item__thumbnail" alt={`Aperçu de l'exploration ${exploration.username}`} />
             <span className="profile__explorations__item__name">{exploration.name}</span>
-            <Link type="button" className="profile__explorations__item__button button --secondary" to={`/exploration/${exploration.id}`}>Informations</Link>
+
+            <Link type="button" className="profile__explorations__item__button button --secondary" to={`/exploration/${exploration.id}`}>
+              <span className="icon is-small"><FaInfoCircle /></span>
+              <span>Informations</span>
+            </Link>
           </div>
         ))
         : <h2>Aucune exploration trouvée</h2>}

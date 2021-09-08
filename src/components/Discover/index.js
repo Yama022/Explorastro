@@ -3,6 +3,8 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import * as dayjs from 'dayjs';
 import { Link } from 'react-router-dom';
+import { FaInfoCircle } from 'react-icons/fa';
+
 import Map from './Map';
 import Filter from './Filter';
 import 'leaflet-control-geocoder/dist/Control.Geocoder';
@@ -32,7 +34,10 @@ export default function Discover({
                 <div><span>{element.max_participants}</span> invités maximum</div>
               </div>
               <div className="discover__list-events__box__content__description">{element.description}</div>
-              <Link className="button --secondary" to={`/exploration/${element.id}`}>Informations</Link>
+              <Link className="button --secondary" to={`/exploration/${element.id}`}>
+                <span className="icon is-small"><FaInfoCircle /></span>
+                <span>Informations</span>
+              </Link>
             </div>
           </div>
         ))}

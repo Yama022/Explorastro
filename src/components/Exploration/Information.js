@@ -46,6 +46,7 @@ const Information = ({
           />
         </div>
         <div className="Exploration__main__informations__general__right">
+
           <h2>Informations</h2>
           <p>
             {information.description ? information.description : '' }
